@@ -39,23 +39,28 @@ export async function POST(
   });
 
   // Generate PDF
-  const pdfBuffer = await generatePdf(reportHtml);
-
-  // Upload PDF to Storage
-  const pdfFileName = `roi-report-${accessToken}.pdf`;
-  const { error: uploadError } = await supabase.storage
-    .from("reports")
-    .upload(pdfFileName, pdfBuffer, {
-      contentType: "application/pdf",
-      upsert: true,
-    });
-
   let pdfUrl: string | null = null;
-  if (!uploadError) {
-    const { data: urlData } = supabase.storage
+  try {
+    const pdfBuffer = await generatePdf(reportHtml);
+
+    // Upload PDF to Storage
+    const pdfFileName = `roi-report-${accessToken}.pdf`;
+    const { error: uploadError } = await supabase.storage
       .from("reports")
-      .getPublicUrl(pdfFileName);
-    pdfUrl = urlData.publicUrl;
+      .upload(pdfFileName, pdfBuffer, {
+        contentType: "application/pdf",
+        upsert: true,
+      });
+
+    if (!uploadError) {
+      const { data: urlData } = supabase.storage
+        .from("reports")
+        .getPublicUrl(pdfFileName);
+      pdfUrl = urlData.publicUrl;
+    }
+  } catch {
+    // PDF generation failed — continue without PDF (can retry later)
+    console.error("PDF generation failed, continuing without PDF");
   }
 
   // Save report
