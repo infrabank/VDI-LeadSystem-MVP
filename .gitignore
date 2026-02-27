@@ -24,6 +24,10 @@
 .DS_Store
 *.pem
 
+# claude code / omc
+.claude/
+.omc/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
