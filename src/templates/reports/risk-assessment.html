@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>VDI 리스크 진단 리포트</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; padding: 40px; max-width: 800px; margin: 0 auto; }
+    .header { border-bottom: 3px solid #2563eb; padding-bottom: 20px; margin-bottom: 30px; }
+    .header h1 { font-size: 24px; color: #2563eb; margin-bottom: 4px; }
+    .header .meta { font-size: 12px; color: #888; }
+    .score-section { display: flex; align-items: center; gap: 30px; margin-bottom: 30px; padding: 24px; background: #f8fafc; border-radius: 12px; }
+    .score-circle { width: 100px; height: 100px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; color: #fff; font-weight: bold; flex-shrink: 0; }
+    .score-circle .number { font-size: 36px; line-height: 1; }
+    .score-circle .label { font-size: 10px; margin-top: 2px; }
+    .score-low { background: #22c55e; }
+    .score-medium { background: #eab308; }
+    .score-high { background: #f97316; }
+    .score-critical { background: #ef4444; }
+    .score-info h2 { font-size: 18px; margin-bottom: 8px; }
+    .score-info p { font-size: 14px; color: #555; }
+    .section { margin-bottom: 28px; }
+    .section h2 { font-size: 18px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #e5e7eb; }
+    .risk-item { display: flex; gap: 10px; padding: 10px 12px; margin-bottom: 8px; background: #fef2f2; border-radius: 8px; font-size: 13px; }
+    .risk-item .num { flex-shrink: 0; width: 22px; height: 22px; background: #fecaca; color: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+    .step-item { display: flex; gap: 10px; padding: 10px 12px; margin-bottom: 8px; background: #eff6ff; border-radius: 8px; font-size: 13px; }
+    .step-item .num { flex-shrink: 0; width: 22px; height: 22px; background: #bfdbfe; color: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+    .input-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .input-table th, .input-table td { padding: 8px 12px; border: 1px solid #e5e7eb; text-align: left; }
+    .input-table th { background: #f9fafb; font-weight: 600; width: 40%; }
+    .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 11px; color: #999; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>VDI 리스크 진단 리포트</h1>
+    <div class="meta">
+      {{company}} | 생성일: {{date}}
+    </div>
+  </div>
+
+  <div class="score-section">
+    <div class="score-circle score-{{risk_level}}">
+      <span class="number">{{score}}</span>
+      <span class="label">/ 100</span>
+    </div>
+    <div class="score-info">
+      <h2>리스크 수준: {{risk_level_label}}</h2>
+      <p>{{risk_level_description}}</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>주요 리스크</h2>
+    {{risks_html}}
+  </div>
+
+  <div class="section">
+    <h2>권장 조치사항</h2>
+    {{next_steps_html}}
+  </div>
+
+  <div class="section">
+    <h2>진단 입력 정보</h2>
+    <table class="input-table">
+      {{input_table_html}}
+    </table>
+  </div>
+
+  <div class="footer">
+    &copy; VDI Expert | 본 리포트는 입력된 정보를 기반으로 자동 생성되었습니다.
+  </div>
+</body>
+</html>

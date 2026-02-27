@@ -1,0 +1,30 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-02-27T09:00:00.000Z",
+  "project_level": "dynamic",
+  "tech_stack": {
+    "frontend": "Next.js 16 (App Router)",
+    "language": "TypeScript",
+    "styling": "Tailwind CSS v4",
+    "backend": "Supabase (Postgres/Auth/Storage)",
+    "search": "PostgreSQL FTS",
+    "pdf": "HTML template → Playwright/Puppeteer",
+    "package_manager": "npm"
+  },
+  "features": {
+    "vdi-leadsystem-mvp": {
+      "plan": "complete",
+      "design": "complete",
+      "implementation": "pending",
+      "analysis": "pending",
+      "report": "pending"
+    }
+  },
+  "quick_changes": [],
+  "statistics": {
+    "total_features": 1,
+    "completed": 0,
+    "in_progress": 1,
+    "quick_changes_count": 0
+  }
+}

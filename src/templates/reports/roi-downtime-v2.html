@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>VDI 다운타임 비용/ROI 분석 리포트</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; padding: 40px; max-width: 800px; margin: 0 auto; font-size: 13px; line-height: 1.6; }
+    .header { border-bottom: 3px solid #059669; padding-bottom: 16px; margin-bottom: 24px; }
+    .header h1 { font-size: 22px; color: #059669; margin-bottom: 2px; }
+    .header .subtitle { font-size: 13px; color: #555; margin-bottom: 6px; }
+    .header .meta { font-size: 11px; color: #888; }
+
+    .grade-badge { display: inline-block; padding: 3px 14px; border-radius: 16px; font-size: 12px; font-weight: 600; margin-bottom: 16px; }
+    .grade-critical { background: #fef2f2; color: #dc2626; }
+    .grade-high { background: #fff7ed; color: #ea580c; }
+    .grade-medium { background: #fffbeb; color: #d97706; }
+    .grade-low { background: #f0fdf4; color: #16a34a; }
+
+    /* KPI Grid */
+    .kpi-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+    .kpi-card { padding: 16px; border-radius: 10px; text-align: center; }
+    .kpi-card .label { font-size: 11px; color: #666; margin-bottom: 4px; }
+    .kpi-card .value { font-size: 22px; font-weight: 700; }
+    .kpi-card .sub { font-size: 10px; color: #888; margin-top: 2px; }
+    .card-loss { background: #fef2f2; }
+    .card-loss .value { color: #dc2626; }
+    .card-saving { background: #f0fdf4; }
+    .card-saving .value { color: #16a34a; }
+    .card-payback { background: #eff6ff; }
+    .card-payback .value { color: #2563eb; }
+
+    .kpi-sub-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+    .kpi-sub-card { padding: 12px; border-radius: 8px; background: #f8fafc; border: 1px solid #e5e7eb; text-align: center; }
+    .kpi-sub-card .label { font-size: 10px; color: #888; margin-bottom: 3px; }
+    .kpi-sub-card .value { font-size: 16px; font-weight: 600; color: #1a1a1a; }
+
+    /* Warning box */
+    .warning-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 14px; margin-bottom: 20px; }
+    .warning-box h3 { font-size: 12px; color: #92400e; margin-bottom: 8px; font-weight: 600; }
+    .warning-item { font-size: 12px; color: #78350f; padding: 3px 0; }
+    .warning-item::before { content: "⚠ "; }
+
+    /* Benchmark */
+    .benchmark-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px; margin-bottom: 20px; }
+    .benchmark-box .label { font-size: 11px; color: #166534; }
+    .benchmark-box .comparison { font-size: 14px; font-weight: 600; color: #15803d; margin-top: 4px; }
+
+    .section { margin-bottom: 22px; }
+    .section h2 { font-size: 15px; margin-bottom: 10px; padding-bottom: 4px; border-bottom: 1px solid #e5e7eb; color: #1a1a1a; }
+
+    .effect-item { display: flex; gap: 8px; padding: 8px 10px; margin-bottom: 6px; background: #f0fdf4; border-radius: 6px; font-size: 12px; }
+    .effect-item .num { flex-shrink: 0; width: 20px; height: 20px; background: #bbf7d0; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+
+    .risk-item { display: flex; gap: 8px; padding: 8px 10px; margin-bottom: 6px; background: #fef2f2; border-radius: 6px; font-size: 12px; }
+    .risk-item .num { flex-shrink: 0; width: 20px; height: 20px; background: #fecaca; color: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+
+    .step-item { display: flex; gap: 8px; padding: 8px 10px; margin-bottom: 6px; background: #eff6ff; border-radius: 6px; font-size: 12px; }
+    .step-item .num { flex-shrink: 0; width: 20px; height: 20px; background: #bfdbfe; color: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 600; }
+
+    .input-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .input-table th, .input-table td { padding: 6px 10px; border: 1px solid #e5e7eb; text-align: left; }
+    .input-table th { background: #f9fafb; font-weight: 600; width: 40%; }
+
+    .assumption-box { background: #f9fafb; border-radius: 8px; padding: 14px; margin-top: 14px; font-size: 11px; color: #555; line-height: 1.8; }
+    .assumption-box h3 { font-size: 12px; color: #333; margin-bottom: 6px; font-weight: 600; }
+    .assumption-box code { background: #e5e7eb; padding: 1px 4px; border-radius: 3px; font-family: monospace; font-size: 11px; }
+
+    .disclaimer { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 6px; padding: 10px; margin-top: 16px; font-size: 10px; color: #888; text-align: center; }
+
+    .footer { margin-top: 30px; padding-top: 12px; border-top: 1px solid #e5e7eb; font-size: 10px; color: #999; text-align: center; }
+
+    .page-break { page-break-before: always; }
+  </style>
+</head>
+<body>
+  <!-- Page 1: Executive Summary -->
+  <div class="header">
+    <h1>VDI 다운타임 비용/ROI 분석 리포트</h1>
+    <div class="subtitle">Executive Summary - 의사결정용</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <span class="grade-badge grade-{{grade}}">손실 규모: {{grade_label}}</span>
+
+  <div class="kpi-grid">
+    <div class="kpi-card card-loss">
+      <div class="label">연간 추정 손실액</div>
+      <div class="value">{{annual_loss_fmt}}</div>
+      <div class="sub">{{annual_loss_full}}</div>
+    </div>
+    <div class="kpi-card card-saving">
+      <div class="label">연간 절감 가능액</div>
+      <div class="value">{{annual_saving_fmt}}</div>
+      <div class="sub">{{annual_saving_full}}</div>
+    </div>
+    <div class="kpi-card card-payback">
+      <div class="label">투자 회수기간</div>
+      <div class="value">{{payback_range}}</div>
+      <div class="sub">투자비 {{investment_range}}</div>
+    </div>
+  </div>
+
+  <div class="kpi-sub-grid">
+    <div class="kpi-sub-card">
+      <div class="label">3년 누적 손실</div>
+      <div class="value" style="color:#dc2626;">{{loss_3y_fmt}}</div>
+    </div>
+    <div class="kpi-sub-card">
+      <div class="label">3년 누적 절감</div>
+      <div class="value" style="color:#16a34a;">{{saving_3y_fmt}}</div>
+    </div>
+    <div class="kpi-sub-card">
+      <div class="label">대형 장애 1회 손실</div>
+      <div class="value" style="color:#ea580c;">{{major_incident_loss_fmt}}</div>
+    </div>
+  </div>
+
+  <div class="benchmark-box">
+    <div class="label">{{benchmark_text}} (내부 참고 기준)</div>
+    <div class="comparison">{{benchmark_comparison}}</div>
+  </div>
+
+  <div class="warning-box">
+    <h3>미조치 시 리스크</h3>
+    {{warnings_html}}
+  </div>
+
+  <div class="section">
+    <h2>권장 다음 단계</h2>
+    {{next_steps_html}}
+  </div>
+
+  <div class="disclaimer">
+    본 계산은 의사결정용 추정치이며, 실제 값은 환경/업무 특성에 따라 달라질 수 있습니다.
+  </div>
+
+  <!-- Page 2: Detail / Assumptions -->
+  <div class="page-break"></div>
+
+  <div class="header">
+    <h1>VDI 다운타임 비용/ROI 분석 리포트</h1>
+    <div class="subtitle">Detail / Assumptions (부록)</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <div class="section">
+    <h2>현재 구조 위험 요약</h2>
+    {{risk_summary_html}}
+  </div>
+
+  <div class="section">
+    <h2>개선 시 기대 효과</h2>
+    {{improvement_effects_html}}
+  </div>
+
+  <div class="section">
+    <h2>입력값 요약</h2>
+    <table class="input-table">
+      {{input_table_html}}
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>가정값 및 계산 모델</h2>
+    <div class="assumption-box">
+      <h3>투자비 모델: {{investment_model}}</h3>
+      <p><code>고정비</code> {{base_cost_low_fmt}} ~ {{base_cost_high_fmt}}</p>
+      <p><code>사용자당 변동비</code> {{per_user_low_fmt}} ~ {{per_user_high_fmt}}</p>
+      <p><code>생산성 영향률</code> {{impact_rate_percent}}%</p>
+      <p><code>복구시간 단축률</code> {{recovery_percent}}%</p>
+      <p><code>대형 장애 가정시간</code> {{major_hours}}시간</p>
+    </div>
+    <div class="assumption-box" style="margin-top: 8px;">
+      <h3>계산 공식</h3>
+      <p><code>연간 손실</code> = 사용자 × 시간당인건비 × 연간다운타임 × 영향률</p>
+      <p><code>연간 절감</code> = 현재 손실 - 개선 후 손실</p>
+      <p><code>회수기간</code> = 투자비 / 연간 절감액</p>
+      <p><code>대형장애 손실</code> = 사용자 × 시간당인건비 × 가정시간 × 영향률</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; VDI Expert | 본 리포트는 입력된 정보를 기반으로 자동 생성되었습니다.
+  </div>
+</body>
+</html>

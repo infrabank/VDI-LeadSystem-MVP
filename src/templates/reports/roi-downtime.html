@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>VDI 다운타임 비용/ROI 분석 리포트</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; padding: 40px; max-width: 800px; margin: 0 auto; }
+    .header { border-bottom: 3px solid #2563eb; padding-bottom: 20px; margin-bottom: 30px; }
+    .header h1 { font-size: 24px; color: #2563eb; margin-bottom: 4px; }
+    .header .subtitle { font-size: 14px; color: #555; margin-bottom: 8px; }
+    .header .meta { font-size: 12px; color: #888; }
+
+    /* Executive Summary */
+    .summary-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 30px; }
+    .summary-card { padding: 20px; border-radius: 12px; text-align: center; }
+    .summary-card .label { font-size: 12px; color: #666; margin-bottom: 6px; }
+    .summary-card .value { font-size: 24px; font-weight: 700; }
+    .summary-card .unit { font-size: 12px; color: #888; margin-top: 2px; }
+    .card-loss { background: #fef2f2; }
+    .card-loss .value { color: #dc2626; }
+    .card-saving { background: #f0fdf4; }
+    .card-saving .value { color: #16a34a; }
+    .card-payback { background: #eff6ff; }
+    .card-payback .value { color: #2563eb; }
+
+    .grade-badge { display: inline-block; padding: 4px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px; }
+    .grade-high { background: #fef2f2; color: #dc2626; }
+    .grade-medium { background: #fffbeb; color: #d97706; }
+    .grade-low { background: #f0fdf4; color: #16a34a; }
+
+    .insight-box { background: #f8fafc; border-radius: 12px; padding: 20px; margin-bottom: 30px; }
+    .insight-box h3 { font-size: 14px; color: #2563eb; margin-bottom: 12px; }
+    .insight-item { font-size: 13px; color: #333; padding: 6px 0; line-height: 1.6; }
+    .insight-item::before { content: ""; display: inline-block; width: 6px; height: 6px; background: #2563eb; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+
+    .section { margin-bottom: 28px; }
+    .section h2 { font-size: 18px; margin-bottom: 12px; padding-bottom: 6px; border-bottom: 1px solid #e5e7eb; }
+
+    .effect-item { display: flex; gap: 10px; padding: 10px 12px; margin-bottom: 8px; background: #f0fdf4; border-radius: 8px; font-size: 13px; }
+    .effect-item .num { flex-shrink: 0; width: 22px; height: 22px; background: #bbf7d0; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+
+    .risk-item { display: flex; gap: 10px; padding: 10px 12px; margin-bottom: 8px; background: #fef2f2; border-radius: 8px; font-size: 13px; }
+    .risk-item .num { flex-shrink: 0; width: 22px; height: 22px; background: #fecaca; color: #dc2626; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+
+    .step-item { display: flex; gap: 10px; padding: 10px 12px; margin-bottom: 8px; background: #eff6ff; border-radius: 8px; font-size: 13px; }
+    .step-item .num { flex-shrink: 0; width: 22px; height: 22px; background: #bfdbfe; color: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; }
+
+    .input-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .input-table th, .input-table td { padding: 8px 12px; border: 1px solid #e5e7eb; text-align: left; }
+    .input-table th { background: #f9fafb; font-weight: 600; width: 40%; }
+
+    .formula-box { background: #f9fafb; border-radius: 8px; padding: 16px; margin-top: 16px; font-size: 12px; color: #555; line-height: 1.8; }
+    .formula-box code { background: #e5e7eb; padding: 1px 4px; border-radius: 3px; font-family: monospace; }
+
+    .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e5e7eb; font-size: 11px; color: #999; text-align: center; }
+
+    .page-break { page-break-before: always; }
+  </style>
+</head>
+<body>
+  <!-- Page 1: Executive Summary -->
+  <div class="header">
+    <h1>VDI 다운타임 비용/ROI 분석 리포트</h1>
+    <div class="subtitle">Executive Summary</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <span class="grade-badge grade-{{grade}}">손실 규모: {{grade_label}}</span>
+
+  <div class="summary-grid">
+    <div class="summary-card card-loss">
+      <div class="label">연간 추정 손실액</div>
+      <div class="value">{{annual_loss_formatted}}</div>
+    </div>
+    <div class="summary-card card-saving">
+      <div class="label">연간 절감 가능액</div>
+      <div class="value">{{annual_saving_formatted}}</div>
+    </div>
+    <div class="summary-card card-payback">
+      <div class="label">투자 회수기간</div>
+      <div class="value">{{payback_years_formatted}}</div>
+    </div>
+  </div>
+
+  <div class="insight-box">
+    <h3>핵심 인사이트</h3>
+    {{risk_summary_html}}
+  </div>
+
+  <div class="section">
+    <h2>개선 시 기대 효과</h2>
+    {{improvement_effects_html}}
+  </div>
+
+  <div class="section">
+    <h2>다음 단계 제안</h2>
+    {{next_steps_html}}
+  </div>
+
+  <!-- Page 2: Calculation Detail -->
+  <div class="page-break"></div>
+
+  <div class="header">
+    <h1>VDI 다운타임 비용/ROI 분석 리포트</h1>
+    <div class="subtitle">Calculation Detail (부록)</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <div class="section">
+    <h2>입력값 요약</h2>
+    <table class="input-table">
+      {{input_table_html}}
+    </table>
+  </div>
+
+  <div class="section">
+    <h2>계산 공식</h2>
+    <div class="formula-box">
+      <p><code>연간 총 다운타임</code> = 평균 중단시간 x 연간 장애 횟수</p>
+      <p><code>연간 생산성 손실</code> = 사용자 수 x 시간당 인건비 x 연간 다운타임</p>
+      <p><code>개선 후 손실</code> = 연간 손실 x (1 - 복구시간 단축률)</p>
+      <p><code>연간 절감액</code> = 현재 손실 - 개선 후 손실</p>
+      <p><code>예상 투자비</code> = 사용자 수 x 300,000원 (사용자당 가정)</p>
+      <p><code>회수기간</code> = 예상 투자비 / 연간 절감액</p>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; VDI Expert | 본 리포트는 입력된 정보를 기반으로 자동 생성되었습니다. 실제 비용은 환경에 따라 다를 수 있습니다.
+  </div>
+</body>
+</html>
