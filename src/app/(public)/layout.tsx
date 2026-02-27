@@ -7,7 +7,7 @@ export default function PublicLayout({
 }) {
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 print:hidden">
         <nav className="max-w-5xl mx-auto px-6 flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-1.5 font-bold text-xl text-gray-900 tracking-tight">
             VDI Expert
@@ -38,7 +38,7 @@ export default function PublicLayout({
 
       <main className="flex-1">{children}</main>
 
-      <footer className="bg-gray-50 border-t border-gray-200">
+      <footer className="bg-gray-50 border-t border-gray-200 print:hidden">
         <div className="max-w-5xl mx-auto px-6 py-14">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {/* Brand */}

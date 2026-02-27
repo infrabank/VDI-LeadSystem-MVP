@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import PdfRetryButton from "../components/PdfRetryButton";
+import PrintPdfButton from "../components/PrintPdfButton";
 
 interface Props {
   params: Promise<{ token: string }>;
@@ -207,32 +207,16 @@ export default async function ReportPage({ params }: Props) {
           </div>
         )}
 
-        {/* PDF Download / Retry */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        {/* PDF Save */}
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-gray-900">PDF 리포트 다운로드</p>
+              <p className="font-semibold text-gray-900">PDF 리포트 저장</p>
               <p className="text-sm text-gray-500 mt-0.5">
-                {report.pdf_url
-                  ? "진단 결과를 PDF 파일로 저장하여 팀과 공유하세요."
-                  : "PDF 생성에 실패했습니다. 재시도 버튼을 눌러 다시 생성하세요."}
+                진단 결과를 PDF 파일로 저장하여 팀과 공유하세요.
               </p>
             </div>
-            {report.pdf_url ? (
-              <a
-                href={report.pdf_url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-shrink-0 inline-flex items-center gap-2 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.02] active:scale-[0.99] transition-all duration-150 text-sm"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
-                </svg>
-                PDF 다운로드
-              </a>
-            ) : (
-              <PdfRetryButton reportId={report.id} />
-            )}
+            <PrintPdfButton />
           </div>
         </div>
 

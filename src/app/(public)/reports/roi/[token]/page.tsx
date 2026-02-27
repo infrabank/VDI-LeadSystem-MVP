@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import PdfRetryButton from "../../components/PdfRetryButton";
+import PrintPdfButton from "../../components/PrintPdfButton";
 
 interface Props {
   params: Promise<{ token: string }>;
@@ -264,31 +264,15 @@ export default async function ROIReportPage({ params }: Props) {
           </div>
         </div>
 
-        {/* PDF Download / Retry */}
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm mb-6 flex items-center justify-between gap-4">
+        {/* PDF Save */}
+        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm mb-6 flex items-center justify-between gap-4 print:hidden">
           <div>
             <h3 className="font-semibold text-gray-900">경영진 보고용 PDF</h3>
             <p className="text-sm text-gray-500 mt-0.5">
-              {report.pdf_url
-                ? "1페이지 Executive Summary + 부록"
-                : "PDF 생성에 실패했습니다. 재시도 버튼을 눌러 다시 생성하세요."}
+              리포트를 PDF로 저장하여 경영진과 공유하세요.
             </p>
           </div>
-          {report.pdf_url ? (
-            <a
-              href={report.pdf_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-shrink-0 flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl hover:shadow-md font-medium transition-all"
-            >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              PDF 다운로드
-            </a>
-          ) : (
-            <PdfRetryButton reportId={report.id} />
-          )}
+          <PrintPdfButton />
         </div>
 
         {/* CTA */}

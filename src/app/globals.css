@@ -79,3 +79,14 @@ details summary::-webkit-details-marker { display: none; }
 details summary { list-style: none; }
 details[open] summary .faq-chevron { transform: rotate(180deg); }
 .faq-chevron { transition: transform 0.2s ease; }
+
+/* Print styles for report pages */
+@media print {
+  body { background: white !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  header, footer, nav { display: none !important; }
+  .print\:hidden { display: none !important; }
+  .min-h-screen { min-height: auto !important; }
+  .shadow-sm, .shadow-md { box-shadow: none !important; }
+  .rounded-xl { border-radius: 0.5rem !important; }
+  @page { margin: 15mm; size: A4; }
+}
