@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import PdfRetryButton from "./PdfRetryButton";
+import PdfRetryButton from "../components/PdfRetryButton";
 
 interface Props {
   params: Promise<{ token: string }>;
@@ -231,7 +231,7 @@ export default async function ReportPage({ params }: Props) {
                 PDF 다운로드
               </a>
             ) : (
-              <PdfRetryButton toolRunId={toolRun.id} />
+              <PdfRetryButton reportId={report.id} />
             )}
           </div>
         </div>

@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/api/reports/\\[toolRunId\\]/generate": ["./src/templates/reports/**/*"],
     "/api/reports/roi/\\[toolRunId\\]/generate": ["./src/templates/reports/**/*"],
+    "/api/reports/retry-pdf/\\[reportId\\]": ["./src/templates/reports/**/*"],
   },
 };
 

@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function PdfRetryButton({ toolRunId }: { toolRunId: string }) {
+export default function PdfRetryButton({ reportId }: { reportId: string }) {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -13,17 +13,19 @@ export default function PdfRetryButton({ toolRunId }: { toolRunId: string }) {
     setError("");
 
     try {
-      const res = await fetch(`/api/reports/${toolRunId}/generate`, {
+      const res = await fetch(`/api/reports/retry-pdf/${reportId}`, {
         method: "POST",
       });
 
       if (!res.ok) {
-        throw new Error("PDF 생성에 실패했습니다.");
+        const data = await res.json().catch(() => null);
+        throw new Error(data?.error || "PDF 생성에 실패했습니다.");
       }
 
       router.refresh();
     } catch (err) {
       setError(err instanceof Error ? err.message : "오류가 발생했습니다.");
+    } finally {
       setLoading(false);
     }
   }
