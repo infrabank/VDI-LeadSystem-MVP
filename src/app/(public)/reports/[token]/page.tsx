@@ -221,7 +221,7 @@ export default async function ReportPage({ params }: Props) {
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-6 text-center shadow-md">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-6 text-center shadow-md print:hidden">
           <h3 className="text-lg font-bold text-white mb-2">
             전문가의 상세 분석이 필요하신가요?
           </h3>

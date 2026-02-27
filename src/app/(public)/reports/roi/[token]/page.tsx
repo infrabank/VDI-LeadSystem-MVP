@@ -276,7 +276,7 @@ export default async function ROIReportPage({ params }: Props) {
         </div>
 
         {/* CTA */}
-        <div className="rounded-xl overflow-hidden mb-6" style={{ background: "linear-gradient(135deg, #059669, #2563eb)" }}>
+        <div className="rounded-xl overflow-hidden mb-6 print:hidden" style={{ background: "linear-gradient(135deg, #059669, #2563eb)" }}>
           <div className="px-8 py-10 text-center text-white">
             <h3 className="text-xl font-bold mb-2">
               전문가의 상세 분석이 필요하신가요?
@@ -302,7 +302,7 @@ export default async function ROIReportPage({ params }: Props) {
         </div>
 
         {/* Disclaimer */}
-        <p className="text-xs text-gray-400 text-center leading-relaxed">
+        <p className="text-xs text-gray-400 text-center leading-relaxed print:text-left">
           본 계산은 의사결정용 추정치이며, 실제 값은 환경/업무 특성에 따라 달라질 수 있습니다.
         </p>
       </div>
