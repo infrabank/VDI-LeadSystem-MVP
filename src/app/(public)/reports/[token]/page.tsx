@@ -18,6 +18,7 @@ interface RiskDetail {
   potential_impact: string;
   trigger_condition: string;
   likelihood: "low" | "medium" | "high";
+  category?: "migration" | "dr" | "operations" | "automation" | "security";
 }
 
 interface RoadmapPhase {
@@ -27,7 +28,7 @@ interface RoadmapPhase {
 }
 
 interface V2Output {
-  version: "v2";
+  version: "v2" | "v3";
   score: number;
   risk_level: "low" | "medium" | "high" | "critical";
   maturity_model: {
@@ -61,8 +62,9 @@ interface V1Output {
   risk_level: string;
 }
 
-function isV2(output: unknown): output is V2Output {
-  return (output as V2Output)?.version === "v2";
+function isV2OrV3(output: unknown): output is V2Output {
+  const v = (output as V2Output)?.version;
+  return v === "v2" || v === "v3";
 }
 
 // ── SVG Radar Chart (4 axes) ──
@@ -156,7 +158,7 @@ export default async function ReportPage({ params }: Props) {
   const lead = report.leads;
   const output = toolRun?.output_json;
 
-  if (isV2(output)) {
+  if (isV2OrV3(output)) {
     return <V2Report report={report} lead={lead} output={output} />;
   }
 
@@ -298,11 +300,18 @@ function V2Report({
           <div className="space-y-3">
             {output.risks.map((risk, i) => (
               <div key={i} className="border border-gray-200 border-l-4 border-l-red-400 rounded-lg p-4">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-center justify-between mb-2 flex-wrap gap-1">
                   <h3 className="text-sm font-bold text-gray-900">{risk.title}</h3>
-                  <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${likelihoodColor[risk.likelihood]}`}>
-                    발생 가능성: {likelihoodLabel[risk.likelihood]}
-                  </span>
+                  <div className="flex gap-1.5">
+                    {risk.category && (
+                      <span className="px-2 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-600">
+                        {({ migration: "이관", dr: "DR", operations: "운영", automation: "자동화", security: "보안" } as Record<string, string>)[risk.category]}
+                      </span>
+                    )}
+                    <span className={`px-2 py-0.5 rounded-full text-xs font-medium ${likelihoodColor[risk.likelihood]}`}>
+                      발생 가능성: {likelihoodLabel[risk.likelihood]}
+                    </span>
+                  </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600">
                   <div><span className="font-medium text-gray-500">영향 범위:</span> {risk.impact_scope}</div>

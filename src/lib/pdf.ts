@@ -549,6 +549,161 @@ export function renderRiskV2ReportHtml(data: RiskV2ReportData): string {
   return html;
 }
 
+// === Risk Assessment V3 Report ===
+
+import type { RiskAssessmentV3Output } from "@/lib/scoring/risk-assessment-v3";
+
+export interface RiskV3ReportData {
+  company: string;
+  date: string;
+  output: RiskAssessmentV3Output;
+  input: Record<string, unknown>;
+}
+
+const V3_INPUT_LABELS: Record<string, string> = {
+  platform: "플랫폼",
+  vm_count: "VM 수",
+  host_count: "호스트 수",
+  concurrent_users: "동시 사용자",
+  storage_type: "스토리지 유형",
+  storage_migration: "스토리지 이관",
+  network_separation: "네트워크 분리",
+  ha_enabled: "HA 구성",
+  dr_site: "DR 사이트",
+  backup_exists: "백업 체계",
+  ops_staff_level: "운영 인력",
+  automation_level: "자동화 수준",
+  migration_rehearsal: "이관 리허설",
+  mfa_enabled: "MFA 적용",
+};
+
+function formatV3InputValue(key: string, value: unknown): string {
+  if (typeof value === "boolean") return value ? "예" : "아니오";
+  if (Array.isArray(value)) return value.join(", ");
+  return String(value);
+}
+
+const CATEGORY_LABELS: Record<string, string> = {
+  migration: "이관",
+  dr: "DR",
+  operations: "운영",
+  automation: "자동화",
+  security: "보안",
+};
+
+export function renderRiskV3ReportHtml(data: RiskV3ReportData): string {
+  const templatePath = join(
+    process.cwd(),
+    "src/templates/reports/risk-assessment-v3.html"
+  );
+  let html = readFileSync(templatePath, "utf-8");
+
+  const { output, input } = data;
+  const mm = output.maturity_model;
+
+  // Simple placeholders
+  html = html.replace(/\{\{company\}\}/g, data.company || "-");
+  html = html.replace(/\{\{date\}\}/g, data.date);
+  html = html.replace(/\{\{score\}\}/g, String(output.score));
+  html = html.replace(/\{\{risk_level\}\}/g, output.risk_level);
+  html = html.replace(
+    /\{\{risk_level_label\}\}/g,
+    RISK_V2_LEVEL_LABELS[output.risk_level] || output.risk_level
+  );
+  html = html.replace(/\{\{executive_summary\}\}/g, output.executive_summary);
+  html = html.replace(/\{\{benchmark_text\}\}/g, output.benchmark_text);
+  html = html.replace(/\{\{benchmark_comparison\}\}/g, output.benchmark_comparison);
+
+  // Maturity scores
+  html = html.replace(/\{\{migration_score\}\}/g, String(mm.migration.score));
+  html = html.replace(/\{\{migration_level\}\}/g, String(mm.migration.level));
+  html = html.replace(/\{\{dr_score\}\}/g, String(mm.dr.score));
+  html = html.replace(/\{\{dr_level\}\}/g, String(mm.dr.level));
+  html = html.replace(/\{\{ops_score\}\}/g, String(mm.operations.score));
+  html = html.replace(/\{\{ops_level\}\}/g, String(mm.operations.level));
+  html = html.replace(/\{\{auto_score\}\}/g, String(mm.automation.score));
+  html = html.replace(/\{\{auto_level\}\}/g, String(mm.automation.level));
+
+  // Risk summary (short list for page 1)
+  const riskSummaryHtml = output.risks
+    .slice(0, 3)
+    .map(
+      (r) =>
+        `<div style="font-size:11px; padding:4px 0; border-bottom:1px solid #f1f5f9;"><strong>${r.title}</strong> — ${r.potential_impact.slice(0, 60)}...</div>`
+    )
+    .join("\n");
+  html = html.replace(/\{\{risk_summary_html\}\}/g, riskSummaryHtml);
+
+  // Risk detail cards (page 2)
+  const riskDetailsHtml = output.risks
+    .map(
+      (r) =>
+        `<div class="risk-card">
+          <div class="risk-title">${r.title}</div>
+          <div class="risk-meta">
+            <span>영향 범위: ${r.impact_scope}</span>
+            <span class="tag">${CATEGORY_LABELS[r.category] || r.category}</span>
+            <span class="tag">발생 가능성: ${LIKELIHOOD_LABELS[r.likelihood] || r.likelihood}</span>
+          </div>
+          <div class="risk-body"><strong>유발 조건:</strong> ${r.trigger_condition}<br/><strong>예상 영향:</strong> ${r.potential_impact}</div>
+        </div>`
+    )
+    .join("\n");
+  html = html.replace(/\{\{risk_details_html\}\}/g, riskDetailsHtml);
+
+  // Projection
+  html = html.replace(/\{\{projection_short\}\}/g, output.current_state_projection.short_term_risk);
+  html = html.replace(/\{\{projection_mid\}\}/g, output.current_state_projection.mid_term_risk);
+  html = html.replace(/\{\{projection_large\}\}/g, output.current_state_projection.large_scale_event_risk);
+
+  // Roadmap
+  const phases = [
+    { key: "phase_1", data: output.roadmap.phase_1, color: "phase-1-color" },
+    { key: "phase_2", data: output.roadmap.phase_2, color: "phase-2-color" },
+    { key: "phase_3", data: output.roadmap.phase_3, color: "phase-3-color" },
+  ];
+  const roadmapHtml = phases
+    .map(
+      (p, i) =>
+        `<div class="roadmap-phase">
+          <div class="phase-marker">
+            <div class="phase-num ${p.color}">${i + 1}</div>
+            <div class="phase-dur">${p.data.duration}</div>
+          </div>
+          <div class="phase-content">
+            <h4>${p.data.title}</h4>
+            ${p.data.actions.map((a) => `<div class="phase-action">${a}</div>`).join("\n")}
+          </div>
+        </div>`
+    )
+    .join("\n");
+  html = html.replace(/\{\{roadmap_html\}\}/g, roadmapHtml);
+
+  // Next steps
+  const nextStepsHtml = output.next_steps
+    .map(
+      (step, i) =>
+        `<div style="display:flex; gap:8px; padding:6px 10px; margin-bottom:5px; background:#eff6ff; border-radius:6px; font-size:11px;">
+          <span style="flex-shrink:0; width:20px; height:20px; background:#bfdbfe; color:#2563eb; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:600;">${i + 1}</span>
+          <span>${step}</span>
+        </div>`
+    )
+    .join("\n");
+  html = html.replace(/\{\{next_steps_html\}\}/g, nextStepsHtml);
+
+  // Input table
+  const inputRows = Object.entries(input)
+    .filter(([key]) => V3_INPUT_LABELS[key])
+    .map(
+      ([key, value]) =>
+        `<tr><th>${V3_INPUT_LABELS[key]}</th><td>${formatV3InputValue(key, value)}</td></tr>`
+    )
+    .join("\n");
+  html = html.replace(/\{\{input_table_html\}\}/g, inputRows);
+
+  return html;
+}
+
 export async function generatePdf(html: string): Promise<Buffer> {
   const isDev = process.env.NODE_ENV === "development";
 

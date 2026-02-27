@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { renderReportHtml, renderRiskV2ReportHtml, generatePdf } from "@/lib/pdf";
+import { renderReportHtml, renderRiskV2ReportHtml, renderRiskV3ReportHtml, generatePdf } from "@/lib/pdf";
 
 export async function POST(
   _request: NextRequest,
@@ -25,14 +25,21 @@ export async function POST(
 
   const lead = toolRun.leads;
   const output = toolRun.output_json as Record<string, unknown>;
-  const isV2 = output.version === "v2";
+  const version = output.version as string | undefined;
 
   // Generate access token
   const accessToken = crypto.randomUUID();
 
-  // Render HTML report (v1 or v2)
+  // Render HTML report (v1, v2, or v3)
   let reportHtml: string;
-  if (isV2) {
+  if (version === "v3") {
+    reportHtml = renderRiskV3ReportHtml({
+      company: lead?.company || "",
+      date: new Date().toLocaleDateString("ko-KR"),
+      output: output as unknown as import("@/lib/scoring/risk-assessment-v3").RiskAssessmentV3Output,
+      input: toolRun.input_json as Record<string, unknown>,
+    });
+  } else if (version === "v2") {
     reportHtml = renderRiskV2ReportHtml({
       company: lead?.company || "",
       date: new Date().toLocaleDateString("ko-KR"),
