@@ -196,8 +196,11 @@ export default function ROICalculatorPage() {
                     required
                     min="1"
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
-                    placeholder="예: 50000"
+                    placeholder="예: 30000"
                   />
+                  <p className="text-xs text-gray-400 mt-1">
+                    연봉 ÷ 12개월 ÷ 22일 ÷ 8시간. 일반 사무직 2~3만, IT/개발직 3~5만, 금융/전문직 4~8만
+                  </p>
                 </div>
               </div>
 
