@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { renderReportHtml, generatePdf } from "@/lib/pdf";
+import { renderReportHtml, renderRiskV2ReportHtml, generatePdf } from "@/lib/pdf";
 
 export async function POST(
   _request: NextRequest,
@@ -24,25 +24,37 @@ export async function POST(
   }
 
   const lead = toolRun.leads;
-  const output = toolRun.output_json as {
-    risks: string[];
-    next_steps: string[];
-    risk_level: string;
-  };
+  const output = toolRun.output_json as Record<string, unknown>;
+  const isV2 = output.version === "v2";
 
   // Generate access token
   const accessToken = crypto.randomUUID();
 
-  // Render HTML report
-  const reportHtml = renderReportHtml({
-    company: lead?.company || "",
-    date: new Date().toLocaleDateString("ko-KR"),
-    score: toolRun.score || 0,
-    risk_level: output.risk_level,
-    risks: output.risks,
-    next_steps: output.next_steps,
-    input: toolRun.input_json as Record<string, unknown>,
-  });
+  // Render HTML report (v1 or v2)
+  let reportHtml: string;
+  if (isV2) {
+    reportHtml = renderRiskV2ReportHtml({
+      company: lead?.company || "",
+      date: new Date().toLocaleDateString("ko-KR"),
+      output: output as unknown as import("@/lib/scoring/risk-assessment-v2").RiskAssessmentV2Output,
+      input: toolRun.input_json as Record<string, unknown>,
+    });
+  } else {
+    const v1Output = output as {
+      risks: string[];
+      next_steps: string[];
+      risk_level: string;
+    };
+    reportHtml = renderReportHtml({
+      company: lead?.company || "",
+      date: new Date().toLocaleDateString("ko-KR"),
+      score: toolRun.score || 0,
+      risk_level: v1Output.risk_level,
+      risks: v1Output.risks,
+      next_steps: v1Output.next_steps,
+      input: toolRun.input_json as Record<string, unknown>,
+    });
+  }
 
   // Generate PDF
   let pdfUrl: string | null = null;

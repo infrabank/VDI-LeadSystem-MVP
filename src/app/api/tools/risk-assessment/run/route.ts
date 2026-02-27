@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import {
-  runRiskAssessment,
+  runRiskAssessmentV2,
   type RiskAssessmentInput,
-} from "@/lib/scoring/risk-assessment";
+} from "@/lib/scoring/risk-assessment-v2";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
@@ -19,23 +19,19 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Run scoring
-  const result = runRiskAssessment(input);
+  // Run v2 scoring
+  const result = runRiskAssessmentV2(input);
 
   const supabase = createAdminClient();
 
-  // Save tool run
+  // Save tool run with v2 output
   const { data: toolRun, error } = await supabase
     .from("tool_runs")
     .insert({
       lead_id,
       tool_type: "risk_assessment",
       input_json: input,
-      output_json: {
-        risks: result.risks,
-        next_steps: result.next_steps,
-        risk_level: result.risk_level,
-      },
+      output_json: result,
       score: result.score,
     })
     .select("id")
@@ -55,7 +51,7 @@ export async function POST(request: NextRequest) {
     tool_run_id: toolRun.id,
     score: result.score,
     risk_level: result.risk_level,
-    risks: result.risks,
+    risks: result.risk_messages,
     next_steps: result.next_steps,
   });
 }

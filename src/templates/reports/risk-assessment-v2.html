@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>VDI 리스크 진단 리포트 v2</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; padding: 36px; max-width: 800px; margin: 0 auto; font-size: 12px; line-height: 1.6; }
+
+    .header { border-bottom: 3px solid #2563eb; padding-bottom: 14px; margin-bottom: 20px; }
+    .header h1 { font-size: 20px; color: #2563eb; margin-bottom: 2px; }
+    .header .subtitle { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .header .meta { font-size: 10px; color: #888; }
+
+    .grade-badge { display: inline-block; padding: 3px 14px; border-radius: 16px; font-size: 11px; font-weight: 600; margin-bottom: 14px; }
+    .grade-low { background: #f0fdf4; color: #16a34a; }
+    .grade-medium { background: #fffbeb; color: #d97706; }
+    .grade-high { background: #fff7ed; color: #ea580c; }
+    .grade-critical { background: #fef2f2; color: #dc2626; }
+
+    /* Executive summary */
+    .exec-summary { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 16px; font-size: 12px; color: #334155; line-height: 1.7; }
+
+    /* Score card */
+    .score-row { display: flex; gap: 14px; margin-bottom: 16px; }
+    .score-card { flex: 1; text-align: center; padding: 14px 8px; border-radius: 8px; }
+    .score-card .label { font-size: 10px; color: #666; margin-bottom: 3px; }
+    .score-card .value { font-size: 28px; font-weight: 700; }
+    .score-card .sub { font-size: 9px; color: #888; margin-top: 2px; }
+    .card-score { background: #eff6ff; }
+    .card-score .value { color: #2563eb; }
+
+    /* Maturity table */
+    .maturity-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 11px; }
+    .maturity-table th, .maturity-table td { padding: 7px 10px; border: 1px solid #e5e7eb; text-align: center; }
+    .maturity-table th { background: #f9fafb; font-weight: 600; }
+    .maturity-table .bar-cell { text-align: left; padding-left: 8px; }
+    .level-bar { display: inline-block; height: 10px; border-radius: 4px; }
+    .level-1 { width: 20%; background: #ef4444; }
+    .level-2 { width: 40%; background: #f97316; }
+    .level-3 { width: 60%; background: #eab308; }
+    .level-4 { width: 80%; background: #22c55e; }
+    .level-5 { width: 100%; background: #16a34a; }
+
+    /* Benchmark box */
+    .benchmark-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px; margin-bottom: 16px; }
+    .benchmark-box .label { font-size: 10px; color: #166534; }
+    .benchmark-box .comparison { font-size: 12px; font-weight: 600; color: #15803d; margin-top: 3px; }
+
+    /* Risk cards */
+    .section { margin-bottom: 18px; }
+    .section h2 { font-size: 14px; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #e5e7eb; }
+    .risk-card { border: 1px solid #fecaca; border-left: 4px solid #ef4444; border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+    .risk-card .risk-title { font-size: 12px; font-weight: 600; color: #991b1b; margin-bottom: 4px; }
+    .risk-card .risk-meta { display: flex; gap: 12px; font-size: 10px; color: #666; margin-bottom: 4px; }
+    .risk-card .risk-meta .tag { padding: 1px 6px; border-radius: 4px; background: #fef2f2; color: #dc2626; font-weight: 500; }
+    .risk-card .risk-body { font-size: 11px; color: #444; }
+
+    /* Warning box */
+    .warning-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 12px; margin-bottom: 16px; }
+    .warning-box h3 { font-size: 12px; color: #92400e; margin-bottom: 6px; font-weight: 600; }
+    .warning-item { font-size: 11px; color: #78350f; padding: 3px 0; line-height: 1.5; }
+    .warning-label { font-weight: 600; display: inline; }
+
+    /* Roadmap timeline */
+    .roadmap-phase { display: flex; gap: 10px; margin-bottom: 12px; }
+    .phase-marker { flex-shrink: 0; width: 60px; text-align: center; }
+    .phase-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; margin: 0 auto 4px; }
+    .phase-1-color { background: #dc2626; }
+    .phase-2-color { background: #ea580c; }
+    .phase-3-color { background: #2563eb; }
+    .phase-dur { font-size: 9px; color: #888; }
+    .phase-content { flex: 1; border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px 10px; }
+    .phase-content h4 { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+    .phase-action { font-size: 11px; color: #444; padding: 2px 0; }
+    .phase-action::before { content: "• "; color: #888; }
+
+    /* Input table */
+    .input-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .input-table th, .input-table td { padding: 5px 8px; border: 1px solid #e5e7eb; text-align: left; }
+    .input-table th { background: #f9fafb; font-weight: 600; width: 40%; }
+
+    .footer { margin-top: 24px; padding-top: 10px; border-top: 1px solid #e5e7eb; font-size: 9px; color: #999; text-align: center; }
+    .page-break { page-break-before: always; }
+  </style>
+</head>
+<body>
+  <!-- Page 1: Executive Summary -->
+  <div class="header">
+    <h1>VDI 리스크 진단 리포트</h1>
+    <div class="subtitle">Executive Summary - Consulting Grade</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <span class="grade-badge grade-{{risk_level}}">리스크 등급: {{risk_level_label}}</span>
+
+  <div class="exec-summary">{{executive_summary}}</div>
+
+  <div class="score-row">
+    <div class="score-card card-score">
+      <div class="label">종합 리스크 점수</div>
+      <div class="value">{{score}}</div>
+      <div class="sub">/ 100</div>
+    </div>
+    <div class="score-card" style="background:#fef2f2;">
+      <div class="label">Migration</div>
+      <div class="value" style="color:#dc2626; font-size:20px;">{{migration_level}}/5</div>
+      <div class="sub">{{migration_score}}점</div>
+    </div>
+    <div class="score-card" style="background:#fff7ed;">
+      <div class="label">DR/Backup</div>
+      <div class="value" style="color:#ea580c; font-size:20px;">{{dr_level}}/5</div>
+      <div class="sub">{{dr_score}}점</div>
+    </div>
+    <div class="score-card" style="background:#fffbeb;">
+      <div class="label">Operations</div>
+      <div class="value" style="color:#d97706; font-size:20px;">{{ops_level}}/5</div>
+      <div class="sub">{{ops_score}}점</div>
+    </div>
+    <div class="score-card" style="background:#f0fdf4;">
+      <div class="label">Automation</div>
+      <div class="value" style="color:#16a34a; font-size:20px;">{{auto_level}}/5</div>
+      <div class="sub">{{auto_score}}점</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>운영 성숙도 모델</h2>
+    <table class="maturity-table">
+      <tr><th>영역</th><th>점수</th><th>등급</th><th style="width:40%;">수준</th></tr>
+      <tr><td>Migration Readiness</td><td>{{migration_score}}/25</td><td>{{migration_level}}/5</td><td class="bar-cell"><span class="level-bar level-{{migration_level}}"></span></td></tr>
+      <tr><td>DR/Backup</td><td>{{dr_score}}/25</td><td>{{dr_level}}/5</td><td class="bar-cell"><span class="level-bar level-{{dr_level}}"></span></td></tr>
+      <tr><td>Operations</td><td>{{ops_score}}/25</td><td>{{ops_level}}/5</td><td class="bar-cell"><span class="level-bar level-{{ops_level}}"></span></td></tr>
+      <tr><td>Automation & Scale</td><td>{{auto_score}}/25</td><td>{{auto_level}}/5</td><td class="bar-cell"><span class="level-bar level-{{auto_level}}"></span></td></tr>
+    </table>
+  </div>
+
+  <div class="benchmark-box">
+    <div class="label">{{benchmark_text}}</div>
+    <div class="comparison">{{benchmark_comparison}}</div>
+  </div>
+
+  <div class="section">
+    <h2>핵심 리스크 요약</h2>
+    {{risk_summary_html}}
+  </div>
+
+  <!-- Page 2: Detailed Risk Analysis -->
+  <div class="page-break"></div>
+  <div class="header">
+    <h1>VDI 리스크 진단 리포트</h1>
+    <div class="subtitle">Detailed Risk Analysis</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <div class="section">
+    <h2>주요 리스크 상세 분석</h2>
+    {{risk_details_html}}
+  </div>
+
+  <div class="warning-box">
+    <h3>현 상태 유지 시 예상 시나리오</h3>
+    <div class="warning-item"><span class="warning-label">단기 (3개월): </span>{{projection_short}}</div>
+    <div class="warning-item"><span class="warning-label">중기 (6~12개월): </span>{{projection_mid}}</div>
+    <div class="warning-item"><span class="warning-label">대형 장애 시: </span>{{projection_large}}</div>
+  </div>
+
+  <div class="section">
+    <h2>진단 입력 정보</h2>
+    <table class="input-table">
+      {{input_table_html}}
+    </table>
+  </div>
+
+  <!-- Page 3: Improvement Roadmap -->
+  <div class="page-break"></div>
+  <div class="header">
+    <h1>VDI 리스크 진단 리포트</h1>
+    <div class="subtitle">Improvement Roadmap</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <div class="section">
+    <h2>단계별 개선 로드맵</h2>
+    {{roadmap_html}}
+  </div>
+
+  <div class="section">
+    <h2>권장 다음 단계</h2>
+    {{next_steps_html}}
+  </div>
+
+  <div class="footer">
+    &copy; VDI Expert | 본 리포트는 입력된 정보를 기반으로 자동 생성되었습니다. 실제 리스크는 환경에 따라 달라질 수 있습니다.
+  </div>
+</body>
+</html>
