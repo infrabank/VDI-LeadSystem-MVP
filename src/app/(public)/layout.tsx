@@ -27,6 +27,18 @@ export default function PublicLayout({
               ROI 계산기
             </Link>
             <Link
+              href="/portal/login"
+              className="text-indigo-600 hover:text-indigo-700 transition-colors"
+            >
+              SAP 포털
+            </Link>
+            <Link
+              href="/admin/login"
+              className="text-amber-600 hover:text-amber-700 transition-colors"
+            >
+              관리자
+            </Link>
+            <Link
               href="/tools/risk-assessment"
               className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
             >
@@ -40,7 +52,7 @@ export default function PublicLayout({
 
       <footer className="bg-gray-50 border-t border-gray-200 print:hidden">
         <div className="max-w-5xl mx-auto px-6 py-14">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             {/* Brand */}
             <div>
               <div className="flex items-center gap-1.5 mb-3">
@@ -79,6 +91,33 @@ export default function PublicLayout({
                 <li>
                   <Link href="/content?type=case" className="text-gray-600 hover:text-blue-600 transition-colors">
                     케이스 스터디
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Portal & Admin */}
+            <div>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">포털 &amp; 관리</p>
+              <ul className="space-y-2.5 text-sm">
+                <li>
+                  <Link href="/portal/login" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                    SAP 포털 로그인
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/portal/requests/new" className="text-gray-600 hover:text-indigo-600 transition-colors">
+                    새 검토 요청
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/admin/login" className="text-gray-600 hover:text-amber-600 transition-colors">
+                    관리자 로그인
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/admin/queue" className="text-gray-600 hover:text-amber-600 transition-colors">
+                    검토 큐
                   </Link>
                 </li>
               </ul>
