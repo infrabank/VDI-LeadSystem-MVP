@@ -105,8 +105,8 @@ export async function POST(
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
 
-  // Transition request status
-  if (request.status === "draft_ready") {
+  // Transition request status to final_ready from any pre-final state
+  if (["submitted", "triage", "in_review", "draft_ready"].includes(request.status)) {
     await admin
       .from("review_requests")
       .update({ status: "final_ready" })

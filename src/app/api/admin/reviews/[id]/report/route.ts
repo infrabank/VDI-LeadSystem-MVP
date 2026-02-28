@@ -69,8 +69,8 @@ export async function POST(
     return NextResponse.json({ error: error.message }, { status: 400 });
   }
 
-  // Auto-transition to draft_ready if in_review
-  if (request.status === "in_review") {
+  // Auto-transition to draft_ready from any pre-draft state
+  if (["submitted", "triage", "in_review"].includes(request.status)) {
     await admin
       .from("review_requests")
       .update({ status: "draft_ready" })
