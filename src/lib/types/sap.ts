@@ -16,6 +16,7 @@ export type RequestPriority = "low" | "normal" | "high" | "urgent";
 export type VendorTrack =
   | "vmware"
   | "citrix"
+  | "omnissa"
   | "microsoft"
   | "nutanix"
   | "other";
@@ -84,6 +85,7 @@ export const DOMAIN_LABELS: Record<ScoreDomain, string> = {
 export const VENDOR_LABELS: Record<VendorTrack, string> = {
   vmware: "VMware",
   citrix: "Citrix",
+  omnissa: "Omnissa (Horizon)",
   microsoft: "Microsoft (AVD/W365)",
   nutanix: "Nutanix",
   other: "기타",
@@ -128,6 +130,7 @@ export interface ReviewRequest {
   ha_required: boolean;
   dr_required: boolean;
   backup_required: boolean;
+  backup_retention_months: number | null;
   security_flags: Record<string, boolean>;
   existing_infra: string | null;
   requirements_summary: string | null;
@@ -190,6 +193,9 @@ export interface ReportContent {
   top_recommendations: string[];
   sections: ReportSection[];
   qa_items: QAItem[];
+  proposal_snippets?: string[];
+  conclusion?: string;
+  risk_flags?: string[];
 }
 
 export interface ReportSection {
@@ -198,6 +204,7 @@ export interface ReportSection {
 }
 
 export interface QAItem {
+  category?: string;
   question: string;
   answer: string;
 }

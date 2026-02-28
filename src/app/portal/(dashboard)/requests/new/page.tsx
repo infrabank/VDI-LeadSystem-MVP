@@ -33,6 +33,7 @@ export default function NewRequestPage() {
     ha_required: false,
     dr_required: false,
     backup_required: false,
+    backup_retention_months: "",
     security_flags: {} as Record<string, boolean>,
     existing_infra: "",
     requirements_summary: "",
@@ -202,6 +203,24 @@ export default function NewRequestPage() {
               </label>
             ))}
           </div>
+
+          {form.backup_required && (
+            <div className="mt-2 ml-6">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                백업 보존 기간 (개월)
+              </label>
+              <input
+                type="number"
+                min={1}
+                max={120}
+                value={form.backup_retention_months}
+                onChange={(e) => updateField("backup_retention_months", e.target.value)}
+                className="w-40 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                placeholder="예: 12"
+              />
+              <p className="text-xs text-gray-500 mt-1">6개월 이상 시 장기 보존 전략이 포함됩니다</p>
+            </div>
+          )}
 
           <div className="mb-4">
             <label className="block text-sm font-medium text-gray-700 mb-2">

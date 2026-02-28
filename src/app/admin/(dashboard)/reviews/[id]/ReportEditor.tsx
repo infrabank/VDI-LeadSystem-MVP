@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { ReviewReport, ReviewScore, ReportContent } from "@/lib/types/sap";
+import type { ReviewReport, ReviewScore, ReportContent, QAItem } from "@/lib/types/sap";
 
 export default function ReportEditor({
   requestId,
@@ -26,6 +26,7 @@ export default function ReportEditor({
   const [editContent, setEditContent] = useState<ReportContent | null>(
     latestDraft?.content_json ?? null
   );
+  const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
 
   async function handleGenerate() {
     setGenerating(true);
@@ -272,6 +273,62 @@ export default function ReportEditor({
             />
           </div>
 
+          {/* Proposal Snippets */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              제안서 삽입 문구 (줄바꿈 구분)
+            </label>
+            <textarea
+              rows={6}
+              value={(editContent.proposal_snippets ?? []).join("\n\n---\n\n")}
+              onChange={(e) =>
+                setEditContent({
+                  ...editContent,
+                  proposal_snippets: e.target.value.split("\n\n---\n\n").filter(Boolean),
+                })
+              }
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="제안서에 삽입할 문구를 입력하세요. 문구 사이에 ---를 넣어 구분합니다."
+            />
+          </div>
+
+          {/* Risk Flags */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              리스크 플래그 (줄바꿈 구분)
+            </label>
+            <textarea
+              rows={3}
+              value={(editContent.risk_flags ?? []).join("\n")}
+              onChange={(e) =>
+                setEditContent({
+                  ...editContent,
+                  risk_flags: e.target.value.split("\n").filter(Boolean),
+                })
+              }
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              placeholder="자동 감지된 리스크 플래그"
+            />
+          </div>
+
+          {/* Conclusion */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">
+              결론 및 수주 영향도 분석
+            </label>
+            <textarea
+              rows={5}
+              value={editContent.conclusion ?? ""}
+              onChange={(e) =>
+                setEditContent({
+                  ...editContent,
+                  conclusion: e.target.value || undefined,
+                })
+              }
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            />
+          </div>
+
           {/* Sections */}
           <div>
             <h3 className="text-sm font-medium text-gray-700 mb-2">섹션</h3>
@@ -296,31 +353,62 @@ export default function ReportEditor({
             ))}
           </div>
 
-          {/* Q&A */}
+          {/* Q&A grouped by category */}
           <div>
             <h3 className="text-sm font-medium text-gray-700 mb-2">
               Q&A ({editContent.qa_items.length}개)
             </h3>
-            <div className="max-h-80 overflow-y-auto space-y-2">
-              {editContent.qa_items.map((qa, i) => (
-                <div
-                  key={i}
-                  className="border border-gray-200 rounded p-2 text-sm"
-                >
-                  <input
-                    type="text"
-                    value={qa.question}
-                    onChange={(e) => updateQA(i, "question", e.target.value)}
-                    className="w-full px-2 py-1 border border-gray-300 rounded font-medium mb-1 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                  <textarea
-                    rows={2}
-                    value={qa.answer}
-                    onChange={(e) => updateQA(i, "answer", e.target.value)}
-                    className="w-full px-2 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                  />
-                </div>
-              ))}
+            <div className="max-h-[600px] overflow-y-auto space-y-3">
+              {(() => {
+                const grouped = new Map<string, { item: QAItem; idx: number }[]>();
+                editContent.qa_items.forEach((qa, idx) => {
+                  const cat = qa.category || "일반";
+                  if (!grouped.has(cat)) grouped.set(cat, []);
+                  grouped.get(cat)!.push({ item: qa, idx });
+                });
+                return Array.from(grouped.entries()).map(([category, items]) => {
+                  const isCollapsed = collapsedCategories.has(category);
+                  return (
+                    <div key={category} className="border border-gray-200 rounded-lg">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setCollapsedCategories((prev) => {
+                            const next = new Set(prev);
+                            if (next.has(category)) next.delete(category);
+                            else next.add(category);
+                            return next;
+                          });
+                        }}
+                        className="w-full flex items-center justify-between px-3 py-2 bg-gray-50 rounded-t-lg text-sm font-medium text-gray-700 hover:bg-gray-100"
+                      >
+                        <span>{category} ({items.length})</span>
+                        <span className="text-gray-400">{isCollapsed ? "+" : "−"}</span>
+                      </button>
+                      {!isCollapsed && (
+                        <div className="p-2 space-y-2">
+                          {items.map(({ item: qa, idx }) => (
+                            <div key={idx} className="border border-gray-100 rounded p-2 text-sm">
+                              <input
+                                type="text"
+                                value={qa.question}
+                                onChange={(e) => updateQA(idx, "question", e.target.value)}
+                                className="w-full px-2 py-1 border border-gray-300 rounded font-medium mb-1 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                              />
+                              <textarea
+                                rows={2}
+                                value={qa.answer}
+                                onChange={(e) => updateQA(idx, "answer", e.target.value)}
+                                className="w-full px-2 py-1 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                              />
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                });
+              })()}
             </div>
           </div>
         </div>

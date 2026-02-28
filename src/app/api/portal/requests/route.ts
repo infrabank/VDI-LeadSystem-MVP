@@ -75,6 +75,7 @@ export async function POST(req: NextRequest) {
       ha_required: !!body.ha_required,
       dr_required: !!body.dr_required,
       backup_required: !!body.backup_required,
+      backup_retention_months: body.backup_retention_months ? parseInt(body.backup_retention_months, 10) : null,
       security_flags: body.security_flags ?? {},
       existing_infra: body.existing_infra ?? null,
       requirements_summary: body.requirements_summary ?? null,
