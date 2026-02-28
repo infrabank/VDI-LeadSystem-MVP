@@ -2,16 +2,18 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { ReviewReport, ReviewScore, ReportContent, QAItem } from "@/lib/types/sap";
+import type { ReviewReport, ReviewScore, ReviewRequest, ReportContent, QAItem } from "@/lib/types/sap";
 
 export default function ReportEditor({
   requestId,
   reports,
   scores,
+  request,
 }: {
   requestId: string;
   reports: ReviewReport[];
   scores: ReviewScore[];
+  request: ReviewRequest;
 }) {
   const router = useRouter();
   const [generating, setGenerating] = useState(false);
@@ -27,6 +29,14 @@ export default function ReportEditor({
     latestDraft?.content_json ?? null
   );
   const [collapsedCategories, setCollapsedCategories] = useState<Set<string>>(new Set());
+  const [assumptions, setAssumptions] = useState({
+    eval_weight_tech: request.eval_weight_tech ?? 70,
+    eval_weight_price: request.eval_weight_price ?? 30,
+    compliance_level: (request.compliance_level ?? "medium") as "low" | "medium" | "high",
+  });
+  const [savingAssumptions, setSavingAssumptions] = useState(false);
+  const [activeTab, setActiveTab] = useState<"report" | "defense">("report");
+  const [copiedIdx, setCopiedIdx] = useState<number | null>(null);
 
   async function handleGenerate() {
     setGenerating(true);
@@ -112,6 +122,35 @@ export default function ReportEditor({
     }
   }
 
+  async function handleSaveAssumptions() {
+    setSavingAssumptions(true);
+    try {
+      const res = await fetch(`/api/admin/reviews/${requestId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          eval_weight_tech: assumptions.eval_weight_tech,
+          eval_weight_price: assumptions.eval_weight_price,
+          compliance_level: assumptions.compliance_level,
+        }),
+      });
+      if (res.ok) {
+        setSuccess("평가 가정이 저장되었습니다. 초안을 재생성하면 반영됩니다.");
+        router.refresh();
+      }
+    } catch {
+      setError("저장 실패");
+    } finally {
+      setSavingAssumptions(false);
+    }
+  }
+
+  function copyToClipboard(text: string, idx: number) {
+    navigator.clipboard.writeText(text);
+    setCopiedIdx(idx);
+    setTimeout(() => setCopiedIdx(null), 2000);
+  }
+
   function updateSection(index: number, field: "title" | "body", value: string) {
     if (!editContent) return;
     const sections = [...editContent.sections];
@@ -194,8 +233,112 @@ export default function ReportEditor({
         </p>
       )}
 
-      {/* Draft Editor */}
+      {/* Win Impact Assumptions */}
+      <div className="border border-amber-200 bg-amber-50 rounded-lg p-4 mb-4">
+        <h3 className="text-sm font-semibold text-amber-800 mb-3">수주 영향도 산정 가정</h3>
+        <div className="flex flex-wrap items-end gap-4">
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">기술평가 비중(%)</label>
+            <input
+              type="number" min={0} max={100}
+              value={assumptions.eval_weight_tech}
+              onChange={(e) => {
+                const v = parseInt(e.target.value) || 0;
+                setAssumptions(prev => ({ ...prev, eval_weight_tech: v, eval_weight_price: 100 - v }));
+              }}
+              className="w-20 px-2 py-1 border border-gray-300 rounded text-sm"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">가격평가 비중(%)</label>
+            <input
+              type="number" min={0} max={100}
+              value={assumptions.eval_weight_price}
+              onChange={(e) => {
+                const v = parseInt(e.target.value) || 0;
+                setAssumptions(prev => ({ ...prev, eval_weight_price: v, eval_weight_tech: 100 - v }));
+              }}
+              className="w-20 px-2 py-1 border border-gray-300 rounded text-sm"
+            />
+          </div>
+          <div>
+            <label className="block text-xs text-gray-600 mb-1">감사 강도</label>
+            <select
+              value={assumptions.compliance_level}
+              onChange={(e) => setAssumptions(prev => ({ ...prev, compliance_level: e.target.value as "low" | "medium" | "high" }))}
+              className="px-2 py-1 border border-gray-300 rounded text-sm"
+            >
+              <option value="low">낮음</option>
+              <option value="medium">보통</option>
+              <option value="high">높음</option>
+            </select>
+          </div>
+          <button
+            onClick={handleSaveAssumptions}
+            disabled={savingAssumptions}
+            className="px-3 py-1 bg-amber-600 text-white text-sm rounded hover:bg-amber-700 disabled:opacity-50"
+          >
+            {savingAssumptions ? "저장 중..." : "가정 저장"}
+          </button>
+        </div>
+        <p className="text-xs text-amber-700 mt-2">가정 변경 후 초안을 재생성하면 Win Impact Score에 반영됩니다.</p>
+      </div>
+
+      {/* Win Impact Score display */}
+      {editContent?.win_impact && (
+        <div className="border-2 border-amber-400 bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg p-4 mb-4">
+          <div className="flex items-center gap-3 mb-2">
+            <h3 className="text-sm font-semibold text-amber-900">Win Impact Score</h3>
+            <span className={`px-3 py-0.5 rounded-full text-white font-bold text-sm ${
+              editContent.win_impact.grade === "A" ? "bg-green-600" :
+              editContent.win_impact.grade === "B" ? "bg-blue-600" :
+              editContent.win_impact.grade === "C" ? "bg-amber-600" : "bg-red-600"
+            }`}>
+              {editContent.win_impact.grade} — {editContent.win_impact.score}점
+            </span>
+            {editContent.win_impact.estimated_improvement && (
+              <span className="text-xs text-green-700 bg-green-100 px-2 py-0.5 rounded">
+                개선 시 +{editContent.win_impact.estimated_improvement}점 추정
+              </span>
+            )}
+          </div>
+          {editContent.win_impact.drivers.length > 0 && (
+            <div className="mb-2">
+              <p className="text-xs font-medium text-gray-600 mb-1">주요 영향 요인:</p>
+              <ul className="text-xs text-gray-700 space-y-0.5">
+                {editContent.win_impact.drivers.map((d, i) => <li key={i}>• {d}</li>)}
+              </ul>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Tab switcher */}
       {editContent && (
+        <div className="flex gap-1 mb-4 border-b border-gray-200">
+          <button
+            type="button"
+            onClick={() => setActiveTab("report")}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === "report" ? "border-blue-600 text-blue-600" : "border-transparent text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            리포트 편집
+          </button>
+          <button
+            type="button"
+            onClick={() => setActiveTab("defense")}
+            className={`px-4 py-2 text-sm font-medium border-b-2 transition-colors ${
+              activeTab === "defense" ? "border-blue-600 text-blue-600" : "border-transparent text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            Vendor Defense Blocks
+          </button>
+        </div>
+      )}
+
+      {/* Draft Editor — Report tab */}
+      {editContent && activeTab === "report" && (
         <div className="space-y-4 border-t border-gray-200 pt-4">
           {/* Executive Summary */}
           <div>
@@ -411,6 +554,83 @@ export default function ReportEditor({
               })()}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* Defense tab */}
+      {activeTab === "defense" && editContent?.vendor_defense && (
+        <div className="space-y-4 border-t border-gray-200 pt-4">
+          {/* Neutral blocks */}
+          <div>
+            <h3 className="text-sm font-medium text-gray-700 mb-2">중립 방어 논리 ({editContent.vendor_defense.neutral.length}개)</h3>
+            <div className="space-y-1 max-h-60 overflow-y-auto">
+              {editContent.vendor_defense.neutral.map((item, i) => (
+                <div key={i} className="flex items-start gap-2 p-2 bg-gray-50 rounded text-xs">
+                  <span className="flex-1">{item}</span>
+                  <button
+                    type="button"
+                    onClick={() => copyToClipboard(item, i)}
+                    className="shrink-0 px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs hover:bg-blue-200"
+                  >
+                    {copiedIdx === i ? "복사됨" : "복사"}
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Citrix blocks */}
+          {editContent.vendor_defense.citrix.length > 0 && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-700 mb-2">Citrix 구성 선택 근거 ({editContent.vendor_defense.citrix.length}개)</h3>
+              <div className="space-y-1 max-h-40 overflow-y-auto">
+                {editContent.vendor_defense.citrix.map((item, i) => (
+                  <div key={i} className="flex items-start gap-2 p-2 bg-orange-50 rounded text-xs">
+                    <span className="flex-1">{item}</span>
+                    <button type="button" onClick={() => copyToClipboard(item, 100 + i)} className="shrink-0 px-2 py-0.5 bg-orange-100 text-orange-700 rounded text-xs hover:bg-orange-200">
+                      {copiedIdx === 100 + i ? "복사됨" : "복사"}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Omnissa blocks */}
+          {editContent.vendor_defense.omnissa.length > 0 && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-700 mb-2">Omnissa 구성 선택 근거 ({editContent.vendor_defense.omnissa.length}개)</h3>
+              <div className="space-y-1 max-h-40 overflow-y-auto">
+                {editContent.vendor_defense.omnissa.map((item, i) => (
+                  <div key={i} className="flex items-start gap-2 p-2 bg-indigo-50 rounded text-xs">
+                    <span className="flex-1">{item}</span>
+                    <button type="button" onClick={() => copyToClipboard(item, 200 + i)} className="shrink-0 px-2 py-0.5 bg-indigo-100 text-indigo-700 rounded text-xs hover:bg-indigo-200">
+                      {copiedIdx === 200 + i ? "복사됨" : "복사"}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Competition Q&A */}
+          {editContent.vendor_defense.competition_attack_points.length > 0 && (
+            <div>
+              <h3 className="text-sm font-medium text-gray-700 mb-2">경쟁사 대비 Attack/Defense Q&A</h3>
+              <div className="space-y-2 max-h-60 overflow-y-auto">
+                {editContent.vendor_defense.competition_attack_points.map((item, i) => (
+                  <div key={i} className="border border-gray-200 rounded p-3 text-xs">
+                    <p className="font-medium text-red-700 mb-1">Q: {item.question}</p>
+                    <p className="text-gray-700 mb-1">A: {item.answer}</p>
+                    <p className="text-gray-500 italic">증빙: {item.evidence}</p>
+                    <button type="button" onClick={() => copyToClipboard(`Q: ${item.question}\nA: ${item.answer}\n증빙: ${item.evidence}`, 300 + i)} className="mt-1 px-2 py-0.5 bg-gray-100 text-gray-600 rounded text-xs hover:bg-gray-200">
+                      {copiedIdx === 300 + i ? "복사됨" : "전체 복사"}
+                    </button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

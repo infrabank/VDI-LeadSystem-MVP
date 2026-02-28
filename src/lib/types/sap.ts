@@ -46,6 +46,10 @@ export type ScoreDomain =
 
 export type ReportState = "draft" | "final";
 
+export type ComplianceLevel = "low" | "medium" | "high";
+
+export type WinImpactGrade = "A" | "B" | "C" | "D";
+
 export const STATUS_ORDER: RequestStatus[] = [
   "submitted",
   "triage",
@@ -131,6 +135,9 @@ export interface ReviewRequest {
   dr_required: boolean;
   backup_required: boolean;
   backup_retention_months: number | null;
+  eval_weight_tech: number;
+  eval_weight_price: number;
+  compliance_level: ComplianceLevel;
   security_flags: Record<string, boolean>;
   existing_infra: string | null;
   requirements_summary: string | null;
@@ -186,6 +193,37 @@ export interface ReviewReport {
   updated_at: string;
 }
 
+export interface WinImpact {
+  score: number;
+  grade: WinImpactGrade;
+  drivers: string[];
+  mitigation: string[];
+  assumptions: string[];
+  estimated_improvement?: number;
+}
+
+export interface ComparisonRow {
+  aspect: string;
+  citrix: string;
+  omnissa: string;
+  neutral_note: string;
+}
+
+export interface VendorDefenseBlocks {
+  neutral: string[];
+  citrix: string[];
+  omnissa: string[];
+  competition_attack_points: DefenseQAItem[];
+  competition_defense_points: DefenseQAItem[];
+  comparison_matrix: ComparisonRow[];
+}
+
+export interface DefenseQAItem {
+  question: string;
+  answer: string;
+  evidence: string;
+}
+
 export interface ReportContent {
   executive_summary: string;
   risk_level: "low" | "medium" | "high" | "critical";
@@ -196,6 +234,8 @@ export interface ReportContent {
   proposal_snippets?: string[];
   conclusion?: string;
   risk_flags?: string[];
+  win_impact?: WinImpact;
+  vendor_defense?: VendorDefenseBlocks;
 }
 
 export interface ReportSection {

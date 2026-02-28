@@ -147,6 +147,18 @@ export default async function AdminReviewPage({
                 .join(" / ") || "없음"}
             </p>
           </div>
+          <div>
+            <span className="text-gray-500">기술/가격 비중</span>
+            <p className="font-medium">
+              {r.eval_weight_tech ?? 70}% / {r.eval_weight_price ?? 30}%
+            </p>
+          </div>
+          <div>
+            <span className="text-gray-500">감사 강도</span>
+            <p className="font-medium">
+              {{ low: "낮음", medium: "보통", high: "높음" }[r.compliance_level ?? "medium"]}
+            </p>
+          </div>
           {r.budget_range && (
             <div>
               <span className="text-gray-500">예산</span>
@@ -215,7 +227,7 @@ export default async function AdminReviewPage({
       <ScoringForm requestId={id} existingScores={scores} />
 
       {/* Reports */}
-      <ReportEditor requestId={id} reports={reports} scores={scores} />
+      <ReportEditor requestId={id} reports={reports} scores={scores} request={r as ReviewRequest} />
 
       {/* Audit Log */}
       {auditLogs.length > 0 && (

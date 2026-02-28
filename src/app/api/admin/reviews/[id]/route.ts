@@ -93,6 +93,9 @@ export async function PUT(
   if (body.assigned_to !== undefined) updates.assigned_to = body.assigned_to;
   if (body.notes_internal !== undefined) updates.notes_internal = body.notes_internal;
   if (body.notes_external !== undefined) updates.notes_external = body.notes_external;
+  if (body.eval_weight_tech !== undefined) updates.eval_weight_tech = body.eval_weight_tech;
+  if (body.eval_weight_price !== undefined) updates.eval_weight_price = body.eval_weight_price;
+  if (body.compliance_level !== undefined) updates.compliance_level = body.compliance_level;
   if (body.due_at) updates.due_at = body.due_at;
 
   if (Object.keys(updates).length === 0) {

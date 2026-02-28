@@ -160,6 +160,30 @@ export function renderSAPReportHtml(
     .qa-a { padding-left: 12px; color: #334155; font-size: 10.5pt; }
     .conclusion { background: linear-gradient(135deg, #eff6ff, #f0fdf4); border: 2px solid #2563eb; border-radius: 12px; padding: 20px; margin: 30px 0; }
     .conclusion h2 { font-size: 14pt; color: #1e3a5f; margin-bottom: 10px; }
+    .win-impact { margin: 20px 0; padding: 20px; border: 2px solid #f59e0b; border-radius: 12px; background: linear-gradient(135deg, #fffbeb, #fef3c7); page-break-inside: avoid; }
+    .win-impact h2 { font-size: 14pt; color: #92400e; border-bottom: 1px solid #fbbf24; padding-bottom: 6px; margin-bottom: 12px; }
+    .win-impact-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+    .win-grade { display: inline-block; width: 36px; height: 36px; line-height: 36px; text-align: center; border-radius: 50%; color: white; font-weight: bold; font-size: 16pt; }
+    .win-grade-a { background: #16a34a; }
+    .win-grade-b { background: #2563eb; }
+    .win-grade-c { background: #d97706; }
+    .win-grade-d { background: #dc2626; }
+    .win-score { font-size: 14pt; font-weight: 700; color: #1e3a5f; }
+    .win-improve { font-size: 10pt; color: #16a34a; background: #f0fdf4; padding: 2px 8px; border-radius: 8px; }
+    .win-drivers, .win-mitigation, .win-assumptions { margin-top: 10px; }
+    .win-drivers h3, .win-mitigation h3, .win-assumptions h3 { font-size: 10pt; color: #92400e; margin-bottom: 4px; }
+    .win-drivers ul, .win-mitigation ul, .win-assumptions ul { padding-left: 18px; font-size: 9.5pt; }
+    .win-drivers li, .win-mitigation li, .win-assumptions li { margin-bottom: 3px; }
+    .win-mitigation { background: #f0fdf4; border-radius: 8px; padding: 10px 14px; }
+    .win-assumptions { background: #f8fafc; border-radius: 8px; padding: 8px 14px; font-size: 9pt; color: #64748b; }
+    .comparison-section { margin: 30px 0; page-break-before: auto; }
+    .comparison-section h2 { font-size: 14pt; color: #1e3a5f; border-bottom: 2px solid #2563eb; padding-bottom: 6px; margin-bottom: 14px; }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 9pt; }
+    .comparison-table th { background: #1e3a5f; color: white; padding: 8px 10px; text-align: left; }
+    .comparison-table td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+    .comparison-table tr:nth-child(even) td { background: #f8fafc; }
+    .aspect-cell { font-weight: 600; color: #1e3a5f; white-space: nowrap; }
+    .neutral-cell { color: #64748b; font-style: italic; }
     .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 9pt; color: #94a3b8; }
     @media print { .section { page-break-inside: avoid; } .qa-category { page-break-inside: avoid; } }
   </style>
@@ -214,6 +238,50 @@ export function renderSAPReportHtml(
   </div>
 
   ${conclusionHtml}
+
+  ${content.win_impact ? `
+  <div class="win-impact">
+    <h2>수주 영향도 분석 (Win Impact Score)</h2>
+    <div class="win-impact-header">
+      <span class="win-grade win-grade-${content.win_impact.grade.toLowerCase()}">${content.win_impact.grade}</span>
+      <span class="win-score">${content.win_impact.score}점 / 100</span>
+      ${content.win_impact.estimated_improvement ? `<span class="win-improve">개선 시 +${content.win_impact.estimated_improvement}점 추정</span>` : ""}
+    </div>
+    ${content.win_impact.drivers.length > 0 ? `
+    <div class="win-drivers">
+      <h3>주요 영향 요인</h3>
+      <ul>${content.win_impact.drivers.map(d => `<li>${esc(d)}</li>`).join("\n")}</ul>
+    </div>` : ""}
+    ${content.win_impact.mitigation.length > 0 ? `
+    <div class="win-mitigation">
+      <h3>대응 조치</h3>
+      <ul>${content.win_impact.mitigation.map(m => `<li>${esc(m)}</li>`).join("\n")}</ul>
+    </div>` : ""}
+    ${content.win_impact.assumptions.length > 0 ? `
+    <div class="win-assumptions">
+      <h3>산정 가정</h3>
+      <ul>${content.win_impact.assumptions.map(a => `<li>${esc(a)}</li>`).join("\n")}</ul>
+    </div>` : ""}
+  </div>` : ""}
+
+  ${content.vendor_defense && content.vendor_defense.comparison_matrix.length > 0 ? `
+  <div class="comparison-section">
+    <h2>Citrix vs Omnissa 비교 분석</h2>
+    <table class="comparison-table">
+      <thead>
+        <tr><th>비교 항목</th><th>Citrix</th><th>Omnissa</th><th>중립 코멘트</th></tr>
+      </thead>
+      <tbody>
+        ${content.vendor_defense.comparison_matrix.map(row => `
+        <tr>
+          <td class="aspect-cell">${esc(row.aspect)}</td>
+          <td>${esc(row.citrix)}</td>
+          <td>${esc(row.omnissa)}</td>
+          <td class="neutral-cell">${esc(row.neutral_note)}</td>
+        </tr>`).join("\n")}
+      </tbody>
+    </table>
+  </div>` : ""}
 
   <div class="footer">
     VDI Expert — Sales Assurance Program | Confidential

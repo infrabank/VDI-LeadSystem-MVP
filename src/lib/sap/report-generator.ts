@@ -4,9 +4,13 @@ import type {
   ReportContent,
   ReportSection,
   ScoreDomain,
+  WinImpact,
+  VendorDefenseBlocks,
 } from "@/lib/types/sap";
 import { DOMAIN_LABELS, VENDOR_LABELS } from "@/lib/types/sap";
 import { selectTemplates, type TemplateContext } from "@/lib/sap/templates";
+import { computeWinImpact } from "@/lib/sap/win-impact";
+import { getVendorDefenseBlocks } from "@/lib/sap/vendor-defense";
 
 // ---------- 위험도 계산 ----------
 
@@ -539,6 +543,133 @@ function buildRiskFlags(
   return flags;
 }
 
+// ---------- Section: Win Impact Score ----------
+
+function buildSectionWinImpact(winImpact: WinImpact): ReportSection {
+  const gradeLabels: Record<string, string> = {
+    A: "수주 방어 매우 양호",
+    B: "수주 방어 양호, 보완 필요",
+    C: "평가 점수 영향 가능성 큼",
+    D: "치명적 리스크 가능성",
+  };
+
+  const lines: string[] = [
+    `【 수주 영향도 점수 】 ${winImpact.score}/100 (등급: ${winImpact.grade} — ${gradeLabels[winImpact.grade]})`,
+    ``,
+  ];
+
+  if (winImpact.drivers.length > 0) {
+    lines.push(`▶ 주요 영향 요인 (Drivers):`);
+    for (const d of winImpact.drivers) {
+      lines.push(`  • ${d}`);
+    }
+    lines.push(``);
+  }
+
+  if (winImpact.mitigation.length > 0) {
+    lines.push(`▶ 개선 조치 (Mitigation):`);
+    for (const m of winImpact.mitigation) {
+      lines.push(`  • ${m}`);
+    }
+    lines.push(``);
+  }
+
+  if (winImpact.estimated_improvement) {
+    lines.push(`▶ 개선 시 기대 상승폭(추정): +${winImpact.estimated_improvement}점`);
+    lines.push(``);
+  }
+
+  if (winImpact.assumptions.length > 0) {
+    lines.push(`▶ 산정 전제 (Assumptions):`);
+    for (const a of winImpact.assumptions) {
+      lines.push(`  • ${a}`);
+    }
+  }
+
+  return {
+    title: "수주 영향도 분석 (Win Impact Score)",
+    body: lines.join("\n"),
+  };
+}
+
+// ---------- Section: Vendor Defense ----------
+
+function buildSectionVendorDefense(
+  vendorDefense: VendorDefenseBlocks
+): ReportSection[] {
+  const sections: ReportSection[] = [];
+
+  // Defense logic section
+  const defenseLines: string[] = [];
+  if (vendorDefense.neutral.length > 0) {
+    defenseLines.push(`【 요구사항 충족 · 운영 · 보안 · 성능 관점 】`);
+    for (const item of vendorDefense.neutral.slice(0, 10)) {
+      defenseLines.push(`  • ${item}`);
+    }
+    defenseLines.push(``);
+  }
+
+  if (vendorDefense.citrix.length > 0) {
+    defenseLines.push(`【 Citrix 구성 선택 근거 】`);
+    for (const item of vendorDefense.citrix) {
+      defenseLines.push(`  • ${item}`);
+    }
+    defenseLines.push(``);
+  }
+
+  if (vendorDefense.omnissa.length > 0) {
+    defenseLines.push(`【 Omnissa 구성 선택 근거 】`);
+    for (const item of vendorDefense.omnissa) {
+      defenseLines.push(`  • ${item}`);
+    }
+    defenseLines.push(``);
+  }
+
+  sections.push({
+    title: "벤더 구성 선택 근거 (방어 논리)",
+    body: defenseLines.join("\n").trimEnd(),
+  });
+
+  // Comparison section
+  if (vendorDefense.comparison_matrix.length > 0) {
+    const compLines: string[] = [
+      `Citrix와 Omnissa의 핵심 아키텍처 구성요소를 중립적 관점에서 비교합니다.`,
+      ``,
+    ];
+    for (const row of vendorDefense.comparison_matrix) {
+      compLines.push(`━━━ ${row.aspect} ━━━`);
+      compLines.push(`  Citrix: ${row.citrix}`);
+      compLines.push(`  Omnissa: ${row.omnissa}`);
+      compLines.push(`  설계 시 주의점: ${row.neutral_note}`);
+      compLines.push(``);
+    }
+    sections.push({
+      title: "Citrix vs Omnissa 비교 (중립 표현)",
+      body: compLines.join("\n").trimEnd(),
+    });
+  }
+
+  // Attack/Defense Q&A
+  if (vendorDefense.competition_attack_points.length > 0) {
+    const qaLines: string[] = [
+      `경쟁사 제안의 잠재적 취약점과 그에 대한 방어 논리를 정리합니다.`,
+      ``,
+    ];
+    vendorDefense.competition_attack_points.forEach((item, idx) => {
+      qaLines.push(`[${idx + 1}] 평가위원 Q: ${item.question}`);
+      qaLines.push(`    방어 A: ${item.answer}`);
+      qaLines.push(`    확인 증빙: ${item.evidence}`);
+      qaLines.push(``);
+    });
+    sections.push({
+      title: "경쟁사 대비 질의응답 (Attack/Defense Q&A)",
+      body: qaLines.join("\n").trimEnd(),
+    });
+  }
+
+  return sections;
+}
+
 // ---------- 메인 생성 함수 ----------
 
 export function generateDraftReport(
@@ -588,13 +719,30 @@ export function generateDraftReport(
   const topIssues = extractTopItems(scores, "risks", 3);
   const topRecommendations = extractTopItems(scores, "recommendations", 5);
 
-  // 8개 섹션 구성 (sections 배열에는 Section 1~5)
+  // Win Impact Score
+  const winImpact = computeWinImpact(request, scores);
+
+  // Vendor Defense Blocks
+  const vendorDefense = getVendorDefenseBlocks({
+    vendorTrack: request.vendor_track,
+    networkType: request.network_type,
+    haRequired: request.ha_required,
+    drRequired: request.dr_required,
+    backupRequired: request.backup_required,
+    userCount: request.user_count,
+    complianceLevel: request.compliance_level,
+    securityFlags: request.security_flags ?? {},
+  });
+
+  // 8개 섹션 구성 (sections 배열에는 Section 1~5 + Win Impact + Vendor Defense)
   const sections: ReportSection[] = [
     buildSection1RiskOverview(scores, riskLevel),
     buildSection2TopWeaknesses(scores),
     buildSection3Recommendations(scores),
     buildSection4DomainAnalysis(scores, riskParagraphs),
     buildSection5ProposalSnippets(proposalSnippets),
+    buildSectionWinImpact(winImpact),
+    ...buildSectionVendorDefense(vendorDefense),
   ];
 
   // Section 6: Q&A → qa_items 필드
@@ -614,5 +762,7 @@ export function generateDraftReport(
     proposal_snippets: proposalSnippets,
     conclusion,
     risk_flags: riskFlags,
+    win_impact: winImpact,
+    vendor_defense: vendorDefense,
   };
 }

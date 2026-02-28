@@ -11,6 +11,7 @@ import {
   type ReviewRequest,
   type ReviewAttachment,
   type ReviewScore,
+  type ReviewReport,
   type RequestStatus,
   type VendorTrack,
   type NetworkType,
@@ -46,7 +47,7 @@ export default async function PortalRequestDetailPage({
       .order("domain"),
     admin
       .from("review_reports")
-      .select("id, version, state, pdf_storage_key, created_at")
+      .select("id, version, state, pdf_storage_key, content_json, created_at")
       .eq("request_id", id)
       .eq("state", "final")
       .order("version", { ascending: false })
@@ -55,7 +56,7 @@ export default async function PortalRequestDetailPage({
 
   const attachments = (attachRes.data ?? []) as ReviewAttachment[];
   const scores = (scoreRes.data ?? []) as ReviewScore[];
-  const finalReport = reportRes.data?.[0] ?? null;
+  const finalReport = (reportRes.data?.[0] ?? null) as ReviewReport | null;
 
   const statusColor: Record<string, string> = {
     submitted: "bg-yellow-100 text-yellow-800 border-yellow-300",
@@ -187,6 +188,58 @@ export default async function PortalRequestDetailPage({
               </div>
             ))}
           </div>
+        </div>
+      )}
+
+      {/* Win Impact Score */}
+      {finalReport?.content_json?.win_impact && (
+        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-amber-300 rounded-xl p-6 mb-6">
+          <h2 className="text-lg font-semibold text-amber-900 mb-3">
+            수주 영향도 분석
+          </h2>
+          <div className="flex items-center gap-3 mb-4">
+            <span
+              className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl ${
+                finalReport.content_json.win_impact.grade === "A"
+                  ? "bg-green-600"
+                  : finalReport.content_json.win_impact.grade === "B"
+                    ? "bg-blue-600"
+                    : finalReport.content_json.win_impact.grade === "C"
+                      ? "bg-amber-600"
+                      : "bg-red-600"
+              }`}
+            >
+              {finalReport.content_json.win_impact.grade}
+            </span>
+            <div>
+              <p className="text-2xl font-bold text-amber-900">
+                {finalReport.content_json.win_impact.score}점
+              </p>
+              {finalReport.content_json.win_impact.estimated_improvement && (
+                <p className="text-sm text-green-700">
+                  개선 시 +{finalReport.content_json.win_impact.estimated_improvement}점 추정
+                </p>
+              )}
+            </div>
+          </div>
+          {finalReport.content_json.win_impact.drivers.length > 0 && (
+            <div className="mb-3">
+              <h3 className="text-sm font-medium text-amber-800 mb-1">
+                주요 영향 요인 (상위 3개)
+              </h3>
+              <ul className="space-y-1 text-sm text-gray-700">
+                {finalReport.content_json.win_impact.drivers.slice(0, 3).map((d: string, i: number) => (
+                  <li key={i} className="flex gap-2">
+                    <span className="text-amber-500 shrink-0">&#x2022;</span>
+                    <span>{d}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          <p className="text-xs text-amber-700 mt-2 italic">
+            본 점수는 현재 기술 검토 결과를 기반으로 한 수주 영향도 추정이며, 실제 수주 확률을 의미하지 않습니다.
+          </p>
         </div>
       )}
 
