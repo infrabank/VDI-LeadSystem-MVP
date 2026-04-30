@@ -13,7 +13,13 @@ export default function PublicLayout({
             VDI Expert
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mb-3 inline-block"></span>
           </Link>
-          <div className="flex items-center gap-10 text-sm font-medium">
+          <div className="flex items-center gap-8 text-sm font-medium">
+            <Link
+              href="/n2sf"
+              className="text-gray-600 hover:text-blue-700 transition-colors"
+            >
+              N²SF 진단센터
+            </Link>
             <Link
               href="/content"
               className="text-gray-600 hover:text-blue-600 transition-colors"

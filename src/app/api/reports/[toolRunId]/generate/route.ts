@@ -26,9 +26,41 @@ export async function POST(
   const lead = toolRun.leads;
   const output = toolRun.output_json as Record<string, unknown>;
   const version = output.version as string | undefined;
+  const toolType = (toolRun.tool_type as string) || "risk_assessment";
 
   // Generate access token
   const accessToken = crypto.randomUUID();
+
+  // ── N²SF / VDI Role: web-only report (no PDF in Phase 1) ──
+  if (toolType === "n2sf_readiness" || toolType === "vdi_role") {
+    const title =
+      toolType === "n2sf_readiness"
+        ? "N²SF 전환 준비도 진단 리포트"
+        : "VDI 역할 재정의 진단 리포트";
+
+    const { data: report, error: reportError } = await supabase
+      .from("reports")
+      .insert({
+        lead_id: lead?.id || toolRun.lead_id,
+        tool_run_id: toolRunId,
+        title,
+        report_html: null,
+        pdf_url: null,
+        access_token: accessToken,
+      })
+      .select("id, access_token, pdf_url")
+      .single();
+
+    if (reportError) {
+      return NextResponse.json({ error: reportError.message }, { status: 400 });
+    }
+
+    return NextResponse.json({
+      report_id: report.id,
+      access_token: report.access_token,
+      pdf_url: null,
+    });
+  }
 
   // Render HTML report (v1, v2, or v3)
   let reportHtml: string;

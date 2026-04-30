@@ -2,6 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import PrintPdfButton from "../components/PrintPdfButton";
+import N2sfReadinessReport from "../components/N2sfReadinessReport";
+import VdiRoleReport from "../components/VdiRoleReport";
+import type { N2sfReadinessOutput } from "@/lib/scoring/n2sf-readiness";
+import type { VdiRoleOutput } from "@/lib/scoring/vdi-role";
 
 interface Props {
   params: Promise<{ token: string }>;
@@ -148,7 +152,7 @@ export default async function ReportPage({ params }: Props) {
 
   const { data: report } = await supabase
     .from("reports")
-    .select("*, tool_runs(*), leads(email, name, company)")
+    .select("*, tool_runs(*), leads(id, email, name, company)")
     .eq("access_token", token)
     .single();
 
@@ -157,6 +161,40 @@ export default async function ReportPage({ params }: Props) {
   const toolRun = report.tool_runs;
   const lead = report.leads;
   const output = toolRun?.output_json;
+  const toolType = (toolRun?.tool_type as string) || "risk_assessment";
+
+  // Fetch lead_extensions for org name (used by new diagnostics)
+  let organizationName: string | null = null;
+  if (lead?.id && (toolType === "n2sf_readiness" || toolType === "vdi_role")) {
+    const { data: ext } = await supabase
+      .from("lead_extensions")
+      .select("organization_name")
+      .eq("lead_id", lead.id)
+      .maybeSingle();
+    organizationName = ext?.organization_name ?? null;
+  }
+
+  if (toolType === "n2sf_readiness") {
+    return (
+      <N2sfReadinessReport
+        report={report}
+        lead={lead}
+        output={output as N2sfReadinessOutput}
+        organizationName={organizationName}
+      />
+    );
+  }
+
+  if (toolType === "vdi_role") {
+    return (
+      <VdiRoleReport
+        report={report}
+        lead={lead}
+        output={output as VdiRoleOutput}
+        organizationName={organizationName}
+      />
+    );
+  }
 
   if (isV2OrV3(output)) {
     return <V2Report report={report} lead={lead} output={output} />;
