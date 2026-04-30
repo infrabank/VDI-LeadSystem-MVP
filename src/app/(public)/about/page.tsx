@@ -1,0 +1,162 @@
+import Link from "next/link";
+import { company, practicesList, partnerships, certifications } from "@/lib/site-config";
+
+export const metadata = {
+  title: `About | ${company.name}`,
+  description: company.description,
+};
+
+export default function AboutPage() {
+  return (
+    <div>
+      {/* Hero */}
+      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
+          <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
+            About {company.name}
+          </p>
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 kr-keep-all">
+            {company.taglineKo}
+          </h1>
+          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+            {company.description}
+          </p>
+        </div>
+      </section>
+
+      {/* Mission / Identity */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div>
+            <p className="text-blue-600 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
+              Our Mission
+            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
+              규제 적합한 보안과 운영 연속성을 한 곳에서
+            </h2>
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
+              공공·금융 기관은 망분리 완화·N²SF 1.0 시행 같은 규제 환경 변화와
+              랜섬웨어·운영 중단 같은 운영 리스크를 동시에 다뤄야 합니다.
+            </p>
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all">
+              {company.name}는 보안 워크스페이스(접근·통제)와 데이터 보호(백업·복원력)를
+              하나의 자문·운영 체계로 통합해, 정책·기술·운영의 일관성을 보장합니다.
+            </p>
+          </div>
+          <div className="bg-gradient-to-br from-blue-50 via-white to-emerald-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
+            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+              Two Practices, One Team
+            </p>
+            <div className="space-y-4">
+              {practicesList.map((p) => {
+                const isBlue = p.primaryColor === "blue";
+                return (
+                  <Link
+                    key={p.id}
+                    href={p.href}
+                    className="block p-4 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
+                  >
+                    <div className="flex items-center gap-2 mb-1">
+                      <span
+                        className={`w-2 h-2 rounded-full ${isBlue ? "bg-blue-600" : "bg-emerald-600"}`}
+                      ></span>
+                      <span
+                        className={`text-xs font-bold uppercase tracking-widest ${
+                          isBlue ? "text-blue-600" : "text-emerald-600"
+                        }`}
+                      >
+                        {p.brand}
+                      </span>
+                    </div>
+                    <h3 className="text-sm font-bold text-gray-900 mb-0.5 kr-keep-all">{p.title}</h3>
+                    <p className="text-xs text-gray-500 kr-keep-all">{p.tagline}</p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partnerships */}
+      <section className="bg-gray-50 border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+            Partnerships
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 md:mb-12 kr-keep-all">
+            기술·운영 파트너
+          </h2>
+          <div className="grid sm:grid-cols-3 gap-4 md:gap-6">
+            {partnerships.map((p) => (
+              <div
+                key={p.name}
+                className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 text-center"
+              >
+                <p className="text-base sm:text-lg font-bold text-gray-900 mb-1.5">{p.name}</p>
+                <p className="text-xs text-gray-500 kr-keep-all">{p.role}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              href="/about/certifications"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+            >
+              인증·자격 자세히 보기 →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications snapshot */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+        <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+          Certifications
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 md:mb-12 kr-keep-all">
+          보유·진행 중 인증
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto">
+          {certifications.map((c) => (
+            <div
+              key={c.name}
+              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
+            >
+              <p className="text-base font-bold text-gray-900 mb-1">{c.name}</p>
+              <p className="text-xs text-gray-500 kr-keep-all">{c.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section id="contact" className="bg-gradient-to-r from-blue-600 to-indigo-700 scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
+          <p className="text-blue-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
+            Contact
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
+            상담·기술 협업 문의
+          </h2>
+          <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
+            N²SF 정렬 진단·Zero Trust 전환·VDI 운영·Acronis 백업·DR에 관한 기술 상담 및 프로젝트 협업 문의를 환영합니다.
+          </p>
+          <a
+            href={`mailto:${company.email}`}
+            className="inline-flex items-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+              />
+            </svg>
+            {company.email}
+          </a>
+        </div>
+      </section>
+    </div>
+  );
+}

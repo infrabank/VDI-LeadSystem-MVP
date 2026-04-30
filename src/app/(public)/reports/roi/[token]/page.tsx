@@ -292,7 +292,7 @@ export default async function ROIReportPage({ params }: Props) {
                 리스크 진단도 해보기
               </Link>
               <Link
-                href="/content"
+                href="/insights"
                 className="px-6 py-2.5 border border-white/30 text-white rounded-lg hover:bg-white/10 font-medium transition-colors"
               >
                 관련 콘텐츠 보기

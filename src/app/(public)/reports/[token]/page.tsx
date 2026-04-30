@@ -427,7 +427,7 @@ function V2Report({
         <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-4 md:p-6 text-center shadow-md print:hidden">
           <h3 className="text-lg font-bold text-white mb-2">전문가의 상세 분석이 필요하신가요?</h3>
           <p className="text-blue-100 text-sm mb-5 leading-relaxed">VDI 전문 컨설턴트가 맞춤 분석과 마이그레이션 전략을 제안해드립니다.</p>
-          <Link href="/content" className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-blue-700 rounded-xl font-semibold hover:bg-blue-50 transition-colors shadow-sm text-sm">
+          <Link href="/insights" className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-blue-700 rounded-xl font-semibold hover:bg-blue-50 transition-colors shadow-sm text-sm">
             관련 콘텐츠 보기
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />

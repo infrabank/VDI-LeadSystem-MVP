@@ -96,7 +96,7 @@ export default async function ContentListPage({
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
         {/* Search + Filter */}
-        <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-8 md:mb-10" action="/content">
+        <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-8 md:mb-10" action="/insights">
           <div className="flex-1 relative">
             <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -136,7 +136,7 @@ export default async function ContentListPage({
             {contents.map((item) => (
               <Link
                 key={item.id}
-                href={`/content/${item.slug}`}
+                href={`/insights/${item.slug}`}
                 className="card-hover group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-blue-200"
               >
                 {item.cover_image_url ? (
@@ -192,7 +192,7 @@ export default async function ContentListPage({
               {query ? "검색 결과가 없습니다." : "아직 발행된 콘텐츠가 없습니다."}
             </p>
             {query && (
-              <Link href="/content" className="text-sm text-blue-600 hover:underline">
+              <Link href="/insights" className="text-sm text-blue-600 hover:underline">
                 전체 콘텐츠 보기
               </Link>
             )}
@@ -204,7 +204,7 @@ export default async function ContentListPage({
           <div className="flex items-center justify-center gap-2 sm:gap-4 mt-10 md:mt-12">
             {page > 1 ? (
               <Link
-                href={`/content?q=${query}&type=${filterType}&page=${page - 1}`}
+                href={`/insights?q=${query}&type=${filterType}&page=${page - 1}`}
                 className="flex items-center gap-1.5 px-3 sm:px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-600 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -221,7 +221,7 @@ export default async function ContentListPage({
             </span>
             {contents && contents.length === pageSize ? (
               <Link
-                href={`/content?q=${query}&type=${filterType}&page=${page + 1}`}
+                href={`/insights?q=${query}&type=${filterType}&page=${page + 1}`}
                 className="flex items-center gap-1.5 px-3 sm:px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-600 transition-colors"
               >
                 다음

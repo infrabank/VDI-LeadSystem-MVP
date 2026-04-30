@@ -156,7 +156,7 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
             ))}
           </ul>
           <Link
-            href="/diagnosis/n2sf-readiness"
+            href="/tools/n2sf-readiness"
             className="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-blue-700 hover:text-blue-900"
           >
             N²SF 전환 준비도 진단도 받기 →

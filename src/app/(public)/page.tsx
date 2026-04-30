@@ -1,72 +1,99 @@
 import Link from "next/link";
+import { company, practicesList, partnerships } from "@/lib/site-config";
 
 export default function HomePage() {
   return (
     <div>
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 overflow-hidden">
         <div className="bg-dot-pattern absolute inset-0 pointer-events-none"></div>
-        {/* Decorative blurs */}
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-blue-400/15 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-28 text-center">
           <p className="inline-flex items-center gap-2 text-blue-200 font-semibold text-xs sm:text-sm mb-4 sm:mb-5 tracking-widest uppercase">
             <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
-            Secure Workspace Practice
+            {company.tagline}
             <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
           </p>
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 leading-tight tracking-tight kr-keep-all">
-            공공·금융을 위한<br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>보안 워크스페이스·접근통제 전문
+            보안 워크스페이스와<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>데이터 보호, 한 팀이 책임집니다
           </h1>
           <p className="text-base sm:text-lg text-blue-100 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            N²SF 정렬 진단 · Zero Trust 전환 · VDI 운영 · CDS/망연계 자문
+            공공·금융을 위한 N²SF·Zero Trust·VDI 자문 + Acronis 기반 백업·DR·사이버복원력
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
-              href="/tools/risk-assessment"
+              href="/practices"
               className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+            >
+              Practices 둘러보기
+            </Link>
+            <Link
+              href="/tools/risk-assessment"
+              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-500/30 border border-blue-400/40 text-white rounded-lg hover:bg-blue-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
             >
               N²SF 정렬 진단 시작
             </Link>
-            <Link
-              href="/diagnosis/n2sf-readiness"
-              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-500/30 border border-blue-400/40 text-white rounded-lg hover:bg-blue-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
-            >
-              N²SF 전환 준비도 진단
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Why N²SF */}
-      <section className="border-b border-gray-100 bg-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 items-start md:items-center">
-            <div className="md:col-span-1 flex flex-col items-start gap-1">
-              <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">왜 N²SF인가</p>
-              <p className="text-sm font-bold text-gray-900">법정 의무화 흐름</p>
-            </div>
-            <div className="md:col-span-3">
-              <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
-                정보공개법 §9 등급분류 → 적절성 평가 → 보안성 검토(외부 절차) 흐름이 N²SF 1.0 시행으로
-                의무화됩니다. 공공·금융 기관은 274개 보안통제 매핑과 C/S/O 자가분류를 선제적으로
-                수행해야 신규 발주·갱신 사업에서 탈락을 막을 수 있습니다.
-              </p>
-            </div>
-          </div>
+      {/* Two Practices */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-24">
+        <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+          Our Practices
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          기업 보안의 두 축
+        </h2>
+        <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
+          접근·통제와 데이터 보호 — 규제 적합과 운영 연속성을 동시에 다룹니다.
+        </p>
+        <div className="grid sm:grid-cols-2 gap-5 md:gap-8">
+          {practicesList.map((p) => {
+            const isBlue = p.primaryColor === "blue";
+            return (
+              <Link
+                key={p.id}
+                href={p.href}
+                className="card-hover group bg-white rounded-xl border border-gray-200 p-6 sm:p-8 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300"
+                style={{ borderTop: `4px solid ${isBlue ? "#2563eb" : "#059669"}` }}
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span
+                    className={`text-xs font-bold uppercase tracking-widest ${
+                      isBlue ? "text-blue-600" : "text-emerald-600"
+                    }`}
+                  >
+                    {p.brand}
+                  </span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1.5 kr-keep-all">{p.title}</h3>
+                <p className="text-sm font-medium text-gray-500 mb-4 kr-keep-all">{p.tagline}</p>
+                <p className="text-sm text-gray-600 leading-relaxed mb-5 kr-keep-all">{p.description}</p>
+                <span
+                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${
+                    isBlue ? "text-blue-600" : "text-emerald-600"
+                  } group-hover:translate-x-0.5 transition-transform`}
+                >
+                  자세히 보기 →
+                </span>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
-      {/* Stats / Trust Bar */}
-      <section className="border-b border-gray-100 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
+      {/* Stats */}
+      <section className="border-y border-gray-100 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
           <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 text-center">
             {[
-              { stat: "274개", label: "보안통제 매핑", desc: "N²SF 정렬 진단 기준" },
-              { stat: "8개", label: "진단 영역", desc: "C/S/O 등급 전 영역 커버" },
-              { stat: "50+", label: "공공·금융 기관", desc: "N²SF 자문 도입 사례" },
+              { stat: "274개", label: "보안통제 매핑", desc: "N²SF 1.0 정렬 진단" },
+              { stat: "11종", label: "정보서비스 모델", desc: "C/S/O 등급 시나리오" },
+              { stat: "24x7", label: "MSP 운영", desc: "백업·복구 검증" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-1">
                 <p className="text-2xl sm:text-3xl font-bold text-blue-600 tracking-tight">{item.stat}</p>
@@ -78,232 +105,89 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4 Service Pillars */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-24">
-        <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">Service Pillars</p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3">
-          4대 진단·자문 서비스
-        </h2>
-        <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
-          공공·금융 보안 책임자를 위한 N²SF 중심 전문 서비스입니다.
+      {/* Quick Access */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
+        <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+          Quick Access
         </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          {[
-            {
-              rank: "01",
-              title: "N²SF 정렬 진단",
-              desc: "274개 보안통제 매핑 · 8영역 28문항 · C/S/O 등급 자가분류 · 모델 3·8·10 권고",
-              icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-              color: "#2563eb",
-              accent: "bg-blue-600",
-              href: "/tools/risk-assessment",
-              primary: true,
-            },
-            {
-              rank: "02",
-              title: "N²SF 전환 준비도",
-              desc: "5섹션 15문항 · Level 1~5 등급 산출 · 3단계 전환 로드맵 제시",
-              icon: "M13 10V3L4 14h7v7l9-11h-7z",
-              color: "#2563eb",
-              accent: "bg-blue-500",
-              href: "/diagnosis/n2sf-readiness",
-              primary: false,
-            },
-            {
-              rank: "03",
-              title: "VDI 역할 재정의",
-              desc: "9문항 진단 · 유지/보완/축소/재설계 4가지 시나리오 판정",
-              icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-              color: "#4f46e5",
-              accent: "bg-indigo-600",
-              href: "/diagnosis/vdi-transition",
-              primary: false,
-            },
-            {
-              rank: "04",
-              title: "VDI 운영 ROI",
-              desc: "마이그레이션·운영비용 시뮬레이션 · 경영진 보고용 PDF 제공",
-              icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-              color: "#059669",
-              accent: "bg-green-600",
-              href: "/tools/roi-calculator",
-              primary: false,
-            },
-          ].map((feature, i) => (
-            <Link
-              key={i}
-              href={feature.href}
-              className={`card-hover group p-5 sm:p-7 bg-white rounded-xl shadow-sm block transition-all hover:-translate-y-0.5 hover:shadow-md ${feature.primary ? "ring-2 ring-blue-600 ring-offset-2" : ""}`}
-              style={{ border: "1px solid #e5e7eb", borderTop: `4px solid ${feature.color}` }}
-            >
-              <div className="flex items-center justify-between mb-4 sm:mb-5">
-                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${feature.primary ? "bg-blue-600" : "bg-blue-50"} group-hover:opacity-90 transition-opacity`}>
-                  <svg className={`w-5 h-5 sm:w-6 sm:h-6 ${feature.primary ? "text-white" : "text-blue-600"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={feature.icon} />
-                  </svg>
-                </div>
-                <span className="text-xs font-bold text-gray-300">{feature.rank}</span>
-              </div>
-              <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2 sm:mb-2.5 kr-keep-all">{feature.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4 kr-keep-all">{feature.desc}</p>
-              <span className={`text-sm font-semibold ${feature.primary ? "text-blue-600" : "text-gray-500"} group-hover:text-blue-600 transition-colors`}>
-                진단 시작 →
-              </span>
-            </Link>
-          ))}
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-10 md:mb-14">
+          바로가기
+        </h2>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          {/* Insights */}
+          <Link
+            href="/insights"
+            className="group bg-white rounded-xl border border-gray-200 p-5 sm:p-6 hover:border-blue-200 hover:shadow-md transition-all"
+          >
+            <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-gray-900 mb-1">Insights</h3>
+            <p className="text-xs text-gray-500 kr-keep-all">기술 가이드·체크리스트·사례</p>
+          </Link>
+
+          {/* Tools */}
+          <Link
+            href="/tools"
+            className="group bg-white rounded-xl border border-gray-200 p-5 sm:p-6 hover:border-blue-200 hover:shadow-md transition-all"
+          >
+            <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-gray-900 mb-1">Tools</h3>
+            <p className="text-xs text-gray-500 kr-keep-all">진단·계산 도구 4종</p>
+          </Link>
+
+          {/* About */}
+          <Link
+            href="/about"
+            className="group bg-white rounded-xl border border-gray-200 p-5 sm:p-6 hover:border-blue-200 hover:shadow-md transition-all"
+          >
+            <div className="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center mb-3">
+              <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </div>
+            <h3 className="font-bold text-gray-900 mb-1">About {company.name}</h3>
+            <p className="text-xs text-gray-500 kr-keep-all">미션·인증·파트너십</p>
+          </Link>
         </div>
       </section>
 
-      {/* Quick Access */}
+      {/* Partnerships strip */}
       <section className="bg-gray-50 border-y border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-20">
-          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">Quick Access</p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-10 md:mb-14">
-            모든 서비스 바로가기
-          </h2>
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
-            {/* Public Tools */}
-            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                </div>
-                <h3 className="font-bold text-gray-900">진단 도구</h3>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+          <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 md:mb-8">
+            Technology Partnerships
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-3 text-center">
+            {partnerships.map((p) => (
+              <div key={p.name} className="text-sm sm:text-base font-bold text-gray-500">
+                {p.name}
               </div>
-              <ul className="space-y-2.5">
-                <li>
-                  <Link href="/tools/risk-assessment" className="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors group font-medium">
-                    <span className="w-1 h-1 rounded-full bg-blue-600 group-hover:bg-blue-700 transition-colors"></span>
-                    N²SF 정렬 진단
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/diagnosis/n2sf-readiness" className="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-blue-600 transition-colors"></span>
-                    N²SF 전환 준비도 진단
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/diagnosis/vdi-transition" className="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-blue-600 transition-colors"></span>
-                    VDI 역할 재정의 진단
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/tools/roi-calculator" className="flex items-center gap-2 text-sm text-gray-600 hover:text-green-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-green-600 transition-colors"></span>
-                    ROI 계산기
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/content" className="flex items-center gap-2 text-sm text-gray-600 hover:text-blue-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-blue-600 transition-colors"></span>
-                    기술 콘텐츠 라이브러리
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* SAP Portal */}
-            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <h3 className="font-bold text-gray-900">SAP 포털</h3>
-                <span className="text-xs bg-indigo-100 text-indigo-600 px-2 py-0.5 rounded-full font-medium">영업팀</span>
-              </div>
-              <p className="text-xs text-gray-500 mb-3">VDI Sales Assurance Program — 기술 검토 요청 및 추적</p>
-              <ul className="space-y-2.5">
-                <li>
-                  <Link href="/portal/login" className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-indigo-600 transition-colors"></span>
-                    포털 로그인
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/portal/requests" className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-indigo-600 transition-colors"></span>
-                    검토 요청 목록
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/portal/requests/new" className="flex items-center gap-2 text-sm text-gray-600 hover:text-indigo-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-indigo-600 transition-colors"></span>
-                    새 검토 요청
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Admin */}
-            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
-                  <svg className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                </div>
-                <h3 className="font-bold text-gray-900">관리자</h3>
-                <span className="text-xs bg-amber-100 text-amber-600 px-2 py-0.5 rounded-full font-medium">Admin</span>
-              </div>
-              <p className="text-xs text-gray-500 mb-3">콘텐츠 관리, 리드 추적, 기술 검토 수행</p>
-              <ul className="space-y-2.5">
-                <li>
-                  <Link href="/admin/login" className="flex items-center gap-2 text-sm text-gray-600 hover:text-amber-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-amber-600 transition-colors"></span>
-                    관리자 로그인
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/admin/queue" className="flex items-center gap-2 text-sm text-gray-600 hover:text-amber-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-amber-600 transition-colors"></span>
-                    검토 큐
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/admin/content" className="flex items-center gap-2 text-sm text-gray-600 hover:text-amber-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-amber-600 transition-colors"></span>
-                    콘텐츠 관리
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/admin/content/new" className="flex items-center gap-2 text-sm text-gray-600 hover:text-amber-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-amber-600 transition-colors"></span>
-                    콘텐츠 작성
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/admin/leads" className="flex items-center gap-2 text-sm text-gray-600 hover:text-amber-600 transition-colors group">
-                    <span className="w-1 h-1 rounded-full bg-gray-300 group-hover:bg-amber-600 transition-colors"></span>
-                    리드 관리
-                  </Link>
-                </li>
-              </ul>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="relative bg-gradient-to-r from-blue-600 to-indigo-700 overflow-hidden">
-        {/* Decorative shapes */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-800/30 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-blue-400/10 rounded-full -translate-y-1/2 pointer-events-none"></div>
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
-          <p className="text-blue-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">Free Assessment</p>
+          <p className="text-blue-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
+            Free Assessment
+          </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
-            N²SF 정렬 현황이 궁금하신가요?
+            현재 보안 워크스페이스 성숙도, 7분이면 확인
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
-            7분이면 끝나는 N²SF 정렬 진단으로 274개 보안통제 매핑 현황을 확인하고
+            274개 보안통제 기준 N²SF 정렬 진단으로 우리 기관 현황을 파악하고
             맞춤 리포트를 받아보세요.
           </p>
           <Link

@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
+import { company } from "@/lib/site-config";
 
 export const metadata = {
-  title: "N²SF 진단센터 | 정렬 진단·전환 준비도·역할 재정의 통합 허브 | VDI Expert",
+  title: `N²SF 진단센터 | 정렬 진단·전환 준비도·역할 재정의 통합 허브 | ${company.name}`,
   description:
     "N²SF 정렬 진단(274개 보안통제 매핑)·전환 준비도 진단(Level 1~5)·VDI 역할 재정의 진단·ROI 계산기. 공공·금융 보안 워크스페이스 전환의 모든 진단을 한 곳에서.",
 };
@@ -31,6 +32,19 @@ export default async function N2sfHubPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {/* Breadcrumb */}
+      <div className="bg-slate-900 border-b border-slate-700">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-slate-400">
+          <Link href="/" className="hover:text-blue-300">홈</Link>
+          <span className="mx-2 text-slate-600">/</span>
+          <Link href="/practices" className="hover:text-blue-300">Practices</Link>
+          <span className="mx-2 text-slate-600">/</span>
+          <Link href="/practices/secure-workspace" className="hover:text-blue-300">보안 워크스페이스</Link>
+          <span className="mx-2 text-slate-600">/</span>
+          <span className="text-slate-200 font-medium">N²SF 진단센터</span>
+        </div>
+      </div>
+
       {/* Hero */}
       <section className="bg-gradient-to-b from-slate-900 via-blue-900 to-blue-800 text-white">
         <div className="max-w-5xl mx-auto px-4 py-20 md:py-24">
@@ -61,7 +75,7 @@ export default async function N2sfHubPage() {
               </svg>
             </Link>
             <Link
-              href="/diagnosis/n2sf-readiness"
+              href="/tools/n2sf-readiness"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 border border-white/30 text-white rounded-xl font-semibold hover:bg-white/20 transition-colors"
             >
               N²SF 전환 준비도 진단 (3분)
@@ -157,7 +171,7 @@ export default async function N2sfHubPage() {
             />
             {/* 2순위: N²SF 전환 준비도 */}
             <DiagnosisCta
-              href="/diagnosis/n2sf-readiness"
+              href="/tools/n2sf-readiness"
               tag="N²SF · 5섹션 · 15문항"
               title="N²SF 전환 준비도 진단"
               description="망분리·등급분류·인증·SaaS·운영 5개 영역의 준비도를 Level 1~5로 산출하고, 3단계 전환 로드맵을 제시합니다."
@@ -166,7 +180,7 @@ export default async function N2sfHubPage() {
             />
             {/* 3순위: VDI 역할 재정의 */}
             <DiagnosisCta
-              href="/diagnosis/vdi-transition"
+              href="/tools/vdi-transition"
               tag="VDI 재배치 · 9문항"
               title="VDI 역할 재정의 진단"
               description="현재 VDI 환경이 '유지 강화/제로트러스트 보완/점진적 축소/재설계' 중 어디에 해당하는지 4가지 시나리오로 분류합니다."
@@ -201,7 +215,7 @@ export default async function N2sfHubPage() {
               {items.map((c) => (
                 <Link
                   key={c.slug}
-                  href={`/content/${c.slug}`}
+                  href={`/insights/${c.slug}`}
                   className="block p-4 sm:p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all"
                 >
                   <h3 className="text-base font-bold text-slate-900 mb-2 leading-snug">

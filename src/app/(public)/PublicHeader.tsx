@@ -3,25 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-
-const navLinks = [
-  { href: "/n2sf", label: "N²SF 진단센터", hover: "hover:text-blue-700" },
-  { href: "/content", label: "콘텐츠", hover: "hover:text-blue-600" },
-  { href: "/tools/roi-calculator", label: "ROI 계산기", hover: "hover:text-green-600" },
-  { href: "/portal/login", label: "SAP 포털", hover: "hover:text-indigo-700", base: "text-indigo-600" },
-  { href: "/admin/login", label: "관리자", hover: "hover:text-amber-700", base: "text-amber-600" },
-];
+import { company, navLinks, ctaLink } from "@/lib/site-config";
 
 export default function PublicHeader() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
 
-  // 라우트 변경 시 메뉴 닫기
   useEffect(() => {
     setOpen(false);
   }, [pathname]);
 
-  // ESC 키로 닫기 + body 스크롤 잠금
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -40,40 +31,40 @@ export default function PublicHeader() {
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-16">
         <Link href="/" className="flex flex-col leading-tight">
           <span className="font-bold text-base sm:text-lg text-gray-900 tracking-tight inline-flex items-center gap-1.5">
-            VDI Expert
+            {company.name}
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
           </span>
           <span className="text-[9px] sm:text-[11px] font-semibold text-blue-600 tracking-[0.15em] uppercase mt-0.5">
-            Secure Workspace Practice
+            {company.tagline}
           </span>
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium">
+        <div className="hidden lg:flex items-center gap-7 xl:gap-9 text-sm font-medium">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`${link.base ?? "text-gray-600"} ${link.hover} transition-colors`}
+              className="text-gray-600 hover:text-blue-700 transition-colors"
             >
               {link.label}
             </Link>
           ))}
           <Link
-            href="/tools/risk-assessment"
+            href={ctaLink.href}
             className="px-4 xl:px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
           >
-            N²SF 정렬 진단
+            {ctaLink.label}
           </Link>
         </div>
 
         {/* Mobile: CTA + 햄버거 */}
         <div className="flex lg:hidden items-center gap-2">
           <Link
-            href="/tools/risk-assessment"
+            href={ctaLink.href}
             className="hidden sm:inline-block px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-xs font-semibold shadow-sm shadow-blue-200"
           >
-            진단 시작
+            {ctaLink.shortLabel}
           </Link>
           <button
             type="button"
@@ -109,17 +100,28 @@ export default function PublicHeader() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`${link.base ?? "text-gray-700"} ${link.hover} py-3 text-base font-medium border-b border-gray-100 last:border-0`}
+                  className="py-3 border-b border-gray-100 last:border-0"
                 >
-                  {link.label}
+                  <div className="text-base font-medium text-gray-700">{link.label}</div>
+                  <div className="text-xs text-gray-400 mt-0.5">{link.description}</div>
                 </Link>
               ))}
               <Link
-                href="/tools/risk-assessment"
+                href={ctaLink.href}
                 className="mt-3 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-center font-semibold shadow-sm shadow-blue-200"
               >
-                N²SF 정렬 진단 시작
+                {ctaLink.label}
               </Link>
+              {/* Secondary access (포털·관리자) */}
+              <div className="mt-4 pt-4 border-t border-gray-100 flex flex-wrap gap-3 text-xs">
+                <Link href="/portal/login" className="text-indigo-600 hover:text-indigo-700">
+                  SAP 포털
+                </Link>
+                <span className="text-gray-300">·</span>
+                <Link href="/admin/login" className="text-amber-600 hover:text-amber-700">
+                  관리자
+                </Link>
+              </div>
             </nav>
           </div>
         </>

@@ -1,34 +1,34 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { company } from "@/lib/site-config";
+
+const title = `${company.legalName} | ${company.taglineKo}`;
+const description = company.description;
 
 export const metadata: Metadata = {
-  title: "VDI Expert | 공공·금융 보안 워크스페이스·접근통제 전문 (N²SF 정렬)",
-  description:
-    "N²SF 정렬 진단·Zero Trust 전환·VDI 운영·CDS/망연계 자문. 274개 보안통제 매핑 진단 도구 무료 제공. 공공·금융 보안 책임자 1순위 파트너.",
+  title,
+  description,
   openGraph: {
-    title: "VDI Expert | 공공·금융 보안 워크스페이스·접근통제 전문 (N²SF 정렬)",
-    description:
-      "N²SF 정렬 진단·Zero Trust 전환·VDI 운영·CDS/망연계 자문. 274개 보안통제 매핑 진단 도구 무료 제공. 공공·금융 보안 책임자 1순위 파트너.",
+    title,
+    description,
     type: "website",
     locale: "ko_KR",
-    siteName: "VDI Expert",
+    siteName: company.name,
   },
   twitter: {
     card: "summary_large_image",
-    title: "VDI Expert | 공공·금융 보안 워크스페이스·접근통제 전문 (N²SF 정렬)",
-    description:
-      "N²SF 정렬 진단·Zero Trust 전환·VDI 운영·CDS/망연계 자문. 274개 보안통제 매핑 진단 도구 무료 제공. 공공·금융 보안 책임자 1순위 파트너.",
+    title,
+    description,
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  name: "VDI Expert",
-  alternateName: "VDI Expert · Secure Workspace Practice",
-  url: "https://vdiexpert.kr",
-  description:
-    "공공·금융을 위한 보안 워크스페이스·접근통제 전문. N²SF 정렬 진단·Zero Trust 전환·VDI 운영·CDS/망연계 자문.",
+  "@type": "Organization",
+  name: company.legalName,
+  alternateName: company.name,
+  url: `https://${company.domain}`,
+  description: company.description,
   areaServed: "KR",
   knowsAbout: [
     "N²SF",
@@ -37,15 +37,44 @@ const jsonLd = {
     "CDS",
     "Access Control",
     "Secure Workspace",
+    "Acronis Cyber Protect",
+    "Backup",
+    "Disaster Recovery",
+    "Cyber Resilience",
     "망분리",
     "보안통제",
+    "데이터 보호",
     "공공기관 보안",
     "금융 보안",
   ],
   contactPoint: {
     "@type": "ContactPoint",
-    email: "contact@vdiexpert.kr",
+    email: company.email,
     contactType: "customer service",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: `${company.name} Practices`,
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "보안 워크스페이스 Practice (VDI Expert)",
+          description: "VDI · Zero Trust · N²SF 정렬 자문",
+          url: `https://${company.domain}/practices/secure-workspace`,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "데이터 보호 Practice (Acronis Powered)",
+          description: "Acronis 기반 백업 · DR · 사이버복원력",
+          url: `https://${company.domain}/practices/data-protection`,
+        },
+      },
+    ],
   },
 };
 

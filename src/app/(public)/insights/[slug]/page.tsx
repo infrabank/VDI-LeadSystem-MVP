@@ -140,7 +140,7 @@ export default async function ContentDetailPage({ params }: Props) {
             {content.tags.map((tag: string) => (
               <Link
                 key={tag}
-                href={`/content?tag=${tag}`}
+                href={`/insights?tag=${tag}`}
                 className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
               >
                 #{tag}
@@ -222,7 +222,7 @@ export default async function ContentDetailPage({ params }: Props) {
             {related.map((item) => (
               <Link
                 key={item.id}
-                href={`/content/${item.slug}`}
+                href={`/insights/${item.slug}`}
                 className="group flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-blue-200 hover:bg-blue-50/30 transition-all"
               >
                 <div className="flex-1 min-w-0">

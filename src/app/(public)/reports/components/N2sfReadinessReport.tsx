@@ -175,7 +175,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
           <h2 className="text-lg font-bold text-blue-900 mb-3">VDI 전략 방향</h2>
           <p className="text-sm text-blue-900 leading-relaxed">{output.vdi_strategy_hint}</p>
           <Link
-            href="/diagnosis/vdi-transition"
+            href="/tools/vdi-transition"
             className="inline-flex items-center gap-2 mt-4 text-sm font-semibold text-blue-700 hover:text-blue-900"
           >
             VDI 역할 재정의 진단 받기 →

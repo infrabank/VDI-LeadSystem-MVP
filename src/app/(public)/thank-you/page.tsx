@@ -67,7 +67,7 @@ function ThankYouContent() {
           )}
 
           <Link
-            href="/content"
+            href="/insights"
             className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 flex items-start gap-4 hover:border-indigo-300 hover:shadow-md transition-all"
           >
             <div className="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -100,7 +100,7 @@ function ThankYouContent() {
         {/* Action Buttons */}
         <div className="flex gap-3">
           <Link
-            href="/content"
+            href="/insights"
             className="flex-1 py-3 text-center border border-gray-300 bg-white text-gray-700 rounded-xl font-semibold text-sm hover:bg-gray-50 hover:border-gray-400 transition-all duration-150"
           >
             콘텐츠 보기
