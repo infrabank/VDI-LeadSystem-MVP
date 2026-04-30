@@ -9,10 +9,12 @@ export default function PublicLayout({
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 print:hidden">
         <nav className="max-w-5xl mx-auto px-6 flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900 tracking-tight">
-            VDI Expert
-            <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mb-3 inline-block"></span>
-            <span className="text-xs font-medium text-blue-600 tracking-wide hidden sm:inline-block mt-0.5">
+          <Link href="/" className="flex flex-col leading-tight">
+            <span className="font-bold text-lg text-gray-900 tracking-tight inline-flex items-center gap-1.5">
+              VDI Expert
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
+            </span>
+            <span className="text-[10px] sm:text-[11px] font-semibold text-blue-600 tracking-[0.15em] uppercase mt-0.5">
               Secure Workspace Practice
             </span>
           </Link>
