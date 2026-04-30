@@ -256,7 +256,7 @@ function V3Form() {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">VDI 리스크 심층 진단</h1>
+              <h1 className="text-2xl font-bold text-gray-900">VDI 리스크 진단 <span className="text-sm font-normal text-gray-400">(Legacy)</span></h1>
               <p className="text-sm text-gray-500 mt-0.5">6개 영역 · 25개 항목 · 약 3~5분 소요</p>
             </div>
           </div>
@@ -721,7 +721,7 @@ function V4Form() {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">VDI 리스크 심층 진단</h1>
+              <h1 className="text-2xl font-bold text-gray-900">N²SF 정렬 진단</h1>
               <p className="text-sm text-gray-500 mt-0.5">8개 영역 · 28개 항목 · N²SF 기반 · 약 5~7분 소요</p>
             </div>
           </div>
@@ -844,8 +844,8 @@ function V4Form() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <p className="text-lg font-semibold text-gray-800 animate-pulse">심층 진단 중입니다...</p>
-            <p className="text-sm text-gray-500 mt-2">8개 영역, 28개 항목을 분석하고 N²SF 기반 컨설팅급 리포트를 생성하고 있습니다.</p>
+            <p className="text-lg font-semibold text-gray-800 animate-pulse">N²SF 정렬 분석 중입니다...</p>
+            <p className="text-sm text-gray-500 mt-2">8개 영역 28개 항목을 274개 N²SF 보안통제와 매핑하고 있습니다.</p>
           </div>
         )}
       </div>
