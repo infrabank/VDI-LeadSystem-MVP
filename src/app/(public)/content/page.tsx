@@ -86,17 +86,17 @@ export default async function ContentListPage({
     <div>
       {/* Page header */}
       <div className="bg-gray-50 border-b border-gray-200">
-        <div className="max-w-5xl mx-auto px-6 py-12">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">콘텐츠</h1>
-          <p className="text-gray-500 text-lg">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">콘텐츠</h1>
+          <p className="text-gray-500 text-base sm:text-lg kr-keep-all">
             VDI 마이그레이션과 운영에 관한 검증된 기술 자료를 탐색하세요.
           </p>
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 py-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
         {/* Search + Filter */}
-        <form className="flex gap-3 mb-10" action="/content">
+        <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-8 md:mb-10" action="/content">
           <div className="flex-1 relative">
             <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -109,28 +109,30 @@ export default async function ContentListPage({
               className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm text-sm"
             />
           </div>
-          <select
-            name="type"
-            defaultValue={filterType}
-            className="px-4 py-3 border border-gray-200 rounded-xl bg-white shadow-sm text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            {types.map((t) => (
-              <option key={t.value} value={t.value}>
-                {t.label}
-              </option>
-            ))}
-          </select>
-          <button
-            type="submit"
-            className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-semibold text-sm shadow-sm transition-colors"
-          >
-            검색
-          </button>
+          <div className="flex gap-2 sm:gap-3">
+            <select
+              name="type"
+              defaultValue={filterType}
+              className="flex-1 sm:flex-initial px-3 sm:px-4 py-3 border border-gray-200 rounded-xl bg-white shadow-sm text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              {types.map((t) => (
+                <option key={t.value} value={t.value}>
+                  {t.label}
+                </option>
+              ))}
+            </select>
+            <button
+              type="submit"
+              className="px-5 sm:px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 font-semibold text-sm shadow-sm transition-colors whitespace-nowrap"
+            >
+              검색
+            </button>
+          </div>
         </form>
 
         {/* Content Grid */}
         {contents && contents.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {contents.map((item) => (
               <Link
                 key={item.id}
@@ -142,11 +144,11 @@ export default async function ContentListPage({
                     <img
                       src={item.cover_image_url}
                       alt={item.title}
-                      className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 ) : (
-                  <div className="w-full h-48 bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
+                  <div className="w-full h-40 sm:h-48 bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
                     <svg className="w-10 h-10 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
@@ -199,11 +201,11 @@ export default async function ContentListPage({
 
         {/* Pagination */}
         {(totalItems > pageSize || page > 1) && (
-          <div className="flex items-center justify-center gap-4 mt-12">
+          <div className="flex items-center justify-center gap-2 sm:gap-4 mt-10 md:mt-12">
             {page > 1 ? (
               <Link
                 href={`/content?q=${query}&type=${filterType}&page=${page - 1}`}
-                className="flex items-center gap-1.5 px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-sm font-medium text-gray-600 transition-colors"
+                className="flex items-center gap-1.5 px-3 sm:px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-600 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -211,16 +213,16 @@ export default async function ContentListPage({
                 이전
               </Link>
             ) : (
-              <div className="w-[88px]" />
+              <div className="w-[64px] sm:w-[88px]" />
             )}
-            <span className="text-sm text-gray-500">
+            <span className="text-xs sm:text-sm text-gray-500 text-center">
               {page} / {Math.max(1, Math.ceil(totalItems / pageSize))} 페이지
-              <span className="text-gray-400 ml-1">(총 {totalItems}건)</span>
+              <span className="text-gray-400 ml-1 hidden sm:inline">(총 {totalItems}건)</span>
             </span>
             {contents && contents.length === pageSize ? (
               <Link
                 href={`/content?q=${query}&type=${filterType}&page=${page + 1}`}
-                className="flex items-center gap-1.5 px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-sm font-medium text-gray-600 transition-colors"
+                className="flex items-center gap-1.5 px-3 sm:px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-600 transition-colors"
               >
                 다음
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -228,7 +230,7 @@ export default async function ContentListPage({
                 </svg>
               </Link>
             ) : (
-              <div className="w-[88px]" />
+              <div className="w-[64px] sm:w-[88px]" />
             )}
           </div>
         )}

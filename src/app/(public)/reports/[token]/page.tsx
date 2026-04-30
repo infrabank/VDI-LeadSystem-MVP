@@ -259,7 +259,7 @@ function V2Report({
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-8">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">VDI 리스크 진단 리포트</h1>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900">VDI 리스크 진단 리포트</h1>
               <p className="text-sm text-gray-500 mt-1">
                 생성일: {new Date(report.created_at).toLocaleDateString("ko-KR")}
                 {lead?.company && (
@@ -278,13 +278,13 @@ function V2Report({
 
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
         {/* 1. Executive Summary */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
           <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">Executive Summary</h2>
           <p className="text-sm text-gray-700 leading-relaxed">{output.executive_summary}</p>
 
           <div className="mt-5 flex items-center gap-6">
             {/* Score Gauge */}
-            <div className="relative flex-shrink-0 w-28 h-28">
+            <div className="relative flex-shrink-0 w-24 sm:w-28 h-24 sm:h-28">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
                 <circle cx="60" cy="60" r="52" fill="none" stroke="#f3f4f6" strokeWidth="10" />
                 <circle cx="60" cy="60" r="52" fill="none" stroke={scoreColor} strokeWidth="10" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} />
@@ -304,11 +304,11 @@ function V2Report({
         </div>
 
         {/* 2. Maturity Radar Chart */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
           <h2 className="text-lg font-bold text-gray-900 mb-4">운영 성숙도 모델</h2>
-          <div className="flex flex-col md:flex-row items-center gap-6">
+          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6">
             <RadarChart maturity={output.maturity_model} />
-            <div className="flex-1 grid grid-cols-2 gap-3 w-full">
+            <div className="flex-1 grid grid-cols-2 gap-2 sm:gap-3 w-full">
               {([
                 { label: "Migration Readiness", m: output.maturity_model.migration, color: "bg-red-50 border-red-200" },
                 { label: "DR/Backup", m: output.maturity_model.dr, color: "bg-orange-50 border-orange-200" },
@@ -317,7 +317,7 @@ function V2Report({
               ] as const).map(({ label, m, color }) => (
                 <div key={label} className={`p-3 rounded-lg border ${color}`}>
                   <p className="text-xs text-gray-500">{label}</p>
-                  <p className="text-xl font-bold text-gray-900">{m.level}<span className="text-sm font-normal text-gray-400">/5</span></p>
+                  <p className="text-lg sm:text-xl font-bold text-gray-900">{m.level}<span className="text-sm font-normal text-gray-400">/5</span></p>
                   <p className="text-xs text-gray-400">{m.score}/25점</p>
                 </div>
               ))}
@@ -326,7 +326,7 @@ function V2Report({
         </div>
 
         {/* 3. Risk Details */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
           <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span className="w-5 h-5 bg-red-100 rounded-md flex items-center justify-center">
               <svg className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
@@ -362,7 +362,7 @@ function V2Report({
         </div>
 
         {/* 4. Current State Projection */}
-        <div className="bg-amber-50 border border-amber-200 rounded-xl p-6">
+        <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 md:p-6">
           <h2 className="text-lg font-bold text-amber-900 mb-4 flex items-center gap-2">
             <svg className="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
@@ -384,7 +384,7 @@ function V2Report({
         </div>
 
         {/* 5. Improvement Roadmap */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
           <h2 className="text-lg font-bold text-gray-900 mb-5">단계별 개선 로드맵</h2>
           <div className="space-y-4">
             {phases.map(({ data, bg, num }) => (
@@ -413,7 +413,7 @@ function V2Report({
         </div>
 
         {/* PDF Save */}
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 print:hidden">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-semibold text-gray-900">PDF 리포트 저장</p>
@@ -424,7 +424,7 @@ function V2Report({
         </div>
 
         {/* CTA */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-6 text-center shadow-md print:hidden">
+        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-4 md:p-6 text-center shadow-md print:hidden">
           <h3 className="text-lg font-bold text-white mb-2">전문가의 상세 분석이 필요하신가요?</h3>
           <p className="text-blue-100 text-sm mb-5 leading-relaxed">VDI 전문 컨설턴트가 맞춤 분석과 마이그레이션 전략을 제안해드립니다.</p>
           <Link href="/content" className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-blue-700 rounded-xl font-semibold hover:bg-blue-50 transition-colors shadow-sm text-sm">
@@ -472,7 +472,7 @@ function V1Report({
     <div className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-b from-gray-50 to-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-8">
-          <h1 className="text-2xl font-bold text-gray-900">VDI 리스크 진단 리포트</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900">VDI 리스크 진단 리포트</h1>
           <p className="text-sm text-gray-500 mt-1">
             생성일: {new Date(report.created_at).toLocaleDateString("ko-KR")}
             {lead?.company && <span className="ml-2 px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">{lead.company}</span>}
@@ -481,10 +481,10 @@ function V1Report({
       </div>
 
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
           <p className="text-sm font-medium text-gray-500 mb-5">종합 리스크 점수</p>
-          <div className="flex items-center gap-8">
-            <div className="relative flex-shrink-0 w-36 h-36">
+          <div className="flex items-center gap-6 md:gap-8">
+            <div className="relative flex-shrink-0 w-28 sm:w-36 h-28 sm:h-36">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
                 <circle cx="60" cy="60" r="52" fill="none" stroke="#f3f4f6" strokeWidth="10" />
                 <circle cx="60" cy="60" r="52" fill="none" stroke={scoreColor} strokeWidth="10" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} />
@@ -501,7 +501,7 @@ function V1Report({
         </div>
 
         {output?.risks && output.risks.length > 0 && (
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
             <h2 className="text-lg font-bold text-gray-900 mb-4">주요 리스크</h2>
             <div className="space-y-3">
               {output.risks.map((risk, i) => (
@@ -515,7 +515,7 @@ function V1Report({
         )}
 
         {output?.next_steps && output.next_steps.length > 0 && (
-          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
             <h2 className="text-lg font-bold text-gray-900 mb-4">권장 조치사항</h2>
             <div className="space-y-3">
               {output.next_steps.map((step, i) => (
@@ -528,7 +528,7 @@ function V1Report({
           </div>
         )}
 
-        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 print:hidden">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-semibold text-gray-900">PDF 리포트 저장</p>

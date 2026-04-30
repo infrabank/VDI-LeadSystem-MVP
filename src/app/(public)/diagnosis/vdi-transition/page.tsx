@@ -154,11 +154,11 @@ export default function VdiTransitionDiagnosisPage() {
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="bg-gradient-to-b from-blue-50 to-white border-b border-blue-100">
-        <div className="max-w-2xl mx-auto px-4 pt-10 pb-6">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -172,7 +172,7 @@ export default function VdiTransitionDiagnosisPage() {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">
+              <h1 className="text-xl md:text-2xl font-bold text-slate-900 kr-keep-all">
                 VDI 역할 재정의 진단
               </h1>
               <p className="text-sm text-slate-500 mt-0.5">
@@ -183,7 +183,7 @@ export default function VdiTransitionDiagnosisPage() {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {error && (
           <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm">
             {error}
@@ -192,8 +192,8 @@ export default function VdiTransitionDiagnosisPage() {
 
         {step === "lead" && (
           <form onSubmit={handleLeadSubmit} className="space-y-5">
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
-              <h2 className="font-semibold text-lg text-slate-900">기본 정보</h2>
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+              <h2 className="font-semibold text-base md:text-lg text-slate-900 kr-keep-all">기본 정보</h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -307,8 +307,8 @@ export default function VdiTransitionDiagnosisPage() {
 
         {step === "questions" && (
           <div className="space-y-5">
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-6">
-              <p className="text-sm text-slate-500">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-6">
+              <p className="text-sm text-slate-500 kr-keep-all">
                 현재 VDI 환경에 대한 9개 질문에 답해주세요. 답변에 따라 4가지 전환
                 시나리오 중 가장 적합한 결과를 도출합니다.
               </p>
@@ -340,7 +340,7 @@ export default function VdiTransitionDiagnosisPage() {
               <div className="absolute inset-0 rounded-full border-4 border-blue-100" />
               <div className="absolute inset-0 rounded-full border-4 border-blue-700 border-t-transparent animate-spin" />
             </div>
-            <p className="text-lg font-semibold text-slate-800">
+            <p className="text-base sm:text-lg font-semibold text-slate-800 kr-keep-all">
               VDI 역할 재정의 분석 중...
             </p>
             <p className="text-sm text-slate-500 mt-2">

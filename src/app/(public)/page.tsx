@@ -10,29 +10,29 @@ export default function HomePage() {
         <div className="absolute -top-24 -right-24 w-96 h-96 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute -bottom-16 -left-16 w-72 h-72 bg-blue-400/15 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative max-w-5xl mx-auto px-6 py-28 text-center">
-          <p className="inline-flex items-center gap-2 text-blue-200 font-semibold text-sm mb-5 tracking-widest uppercase">
-            <span className="w-4 h-px bg-blue-300 inline-block"></span>
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-28 text-center">
+          <p className="inline-flex items-center gap-2 text-blue-200 font-semibold text-xs sm:text-sm mb-4 sm:mb-5 tracking-widest uppercase">
+            <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
             Secure Workspace Practice
-            <span className="w-4 h-px bg-blue-300 inline-block"></span>
+            <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
           </p>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
-            공공·금융을 위한<br className="hidden md:block" />
-            보안 워크스페이스·접근통제 전문
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 leading-tight tracking-tight kr-keep-all">
+            공공·금융을 위한<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>보안 워크스페이스·접근통제 전문
           </h1>
-          <p className="text-lg text-blue-100 mb-12 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-blue-100 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             N²SF 정렬 진단 · Zero Trust 전환 · VDI 운영 · CDS/망연계 자문
           </p>
-          <div className="flex gap-4 justify-center flex-wrap">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
               href="/tools/risk-assessment"
-              className="px-8 py-3.5 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
             >
               N²SF 정렬 진단 시작
             </Link>
             <Link
               href="/diagnosis/n2sf-readiness"
-              className="px-8 py-3.5 bg-blue-500/30 border border-blue-400/40 text-white rounded-lg hover:bg-blue-500/40 font-semibold text-base backdrop-blur-sm transition-all"
+              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-500/30 border border-blue-400/40 text-white rounded-lg hover:bg-blue-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
             >
               N²SF 전환 준비도 진단
             </Link>
@@ -42,14 +42,14 @@ export default function HomePage() {
 
       {/* Why N²SF */}
       <section className="border-b border-gray-100 bg-white">
-        <div className="max-w-5xl mx-auto px-6 py-10">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
-            <div className="md:col-span-1 flex flex-col items-center md:items-start gap-1">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 items-start md:items-center">
+            <div className="md:col-span-1 flex flex-col items-start gap-1">
               <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">왜 N²SF인가</p>
               <p className="text-sm font-bold text-gray-900">법정 의무화 흐름</p>
             </div>
             <div className="md:col-span-3">
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
                 정보공개법 §9 등급분류 → 적절성 평가 → 보안성 검토(외부 절차) 흐름이 N²SF 1.0 시행으로
                 의무화됩니다. 공공·금융 기관은 274개 보안통제 매핑과 C/S/O 자가분류를 선제적으로
                 수행해야 신규 발주·갱신 사업에서 탈락을 막을 수 있습니다.
@@ -61,17 +61,17 @@ export default function HomePage() {
 
       {/* Stats / Trust Bar */}
       <section className="border-b border-gray-100 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-6 py-10">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 text-center">
             {[
               { stat: "274개", label: "보안통제 매핑", desc: "N²SF 정렬 진단 기준" },
               { stat: "8개", label: "진단 영역", desc: "C/S/O 등급 전 영역 커버" },
               { stat: "50+", label: "공공·금융 기관", desc: "N²SF 자문 도입 사례" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-1">
-                <p className="text-3xl font-bold text-blue-600 tracking-tight">{item.stat}</p>
-                <p className="text-sm font-semibold text-gray-900">{item.label}</p>
-                <p className="text-xs text-gray-400">{item.desc}</p>
+                <p className="text-2xl sm:text-3xl font-bold text-blue-600 tracking-tight">{item.stat}</p>
+                <p className="text-xs sm:text-sm font-semibold text-gray-900">{item.label}</p>
+                <p className="text-[10px] sm:text-xs text-gray-400 hidden sm:block">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -79,15 +79,15 @@ export default function HomePage() {
       </section>
 
       {/* 4 Service Pillars */}
-      <section className="max-w-5xl mx-auto px-6 py-24">
-        <p className="text-blue-600 font-semibold text-sm text-center mb-3 tracking-widest uppercase">Service Pillars</p>
-        <h2 className="text-3xl font-bold text-center text-gray-900 mb-3">
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-24">
+        <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">Service Pillars</p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3">
           4대 진단·자문 서비스
         </h2>
-        <p className="text-gray-500 text-center text-sm mb-14 max-w-xl mx-auto">
+        <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
           공공·금융 보안 책임자를 위한 N²SF 중심 전문 서비스입니다.
         </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {[
             {
               rank: "01",
@@ -133,19 +133,19 @@ export default function HomePage() {
             <Link
               key={i}
               href={feature.href}
-              className={`card-hover group p-7 bg-white rounded-xl shadow-sm block transition-all hover:-translate-y-0.5 hover:shadow-md ${feature.primary ? "ring-2 ring-blue-600 ring-offset-2" : ""}`}
+              className={`card-hover group p-5 sm:p-7 bg-white rounded-xl shadow-sm block transition-all hover:-translate-y-0.5 hover:shadow-md ${feature.primary ? "ring-2 ring-blue-600 ring-offset-2" : ""}`}
               style={{ border: "1px solid #e5e7eb", borderTop: `4px solid ${feature.color}` }}
             >
-              <div className="flex items-center justify-between mb-5">
-                <div className={`w-12 h-12 rounded-xl flex items-center justify-center ${feature.primary ? "bg-blue-600" : "bg-blue-50"} group-hover:opacity-90 transition-opacity`}>
-                  <svg className={`w-6 h-6 ${feature.primary ? "text-white" : "text-blue-600"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <div className="flex items-center justify-between mb-4 sm:mb-5">
+                <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${feature.primary ? "bg-blue-600" : "bg-blue-50"} group-hover:opacity-90 transition-opacity`}>
+                  <svg className={`w-5 h-5 sm:w-6 sm:h-6 ${feature.primary ? "text-white" : "text-blue-600"}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={feature.icon} />
                   </svg>
                 </div>
                 <span className="text-xs font-bold text-gray-300">{feature.rank}</span>
               </div>
-              <h3 className="font-bold text-lg text-gray-900 mb-2.5">{feature.title}</h3>
-              <p className="text-gray-500 text-sm leading-relaxed mb-4">{feature.desc}</p>
+              <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2 sm:mb-2.5 kr-keep-all">{feature.title}</h3>
+              <p className="text-gray-500 text-sm leading-relaxed mb-4 kr-keep-all">{feature.desc}</p>
               <span className={`text-sm font-semibold ${feature.primary ? "text-blue-600" : "text-gray-500"} group-hover:text-blue-600 transition-colors`}>
                 진단 시작 →
               </span>
@@ -156,14 +156,14 @@ export default function HomePage() {
 
       {/* Quick Access */}
       <section className="bg-gray-50 border-y border-gray-100">
-        <div className="max-w-5xl mx-auto px-6 py-20">
-          <p className="text-blue-600 font-semibold text-sm text-center mb-3 tracking-widest uppercase">Quick Access</p>
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-14">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-20">
+          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">Quick Access</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-10 md:mb-14">
             모든 서비스 바로가기
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
             {/* Public Tools */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
                   <svg className="w-4 h-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -207,7 +207,7 @@ export default function HomePage() {
             </div>
 
             {/* SAP Portal */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 bg-indigo-100 rounded-lg flex items-center justify-center">
                   <svg className="w-4 h-4 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -241,7 +241,7 @@ export default function HomePage() {
             </div>
 
             {/* Admin */}
-            <div className="bg-white rounded-xl border border-gray-200 p-6">
+            <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
                   <svg className="w-4 h-4 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -297,18 +297,18 @@ export default function HomePage() {
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-800/30 rounded-full translate-y-1/2 -translate-x-1/4 pointer-events-none"></div>
         <div className="absolute top-1/2 left-1/4 w-32 h-32 bg-blue-400/10 rounded-full -translate-y-1/2 pointer-events-none"></div>
 
-        <div className="relative max-w-5xl mx-auto px-6 py-20 text-center">
-          <p className="text-blue-200 text-sm font-semibold tracking-widest uppercase mb-4">Free Assessment</p>
-          <h2 className="text-3xl font-bold text-white mb-4">
+        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
+          <p className="text-blue-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">Free Assessment</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
             N²SF 정렬 현황이 궁금하신가요?
           </h2>
-          <p className="text-blue-100 mb-10 max-w-lg mx-auto leading-relaxed">
+          <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
             7분이면 끝나는 N²SF 정렬 진단으로 274개 보안통제 매핑 현황을 확인하고
             맞춤 리포트를 받아보세요.
           </p>
           <Link
             href="/tools/risk-assessment"
-            className="inline-block px-10 py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
           >
             N²SF 정렬 진단 시작
           </Link>

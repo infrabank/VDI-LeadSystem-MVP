@@ -198,11 +198,11 @@ export default function N2sfReadinessDiagnosisPage() {
   return (
     <div className="min-h-screen bg-slate-50">
       <div className="bg-gradient-to-b from-blue-50 to-white border-b border-blue-100">
-        <div className="max-w-2xl mx-auto px-4 pt-10 pb-6">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
               <svg
-                className="w-6 h-6 text-white"
+                className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -212,7 +212,7 @@ export default function N2sfReadinessDiagnosisPage() {
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-slate-900">
+              <h1 className="text-xl md:text-2xl font-bold text-slate-900 kr-keep-all">
                 N²SF 전환 준비도 진단
               </h1>
               <p className="text-sm text-slate-500 mt-0.5">
@@ -244,7 +244,7 @@ export default function N2sfReadinessDiagnosisPage() {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {error && (
           <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm">
             {error}
@@ -253,8 +253,8 @@ export default function N2sfReadinessDiagnosisPage() {
 
         {step === "lead" && (
           <form onSubmit={handleLeadSubmit} className="space-y-5">
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
-              <h2 className="font-semibold text-lg text-slate-900">기관 정보 입력</h2>
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+              <h2 className="font-semibold text-base md:text-lg text-slate-900 kr-keep-all">기관 정보 입력</h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
@@ -356,7 +356,7 @@ export default function N2sfReadinessDiagnosisPage() {
                         key={opt.value}
                         type="button"
                         onClick={() => toggleInterest(opt.value)}
-                        className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-colors ${
+                        className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
                           selected
                             ? "border-blue-700 bg-blue-50 text-blue-800"
                             : "border-slate-300 bg-white text-slate-600 hover:bg-slate-50"
@@ -376,7 +376,7 @@ export default function N2sfReadinessDiagnosisPage() {
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  rows={3}
+                  rows={2}
                   className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
                   placeholder="현재 환경의 고민이나 상담받고 싶은 주제를 자유롭게 적어주세요."
                 />
@@ -407,9 +407,9 @@ export default function N2sfReadinessDiagnosisPage() {
 
         {step !== "lead" && step !== "submitting" && currentSection && (
           <div className="space-y-5">
-            <div className="bg-white p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
               <div>
-                <h2 className="font-semibold text-lg text-slate-900">
+                <h2 className="font-semibold text-base md:text-lg text-slate-900 kr-keep-all">
                   {currentSection.title}
                 </h2>
                 <p className="text-sm text-slate-500 mt-0.5">
@@ -444,7 +444,7 @@ export default function N2sfReadinessDiagnosisPage() {
               <div className="absolute inset-0 rounded-full border-4 border-blue-100" />
               <div className="absolute inset-0 rounded-full border-4 border-blue-700 border-t-transparent animate-spin" />
             </div>
-            <p className="text-lg font-semibold text-slate-800">
+            <p className="text-base sm:text-lg font-semibold text-slate-800 kr-keep-all">
               N²SF 전환 준비도를 분석하고 있습니다...
             </p>
             <p className="text-sm text-slate-500 mt-2">

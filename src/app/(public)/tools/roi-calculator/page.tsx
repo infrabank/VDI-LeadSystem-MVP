@@ -104,22 +104,22 @@ export default function ROICalculatorPage() {
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="bg-gradient-to-b from-green-50 to-white border-b border-green-100">
-        <div className="max-w-2xl mx-auto px-4 py-10 text-center">
-          <div className="inline-flex items-center justify-center w-14 h-14 bg-green-100 rounded-2xl mb-4">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 md:py-10 text-center">
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-green-100 rounded-2xl mb-4">
             <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 kr-keep-all">
             VDI 다운타임 비용/ROI 계산기
           </h1>
-          <p className="text-gray-600">
+          <p className="text-base sm:text-base text-gray-600 kr-keep-all">
             VDI 장애로 인한 연간 손실액과 투자 ROI를 산정하여 경영진 보고용 PDF를 제공합니다.
           </p>
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-8">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 md:py-8">
         {error && (
           <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm border border-red-100">
             {error}
@@ -129,7 +129,7 @@ export default function ROICalculatorPage() {
         {step === "input" && (
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Lead Info */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <h2 className="font-semibold text-lg text-gray-900">기본 정보</h2>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -144,7 +144,7 @@ export default function ROICalculatorPage() {
                   placeholder="your@email.com"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">이름</label>
                   <input
@@ -167,10 +167,10 @@ export default function ROICalculatorPage() {
             </div>
 
             {/* ROI Inputs */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <h2 className="font-semibold text-lg text-gray-900">비용 산정 정보</h2>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     VDI 사용자 수 <span className="text-red-500">*</span>
@@ -198,13 +198,13 @@ export default function ROICalculatorPage() {
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
                     placeholder="예: 30000"
                   />
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-gray-400 mt-1 kr-keep-all">
                     연봉 ÷ 12개월 ÷ 22일 ÷ 8시간. 일반 사무직 2~3만, IT/개발직 3~5만, 금융/전문직 4~8만
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
                     1회 평균 중단시간 (시간) <span className="text-red-500">*</span>
@@ -274,7 +274,7 @@ export default function ROICalculatorPage() {
             </div>
 
             {/* Analysis Assumptions */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <h2 className="font-semibold text-lg text-gray-900">분석 가정값</h2>
 
               <div>
@@ -316,7 +316,7 @@ export default function ROICalculatorPage() {
             </div>
 
             {/* Consent + Submit */}
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <label className="flex items-start gap-2">
                 <input
                   type="checkbox"
@@ -332,7 +332,7 @@ export default function ROICalculatorPage() {
 
               <button
                 type="submit"
-                className="w-full py-3.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl hover:shadow-md hover:scale-[1.01] active:scale-[0.99] font-semibold text-base transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl hover:shadow-md hover:scale-[1.01] active:scale-[0.99] font-semibold text-base transition-all flex items-center justify-center gap-2"
               >
                 ROI 분석 실행
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -362,13 +362,13 @@ export default function ROICalculatorPage() {
         {/* Disclaimer Box */}
         <div className="mt-4 p-4 bg-gray-50 rounded-xl border border-gray-200 text-xs text-gray-500">
           <p className="font-medium text-gray-600 mb-1">산정 기준 안내</p>
-          <p>본 계산은 의사결정용 추정치이며, 실제 값은 환경/업무 특성에 따라 달라질 수 있습니다. 투자비는 백업/DR 보유 여부에 따른 내부 참고 모델 기준입니다.</p>
+          <p className="kr-keep-all">본 계산은 의사결정용 추정치이며, 실제 값은 환경/업무 특성에 따라 달라질 수 있습니다. 투자비는 백업/DR 보유 여부에 따른 내부 참고 모델 기준입니다.</p>
         </div>
 
         {/* Info Box */}
-        <div className="mt-4 p-5 bg-green-50 rounded-xl border border-green-100">
+        <div className="mt-4 p-4 sm:p-5 bg-green-50 rounded-xl border border-green-100">
           <h3 className="font-semibold text-green-800 mb-2">이 계산기는 무엇인가요?</h3>
-          <p className="text-sm text-green-700 leading-relaxed">
+          <p className="text-sm text-green-700 leading-relaxed kr-keep-all">
             VDI 환경의 장애로 인한 생산성 손실 비용을 산정하고,
             인프라 개선 투자 시 예상되는 절감액과 투자 회수기간(Payback Period)을 계산합니다.
             경영진 보고용 1페이지 PDF 리포트도 함께 제공됩니다.

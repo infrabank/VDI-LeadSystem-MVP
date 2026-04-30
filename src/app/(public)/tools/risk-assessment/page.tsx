@@ -248,15 +248,15 @@ function V3Form() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-b from-blue-50 to-white border-b border-blue-100">
-        <div className="max-w-2xl mx-auto px-4 pt-10 pb-6">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
               <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">VDI 리스크 진단 <span className="text-sm font-normal text-gray-400">(Legacy)</span></h1>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">VDI 리스크 진단 <span className="text-sm font-normal text-gray-400">(Legacy)</span></h1>
               <p className="text-sm text-gray-500 mt-0.5">6개 영역 · 25개 항목 · 약 3~5분 소요</p>
             </div>
           </div>
@@ -286,7 +286,7 @@ function V3Form() {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {error && (
           <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-center gap-3" role="alert" aria-live="assertive">
             <svg className="w-4 h-4 flex-shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -298,14 +298,14 @@ function V3Form() {
 
         {step === "lead" && (
           <form onSubmit={handleLeadSubmit} className="space-y-5">
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-lg text-gray-900">기본 정보 입력</h2>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">이메일 <span className="text-red-500">*</span></label>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="your@email.com"
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">이름</label>
                   <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="홍길동"
@@ -331,7 +331,7 @@ function V3Form() {
 
         {step !== "lead" && step !== "submitting" && currentSection && (
           <div className="space-y-5">
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <div>
                 <h2 className="font-semibold text-lg text-gray-900">{currentSection.title}</h2>
                 <p className="text-sm text-gray-500 mt-0.5">{currentSection.description}</p>
@@ -363,8 +363,8 @@ function V3Form() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <p className="text-lg font-semibold text-gray-800 animate-pulse">심층 진단 중입니다...</p>
-            <p className="text-sm text-gray-500 mt-2">6개 영역, 25개 항목을 분석하고 컨설팅급 리포트를 생성하고 있습니다.</p>
+            <p className="text-base sm:text-lg font-semibold text-gray-800 animate-pulse">심층 진단 중입니다...</p>
+            <p className="text-sm text-gray-500 mt-2 kr-keep-all">6개 영역, 25개 항목을 분석하고 컨설팅급 리포트를 생성하고 있습니다.</p>
           </div>
         )}
       </div>
@@ -586,7 +586,7 @@ function V4Form() {
             </p>
             {q.inline_help && <p className="text-xs text-gray-500 mb-2">{q.inline_help}</p>}
           </div>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
             {q.options?.map((opt) => {
               const isChecked = selected.includes(opt.value);
               return (
@@ -713,15 +713,15 @@ function V4Form() {
     <div className="min-h-screen bg-gray-50">
       {/* Page Header */}
       <div className="bg-gradient-to-b from-blue-50 to-white border-b border-blue-100">
-        <div className="max-w-2xl mx-auto px-4 pt-10 pb-6">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
-            <div className="w-12 h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
               <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">N²SF 정렬 진단</h1>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">N²SF 정렬 진단</h1>
               <p className="text-sm text-gray-500 mt-0.5">8개 영역 · 28개 항목 · N²SF 기반 · 약 5~7분 소요</p>
             </div>
           </div>
@@ -761,7 +761,7 @@ function V4Form() {
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto px-4 py-6">
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {error && (
           <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-center gap-3" role="alert" aria-live="assertive">
             <svg className="w-4 h-4 flex-shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -774,17 +774,17 @@ function V4Form() {
         {/* Step 0: Lead Info */}
         {step === "lead" && (
           <form onSubmit={handleLeadSubmit} className="space-y-5">
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600">
+            <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600 kr-keep-all">
               <strong>본 진단은 N²SF 적절성 평가의 사전 준비도 측정 도구입니다.</strong> 국가정보원 보안성 검토는 별도의 외부 절차이며, 본 진단 결과로 대체될 수 없습니다.
             </div>
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-lg text-gray-900">기본 정보 입력</h2>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">이메일 <span className="text-red-500">*</span></label>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="your@email.com"
                   className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
               </div>
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">이름</label>
                   <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="홍길동"
@@ -811,7 +811,7 @@ function V4Form() {
         {/* Step sections */}
         {typeof step === "number" && currentStepMeta && (
           <div className="space-y-5">
-            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <div>
                 <h2 className="font-semibold text-lg text-gray-900">{currentStepMeta.title}</h2>
                 <p className="text-sm text-gray-500 mt-0.5">{currentStepMeta.description}</p>
@@ -844,8 +844,8 @@ function V4Form() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <p className="text-lg font-semibold text-gray-800 animate-pulse">N²SF 정렬 분석 중입니다...</p>
-            <p className="text-sm text-gray-500 mt-2">8개 영역 28개 항목을 274개 N²SF 보안통제와 매핑하고 있습니다.</p>
+            <p className="text-base sm:text-lg font-semibold text-gray-800 animate-pulse">N²SF 정렬 분석 중입니다...</p>
+            <p className="text-sm text-gray-500 mt-2 kr-keep-all">8개 영역 28개 항목을 274개 N²SF 보안통제와 매핑하고 있습니다.</p>
           </div>
         )}
       </div>

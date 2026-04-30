@@ -1,4 +1,5 @@
 import Link from "next/link";
+import PublicHeader from "./PublicHeader";
 
 export default function PublicLayout({
   children,
@@ -7,63 +8,13 @@ export default function PublicLayout({
 }) {
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
-      <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 print:hidden">
-        <nav className="max-w-5xl mx-auto px-6 flex items-center justify-between h-16">
-          <Link href="/" className="flex flex-col leading-tight">
-            <span className="font-bold text-lg text-gray-900 tracking-tight inline-flex items-center gap-1.5">
-              VDI Expert
-              <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
-            </span>
-            <span className="text-[10px] sm:text-[11px] font-semibold text-blue-600 tracking-[0.15em] uppercase mt-0.5">
-              Secure Workspace Practice
-            </span>
-          </Link>
-          <div className="flex items-center gap-8 text-sm font-medium">
-            <Link
-              href="/n2sf"
-              className="text-gray-600 hover:text-blue-700 transition-colors"
-            >
-              N²SF 진단센터
-            </Link>
-            <Link
-              href="/content"
-              className="text-gray-600 hover:text-blue-600 transition-colors"
-            >
-              콘텐츠
-            </Link>
-            <Link
-              href="/tools/roi-calculator"
-              className="text-gray-600 hover:text-green-600 transition-colors"
-            >
-              ROI 계산기
-            </Link>
-            <Link
-              href="/portal/login"
-              className="text-indigo-600 hover:text-indigo-700 transition-colors"
-            >
-              SAP 포털
-            </Link>
-            <Link
-              href="/admin/login"
-              className="text-amber-600 hover:text-amber-700 transition-colors"
-            >
-              관리자
-            </Link>
-            <Link
-              href="/tools/risk-assessment"
-              className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
-            >
-              N²SF 정렬 진단
-            </Link>
-          </div>
-        </nav>
-      </header>
+      <PublicHeader />
 
       <main className="flex-1">{children}</main>
 
       <footer className="bg-gray-50 border-t border-gray-200 print:hidden">
-        <div className="max-w-5xl mx-auto px-6 py-14">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
             {/* Brand */}
             <div>
               <div className="flex items-center gap-1.5 mb-1">
@@ -148,9 +99,9 @@ export default function PublicLayout({
             </div>
           </div>
 
-          <div className="mt-10 pt-6 border-t border-gray-200 flex items-center justify-between text-xs text-gray-400">
+          <div className="mt-8 md:mt-10 pt-6 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-gray-400">
             <span>&copy; {new Date().getFullYear()} VDI Expert. All rights reserved.</span>
-            <span className="text-gray-300">VDI Expert · Secure Workspace Practice — 공공·금융을 위한 보안 워크스페이스·접근통제 자문</span>
+            <span className="text-gray-300 leading-relaxed">VDI Expert · Secure Workspace Practice — 공공·금융을 위한 보안 워크스페이스·접근통제 자문</span>
           </div>
         </div>
       </footer>
