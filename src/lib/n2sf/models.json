@@ -1,0 +1,115 @@
+[
+  {
+    "key": "model3_saas_collab",
+    "number": 3,
+    "name_kr": "외부 클라우드 활용 업무협업 체계",
+    "name_en": "Cloud SaaS Collaboration",
+    "scenario_summary": "기관 전산망(S등급) 내 업무 단말이 인터넷 영역의 외부 SaaS 협업도구(일정·화상회의·메신저·자료공유, O등급)를 직접 사용하는 혼합 환경. 업무협업 정보는 O등급으로 한정.",
+    "applicable_grades": ["O"],
+    "primary_threats": [
+      "S등급 단말 → O등급 SaaS 데이터 유출",
+      "사전 비승인 SaaS 무단 접속 / 공개 식별자 사용",
+      "SaaS 연계체계 우회 접속",
+      "악성 SaaS App 설치 또는 변조",
+      "관리자 계정 탈취·취약점 악용"
+    ],
+    "required_controls": [
+      "N2SF-LP-1","N2SF-LP-4","N2SF-LP-4(1)","N2SF-LP-4(4)",
+      "N2SF-IV-1","N2SF-IV-3","N2SF-IM-1","N2SF-IM-5",
+      "N2SF-AC-1","N2SF-AC-3","N2SF-AC-3(3)",
+      "N2SF-MA-2","N2SF-MA-5",
+      "N2SF-DA-1","N2SF-DA-2","N2SF-DA-3","N2SF-DA-4",
+      "N2SF-AM-2","N2SF-AM-9",
+      "N2SF-LI-1","N2SF-LI-2","N2SF-LI-4",
+      "N2SF-SG-4","N2SF-SG-5","N2SF-SG-6","N2SF-IS-4",
+      "N2SF-IF-1","N2SF-IF-2","N2SF-IF-3","N2SF-IF-5","N2SF-IF-6","N2SF-IF-7","N2SF-IF-8","N2SF-IF-9","N2SF-IF-10","N2SF-IF-14","N2SF-IF-15",
+      "N2SF-EB-1","N2SF-EB-2","N2SF-EB-3","N2SF-EB-5","N2SF-EB-6","N2SF-EB-8","N2SF-EB-10","N2SF-EB-11","N2SF-EB-13","N2SF-EB-14","N2SF-EB-15",
+      "N2SF-RA-2","N2SF-RA-5","N2SF-RA-6",
+      "N2SF-SN-1","N2SF-WA-7","N2SF-BC-1",
+      "N2SF-DT-1","N2SF-DU-2",
+      "N2SF-DV-4","N2SF-DV-6","N2SF-DV-8","N2SF-DV-12",
+      "N2SF-IN-1(1)","N2SF-IN-5","N2SF-IN-6","N2SF-IN-8","N2SF-IN-10","N2SF-IN-16"
+    ],
+    "emphasis_controls": [
+      "N2SF-EB-5","N2SF-EB-14","N2SF-IF-14","N2SF-RA-2","N2SF-DA-2"
+    ],
+    "vdi_signal": "외부 SaaS 직접 연결 + O등급 이상 데이터 전송 통제 미흡 시 고위험"
+  },
+  {
+    "key": "model8_doc_mgmt",
+    "number": 8,
+    "name_kr": "클라우드 기반 통합문서체계",
+    "name_en": "Cloud Document Management System",
+    "scenario_summary": "기관 전산망(S등급) 내 단말과 외부 모바일·원격 단말(O등급)이 동일한 S등급 통합문서체계에 접근. S·O 등급 정보가 동시 유통.",
+    "applicable_grades": ["S", "O"],
+    "primary_threats": [
+      "O등급 단말에 S등급 문서 잔류·유출",
+      "비인가자의 통합문서체계 계정 도용",
+      "악성 문서·악성코드 유입",
+      "통합문서 연계체계 취약점 악용",
+      "업무정보 전송 승인 절차 우회"
+    ],
+    "required_controls": [
+      "N2SF-LP-1","N2SF-LP-4","N2SF-LP-4(1)","N2SF-LP-4(4)",
+      "N2SF-AC-1","N2SF-AC-1(1)","N2SF-AC-1(5)","N2SF-AC-3","N2SF-AC-3(1)","N2SF-AC-3(2)",
+      "N2SF-DA-1","N2SF-DA-2","N2SF-DA-3","N2SF-DA-3(1)","N2SF-DA-4","N2SF-DA-5",
+      "N2SF-AM-2","N2SF-AM-9",
+      "N2SF-LI-1","N2SF-LI-2","N2SF-LI-4",
+      "N2SF-SG-4","N2SF-SG-5","N2SF-SG-6","N2SF-IS-4",
+      "N2SF-IF-1","N2SF-IF-2","N2SF-IF-3","N2SF-IF-5","N2SF-IF-6","N2SF-IF-7","N2SF-IF-8","N2SF-IF-9","N2SF-IF-10","N2SF-IF-11","N2SF-IF-14",
+      "N2SF-EB-1","N2SF-EB-2","N2SF-EB-3","N2SF-EB-4","N2SF-EB-5","N2SF-EB-6","N2SF-EB-8","N2SF-EB-9","N2SF-EB-10","N2SF-EB-11","N2SF-EB-13","N2SF-EB-14","N2SF-EB-15",
+      "N2SF-CD-1","N2SF-CD-2",
+      "N2SF-RA-1","N2SF-RA-2",
+      "N2SF-SN-1","N2SF-WA-7","N2SF-BC-1",
+      "N2SF-DT-1","N2SF-DU-2","N2SF-DU-3","N2SF-DU-4",
+      "N2SF-EK-1",
+      "N2SF-DV-3","N2SF-DV-4","N2SF-DV-5","N2SF-DV-6","N2SF-DV-8","N2SF-DV-12",
+      "N2SF-IN-1(1)","N2SF-IN-5","N2SF-IN-6","N2SF-IN-8","N2SF-IN-10","N2SF-IN-11","N2SF-IN-16"
+    ],
+    "emphasis_controls": [
+      "N2SF-CD-1","N2SF-CD-2","N2SF-DA-5","N2SF-EB-4","N2SF-DU-3","N2SF-DU-4"
+    ],
+    "vdi_signal": "S+O 혼재 → 단말 등급 검증(DA-3/5) + 문서 등급 흐름 통제(DU-3/4, CD-1/2) 부재 시 고위험"
+  },
+  {
+    "key": "model10_wireless",
+    "number": 10,
+    "name_kr": "무선 업무환경 운용 체계",
+    "name_en": "Wireless Office Environment",
+    "scenario_summary": "기관 청사 내 단말이 Wi-Fi(무선 AP)를 통해 기관 전산망 업무시스템에 접속하는 순수 내부 무선 환경. 모든 구성요소 S등급.",
+    "applicable_grades": ["S"],
+    "primary_threats": [
+      "비인가 무선 AP 설치·인접 비인가 AP 접속 유도",
+      "SSID 노출·무선 구간 데이터 탈취",
+      "인증 플러딩·재밍 등 무선 DoS",
+      "단말 분실·도난 시 인증정보·업무정보 유출",
+      "임의 무선 네트워크 변경"
+    ],
+    "required_controls": [
+      "N2SF-LP-1","N2SF-LP-4","N2SF-LP-4(1)","N2SF-LP-4(4)","N2SF-LP-5",
+      "N2SF-IV-1","N2SF-IM-1","N2SF-IM-2",
+      "N2SF-AC-1","N2SF-AC-1(1)","N2SF-AC-1(2)","N2SF-AC-1(5)","N2SF-AC-3","N2SF-AC-3(1)",
+      "N2SF-MA-5",
+      "N2SF-DA-1","N2SF-DA-3","N2SF-DA-4",
+      "N2SF-AU-5","N2SF-AU-5(1)","N2SF-AU-5(2)",
+      "N2SF-AM-2","N2SF-AM-5","N2SF-AM-9",
+      "N2SF-LI-1","N2SF-LI-2","N2SF-LI-4",
+      "N2SF-SG-2","N2SF-SG-4","N2SF-SG-5","N2SF-SG-6",
+      "N2SF-IS-2","N2SF-IS-4",
+      "N2SF-IF-1","N2SF-IF-6","N2SF-IF-9",
+      "N2SF-EB-1","N2SF-EB-2","N2SF-EB-3","N2SF-EB-5","N2SF-EB-6","N2SF-EB-8","N2SF-EB-10","N2SF-EB-11","N2SF-EB-12","N2SF-EB-13",
+      "N2SF-RA-2","N2SF-RA-5","N2SF-RA-6",
+      "N2SF-SN-1","N2SF-SN-4","N2SF-SN-6",
+      "N2SF-WA-1","N2SF-WA-2","N2SF-WA-3","N2SF-WA-4","N2SF-WA-5","N2SF-WA-6","N2SF-WA-7",
+      "N2SF-BC-1",
+      "N2SF-DT-1","N2SF-DU-2",
+      "N2SF-MD-M2",
+      "N2SF-DV-4","N2SF-DV-6","N2SF-DV-8","N2SF-DV-10","N2SF-DV-12",
+      "N2SF-IN-1","N2SF-IN-1(1)","N2SF-IN-5","N2SF-IN-6","N2SF-IN-8","N2SF-IN-11","N2SF-IN-16"
+    ],
+    "emphasis_controls": [
+      "N2SF-WA-1","N2SF-WA-2","N2SF-WA-4","N2SF-SN-4","N2SF-SN-6","N2SF-MD-M2","N2SF-AU-5"
+    ],
+    "vdi_signal": "무선 AP 환경 → WIPS 미적용·세션 자동종료 미설정·분실 단말 원격삭제 부재 시 고위험"
+  }
+]

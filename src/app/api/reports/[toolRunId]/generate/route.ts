@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
-import { renderReportHtml, renderRiskV2ReportHtml, renderRiskV3ReportHtml, generatePdf } from "@/lib/pdf";
+import { renderReportHtml, renderRiskV2ReportHtml, renderRiskV3ReportHtml, renderRiskV4ReportHtml, generatePdf } from "@/lib/pdf";
 
 export async function POST(
   _request: NextRequest,
@@ -62,9 +62,16 @@ export async function POST(
     });
   }
 
-  // Render HTML report (v1, v2, or v3)
+  // Render HTML report (v1, v2, v3, or v4)
   let reportHtml: string;
-  if (version === "v3") {
+  if (version === "v4") {
+    reportHtml = renderRiskV4ReportHtml({
+      company: lead?.company || "",
+      date: new Date().toLocaleDateString("ko-KR"),
+      output: output as unknown as import("@/lib/scoring/risk-assessment-v4").RiskAssessmentV4Output,
+      input: toolRun.input_json as Record<string, unknown>,
+    });
+  } else if (version === "v3") {
     reportHtml = renderRiskV3ReportHtml({
       company: lead?.company || "",
       date: new Date().toLocaleDateString("ko-KR"),
