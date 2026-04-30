@@ -12,6 +12,11 @@
 
 # testing
 /coverage
+/test-results
+/playwright-report
+
+# raw research/source materials (kept outside repo via _archive)
+/_raw
 
 # next.js
 /.next/
