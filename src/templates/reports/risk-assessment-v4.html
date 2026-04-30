@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>VDI N²SF 진단 리포트 v4</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif; color: #1a1a1a; padding: 36px; max-width: 800px; margin: 0 auto; font-size: 12px; line-height: 1.6; }
+
+    /* ── Header ── */
+    .header { border-bottom: 3px solid #2563eb; padding-bottom: 14px; margin-bottom: 20px; }
+    .header h1 { font-size: 20px; color: #2563eb; margin-bottom: 2px; }
+    .header .subtitle { font-size: 12px; color: #555; margin-bottom: 4px; }
+    .header .meta { font-size: 10px; color: #888; }
+
+    /* ── Risk grade badges (v3 legacy) ── */
+    .grade-badge { display: inline-block; padding: 3px 14px; border-radius: 16px; font-size: 11px; font-weight: 600; margin-bottom: 14px; }
+    .grade-low { background: #f0fdf4; color: #16a34a; }
+    .grade-medium { background: #fffbeb; color: #d97706; }
+    .grade-high { background: #fff7ed; color: #ea580c; }
+    .grade-critical { background: #fef2f2; color: #dc2626; }
+
+    /* ── Appropriateness label (§1 신규) ── */
+    .appropriateness-label { display: inline-block; margin-left: 10px; padding: 3px 12px; border-radius: 16px; font-size: 11px; font-weight: 600; background: #eff6ff; color: #2563eb; vertical-align: middle; }
+
+    /* ── Exec summary ── */
+    .exec-summary { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px; margin-bottom: 16px; font-size: 12px; color: #334155; line-height: 1.7; }
+
+    /* ── Score cards ── */
+    .score-row { display: flex; gap: 14px; margin-bottom: 16px; }
+    .score-card { flex: 1; text-align: center; padding: 14px 8px; border-radius: 8px; }
+    .score-card .label { font-size: 10px; color: #666; margin-bottom: 3px; }
+    .score-card .value { font-size: 28px; font-weight: 700; }
+    .score-card .sub { font-size: 9px; color: #888; margin-top: 2px; }
+    .card-score { background: #eff6ff; }
+    .card-score .value { color: #2563eb; }
+
+    /* ── Maturity table ── */
+    .maturity-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 11px; }
+    .maturity-table th, .maturity-table td { padding: 7px 10px; border: 1px solid #e5e7eb; text-align: center; }
+    .maturity-table th { background: #f9fafb; font-weight: 600; }
+    .maturity-table .bar-cell { text-align: left; padding-left: 8px; }
+    .level-bar { display: inline-block; height: 10px; border-radius: 4px; }
+    .level-1 { width: 20%; background: #ef4444; }
+    .level-2 { width: 40%; background: #f97316; }
+    .level-3 { width: 60%; background: #eab308; }
+    .level-4 { width: 80%; background: #22c55e; }
+    .level-5 { width: 100%; background: #16a34a; }
+
+    /* ── Benchmark ── */
+    .benchmark-box { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 12px; margin-bottom: 16px; }
+    .benchmark-box .label { font-size: 10px; color: #166534; }
+    .benchmark-box .comparison { font-size: 12px; font-weight: 600; color: #15803d; margin-top: 3px; }
+
+    /* ── Section ── */
+    .section { margin-bottom: 18px; }
+    .section h2 { font-size: 14px; margin-bottom: 8px; padding-bottom: 4px; border-bottom: 1px solid #e5e7eb; }
+
+    /* ── Risk cards (v3 legacy) ── */
+    .risk-card { border: 1px solid #fecaca; border-left: 4px solid #ef4444; border-radius: 6px; padding: 10px; margin-bottom: 8px; }
+    .risk-card .risk-title { font-size: 12px; font-weight: 600; color: #991b1b; margin-bottom: 4px; }
+    .risk-card .risk-meta { display: flex; gap: 12px; font-size: 10px; color: #666; margin-bottom: 4px; }
+    .risk-card .risk-meta .tag { padding: 1px 6px; border-radius: 4px; background: #fef2f2; color: #dc2626; font-weight: 500; }
+    .risk-card .risk-body { font-size: 11px; color: #444; }
+
+    /* ── Warning box ── */
+    .warning-box { background: #fffbeb; border: 1px solid #fde68a; border-radius: 8px; padding: 12px; margin-bottom: 16px; }
+    .warning-box h3 { font-size: 12px; color: #92400e; margin-bottom: 6px; font-weight: 600; }
+    .warning-item { font-size: 11px; color: #78350f; padding: 3px 0; line-height: 1.5; }
+    .warning-label { font-weight: 600; display: inline; }
+
+    /* ── Roadmap ── */
+    .roadmap-phase { display: flex; gap: 10px; margin-bottom: 12px; }
+    .phase-marker { flex-shrink: 0; width: 60px; text-align: center; }
+    .phase-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; margin: 0 auto 4px; }
+    .phase-1-color { background: #dc2626; }
+    .phase-2-color { background: #ea580c; }
+    .phase-3-color { background: #2563eb; }
+    .phase-dur { font-size: 9px; color: #888; }
+    .phase-content { flex: 1; border: 1px solid #e5e7eb; border-radius: 6px; padding: 8px 10px; }
+    .phase-content h4 { font-size: 12px; font-weight: 600; margin-bottom: 4px; }
+    .phase-action { font-size: 11px; color: #444; padding: 2px 0; }
+    .phase-action::before { content: "• "; color: #888; }
+
+    /* ── Input table ── */
+    .input-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+    .input-table th, .input-table td { padding: 5px 8px; border: 1px solid #e5e7eb; text-align: left; }
+    .input-table th { background: #f9fafb; font-weight: 600; width: 40%; }
+
+    /* ── Footer ── */
+    .footer { margin-top: 24px; padding-top: 10px; border-top: 1px solid #e5e7eb; font-size: 9px; color: #999; text-align: center; }
+    .page-break { page-break-before: always; }
+
+    /* ════════════════════════════════════
+       §4 N²SF 등급·모델 카드 (신규)
+       ════════════════════════════════════ */
+    .n2sf-grade-row { display: flex; gap: 16px; align-items: flex-start; margin-bottom: 16px; }
+
+    /* 등급 배지 (C/S/O) */
+    .n2sf-grade-badge { flex-shrink: 0; width: 72px; height: 72px; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; font-weight: 700; }
+    .n2sf-grade-badge .grade-letter { font-size: 32px; line-height: 1; }
+    .n2sf-grade-badge .grade-sublabel { font-size: 9px; margin-top: 2px; opacity: 0.85; }
+    .badge-C { background: #fef2f2; color: #dc2626; border: 2px solid #fecaca; }
+    .badge-S { background: #fffbeb; color: #b45309; border: 2px solid #fde68a; }
+    .badge-O { background: #f0fdf4; color: #16a34a; border: 2px solid #bbf7d0; }
+
+    /* 모델 카드 */
+    .n2sf-model-card { flex: 1; border: 1px solid #e2e8f0; border-left: 4px solid #2563eb; border-radius: 8px; padding: 12px 14px; background: #f8fafc; }
+    .n2sf-model-card .model-header { font-size: 13px; font-weight: 700; color: #1e3a5f; margin-bottom: 4px; }
+    .n2sf-model-card .model-scenario { font-size: 11px; color: #475569; line-height: 1.6; margin-bottom: 8px; }
+    .n2sf-model-card .model-grades { display: flex; gap: 6px; flex-wrap: wrap; }
+    .model-grade-chip { padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: 600; }
+    .chip-C { background: #fef2f2; color: #dc2626; }
+    .chip-S { background: #fffbeb; color: #b45309; }
+    .chip-O { background: #f0fdf4; color: #16a34a; }
+
+    /* other 모델 메시지 */
+    .n2sf-model-other { flex: 1; border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px 14px; background: #f9fafb; color: #6b7280; font-size: 11px; display: flex; align-items: center; }
+
+    /* ════════════════════════════════════
+       §5 N²SF 통제 준수 현황 (신규)
+       ════════════════════════════════════ */
+    .coverage-bar-wrap { margin-bottom: 14px; }
+    .coverage-bar-label { display: flex; justify-content: space-between; font-size: 10px; color: #475569; margin-bottom: 4px; }
+    .coverage-bar-track { height: 10px; background: #e5e7eb; border-radius: 6px; overflow: hidden; }
+    .coverage-bar-fill { height: 100%; background: #16a34a; border-radius: 6px; transition: width 0.3s; }
+
+    .controls-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
+    .controls-col { }
+    .controls-col-header { font-size: 11px; font-weight: 700; padding: 5px 8px; border-radius: 6px 6px 0 0; border: 1px solid; border-bottom: none; }
+    .col-matched .controls-col-header { background: #f0fdf4; color: #166534; border-color: #bbf7d0; }
+    .col-gap .controls-col-header { background: #fef2f2; color: #991b1b; border-color: #fecaca; }
+    .col-recommended .controls-col-header { background: #eff6ff; color: #1e40af; border-color: #bfdbfe; }
+
+    .controls-list { list-style: none; border: 1px solid; border-radius: 0 0 6px 6px; overflow: hidden; }
+    .col-matched .controls-list { border-color: #bbf7d0; }
+    .col-gap .controls-list { border-color: #fecaca; }
+    .col-recommended .controls-list { border-color: #bfdbfe; }
+
+    .controls-list li { padding: 4px 8px; font-size: 10px; color: #374151; border-bottom: 1px solid; display: flex; align-items: center; gap: 6px; }
+    .col-matched .controls-list li { border-bottom-color: #d1fae5; background: #fff; }
+    .col-gap .controls-list li { border-bottom-color: #fee2e2; background: #fff; }
+    .col-recommended .controls-list li { border-bottom-color: #dbeafe; background: #fff; }
+    .controls-list li:last-child { border-bottom: none; }
+
+    .ctrl-badge { flex-shrink: 0; padding: 1px 5px; border-radius: 4px; font-size: 9px; font-weight: 600; }
+    .badge-gap { background: #fef2f2; color: #dc2626; }
+    .badge-best { background: #eff6ff; color: #2563eb; }
+
+    /* ════════════════════════════════════
+       §8 모델별 권고 통제 카드 (신규)
+       ════════════════════════════════════ */
+    .emphasis-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+    .emphasis-card { border: 1px solid #e2e8f0; border-left: 4px solid #2563eb; border-radius: 6px; padding: 10px 10px 10px 12px; background: #fff; }
+    .emphasis-card .ctrl-id { font-size: 10px; font-weight: 700; color: #2563eb; margin-bottom: 3px; font-family: 'Menlo', 'Consolas', monospace; }
+    .emphasis-card .ctrl-title { font-size: 10px; color: #374151; line-height: 1.5; }
+
+    /* 모델별 악센트 컬러 */
+    .accent-model3 { border-left-color: #2563eb; }
+    .accent-model3 .ctrl-id { color: #2563eb; }
+    .accent-model8 { border-left-color: #7c3aed; }
+    .accent-model8 .ctrl-id { color: #7c3aed; }
+    .accent-model10 { border-left-color: #0891b2; }
+    .accent-model10 .ctrl-id { color: #0891b2; }
+
+    /* ════════════════════════════════════
+       §11 법적 면책 박스 (신규)
+       ════════════════════════════════════ */
+    .disclaimer-box { background: #f8fafc; border: 1px solid #cbd5e1; border-left: 4px solid #64748b; border-radius: 8px; padding: 16px 18px; }
+    .disclaimer-box h3 { font-size: 13px; font-weight: 700; color: #1e293b; margin-bottom: 10px; }
+    .disclaimer-box p { font-size: 11px; color: #334155; line-height: 1.75; margin-bottom: 8px; }
+    .disclaimer-box strong { color: #1e293b; }
+    .disclaimer-box ol { margin: 8px 0 8px 16px; }
+    .disclaimer-box ol li { font-size: 11px; color: #334155; line-height: 1.7; padding: 1px 0; }
+    .disclaimer-box .disclaimer-contact { font-size: 10px; color: #64748b; margin-top: 8px; }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════════════
+       §1 Executive Summary (수정: appropriateness_label 추가)
+       ══════════════════════════════════════════════ -->
+  <div class="header">
+    <h1>VDI N²SF 진단 리포트</h1>
+    <div class="subtitle">Executive Summary — 6개 영역 · N²SF 통제 준수 분석</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <span class="grade-badge grade-{{risk_level}}">리스크 등급: {{risk_level_label}}</span>
+  <span class="appropriateness-label">{{appropriateness_label_kr}}</span>
+
+  <div class="exec-summary">{{executive_summary}}</div>
+
+  <!-- ══════════════════════════════════════════════
+       §2 점수 + 5단계 성숙도 (유지)
+       ══════════════════════════════════════════════ -->
+  <div class="score-row">
+    <div class="score-card card-score">
+      <div class="label">종합 리스크 점수</div>
+      <div class="value">{{score}}</div>
+      <div class="sub">/ 100</div>
+    </div>
+    <div class="score-card" style="background:#fef2f2;">
+      <div class="label">Migration</div>
+      <div class="value" style="color:#dc2626; font-size:20px;">{{migration_level}}/5</div>
+      <div class="sub">{{migration_score}}점</div>
+    </div>
+    <div class="score-card" style="background:#fff7ed;">
+      <div class="label">DR/Backup</div>
+      <div class="value" style="color:#ea580c; font-size:20px;">{{dr_level}}/5</div>
+      <div class="sub">{{dr_score}}점</div>
+    </div>
+    <div class="score-card" style="background:#fffbeb;">
+      <div class="label">Operations</div>
+      <div class="value" style="color:#d97706; font-size:20px;">{{ops_level}}/5</div>
+      <div class="sub">{{ops_score}}점</div>
+    </div>
+    <div class="score-card" style="background:#f0fdf4;">
+      <div class="label">Automation</div>
+      <div class="value" style="color:#16a34a; font-size:20px;">{{auto_level}}/5</div>
+      <div class="sub">{{auto_score}}점</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>운영 성숙도 모델</h2>
+    <table class="maturity-table">
+      <tr><th>영역</th><th>점수</th><th>등급</th><th style="width:40%;">수준</th></tr>
+      <tr><td>Migration Readiness</td><td>{{migration_score}}/25</td><td>{{migration_level}}/5</td><td class="bar-cell"><span class="level-bar level-{{migration_level}}"></span></td></tr>
+      <tr><td>DR/Backup</td><td>{{dr_score}}/25</td><td>{{dr_level}}/5</td><td class="bar-cell"><span class="level-bar level-{{dr_level}}"></span></td></tr>
+      <tr><td>Operations</td><td>{{ops_score}}/25</td><td>{{ops_level}}/5</td><td class="bar-cell"><span class="level-bar level-{{ops_level}}"></span></td></tr>
+      <tr><td>Automation &amp; Scale</td><td>{{auto_score}}/25</td><td>{{auto_level}}/5</td><td class="bar-cell"><span class="level-bar level-{{auto_level}}"></span></td></tr>
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §3 벤치마크 비교 (유지)
+       ══════════════════════════════════════════════ -->
+  <div class="benchmark-box">
+    <div class="label">{{benchmark_text}}</div>
+    <div class="comparison">{{benchmark_comparison}}</div>
+  </div>
+
+  <div class="section">
+    <h2>핵심 리스크 요약</h2>
+    {{risk_summary_html}}
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §4 N²SF 등급·모델 카드 (신규, 새 페이지)
+       ══════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <div class="header">
+    <h1>VDI N²SF 진단 리포트</h1>
+    <div class="subtitle">N²SF 등급 분류 &amp; 서비스 모델</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <div class="section">
+    <h2>§4 N²SF 등급 분류 및 적용 모델</h2>
+    <div class="n2sf-grade-row">
+      <!-- 등급 배지 -->
+      <div class="n2sf-grade-badge badge-{{resolved_grade}}">
+        <span class="grade-letter">{{resolved_grade}}</span>
+        <span class="grade-sublabel">{{resolved_grade_label}}</span>
+      </div>
+      <!-- 모델 카드 (service_model !== "other") -->
+      <!-- 서버측: "other" 선택 시 아래 .n2sf-model-card 블록을 .n2sf-model-other 메시지로 교체 -->
+      <div class="n2sf-model-card">
+        <div class="model-header">{{service_model_name}}</div>
+        <div class="model-scenario">{{service_model_scenario}}</div>
+        <div class="model-grades">{{service_model_grades}}</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §5 N²SF 통제 준수 현황 (신규)
+       ══════════════════════════════════════════════ -->
+  <div class="section">
+    <h2>§5 N²SF 통제 준수 현황</h2>
+
+    <!-- 커버리지 진행 바 -->
+    <div class="coverage-bar-wrap">
+      <div class="coverage-bar-label">
+        <span>충족 통제 비율 (matched / matched+gap)</span>
+        <span style="font-weight:600; color:#16a34a;">{{coverage_pct}}%</span>
+      </div>
+      <div class="coverage-bar-track">
+        <div class="coverage-bar-fill" style="width:{{coverage_pct}}%;"></div>
+      </div>
+    </div>
+
+    <!-- 3컬럼 통제 표 -->
+    <div class="controls-grid">
+      <!-- 충족 통제 -->
+      <div class="controls-col col-matched">
+        <div class="controls-col-header">충족 통제</div>
+        <ul class="controls-list">
+          {{matched_controls_html}}
+        </ul>
+      </div>
+      <!-- 미흡 통제 -->
+      <div class="controls-col col-gap">
+        <div class="controls-col-header">미흡 통제</div>
+        <ul class="controls-list">
+          {{gap_controls_html}}
+        </ul>
+      </div>
+      <!-- 권고 통제 -->
+      <div class="controls-col col-recommended">
+        <div class="controls-col-header">권고 통제</div>
+        <ul class="controls-list">
+          {{recommended_controls_html}}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §6 리스크 상세 (수정: 새 페이지)
+       ══════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <div class="header">
+    <h1>VDI N²SF 진단 리포트</h1>
+    <div class="subtitle">Detailed Risk Analysis</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <div class="section">
+    <h2>§6 주요 리스크 상세 분석</h2>
+    {{risk_details_html}}
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §7 현황 투영 (유지)
+       ══════════════════════════════════════════════ -->
+  <div class="warning-box">
+    <h3>§7 현 상태 유지 시 예상 시나리오</h3>
+    <div class="warning-item"><span class="warning-label">단기 (1~3개월): </span>{{projection_short}}</div>
+    <div class="warning-item"><span class="warning-label">중기 (6~12개월): </span>{{projection_mid}}</div>
+    <div class="warning-item"><span class="warning-label">대형 장애/재해/침해 시: </span>{{projection_large}}</div>
+  </div>
+
+  <div class="section">
+    <h2>진단 입력 정보</h2>
+    <table class="input-table">
+      {{input_table_html}}
+    </table>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §8 모델별 권고 통제 카드 (신규, 새 페이지)
+       — service_model === "other" 시 서버측에서 섹션 전체를 빈 문자열로 치환
+       ══════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <div class="header">
+    <h1>VDI N²SF 진단 리포트</h1>
+    <div class="subtitle">모델별 핵심 통제 &amp; 개선 로드맵</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <div class="section">
+    <h2>§8 {{service_model_name}} 핵심 통제</h2>
+    <div class="emphasis-grid">
+      {{emphasis_controls_html}}
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §9 3단계 로드맵 (유지)
+       ══════════════════════════════════════════════ -->
+  <div class="section">
+    <h2>§9 단계별 개선 로드맵</h2>
+    {{roadmap_html}}
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §10 Next Steps (유지)
+       ══════════════════════════════════════════════ -->
+  <div class="section">
+    <h2>§10 권장 다음 단계</h2>
+    {{next_steps_html}}
+  </div>
+
+  <!-- ══════════════════════════════════════════════
+       §11 법적 면책·외부 절차 안내 (신규, 새 페이지)
+       ══════════════════════════════════════════════ -->
+  <div class="page-break"></div>
+  <div class="header">
+    <h1>VDI N²SF 진단 리포트</h1>
+    <div class="subtitle">법적 면책 및 외부 절차 안내</div>
+    <div class="meta">{{company}} | 생성일: {{date}}</div>
+  </div>
+
+  <div class="section">
+    <h2>§11 법적 면책 및 외부 절차 안내</h2>
+    <div class="disclaimer-box">
+      <h3>본 진단의 한계와 외부 절차 안내</h3>
+      <p>
+        본 진단은 N²SF(국가 망 보안체계) 적절성 평가의 사전 준비도를 측정하는 도구입니다.
+        <strong>국가정보원 보안성 검토는 별도의 외부 절차이며, 본 진단 결과로 대체될 수 없습니다.</strong>
+        보안성 검토 신청 시 다음 4종 문서가 필요합니다.
+      </p>
+      <ol>
+        <li>사업계획서 (N²SF 5단계 통제구현 계획 포함)</li>
+        <li>제안요청서</li>
+        <li>정보통신망 구성도 (N²SF 통제 적용 후 구조)</li>
+        <li>자체 보안대책 (N²SF 5단계 활동 결과 종합 산출물)</li>
+      </ol>
+      <p class="disclaimer-contact">
+        보안성 검토 절차·일정은 국가정보원 또는 정보보안담당관에게 문의하시기 바랍니다.
+      </p>
+    </div>
+  </div>
+
+  <div class="footer">
+    &copy; VDI Expert | 본 리포트는 N²SF 1차 소스(국가정보원 가이드라인 v1.0) 기반 진단 결과를 자동 생성한 것입니다. 실제 보안성 검토는 국가정보원 공식 절차를 통해 진행하시기 바랍니다.
+  </div>
+
+</body>
+</html>
