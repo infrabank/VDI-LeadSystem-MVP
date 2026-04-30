@@ -9,7 +9,9 @@
 
 export const company = {
   name: "mlkit",
-  legalName: "mlkit Corporation",
+  nameKo: "마이로켓",
+  legalName: "(주)마이로켓",
+  legalNameEn: "MyRocket Inc.",
   tagline: "Enterprise Workspace Security · Data Protection",
   taglineKo: "기업 보안 워크스페이스·데이터 보호 전문",
   description:
@@ -86,10 +88,50 @@ export const certifications = [
   { name: "ISO/IEC 27001", desc: "정보보안 경영 시스템 (예정)" },
 ];
 
-export const partnerships = [
-  { name: "Acronis", role: "Authorized Partner / MSP", color: "red" },
-  { name: "VMware (Omnissa)", role: "Horizon VDI Solutions Partner", color: "blue" },
-  { name: "Igloo Corp.", role: "보안 운영 협력", color: "indigo" },
+export interface Partnership {
+  name: string;
+  role: string;
+  domain: "secure-workspace" | "data-protection";
+  /** /public/partners/ 하위 SVG 파일명 (확장자 포함). 자산 업로드 후 활성화. */
+  logoFile?: string;
+  /** 로고 미준비 시 텍스트 칩 색상 (tailwind class) */
+  textColor: string;
+  bgColor: string;
+}
+
+export const partnerships: Partnership[] = [
+  {
+    name: "VMware",
+    role: "VDI · Workspace ONE Partner",
+    domain: "secure-workspace",
+    logoFile: "vmware.svg",
+    textColor: "text-[#607078]",
+    bgColor: "bg-gray-50",
+  },
+  {
+    name: "Omnissa",
+    role: "Horizon · UEM Solutions Partner",
+    domain: "secure-workspace",
+    logoFile: "omnissa.svg",
+    textColor: "text-[#0091da]",
+    bgColor: "bg-sky-50",
+  },
+  {
+    name: "Citrix",
+    role: "DaaS · NetScaler Partner",
+    domain: "secure-workspace",
+    logoFile: "citrix.svg",
+    textColor: "text-[#452170]",
+    bgColor: "bg-violet-50",
+  },
+  {
+    name: "Acronis",
+    role: "Cyber Protect Authorized Partner / MSP",
+    domain: "data-protection",
+    logoFile: "acronis.svg",
+    textColor: "text-[#cc0000]",
+    bgColor: "bg-red-50",
+  },
 ];
 
 export const navLinks = [

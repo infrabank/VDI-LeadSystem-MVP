@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { practices, company } from "@/lib/site-config";
+import { practices, company, partnerships } from "@/lib/site-config";
+import { PartnerBadge } from "../../PartnerBadge";
+
+const swPartners = partnerships.filter((p) => p.domain === "secure-workspace");
 
 const p = practices["secure-workspace"];
 
@@ -181,6 +184,20 @@ export default function SecureWorkspacePage() {
               <span className="text-sm font-semibold text-blue-600">진단 시작 →</span>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* Technology Partners */}
+      <section className="bg-gray-50 border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+          <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 md:mb-8">
+            VDI · DaaS Technology Partners
+          </p>
+          <div className="grid grid-cols-3 gap-4 md:gap-6 max-w-2xl mx-auto">
+            {swPartners.map((p) => (
+              <PartnerBadge key={p.name} partner={p} />
+            ))}
+          </div>
         </div>
       </section>
 

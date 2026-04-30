@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { company, practicesList, partnerships } from "@/lib/site-config";
+import { PartnerBadge } from "./PartnerBadge";
 
 export default function HomePage() {
   return (
@@ -164,11 +165,9 @@ export default function HomePage() {
           <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 md:mb-8">
             Technology Partnerships
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-3 text-center">
+          <div className="flex flex-wrap items-center justify-center gap-x-8 sm:gap-x-12 gap-y-4">
             {partnerships.map((p) => (
-              <div key={p.name} className="text-sm sm:text-base font-bold text-gray-500">
-                {p.name}
-              </div>
+              <PartnerBadge key={p.name} partner={p} variant="strip" />
             ))}
           </div>
         </div>

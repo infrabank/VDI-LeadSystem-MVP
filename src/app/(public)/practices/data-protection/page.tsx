@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { practices, company } from "@/lib/site-config";
+import { practices, company, partnerships } from "@/lib/site-config";
+import { PartnerBadge } from "../../PartnerBadge";
+
+const dpPartners = partnerships.filter((p) => p.domain === "data-protection");
 
 const p = practices["data-protection"];
 
@@ -166,6 +169,20 @@ export default function DataProtectionPage() {
                 </div>
                 <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">{u.desc}</p>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technology Partner */}
+      <section className="bg-gray-50 border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+          <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 md:mb-8">
+            Cyber Protection Technology Partner
+          </p>
+          <div className="max-w-sm mx-auto">
+            {dpPartners.map((p) => (
+              <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
         </div>

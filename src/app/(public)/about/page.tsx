@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { company, practicesList, partnerships, certifications } from "@/lib/site-config";
+import { PartnerBadge } from "../PartnerBadge";
 
 export const metadata = {
   title: `About | ${company.name}`,
@@ -15,9 +16,12 @@ export default function AboutPage() {
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             About {company.name}
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 kr-keep-all">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 kr-keep-all">
             {company.taglineKo}
           </h1>
+          <p className="text-xs sm:text-sm text-blue-200 mb-4 font-medium">
+            {company.legalName} · {company.legalNameEn}
+          </p>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             {company.description}
           </p>
@@ -87,15 +91,9 @@ export default function AboutPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 md:mb-12 kr-keep-all">
             기술·운영 파트너
           </h2>
-          <div className="grid sm:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {partnerships.map((p) => (
-              <div
-                key={p.name}
-                className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 text-center"
-              >
-                <p className="text-base sm:text-lg font-bold text-gray-900 mb-1.5">{p.name}</p>
-                <p className="text-xs text-gray-500 kr-keep-all">{p.role}</p>
-              </div>
+              <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
           <div className="text-center mt-8">

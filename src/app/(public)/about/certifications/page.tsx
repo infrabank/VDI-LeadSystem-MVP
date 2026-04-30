@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { company, partnerships, certifications } from "@/lib/site-config";
+import { PartnerBadge } from "../../PartnerBadge";
 
 export const metadata = {
   title: `Certifications & Partnerships | ${company.name}`,
@@ -60,18 +61,25 @@ export default function CertificationsPage() {
           </div>
         </section>
 
-        {/* Partnerships */}
+        {/* Partnerships — domain별 그룹 */}
         <section className="mb-12 md:mb-16">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-5 kr-keep-all">기술·운영 파트너</h2>
+
+          <h3 className="text-sm font-semibold text-blue-600 mb-3 mt-2 uppercase tracking-widest">
+            보안 워크스페이스 (VDI · DaaS)
+          </h3>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
+            {partnerships.filter((p) => p.domain === "secure-workspace").map((p) => (
+              <PartnerBadge key={p.name} partner={p} />
+            ))}
+          </div>
+
+          <h3 className="text-sm font-semibold text-emerald-600 mb-3 mt-2 uppercase tracking-widest">
+            데이터 보호 (백업 · 사이버복원력)
+          </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {partnerships.map((p) => (
-              <div
-                key={p.name}
-                className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
-              >
-                <p className="text-base font-bold text-gray-900 mb-1">{p.name}</p>
-                <p className="text-xs text-gray-500 kr-keep-all">{p.role}</p>
-              </div>
+            {partnerships.filter((p) => p.domain === "data-protection").map((p) => (
+              <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
         </section>
