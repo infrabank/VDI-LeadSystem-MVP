@@ -9,9 +9,12 @@ export default function PublicLayout({
     <div className="min-h-screen flex flex-col bg-white text-gray-900">
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 print:hidden">
         <nav className="max-w-5xl mx-auto px-6 flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-1.5 font-bold text-xl text-gray-900 tracking-tight">
+          <Link href="/" className="flex items-center gap-2 font-bold text-xl text-gray-900 tracking-tight">
             VDI Expert
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mb-3 inline-block"></span>
+            <span className="text-xs font-medium text-blue-600 tracking-wide hidden sm:inline-block mt-0.5">
+              Secure Workspace Practice
+            </span>
           </Link>
           <div className="flex items-center gap-8 text-sm font-medium">
             <Link
@@ -48,7 +51,7 @@ export default function PublicLayout({
               href="/tools/risk-assessment"
               className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
             >
-              무료 리스크 진단
+              N²SF 정렬 진단
             </Link>
           </div>
         </nav>
@@ -61,42 +64,38 @@ export default function PublicLayout({
           <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-1.5 mb-3">
+              <div className="flex items-center gap-1.5 mb-1">
                 <p className="font-bold text-gray-900 text-base">VDI Expert</p>
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-600 mb-2 inline-block"></span>
               </div>
+              <p className="text-xs text-blue-600 font-semibold mb-3">Secure Workspace Practice</p>
               <p className="text-sm text-gray-500 leading-relaxed">
-                VDI 마이그레이션과 운영에 관한 체크리스트, 케이스 스터디, 리스크 진단 도구를 통해 실질적인 기술 인사이트를 제공합니다.
+                공공·금융을 위한 보안 워크스페이스·접근통제 자문. N²SF 정렬 진단부터 Zero Trust 전환·VDI 운영·CDS/망연계까지 일관된 전문성을 제공합니다.
               </p>
             </div>
 
-            {/* Navigation */}
+            {/* Diagnosis Tools */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">바로가기</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">진단 도구</p>
               <ul className="space-y-2.5 text-sm">
                 <li>
-                  <Link href="/content" className="text-gray-600 hover:text-blue-600 transition-colors">
-                    콘텐츠 라이브러리
+                  <Link href="/tools/risk-assessment" className="text-gray-600 hover:text-blue-600 transition-colors font-medium">
+                    N²SF 정렬 진단
                   </Link>
                 </li>
                 <li>
-                  <Link href="/tools/risk-assessment" className="text-gray-600 hover:text-blue-600 transition-colors">
-                    무료 리스크 진단
+                  <Link href="/diagnosis/n2sf-readiness" className="text-gray-600 hover:text-blue-600 transition-colors">
+                    N²SF 전환 준비도 진단
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/diagnosis/vdi-transition" className="text-gray-600 hover:text-blue-600 transition-colors">
+                    VDI 역할 재정의 진단
                   </Link>
                 </li>
                 <li>
                   <Link href="/tools/roi-calculator" className="text-gray-600 hover:text-green-600 transition-colors">
                     ROI 계산기
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/content?type=checklist" className="text-gray-600 hover:text-blue-600 transition-colors">
-                    체크리스트
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/content?type=case" className="text-gray-600 hover:text-blue-600 transition-colors">
-                    케이스 스터디
                   </Link>
                 </li>
               </ul>
@@ -129,11 +128,11 @@ export default function PublicLayout({
               </ul>
             </div>
 
-            {/* Contact / Social */}
+            {/* Contact */}
             <div>
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">문의</p>
               <p className="text-sm text-gray-500 leading-relaxed mb-4">
-                VDI 전문가와의 기술 상담 및 프로젝트 협업 문의는 아래로 연락해주세요.
+                N²SF 정렬 진단·Zero Trust 전환·VDI 운영에 관한 기술 상담 및 프로젝트 협업 문의를 환영합니다.
               </p>
               <a
                 href="mailto:contact@vdiexpert.kr"
@@ -149,7 +148,7 @@ export default function PublicLayout({
 
           <div className="mt-10 pt-6 border-t border-gray-200 flex items-center justify-between text-xs text-gray-400">
             <span>&copy; {new Date().getFullYear()} VDI Expert. All rights reserved.</span>
-            <span className="text-gray-300">VDI Migration &amp; Operations Platform</span>
+            <span className="text-gray-300">VDI Expert · Secure Workspace Practice — 공공·금융을 위한 보안 워크스페이스·접근통제 자문</span>
           </div>
         </div>
       </footer>

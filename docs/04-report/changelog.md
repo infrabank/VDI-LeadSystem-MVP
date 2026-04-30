@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0] - 2026-04-30 — 리포지셔닝: Secure Workspace Practice
+- 사이트 전체 포지셔닝을 "VDI 전문" → "공공·금융 보안 워크스페이스·접근통제 전문 (N²SF 정렬)"으로 재편
+- 브랜드 부제 "Secure Workspace Practice" 추가 (헤더·푸터·SEO 메타)
+- Hero H1·서브헤드·CTA·통계 섹션·Features 섹션 전체를 N²SF 4 Service Pillar 중심으로 교체
+- N²SF 진단센터(/n2sf) — N²SF 정렬 진단(v4) 카드를 1순위로 추가, 4종 진단 도구 그리드 재편
+- 루트 layout.tsx: title/description/openGraph/twitter/JSON-LD(ProfessionalService) N²SF 정렬로 업데이트
+
 ## [0.6.0] - 2026-04-30 — N²SF Primary-Source Alignment v4
 
 ### Added

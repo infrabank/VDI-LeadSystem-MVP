@@ -2,9 +2,9 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 
 export const metadata = {
-  title: "공공기관 보안 전환 진단센터 | N²SF · 제로트러스트",
+  title: "N²SF 진단센터 | 정렬 진단·전환 준비도·역할 재정의 통합 허브 | VDI Expert",
   description:
-    "N²SF(국가 망 보안체계) 시행이 임박했습니다. 기존 망분리·VDI 환경의 전환 준비도를 진단하고, 단계적 전환 로드맵을 받아보세요.",
+    "N²SF 정렬 진단(274개 보안통제 매핑)·전환 준비도 진단(Level 1~5)·VDI 역할 재정의 진단·ROI 계산기. 공공·금융 보안 워크스페이스 전환의 모든 진단을 한 곳에서.",
 };
 
 interface ContentItemRow {
@@ -39,31 +39,32 @@ export default async function N2sfHubPage() {
             2026년 5월 N²SF 시행 예정 — 지금이 준비 시점
           </div>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-            망분리 중심 VDI 환경,
+            N²SF 진단센터
             <br className="hidden sm:block" />
-            <span className="text-blue-300">N²SF 시대에도 그대로 유지할 수 있을까요?</span>
+            <span className="text-blue-300">정렬 진단·전환 준비도·역할 재정의 통합 허브</span>
           </h1>
           <p className="mt-6 text-base md:text-lg text-blue-100 leading-relaxed max-w-3xl">
-            N²SF(국가 망 보안체계)는 망분리를 폐지하지 않습니다. 그러나 “모든 업무에
-            VDI”라는 단순 구조는 더 이상 통하지 않습니다. <strong className="text-white">VDI는 끝나는 것이 아니라
-            역할이 바뀝니다.</strong>
+            N²SF(국가 망 보안체계)는 망분리를 폐지하지 않습니다. 그러나 "모든 업무에
+            VDI"라는 단순 구조는 더 이상 통하지 않습니다. <strong className="text-white">VDI는 끝나는 것이 아니라
+            역할이 바뀝니다.</strong> 274개 보안통제 매핑부터 단계적 전환 로드맵까지,
+            공공·금융 기관에 필요한 모든 진단을 무료로 제공합니다.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
             <Link
-              href="/diagnosis/n2sf-readiness"
+              href="/tools/risk-assessment"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-blue-800 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-lg"
             >
-              N²SF 전환 준비도 진단 (3분)
+              N²SF 정렬 진단 시작 (7분)
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
             <Link
-              href="/diagnosis/vdi-transition"
+              href="/diagnosis/n2sf-readiness"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white/10 border border-white/30 text-white rounded-xl font-semibold hover:bg-white/20 transition-colors"
             >
-              VDI 역할 재정의 진단 (2분)
+              N²SF 전환 준비도 진단 (3분)
             </Link>
           </div>
         </div>
@@ -77,7 +78,7 @@ export default async function N2sfHubPage() {
           </h2>
           <p className="text-slate-600 mb-10 max-w-3xl">
             정부 정책, 라이선스 구조, 클라우드 진입 절차 모두 동시에 변화 중입니다.
-            ‘갱신만 하면 되겠지’라는 가정이 가장 위험합니다.
+            '갱신만 하면 되겠지'라는 가정이 가장 위험합니다.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -89,12 +90,12 @@ export default async function N2sfHubPage() {
             <FactCard
               date="2026.05"
               title="개정 사이버보안 지침 시행"
-              body="MFA·보안 예산 15%·인력 10% 의무화. 망분리는 ‘대체’로 명문화."
+              body="MFA·보안 예산 15%·인력 10% 의무화. 망분리는 '대체'로 명문화."
             />
             <FactCard
               date="2027~"
               title="신규 사업 자동 N²SF 사양"
-              body="갱신 시점이 지나면 ‘기존 VDI’ 단일 사양 발주가 사라집니다."
+              body="갱신 시점이 지나면 '기존 VDI' 단일 사양 발주가 사라집니다."
             />
           </div>
         </div>
@@ -132,31 +133,54 @@ export default async function N2sfHubPage() {
         </div>
       </section>
 
-      {/* Two Diagnosis CTA */}
+      {/* Four Diagnosis Tools */}
       <section className="bg-white border-y border-slate-200">
         <div className="max-w-5xl mx-auto px-4 py-16">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-center">
-            무료 진단 도구 2종
+            진단 도구 4종
           </h2>
           <p className="text-slate-600 mb-10 text-center max-w-2xl mx-auto">
-            기존 환경을 ‘갱신할지’가 아니라 ‘어디에 어떻게 남길지’를 판단하는 데 도움이 되는
-            룰 기반 진단 도구입니다. 이메일·기관 정보 외에 별도 가입은 필요하지 않습니다.
+            N²SF 정렬부터 VDI 운영 ROI까지, 공공·금융 보안 책임자를 위한 룰 기반 진단 도구입니다.
+            이메일·기관 정보 외에 별도 가입은 필요하지 않습니다.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {/* 1순위: N²SF 정렬 진단 — 강조 카드 */}
+            <DiagnosisCta
+              href="/tools/risk-assessment"
+              tag="N²SF · 8영역 · 28문항"
+              title="N²SF 정렬 진단 (v4)"
+              description="274개 보안통제 매핑 · 8영역 28문항 · C/S/O 등급 자가분류 · 모델 3·8·10 권고. 공공·금융 기관의 N²SF 정렬 현황을 가장 체계적으로 진단합니다."
+              meta="8개 단계 · 약 7분"
+              ctaText="진단 시작"
+              primary
+            />
+            {/* 2순위: N²SF 전환 준비도 */}
             <DiagnosisCta
               href="/diagnosis/n2sf-readiness"
-              tag="N²SF · 5영역 · 15문항"
+              tag="N²SF · 5섹션 · 15문항"
               title="N²SF 전환 준비도 진단"
               description="망분리·등급분류·인증·SaaS·운영 5개 영역의 준비도를 Level 1~5로 산출하고, 3단계 전환 로드맵을 제시합니다."
-              ctaText="진단 시작 (3분)"
+              meta="5개 영역 · 약 3분"
+              ctaText="진단 시작"
             />
+            {/* 3순위: VDI 역할 재정의 */}
             <DiagnosisCta
               href="/diagnosis/vdi-transition"
               tag="VDI 재배치 · 9문항"
               title="VDI 역할 재정의 진단"
-              description="현재 VDI 환경이 ‘유지 강화/제로트러스트 보완/점진적 축소/재설계’ 중 어디에 해당하는지 4가지 시나리오로 분류합니다."
-              ctaText="진단 시작 (2분)"
+              description="현재 VDI 환경이 '유지 강화/제로트러스트 보완/점진적 축소/재설계' 중 어디에 해당하는지 4가지 시나리오로 분류합니다."
+              meta="9문항 · 약 2분"
+              ctaText="진단 시작"
+            />
+            {/* 4순위: ROI 계산기 */}
+            <DiagnosisCta
+              href="/tools/roi-calculator"
+              tag="운영비용 시뮬레이션"
+              title="VDI 운영 ROI 계산기"
+              description="마이그레이션 비용, 장애 손실, 개선 투자 ROI를 수치로 산정합니다. 경영진 보고용 PDF로 제공됩니다."
+              meta="비용 시뮬레이션 · 약 3분"
+              ctaText="계산 시작"
             />
           </div>
         </div>
@@ -203,14 +227,14 @@ export default async function N2sfHubPage() {
             기존 망분리 구조를 아는 파트너가 전환 리스크를 줄입니다.
           </h2>
           <p className="text-blue-100 mb-8 leading-relaxed">
-            VDI 운영 경험이 있는 전문가가 직접 진단·컨설팅합니다. <br />
-            대형 SI의 패키지 사업자가 놓치는 ‘기존 환경의 안정 운영’을 함께 설계합니다.
+            VDI 운영 경험이 있는 전문가가 직접 N²SF 정렬 진단·컨설팅합니다. <br />
+            대형 SI의 패키지 사업자가 놓치는 '기존 환경의 안정 운영'을 함께 설계합니다.
           </p>
           <Link
-            href="/diagnosis/n2sf-readiness"
+            href="/tools/risk-assessment"
             className="inline-flex items-center gap-2 px-7 py-3 bg-white text-blue-800 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-lg"
           >
-            지금 진단 시작
+            N²SF 정렬 진단 시작
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
@@ -244,25 +268,34 @@ function DiagnosisCta({
   tag,
   title,
   description,
+  meta,
   ctaText,
+  primary = false,
 }: {
   href: string;
   tag: string;
   title: string;
   description: string;
+  meta: string;
   ctaText: string;
+  primary?: boolean;
 }) {
   return (
     <Link
       href={href}
-      className="block p-7 bg-gradient-to-br from-blue-50 to-white border border-blue-200 rounded-xl shadow-sm hover:shadow-md hover:border-blue-400 transition-all"
+      className={`block p-7 rounded-xl shadow-sm hover:shadow-md transition-all ${
+        primary
+          ? "bg-gradient-to-br from-blue-600 to-blue-700 border-2 border-blue-500 hover:border-blue-400 text-white"
+          : "bg-gradient-to-br from-blue-50 to-white border border-blue-200 hover:border-blue-400"
+      }`}
     >
-      <p className="text-xs font-bold text-blue-700 uppercase tracking-wide mb-2">
+      <p className={`text-xs font-bold uppercase tracking-wide mb-2 ${primary ? "text-blue-200" : "text-blue-700"}`}>
         {tag}
       </p>
-      <h3 className="text-lg font-bold text-slate-900 mb-3">{title}</h3>
-      <p className="text-sm text-slate-600 leading-relaxed mb-4">{description}</p>
-      <span className="inline-flex items-center gap-2 text-sm font-semibold text-blue-700">
+      <h3 className={`text-lg font-bold mb-3 ${primary ? "text-white" : "text-slate-900"}`}>{title}</h3>
+      <p className={`text-sm leading-relaxed mb-3 ${primary ? "text-blue-100" : "text-slate-600"}`}>{description}</p>
+      <p className={`text-xs mb-4 ${primary ? "text-blue-200" : "text-slate-400"}`}>{meta}</p>
+      <span className={`inline-flex items-center gap-2 text-sm font-semibold ${primary ? "text-white" : "text-blue-700"}`}>
         {ctaText} →
       </span>
     </Link>
