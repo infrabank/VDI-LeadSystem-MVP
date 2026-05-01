@@ -126,7 +126,7 @@ export default function SecureWorkspacePage() {
             {[
               { stat: "274개", label: "보안통제 매핑", desc: "N²SF 정렬 진단 기준" },
               { stat: "8개", label: "진단 영역", desc: "C/S/O 등급 전 영역 커버" },
-              { stat: "50+", label: "공공·금융 기관", desc: "N²SF 자문 도입 사례" },
+              { stat: "11+", label: "운영 고객사", desc: "공공·연구기관 다수 포함" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-1">
                 <p className="text-2xl sm:text-3xl font-bold text-blue-600 tracking-tight">{item.stat}</p>

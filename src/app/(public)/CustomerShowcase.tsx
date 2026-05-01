@@ -1,4 +1,4 @@
-import { customers, customerCategoryLabel, type CustomerCategory } from "@/lib/site-config";
+import { customers, customerCategoryLabel, customerDisplayName, type CustomerCategory } from "@/lib/site-config";
 
 const order: CustomerCategory[] = ["public", "research", "private"];
 
@@ -24,10 +24,10 @@ export function CustomerShowcase({ variant = "compact" }: Props) {
         {customers.map((c) => (
           <div
             key={c.code}
-            title={c.name}
+            title={c.disclosed ? c.name : "외부 표기 동의 미확인 — 익명 표기"}
             className="text-xs sm:text-sm font-semibold text-gray-500 hover:text-gray-700 transition-colors px-2 py-1"
           >
-            {c.name}
+            {customerDisplayName(c)}
           </div>
         ))}
       </div>
@@ -54,9 +54,12 @@ export function CustomerShowcase({ variant = "compact" }: Props) {
                 <div
                   key={c.code}
                   className="bg-white rounded-lg border border-gray-200 px-4 py-3 hover:border-gray-300 transition-colors"
+                  title={c.disclosed ? c.name : "외부 표기 동의 미확인 — 익명 표기"}
                 >
-                  <p className="text-sm font-bold text-gray-900 kr-keep-all">{c.name}</p>
-                  <p className="text-[10px] text-gray-400 font-mono mt-0.5">{c.code}</p>
+                  <p className="text-sm font-bold text-gray-900 kr-keep-all">{customerDisplayName(c)}</p>
+                  {c.disclosed && (
+                    <p className="text-[10px] text-gray-400 font-mono mt-0.5">{c.code}</p>
+                  )}
                 </div>
               ))}
             </div>

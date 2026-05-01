@@ -121,11 +121,13 @@ export default function PublicLayout({
             </div>
           </div>
 
-          <div className="mt-8 md:mt-10 pt-6 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-2 text-xs text-gray-400">
+          <div className="mt-8 md:mt-10 pt-6 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-gray-400">
             <span>&copy; {company.copyrightYear} {company.legalName}. All rights reserved.</span>
-            <span className="text-gray-300 leading-relaxed kr-keep-all">
-              {company.tagline}
-            </span>
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+              <Link href="/legal/privacy" className="text-gray-500 hover:text-blue-600 transition-colors">개인정보 처리방침</Link>
+              <span className="text-gray-300">·</span>
+              <Link href="/legal/terms" className="text-gray-500 hover:text-blue-600 transition-colors">이용약관</Link>
+            </div>
           </div>
         </div>
       </footer>

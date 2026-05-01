@@ -152,6 +152,10 @@ export interface Customer {
   name: string;
   /** 카테고리: public(공공기관), research(정부출연연구기관), private(민간) */
   category: CustomerCategory;
+  /** 외부 표기 동의 받음 — false면 익명화 표기 ("공공·연구기관 A" 등) */
+  disclosed: boolean;
+  /** 익명화 표기 시 사용할 라벨 (disclosed=false 일 때) */
+  anonymizedLabel?: string;
   /** 환경 비고 (선택, 내부용) */
   note?: string;
 }
@@ -159,22 +163,31 @@ export interface Customer {
 /**
  * 운영 중 고객사 (Maint 프로젝트 기준).
  *
- * 주의: 일부 공공기관·연구기관은 외부 공개 동의가 필요할 수 있음.
- * 발행 전 각 기관 보안담당자 동의 확인 필요. 미동의 시 리스트에서 제외.
+ * 동의 정책:
+ * - disclosed=true: 외부 공개 동의 받음 (정식명 노출)
+ * - disclosed=false: 동의 미확인 — anonymizedLabel로 익명화 노출
+ *
+ * 디폴트는 false (안전한 기본값). 동의 확인 후 true로 전환.
+ * KINS·KINAC 등 안보 민감 기관은 동의 받기 전까지 영구 익명 권장.
  */
 export const customers: Customer[] = [
-  { code: "MODS", name: "국가데이터처", category: "public", note: "통계정보원(Kosii) SDC 통계데이터센터 VDI" },
-  { code: "MPM", name: "인사혁신처", category: "public", note: "Citrix Virtual Desktop / XenServer" },
-  { code: "SFD", name: "세종소방", category: "public" },
-  { code: "KIEP", name: "대외경제정책연구원", category: "research" },
-  { code: "KRIHS", name: "국토연구원", category: "research" },
-  { code: "KISTI", name: "한국과학기술정보연구원", category: "research" },
-  { code: "KLRI", name: "한국법제연구원", category: "research" },
-  { code: "KRISO", name: "선박해양플랜트연구소", category: "research" },
-  { code: "KINS", name: "한국원자력안전기술원", category: "research" },
-  { code: "KINAC", name: "한국원자력통제기술원", category: "research" },
-  { code: "DJGLASS", name: "대진글라스", category: "private" },
+  { code: "MODS", name: "국가데이터처", category: "public", disclosed: false, anonymizedLabel: "중앙행정 데이터 기관", note: "통계정보원(Kosii) SDC 통계데이터센터 VDI" },
+  { code: "MPM", name: "인사혁신처", category: "public", disclosed: false, anonymizedLabel: "중앙행정기관 A", note: "Citrix Virtual Desktop / XenServer" },
+  { code: "SFD", name: "세종소방", category: "public", disclosed: false, anonymizedLabel: "지방자치단체 소방조직" },
+  { code: "KIEP", name: "대외경제정책연구원", category: "research", disclosed: false, anonymizedLabel: "정부 출연 경제정책 연구기관" },
+  { code: "KRIHS", name: "국토연구원", category: "research", disclosed: false, anonymizedLabel: "정부 출연 국토 연구기관" },
+  { code: "KISTI", name: "한국과학기술정보연구원", category: "research", disclosed: false, anonymizedLabel: "정부 출연 과학기술정보 연구기관" },
+  { code: "KLRI", name: "한국법제연구원", category: "research", disclosed: false, anonymizedLabel: "정부 출연 법제 연구기관" },
+  { code: "KRISO", name: "선박해양플랜트연구소", category: "research", disclosed: false, anonymizedLabel: "정부 출연 해양 연구기관" },
+  { code: "KINS", name: "한국원자력안전기술원", category: "research", disclosed: false, anonymizedLabel: "원자력 규제 R&D 기관" },
+  { code: "KINAC", name: "한국원자력통제기술원", category: "research", disclosed: false, anonymizedLabel: "원자력 규제 R&D 기관" },
+  { code: "DJGLASS", name: "대진글라스", category: "private", disclosed: false, anonymizedLabel: "민간 제조 기업" },
 ];
+
+/** 외부 노출용 표기 — disclosed=false면 익명 라벨 반환 */
+export function customerDisplayName(c: Customer): string {
+  return c.disclosed ? c.name : (c.anonymizedLabel || `${customerCategoryLabel[c.category]} 운영 고객`);
+}
 
 export const customerCategoryLabel: Record<CustomerCategory, string> = {
   public: "공공기관",

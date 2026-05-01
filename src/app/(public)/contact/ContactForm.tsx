@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const ORG_TYPES = [
   { value: "central", label: "중앙행정기관" },
@@ -39,7 +40,8 @@ export default function ContactForm() {
   const [phone, setPhone] = useState("");
   const [interestAreas, setInterestAreas] = useState<string[]>([]);
   const [message, setMessage] = useState("");
-  const [consent, setConsent] = useState(false);
+  const [consentRequired, setConsentRequired] = useState(false);
+  const [consentMarketing, setConsentMarketing] = useState(false);
 
   const [step, setStep] = useState<Step>("form");
   const [error, setError] = useState("");
@@ -69,7 +71,7 @@ export default function ContactForm() {
     if (!email.trim()) return setError("이메일을 입력해주세요.");
     if (!organization.trim()) return setError("기관·회사명을 입력해주세요.");
     if (message.trim().length < 10) return setError("문의 내용을 10자 이상 입력해주세요.");
-    if (!consent) return setError("개인정보 처리 동의가 필요합니다.");
+    if (!consentRequired) return setError("개인정보 수집·이용 동의가 필요합니다 (필수).");
 
     setStep("submitting");
     try {
@@ -86,7 +88,7 @@ export default function ContactForm() {
           interestAreas,
           message: message.trim(),
           source: sourceParam,
-          consentMarketing: consent,
+          consentMarketing,
         }),
       });
       if (!res.ok) {
@@ -266,19 +268,41 @@ export default function ContactForm() {
         />
       </div>
 
-      {/* 동의 */}
-      <label className="flex items-start gap-3 p-3 sm:p-4 bg-gray-50 rounded-lg cursor-pointer">
-        <input
-          type="checkbox"
-          checked={consent}
-          onChange={(e) => setConsent(e.target.checked)}
-          className="mt-1 w-4 h-4 accent-blue-600"
-        />
-        <span className="text-xs sm:text-sm text-gray-600 leading-relaxed kr-keep-all">
-          개인정보 수집·이용에 동의합니다. 수집 항목은 이름·이메일·기관명·연락처·문의내용이며,
-          상담 응대 및 보안 관련 정보 제공에 한해 사용됩니다. 보관 기간: 상담 완료 후 1년.
-        </span>
-      </label>
+      {/* 동의 — 필수와 선택 분리 (개인정보보호법 준수) */}
+      <div className="space-y-2.5">
+        <label className="flex items-start gap-3 p-3 sm:p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+          <input
+            type="checkbox"
+            checked={consentRequired}
+            onChange={(e) => setConsentRequired(e.target.checked)}
+            className="mt-0.5 w-4 h-4 accent-blue-600"
+          />
+          <span className="text-xs sm:text-sm text-gray-700 leading-relaxed kr-keep-all">
+            <strong className="text-gray-900">[필수]</strong> 개인정보 수집·이용에 동의합니다.
+            <span className="block text-[11px] text-gray-500 mt-1">
+              수집 항목: 이름·이메일·기관명·부서·연락처·문의내용 · 이용 목적: 상담 응대 및 회신
+              · 보관 기간: 상담 완료 후 1년 ·{" "}
+              <Link href="/legal/privacy" target="_blank" className="text-blue-600 underline">
+                전체 처리방침 보기
+              </Link>
+            </span>
+          </span>
+        </label>
+        <label className="flex items-start gap-3 p-3 sm:p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+          <input
+            type="checkbox"
+            checked={consentMarketing}
+            onChange={(e) => setConsentMarketing(e.target.checked)}
+            className="mt-0.5 w-4 h-4 accent-blue-600"
+          />
+          <span className="text-xs sm:text-sm text-gray-700 leading-relaxed kr-keep-all">
+            <strong className="text-gray-500">[선택]</strong> 마케팅·뉴스레터 수신에 동의합니다.
+            <span className="block text-[11px] text-gray-500 mt-1">
+              미동의 시에도 상담 응대는 정상 진행됩니다. 동의는 언제든 이메일 1회 회신으로 철회 가능합니다.
+            </span>
+          </span>
+        </label>
+      </div>
 
       {error && (
         <div className="px-4 py-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 kr-keep-all">

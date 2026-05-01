@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { notifyInquiry } from "@/lib/notify";
+import { apiError, validationError } from "@/lib/api-error";
 
 interface InquiryInput {
   email: string;
@@ -27,18 +28,18 @@ const ALLOWED_ORG_TYPES = new Set([
 export async function POST(request: NextRequest) {
   const body = (await request.json()) as InquiryInput;
 
-  if (!body.email || !body.name || !body.message) {
-    return NextResponse.json(
-      { error: "name, email, message are required" },
-      { status: 400 }
-    );
+  // 입력 검증 (필수·길이·형식)
+  if (!body.email) return validationError("이메일", "missing");
+  if (!body.name) return validationError("이름", "missing");
+  if (!body.message) return validationError("문의 내용", "missing");
+  if (body.message.trim().length < 10) return validationError("문의 내용", "too_short");
+  if (body.message.length > 5000) return validationError("문의 내용", "too_long");
+  if (body.name.length > 100) return validationError("이름", "too_long");
+  if (body.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email)) {
+    return validationError("이메일", "invalid");
   }
-  if (body.message.trim().length < 10) {
-    return NextResponse.json(
-      { error: "message must be at least 10 characters" },
-      { status: 400 }
-    );
-  }
+  if (body.organization && body.organization.length > 200) return validationError("기관명", "too_long");
+  if (body.phone && !/^[0-9+\-\s()]{0,30}$/.test(body.phone)) return validationError("연락처", "invalid");
 
   const supabase = createAdminClient();
   const source = body.source || "contact";
@@ -60,10 +61,7 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (leadErr || !lead) {
-    return NextResponse.json(
-      { error: leadErr?.message || "Lead upsert failed" },
-      { status: 400 }
-    );
+    return apiError(leadErr, 400, "request_failed");
   }
 
   // 2) Lead extension upsert (메시지·관심영역 등)
@@ -88,11 +86,7 @@ export async function POST(request: NextRequest) {
     );
 
   if (extErr) {
-    // 메시지 저장 실패는 critical — 사용자에게 알림
-    return NextResponse.json(
-      { error: extErr.message || "Inquiry save failed" },
-      { status: 400 }
-    );
+    return apiError(extErr, 400, "request_failed");
   }
 
   // 3) 상태 이력 기록 (best-effort)
@@ -126,3 +120,5 @@ export async function POST(request: NextRequest) {
     lead_id: lead.id,
   });
 }
+
+export const dynamic = "force-dynamic";
