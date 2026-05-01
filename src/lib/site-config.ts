@@ -1,23 +1,23 @@
 /**
  * Corporate site configuration.
  *
- * mlkit Corporation의 단일 출처 of truth — 회사 정보, 2-Practice 메타데이터,
+ * Myloket((주)마이로켓)의 단일 출처 of truth — 회사 정보, 2-Practice 메타데이터,
  * 파트너십·인증, navigation·footer에서 공유하는 값.
  *
  * 향후 i18n: 한국어 only로 출발, label_ko/label_en 슬롯 마련 예정.
  */
 
 export const company = {
-  name: "mlkit",
+  name: "Myloket",
   nameKo: "마이로켓",
   legalName: "(주)마이로켓",
-  legalNameEn: "MyRocket Inc.",
+  legalNameEn: "Myloket Inc.",
   tagline: "Enterprise Workspace Security · Data Protection",
   taglineKo: "기업 보안 워크스페이스·데이터 보호 전문",
   description:
     "공공·금융 기관을 위한 보안 워크스페이스(VDI·Zero Trust·N²SF)와 데이터 보호(백업·DR·사이버복원력) 전문 컨설팅·운영 서비스.",
   email: "contact@mlkit.co.kr",
-  domain: "mlkit.co.kr",
+  domain: "myloket.co.kr",
   copyrightYear: new Date().getFullYear(),
 } as const;
 
