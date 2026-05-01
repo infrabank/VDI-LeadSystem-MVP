@@ -4,8 +4,10 @@ import { createClient } from "@/lib/supabase/server";
 import PrintPdfButton from "../components/PrintPdfButton";
 import N2sfReadinessReport from "../components/N2sfReadinessReport";
 import VdiRoleReport from "../components/VdiRoleReport";
+import BackupReadinessReport from "../components/BackupReadinessReport";
 import type { N2sfReadinessOutput } from "@/lib/scoring/n2sf-readiness";
 import type { VdiRoleOutput } from "@/lib/scoring/vdi-role";
+import type { BackupReadinessOutput } from "@/lib/scoring/backup-readiness";
 
 interface Props {
   params: Promise<{ token: string }>;
@@ -192,6 +194,16 @@ export default async function ReportPage({ params }: Props) {
         lead={lead}
         output={output as VdiRoleOutput}
         organizationName={organizationName}
+      />
+    );
+  }
+
+  if (toolType === "backup_readiness") {
+    return (
+      <BackupReadinessReport
+        output={output as unknown as BackupReadinessOutput}
+        lead={lead}
+        date={report.created_at}
       />
     );
   }

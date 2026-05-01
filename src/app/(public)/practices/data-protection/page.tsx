@@ -188,17 +188,46 @@ export default function DataProtectionPage() {
         </div>
       </section>
 
-      {/* Coming Soon: Tools placeholder */}
+      {/* 진단 도구 */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-        <div className="bg-gradient-to-br from-emerald-50 to-teal-50 border border-emerald-100 rounded-xl p-6 sm:p-8 text-center">
-          <p className="text-emerald-700 font-semibold text-xs uppercase tracking-widest mb-2">Coming Soon</p>
-          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 kr-keep-all">
-            데이터 보호 진단·계산 도구
+        <p className="text-emerald-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+          Free Assessment
+        </p>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          백업·사이버복원력 자가 진단
+        </h2>
+        <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
+          7영역 25문항 · 약 7분 — Acronis Cyber Protect 도입 시나리오 포함 무료 리포트.
+        </p>
+        <Link
+          href="/tools/backup-readiness"
+          className="card-hover group block max-w-2xl mx-auto p-6 sm:p-8 bg-white rounded-xl shadow-sm border border-gray-200 transition-all hover:-translate-y-0.5 hover:shadow-md ring-2 ring-emerald-600 ring-offset-2"
+          style={{ borderTop: "4px solid #059669" }}
+        >
+          <div className="flex items-center justify-between mb-4 sm:mb-5">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-600 flex items-center justify-center">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold">
+              NEW · Free
+            </span>
+          </div>
+          <h3 className="font-bold text-lg sm:text-xl text-gray-900 mb-2 kr-keep-all">
+            백업·사이버복원력 자가 진단
           </h3>
-          <p className="text-sm text-gray-600 max-w-xl mx-auto leading-relaxed kr-keep-all">
-            사이버복원력 자가 진단·RTO/RPO 결정 가이드·백업 ROI 계산기를 준비 중입니다.
-            먼저 상담을 원하시면 아래로 문의 주세요.
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-5 kr-keep-all">
+            현재 백업 정책·랜섬웨어 보호·DR·복구 검증 수준을 7영역 25문항으로 점검합니다.
+            Level 1~5 등급과 Acronis 도입 우선순위 권고를 무료 리포트로 받아보세요.
           </p>
+          <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 group-hover:translate-x-0.5 transition-transform">
+            진단 시작 →
+          </span>
+        </Link>
+
+        <div className="text-center mt-8 md:mt-10 text-xs text-gray-400 kr-keep-all">
+          향후 백업 ROI 계산기·RTO/RPO 가이드 추가 예정
         </div>
       </section>
 

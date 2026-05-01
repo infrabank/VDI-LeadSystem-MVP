@@ -31,12 +31,18 @@ export async function POST(
   // Generate access token
   const accessToken = crypto.randomUUID();
 
-  // ── N²SF / VDI Role: web-only report (no PDF in Phase 1) ──
-  if (toolType === "n2sf_readiness" || toolType === "vdi_role") {
+  // ── N²SF / VDI Role / Backup Readiness: web-only report (no PDF in Phase 1) ──
+  if (
+    toolType === "n2sf_readiness" ||
+    toolType === "vdi_role" ||
+    toolType === "backup_readiness"
+  ) {
     const title =
       toolType === "n2sf_readiness"
         ? "N²SF 전환 준비도 진단 리포트"
-        : "VDI 역할 재정의 진단 리포트";
+        : toolType === "vdi_role"
+        ? "VDI 역할 재정의 진단 리포트"
+        : "백업·사이버복원력 진단 리포트";
 
     const { data: report, error: reportError } = await supabase
       .from("reports")
