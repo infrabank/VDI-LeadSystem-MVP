@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { company, practicesList, partnerships, certifications, customers } from "@/lib/site-config";
+import { company, practicesList, partnerships, certifications, customers, leadership } from "@/lib/site-config";
 import { PartnerBadge } from "../PartnerBadge";
 import { CustomerShowcase } from "../CustomerShowcase";
+import { LeaderCard } from "../LeaderCard";
 
 const customerCount = customers.length;
 const publicCount = customers.filter((c) => c.category !== "private").length;
@@ -83,6 +84,33 @@ export default function AboutPage() {
               })}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Leadership */}
+      <section id="leadership" className="bg-gray-50 border-t border-gray-100 scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+            Leadership
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+            팀 소개
+          </h2>
+          <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
+            보안 워크스페이스와 데이터 보호 두 Practice를 함께 책임지는 핵심 인력입니다.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+            {leadership.map((leader) => (
+              <LeaderCard key={leader.slot} leader={leader} />
+            ))}
+          </div>
+          <p className="text-xs text-gray-400 text-center mt-8 kr-keep-all">
+            ※ 일부 정보는 업데이트 중입니다. 채용·협업 문의는{" "}
+            <a href={`mailto:${company.email}`} className="underline font-medium">
+              {company.email}
+            </a>
+            로 부탁드립니다.
+          </p>
         </div>
       </section>
 

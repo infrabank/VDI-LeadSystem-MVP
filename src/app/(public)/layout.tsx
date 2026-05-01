@@ -55,6 +55,11 @@ export default function PublicLayout({
                     Insights · 콘텐츠
                   </Link>
                 </li>
+                <li>
+                  <Link href="/case-studies" className="text-gray-600 hover:text-blue-600 transition-colors">
+                    Case Studies
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -67,6 +72,11 @@ export default function PublicLayout({
                 <li>
                   <Link href="/about" className="text-gray-600 hover:text-blue-600 transition-colors">
                     회사 소개
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about#leadership" className="text-gray-600 hover:text-blue-600 transition-colors">
+                    팀 소개
                   </Link>
                 </li>
                 <li>

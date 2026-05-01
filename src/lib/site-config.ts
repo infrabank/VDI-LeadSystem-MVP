@@ -88,6 +88,50 @@ export const certifications = [
   { name: "ISO/IEC 27001", desc: "정보보안 경영 시스템 (예정)" },
 ];
 
+export interface LeaderProfile {
+  /** 슬롯 식별자 (URL·anchor·photo 파일명에 사용) */
+  slot: string;
+  /** 직책 (필수, placeholder 표시용) */
+  role: string;
+  /** 실명 — 미공개 시 undefined → "정보 업데이트 예정" 노출 */
+  name?: string;
+  /** 1-2 문장 약력 */
+  bio?: string;
+  /** /public/team/ 하위 사진 파일명 (확장자 포함). 미준비 시 이니셜 fallback */
+  photoFile?: string;
+  /** 핵심 전문 분야 태그 */
+  expertise?: string[];
+  email?: string;
+  linkedinUrl?: string;
+}
+
+/**
+ * Leadership 슬롯 — name·photo가 비어있으면 placeholder 표시.
+ * 정보 채워지면 자동으로 정상 노출 (별도 코드 변경 불필요).
+ */
+export const leadership: LeaderProfile[] = [
+  {
+    slot: "ceo",
+    role: "CEO · Founder",
+    expertise: ["기업 보안 전략", "공공·금융 컨설팅"],
+  },
+  {
+    slot: "secure-workspace-lead",
+    role: "보안 워크스페이스 Practice 리드",
+    expertise: ["VDI", "Zero Trust", "N²SF"],
+  },
+  {
+    slot: "data-protection-lead",
+    role: "데이터 보호 Practice 리드",
+    expertise: ["Acronis Cyber Protect", "DR/BCP"],
+  },
+  {
+    slot: "tech-lead",
+    role: "기술 리드 (CTO)",
+    expertise: ["인프라 자동화", "보안 아키텍처"],
+  },
+];
+
 export interface Partnership {
   name: string;
   role: string;
