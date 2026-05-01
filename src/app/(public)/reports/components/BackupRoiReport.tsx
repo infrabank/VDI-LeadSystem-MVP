@@ -290,7 +290,7 @@ export default function BackupRoiReport({ output, lead, date }: Props) {
             ROI 분석 결과를 바탕으로 귀사에 맞는 Acronis 도입 규모와 견적을 제안해드립니다.
           </p>
           <a
-            href="mailto:contact@mlkit.co.kr?subject=%EB%B0%B1%EC%97%85%20%EB%8F%84%EC%9E%85%20%EA%B2%AC%EC%A0%81%20%EC%83%81%EB%8B%B4"
+            href="/contact?source=report-backup-roi&interest=data-protection&subject=백업 도입 견적 상담"
             className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-emerald-700 rounded-xl font-semibold hover:bg-emerald-50 transition-colors shadow-sm text-sm"
           >
             견적 상담 문의

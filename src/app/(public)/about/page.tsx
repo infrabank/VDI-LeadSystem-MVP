@@ -191,19 +191,25 @@ export default function AboutPage() {
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
             N²SF 정렬 진단·Zero Trust 전환·VDI 운영·Acronis 백업·DR에 관한 기술 상담 및 프로젝트 협업 문의를 환영합니다.
           </p>
-          <a
-            href={`mailto:${company.email}`}
+          <Link
+            href="/contact?source=about-cta"
             className="inline-flex items-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
               />
             </svg>
-            {company.email}
-          </a>
+            상담 문의 폼 열기
+          </Link>
+          <p className="text-xs text-blue-200/80 mt-3 kr-keep-all">
+            또는 직접 이메일:{" "}
+            <a href={`mailto:${company.email}`} className="underline">
+              {company.email}
+            </a>
+          </p>
         </div>
       </section>
     </div>

@@ -85,7 +85,7 @@ export default function PublicLayout({
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about#contact" className="text-gray-600 hover:text-blue-600 transition-colors">
+                  <Link href="/contact" className="text-gray-600 hover:text-blue-600 transition-colors">
                     문의 · Contact
                   </Link>
                 </li>

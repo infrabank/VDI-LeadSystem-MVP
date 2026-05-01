@@ -222,6 +222,7 @@ export const navLinks = [
   { href: "/insights", label: "Insights", description: "기술 콘텐츠·가이드" },
   { href: "/tools", label: "Tools", description: "진단·계산 도구" },
   { href: "/about", label: "About", description: "회사 소개·인증" },
+  { href: "/contact", label: "Contact", description: "상담 문의" },
 ] as const;
 
 export const ctaLink = {

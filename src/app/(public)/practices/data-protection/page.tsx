@@ -281,7 +281,7 @@ export default function DataProtectionPage() {
             현재 백업 환경 진단부터 RTO/RPO 목표 설정·Acronis 도입 견적까지 무료로 상담드립니다.
           </p>
           <Link
-            href={`mailto:${company.email}?subject=데이터 보호 상담 문의`}
+            href="/contact?source=data-protection&interest=data-protection&subject=데이터 보호 상담 문의"
             className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-emerald-700 rounded-lg hover:bg-emerald-50 font-semibold text-sm sm:text-base shadow-lg shadow-emerald-900/20 transition-all hover:-translate-y-0.5"
           >
             상담 문의하기

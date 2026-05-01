@@ -217,7 +217,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
             백업·사이버복원력 전문가가 귀 기관의 환경을 분석하고 Acronis 기반 최적 도입 방안을 제안해드립니다.
           </p>
           <a
-            href="mailto:contact@mlkit.co.kr"
+            href="/contact?source=report-backup-readiness&interest=data-protection&subject=백업·사이버복원력 진단 결과 후속 상담"
             className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-emerald-700 rounded-xl font-semibold hover:bg-emerald-50 transition-colors shadow-sm text-sm"
           >
             무료 상담 신청
