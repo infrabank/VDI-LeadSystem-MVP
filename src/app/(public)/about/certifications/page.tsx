@@ -1,6 +1,14 @@
 import Link from "next/link";
-import { company, partnerships, certifications } from "@/lib/site-config";
+import { company, partnerships, certifications, certificationStatusLabel } from "@/lib/site-config";
 import { PartnerBadge } from "../../PartnerBadge";
+
+const statusColorClass: Record<string, string> = {
+  amber: "bg-amber-50 text-amber-700 border-amber-200",
+  blue: "bg-blue-50 text-blue-700 border-blue-200",
+  indigo: "bg-indigo-50 text-indigo-700 border-indigo-200",
+  emerald: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  gray: "bg-gray-50 text-gray-600 border-gray-200",
+};
 
 export const metadata = {
   title: `Certifications & Partnerships | ${company.name}`,
@@ -34,30 +42,59 @@ export default function CertificationsPage() {
 
         {/* Certifications */}
         <section className="mb-12 md:mb-16">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-5 kr-keep-all">정보보호 인증</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 kr-keep-all">정보보호 인증 현황</h2>
+          <p className="text-xs text-gray-500 mb-5 kr-keep-all">
+            인증 상태는 단계별로 정직하게 표시합니다 — 준비 / 신청 / 심사 / 보유. &quot;예정&quot;처럼 모호한 표기는 사용하지 않습니다.
+          </p>
           <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
-            {certifications.map((c) => (
-              <div
-                key={c.name}
-                className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
-              >
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                      />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-base font-bold text-gray-900 mb-1">{c.name}</p>
-                    <p className="text-sm text-gray-500 leading-relaxed kr-keep-all">{c.desc}</p>
+            {certifications.map((c) => {
+              const statusMeta = certificationStatusLabel[c.status];
+              const badgeClass = statusColorClass[statusMeta.color] || statusColorClass.gray;
+              return (
+                <div
+                  key={c.name}
+                  className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                        />
+                      </svg>
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1 flex-wrap">
+                        <p className="text-base font-bold text-gray-900">{c.name}</p>
+                        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border ${badgeClass}`}>
+                          {statusMeta.label}
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-500 leading-relaxed kr-keep-all mb-2">{c.desc}</p>
+                      <dl className="space-y-1 text-xs text-gray-600">
+                        {c.status === "certified" && c.certificateId && (
+                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">인증서 번호</dt><dd>{c.certificateId}</dd></div>
+                        )}
+                        {c.status === "certified" && c.validUntil && (
+                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">유효 기간</dt><dd>{c.validUntil}</dd></div>
+                        )}
+                        {c.targetMilestone && c.status !== "certified" && (
+                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">목표</dt><dd>{c.targetMilestone}</dd></div>
+                        )}
+                        {c.certifyingBody && (
+                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">심사기관</dt><dd>{c.certifyingBody}</dd></div>
+                        )}
+                        {c.scope && (
+                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">인증 범위</dt><dd>{c.scope}</dd></div>
+                        )}
+                      </dl>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 

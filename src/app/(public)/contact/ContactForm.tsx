@@ -278,12 +278,22 @@ export default function ContactForm() {
             className="mt-0.5 w-4 h-4 accent-blue-600"
           />
           <span className="text-xs sm:text-sm text-gray-700 leading-relaxed kr-keep-all">
-            <strong className="text-gray-900">[필수]</strong> 개인정보 수집·이용에 동의합니다.
+            <strong className="text-gray-900">[필수]</strong> 개인정보 수집·이용 및 국외이전(위탁)에 동의합니다.
             <span className="block text-[11px] text-gray-500 mt-1">
               수집 항목: 이름·이메일·기관명·부서·연락처·문의내용 · 이용 목적: 상담 응대 및 회신
-              · 보관 기간: 상담 완료 후 1년 ·{" "}
-              <Link href="/legal/privacy" target="_blank" className="text-blue-600 underline">
-                전체 처리방침 보기
+              · 보관 기간: 상담 완료 후 1년
+              <span className="block mt-0.5">
+                국외이전: Supabase·Vercel·Resend (미국) — 데이터 저장·호스팅·이메일 발송 위탁.
+              </span>
+              <span className="block mt-0.5 text-gray-500">
+                정보주체는 동의를 거부할 권리가 있으며, 거부 시 본 폼을 통한 상담 접수가 불가합니다 (이메일{" "}
+                <a href="mailto:contact@mlkit.co.kr" className="text-blue-600 underline">
+                  contact@mlkit.co.kr
+                </a>
+                {" "}직접 문의는 가능).
+              </span>
+              <Link href="/legal/privacy" target="_blank" className="text-blue-600 underline mt-0.5 inline-block">
+                전체 처리방침 보기 →
               </Link>
             </span>
           </span>

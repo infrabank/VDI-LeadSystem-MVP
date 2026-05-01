@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
+import { apiError, validationError } from "@/lib/api-error";
 
 interface LeadExtensionInput {
   organization_name?: string | null;
@@ -37,9 +38,13 @@ export async function POST(request: NextRequest) {
     extension?: LeadExtensionInput;
   };
 
-  if (!email) {
-    return NextResponse.json({ error: "Email is required" }, { status: 400 });
+  // Red Team Round 2 — HIGH 3: 입력 검증 + Postgres 에러 마스킹
+  if (!email) return validationError("이메일", "missing");
+  if (email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return validationError("이메일", "invalid");
   }
+  if (name && name.length > 100) return validationError("이름", "too_long");
+  if (company && company.length > 200) return validationError("기관명", "too_long");
 
   const supabase = createAdminClient();
 
@@ -60,10 +65,7 @@ export async function POST(request: NextRequest) {
     .single();
 
   if (error || !lead) {
-    return NextResponse.json(
-      { error: error?.message || "Lead upsert failed" },
-      { status: 400 }
-    );
+    return apiError(error, 400, "request_failed");
   }
 
   // Optional: lead_extensions upsert

@@ -1,11 +1,20 @@
 import Link from "next/link";
-import { company, practicesList, partnerships, certifications, customers, leadership } from "@/lib/site-config";
+import { company, practicesList, partnerships, certifications, certificationStatusLabel, customers, leadership } from "@/lib/site-config";
 import { PartnerBadge } from "../PartnerBadge";
 import { CustomerShowcase } from "../CustomerShowcase";
 import { LeaderCard } from "../LeaderCard";
 
 const customerCount = customers.length;
 const publicCount = customers.filter((c) => c.category !== "private").length;
+
+// Tailwind는 동적으로 생성된 클래스명을 purge할 수 없음 — 명시적 map.
+const certBadgeClass: Record<string, string> = {
+  amber: "bg-amber-50 text-amber-700 border-amber-200",
+  blue: "bg-blue-50 text-blue-700 border-blue-200",
+  indigo: "bg-indigo-50 text-indigo-700 border-indigo-200",
+  emerald: "bg-emerald-50 text-emerald-700 border-emerald-200",
+  gray: "bg-gray-50 text-gray-600 border-gray-200",
+};
 
 export const metadata = {
   title: `About | ${company.name}`,
@@ -163,20 +172,42 @@ export default function AboutPage() {
         <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           Certifications
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 md:mb-12 kr-keep-all">
-          보유·진행 중 인증
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          인증 단계
         </h2>
+        <p className="text-xs text-gray-500 text-center mb-8 md:mb-12 kr-keep-all">
+          준비 → 신청 → 심사 → 보유 단계 중 현재 위치를 정직하게 표시합니다.
+        </p>
         <div className="grid sm:grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto">
-          {certifications.map((c) => (
-            <div
-              key={c.name}
-              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
-            >
-              <p className="text-base font-bold text-gray-900 mb-1">{c.name}</p>
-              <p className="text-xs text-gray-500 kr-keep-all">{c.desc}</p>
-            </div>
-          ))}
+          {certifications.map((c) => {
+            const statusMeta = certificationStatusLabel[c.status];
+            return (
+              <div
+                key={c.name}
+                className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
+              >
+                <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                  <p className="text-base font-bold text-gray-900">{c.name}</p>
+                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border ${certBadgeClass[statusMeta.color] || certBadgeClass.gray}`}>
+                    {statusMeta.label}
+                  </span>
+                </div>
+                <p className="text-xs text-gray-500 kr-keep-all mb-1.5">{c.desc}</p>
+                {c.targetMilestone && c.status !== "certified" && (
+                  <p className="text-xs text-gray-500">목표: {c.targetMilestone}</p>
+                )}
+                {c.status === "certified" && c.certificateId && (
+                  <p className="text-xs text-gray-500">인증서: {c.certificateId}{c.validUntil && ` · ${c.validUntil}`}</p>
+                )}
+              </div>
+            );
+          })}
         </div>
+        <p className="text-center mt-6">
+          <a href="/about/certifications" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+            전체 인증·파트너십 보기 →
+          </a>
+        </p>
       </section>
 
       {/* Contact */}

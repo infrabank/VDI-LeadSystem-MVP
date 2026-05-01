@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { company } from "@/lib/site-config";
+import { company, companyLegal } from "@/lib/site-config";
 
 export const metadata = {
   title: `이용약관 | ${company.name}`,
@@ -71,7 +71,11 @@ export default function TermsPage() {
 
         <h2>제8조 (분쟁 해결)</h2>
         <p>
-          본 약관과 관련하여 분쟁이 발생한 경우 회사 본점 소재지 관할 법원을 1심 관할 법원으로 합니다. 단 이용자의 주소·거소가 명확한 소비자 분쟁의 경우 민사소송법에 따릅니다.
+          본 약관과 관련하여 분쟁이 발생한 경우 회사 본점 소재지
+          {companyLegal.address && (
+            <span> (<span className="text-gray-700">{companyLegal.address}</span>)</span>
+          )}
+          {" "}관할 법원을 1심 관할 법원으로 합니다. 단 이용자의 주소·거소가 명확한 소비자 분쟁의 경우 민사소송법에 따릅니다.
         </p>
 
         <h2>제9조 (약관 변경)</h2>

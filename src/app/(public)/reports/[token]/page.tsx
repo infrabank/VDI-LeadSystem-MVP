@@ -11,6 +11,19 @@ import type { VdiRoleOutput } from "@/lib/scoring/vdi-role";
 import type { BackupReadinessOutput } from "@/lib/scoring/backup-readiness";
 import type { BackupRoiOutput } from "@/lib/scoring/backup-roi";
 
+// Red Team Round 2 (2026-05-01) — CRITICAL 2: access_token URL 인덱싱·Referer leak 차단.
+// 토큰이 URL path segment로 노출되므로 검색엔진 인덱싱·archive·SNS 미리보기를 모두 차단.
+export const metadata = {
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+    noarchive: true,
+    nosnippet: true,
+    noimageindex: true,
+  },
+};
+
 interface Props {
   params: Promise<{ token: string }>;
 }
@@ -161,6 +174,13 @@ export default async function ReportPage({ params }: Props) {
     .single();
 
   if (!report) notFound();
+
+  // Red Team Round 2 — CRITICAL 2: 토큰 만료 검증
+  // migration 014로 기본 90일. 만료된 토큰은 명시적 expired 안내로 처리
+  // (notFound 대신 — 사용자가 토큰이 만료됐다는 사실을 인지하도록).
+  if (report.expires_at && new Date(report.expires_at) < new Date()) {
+    return <ExpiredReportNotice reportId={report.id} expiredAt={report.expires_at} />;
+  }
 
   const toolRun = report.tool_runs;
   const lead = report.leads;
@@ -561,6 +581,48 @@ function V1Report({
             <PrintPdfButton />
           </div>
         </div>
+      </div>
+    </div>
+  );
+}
+
+// ══════════════════════════════════
+// Expired token notice (Red Team Round 2 — CRITICAL 2)
+// ══════════════════════════════════
+
+function ExpiredReportNotice({ reportId, expiredAt }: { reportId: string; expiredAt: string }) {
+  const expiredDate = new Date(expiredAt).toLocaleDateString("ko-KR");
+  return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
+      <div className="max-w-md w-full bg-white rounded-xl border border-gray-200 shadow-sm p-6 sm:p-8 text-center">
+        <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-50 mb-4">
+          <svg className="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h1 className="text-xl font-bold text-gray-900 mb-2">리포트 링크가 만료되었습니다</h1>
+        <p className="text-sm text-gray-600 leading-relaxed mb-1 kr-keep-all">
+          이 리포트는 <strong>{expiredDate}</strong>에 만료되어 더 이상 조회할 수 없습니다.
+        </p>
+        <p className="text-xs text-gray-500 leading-relaxed mb-6 kr-keep-all">
+          개인정보 보호를 위해 진단 리포트 링크는 발급일로부터 90일 후 자동 만료됩니다.
+          재발급이 필요하시면 아래 채널로 요청해 주세요.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
+          <Link
+            href="/contact?source=report-expired"
+            className="px-5 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm"
+          >
+            재발급 요청
+          </Link>
+          <Link
+            href="/tools"
+            className="px-5 py-2.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-semibold text-sm"
+          >
+            새 진단 시작
+          </Link>
+        </div>
+        <p className="mt-5 text-[11px] text-gray-400">참조 ID: {reportId.slice(0, 8)}</p>
       </div>
     </div>
   );

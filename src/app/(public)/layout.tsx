@@ -1,6 +1,6 @@
 import Link from "next/link";
 import PublicHeader from "./PublicHeader";
-import { company, practicesList, navLinks } from "@/lib/site-config";
+import { company, companyLegal, practicesList, hasLegalInfo } from "@/lib/site-config";
 
 export default function PublicLayout({
   children,
@@ -121,7 +121,36 @@ export default function PublicLayout({
             </div>
           </div>
 
-          <div className="mt-8 md:mt-10 pt-6 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-gray-400">
+          {/* 사업자 정보 (전자상거래법 §10·정보통신망법 표시 의무) */}
+          {hasLegalInfo() && (
+            <div className="mt-8 md:mt-10 pt-6 border-t border-gray-200 text-xs text-gray-500 leading-relaxed">
+              <p className="font-semibold text-gray-700 mb-1.5">{company.legalName}</p>
+              <p className="flex flex-wrap gap-x-4 gap-y-1">
+                {companyLegal.representativeName && (
+                  <span>대표자: <span className="text-gray-700">{companyLegal.representativeName}</span></span>
+                )}
+                {companyLegal.businessNumber && (
+                  <span>사업자등록번호: <span className="text-gray-700">{companyLegal.businessNumber}</span></span>
+                )}
+                {companyLegal.mailOrderRegNumber && (
+                  <span>통신판매업: <span className="text-gray-700">{companyLegal.mailOrderRegNumber}</span></span>
+                )}
+              </p>
+              <p className="flex flex-wrap gap-x-4 gap-y-1 mt-1">
+                {companyLegal.address && (
+                  <span>주소: <span className="text-gray-700">{companyLegal.address}</span></span>
+                )}
+                {companyLegal.phone && (
+                  <span>대표전화: <span className="text-gray-700">{companyLegal.phone}</span></span>
+                )}
+                {companyLegal.fax && (
+                  <span>팩스: <span className="text-gray-700">{companyLegal.fax}</span></span>
+                )}
+              </p>
+            </div>
+          )}
+
+          <div className="mt-6 pt-4 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-gray-400">
             <span>&copy; {company.copyrightYear} {company.legalName}. All rights reserved.</span>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <Link href="/legal/privacy" className="text-gray-500 hover:text-blue-600 transition-colors">개인정보 처리방침</Link>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { company } from "@/lib/site-config";
+import { company, companyLegal, hasPrivacyOfficer } from "@/lib/site-config";
 
 export const metadata = {
   title: `개인정보 처리방침 | ${company.name}`,
@@ -60,15 +60,51 @@ export default function PrivacyPage() {
           <li>법령에 따라 수사기관·감독기관의 적법한 요청이 있는 경우</li>
         </ul>
 
-        <h2>5. 개인정보 처리 위탁</h2>
-        <p>회사는 서비스 운영을 위해 다음 업무를 위탁하고 있습니다:</p>
-        <ul>
-          <li><strong>Supabase Inc.</strong> — 데이터베이스·인증·스토리지 (위탁 업무: 정보 저장·관리)</li>
-          <li><strong>Vercel Inc.</strong> — 웹 호스팅 (위탁 업무: 페이지 제공)</li>
-          <li><strong>Resend / Slack 등 알림 서비스</strong> — 상담 알림 발송 (운영 시 별도 고지)</li>
-        </ul>
+        <h2>5. 개인정보 처리 위탁 및 국외 이전</h2>
+        <p>회사는 서비스 운영을 위해 다음 업무를 국외 사업자에게 위탁하고 있습니다:</p>
+        <table>
+          <thead>
+            <tr><th>수탁자</th><th>위탁 업무</th><th>이전 항목</th><th>이전 국가</th><th>이전 시점·방법</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Supabase Inc.</td>
+              <td>데이터베이스·인증·스토리지</td>
+              <td>이름·이메일·기관·부서·연락처·문의내용·진단 입력값·리포트</td>
+              <td>미국 (AWS us-east, ap-northeast)</td>
+              <td>HTTPS/TLS, 회원 가입·문의·진단 시점 즉시</td>
+            </tr>
+            <tr>
+              <td>Vercel Inc.</td>
+              <td>웹 호스팅·CDN·서버리스 함수</td>
+              <td>접속 IP, 요청 메타데이터(헤더·UA), 폼 제출 본문</td>
+              <td>미국·다국가 엣지 노드</td>
+              <td>HTTPS/TLS, 페이지 접속 시점 즉시</td>
+            </tr>
+            <tr>
+              <td>Resend</td>
+              <td>이메일 발송 (상담 회신·알림)</td>
+              <td>수신자 이메일, 메일 본문 (이름·기관 포함)</td>
+              <td>미국</td>
+              <td>HTTPS/API, 메일 발송 시점</td>
+            </tr>
+            <tr>
+              <td>Slack / Discord webhook (운영 시)</td>
+              <td>내부 상담 알림 (요약 정보만 송신)</td>
+              <td>이름(첫글자+익명), 도메인, 기관 카테고리, 문의 ID</td>
+              <td>미국</td>
+              <td>HTTPS, 문의 접수 시점</td>
+            </tr>
+          </tbody>
+        </table>
+        <p className="text-sm">
+          <strong>국외이전 이용자 권리</strong>: 정보주체는 개인정보보호법 §28의-8에 따라 국외이전을 거부할 권리가 있습니다.
+          이전을 거부하시려면 본 사이트 회원 가입·문의·진단 도구 이용을 중단하시고 직접 이메일{" "}
+          <a href={`mailto:${company.email}`}>{company.email}</a>로 상담을 요청해 주세요.
+        </p>
         <p>
           위탁 받은 자는 정보주체의 개인정보를 위탁 업무 수행 목적 외로 사용·제공할 수 없으며, 위탁 종료 시 즉시 파기합니다.
+          상기 수탁자 외 신규 위탁 발생 시 본 처리방침을 통해 사전 고지합니다.
         </p>
 
         <h2>6. 정보주체 권리</h2>
@@ -95,11 +131,22 @@ export default function PrivacyPage() {
           회사는 서비스 이용 통계 분석을 위한 최소한의 쿠키만 사용하며, 마케팅 목적의 제3자 추적 쿠키는 사용하지 않습니다. 브라우저 설정에서 쿠키 차단이 가능합니다.
         </p>
 
-        <h2>9. 개인정보보호 책임자</h2>
-        <ul>
-          <li>책임자: 개인정보보호 책임자(직책 추후 지정)</li>
-          <li>연락처: <a href={`mailto:${company.email}`}>{company.email}</a></li>
-        </ul>
+        <h2>9. 개인정보보호 책임자 (개인정보보호법 §31)</h2>
+        {hasPrivacyOfficer() ? (
+          <ul>
+            <li>책임자: <strong>{companyLegal.privacyOfficer.name}</strong> ({companyLegal.privacyOfficer.role})</li>
+            <li>이메일: <a href={`mailto:${companyLegal.privacyOfficer.email}`}>{companyLegal.privacyOfficer.email}</a></li>
+            {companyLegal.privacyOfficer.phone && (
+              <li>전화: {companyLegal.privacyOfficer.phone}</li>
+            )}
+          </ul>
+        ) : (
+          <ul>
+            <li>회사는 개인정보보호 책임자를 지정·운영하고 있으며, 책임자 정보는 본 처리방침에 갱신될 예정입니다.</li>
+            <li>임시 연락처: <a href={`mailto:${company.email}`}>{company.email}</a></li>
+            <li className="text-xs text-gray-500">※ 책임자 정보 갱신 전이라도 §10 권익침해 구제 기관(개인정보보호위·KISA)을 통해 권리 구제를 요청하실 수 있습니다.</li>
+          </ul>
+        )}
 
         <h2>10. 권익침해 구제 방법</h2>
         <p>개인정보 침해 신고·상담은 다음 기관에 문의 가능합니다:</p>

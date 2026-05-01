@@ -7,6 +7,15 @@
  *   3) 미설정 시 — console.log only (DB 저장은 정상 진행)
  *
  * 모든 알림 실패는 swallow — DB 저장 자체는 막지 않음.
+ *
+ * ── PII 정책 (Red Team Round 2 — 2026-05-01) ──
+ *   • Resend(이메일): 회사 자체 메일 → PII 전체 허용 (담당자 회신 필요).
+ *   • Webhook (Slack/Discord/Zapier 등): 외부 SaaS — PII 마스킹.
+ *     - 이름: 첫 글자 + "**" (예: "홍**")
+ *     - 이메일: 도메인만 (예: "***@kistim.re.kr")
+ *     - 전화: 끝 4자리만 (예: "***-***-1234")
+ *     - 메시지: 본문 송신 안 함 (lead_id로 DB 조회 유도)
+ *   • 처리방침에 위탁 항목 명시 (privacy/page.tsx 표).
  */
 
 export interface InquiryPayload {
@@ -23,6 +32,34 @@ export interface InquiryPayload {
 }
 
 const SITE_NAME = "Myloket";
+
+// ── PII 마스킹 헬퍼 (외부 webhook 송신용) ──
+
+function maskName(name: string): string {
+  const trimmed = name.trim();
+  if (!trimmed) return "(미입력)";
+  if (trimmed.length === 1) return `${trimmed}*`;
+  return `${trimmed[0]}${"*".repeat(Math.min(trimmed.length - 1, 3))}`;
+}
+
+function maskEmail(email: string): string {
+  const at = email.indexOf("@");
+  if (at <= 0) return "***";
+  return `***@${email.slice(at + 1)}`;
+}
+
+function maskPhone(phone?: string): string {
+  if (!phone) return "";
+  const digits = phone.replace(/\D/g, "");
+  if (digits.length < 4) return "****";
+  return `***-***-${digits.slice(-4)}`;
+}
+
+function maskOrgCategory(org?: string): string {
+  if (!org) return "(미입력)";
+  // 기관명 자체는 외부 webhook으로 보내지 않음 — 길이만 노출 (식별 회피)
+  return `[기관명 ${org.length}자]`;
+}
 
 function formatPlainText(p: InquiryPayload): string {
   const lines = [
@@ -42,15 +79,40 @@ function formatPlainText(p: InquiryPayload): string {
 }
 
 /**
- * Slack/Discord/일반 webhook 호환 payload.
- * Slack은 `text` 필드를 사용, Discord는 `content`, 일반 webhook은 둘 다 있어도 무해.
+ * 외부 webhook용 PII-마스킹 본문.
+ * 식별 가능한 정보 최소화 — 상세는 admin 콘솔에서 lead_id로 조회.
+ */
+function formatWebhookText(p: InquiryPayload): string {
+  const lines = [
+    `[${SITE_NAME}] 신규 상담 문의 (마스킹)`,
+    "",
+    `· 이름: ${maskName(p.name)}`,
+    `· 이메일: ${maskEmail(p.email)}`,
+    `· 기관: ${maskOrgCategory(p.organization)}`,
+  ];
+  if (p.phone) lines.push(`· 전화: ${maskPhone(p.phone)}`);
+  if (p.interestAreas?.length) lines.push(`· 관심영역: ${p.interestAreas.join(", ")}`);
+  lines.push(`· 유입: ${p.source}`);
+  lines.push(`· 접수: ${p.createdAt}`);
+  if (p.leadId) lines.push("", `▶ 상세 조회는 admin 콘솔에서 Lead ID로 확인: ${p.leadId}`);
+  return lines.join("\n");
+}
+
+/**
+ * Slack/Discord/일반 webhook 호환 payload (PII 마스킹).
+ * Slack은 `text` 필드를 사용, Discord는 `content`.
+ *
+ * 의도적으로 raw payload(p)는 송신 안 함 — 처방의 "Slack/Discord 위탁 시 마스킹 항목만"을 코드로 강제.
  */
 function formatWebhookBody(p: InquiryPayload): Record<string, unknown> {
-  const text = formatPlainText(p);
+  const text = formatWebhookText(p);
   return {
     text,
     content: text,
-    inquiry: p,
+    // 외부 SaaS에 raw PII를 절대 송신하지 않음 (Red Team Round 2 — CRITICAL 3)
+    masked: true,
+    lead_id: p.leadId,
+    source: p.source,
   };
 }
 

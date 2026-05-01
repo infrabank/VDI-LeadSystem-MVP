@@ -21,6 +21,56 @@ export const company = {
   copyrightYear: new Date().getFullYear(),
 } as const;
 
+/**
+ * 법적 사업자 정보 (전자상거래법 §10·정보통신망법·개인정보보호법 §30 표시 의무).
+ *
+ * 표시 위치: footer / /legal/privacy / /legal/terms / /about
+ *
+ * ⚠️ TODO(2026-Q2): 빈 문자열인 필드는 사용자가 직접 입력 후 배포 — 빈 채로 운영하면 KISA·공정위 점검 시 시정명령 대상.
+ * Red Team Round 2 (2026-05-01) — 본 구조 추가됨, 실 데이터 입력 후 disclosed 전환.
+ */
+export const companyLegal = {
+  /** 사업자등록번호 — 형식: "000-00-00000" */
+  businessNumber: "",
+  /** 통신판매업 신고번호 — 형식: "제 0000-OO시OO구-0000호" (해당 시) */
+  mailOrderRegNumber: "",
+  /** 대표자 (실명) */
+  representativeName: "",
+  /** 본점 소재지 (도로명 전체 주소) */
+  address: "",
+  /** 대표 전화 — 형식: "02-0000-0000" */
+  phone: "",
+  /** 팩스 (선택) */
+  fax: "",
+  /**
+   * 개인정보보호 책임자 (법 §31 — 직책·실명·연락처 명시 의무).
+   * 실명·직책 입력 후 footer/privacy 자동 노출.
+   */
+  privacyOfficer: {
+    name: "",      // 예: "홍길동"
+    role: "",      // 예: "CISO" / "개인정보보호 책임자" / "CTO 겸 책임자"
+    email: "contact@mlkit.co.kr",
+    phone: "",     // 직통 전화 (대표 전화와 다를 경우)
+  },
+} as const;
+
+/**
+ * companyLegal 필드 중 표시 가능한 것만 골라내는 헬퍼.
+ * 빈 문자열은 "데이터 미입력 = 표시 안 함" — 사용자에게 거짓 정보 노출 차단.
+ */
+export function hasLegalInfo(): boolean {
+  return Boolean(
+    companyLegal.businessNumber ||
+    companyLegal.representativeName ||
+    companyLegal.address ||
+    companyLegal.phone
+  );
+}
+
+export function hasPrivacyOfficer(): boolean {
+  return Boolean(companyLegal.privacyOfficer.name && companyLegal.privacyOfficer.role);
+}
+
 export type PracticeId = "secure-workspace" | "data-protection";
 
 export interface Practice {
@@ -83,10 +133,63 @@ export const practicesList: Practice[] = [
   practices["data-protection"],
 ];
 
-export const certifications = [
-  { name: "ISMS-P", desc: "정보보호 및 개인정보보호 관리체계 인증 (예정)" },
-  { name: "ISO/IEC 27001", desc: "정보보안 경영 시스템 (예정)" },
+/**
+ * 인증 상태 단계 (정직한 표시 — RFP 평가위원·발주처가 검증할 수 있는 수준).
+ * - "preparing"   : 준비 단계 (내부 갭 분석·문서화 진행, 신청 전)
+ * - "applied"     : 신청 완료 (심사기관 접수, 심사 대기·진행 중)
+ * - "in_review"   : 심사 진행 중 (실사·인터뷰 수행 중)
+ * - "certified"   : 인증 보유 (인증서 번호·유효기간 표시)
+ * - "not_pursued" : 추진하지 않음 (해당 없음을 명시)
+ */
+export type CertificationStatus = "preparing" | "applied" | "in_review" | "certified" | "not_pursued";
+
+export interface Certification {
+  name: string;
+  desc: string;
+  status: CertificationStatus;
+  /** 목표 시점 (preparing/applied 단계에서) — 예: "2026 Q3" */
+  targetMilestone?: string;
+  /** 인증서 번호 (certified 단계 필수) */
+  certificateId?: string;
+  /** 유효 기간 (certified 단계 필수) — 예: "2026.05 ~ 2029.05" */
+  validUntil?: string;
+  /** 심사기관 (applied/in_review/certified 시) — 예: "KISA / KAIT" */
+  certifyingBody?: string;
+  /** 인증 범위 (scope) — 예: "본사 보안 컨설팅 서비스" */
+  scope?: string;
+}
+
+/**
+ * Red Team Round 2 (2026-05-01) — "(예정)" 표기 정직화.
+ *
+ * 원칙: "(예정)" 같은 모호한 표기 금지. 실제 단계(preparing/applied/in_review/certified) 명시.
+ * 단계 진전 시 status 필드만 업데이트하면 자동으로 표시 변경.
+ */
+export const certifications: Certification[] = [
+  {
+    name: "ISMS-P",
+    desc: "정보보호 및 개인정보보호 관리체계 인증",
+    status: "preparing",
+    targetMilestone: "2026 Q3 신청 목표",
+    certifyingBody: "KISA / KAIT (검토 중)",
+    scope: "본사 보안 자문·MSP 운영 서비스",
+  },
+  {
+    name: "ISO/IEC 27001",
+    desc: "정보보안 경영 시스템 (ISMS-P 인증 후 단계적 추진 검토)",
+    status: "preparing",
+    targetMilestone: "2027 H1 검토",
+  },
 ];
+
+/** 인증 상태 한글 라벨 (UI 노출용) */
+export const certificationStatusLabel: Record<CertificationStatus, { label: string; color: string }> = {
+  preparing:    { label: "준비 단계",     color: "amber" },
+  applied:      { label: "신청 완료",     color: "blue" },
+  in_review:    { label: "심사 진행 중",  color: "indigo" },
+  certified:    { label: "인증 보유",     color: "emerald" },
+  not_pursued:  { label: "해당 없음",     color: "gray" },
+};
 
 export interface LeaderProfile {
   /** 슬롯 식별자 (URL·anchor·photo 파일명에 사용) */
