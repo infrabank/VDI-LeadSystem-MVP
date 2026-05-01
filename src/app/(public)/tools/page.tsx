@@ -78,7 +78,7 @@ export default function ToolsPage() {
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Tools
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 kr-keep-all">
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
             진단·계산 도구
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">

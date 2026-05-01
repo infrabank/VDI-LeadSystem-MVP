@@ -17,7 +17,7 @@ export default function ContactPage() {
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Contact
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 kr-keep-all">
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
             상담 문의
           </h1>
           <p className="text-sm sm:text-base text-blue-100 leading-relaxed kr-keep-all">

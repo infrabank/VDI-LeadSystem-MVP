@@ -67,11 +67,11 @@ export default function DataProtectionPage() {
             {p.brand} · {p.title}
             <span className="w-3 sm:w-4 h-px bg-emerald-300 inline-block"></span>
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 sm:mb-6 leading-tight tracking-tight kr-keep-all">
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
             랜섬웨어·운영 중단에<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>흔들리지 않는 데이터 보호
           </h1>
-          <p className="text-base sm:text-lg text-emerald-100 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+          <p className="text-base sm:text-lg md:text-xl text-emerald-100/90 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             {p.tagline}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">

@@ -103,7 +103,7 @@ export default async function ContentDetailPage({ params }: Props) {
       : null;
 
   return (
-    <article className="max-w-3xl mx-auto px-4 sm:px-6">
+    <article className="reading-prose mx-auto px-4 sm:px-6">
       {/* JSON-LD */}
       <script
         type="application/ld+json"

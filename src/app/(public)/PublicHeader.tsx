@@ -52,7 +52,7 @@ export default function PublicHeader() {
           ))}
           <Link
             href={ctaLink.href}
-            className="px-4 xl:px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
+            className="px-4 xl:px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
           >
             {ctaLink.label}
           </Link>
@@ -62,7 +62,7 @@ export default function PublicHeader() {
         <div className="flex lg:hidden items-center gap-2">
           <Link
             href={ctaLink.href}
-            className="hidden sm:inline-block px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-xs font-semibold shadow-sm shadow-blue-200"
+            className="hidden sm:inline-block px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-xs font-semibold shadow-sm shadow-blue-200"
           >
             {ctaLink.shortLabel}
           </Link>
@@ -108,7 +108,7 @@ export default function PublicHeader() {
               ))}
               <Link
                 href={ctaLink.href}
-                className="mt-3 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-center font-semibold shadow-sm shadow-blue-200"
+                className="mt-3 px-4 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-center font-semibold shadow-sm shadow-blue-200"
               >
                 {ctaLink.label}
               </Link>

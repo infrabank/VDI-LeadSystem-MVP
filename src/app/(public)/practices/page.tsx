@@ -15,10 +15,10 @@ export default function PracticesPage() {
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Practices
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 kr-keep-all">
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
             기업 보안의 두 축, 일관된 전문성으로
           </h1>
-          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+          <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             {company.name}는 보안 워크스페이스(접근·통제)와 데이터 보호(백업·복원력)를 통합 자문·운영합니다.
             공공·금융 기관의 운영 연속성·규제 대응을 한 곳에서.
           </p>

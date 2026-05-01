@@ -21,23 +21,23 @@ export default function HomePage() {
             {company.tagline}
             <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-5 sm:mb-6 leading-tight tracking-tight kr-keep-all">
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
             보안 워크스페이스와<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>데이터 보호, 한 팀이 책임집니다
           </h1>
-          <p className="text-base sm:text-lg text-blue-100 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+          <p className="text-base sm:text-lg md:text-xl text-blue-100/90 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             공공·금융을 위한 N²SF·Zero Trust·VDI 자문 + Acronis 기반 백업·DR·사이버복원력
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
               href="/practices"
-              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white text-blue-700 rounded-md hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
             >
               Practices 둘러보기
             </Link>
             <Link
               href="/tools/risk-assessment"
-              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-500/30 border border-blue-400/40 text-white rounded-lg hover:bg-blue-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
+              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/30 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
             >
               N²SF 정렬 진단 시작
             </Link>

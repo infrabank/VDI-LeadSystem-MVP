@@ -76,11 +76,11 @@ export default function SecureWorkspacePage() {
             {p.brand} · {p.title}
             <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
           </p>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 sm:mb-6 leading-tight tracking-tight kr-keep-all">
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
             공공·금융을 위한<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>보안 워크스페이스·접근통제 전문
           </h1>
-          <p className="text-base sm:text-lg text-blue-100 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+          <p className="text-base sm:text-lg md:text-xl text-blue-100/90 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             {p.tagline}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">

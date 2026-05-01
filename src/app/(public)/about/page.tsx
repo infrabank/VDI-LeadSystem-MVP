@@ -21,7 +21,7 @@ export default function AboutPage() {
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             About {company.name}
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 kr-keep-all">
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-3 leading-[1.15] kr-keep-all">
             {company.taglineKo}
           </h1>
           <p className="text-xs sm:text-sm text-blue-200 mb-4 font-medium">
