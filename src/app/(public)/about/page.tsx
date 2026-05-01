@@ -1,6 +1,10 @@
 import Link from "next/link";
-import { company, practicesList, partnerships, certifications } from "@/lib/site-config";
+import { company, practicesList, partnerships, certifications, customers } from "@/lib/site-config";
 import { PartnerBadge } from "../PartnerBadge";
+import { CustomerShowcase } from "../CustomerShowcase";
+
+const customerCount = customers.length;
+const publicCount = customers.filter((c) => c.category !== "private").length;
 
 export const metadata = {
   title: `About | ${company.name}`,
@@ -79,6 +83,25 @@ export default function AboutPage() {
               })}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Customers */}
+      <section id="customers" className="bg-white border-y border-gray-100 scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+            Customers
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+            운영 고객사
+          </h2>
+          <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
+            공공·연구기관 {publicCount}곳을 포함해 {customerCount}개 기관의 VDI·DaaS 환경을 운영·기술지원하고 있습니다.
+          </p>
+          <CustomerShowcase variant="grouped" />
+          <p className="text-xs text-gray-400 text-center mt-8 kr-keep-all">
+            ※ 일부 기관명은 기관 정책에 따라 외부 표기 수준이 조정될 수 있습니다.
+          </p>
         </div>
       </section>
 

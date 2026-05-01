@@ -1,6 +1,10 @@
 import Link from "next/link";
-import { company, practicesList, partnerships } from "@/lib/site-config";
+import { company, practicesList, partnerships, customers } from "@/lib/site-config";
 import { PartnerBadge } from "./PartnerBadge";
+import { CustomerShowcase } from "./CustomerShowcase";
+
+const customerCount = customers.length;
+const publicCount = customers.filter((c) => c.category !== "private").length;
 
 export default function HomePage() {
   return (
@@ -92,8 +96,8 @@ export default function HomePage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
           <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 text-center">
             {[
+              { stat: `${customerCount}+`, label: "운영 고객사", desc: `공공·연구기관 ${publicCount}곳 포함` },
               { stat: "274개", label: "보안통제 매핑", desc: "N²SF 1.0 정렬 진단" },
-              { stat: "11종", label: "정보서비스 모델", desc: "C/S/O 등급 시나리오" },
               { stat: "24x7", label: "MSP 운영", desc: "백업·복구 검증" },
             ].map((item, i) => (
               <div key={i} className="flex flex-col items-center gap-1">
@@ -156,6 +160,24 @@ export default function HomePage() {
             <h3 className="font-bold text-gray-900 mb-1">About {company.name}</h3>
             <p className="text-xs text-gray-500 kr-keep-all">미션·인증·파트너십</p>
           </Link>
+        </div>
+      </section>
+
+      {/* Customers trust strip */}
+      <section className="bg-white border-t border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">
+            Trusted By
+          </p>
+          <p className="text-center text-sm sm:text-base font-semibold text-gray-700 mb-6 md:mb-8 kr-keep-all">
+            공공·연구기관 {publicCount}곳을 포함한 {customerCount}개 기관이 Myloket을 신뢰합니다
+          </p>
+          <CustomerShowcase variant="compact" />
+          <div className="text-center mt-6 md:mt-8">
+            <Link href="/about#customers" className="text-xs sm:text-sm text-blue-600 hover:text-blue-700 font-medium">
+              전체 고객사 보기 →
+            </Link>
+          </div>
         </div>
       </section>
 

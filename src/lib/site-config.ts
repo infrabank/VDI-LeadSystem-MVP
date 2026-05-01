@@ -99,6 +99,45 @@ export interface Partnership {
   bgColor: string;
 }
 
+export type CustomerCategory = "public" | "research" | "private";
+
+export interface Customer {
+  /** 약칭 코드 (영문) */
+  code: string;
+  /** 정식 기관명 (한글) */
+  name: string;
+  /** 카테고리: public(공공기관), research(정부출연연구기관), private(민간) */
+  category: CustomerCategory;
+  /** 환경 비고 (선택, 내부용) */
+  note?: string;
+}
+
+/**
+ * 운영 중 고객사 (Maint 프로젝트 기준).
+ *
+ * 주의: 일부 공공기관·연구기관은 외부 공개 동의가 필요할 수 있음.
+ * 발행 전 각 기관 보안담당자 동의 확인 필요. 미동의 시 리스트에서 제외.
+ */
+export const customers: Customer[] = [
+  { code: "MODS", name: "국가데이터처", category: "public", note: "통계정보원(Kosii) SDC 통계데이터센터 VDI" },
+  { code: "MPM", name: "인사혁신처", category: "public", note: "Citrix Virtual Desktop / XenServer" },
+  { code: "SFD", name: "세종소방", category: "public" },
+  { code: "KIEP", name: "대외경제정책연구원", category: "research" },
+  { code: "KRIHS", name: "국토연구원", category: "research" },
+  { code: "KISTI", name: "한국과학기술정보연구원", category: "research" },
+  { code: "KLRI", name: "한국법제연구원", category: "research" },
+  { code: "KRISO", name: "선박해양플랜트연구소", category: "research" },
+  { code: "KINS", name: "한국원자력안전기술원", category: "research" },
+  { code: "KINAC", name: "한국원자력통제기술원", category: "research" },
+  { code: "DJGLASS", name: "대진글라스", category: "private" },
+];
+
+export const customerCategoryLabel: Record<CustomerCategory, string> = {
+  public: "공공기관",
+  research: "정부 출연 연구기관",
+  private: "민간 기업",
+};
+
 export const partnerships: Partnership[] = [
   {
     name: "VMware",
