@@ -131,25 +131,25 @@ export const practices: Record<PracticeId, Practice> = {
     brand: "MFA & Access",
     title: "MFA·접근통제 솔루션",
     shortTitle: "MFA",
-    tagline: "다요소 인증 도입·운영 — Cisco Duo · Microsoft Entra",
+    tagline: "Microsoft Entra ID · 라온시큐어 — 글로벌 + 한국 공공 표준",
     description:
-      "VDI 진입 인증 강화부터 원격근무 접근통제까지, MFA(다요소 인증)와 Zero Trust 액세스 솔루션을 고객 환경에 맞게 설계·구축·운영합니다. 라이선스 리셀 + 구축 + 유지보수를 한 창구에서 제공합니다.",
+      "VDI 진입 인증 강화부터 원격근무 접근통제까지, MFA(다요소 인증) 솔루션을 고객 환경에 맞게 설계·구축·운영합니다. M365 보유 기관은 Microsoft Entra ID로, 행정 전자서명(GPKI/NPKI) 기반 공공기관은 라온시큐어로 대응합니다.",
     pillars: [
       {
-        title: "Cisco Duo",
-        desc: "VDI·VPN·SaaS 통합 MFA 도입, 정책 설계·운영",
+        title: "Microsoft Entra ID",
+        desc: "M365 보유 고객 대상 Entra MFA·Conditional Access 활성화 (Azure Korea CSAP IaaS 인증)",
       },
       {
-        title: "Microsoft Entra ID",
-        desc: "M365 보유 고객 대상 Entra MFA·Conditional Access 활성화",
+        title: "라온시큐어 OneAccess·TouchEn",
+        desc: "한국 공공·금융 표준 PKI 기반 통합 인증, GPKI/NPKI 네이티브 지원",
       },
       {
         title: "Zero Trust 액세스",
         desc: "사용자·디바이스 신뢰도 기반 조건부 접근 정책",
       },
       {
-        title: "원격근무 접근통제",
-        desc: "VPN 대체·보완 — 외부 협력사·재택 근무자 접근 보안",
+        title: "원격근무·외부 협력사 접근통제",
+        desc: "VPN 대체·보완 — 망분리 완화 환경에서의 안전한 외부 접근",
       },
     ],
     ctaLabel: "MFA 도입 상담",
@@ -203,7 +203,7 @@ export const practices: Record<PracticeId, Practice> = {
       },
       {
         title: "벤더 중립 비교·선정",
-        desc: "Citrix vs Horizon vs Omnissa, Duo vs Entra, Acronis vs Veeam 비교 자문",
+        desc: "Citrix vs Horizon vs Omnissa, Entra vs 라온시큐어, Acronis vs Veeam 비교 자문",
       },
       {
         title: "TCO·운영 비용 최적화",
@@ -323,7 +323,7 @@ export const leadership: LeaderProfile[] = [
   {
     slot: "mfa-lead",
     role: "MFA·접근통제 책임",
-    expertise: ["Cisco Duo", "Microsoft Entra", "Zero Trust Access"],
+    expertise: ["Microsoft Entra", "라온시큐어", "Zero Trust Access"],
   },
   {
     slot: "data-protection-lead",

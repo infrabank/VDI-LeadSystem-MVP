@@ -313,7 +313,7 @@ function buildQAItems(ctx: TemplateContext): QAItem[] {
         category: "보안",
         question: "멀티팩터 인증(MFA) 연동 방안과 지원되는 인증 수단(OTP, FIDO2, 스마트카드 등)은 무엇인가요?",
         answer:
-          "VDI 게이트웨이 레이어에서 RADIUS, SAML, OIDC 프로토콜을 통해 외부 MFA 솔루션(Microsoft Entra MFA, Google Authenticator, Duo Security 등)과 연동이 가능합니다. FIDO2/WebAuthn 지원 시 패스워드리스(Passwordless) 인증 환경 구현이 가능합니다.",
+          "VDI 게이트웨이 레이어에서 RADIUS, SAML, OIDC 프로토콜을 통해 외부 MFA 솔루션(Microsoft Entra MFA, 라온시큐어 OneAccess, 드림시큐리티 MagicOTP, Google Authenticator 등)과 연동이 가능합니다. FIDO2/WebAuthn 지원 시 패스워드리스(Passwordless) 인증 환경 구현이 가능합니다.",
       },
       {
         category: "보안",

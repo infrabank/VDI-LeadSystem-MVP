@@ -136,7 +136,7 @@ function EmptyState() {
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">예정 사례 유형</p>
           <ul className="text-sm text-gray-700 space-y-1.5">
             <li>· Citrix·VMware·Omnissa VDI 구축·운영</li>
-            <li>· MFA(Cisco Duo·Microsoft Entra) 도입</li>
+            <li>· MFA(Microsoft Entra·라온시큐어) 도입</li>
             <li>· Acronis Cyber Protect 백업·EDR 통합 운영</li>
             <li>· VDI+MFA+백업 융합 패키지 도입</li>
           </ul>

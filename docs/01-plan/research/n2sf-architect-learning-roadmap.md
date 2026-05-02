@@ -76,10 +76,11 @@
 ### 학습 영역 (5개)
 
 #### 1. MFA / IAM
-- **벤더**: Microsoft Entra ID, Cisco Duo, Okta, OneLogin
+- **벤더**: Microsoft Entra ID (1순위), 라온시큐어 OneAccess (2순위, 공공), 드림시큐리티 MagicLine, 잉카인터넷 nProtect
 - **VDI 접점**: VDI 진입 인증 강화 (가장 가까운 확장)
-- **학습 방법**: Cisco Duo 무료 계정 + Microsoft Learn (SC-300)
+- **학습 방법**: Microsoft Learn (SC-300) + 라온시큐어 OneAccess 자료 + 자체 PoC
 - **시간**: 30시간 + 자체 PoC 환경 구축 30시간
+- **주의**: Okta·OneLogin은 CSAP 인증 부재로 한국 공공 진입 불가, 학습 우선순위 낮음
 
 #### 2. ZTNA / SASE (이해만, 직접 딜리버리 X)
 - **벤더**: Zscaler, Cloudflare, Cato Networks
@@ -107,7 +108,7 @@
 
 ### 산출물
 - 카테고리별 1장 요약 (사이트 콘텐츠로 활용)
-- Acronis EDR PoC 환경 구축 결과 정리 (Cisco Duo + Microsoft Entra)
+- Acronis EDR PoC 환경 구축 결과 정리 (Microsoft Entra + 라온시큐어 OneAccess)
 
 ### 학습 시간
 - 총 120시간 (3~6개월에 분산)

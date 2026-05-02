@@ -55,7 +55,7 @@ export default function AboutPage() {
               발생하고 운영 단계의 통합 시각이 사라집니다.
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all">
-              {company.name}는 Citrix·VMware·Omnissa VDI 운영 경험에 MFA(Cisco Duo·Microsoft Entra)와
+              {company.name}는 Citrix·VMware·Omnissa VDI 운영 경험에 MFA(Microsoft Entra·라온시큐어)와
               Acronis 백업·EDR을 더해, 세 영역을 한 전문가가 통합 설계·운영합니다.
               도입 이후의 운영 책임도 한 창구에서 가져갑니다.
             </p>

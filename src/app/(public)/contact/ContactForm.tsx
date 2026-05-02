@@ -16,7 +16,7 @@ const ORG_TYPES = [
 const INTEREST_AREAS = [
   { value: "vdi-workspace", label: "VDI 구축·운영 (Citrix·VMware·Omnissa)" },
   { value: "daas-transition", label: "DaaS 전환 (AVD·Windows 365)" },
-  { value: "mfa-access", label: "MFA·접근통제 (Cisco Duo·Entra ID)" },
+  { value: "mfa-access", label: "MFA·접근통제 (Microsoft Entra·라온시큐어)" },
   { value: "data-protection", label: "백업·EDR (Acronis Cyber Protect)" },
   { value: "managed-integration", label: "융합 맞춤 제안 (VDI+MFA+백업)" },
   { value: "managed-service", label: "MSP 운영 서비스" },

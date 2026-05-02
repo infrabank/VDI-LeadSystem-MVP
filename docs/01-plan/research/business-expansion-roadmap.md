@@ -38,21 +38,22 @@
 ### 액션 아이템
 
 #### 사업
-- [ ] Cisco Partner Locator 등록 (1주)
-- [ ] Cisco Duo 자체 PoC 환경 구축 (Citrix + Duo) (2주)
 - [ ] Microsoft Partner Network 등록 (1주)
+- [ ] M365 보유 VDI 고객 식별 (1주)
+- [ ] AVD/Windows 365 PoC 환경 구축 (2주)
 - [ ] 기존 VDI 고객 대상 MFA 도입 제안서 작성 (2주)
-- [ ] 12개 VDI 고객 모두에게 영업 컨택 (1개월)
+- [ ] M365 보유 기관 우선 영업 컨택 (1개월)
+- [ ] 라온시큐어 본사 파트너십 신청 (등록 절차 시작)
 
 #### 학습
 - [ ] N²SF 학습 단계 1 (1차 자료 정복) 완료
-- [ ] Cisco Duo Advantage 학습 (벤더 무료 교육)
 - [ ] Microsoft SC-300 학습 시작
+- [ ] 라온시큐어 OneAccess·TouchEn 제품 자료 학습
 
 #### 사이트
 - [ ] 시드 015 콘텐츠 발행 (8건) — 완료
 - [ ] 분기별 추가 콘텐츠 3건 발행 (MFA·DaaS·융합 사례)
-- [ ] SEO 점검 (검색 키워드 "VDI MFA", "Cisco Duo 한국")
+- [ ] SEO 점검 (검색 키워드 "VDI MFA", "Microsoft Entra 한국", "라온시큐어 VDI")
 
 ### 매출 목표
 - 분기 매출 +20% (MFA 첫 도입 1건 + Acronis EDR 업셀)
@@ -76,7 +77,7 @@
 
 #### 사업
 - [ ] Microsoft Entra MFA 도입 첫 프로젝트 (M365 보유 고객 대상)
-- [ ] Cisco Duo 추가 도입 1~2개
+- [ ] 라온시큐어 OneAccess 첫 PoC 또는 도입 1개 (공공 RFP 대응)
 - [ ] 융합 패키지 (VDI+MFA+백업) 첫 제안서 작성·영업
 - [ ] DaaS 전환 자문 첫 프로젝트 수주 (Microsoft AZ-500 학습 병행)
 

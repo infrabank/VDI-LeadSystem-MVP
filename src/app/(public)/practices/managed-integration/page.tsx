@@ -11,7 +11,7 @@ export const metadata = {
 const scenarios = [
   {
     title: "공공기관 망분리 완화 패키지",
-    desc: "Citrix VDI + Cisco Duo MFA + Acronis 백업으로 N²SF 시류에 대응. 외부 협력사 접근 보안과 데이터 복원력을 한 번에.",
+    desc: "Citrix VDI + 라온시큐어 OneAccess(GPKI 인증) + Acronis 백업으로 행정전자정부 환경 대응. 외부 협력사 접근 보안과 데이터 복원력을 한 번에.",
     badge: "공공·연구",
     color: "#2563eb",
   },
@@ -23,7 +23,7 @@ const scenarios = [
   },
   {
     title: "민간 제조 BCP 통합",
-    desc: "Omnissa Workspace ONE + Cisco Duo + Acronis Cyber DR. 업무 연속성과 데이터 보호를 단일 책임으로 운영.",
+    desc: "Omnissa Workspace ONE + Microsoft Entra ID + Acronis Cyber DR. 업무 연속성과 데이터 보호를 단일 책임으로 운영.",
     badge: "제조·법무",
     color: "#059669",
   },

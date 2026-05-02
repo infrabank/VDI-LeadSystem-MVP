@@ -10,18 +10,18 @@ export const metadata = {
 
 const vendors = [
   {
-    name: "Cisco Duo",
-    desc: "VDI·VPN·SaaS 통합 MFA. 도입 가장 쉽고 VDI 통합 레퍼런스 풍부. 보안 우선 중견기업 추천.",
-    href: "https://duo.com/",
+    name: "Microsoft Entra ID",
+    desc: "M365 보유 고객은 추가 라이선스 없이 활성화 가능. Conditional Access·SSO 통합. Azure Korea가 CSAP IaaS 인증을 보유해 공공기관 도입 적합.",
+    href: "https://learn.microsoft.com/entra/",
     badge: "권장 #1",
-    color: "#00bceb",
+    color: "#0078d4",
   },
   {
-    name: "Microsoft Entra ID",
-    desc: "M365 보유 고객은 추가 라이선스 없이 활성화 가능. Conditional Access·SSO 통합.",
-    href: "https://learn.microsoft.com/entra/",
-    badge: "권장 #2",
-    color: "#0078d4",
+    name: "라온시큐어 OneAccess · TouchEn",
+    desc: "한국 공공·금융 표준 PKI 기반 통합 인증. 행정 전자서명(GPKI/NPKI) 네이티브 지원, 정부 부처·지자체·공공기관 광범위 도입 레퍼런스.",
+    href: "https://www.raonsecure.com/",
+    badge: "권장 #2 (공공 특화)",
+    color: "#0066cc",
   },
 ];
 
@@ -149,7 +149,7 @@ export default function MfaAccessPage() {
             ))}
           </div>
           <p className="text-xs text-gray-400 text-center mt-6 kr-keep-all">
-            ※ Okta·OneLogin 등 다른 벤더도 고객 요건에 따라 검토 가능합니다.
+            ※ 드림시큐리티·잉카인터넷 등 국내 PKI 솔루션, Okta 등 글로벌 IDaaS도 고객 요건에 따라 검토 가능합니다. 라온시큐어 파트너십은 추진 중입니다.
           </p>
         </div>
       </section>

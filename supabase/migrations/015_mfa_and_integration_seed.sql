@@ -38,7 +38,7 @@ MFA(다요소 인증) 도입은 기술 작업보다 **정책 정리와 예외 �
 
 | 방식 | 보안성 | 사용성 | 비용 |
 |---|---|---|---|
-| **Push 알림** (Duo, Entra) | 高 | 高 | 낮음 |
+| **Push 알림** (Entra Authenticator, 라온시큐어 TouchEn) | 高 | 高 | 낮음 |
 | **OTP 코드** (Google Authenticator) | 中 | 中 | 무료 |
 | **SMS 코드** | 低 (SIM swap 위험) | 高 | 중간 |
 | **하드웨어 토큰** (YubiKey) | 最高 | 中 | 高 |
@@ -86,7 +86,7 @@ Week 13~: 정기 운영·모니터링·정책 조정
 
 [MFA 도입 상담 문의 →](/contact?source=mfa-checklist&interest=mfa-access)
 $md$,
-  ARRAY['mfa', 'multi-factor-auth', 'cisco-duo', 'entra-id', 'checklist', 'access-control'],
+  ARRAY['mfa', 'multi-factor-auth', 'entra-id', 'raonsecure', 'checklist', 'access-control'],
   'mfa-access',
   'published',
   now()
@@ -94,86 +94,121 @@ $md$,
 (
   'comparison',
   'mfa-vendor-selection-guide',
-  'MFA 벤더 선정 기준 5가지 — Cisco Duo · Microsoft Entra · Okta · OneLogin 비교',
-  '국내 환경에서 MFA 벤더를 선정할 때 검토할 5가지 기준(가격·VDI 통합·M365 연동·관리 콘솔·국내 레퍼런스)으로 4개 주요 벤더를 비교한 가이드.',
+  'MFA 벤더 선정 기준 5가지 — Microsoft Entra · 라온시큐어 · 드림시큐리티 · 잉카인터넷',
+  '한국 공공·금융·민간 환경에서 MFA 벤더를 선정할 때 검토할 5가지 기준(공공 적합성·VDI 통합·CSAP 인증·관리 콘솔·국내 레퍼런스)으로 글로벌·국내 주요 벤더를 비교한 가이드.',
   $md$# MFA 벤더 선정 기준 5가지
 
-MFA 벤더는 표면적 기능이 비슷해 보이지만, 실제 도입 시 운영 부담과 비용 차이가 큽니다. 5가지 기준으로 4개 주요 벤더를 비교합니다.
+한국에서 MFA 벤더를 선정할 때는 글로벌 표준 기능뿐 아니라 **CSAP 인증·행정 전자서명(GPKI/NPKI) 통합·국내 지원** 같은 한국 특수 요건이 결정적입니다. 5가지 기준으로 글로벌·국내 주요 벤더를 비교합니다.
 
 ## 비교 대상 벤더
 
-| 벤더 | 본사 | 국내 파트너 | 한국어 지원 |
+| 벤더 | 본사·소속 | 국내 파트너 | 공공 적합성 |
 |---|---|---|---|
-| **Cisco Duo** | 미국 | 다수 SI·총판 | 중 |
-| **Microsoft Entra ID (Azure AD)** | 미국 | M365 파트너 | 강 |
-| **Okta** | 미국 | 일부 SI | 약 |
-| **OneLogin** | 미국 | 소수 SI | 약 |
+| **Microsoft Entra ID** | 미국 (Azure Korea CSAP IaaS 보유) | M365 파트너 풍부 | ★★★★★ |
+| **라온시큐어 OneAccess·TouchEn** | 한국 | 본사 직접·다수 SI | ★★★★★ (공공 표준) |
+| **드림시큐리티 MagicLine·Magic OTP** | 한국 | 본사·SI | ★★★★ (PKI 강함) |
+| **잉카인터넷 nProtect** | 한국 | 본사·SI | ★★★★ (보안 키패드+OTP) |
+| **Okta** | 미국 | 일부 SI | ★ (CSAP X, 공공 비추천) |
+| **OneLogin** | 미국 (One Identity) | 소수 SI | ★ (국내 사례 부족) |
 
-## 기준 1: 가격·라이선스 모델
+## 기준 1: 공공 적합성 (CSAP·GPKI·국내 보관)
 
-| 벤더 | 시작 가격 (1인 월) | 무료 한도 | 비고 |
-|---|---|---|---|
-| **Cisco Duo** | $3 (Essentials) ~ $9 (Beyond) | 10인 무료 | VDI 통합 ZTNA는 Beyond 등급 |
-| **Microsoft Entra ID** | M365 Business Premium 포함 (별도 구매 시 P1 $6/P2 $9) | M365 Basic 포함 | 이미 M365 쓰면 사실상 무료 |
-| **Okta** | $2 (MFA only) ~ $15 (Workforce) | 없음 | 100인 미만은 비싸짐 |
-| **OneLogin** | $2 (MFA) ~ $8 (Unlimited) | 없음 | 가격 협상 폭 큼 |
+### Microsoft Entra ID + Azure Korea
+- ★★★★★ Azure Korea가 **CSAP IaaS 인증 보유** → 공공기관 사용 가능
+- M365 도입 공공기관 다수 (행안부·지자체)
+- 데이터 한국 리전 보관 가능
 
-**권장**: M365 보유 → **Entra**, M365 없음 → **Duo**.
+### 라온시큐어 OneAccess
+- ★★★★★ **국내 솔루션**, 데이터 보관 이슈 없음
+- **GPKI/NPKI 행정 전자서명 네이티브 지원**
+- 정부 부처·지자체·공공기관 200+ 도입 레퍼런스
+
+### 드림시큐리티 MagicLine
+- ★★★★ PKI 기반, 행정 전자정부 표준 호환
+- 금융권·공공 다수 도입
+
+### Okta·OneLogin
+- ★ **CSAP 인증 부재**, 데이터 미국·EU 리전 → 공공 사용 사실상 불가
 
 ## 기준 2: VDI·DaaS 통합
 
 | 벤더 | Citrix | VMware Horizon | Omnissa | DaaS (AVD/Win365) |
 |---|---|---|---|---|
-| **Duo** | ★★★ (StoreFront 통합) | ★★★ (UAG 통합) | ★★ | ★★★ |
-| **Entra** | ★★ (NetScaler SAML) | ★★ | ★★ | ★★★★ (네이티브) |
-| **Okta** | ★★ | ★★ | ★ | ★★ |
-| **OneLogin** | ★★ | ★ | ★ | ★ |
+| **Microsoft Entra ID** | ★★ (NetScaler SAML) | ★★ | ★★ | ★★★★★ (네이티브) |
+| **라온시큐어** | ★★★ (StoreFront 연계) | ★★★ (UAG 연계) | ★★ | ★★ |
+| **드림시큐리티** | ★★ (PKI 기반) | ★★ | ★★ | ★★ |
+| **잉카인터넷** | ★★ (보안 키패드) | ★★ | ★ | ★★ |
 
-**권장**: 기존 VDI 환경 강화 → **Duo**, 클라우드 DaaS → **Entra**.
+**권장**:
+- **클라우드 DaaS·M365 통합** → Microsoft Entra ID
+- **온프레 VDI·공공 GPKI 환경** → 라온시큐어
 
-## 기준 3: M365·Office 연동
+## 기준 3: 가격·라이선스 모델
 
-- **Entra**: 네이티브 — 추가 설정 거의 없음, Conditional Access 정책 통합
-- **Duo**: SSO Provider로 연동 가능, 별도 설정 필요
-- **Okta**: 강한 SAML 지원, M365 사용 빈도 높으면 유리
-- **OneLogin**: 기본 지원, 고급 기능은 제한적
+| 벤더 | 가격 모델 | 비고 |
+|---|---|---|
+| **Microsoft Entra ID** | M365 Business Premium 포함 / P1 $6 / P2 $9 (월) | 이미 M365 쓰면 사실상 무료 |
+| **라온시큐어 OneAccess** | 사용자당 연 라이선스 (별도 견적) | 공공 RFP 단가 협상 가능 |
+| **드림시큐리티** | 사용자당 연 라이선스 | PKI 인증서 별도 |
+| **잉카인터넷** | 사용자당 연 라이선스 | 보안 키패드 옵션 별도 |
+
+**권장**: M365 보유 시 Entra가 가장 가성비.
 
 ## 기준 4: 관리 콘솔 · MSP 운영
 
 | 벤더 | 다중 고객 관리 | 정책 템플릿 | 리포트 자동화 |
 |---|---|---|---|
-| **Duo** | Partner Edition (별도 구독) | 표준 제공 | 강 |
-| **Entra** | 단일 테넌트 권장 | M365 통합 정책 | 중 (Sentinel 연동) |
-| **Okta** | Workforce Identity Cloud | 강 | 강 |
-| **OneLogin** | 기본 제공 | 중 | 중 |
+| **Microsoft Entra ID** | CSP 프로그램 (다중 테넌트) | M365 통합 정책 | 중 (Sentinel 연동) |
+| **라온시큐어** | OneAccess 통합 콘솔 | 표준 제공 | 강 |
+| **드림시큐리티** | MagicLine 관리 콘솔 | 중 | 중 |
+| **잉카인터넷** | nProtect Admin | 중 | 중 |
 
-**MSP 운영 관점**: 다수 고객을 통합 관리하려면 **Duo Partner Edition** 또는 **Okta**가 유리.
+**MSP 운영**: Microsoft CSP 또는 라온시큐어 본사 파트너십 검토.
 
 ## 기준 5: 국내 레퍼런스·지원
 
-- **Duo**: 국내 금융·공공 도입 사례 多, Cisco 본사 직접 지원 채널
-- **Entra**: M365 보유 모든 기관, MS 한국 지원·파트너 풍부
-- **Okta**: 외국계·IT 스타트업 중심, 국내 SI 지원 제한적
-- **OneLogin**: 국내 사례 적음, 가격 협상 시 검토
+- **Microsoft Entra**: M365 도입 모든 기관 (사실상 1위), MS 한국 지원·파트너 풍부
+- **라온시큐어**: 정부 부처·지자체·금융권 광범위 도입, 한국 본사 직접 지원
+- **드림시큐리티**: 행정전자정부, 금융권 다수, 한국 본사
+- **잉카인터넷**: 금융권 보안 키패드 표준, 한국 본사
+- **Okta·OneLogin**: 국내 사례 적음, 공공 거의 없음
 
 ## 종합 권장 매트릭스
 
 | 시나리오 | 1순위 | 2순위 |
 |---|---|---|
-| **M365 전사 도입 + VDI 사용** | Entra ID | Duo |
-| **VDI 중심 + 다양한 SaaS 사용** | Duo | Okta |
-| **공공기관 (오프라인 중심)** | Duo | Entra |
-| **금융·핀테크 (보안 우선)** | Duo Beyond | Okta |
-| **글로벌 다국적 기업** | Okta | Entra |
-| **MSP 다중 고객 관리** | Duo Partner | Okta |
+| **M365 전사 도입 + VDI 사용** | Microsoft Entra ID | 라온시큐어 |
+| **공공기관 행정전자서명(GPKI) 환경** | 라온시큐어 OneAccess | Microsoft Entra |
+| **금융권 보안 키패드 표준** | 잉카인터넷 nProtect | 라온시큐어 |
+| **민간 중견 (M365 보유)** | Microsoft Entra ID | (단독 충분) |
+| **민간 중견 (M365 미보유)** | 라온시큐어 또는 드림시큐리티 | Microsoft Entra |
+| **외국계 다국적 기업** | Microsoft Entra ID | Okta |
+
+## ❌ 비추천 (한국 공공)
+
+- **Okta**: CSAP 인증 부재, 데이터 국외 리전 → 공공 사용 사실상 불가
+- **OneLogin**: 국내 레퍼런스 부족, 신뢰 빌드 부담
+
+## Myloket 권장 조합
+
+**Phase 1 (즉시)**: Microsoft Entra ID 단독
+- M365 보유 고객 대상 빠른 진입
+- Microsoft Partner Network 등록만 하면 시작 가능
+
+**Phase 2 (3~6개월)**: 라온시큐어 추가
+- 라온시큐어 파트너십 추진 후 공공 시장 진입
+- GPKI 환경 행정전자정부·지자체 RFP 대응
+
+**Phase 3 (6~12개월)**: 드림시큐리티·잉카인터넷 보조
+- 특정 RFP 요건 시 추가 검토
 
 ## 다음 단계
 
-귀사 환경에 가장 적합한 MFA 벤더 선정과 PoC 일정을 무료로 상담해드립니다.
+귀사 환경(M365 보유 여부·공공/민간·GPKI 사용)에 가장 적합한 MFA 벤더 선정과 PoC 일정을 무료로 상담해드립니다.
 
 [MFA 벤더 선정 상담 →](/contact?source=mfa-comparison&interest=mfa-access)
 $md$,
-  ARRAY['mfa', 'cisco-duo', 'entra-id', 'okta', 'onelogin', 'comparison', 'vendor-selection'],
+  ARRAY['mfa', 'entra-id', 'raonsecure', 'dreamsecurity', 'inca', 'comparison', 'vendor-selection', 'csap', 'gpki'],
   'mfa-access',
   'published',
   now()
@@ -508,7 +543,7 @@ $md$,
               │
 ┌─────────────────────────────────────┐
 │  MFA · 접근통제                        │
-│  Cisco Duo / Microsoft Entra        │
+│  Microsoft Entra / 라온시큐어        │
 └─────────────────────────────────────┘
               │
               │ 사용자·디바이스 신뢰도 검증
@@ -529,7 +564,7 @@ $md$,
 
 ### 통합 패키지
 - **VDI**: Citrix Virtual Apps & Desktops (기존 환경 유지·고도화)
-- **MFA**: Cisco Duo Beyond (디바이스 신뢰도 검증 포함)
+- **MFA**: 라온시큐어 OneAccess (GPKI 통합 + 디바이스 신뢰도 검증)
 - **백업·EDR**: Acronis Cyber Protect Advanced (엔드포인트 + 서버)
 
 ### 통합 효과
@@ -563,7 +598,7 @@ $md$,
 
 ### 통합 패키지
 - **VDI**: Omnissa Workspace ONE (UEM 통합으로 디바이스 관리 동시)
-- **MFA**: Cisco Duo (간편 도입, 모바일 푸시)
+- **MFA**: Microsoft Entra ID (M365 보유 시 추가 비용 없음, 간편 도입)
 - **백업·EDR**: Acronis Cyber Disaster Recovery + EDR
 
 ### 통합 효과
@@ -822,7 +857,7 @@ $md$,
 - 세션 타임아웃: ___ 분
 
 [MFA 환경]
-- 솔루션: ____________ (Cisco Duo / Microsoft Entra / Okta / 기타 / 미도입)
+- 솔루션: ____________ (Microsoft Entra / 라온시큐어 / 드림시큐리티 / 잉카인터넷 / 기타 / 미도입)
 - 적용 범위: 전체 / Tier 1만 / Tier 2까지
 - 인증 방식: Push / OTP / SMS / 하드웨어 토큰
 - 외부 접속 시 강화: 예 / 아니오

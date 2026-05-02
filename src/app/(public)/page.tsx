@@ -13,7 +13,7 @@ const practiceColorMap: Record<string, { border: string; text: string }> = {
 const bundleScenarios = [
   {
     title: "공공기관 망분리 완화 패키지",
-    desc: "Citrix VDI + Cisco Duo MFA + Acronis 백업 — 외부 협력사 접근 보안과 데이터 복원력을 한 번에.",
+    desc: "Citrix VDI + 라온시큐어 OneAccess(GPKI) + Acronis 백업 — 행정전자정부 환경 외부 협력사 접근 보안과 데이터 복원력을 한 번에.",
     badge: "공공·연구",
     color: "#2563eb",
   },
@@ -25,7 +25,7 @@ const bundleScenarios = [
   },
   {
     title: "민간 제조 BCP 통합",
-    desc: "Omnissa Workspace ONE + Cisco Duo + Acronis Cyber DR — 업무 연속성과 데이터 보호 단일 책임.",
+    desc: "Omnissa Workspace ONE + Microsoft Entra ID + Acronis Cyber DR — 업무 연속성과 데이터 보호 단일 책임.",
     badge: "제조·법무",
     color: "#059669",
   },
