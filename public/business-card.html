@@ -1,400 +1,562 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-<head>
-<meta charset="utf-8">
-<title>Myloket — Business Card</title>
-<style>
-  /* ===== 인쇄 사양 (한국 표준 명함 90×50mm) ===== */
-  @page {
-    size: 90mm 50mm;
-    margin: 0;
-  }
-  * { box-sizing: border-box; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    <head>
+        <meta charset="utf-8" />
+        <title>Myloket — Business Card</title>
+        <style>
+            /* ===== 인쇄 사양 (한국 표준 명함 90×50mm) ===== */
+            @page {
+                size: 90mm 50mm;
+                margin: 0;
+            }
+            * {
+                box-sizing: border-box;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
 
-  body {
-    margin: 0;
-    background: #f3f4f6;
-    font-family: "Pretendard Variable", -apple-system, "Segoe UI", Roboto, sans-serif;
-    color: #101828;
-    padding: 24px;
-  }
+            body {
+                margin: 0;
+                background: #f3f4f6;
+                font-family:
+                    "Pretendard Variable",
+                    -apple-system,
+                    "Segoe UI",
+                    Roboto,
+                    sans-serif;
+                color: #101828;
+                padding: 24px;
+            }
 
-  /* ===== 미리보기 컨테이너 (스크린만) ===== */
-  .preview-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    align-items: center;
-    max-width: 720px;
-    margin: 0 auto;
-  }
-  .preview-label {
-    font-size: 12px;
-    color: #6b7280;
-    font-weight: 600;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    margin-bottom: -16px;
-  }
-  .info-banner {
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    padding: 14px 18px;
-    font-size: 13px;
-    color: #374151;
-    line-height: 1.6;
-    width: 100%;
-    max-width: 540px;
-  }
-  .info-banner h1 { font-size: 16px; margin: 0 0 6px; }
-  .info-banner code { background: #f3f4f6; padding: 1px 5px; border-radius: 3px; font-size: 12px; }
+            /* ===== 미리보기 컨테이너 (스크린만) ===== */
+            .preview-wrap {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                align-items: center;
+                max-width: 720px;
+                margin: 0 auto;
+            }
+            .preview-label {
+                font-size: 12px;
+                color: #6b7280;
+                font-weight: 600;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                margin-bottom: -16px;
+            }
+            .info-banner {
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 14px 18px;
+                font-size: 13px;
+                color: #374151;
+                line-height: 1.6;
+                width: 100%;
+                max-width: 540px;
+            }
+            .info-banner h1 {
+                font-size: 16px;
+                margin: 0 0 6px;
+            }
+            .info-banner code {
+                background: #f3f4f6;
+                padding: 1px 5px;
+                border-radius: 3px;
+                font-size: 12px;
+            }
 
-  /* ===== 명함 카드 ===== */
-  .card {
-    width: 90mm;
-    height: 50mm;
-    background: #fff;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.04);
-    overflow: hidden;
-    position: relative;
-    page-break-after: always;
-  }
+            /* ===== 명함 카드 ===== */
+            .card {
+                width: 90mm;
+                height: 50mm;
+                background: #fff;
+                box-shadow:
+                    0 4px 16px rgba(0, 0, 0, 0.08),
+                    0 1px 3px rgba(0, 0, 0, 0.04);
+                overflow: hidden;
+                position: relative;
+                page-break-after: always;
+            }
 
-  /* ===== FRONT (앞면) ===== */
-  .front {
-    padding: 6mm 6mm 5mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-  }
-  .front::before {
-    content: "";
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 3px;
-    background: linear-gradient(180deg, #1d52de 0%, #1d52de 60%, #059669 60%, #059669 100%);
-  }
+            /* ===== FRONT (앞면) ===== */
+            .front {
+                padding: 6mm 6mm 5mm;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+            }
+            .front::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 3px;
+                background: linear-gradient(
+                    180deg,
+                    #1d52de 0%,
+                    #1d52de 60%,
+                    #059669 60%,
+                    #059669 100%
+                );
+            }
 
-  .front-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .front-brand {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    font-size: 9pt;
-    font-weight: 700;
-    color: #101828;
-    letter-spacing: -0.01em;
-  }
-  .front-brand .dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #1d52de;
-  }
-  .front-tagline {
-    font-size: 6.5pt;
-    color: #1d52de;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    text-align: right;
-    line-height: 1.3;
-    max-width: 38mm;
-  }
+            .front-top {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
+            .front-brand {
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+                font-size: 9pt;
+                font-weight: 700;
+                color: #101828;
+                letter-spacing: -0.01em;
+            }
+            .front-brand .dot {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: #1d52de;
+            }
+            .front-tagline {
+                font-size: 6.5pt;
+                color: #1d52de;
+                font-weight: 600;
+                letter-spacing: 0.06em;
+                text-transform: uppercase;
+                text-align: right;
+                line-height: 1.3;
+                max-width: 38mm;
+            }
 
-  .front-name-area {
-    margin-top: 1mm;
-  }
-  .front-name {
-    font-size: 18pt;
-    font-weight: 600;
-    color: #101828;
-    letter-spacing: -0.02em;
-    line-height: 1;
-  }
-  .front-name-en {
-    font-size: 8pt;
-    color: #6b7280;
-    font-weight: 400;
-    margin-top: 1.5mm;
-    letter-spacing: 0.02em;
-  }
-  .front-role {
-    font-size: 8pt;
-    color: #4b5563;
-    font-weight: 500;
-    margin-top: 2mm;
-  }
+            .front-name-area {
+                margin-top: 1mm;
+            }
+            .front-name {
+                font-size: 18pt;
+                font-weight: 600;
+                color: #101828;
+                letter-spacing: -0.02em;
+                line-height: 1;
+            }
+            .front-name-en {
+                font-size: 8pt;
+                color: #6b7280;
+                font-weight: 400;
+                margin-top: 1.5mm;
+                letter-spacing: 0.02em;
+            }
+            .front-role {
+                font-size: 8pt;
+                color: #4b5563;
+                font-weight: 500;
+                margin-top: 2mm;
+            }
 
-  .front-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    border-top: 0.4px solid #e5e7eb;
-    padding-top: 2.5mm;
-  }
-  .contact-stack {
-    font-size: 7pt;
-    color: #374151;
-    line-height: 1.6;
-  }
-  .contact-stack .label {
-    color: #9ca3af;
-    margin-right: 3mm;
-    display: inline-block;
-    width: 6mm;
-  }
-  .contact-stack a {
-    color: #374151;
-    text-decoration: none;
-  }
-  .company-stack {
-    text-align: right;
-    font-size: 7pt;
-    color: #6b7280;
-    line-height: 1.5;
-  }
-  .company-stack .legal {
-    font-weight: 600;
-    color: #101828;
-    font-size: 8pt;
-  }
-  .company-stack .web {
-    color: #1d52de;
-    font-weight: 500;
-  }
+            .front-bottom {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-end;
+                border-top: 0.4px solid #e5e7eb;
+                padding-top: 2.5mm;
+            }
+            .contact-stack {
+                font-size: 7pt;
+                color: #374151;
+                line-height: 1.6;
+            }
+            .contact-stack .label {
+                color: #9ca3af;
+                margin-right: 3mm;
+                display: inline-block;
+                width: 6mm;
+            }
+            .contact-stack a {
+                color: #374151;
+                text-decoration: none;
+            }
+            .company-stack {
+                text-align: right;
+                font-size: 7pt;
+                color: #6b7280;
+                line-height: 1.5;
+            }
+            .company-stack .legal {
+                font-weight: 600;
+                color: #101828;
+                font-size: 8pt;
+            }
+            .company-stack .web {
+                color: #1d52de;
+                font-weight: 500;
+            }
 
-  /* ===== BACK (뒷면) ===== */
-  .back {
-    background: #0f172a;
-    color: #f5f9ff;
-    padding: 5mm 6mm;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
-  }
-  .back::before {
-    content: "";
-    position: absolute;
-    top: -20mm; right: -20mm;
-    width: 50mm; height: 50mm;
-    background: radial-gradient(circle, rgba(29, 82, 222, 0.4) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .back::after {
-    content: "";
-    position: absolute;
-    bottom: -15mm; left: -15mm;
-    width: 35mm; height: 35mm;
-    background: radial-gradient(circle, rgba(5, 150, 105, 0.3) 0%, transparent 70%);
-    pointer-events: none;
-  }
+            /* ===== BACK (뒷면) ===== */
+            .back {
+                background: #0f172a;
+                color: #f5f9ff;
+                padding: 5mm 6mm;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+                overflow: hidden;
+            }
+            .back::before {
+                content: "";
+                position: absolute;
+                top: -20mm;
+                right: -20mm;
+                width: 50mm;
+                height: 50mm;
+                background: radial-gradient(
+                    circle,
+                    rgba(29, 82, 222, 0.4) 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+            .back::after {
+                content: "";
+                position: absolute;
+                bottom: -15mm;
+                left: -15mm;
+                width: 35mm;
+                height: 35mm;
+                background: radial-gradient(
+                    circle,
+                    rgba(5, 150, 105, 0.3) 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
 
-  .back-content { position: relative; z-index: 1; }
+            .back-content {
+                position: relative;
+                z-index: 1;
+            }
 
-  .back-top {
-    display: flex;
-    align-items: center;
-    gap: 3mm;
-    margin-bottom: 1mm;
-  }
-  .back-brand {
-    font-size: 11pt;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.01em;
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-  }
-  .back-brand .dot {
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #5288ff;
-  }
-  .back-divider {
-    height: 1px;
-    flex: 1;
-    background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, transparent 100%);
-  }
+            .back-top {
+                display: flex;
+                align-items: center;
+                gap: 3mm;
+                margin-bottom: 1mm;
+            }
+            .back-brand {
+                font-size: 11pt;
+                font-weight: 700;
+                color: #fff;
+                letter-spacing: -0.01em;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .back-brand .dot {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: #5288ff;
+            }
+            .back-divider {
+                height: 1px;
+                flex: 1;
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0.2) 0%,
+                    transparent 100%
+                );
+            }
 
-  .back-tagline {
-    font-size: 6.5pt;
-    color: #93c5fd;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 3mm;
-  }
+            .back-tagline {
+                font-size: 6.5pt;
+                color: #93c5fd;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 3mm;
+            }
 
-  .practices {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5mm;
-    margin-bottom: 3mm;
-  }
-  .practice {
-    display: flex;
-    align-items: flex-start;
-    gap: 2mm;
-    padding: 1.5mm 0;
-  }
-  .practice .accent {
-    width: 2.5px;
-    align-self: stretch;
-    border-radius: 1px;
-  }
-  .practice-blue .accent { background: #5288ff; }
-  .practice-green .accent { background: #34d399; }
-  .practice-text {
-    flex: 1;
-  }
-  .practice-name {
-    font-size: 7.5pt;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 0.5mm;
-  }
-  .practice-desc {
-    font-size: 6pt;
-    color: #cbd5e1;
-    line-height: 1.4;
-  }
+            .practices {
+                display: flex;
+                flex-direction: column;
+                gap: 0.8mm;
+                margin-bottom: 2mm;
+            }
+            .practice {
+                display: flex;
+                align-items: flex-start;
+                gap: 2mm;
+                padding: 0.6mm 0;
+            }
+            .practice .accent {
+                width: 2.5px;
+                align-self: stretch;
+                border-radius: 1px;
+            }
+            .practice-blue .accent {
+                background: #5288ff;
+            }
+            .practice-indigo .accent {
+                background: #818cf8;
+            }
+            .practice-green .accent {
+                background: #34d399;
+            }
+            .practice-purple .accent {
+                background: #c084fc;
+            }
+            .practice-text {
+                flex: 1;
+            }
+            .practice-name {
+                font-size: 6.5pt;
+                font-weight: 600;
+                color: #fff;
+                margin-bottom: 0.3mm;
+            }
+            .practice-desc {
+                font-size: 5.5pt;
+                color: #cbd5e1;
+                line-height: 1.35;
+            }
 
-  .back-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 2mm;
-    border-top: 0.4px solid rgba(255, 255, 255, 0.1);
-    font-size: 6pt;
-    color: #94a3b8;
-    position: relative;
-    z-index: 1;
-  }
-  .back-footer .partners { letter-spacing: 0.04em; }
-  .back-footer .web {
-    color: #93c5fd;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-  }
+            .back-footer {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 2mm;
+                border-top: 0.4px solid rgba(255, 255, 255, 0.1);
+                font-size: 6pt;
+                color: #94a3b8;
+                position: relative;
+                z-index: 1;
+            }
+            .back-footer .partners {
+                letter-spacing: 0.04em;
+            }
+            .back-footer .web {
+                color: #93c5fd;
+                font-weight: 500;
+                letter-spacing: 0.02em;
+            }
 
-  /* ===== 인쇄 시 ===== */
-  @media print {
-    body {
-      margin: 0;
-      padding: 0;
-      background: #fff;
-    }
-    .preview-wrap { gap: 0; max-width: none; padding: 0; }
-    .preview-label, .info-banner { display: none; }
-    .card {
-      box-shadow: none;
-      width: 90mm;
-      height: 50mm;
-      margin: 0;
-    }
-  }
-</style>
-</head>
-<body>
-<div class="preview-wrap">
-  <div class="info-banner">
-    <h1>Myloket — 명함 디자인 (90×50mm 한국 표준)</h1>
-    <p>인쇄: 브라우저 <code>Ctrl+P</code>(Mac: <code>⌘+P</code>) → 용지 <code>90×50mm 사용자 정의</code> 또는 <code>PDF로 저장</code> → 인쇄소 입고.</p>
-    <p>편집: 본인 정보 4가지(<code>홍길동</code>, <code>Hong Gildong</code>, <code>CEO · Founder</code>, <code>hong@mlkit.co.kr</code>, 전화번호) 본 HTML 파일에서 직접 교체.</p>
-    <p style="color:#9ca3af;margin:0">테두리·재단선 3mm 여유는 인쇄소에 별도 요청. 출력 색상 보정은 오프셋 기준 sRGB 그대로 입고.</p>
-  </div>
+            /* ===== 인쇄 시 ===== */
+            @media print {
+                body {
+                    margin: 0;
+                    padding: 0;
+                    background: #fff;
+                }
+                .preview-wrap {
+                    gap: 0;
+                    max-width: none;
+                    padding: 0;
+                }
+                .preview-label,
+                .info-banner {
+                    display: none;
+                }
+                .card {
+                    box-shadow: none;
+                    width: 90mm;
+                    height: 50mm;
+                    margin: 0;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="preview-wrap">
+            <div class="info-banner">
+                <h1>Myloket — 명함 디자인 (90×50mm 한국 표준)</h1>
+                <p>
+                    인쇄: 브라우저 <code>Ctrl+P</code>(Mac: <code>⌘+P</code>) →
+                    용지 <code>90×50mm 사용자 정의</code> 또는
+                    <code>PDF로 저장</code> → 인쇄소 입고.
+                </p>
+                <p>
+                    편집: 본인 정보 4가지(<code>제현우</code>,
+                    <code>Je Hyunwoo</code>, <code>CEO · Founder</code>,
+                    <code>jhw@mlkit.co.kr</code>, 전화번호) 본 HTML 파일에서
+                    직접 교체.
+                </p>
+                <p style="color: #9ca3af; margin: 0">
+                    테두리·재단선 3mm 여유는 인쇄소에 별도 요청. 출력 색상
+                    보정은 오프셋 기준 sRGB 그대로 입고.
+                </p>
+            </div>
 
-  <!-- ============ FRONT ============ -->
-  <div class="preview-label">앞면 (Front)</div>
-  <div class="card front">
-    <div class="front-top">
-      <div class="front-brand">
-        Myloket
-        <span class="dot"></span>
-      </div>
-      <div class="front-tagline">
-        Enterprise Workspace Security<br>
-        Data Protection
-      </div>
-    </div>
+            <!-- ============ FRONT ============ -->
+            <div class="preview-label">앞면 (Front)</div>
+            <div class="card front">
+                <div class="front-top">
+                    <div class="front-brand">
+                        Myloket
+                        <span class="dot"></span>
+                    </div>
+                    <div class="front-tagline">
+                        VDI · MFA<br />
+                        Data Protection
+                    </div>
+                </div>
 
-    <div class="front-name-area">
-      <div class="front-name">홍길동</div>
-      <div class="front-name-en">Hong Gildong</div>
-      <div class="front-role">CEO · Founder</div>
-    </div>
+                <div class="front-name-area">
+                    <div class="front-name">제현우</div>
+                    <div class="front-name-en">Je Hyunwoo</div>
+                    <div class="front-role">CEO · Founder</div>
+                </div>
 
-    <div class="front-bottom">
-      <div class="contact-stack">
-        <div><span class="label">M</span>010-XXXX-XXXX</div>
-        <div><span class="label">T</span>02-XXXX-XXXX</div>
-        <div><span class="label">E</span><a href="mailto:hong@mlkit.co.kr">hong@mlkit.co.kr</a></div>
-      </div>
-      <div class="company-stack">
-        <div class="legal">㈜마이로켓</div>
-        <div>Myloket Inc.</div>
-        <div class="web">myloket.co.kr</div>
-      </div>
-    </div>
-  </div>
+                <div class="front-bottom">
+                    <div class="contact-stack">
+                        <div><span class="label">M</span>010-3861-8079</div>
+                        <div><span class="label">T</span>070-8015-8087</div>
+                        <div>
+                            <span class="label">E</span
+                            ><a href="mailto:jhw@mlkit.co.kr"
+                                >jhw@mlkit.co.kr</a
+                            >
+                        </div>
+                    </div>
+                    <div class="company-stack">
+                        <div class="legal">㈜마이로켓</div>
+                        <div>Myloket Inc.</div>
+                        <div class="web">myloket.co.kr</div>
+                    </div>
+                </div>
+            </div>
 
-  <!-- ============ BACK ============ -->
-  <div class="preview-label">뒷면 (Back)</div>
-  <div class="card back">
-    <div class="back-content">
-      <div class="back-top">
-        <div class="back-brand">
-          Myloket
-          <span class="dot"></span>
+            <!-- ============ BACK ============ -->
+            <div class="preview-label">뒷면 (Back)</div>
+            <div class="card back">
+                <div class="back-content">
+                    <div class="back-top">
+                        <div class="back-brand">
+                            Myloket
+                            <span class="dot"></span>
+                        </div>
+                        <div class="back-divider"></div>
+                    </div>
+                    <div class="back-tagline">
+                        VDI · MFA · 데이터 보호 솔루션 딜리버리
+                    </div>
+
+                    <div class="practices">
+                        <div class="practice practice-blue">
+                            <div class="accent"></div>
+                            <div class="practice-text">
+                                <div class="practice-name">
+                                    VDI 워크스페이스
+                                    <span
+                                        style="
+                                            color: #93c5fd;
+                                            font-weight: 400;
+                                            font-size: 6pt;
+                                        "
+                                        >Citrix · VMware · Omnissa</span
+                                    >
+                                </div>
+                                <div class="practice-desc">
+                                    멀티 벤더 VDI 설계·구축·DaaS 전환 자문
+                                </div>
+                            </div>
+                        </div>
+                        <div class="practice practice-indigo">
+                            <div class="accent"></div>
+                            <div class="practice-text">
+                                <div class="practice-name">
+                                    MFA · 접근통제
+                                    <span
+                                        style="
+                                            color: #c7d2fe;
+                                            font-weight: 400;
+                                            font-size: 6pt;
+                                        "
+                                        >Microsoft Entra · 라온시큐어</span
+                                    >
+                                </div>
+                                <div class="practice-desc">
+                                    글로벌·한국 공공(GPKI) 표준 통합 인증
+                                </div>
+                            </div>
+                        </div>
+                        <div class="practice practice-green">
+                            <div class="accent"></div>
+                            <div class="practice-text">
+                                <div class="practice-name">
+                                    백업 · EDR
+                                    <span
+                                        style="
+                                            color: #86efac;
+                                            font-weight: 400;
+                                            font-size: 6pt;
+                                        "
+                                        >Acronis Cyber Protect</span
+                                    >
+                                </div>
+                                <div class="practice-desc">
+                                    백업 · DR · 사이버복원력 + EDR 통합 운영
+                                </div>
+                            </div>
+                        </div>
+                        <div class="practice practice-purple">
+                            <div class="accent"></div>
+                            <div class="practice-text">
+                                <div class="practice-name">
+                                    융합 맞춤 제안
+                                    <span
+                                        style="
+                                            color: #d8b4fe;
+                                            font-weight: 400;
+                                            font-size: 6pt;
+                                        "
+                                        >Integrated Solution</span
+                                    >
+                                </div>
+                                <div class="practice-desc">
+                                    VDI + MFA + 백업 단일 책임 운영
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="back-footer">
+                    <div class="partners">
+                        Citrix · VMware · Omnissa · Microsoft · Acronis
+                    </div>
+                    <div class="web">myloket.co.kr</div>
+                </div>
+            </div>
+
+            <div class="info-banner" style="margin-top: 8px">
+                <h1 style="margin-bottom: 6px">인쇄 입고 체크리스트</h1>
+                <ol style="margin: 0; padding-left: 18px; line-height: 1.7">
+                    <li>
+                        용지: 한국 표준 명함 90×50mm (또는 91×55mm은 인쇄소 요청
+                        시)
+                    </li>
+                    <li>
+                        재단여유(bleed): 양 가장자리 +3mm 별도 요청 (현 디자인
+                        미포함, 인쇄소가 자체 처리)
+                    </li>
+                    <li>
+                        표면: 무광 코팅 또는 매트 라미네이팅 권장 (Hashnode
+                        editorial 톤 유지)
+                    </li>
+                    <li>두께: 250~300g/m² (표준 명함 무게)</li>
+                    <li>
+                        색상 모드: 본 HTML은 sRGB. 정확한 indigo(#1d52de) 재현
+                        위해 인쇄소에 RGB→CMYK 자동 변환 요청
+                    </li>
+                    <li>본 HTML 파일·PDF 저장본 함께 발송</li>
+                </ol>
+            </div>
         </div>
-        <div class="back-divider"></div>
-      </div>
-      <div class="back-tagline">기업 보안 워크스페이스 · 데이터 보호 전문</div>
-
-      <div class="practices">
-        <div class="practice practice-blue">
-          <div class="accent"></div>
-          <div class="practice-text">
-            <div class="practice-name">보안 워크스페이스 Practice <span style="color:#93c5fd;font-weight:400;font-size:6pt">VDI Expert</span></div>
-            <div class="practice-desc">VDI · Zero Trust · N²SF 정렬 · CDS/망연계 자문</div>
-          </div>
-        </div>
-        <div class="practice practice-green">
-          <div class="accent"></div>
-          <div class="practice-text">
-            <div class="practice-name">데이터 보호 Practice <span style="color:#86efac;font-weight:400;font-size:6pt">Acronis Powered</span></div>
-            <div class="practice-desc">Acronis 백업 · DR · 사이버복원력 통합 운영</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="back-footer">
-      <div class="partners">VMware · Omnissa · Citrix · Acronis</div>
-      <div class="web">myloket.co.kr</div>
-    </div>
-  </div>
-
-  <div class="info-banner" style="margin-top:8px">
-    <h1 style="margin-bottom:6px">인쇄 입고 체크리스트</h1>
-    <ol style="margin:0;padding-left:18px;line-height:1.7">
-      <li>용지: 한국 표준 명함 90×50mm (또는 91×55mm은 인쇄소 요청 시)</li>
-      <li>재단여유(bleed): 양 가장자리 +3mm 별도 요청 (현 디자인 미포함, 인쇄소가 자체 처리)</li>
-      <li>표면: 무광 코팅 또는 매트 라미네이팅 권장 (Hashnode editorial 톤 유지)</li>
-      <li>두께: 250~300g/m² (표준 명함 무게)</li>
-      <li>색상 모드: 본 HTML은 sRGB. 정확한 indigo(#1d52de) 재현 위해 인쇄소에 RGB→CMYK 자동 변환 요청</li>
-      <li>본 HTML 파일·PDF 저장본 함께 발송</li>
-    </ol>
-  </div>
-</div>
-</body>
+    </body>
 </html>

@@ -27,16 +27,16 @@
 ```
 
 ### 4개 슬롯
-- [ ] **ceo** — CEO · Founder
-- [ ] **secure-workspace-lead** — 보안 워크스페이스 Practice 리드 (VDI·Zero Trust·N²SF)
-- [ ] **data-protection-lead** — 데이터 보호 Practice 리드 (Acronis·DR/BCP)
-- [ ] **tech-lead** — CTO (인프라 자동화·보안 아키텍처)
+- [ ] **vdi-lead** — VDI 딜리버리 책임 (Citrix·VMware·Omnissa·DaaS)
+- [ ] **mfa-lead** — MFA·접근통제 책임 (Microsoft Entra·라온시큐어·Zero Trust)
+- [ ] **data-protection-lead** — 백업·EDR 책임 (Acronis·DR/BCP)
+- [ ] **integration-lead** — 융합 솔루션 설계 책임 (통합 아키텍처·TCO·MSP)
 
 ### 사진 업로드
-- [ ] `/public/team/ceo.jpg` (400×400 정사각형, ≤200KB)
-- [ ] `/public/team/secure-workspace-lead.jpg`
+- [ ] `/public/team/vdi-lead.jpg` (400×400 정사각형, ≤200KB)
+- [ ] `/public/team/mfa-lead.jpg`
 - [ ] `/public/team/data-protection-lead.jpg`
-- [ ] `/public/team/tech-lead.jpg`
+- [ ] `/public/team/integration-lead.jpg`
 
 > 사진 미준비 시 자동으로 이니셜 placeholder 표시.
 
