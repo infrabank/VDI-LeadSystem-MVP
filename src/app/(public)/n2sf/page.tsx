@@ -39,7 +39,7 @@ export default async function N2sfHubPage() {
           <span className="mx-2 text-slate-600">/</span>
           <Link href="/practices" className="hover:text-blue-300">Practices</Link>
           <span className="mx-2 text-slate-600">/</span>
-          <Link href="/practices/secure-workspace" className="hover:text-blue-300">보안 워크스페이스</Link>
+          <Link href="/practices/vdi-workspace" className="hover:text-blue-300">VDI 워크스페이스</Link>
           <span className="mx-2 text-slate-600">/</span>
           <span className="text-slate-200 font-medium">N²SF 진단센터</span>
         </div>

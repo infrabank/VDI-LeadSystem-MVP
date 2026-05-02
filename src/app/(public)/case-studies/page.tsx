@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { company, customers } from "@/lib/site-config";
+import { company } from "@/lib/site-config";
 
 export const metadata = {
   title: `Case Studies | ${company.name}`,
-  description: `${company.name}의 공공·연구·민간 기관 운영·자문 사례 모음.`,
+  description: `${company.name}의 공공·연구·민간 기관 VDI·MFA·백업 솔루션 딜리버리 사례 모음.`,
 };
 
 interface CaseRow {
@@ -17,9 +17,6 @@ interface CaseRow {
   category: string | null;
   published_at: string | null;
 }
-
-const customerCount = customers.length;
-const publicCount = customers.filter((c) => c.category !== "private").length;
 
 export default async function CaseStudiesPage() {
   const supabase = await createClient();
@@ -43,10 +40,10 @@ export default async function CaseStudiesPage() {
             Case Studies
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            운영·자문 사례
+            솔루션 딜리버리 사례
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            공공·연구·민간 {customerCount}곳에서 검증된 보안 워크스페이스·데이터 보호 운영 사례입니다.
+            공공·연구·민간 기관에서 검증된 VDI·MFA·백업 솔루션 딜리버리 사례입니다.
           </p>
         </div>
       </section>
@@ -102,20 +99,14 @@ export default async function CaseStudiesPage() {
             </div>
           </>
         ) : (
-          <EmptyState publicCount={publicCount} customerCount={customerCount} />
+          <EmptyState />
         )}
       </div>
     </div>
   );
 }
 
-function EmptyState({
-  publicCount,
-  customerCount,
-}: {
-  publicCount: number;
-  customerCount: number;
-}) {
+function EmptyState() {
   return (
     <div className="max-w-3xl mx-auto">
       <div className="bg-white border border-dashed border-gray-300 rounded-2xl p-8 sm:p-12 text-center">
@@ -136,18 +127,18 @@ function EmptyState({
         </div>
         <p className="text-blue-600 font-semibold text-xs uppercase tracking-widest mb-3">Coming Soon</p>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 kr-keep-all">
-          사례 연구 콘텐츠 준비 중
+          사례 콘텐츠 준비 중
         </h2>
         <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 max-w-xl mx-auto kr-keep-all">
-          현재 공공·연구기관 {publicCount}곳을 포함한 {customerCount}개 기관의 운영·자문 사례를 정리하고 있습니다. 외부 공개 동의를 받은 사례부터 순차적으로 공개됩니다.
+          공공·연구기관과 민간 기업의 솔루션 딜리버리 사례를 정리하고 있습니다. 외부 공개 동의를 받은 사례부터 순차적으로 공개됩니다.
         </p>
         <div className="bg-gray-50 rounded-xl p-5 mb-6 text-left max-w-md mx-auto">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">예정 사례 유형</p>
           <ul className="text-sm text-gray-700 space-y-1.5">
-            <li>· 공공기관 N²SF 정렬 진단·전환 자문</li>
-            <li>· 정부출연연구기관 VDI 운영 효율화</li>
-            <li>· Acronis 도입을 통한 백업·DR 통합 운영</li>
-            <li>· 랜섬웨어 사고 복구·재발 방지 컨설팅</li>
+            <li>· Citrix·VMware·Omnissa VDI 구축·운영</li>
+            <li>· MFA(Cisco Duo·Microsoft Entra) 도입</li>
+            <li>· Acronis Cyber Protect 백업·EDR 통합 운영</li>
+            <li>· VDI+MFA+백업 융합 패키지 도입</li>
           </ul>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">

@@ -14,10 +14,11 @@ const ORG_TYPES = [
 ];
 
 const INTEREST_AREAS = [
-  { value: "secure-workspace", label: "보안 워크스페이스 (VDI·Zero Trust)" },
-  { value: "n2sf", label: "N²SF 정렬·전환" },
-  { value: "data-protection", label: "데이터 보호 (Acronis 백업·DR)" },
-  { value: "ransomware", label: "랜섬웨어 대응·복원력" },
+  { value: "vdi-workspace", label: "VDI 구축·운영 (Citrix·VMware·Omnissa)" },
+  { value: "daas-transition", label: "DaaS 전환 (AVD·Windows 365)" },
+  { value: "mfa-access", label: "MFA·접근통제 (Cisco Duo·Entra ID)" },
+  { value: "data-protection", label: "백업·EDR (Acronis Cyber Protect)" },
+  { value: "managed-integration", label: "융합 맞춤 제안 (VDI+MFA+백업)" },
   { value: "managed-service", label: "MSP 운영 서비스" },
   { value: "other", label: "기타" },
 ];

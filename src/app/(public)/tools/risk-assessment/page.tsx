@@ -721,8 +721,8 @@ function V4Form() {
               </svg>
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">N²SF 정렬 진단</h1>
-              <p className="text-sm text-gray-500 mt-0.5">8개 영역 · 28개 항목 · N²SF 기반 · 약 5~7분 소요</p>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">VDI 보안 준비도 진단</h1>
+              <p className="text-sm text-gray-500 mt-0.5">8개 영역 · 28개 항목 · 약 5~7분 소요</p>
             </div>
           </div>
 
@@ -775,7 +775,7 @@ function V4Form() {
         {step === "lead" && (
           <form onSubmit={handleLeadSubmit} className="space-y-5">
             <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600 kr-keep-all">
-              <strong>본 진단은 N²SF 적절성 평가의 사전 준비도 측정 도구입니다.</strong> 국가정보원 보안성 검토는 별도의 외부 절차이며, 본 진단 결과로 대체될 수 없습니다.
+              <strong>본 진단은 VDI 환경의 보안 준비도를 자가 점검하는 도구입니다.</strong> 공식 보안성 검토를 대체하지 않으며, 결과는 솔루션 권고를 위한 참고 자료로 활용됩니다.
             </div>
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-lg text-gray-900">기본 정보 입력</h2>
@@ -844,8 +844,8 @@ function V4Form() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <p className="text-base sm:text-lg font-semibold text-gray-800 animate-pulse">N²SF 정렬 분석 중입니다...</p>
-            <p className="text-sm text-gray-500 mt-2 kr-keep-all">8개 영역 28개 항목을 274개 N²SF 보안통제와 매핑하고 있습니다.</p>
+            <p className="text-base sm:text-lg font-semibold text-gray-800 animate-pulse">VDI 보안 준비도 분석 중입니다...</p>
+            <p className="text-sm text-gray-500 mt-2 kr-keep-all">8개 영역 28개 항목을 분석해 맞춤 권고와 솔루션 제안을 생성하고 있습니다.</p>
           </div>
         )}
       </div>

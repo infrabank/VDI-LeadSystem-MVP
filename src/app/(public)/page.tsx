@@ -1,10 +1,35 @@
 import Link from "next/link";
-import { company, practicesList, partnerships, customers } from "@/lib/site-config";
+import { company, practicesList, partnerships } from "@/lib/site-config";
 import { PartnerBadge } from "./PartnerBadge";
 import { CustomerShowcase } from "./CustomerShowcase";
 
-const customerCount = customers.length;
-const publicCount = customers.filter((c) => c.category !== "private").length;
+const practiceColorMap: Record<string, { border: string; text: string }> = {
+  blue: { border: "#2563eb", text: "text-blue-600" },
+  indigo: { border: "#4f46e5", text: "text-indigo-600" },
+  emerald: { border: "#059669", text: "text-emerald-600" },
+  purple: { border: "#7c3aed", text: "text-purple-600" },
+};
+
+const bundleScenarios = [
+  {
+    title: "공공기관 망분리 완화 패키지",
+    desc: "Citrix VDI + Cisco Duo MFA + Acronis 백업 — 외부 협력사 접근 보안과 데이터 복원력을 한 번에.",
+    badge: "공공·연구",
+    color: "#2563eb",
+  },
+  {
+    title: "원격근무 + 랜섬웨어 대응",
+    desc: "VMware Horizon + Microsoft Entra MFA + Acronis Cyber Protect EDR — 재택·외근 환경 통합 보호.",
+    badge: "민간 중견",
+    color: "#7c3aed",
+  },
+  {
+    title: "민간 제조 BCP 통합",
+    desc: "Omnissa Workspace ONE + Cisco Duo + Acronis Cyber DR — 업무 연속성과 데이터 보호 단일 책임.",
+    badge: "제조·법무",
+    color: "#059669",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -22,68 +47,62 @@ export default function HomePage() {
             <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
           </p>
           <h1 className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
-            보안 워크스페이스와<br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>데이터 보호, 한 팀이 책임집니다
+            Citrix · VMware · Omnissa,<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>한 전문가에게
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-blue-100/90 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            공공·금융을 위한 N²SF·Zero Trust·VDI 자문 + Acronis 기반 백업·DR·사이버복원력
+            VDI 솔루션 딜리버리에 MFA와 Acronis 백업·EDR을 더해, 요건에 가장 잘 맞는 형태로 설계합니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
               href="/practices"
               className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white text-blue-700 rounded-md hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
             >
-              Practices 둘러보기
+              주력 솔루션 보기
             </Link>
             <Link
               href="/tools/risk-assessment"
               className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/30 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
             >
-              N²SF 정렬 진단 시작
+              VDI 보안 준비도 진단
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Two Practices */}
+      {/* 4 Solutions */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-24">
         <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-          Our Practices
+          Our Solutions
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
-          기업 보안의 두 축
+          주력 솔루션 4영역
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
-          접근·통제와 데이터 보호 — 규제 적합과 운영 연속성을 동시에 다룹니다.
+          VDI · MFA · 백업·EDR · 융합 맞춤 제안 — 한 전문가가 통합 책임집니다.
         </p>
-        <div className="grid sm:grid-cols-2 gap-5 md:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
           {practicesList.map((p) => {
-            const isBlue = p.primaryColor === "blue";
+            const c = practiceColorMap[p.primaryColor] || practiceColorMap.blue;
             return (
               <Link
                 key={p.id}
                 href={p.href}
-                className="card-hover group bg-white rounded-xl border border-gray-200 p-6 sm:p-8 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300"
-                style={{ borderTop: `4px solid ${isBlue ? "#2563eb" : "#059669"}` }}
+                className="card-hover group bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300 flex flex-col"
+                style={{ borderTop: `4px solid ${c.border}` }}
               >
-                <div className="flex items-center gap-3 mb-4">
-                  <span
-                    className={`text-xs font-bold uppercase tracking-widest ${
-                      isBlue ? "text-blue-600" : "text-emerald-600"
-                    }`}
-                  >
-                    {p.brand}
-                  </span>
-                </div>
-                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1.5 kr-keep-all">{p.title}</h3>
-                <p className="text-sm font-medium text-gray-500 mb-4 kr-keep-all">{p.tagline}</p>
-                <p className="text-sm text-gray-600 leading-relaxed mb-5 kr-keep-all">{p.description}</p>
+                <span className={`text-xs font-bold uppercase tracking-widest mb-3 ${c.text}`}>
+                  {p.brand}
+                </span>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 kr-keep-all">{p.title}</h3>
+                <p className="text-xs font-medium text-gray-500 mb-3 kr-keep-all">{p.tagline}</p>
+                <p className="text-sm text-gray-600 leading-relaxed mb-4 kr-keep-all flex-1">
+                  {p.description.length > 100 ? p.description.slice(0, 100) + "…" : p.description}
+                </p>
                 <span
-                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${
-                    isBlue ? "text-blue-600" : "text-emerald-600"
-                  } group-hover:translate-x-0.5 transition-transform`}
+                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${c.text} group-hover:translate-x-0.5 transition-transform`}
                 >
-                  자세히 보기 →
+                  자세히 →
                 </span>
               </Link>
             );
@@ -91,21 +110,43 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="border-y border-gray-100 bg-gray-50">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
-          <div className="grid grid-cols-3 gap-3 sm:gap-6 md:gap-8 text-center">
-            {[
-              { stat: `${customerCount}+`, label: "운영 고객사", desc: `공공·연구기관 ${publicCount}곳 포함` },
-              { stat: "274개", label: "보안통제 매핑", desc: "N²SF 1.0 정렬 진단" },
-              { stat: "24x7", label: "MSP 운영", desc: "백업·복구 검증" },
-            ].map((item, i) => (
-              <div key={i} className="flex flex-col items-center gap-1">
-                <p className="text-2xl sm:text-3xl font-bold text-blue-600 tracking-tight">{item.stat}</p>
-                <p className="text-xs sm:text-sm font-semibold text-gray-900">{item.label}</p>
-                <p className="text-[10px] sm:text-xs text-gray-400 hidden sm:block">{item.desc}</p>
+      {/* Bundle Scenarios (융합 맞춤 제안) */}
+      <section className="bg-gradient-to-b from-gray-50 to-white border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
+          <p className="text-purple-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+            Integrated Solution
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+            융합 맞춤 제안 — 단일 책임 운영
+          </h2>
+          <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
+            VDI·MFA·백업을 따로 사지 않습니다. 요건에 맞춰 통합 설계하고, 도입 후에도 한 창구에서 책임집니다.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+            {bundleScenarios.map((s) => (
+              <div
+                key={s.title}
+                className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                style={{ borderTop: `4px solid ${s.color}` }}
+              >
+                <span
+                  className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3"
+                  style={{ backgroundColor: `${s.color}15`, color: s.color }}
+                >
+                  {s.badge}
+                </span>
+                <h3 className="font-bold text-base text-gray-900 mb-2 kr-keep-all">{s.title}</h3>
+                <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">{s.desc}</p>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-8 md:mt-10">
+            <Link
+              href="/practices/managed-integration"
+              className="inline-flex items-center gap-1.5 text-sm font-semibold text-purple-600 hover:text-purple-700 transition-colors"
+            >
+              융합 맞춤 제안 자세히 →
+            </Link>
           </div>
         </div>
       </section>
@@ -158,7 +199,7 @@ export default function HomePage() {
               </svg>
             </div>
             <h3 className="font-bold text-gray-900 mb-1">About {company.name}</h3>
-            <p className="text-xs text-gray-500 kr-keep-all">미션·인증·파트너십</p>
+            <p className="text-xs text-gray-500 kr-keep-all">전문 영역·인증·파트너십</p>
           </Link>
         </div>
       </section>
@@ -170,7 +211,7 @@ export default function HomePage() {
             Trusted By
           </p>
           <p className="text-center text-sm sm:text-base font-semibold text-gray-700 mb-6 md:mb-8 kr-keep-all">
-            공공·연구기관 {publicCount}곳을 포함한 {customerCount}개 기관이 Myloket을 신뢰합니다
+            주요 공공·연구기관과 민간 기업의 VDI·DaaS 환경을 운영해 왔습니다
           </p>
           <CustomerShowcase variant="compact" />
           <div className="text-center mt-6 md:mt-8">
@@ -205,17 +246,16 @@ export default function HomePage() {
             Free Assessment
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
-            현재 보안 워크스페이스 성숙도, 7분이면 확인
+            현재 VDI 보안 준비도, 7분이면 확인
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
-            274개 보안통제 기준 N²SF 정렬 진단으로 우리 기관 현황을 파악하고
-            맞춤 리포트를 받아보세요.
+            8개 영역 28문항 자가 진단으로 현황을 점검하고 맞춤 리포트를 받아보세요.
           </p>
           <Link
             href="/tools/risk-assessment"
             className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
           >
-            N²SF 정렬 진단 시작
+            VDI 보안 준비도 진단
           </Link>
         </div>
       </section>

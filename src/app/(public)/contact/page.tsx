@@ -5,7 +5,7 @@ import ContactForm from "./ContactForm";
 
 export const metadata = {
   title: `Contact | ${company.name}`,
-  description: `${company.name} 상담 문의 — VDI·Zero Trust·N²SF·Acronis 백업·DR에 관한 기술 상담 및 프로젝트 협업.`,
+  description: `${company.name} 상담 문의 — VDI(Citrix·VMware·Omnissa)·MFA·Acronis 백업·EDR 솔루션 딜리버리 및 융합 패키지 상담.`,
 };
 
 export default function ContactPage() {
@@ -21,8 +21,8 @@ export default function ContactPage() {
             상담 문의
           </h1>
           <p className="text-sm sm:text-base text-blue-100 leading-relaxed kr-keep-all">
-            보안 워크스페이스(VDI·Zero Trust·N²SF) · 데이터 보호(Acronis 백업·DR)에 관한
-            기술 상담·프로젝트 협업·견적 문의를 환영합니다.
+            VDI(Citrix·VMware·Omnissa)·MFA·Acronis 백업·EDR 솔루션 딜리버리와
+            VDI+MFA+백업 융합 맞춤 제안에 관한 상담·견적 문의를 환영합니다.
           </p>
         </div>
       </section>

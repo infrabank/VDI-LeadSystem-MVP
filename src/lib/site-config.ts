@@ -12,10 +12,10 @@ export const company = {
   nameKo: "마이로켓",
   legalName: "(주)마이로켓",
   legalNameEn: "Myloket Inc.",
-  tagline: "Enterprise Workspace Security · Data Protection",
-  taglineKo: "기업 보안 워크스페이스·데이터 보호 전문",
+  tagline: "VDI · MFA · Data Protection Solutions",
+  taglineKo: "VDI·MFA·데이터 보호 솔루션 딜리버리",
   description:
-    "공공·금융 기관을 위한 보안 워크스페이스(VDI·Zero Trust·N²SF)와 데이터 보호(백업·DR·사이버복원력) 전문 컨설팅·운영 서비스.",
+    "Citrix·VMware·Omnissa 기반 VDI에 MFA(다요소 인증)와 Acronis Cyber Protect 백업·EDR을 더해, 요건에 가장 잘 맞는 형태로 설계·구축·운영합니다.",
   email: "contact@mlkit.co.kr",
   domain: "myloket.co.kr",
   copyrightYear: new Date().getFullYear(),
@@ -31,26 +31,26 @@ export const company = {
  */
 export const companyLegal = {
   /** 사업자등록번호 — 형식: "000-00-00000" */
-  businessNumber: "",
+  businessNumber: "216-88-00409",
   /** 통신판매업 신고번호 — 형식: "제 0000-OO시OO구-0000호" (해당 시) */
-  mailOrderRegNumber: "",
+  mailOrderRegNumber: "2018-세종아름-0019",
   /** 대표자 (실명) */
-  representativeName: "",
+  representativeName: "제현우",
   /** 본점 소재지 (도로명 전체 주소) */
-  address: "",
+  address: "세종특별자치시 집현중앙7로 6, 지식산업센터 B동 609호 (집현동)",
   /** 대표 전화 — 형식: "02-0000-0000" */
-  phone: "",
+  phone: "010-3861-8079",
   /** 팩스 (선택) */
-  fax: "",
+  fax: "02-6280-8087",
   /**
    * 개인정보보호 책임자 (법 §31 — 직책·실명·연락처 명시 의무).
    * 실명·직책 입력 후 footer/privacy 자동 노출.
    */
   privacyOfficer: {
-    name: "",      // 예: "홍길동"
-    role: "",      // 예: "CISO" / "개인정보보호 책임자" / "CTO 겸 책임자"
+    name: "제현우", // 예: "홍길동"
+    role: "CISO", // 예: "CISO" / "개인정보보호 책임자" / "CTO 겸 책임자"
     email: "contact@mlkit.co.kr",
-    phone: "",     // 직통 전화 (대표 전화와 다를 경우)
+    phone: "010-3861-8079", // 직통 전화 (대표 전화와 다를 경우)
   },
 } as const;
 
@@ -63,15 +63,21 @@ export function hasLegalInfo(): boolean {
     companyLegal.businessNumber ||
     companyLegal.representativeName ||
     companyLegal.address ||
-    companyLegal.phone
+    companyLegal.phone,
   );
 }
 
 export function hasPrivacyOfficer(): boolean {
-  return Boolean(companyLegal.privacyOfficer.name && companyLegal.privacyOfficer.role);
+  return Boolean(
+    companyLegal.privacyOfficer.name && companyLegal.privacyOfficer.role,
+  );
 }
 
-export type PracticeId = "secure-workspace" | "data-protection";
+export type PracticeId =
+  | "vdi-workspace"
+  | "mfa-access"
+  | "data-protection"
+  | "managed-integration";
 
 export interface Practice {
   id: PracticeId;
@@ -84,53 +90,141 @@ export interface Practice {
   pillars: { title: string; desc: string }[]; // 3-4개 핵심 영역
   ctaLabel: string;
   ctaHref: string;
-  primaryColor: string; // tailwind color name (blue, emerald 등)
+  primaryColor: string; // tailwind color name (blue, indigo, emerald, purple 등)
 }
 
 export const practices: Record<PracticeId, Practice> = {
-  "secure-workspace": {
-    id: "secure-workspace",
-    href: "/practices/secure-workspace",
-    brand: "VDI Expert",
-    title: "보안 워크스페이스 Practice",
-    shortTitle: "보안 워크스페이스",
-    tagline: "VDI · Zero Trust · N²SF 정렬 자문",
+  "vdi-workspace": {
+    id: "vdi-workspace",
+    href: "/practices/vdi-workspace",
+    brand: "VDI Delivery",
+    title: "VDI 워크스페이스 딜리버리",
+    shortTitle: "VDI",
+    tagline: "Citrix · VMware · Omnissa 멀티 벤더 VDI 전문",
     description:
-      "공공·금융을 위한 보안 워크스페이스·접근통제 전문. N²SF 1.0 정렬 진단부터 Zero Trust 전환·VDI 운영·CDS/망연계까지 일관된 전문성을 제공합니다.",
+      "Citrix Virtual Apps & Desktops, VMware Horizon, Omnissa Workspace ONE 기반 VDI를 다년간 설계·구축·운영해 왔습니다. 온프레미스 VDI에서 DaaS(AVD·Windows 365)로의 전환 자문까지 일관된 실무 전문성을 제공합니다.",
     pillars: [
-      { title: "N²SF 정렬 진단", desc: "274개 보안통제 매핑 · C/S/O 등급 · 모델 3·8·10 권고" },
-      { title: "Zero Trust 전환", desc: "5섹션 15문항 준비도 진단 · 3단계 전환 로드맵" },
-      { title: "VDI 운영·재정의", desc: "9문항 진단 · 유지/보완/축소/재설계 시나리오" },
-      { title: "CDS·망연계", desc: "정보 연계 보안통제 매핑·운영 자문" },
+      {
+        title: "Citrix Virtual Apps & Desktops",
+        desc: "DaaS·NetScaler·StoreFront 설계·구축·MSP 운영",
+      },
+      {
+        title: "VMware Horizon",
+        desc: "Horizon 8·UAG·App Volumes·Dynamic Environment Manager 운영",
+      },
+      {
+        title: "Omnissa Workspace ONE",
+        desc: "Horizon·UEM 통합 워크스페이스 도입·전환 지원",
+      },
+      {
+        title: "DaaS 전환 자문",
+        desc: "Citrix DaaS · Azure Virtual Desktop · Windows 365 마이그레이션",
+      },
     ],
-    ctaLabel: "N²SF 정렬 진단 시작",
-    ctaHref: "/tools/risk-assessment",
+    ctaLabel: "VDI 솔루션 상담",
+    ctaHref: "/about#contact",
     primaryColor: "blue",
+  },
+  "mfa-access": {
+    id: "mfa-access",
+    href: "/practices/mfa-access",
+    brand: "MFA & Access",
+    title: "MFA·접근통제 솔루션",
+    shortTitle: "MFA",
+    tagline: "다요소 인증 도입·운영 — Cisco Duo · Microsoft Entra",
+    description:
+      "VDI 진입 인증 강화부터 원격근무 접근통제까지, MFA(다요소 인증)와 Zero Trust 액세스 솔루션을 고객 환경에 맞게 설계·구축·운영합니다. 라이선스 리셀 + 구축 + 유지보수를 한 창구에서 제공합니다.",
+    pillars: [
+      {
+        title: "Cisco Duo",
+        desc: "VDI·VPN·SaaS 통합 MFA 도입, 정책 설계·운영",
+      },
+      {
+        title: "Microsoft Entra ID",
+        desc: "M365 보유 고객 대상 Entra MFA·Conditional Access 활성화",
+      },
+      {
+        title: "Zero Trust 액세스",
+        desc: "사용자·디바이스 신뢰도 기반 조건부 접근 정책",
+      },
+      {
+        title: "원격근무 접근통제",
+        desc: "VPN 대체·보완 — 외부 협력사·재택 근무자 접근 보안",
+      },
+    ],
+    ctaLabel: "MFA 도입 상담",
+    ctaHref: "/about#contact",
+    primaryColor: "indigo",
   },
   "data-protection": {
     id: "data-protection",
     href: "/practices/data-protection",
-    brand: "Acronis Powered",
-    title: "데이터 보호 Practice",
-    shortTitle: "데이터 보호",
-    tagline: "Acronis 기반 백업 · DR · 사이버복원력",
+    brand: "Cyber Protect",
+    title: "백업·EDR (Acronis Cyber Protect)",
+    shortTitle: "백업·EDR",
+    tagline: "Acronis 기반 백업 · 사이버복원력 · EDR",
     description:
-      "랜섬웨어·운영 중단·자연재해로부터 기업 데이터를 보호하는 통합 백업·재해복구·사이버복원력 솔루션. Acronis Cyber Protect 파트너로서 설계·구축·운영을 일관되게 제공합니다.",
+      "Acronis Cyber Protect 인증 파트너로서, 백업·DR·EDR(엔드포인트 위협 탐지)·패치 관리를 단일 콘솔에서 통합 운영합니다. 단순 백업을 넘어 랜섬웨어·운영 중단·사이버 공격에 대한 복원력을 함께 설계합니다.",
     pillars: [
-      { title: "통합 백업·복구", desc: "Acronis Cyber Protect 기반 엔드포인트·서버·VM 통합 보호" },
-      { title: "재해복구(DR)", desc: "RTO/RPO 목표 기반 DR 설계·운영, 클라우드 페일오버" },
-      { title: "사이버복원력", desc: "랜섬웨어 탐지·차단·롤백, 안티-멀웨어 통합 보호" },
-      { title: "MSP 운영 서비스", desc: "24x7 모니터링·복구 검증·정기 리포트" },
+      {
+        title: "통합 백업·복구",
+        desc: "Acronis Cyber Protect 기반 엔드포인트·서버·VM 통합 보호",
+      },
+      {
+        title: "EDR · 안티 랜섬웨어",
+        desc: "엔드포인트 위협 탐지·자동 격리·롤백, 사후분석 데이터 수집",
+      },
+      {
+        title: "재해복구(DR)",
+        desc: "RTO/RPO 목표 기반 DR 설계·운영, 클라우드 페일오버",
+      },
+      {
+        title: "MSP 운영 (Cyber Protect Cloud)",
+        desc: "다중 고객 통합 콘솔 · 백업 검증 · 정기 리포트",
+      },
     ],
-    ctaLabel: "데이터 보호 상담 문의",
+    ctaLabel: "백업·EDR 상담",
     ctaHref: "/about#contact",
     primaryColor: "emerald",
+  },
+  "managed-integration": {
+    id: "managed-integration",
+    href: "/practices/managed-integration",
+    brand: "Integrated Solution",
+    title: "융합 맞춤 제안 (VDI + MFA + 백업)",
+    shortTitle: "융합 제안",
+    tagline: "한 전문가가 책임지는 통합 설계 · 단일 책임 운영",
+    description:
+      "VDI·MFA·백업을 따로따로 구매·운영하는 데서 오는 책임 단절을 해소합니다. 고객 요건과 예산에 맞춰 세 영역을 한 번에 통합 설계하고, 도입 이후에도 한 창구에서 운영·기술지원을 제공합니다.",
+    pillars: [
+      {
+        title: "요건 기반 통합 설계",
+        desc: "업무 시나리오·사용자 규모·규제 요건을 입력으로 한 맞춤 아키텍처",
+      },
+      {
+        title: "벤더 중립 비교·선정",
+        desc: "Citrix vs Horizon vs Omnissa, Duo vs Entra, Acronis vs Veeam 비교 자문",
+      },
+      {
+        title: "TCO·운영 비용 최적화",
+        desc: "라이선스·인프라·운영 인력 비용을 합산한 5년 TCO 산출",
+      },
+      {
+        title: "단일 책임 운영(MSP)",
+        desc: "VDI·MFA·백업을 한 창구에서 통합 운영 — 책임 떠넘기기 없음",
+      },
+    ],
+    ctaLabel: "융합 패키지 상담",
+    ctaHref: "/about#contact",
+    primaryColor: "purple",
   },
 };
 
 export const practicesList: Practice[] = [
-  practices["secure-workspace"],
+  practices["vdi-workspace"],
+  practices["mfa-access"],
   practices["data-protection"],
+  practices["managed-integration"],
 ];
 
 /**
@@ -141,7 +235,12 @@ export const practicesList: Practice[] = [
  * - "certified"   : 인증 보유 (인증서 번호·유효기간 표시)
  * - "not_pursued" : 추진하지 않음 (해당 없음을 명시)
  */
-export type CertificationStatus = "preparing" | "applied" | "in_review" | "certified" | "not_pursued";
+export type CertificationStatus =
+  | "preparing"
+  | "applied"
+  | "in_review"
+  | "certified"
+  | "not_pursued";
 
 export interface Certification {
   name: string;
@@ -183,12 +282,15 @@ export const certifications: Certification[] = [
 ];
 
 /** 인증 상태 한글 라벨 (UI 노출용) */
-export const certificationStatusLabel: Record<CertificationStatus, { label: string; color: string }> = {
-  preparing:    { label: "준비 단계",     color: "amber" },
-  applied:      { label: "신청 완료",     color: "blue" },
-  in_review:    { label: "심사 진행 중",  color: "indigo" },
-  certified:    { label: "인증 보유",     color: "emerald" },
-  not_pursued:  { label: "해당 없음",     color: "gray" },
+export const certificationStatusLabel: Record<
+  CertificationStatus,
+  { label: string; color: string }
+> = {
+  preparing: { label: "준비 단계", color: "amber" },
+  applied: { label: "신청 완료", color: "blue" },
+  in_review: { label: "심사 진행 중", color: "indigo" },
+  certified: { label: "인증 보유", color: "emerald" },
+  not_pursued: { label: "해당 없음", color: "gray" },
 };
 
 export interface LeaderProfile {
@@ -209,36 +311,36 @@ export interface LeaderProfile {
 }
 
 /**
- * Leadership 슬롯 — name·photo가 비어있으면 placeholder 표시.
- * 정보 채워지면 자동으로 정상 노출 (별도 코드 변경 불필요).
+ * Leadership 슬롯 — 영역별 책임자(role)만 명시. 인원 수·실명은 비공개 정책.
+ * name·photo가 비어있으면 placeholder 표시. 정보 채워지면 자동 정상 노출.
  */
 export const leadership: LeaderProfile[] = [
   {
-    slot: "ceo",
-    role: "CEO · Founder",
-    expertise: ["기업 보안 전략", "공공·금융 컨설팅"],
+    slot: "vdi-lead",
+    role: "VDI 딜리버리 책임",
+    expertise: ["Citrix", "VMware Horizon", "Omnissa", "DaaS"],
   },
   {
-    slot: "secure-workspace-lead",
-    role: "보안 워크스페이스 Practice 리드",
-    expertise: ["VDI", "Zero Trust", "N²SF"],
+    slot: "mfa-lead",
+    role: "MFA·접근통제 책임",
+    expertise: ["Cisco Duo", "Microsoft Entra", "Zero Trust Access"],
   },
   {
     slot: "data-protection-lead",
-    role: "데이터 보호 Practice 리드",
-    expertise: ["Acronis Cyber Protect", "DR/BCP"],
+    role: "백업·EDR 책임",
+    expertise: ["Acronis Cyber Protect", "EDR", "DR/BCP"],
   },
   {
-    slot: "tech-lead",
-    role: "기술 리드 (CTO)",
-    expertise: ["인프라 자동화", "보안 아키텍처"],
+    slot: "integration-lead",
+    role: "융합 솔루션 설계 책임",
+    expertise: ["통합 아키텍처", "TCO 분석", "MSP 운영"],
   },
 ];
 
 export interface Partnership {
   name: string;
   role: string;
-  domain: "secure-workspace" | "data-protection";
+  domain: PracticeId;
   /** /public/partners/ 하위 SVG 파일명 (확장자 포함). 자산 업로드 후 활성화. */
   logoFile?: string;
   /** 로고 미준비 시 텍스트 칩 색상 (tailwind class) */
@@ -274,22 +376,92 @@ export interface Customer {
  * KINS·KINAC 등 안보 민감 기관은 동의 받기 전까지 영구 익명 권장.
  */
 export const customers: Customer[] = [
-  { code: "MODS", name: "국가데이터처", category: "public", disclosed: false, anonymizedLabel: "중앙행정 데이터 기관", note: "통계정보원(Kosii) SDC 통계데이터센터 VDI" },
-  { code: "MPM", name: "인사혁신처", category: "public", disclosed: false, anonymizedLabel: "중앙행정기관 A", note: "Citrix Virtual Desktop / XenServer" },
-  { code: "SFD", name: "세종소방", category: "public", disclosed: false, anonymizedLabel: "지방자치단체 소방조직" },
-  { code: "KIEP", name: "대외경제정책연구원", category: "research", disclosed: false, anonymizedLabel: "정부 출연 경제정책 연구기관" },
-  { code: "KRIHS", name: "국토연구원", category: "research", disclosed: false, anonymizedLabel: "정부 출연 국토 연구기관" },
-  { code: "KISTI", name: "한국과학기술정보연구원", category: "research", disclosed: false, anonymizedLabel: "정부 출연 과학기술정보 연구기관" },
-  { code: "KLRI", name: "한국법제연구원", category: "research", disclosed: false, anonymizedLabel: "정부 출연 법제 연구기관" },
-  { code: "KRISO", name: "선박해양플랜트연구소", category: "research", disclosed: false, anonymizedLabel: "정부 출연 해양 연구기관" },
-  { code: "KINS", name: "한국원자력안전기술원", category: "research", disclosed: false, anonymizedLabel: "원자력 규제 R&D 기관" },
-  { code: "KINAC", name: "한국원자력통제기술원", category: "research", disclosed: false, anonymizedLabel: "원자력 규제 R&D 기관" },
-  { code: "DJGLASS", name: "대진글라스", category: "private", disclosed: false, anonymizedLabel: "민간 제조 기업" },
+  {
+    code: "MODS",
+    name: "국가데이터처",
+    category: "public",
+    disclosed: false,
+    anonymizedLabel: "중앙행정 데이터 기관",
+    note: "통계정보원(Kosii) SDC 통계데이터센터 VDI",
+  },
+  {
+    code: "MPM",
+    name: "인사혁신처",
+    category: "public",
+    disclosed: false,
+    anonymizedLabel: "중앙행정기관 A",
+    note: "Citrix Virtual Desktop / XenServer",
+  },
+  {
+    code: "SFD",
+    name: "세종소방",
+    category: "public",
+    disclosed: false,
+    anonymizedLabel: "지방자치단체 소방조직",
+  },
+  {
+    code: "KIEP",
+    name: "대외경제정책연구원",
+    category: "research",
+    disclosed: false,
+    anonymizedLabel: "정부 출연 경제정책 연구기관",
+  },
+  {
+    code: "KRIHS",
+    name: "국토연구원",
+    category: "research",
+    disclosed: false,
+    anonymizedLabel: "정부 출연 국토 연구기관",
+  },
+  {
+    code: "KISTI",
+    name: "한국과학기술정보연구원",
+    category: "research",
+    disclosed: false,
+    anonymizedLabel: "정부 출연 과학기술정보 연구기관",
+  },
+  {
+    code: "KLRI",
+    name: "한국법제연구원",
+    category: "research",
+    disclosed: false,
+    anonymizedLabel: "정부 출연 법제 연구기관",
+  },
+  {
+    code: "KRISO",
+    name: "선박해양플랜트연구소",
+    category: "research",
+    disclosed: false,
+    anonymizedLabel: "정부 출연 해양 연구기관",
+  },
+  {
+    code: "KINS",
+    name: "한국원자력안전기술원",
+    category: "research",
+    disclosed: false,
+    anonymizedLabel: "원자력 규제 R&D 기관",
+  },
+  {
+    code: "KINAC",
+    name: "한국원자력통제기술원",
+    category: "research",
+    disclosed: false,
+    anonymizedLabel: "원자력 규제 R&D 기관",
+  },
+  {
+    code: "DJGLASS",
+    name: "대진글라스",
+    category: "private",
+    disclosed: false,
+    anonymizedLabel: "민간 제조 기업",
+  },
 ];
 
 /** 외부 노출용 표기 — disclosed=false면 익명 라벨 반환 */
 export function customerDisplayName(c: Customer): string {
-  return c.disclosed ? c.name : (c.anonymizedLabel || `${customerCategoryLabel[c.category]} 운영 고객`);
+  return c.disclosed
+    ? c.name
+    : c.anonymizedLabel || `${customerCategoryLabel[c.category]} 운영 고객`;
 }
 
 export const customerCategoryLabel: Record<CustomerCategory, string> = {
@@ -300,28 +472,28 @@ export const customerCategoryLabel: Record<CustomerCategory, string> = {
 
 export const partnerships: Partnership[] = [
   {
+    name: "Citrix",
+    role: "Virtual Apps & Desktops · DaaS · NetScaler",
+    domain: "vdi-workspace",
+    logoFile: "citrix.svg",
+    textColor: "text-[#452170]",
+    bgColor: "bg-violet-50",
+  },
+  {
     name: "VMware",
-    role: "VDI · Workspace ONE Partner",
-    domain: "secure-workspace",
+    role: "Horizon · vSphere",
+    domain: "vdi-workspace",
     logoFile: "vmware.svg",
     textColor: "text-[#607078]",
     bgColor: "bg-gray-50",
   },
   {
     name: "Omnissa",
-    role: "Horizon · UEM Solutions Partner",
-    domain: "secure-workspace",
+    role: "Horizon · Workspace ONE UEM",
+    domain: "vdi-workspace",
     logoFile: "omnissa.svg",
     textColor: "text-[#0091da]",
     bgColor: "bg-sky-50",
-  },
-  {
-    name: "Citrix",
-    role: "DaaS · NetScaler Partner",
-    domain: "secure-workspace",
-    logoFile: "citrix.svg",
-    textColor: "text-[#452170]",
-    bgColor: "bg-violet-50",
   },
   {
     name: "Acronis",
@@ -334,7 +506,11 @@ export const partnerships: Partnership[] = [
 ];
 
 export const navLinks = [
-  { href: "/practices", label: "Practices", description: "보안 워크스페이스·데이터 보호" },
+  {
+    href: "/practices",
+    label: "Solutions",
+    description: "VDI · MFA · 백업 · 융합 제안",
+  },
   { href: "/insights", label: "Insights", description: "기술 콘텐츠·가이드" },
   { href: "/tools", label: "Tools", description: "진단·계산 도구" },
   { href: "/about", label: "About", description: "회사 소개·인증" },
@@ -343,6 +519,6 @@ export const navLinks = [
 
 export const ctaLink = {
   href: "/tools/risk-assessment",
-  label: "N²SF 진단 시작",
+  label: "VDI 보안 준비도 진단",
   shortLabel: "진단 시작",
 };

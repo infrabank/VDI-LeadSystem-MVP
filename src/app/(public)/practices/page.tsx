@@ -2,8 +2,15 @@ import Link from "next/link";
 import { practicesList, company } from "@/lib/site-config";
 
 export const metadata = {
-  title: `Practices | ${company.name}`,
-  description: `${company.name}의 2대 Practice — 보안 워크스페이스(VDI Expert)와 데이터 보호(Acronis 기반).`,
+  title: `Solutions | ${company.name}`,
+  description: `${company.name}의 4대 솔루션 — VDI 딜리버리, MFA·접근통제, 백업·EDR, 융합 맞춤 제안.`,
+};
+
+const colorMap: Record<string, { border: string; bg: string; text: string; dot: string }> = {
+  blue: { border: "#2563eb", bg: "bg-blue-50", text: "text-blue-600", dot: "bg-blue-500" },
+  indigo: { border: "#4f46e5", bg: "bg-indigo-50", text: "text-indigo-600", dot: "bg-indigo-500" },
+  emerald: { border: "#059669", bg: "bg-emerald-50", text: "text-emerald-600", dot: "bg-emerald-500" },
+  purple: { border: "#7c3aed", bg: "bg-purple-50", text: "text-purple-600", dot: "bg-purple-500" },
 };
 
 export default function PracticesPage() {
@@ -13,63 +20,32 @@ export default function PracticesPage() {
       <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Practices
+            Solutions
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            기업 보안의 두 축, 일관된 전문성으로
+            VDI · MFA · 백업 — 한 전문가의 통합 딜리버리
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            {company.name}는 보안 워크스페이스(접근·통제)와 데이터 보호(백업·복원력)를 통합 자문·운영합니다.
-            공공·금융 기관의 운영 연속성·규제 대응을 한 곳에서.
+            {company.name}는 VDI 솔루션 딜리버리에 MFA(다요소 인증)와 Acronis 백업·EDR을 더하고,
+            요건에 맞춰 통합 설계·운영합니다. 도입 후에도 한 창구에서 책임집니다.
           </p>
         </div>
       </section>
 
-      {/* Practices grid */}
+      {/* Practices grid (4 cards) */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-20">
         <div className="grid sm:grid-cols-2 gap-5 md:gap-8">
           {practicesList.map((p) => {
-            const isBlue = p.primaryColor === "blue";
+            const c = colorMap[p.primaryColor] || colorMap.blue;
             return (
               <Link
                 key={p.id}
                 href={p.href}
                 className="card-hover group bg-white rounded-xl border border-gray-200 p-6 sm:p-8 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300"
-                style={{ borderTop: `4px solid ${isBlue ? "#2563eb" : "#059669"}` }}
+                style={{ borderTop: `4px solid ${c.border}` }}
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <div
-                    className={`w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${
-                      isBlue ? "bg-blue-50" : "bg-emerald-50"
-                    }`}
-                  >
-                    <svg
-                      className={`w-5 h-5 sm:w-6 sm:h-6 ${isBlue ? "text-blue-600" : "text-emerald-600"}`}
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                    >
-                      {isBlue ? (
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                        />
-                      ) : (
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                        />
-                      )}
-                    </svg>
-                  </div>
-                  <span
-                    className={`text-xs font-bold uppercase tracking-widest ${
-                      isBlue ? "text-blue-600" : "text-emerald-600"
-                    }`}
-                  >
+                  <span className={`text-xs font-bold uppercase tracking-widest ${c.text}`}>
                     {p.brand}
                   </span>
                 </div>
@@ -80,9 +56,7 @@ export default function PracticesPage() {
                   {p.pillars.map((pl) => (
                     <li key={pl.title} className="flex items-start gap-2">
                       <span
-                        className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${
-                          isBlue ? "bg-blue-500" : "bg-emerald-500"
-                        }`}
+                        className={`mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0 ${c.dot}`}
                       ></span>
                       <span>
                         <span className="font-semibold">{pl.title}</span>{" "}
@@ -92,9 +66,7 @@ export default function PracticesPage() {
                   ))}
                 </ul>
                 <span
-                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${
-                    isBlue ? "text-blue-600" : "text-emerald-600"
-                  } group-hover:translate-x-0.5 transition-transform`}
+                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${c.text} group-hover:translate-x-0.5 transition-transform`}
                 >
                   자세히 보기 →
                 </span>
@@ -108,17 +80,25 @@ export default function PracticesPage() {
       <section className="bg-gray-50 border-t border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-center">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 kr-keep-all">
-            어떤 영역부터 시작해야 할지 모르겠다면?
+            어떤 솔루션이 우리 환경에 맞는지 모르겠다면?
           </h2>
           <p className="text-sm text-gray-600 mb-6 max-w-xl mx-auto kr-keep-all">
-            7분 N²SF 정렬 진단으로 현재 보안 워크스페이스 성숙도를 먼저 확인하실 수 있습니다.
+            7분 자가 진단으로 현재 VDI 보안 준비도를 확인하거나, 직접 상담을 요청해주세요.
           </p>
-          <Link
-            href="/tools/risk-assessment"
-            className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm sm:text-base shadow-sm shadow-blue-200 transition-all hover:-translate-y-0.5"
-          >
-            N²SF 정렬 진단 시작
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/tools/risk-assessment"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm sm:text-base shadow-sm shadow-blue-200 transition-all hover:-translate-y-0.5"
+            >
+              VDI 보안 준비도 진단
+            </Link>
+            <Link
+              href="/contact?source=practices"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-semibold text-sm sm:text-base transition-all"
+            >
+              직접 상담 문의
+            </Link>
+          </div>
         </div>
       </section>
     </div>

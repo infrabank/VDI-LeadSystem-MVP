@@ -1,11 +1,8 @@
 import Link from "next/link";
-import { company, practicesList, partnerships, certifications, certificationStatusLabel, customers, leadership } from "@/lib/site-config";
+import { company, practicesList, partnerships, certifications, certificationStatusLabel, leadership } from "@/lib/site-config";
 import { PartnerBadge } from "../PartnerBadge";
 import { CustomerShowcase } from "../CustomerShowcase";
 import { LeaderCard } from "../LeaderCard";
-
-const customerCount = customers.length;
-const publicCount = customers.filter((c) => c.category !== "private").length;
 
 // Tailwind는 동적으로 생성된 클래스명을 purge할 수 없음 — 명시적 map.
 const certBadgeClass: Record<string, string> = {
@@ -50,38 +47,49 @@ export default function AboutPage() {
               Our Mission
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
-              규제 적합한 보안과 운영 연속성을 한 곳에서
+              VDI · MFA · 백업, 한 전문가의 통합 책임
             </h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
-              공공·금융 기관은 망분리 완화·N²SF 1.0 시행 같은 규제 환경 변화와
-              랜섬웨어·운영 중단 같은 운영 리스크를 동시에 다뤄야 합니다.
+              기관·기업은 VDI 인프라 선택, 인증·접근통제 강화, 백업·복원력 확보를
+              따로 구매하는 데 익숙해져 있습니다. 그 결과 도입 후 책임 단절이
+              발생하고 운영 단계의 통합 시각이 사라집니다.
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all">
-              {company.name}는 보안 워크스페이스(접근·통제)와 데이터 보호(백업·복원력)를
-              하나의 자문·운영 체계로 통합해, 정책·기술·운영의 일관성을 보장합니다.
+              {company.name}는 Citrix·VMware·Omnissa VDI 운영 경험에 MFA(Cisco Duo·Microsoft Entra)와
+              Acronis 백업·EDR을 더해, 세 영역을 한 전문가가 통합 설계·운영합니다.
+              도입 이후의 운영 책임도 한 창구에서 가져갑니다.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-blue-50 via-white to-emerald-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
+          <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-              Two Practices, One Team
+              Solutions, One Expert
             </p>
-            <div className="space-y-4">
+            <div className="space-y-3">
               {practicesList.map((p) => {
-                const isBlue = p.primaryColor === "blue";
+                const dotColor: Record<string, string> = {
+                  blue: "bg-blue-600",
+                  indigo: "bg-indigo-600",
+                  emerald: "bg-emerald-600",
+                  purple: "bg-purple-600",
+                };
+                const textColor: Record<string, string> = {
+                  blue: "text-blue-600",
+                  indigo: "text-indigo-600",
+                  emerald: "text-emerald-600",
+                  purple: "text-purple-600",
+                };
                 return (
                   <Link
                     key={p.id}
                     href={p.href}
-                    className="block p-4 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
+                    className="block p-3 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
                   >
                     <div className="flex items-center gap-2 mb-1">
                       <span
-                        className={`w-2 h-2 rounded-full ${isBlue ? "bg-blue-600" : "bg-emerald-600"}`}
+                        className={`w-2 h-2 rounded-full ${dotColor[p.primaryColor] || dotColor.blue}`}
                       ></span>
                       <span
-                        className={`text-xs font-bold uppercase tracking-widest ${
-                          isBlue ? "text-blue-600" : "text-emerald-600"
-                        }`}
+                        className={`text-xs font-bold uppercase tracking-widest ${textColor[p.primaryColor] || textColor.blue}`}
                       >
                         {p.brand}
                       </span>
@@ -106,7 +114,7 @@ export default function AboutPage() {
             팀 소개
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
-            보안 워크스페이스와 데이터 보호 두 Practice를 함께 책임지는 핵심 인력입니다.
+            전문 영역별 자문·딜리버리 책임을 가진 전문가가 직접 설계·운영합니다.
           </p>
           <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
             {leadership.map((leader) => (
@@ -133,7 +141,7 @@ export default function AboutPage() {
             운영 고객사
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
-            공공·연구기관 {publicCount}곳을 포함해 {customerCount}개 기관의 VDI·DaaS 환경을 운영·기술지원하고 있습니다.
+            공공·연구기관과 민간 기업의 VDI·DaaS 환경을 운영·기술지원해 왔습니다.
           </p>
           <CustomerShowcase variant="grouped" />
           <p className="text-xs text-gray-400 text-center mt-8 kr-keep-all">
@@ -220,7 +228,7 @@ export default function AboutPage() {
             상담·기술 협업 문의
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
-            N²SF 정렬 진단·Zero Trust 전환·VDI 운영·Acronis 백업·DR에 관한 기술 상담 및 프로젝트 협업 문의를 환영합니다.
+            VDI 설계·MFA 도입·백업 구축 및 융합 패키지 상담, 기술 협업 문의를 환영합니다.
           </p>
           <Link
             href="/contact?source=about-cta"

@@ -22,6 +22,8 @@ export const metadata: Metadata = {
   },
 };
 
+import { practicesList } from "@/lib/site-config";
+
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -31,21 +33,27 @@ const jsonLd = {
   description: company.description,
   areaServed: "KR",
   knowsAbout: [
-    "N²SF",
-    "Zero Trust",
     "VDI",
-    "CDS",
-    "Access Control",
-    "Secure Workspace",
+    "Citrix Virtual Apps and Desktops",
+    "VMware Horizon",
+    "Omnissa Workspace ONE",
+    "DaaS",
+    "Azure Virtual Desktop",
+    "Windows 365",
+    "MFA",
+    "Multi-Factor Authentication",
+    "Cisco Duo",
+    "Microsoft Entra ID",
+    "Zero Trust Access",
     "Acronis Cyber Protect",
     "Backup",
+    "EDR",
+    "Endpoint Detection and Response",
     "Disaster Recovery",
     "Cyber Resilience",
-    "망분리",
-    "보안통제",
     "데이터 보호",
-    "공공기관 보안",
-    "금융 보안",
+    "랜섬웨어 대응",
+    "N²SF",
   ],
   contactPoint: {
     "@type": "ContactPoint",
@@ -54,27 +62,16 @@ const jsonLd = {
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: `${company.name} Practices`,
-    itemListElement: [
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "보안 워크스페이스 Practice (VDI Expert)",
-          description: "VDI · Zero Trust · N²SF 정렬 자문",
-          url: `https://${company.domain}/practices/secure-workspace`,
-        },
+    name: `${company.name} Solutions`,
+    itemListElement: practicesList.map((p) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: `${p.title} (${p.brand})`,
+        description: p.tagline,
+        url: `https://${company.domain}${p.href}`,
       },
-      {
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "Service",
-          name: "데이터 보호 Practice (Acronis Powered)",
-          description: "Acronis 기반 백업 · DR · 사이버복원력",
-          url: `https://${company.domain}/practices/data-protection`,
-        },
-      },
-    ],
+    })),
   },
 };
 

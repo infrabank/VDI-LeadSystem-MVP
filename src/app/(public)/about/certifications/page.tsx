@@ -37,7 +37,7 @@ export default function CertificationsPage() {
           인증·자격·파트너십
         </h1>
         <p className="text-sm sm:text-base text-gray-500 mb-10 md:mb-14 max-w-2xl kr-keep-all">
-          공공·금융 보안 자문 수행에 필요한 정보보호 인증과 기술 벤더 파트너십 현황입니다.
+          VDI·MFA·백업 솔루션 딜리버리에 활용되는 정보보호 인증과 기술 벤더 파트너십 현황입니다.
         </p>
 
         {/* Certifications */}
@@ -106,7 +106,7 @@ export default function CertificationsPage() {
             보안 워크스페이스 (VDI · DaaS)
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
-            {partnerships.filter((p) => p.domain === "secure-workspace").map((p) => (
+            {partnerships.filter((p) => p.domain === "vdi-workspace").map((p) => (
               <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
