@@ -1,38 +1,58 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { company } from "@/lib/site-config";
+import { company, practicesList } from "@/lib/site-config";
 
-const title = `${company.legalName} | ${company.taglineKo}`;
-const description = company.description;
+const siteUrl = `https://${company.domain}`;
+const siteTitle = `${company.legalName} | ${company.taglineKo}`;
+const siteDescription = company.description;
 
 export const metadata: Metadata = {
-  title,
-  description,
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: siteTitle,
+    template: `%s | ${company.name}`,
+  },
+  description: siteDescription,
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title,
-    description,
+    title: siteTitle,
+    description: siteDescription,
     type: "website",
+    url: siteUrl,
     locale: "ko_KR",
     siteName: company.name,
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: siteTitle,
+    description: siteDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
-import { practicesList } from "@/lib/site-config";
-
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
+  "@id": `${siteUrl}/#org`,
   name: company.legalName,
   alternateName: company.name,
-  url: `https://${company.domain}`,
-  description: company.description,
+  url: siteUrl,
+  description: siteDescription,
   areaServed: "KR",
   knowsAbout: [
+    "N²SF",
+    "N2SF Workspace Transition",
+    "공공기관 보안 워크스페이스 전환",
+    "VDI 역할 재정의",
+    "VDI Repositioning",
+    "MFA QuickStart",
+    "백업·DR 복구검증",
+    "Recovery Verification",
     "VDI",
     "Citrix Virtual Apps and Desktops",
     "VMware Horizon",
@@ -41,7 +61,6 @@ const jsonLd = {
     "Azure Virtual Desktop",
     "Windows 365",
     "MFA",
-    "Multi-Factor Authentication",
     "Microsoft Entra ID",
     "라온시큐어",
     "OneAccess",
@@ -51,17 +70,21 @@ const jsonLd = {
     "Acronis Cyber Protect",
     "Backup",
     "EDR",
-    "Endpoint Detection and Response",
     "Disaster Recovery",
     "Cyber Resilience",
-    "데이터 보호",
-    "랜섬웨어 대응",
-    "N²SF",
+    "랜섬웨어 24시간 대응",
+    "C/S/O 등급 분류",
+    "보안성 검토",
+    "KISA",
+    "CSAP",
+    "망분리 완화",
   ],
   contactPoint: {
     "@type": "ContactPoint",
     email: company.email,
     contactType: "customer service",
+    areaServed: "KR",
+    availableLanguage: ["ko"],
   },
   hasOfferCatalog: {
     "@type": "OfferCatalog",
@@ -72,7 +95,7 @@ const jsonLd = {
         "@type": "Service",
         name: `${p.title} (${p.brand})`,
         description: p.tagline,
-        url: `https://${company.domain}${p.href}`,
+        url: `${siteUrl}${p.href}`,
       },
     })),
   },

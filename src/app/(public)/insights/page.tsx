@@ -1,5 +1,7 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
+import { company } from "@/lib/site-config";
 
 interface ContentListItem {
   id: string;
@@ -13,6 +15,48 @@ interface ContentListItem {
   published_at: string | null;
   rank?: number;
 }
+
+const pageTitle = "Insights";
+const pageDescription =
+  "공공기관 N²SF 전환·VDI 역할 재정의·MFA QuickStart·백업/DR 복구검증에 관한 기술 가이드·체크리스트·사례를 정리합니다.";
+
+export const metadata: Metadata = {
+  title: pageTitle,
+  description: pageDescription,
+  alternates: { canonical: "/insights" },
+  openGraph: {
+    title: `${pageTitle} | ${company.name}`,
+    description: pageDescription,
+    type: "website",
+    url: `https://${company.domain}/insights`,
+    siteName: company.name,
+    locale: "ko_KR",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${pageTitle} | ${company.name}`,
+    description: pageDescription,
+  },
+};
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "홈",
+      item: `https://${company.domain}/`,
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Insights",
+      item: `https://${company.domain}/insights`,
+    },
+  ],
+};
 
 const typeBadge: Record<string, string> = {
   article: "bg-blue-100 text-blue-700",
@@ -84,12 +128,21 @@ export default async function ContentListPage({
 
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* Page header */}
       <div className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 sm:py-12">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2">콘텐츠</h1>
+          <p className="text-blue-600 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
+            Insights
+          </p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 kr-keep-all">
+            N²SF 전환·VDI 재정의 기술 자료
+          </h1>
           <p className="text-gray-500 text-base sm:text-lg kr-keep-all">
-            VDI 마이그레이션과 운영에 관한 검증된 기술 자료를 탐색하세요.
+            공공기관 N²SF 전환·VDI 역할 재정의·MFA QuickStart·복구검증에 관한 가이드·체크리스트·사례를 정리합니다.
           </p>
         </div>
       </div>
@@ -105,7 +158,7 @@ export default async function ContentListPage({
               type="text"
               name="q"
               defaultValue={query}
-              placeholder="검색어를 입력하세요..."
+              placeholder="N²SF·VDI·MFA·복구검증으로 검색"
               className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm text-sm"
             />
           </div>

@@ -2,11 +2,14 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { renderMarkdown } from "@/lib/markdown";
+import { company } from "@/lib/site-config";
 import type { Metadata } from "next";
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
+
+const siteUrl = `https://${company.domain}`;
 
 const typeBadge: Record<string, string> = {
   article: "bg-blue-100 text-blue-700",
@@ -27,16 +30,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const supabase = await createClient();
   const { data } = await supabase
     .from("content_items")
-    .select("title, seo_title, seo_description, excerpt")
+    .select("title, seo_title, seo_description, excerpt, cover_image_url, published_at, updated_at")
     .eq("slug", slug)
     .eq("status", "published")
     .single();
 
   if (!data) return { title: "Not Found" };
 
+  const title = data.seo_title || data.title;
+  const description = data.seo_description || data.excerpt || "";
+  const url = `${siteUrl}/insights/${slug}`;
+  const image = data.cover_image_url || undefined;
+
   return {
-    title: data.seo_title || data.title,
-    description: data.seo_description || data.excerpt || "",
+    title,
+    description,
+    alternates: { canonical: `/insights/${slug}` },
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      url,
+      siteName: company.name,
+      locale: "ko_KR",
+      ...(image ? { images: [{ url: image }] } : {}),
+      ...(data.published_at ? { publishedTime: data.published_at } : {}),
+      ...(data.updated_at ? { modifiedTime: data.updated_at } : {}),
+    },
+    twitter: {
+      card: image ? "summary_large_image" : "summary",
+      title,
+      description,
+      ...(image ? { images: [image] } : {}),
+    },
   };
 }
 
@@ -74,6 +100,7 @@ export default async function ContentDetailPage({ params }: Props) {
   }
 
   // JSON-LD structured data
+  const articleUrl = `${siteUrl}/insights/${slug}`;
   const jsonLd: Record<string, unknown> = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -81,6 +108,29 @@ export default async function ContentDetailPage({ params }: Props) {
     description: content.excerpt || "",
     datePublished: content.published_at,
     dateModified: content.updated_at,
+    mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+    url: articleUrl,
+    ...(content.cover_image_url ? { image: [content.cover_image_url] } : {}),
+    publisher: {
+      "@type": "ProfessionalService",
+      "@id": `${siteUrl}/#org`,
+      name: company.legalName,
+    },
+    author: {
+      "@type": "Organization",
+      name: company.legalName,
+      url: siteUrl,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "홈", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: "Insights", item: `${siteUrl}/insights` },
+      { "@type": "ListItem", position: 3, name: content.title, item: articleUrl },
+    ],
   };
 
   // Add FAQPage if faq_json exists
@@ -108,6 +158,10 @@ export default async function ContentDetailPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
       {faqJsonLd && (
         <script
@@ -200,17 +254,25 @@ export default async function ContentDetailPage({ params }: Props) {
             </svg>
           </div>
           <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 kr-keep-all">
-            VDI 환경의 리스크가 궁금하신가요?
+            지금 우리 환경, N²SF 기준에서 어디쯤일까요?
           </h3>
-          <p className="text-gray-600 mb-5 sm:mb-6 max-w-sm mx-auto text-sm leading-relaxed kr-keep-all">
-            무료 진단 도구로 마이그레이션/운영 리스크를 확인해보세요.
+          <p className="text-gray-600 mb-5 sm:mb-6 max-w-md mx-auto text-sm leading-relaxed kr-keep-all">
+            7분 자가 진단으로 C/S/O 등급 예비 분류·VDI 유지/축소/전환 시나리오·MFA·백업 보완 지점이 정리된 무료 PDF 리포트를 받아보세요.
           </p>
-          <Link
-            href="/tools/risk-assessment"
-            className="inline-block px-6 sm:px-7 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5"
-          >
-            무료 리스크 진단
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
+            <Link
+              href="/tools/risk-assessment"
+              className="inline-block px-6 sm:px-7 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5"
+            >
+              N²SF 전환 사전진단(7분)
+            </Link>
+            <Link
+              href="/tools/vdi-transition"
+              className="inline-block px-6 sm:px-7 py-3 bg-white border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition-all"
+            >
+              VDI 역할 재정의 진단(2분)
+            </Link>
+          </div>
         </div>
       </div>
 
