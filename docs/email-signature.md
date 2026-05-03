@@ -1,7 +1,7 @@
 # 이메일 서명 — Myloket 표준 템플릿
 
 > 모든 외부 메일 발신 시 사용. 직원·파트너 공통 양식.
-> 작성: 2026-05-01 · 최종 갱신: 2026-05-02 (4 솔루션 리포지셔닝 반영)
+> 작성: 2026-05-01 · 최종 갱신: 2026-05-03 (1인 N²SF 전환 전문가 포지션 반영)
 
 ## 사용 가이드
 
@@ -20,8 +20,8 @@
 ### Plain Text
 ```
 ─────────────
-제현우 | CEO · Founder
-㈜마이로켓 (Myloket Inc.)
+제현우 | 대표 · 수석 자문 엔지니어
+㈜마이로켓 (Myloket Inc.) — 공공·연구기관 N²SF 전환 설계
 
 📧 jhw@mlkit.co.kr
 🌐 myloket.co.kr
@@ -32,13 +32,13 @@
 ```html
 <table style="border-collapse:collapse;font-family:'Pretendard Variable',-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#374151;line-height:1.55">
   <tr>
-    <td style="padding-top:8px;border-top:2px solid #1d52de">
-      <div style="font-weight:600;color:#101828;font-size:14px">제현우 <span style="color:#9ca3af;font-weight:400">|</span> CEO · Founder</div>
-      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.)</div>
+    <td style="padding-top:8px;border-top:2px solid #7c3aed">
+      <div style="font-weight:600;color:#101828;font-size:14px">제현우 <span style="color:#9ca3af;font-weight:400">|</span> 대표 · 수석 자문 엔지니어</div>
+      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — 공공·연구기관 N²SF 전환 설계</div>
       <div style="margin-top:6px;font-size:12px">
-        <a href="mailto:jhw@mlkit.co.kr" style="color:#1d52de;text-decoration:none">jhw@mlkit.co.kr</a>
+        <a href="mailto:jhw@mlkit.co.kr" style="color:#7c3aed;text-decoration:none">jhw@mlkit.co.kr</a>
         <span style="color:#d1d5db;margin:0 6px">·</span>
-        <a href="https://myloket.co.kr" style="color:#1d52de;text-decoration:none">myloket.co.kr</a>
+        <a href="https://myloket.co.kr" style="color:#7c3aed;text-decoration:none">myloket.co.kr</a>
       </div>
     </td>
   </tr>
@@ -52,19 +52,19 @@
 ### Plain Text
 ```
 ─────────────────────────────
-제현우 (Je Hyunwoo) | CEO · Founder
+제현우 (Je Hyunwoo) | 대표 · 수석 자문 엔지니어
 ㈜마이로켓 (Myloket Inc.)
-VDI · MFA · Data Protection Solutions
+Public-Sector N²SF Workspace Transition Advisor
 
 📧 jhw@mlkit.co.kr   ☎ 010-3861-8079
 🌐 myloket.co.kr
 
-▸ VDI 워크스페이스 (Citrix · VMware · Omnissa · DaaS)
-▸ MFA · 접근통제 (Microsoft Entra · 라온시큐어 GPKI)
-▸ 백업 · EDR (Acronis Cyber Protect)
-▸ 융합 맞춤 제안 (VDI+MFA+백업 단일 책임)
+▸ N²SF 전환 사전진단 — 구조도·C/S/O 분류·1차 로드맵
+▸ VDI 역할 재정의 — 유지·축소·DaaS·고위험 분리 시나리오
+▸ MFA QuickStart — Microsoft Entra · 라온시큐어 (GPKI)
+▸ 백업·DR 복구검증 — 사고 시 실제 복구 가능한지 매월 검증
 
-▸ VDI 보안 준비도 자가 진단: myloket.co.kr/tools
+▸ N²SF 정렬 자가 진단(7분): myloket.co.kr/tools/risk-assessment
 ─────────────────────────────
 ```
 
@@ -72,14 +72,14 @@ VDI · MFA · Data Protection Solutions
 ```html
 <table style="border-collapse:collapse;font-family:'Pretendard Variable',-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#374151;line-height:1.6;max-width:560px">
   <tr>
-    <td style="padding:12px 0 4px;border-top:2px solid #1d52de">
+    <td style="padding:12px 0 4px;border-top:2px solid #7c3aed">
       <div style="font-weight:600;color:#101828;font-size:15px">
         제현우 <span style="color:#9ca3af;font-weight:400;font-size:13px">(Je Hyunwoo)</span>
         <span style="color:#9ca3af;font-weight:400">|</span>
-        <span style="color:#4b5563;font-weight:500">CEO · Founder</span>
+        <span style="color:#4b5563;font-weight:500">대표 · 수석 자문 엔지니어</span>
       </div>
       <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 <span style="color:#9ca3af">(Myloket Inc.)</span></div>
-      <div style="color:#1d52de;font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-top:4px">VDI · MFA · Data Protection Solutions</div>
+      <div style="color:#7c3aed;font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-top:4px">Public-Sector N²SF Workspace Transition Advisor</div>
     </td>
   </tr>
   <tr>
@@ -87,28 +87,28 @@ VDI · MFA · Data Protection Solutions
       <table style="border-collapse:collapse;font-size:12px">
         <tr>
           <td style="padding-right:12px;color:#6b7280">📧</td>
-          <td style="padding-right:16px"><a href="mailto:jhw@mlkit.co.kr" style="color:#1d52de;text-decoration:none">jhw@mlkit.co.kr</a></td>
+          <td style="padding-right:16px"><a href="mailto:jhw@mlkit.co.kr" style="color:#7c3aed;text-decoration:none">jhw@mlkit.co.kr</a></td>
           <td style="padding-right:12px;color:#6b7280">☎</td>
           <td><span style="color:#374151">010-3861-8079</span></td>
         </tr>
         <tr>
           <td style="padding-right:12px;color:#6b7280">🌐</td>
-          <td colspan="3"><a href="https://myloket.co.kr" style="color:#1d52de;text-decoration:none">myloket.co.kr</a></td>
+          <td colspan="3"><a href="https://myloket.co.kr" style="color:#7c3aed;text-decoration:none">myloket.co.kr</a></td>
         </tr>
       </table>
     </td>
   </tr>
   <tr>
     <td style="padding:8px 0;border-top:1px solid #e5e7eb;font-size:12px">
-      <div style="margin-bottom:3px"><span style="color:#1d52de">▸</span> <strong style="color:#101828;font-weight:600">VDI 워크스페이스</strong> <span style="color:#6b7280">— Citrix · VMware · Omnissa · DaaS 전환</span></div>
-      <div style="margin-bottom:3px"><span style="color:#4f46e5">▸</span> <strong style="color:#101828;font-weight:600">MFA · 접근통제</strong> <span style="color:#6b7280">— Microsoft Entra · 라온시큐어 (GPKI)</span></div>
-      <div style="margin-bottom:3px"><span style="color:#059669">▸</span> <strong style="color:#101828;font-weight:600">백업 · EDR</strong> <span style="color:#6b7280">— Acronis Cyber Protect</span></div>
-      <div><span style="color:#7c3aed">▸</span> <strong style="color:#101828;font-weight:600">융합 맞춤 제안</strong> <span style="color:#6b7280">— VDI+MFA+백업 단일 책임</span></div>
+      <div style="margin-bottom:3px"><span style="color:#7c3aed">▸</span> <strong style="color:#101828;font-weight:600">N²SF 전환 사전진단</strong> <span style="color:#6b7280">— 구조도·C/S/O 분류·1차 로드맵</span></div>
+      <div style="margin-bottom:3px"><span style="color:#2563eb">▸</span> <strong style="color:#101828;font-weight:600">VDI 역할 재정의</strong> <span style="color:#6b7280">— 유지·축소·DaaS·고위험 분리 시나리오</span></div>
+      <div style="margin-bottom:3px"><span style="color:#4f46e5">▸</span> <strong style="color:#101828;font-weight:600">MFA QuickStart</strong> <span style="color:#6b7280">— Microsoft Entra · 라온시큐어 (GPKI)</span></div>
+      <div><span style="color:#059669">▸</span> <strong style="color:#101828;font-weight:600">백업·DR 복구검증</strong> <span style="color:#6b7280">— 사고 시 실제 복구 가능한지 매월 검증</span></div>
     </td>
   </tr>
   <tr>
     <td style="padding-top:6px;font-size:11px;color:#9ca3af">
-      ▸ VDI 보안 준비도 자가 진단 <a href="https://myloket.co.kr/tools/risk-assessment" style="color:#1d52de;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/tools</a>
+      ▸ N²SF 정렬 자가 진단(7분) <a href="https://myloket.co.kr/tools/risk-assessment" style="color:#7c3aed;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/tools/risk-assessment</a>
     </td>
   </tr>
 </table>
@@ -122,10 +122,11 @@ VDI · MFA · Data Protection Solutions
 ```
 ═════════════════════════════════════
 ㈜마이로켓 (Myloket Inc.)
-VDI · MFA · Data Protection Solutions
+Public-Sector N²SF Workspace Transition Advisor
+공공·정부출연연구기관 10여 곳 VDI 운영 · 1인 전문가 직접 진단 · 구축은 검증된 파트너 컨소시엄
 ═════════════════════════════════════
 
-제현우 (Je Hyunwoo) | CEO · Founder
+제현우 (Je Hyunwoo) | 대표 · 수석 자문 엔지니어 / CEO · Principal Engineer
 📧 jhw@mlkit.co.kr   ☎ 010-3861-8079
 🌐 https://myloket.co.kr
 
@@ -133,30 +134,28 @@ VDI · MFA · Data Protection Solutions
 4 Solutions
 ──────────────────────
 
-[VDI 워크스페이스 — VDI Delivery]
-Citrix · VMware Horizon · Omnissa Workspace ONE
-DaaS 전환 (AVD · Windows 365) 자문
+[N²SF 전환 사전진단 — Transition Diagnosis]
+현재 VDI/망분리 구조도 + C/S/O 분류 + 1차 로드맵·RFP 문구
+→ myloket.co.kr/practices/managed-integration
+
+[VDI 역할 재정의 — VDI Repositioning]
+Citrix · Omnissa Horizon · DaaS — 유지/축소/전환 시나리오 비교
 → myloket.co.kr/practices/vdi-workspace
 
-[MFA · 접근통제 — MFA & Access]
-Microsoft Entra ID · 라온시큐어 OneAccess (한국 공공 GPKI)
-원격근무·외부 협력사 접근통제
+[MFA QuickStart for VDI/DaaS — MFA Design]
+Microsoft Entra · 라온시큐어 — 어디에·어떤 정책으로·어떤 장애대응
 → myloket.co.kr/practices/mfa-access
 
-[백업 · EDR — Cyber Protect]
-Acronis Cyber Protect 백업 · DR · EDR · 안티 랜섬웨어
-MSP 운영 (Cyber Protect Cloud)
+[백업·DR 복구검증 — Recovery Verification]
+Acronis Cyber Protect — 사고 시 실제 복구 가능한지 매월 검증
 → myloket.co.kr/practices/data-protection
-
-[융합 맞춤 제안 — Integrated Solution]
-VDI + MFA + 백업 통합 설계 · 단일 책임 운영(MSP)
-→ myloket.co.kr/practices/managed-integration
 
 ──────────────────────
 무료 진단·계산 도구
 ──────────────────────
-✓ VDI 보안 준비도 진단 (8영역 28문항)
-✓ VDI 역할 재정의 진단
+✓ N²SF 정렬 진단 (8영역 28문항)
+✓ N²SF 전환 준비도 (5섹션 15문항)
+✓ VDI 역할 재정의 (9문항 4시나리오)
 ✓ VDI 운영 ROI 시뮬레이션
 ✓ 백업·사이버복원력 자가 진단
 ✓ 백업 ROI 계산기
@@ -164,110 +163,26 @@ VDI + MFA + 백업 통합 설계 · 단일 책임 운영(MSP)
 → myloket.co.kr/tools
 
 ──────────────────────
-파트너십
+산출물 템플릿 (무료 PDF)
 ──────────────────────
-Citrix · VMware · Omnissa · Microsoft · Acronis
-공공·연구기관과 민간 기업 운영 실적
+N²SF 사전진단 체크리스트 · VDI 의사결정 매트릭스 · 보안성 검토 대응 ·
+착수보고서 · 현황분석서 · 위험분석서 · 전환 로드맵 · 운영계획서 · 검수 체크리스트
+
+→ myloket.co.kr/resources/templates
+
+──────────────────────
+파트너십·인프라
+──────────────────────
+Partners: Citrix · Omnissa · Microsoft · 라온시큐어 · Acronis
+Infra:    VMware ESXi · vSphere
+공공·연구기관 10여 곳 운영 실적
 
 ═════════════════════════════════════
 ```
 
 ### HTML
 
-```html
-<table style="border-collapse:collapse;font-family:'Pretendard Variable',-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#374151;line-height:1.6;max-width:580px;border-top:3px solid #1d52de;border-bottom:1px solid #e5e7eb">
-  <!-- Brand header -->
-  <tr>
-    <td style="padding:14px 0 4px">
-      <div style="font-size:18px;font-weight:600;color:#101828;letter-spacing:-0.01em">㈜마이로켓 <span style="color:#9ca3af;font-size:14px;font-weight:400">(Myloket Inc.)</span></div>
-      <div style="color:#1d52de;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;margin-top:4px">VDI · MFA · Data Protection Solutions</div>
-    </td>
-  </tr>
-
-  <!-- Person -->
-  <tr>
-    <td style="padding:10px 0;border-top:1px solid #e5e7eb">
-      <div style="font-size:14px;color:#101828;font-weight:600">제현우 <span style="color:#9ca3af;font-weight:400;font-size:12px">Je Hyunwoo</span></div>
-      <div style="color:#4b5563;font-size:12px;margin-top:1px">CEO · Founder</div>
-      <div style="margin-top:6px;font-size:12px">
-        <a href="mailto:jhw@mlkit.co.kr" style="color:#1d52de;text-decoration:none">jhw@mlkit.co.kr</a>
-        <span style="color:#d1d5db;margin:0 6px">·</span>
-        <span style="color:#374151">010-3861-8079</span>
-        <span style="color:#d1d5db;margin:0 6px">·</span>
-        <a href="https://myloket.co.kr" style="color:#1d52de;text-decoration:none">myloket.co.kr</a>
-      </div>
-    </td>
-  </tr>
-
-  <!-- 4 Solutions -->
-  <tr>
-    <td style="padding:12px 0 4px;border-top:1px solid #e5e7eb">
-      <div style="color:#9ca3af;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">4 Solutions</div>
-      <table style="border-collapse:collapse;width:100%">
-        <tr>
-          <td style="padding:7px 12px 7px 10px;border-left:3px solid #1d52de;background:#f8fafc;font-size:12px;border-radius:0 4px 4px 0">
-            <div style="font-weight:600;color:#101828;margin-bottom:2px">VDI 워크스페이스 <span style="color:#6b7280;font-weight:400;font-size:11px">VDI Delivery</span></div>
-            <div style="color:#4b5563;line-height:1.5">Citrix · VMware Horizon · Omnissa · DaaS 전환 자문</div>
-            <a href="https://myloket.co.kr/practices/vdi-workspace" style="color:#1d52de;text-decoration:none;font-size:11px">myloket.co.kr/practices/vdi-workspace →</a>
-          </td>
-        </tr>
-        <tr><td style="height:5px"></td></tr>
-        <tr>
-          <td style="padding:7px 12px 7px 10px;border-left:3px solid #4f46e5;background:#eef2ff;font-size:12px;border-radius:0 4px 4px 0">
-            <div style="font-weight:600;color:#101828;margin-bottom:2px">MFA · 접근통제 <span style="color:#6b7280;font-weight:400;font-size:11px">MFA &amp; Access</span></div>
-            <div style="color:#4b5563;line-height:1.5">Microsoft Entra ID · 라온시큐어 OneAccess (한국 공공 GPKI)</div>
-            <a href="https://myloket.co.kr/practices/mfa-access" style="color:#4f46e5;text-decoration:none;font-size:11px">myloket.co.kr/practices/mfa-access →</a>
-          </td>
-        </tr>
-        <tr><td style="height:5px"></td></tr>
-        <tr>
-          <td style="padding:7px 12px 7px 10px;border-left:3px solid #059669;background:#f0fdf4;font-size:12px;border-radius:0 4px 4px 0">
-            <div style="font-weight:600;color:#101828;margin-bottom:2px">백업 · EDR <span style="color:#6b7280;font-weight:400;font-size:11px">Cyber Protect</span></div>
-            <div style="color:#4b5563;line-height:1.5">Acronis Cyber Protect 백업 · DR · EDR · 안티 랜섬웨어</div>
-            <a href="https://myloket.co.kr/practices/data-protection" style="color:#059669;text-decoration:none;font-size:11px">myloket.co.kr/practices/data-protection →</a>
-          </td>
-        </tr>
-        <tr><td style="height:5px"></td></tr>
-        <tr>
-          <td style="padding:7px 12px 7px 10px;border-left:3px solid #7c3aed;background:#faf5ff;font-size:12px;border-radius:0 4px 4px 0">
-            <div style="font-weight:600;color:#101828;margin-bottom:2px">융합 맞춤 제안 <span style="color:#6b7280;font-weight:400;font-size:11px">Integrated Solution</span></div>
-            <div style="color:#4b5563;line-height:1.5">VDI + MFA + 백업 통합 설계 · 단일 책임 운영(MSP)</div>
-            <a href="https://myloket.co.kr/practices/managed-integration" style="color:#7c3aed;text-decoration:none;font-size:11px">myloket.co.kr/practices/managed-integration →</a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-
-  <!-- Tools -->
-  <tr>
-    <td style="padding:12px 0 4px;border-top:1px solid #e5e7eb">
-      <div style="color:#9ca3af;font-size:10px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px">Free Diagnostic Tools</div>
-      <div style="font-size:12px;color:#374151;line-height:1.7">
-        VDI 보안 준비도 진단 · VDI 역할 재정의 · VDI 운영 ROI ·<br>
-        백업·사이버복원력 진단 · 백업 ROI 계산기
-      </div>
-      <a href="https://myloket.co.kr/tools" style="color:#1d52de;text-decoration:none;font-size:12px;font-weight:500;display:inline-block;margin-top:6px">myloket.co.kr/tools →</a>
-    </td>
-  </tr>
-
-  <!-- Partners -->
-  <tr>
-    <td style="padding:10px 0;border-top:1px solid #e5e7eb;font-size:11px;color:#6b7280">
-      <strong style="color:#374151">Partners</strong> &nbsp;Citrix · VMware · Omnissa · Microsoft · Acronis
-      <span style="color:#d1d5db;margin:0 6px">·</span>
-      공공·연구기관과 민간 기업 운영 실적
-    </td>
-  </tr>
-
-  <!-- Footer disclaimer -->
-  <tr>
-    <td style="padding:8px 0 12px;font-size:10px;color:#9ca3af;line-height:1.5">
-      본 메일은 발신 전용입니다. 본 메일과 첨부 파일에는 기밀 정보가 포함되어 있을 수 있으며, 의도된 수신자가 아닌 경우 폐기 후 발신자에게 알려주시기 바랍니다.
-    </td>
-  </tr>
-</table>
-```
+`public/email-signature-preview.html`의 Rich 섹션 표 코드를 그대로 복사해 사용. (실제 사용 시에는 본 문서 본문 대신 미리보기 페이지에서 렌더된 결과를 복사)
 
 ---
 
@@ -277,7 +192,7 @@ Citrix · VMware · Omnissa · Microsoft · Acronis
 
 1. **파일** → **옵션** → **메일** → **서명**
 2. **새로 만들기** → 이름 입력 (예: "Myloket - Standard")
-3. 본 문서의 **Standard HTML** 섹션 코드 전체 복사
+3. `public/email-signature-preview.html`을 브라우저로 열고 원하는 변형의 표 영역 드래그·복사
 4. 서명 편집 영역에 붙여넣기 (Outlook이 HTML 자동 렌더)
 5. 새 메시지·회신 모두 기본 서명으로 지정 → **확인**
 
@@ -287,8 +202,8 @@ Citrix · VMware · Omnissa · Microsoft · Acronis
 
 1. **설정** (⚙️) → **모든 설정 보기** → **일반** 탭
 2. **서명** 섹션 → **새로 만들기** → 이름 입력
-3. 다른 탭에서 본 문서 **HTML 변형**을 브라우저로 열기 (또는 `public/email-signature-preview.html` 직접 사용)
-4. 렌더된 결과를 **Ctrl+A** 전체 선택 → 복사
+3. `public/email-signature-preview.html`을 브라우저로 열기
+4. 원하는 변형의 표 전체 드래그(Ctrl+A 후 영역 조정) → 복사
 5. Gmail 서명 영역에 붙여넣기 (Gmail이 서식 보존)
 6. 페이지 하단 **변경사항 저장**
 
@@ -312,9 +227,24 @@ Citrix · VMware · Omnissa · Microsoft · Acronis
 
 - **이미지 첨부 금지**: 외부 이미지(로고)는 일부 클라이언트에서 차단됨. 본 템플릿은 텍스트·CSS만 사용.
 - **링크 절대 경로**: 모든 URL은 `https://myloket.co.kr/...` 절대 경로
-- **개인 정보 교체**: `제현우`, `Je Hyunwoo`, `jhw@mlkit.co.kr`, `010-3861-8079`, 직책 4곳을 본인 정보로 교체
+- **개인 정보 교체**: `제현우`, `Je Hyunwoo`, `jhw@mlkit.co.kr`, `010-3861-8079`, 직책(`대표 · 수석 자문 엔지니어 / CEO · Principal Engineer`) 4곳을 본인 정보로 교체
 - **기밀 메일 처리**: Rich 변형 하단의 발신 전용 안내문은 회사 정책에 맞게 조정
-- **주기적 갱신**: 솔루션 추가·진단 도구 추가 시 Rich 변형의 도구 목록 업데이트
+- **주기적 갱신**: 솔루션 추가·진단 도구 추가 시 Rich 변형의 도구·템플릿 목록 업데이트
+
+---
+
+## 메인 색상 — Purple(#7c3aed) 정렬
+
+이전 indigo(#1d52de) → 1순위 상품(N²SF 전환 사전진단)의 primary color인 **purple #7c3aed**로 정렬.
+이는 site-config의 practices 정렬 변경(N²SF 사전진단을 1순위로)과 일치하며, 명함·홈페이지·OG 이미지 모두 동일한 시각 시그니처.
+
+각 상품 액센트 컬러:
+| 상품 | 컬러 | 용도 |
+|---|---|---|
+| N²SF 전환 사전진단 | `#7c3aed` (purple) | 메인 시그니처·1순위 |
+| VDI 역할 재정의 | `#2563eb` (blue) | |
+| MFA QuickStart | `#4f46e5` (indigo) | |
+| 백업·DR 복구검증 | `#059669` (emerald) | |
 
 ---
 

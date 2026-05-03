@@ -1,7 +1,7 @@
 # 명함 디자인 — Myloket 표준
 
 > 한국 표준 90×50mm · 양면 · Hashnode editorial-tech 톤
-> 작성: 2026-05-01 · 최종 갱신: 2026-05-02 (4 솔루션 리포지셔닝 반영)
+> 작성: 2026-05-01 · 최종 갱신: 2026-05-03 (1인 N²SF 전환 전문가 포지션 반영)
 
 ## 파일 위치
 
@@ -11,23 +11,25 @@
 ## 디자인 개요
 
 ### 앞면 (Front)
-- **좌측 indigo+emerald 라인 강조** — 핵심 사업 색상 시각 시그니처
-- 좌상단: `Myloket ●` wordmark
-- 우상단: `VDI · MFA / Data Protection` (영문 부제)
-- 중앙: **이름 한글 (18pt) → Je Hyunwoo → 직책**
+- **좌측 3색 라인** (purple → indigo → emerald) — 4상품 시그니처
+- 좌상단: `Myloket ●` wordmark (dot은 purple)
+- 우상단: `Public-Sector N²SF / Workspace Transition Advisor` (영문 부제)
+- 중앙: **이름 한글 (18pt) → Je Hyunwoo → 대표 · 수석 자문 엔지니어 / CEO · Principal Engineer**
 - 좌하단: 연락처 stack (M / T / E)
-- 우하단: ㈜마이로켓 · Myloket Inc. · myloket.co.kr
+- 우하단: ㈜마이로켓 · Myloket Inc. · myloket.co.kr (purple)
 
 ### 뒷면 (Back)
 - **다크 배경 (#0f172a)** — Hashnode 다크 모드 톤
-- 코너 그라데이션 글로우 (indigo + emerald)
-- 상단: `Myloket ●` + 한글 부제 (`VDI · MFA · 데이터 보호 솔루션 딜리버리`)
-- 중앙: **4 솔루션 카드**
-  - VDI 워크스페이스 (Citrix · VMware · Omnissa) — `#5288ff` 블루
-  - MFA · 접근통제 (Microsoft Entra · 라온시큐어) — `#818cf8` 인디고
-  - 백업 · EDR (Acronis Cyber Protect) — `#34d399` 그린
-  - 융합 맞춤 제안 (Integrated Solution) — `#c084fc` 퍼플
-- 하단: `Citrix · VMware · Omnissa · Microsoft · Acronis · myloket.co.kr`
+- 코너 그라데이션 글로우 (purple + indigo)
+- 상단: `Myloket ●` (dot은 purple) + 한글 부제 (`공공·연구기관 N²SF 전환 설계 — 1인 전문가`)
+- 중앙: **4 솔루션 카드** (1순위가 위로)
+  - N²SF 전환 사전진단 (Transition Diagnosis) — `#c084fc` purple
+  - VDI 역할 재정의 (Citrix · Omnissa Horizon · DaaS) — `#5288ff` blue
+  - MFA QuickStart (Microsoft Entra · 라온시큐어) — `#818cf8` indigo
+  - 백업·DR 복구검증 (Acronis Cyber Protect) — `#34d399` emerald
+- 하단: `Citrix · Omnissa · Microsoft · 라온시큐어 · Acronis · myloket.co.kr`
+
+> **벤더 표기 주의**: Omnissa는 VMware EUC 분사로 Horizon·Workspace ONE을 가져갔다. VMware는 ESXi/vSphere 등 인프라만 계속 제공한다. 명함에는 Omnissa로 표기하고, VMware는 인프라 표기 시에만 명시(이메일 서명 Rich 변형 footer 참조).
 
 ## 사용 방법
 
@@ -38,11 +40,12 @@
 |---|---|---|
 | `제현우` | front-name | 본인 한글명 |
 | `Je Hyunwoo` | front-name-en | 영문 표기 |
-| `CEO · Founder` | front-role | 직책 |
+| `대표 · 수석 자문 엔지니어` | front-role | 한글 직책 |
+| `CEO · Principal Engineer` | front-role-en | 영문 직책 |
 | `jhw@mlkit.co.kr` | contact-stack | 본인 이메일 |
 | `010-3861-8079`, `070-8015-8087` | contact-stack | 모바일/사무실 |
 
-> 동일 디자인을 직원·파트너용으로 복제할 때 위 5가지 토큰만 바꾸면 됩니다.
+> 동일 디자인을 직원·파트너용으로 복제할 때 위 5~6가지 토큰만 바꾸면 됩니다.
 
 ### 2. PDF 출력
 
@@ -74,10 +77,11 @@ HTML로 만든 PDF는 다음 3가지 이슈가 있습니다. 옵션 A/B/C 중 �
 
 **이슈 1: CMYK 색상 변환**
 - HTML로 만든 PDF는 **항상 RGB(sRGB)** — 인쇄기는 CMYK 잉크라 자동 변환 시 채도 높은 색은 탁해짐
-- 위험 색상:
-  - `#1d52de` (인디고 블루) → 칙칙한 보라색 가능성
+- 위험 색상 (1순위 메인이 purple로 변경됨):
+  - `#7c3aed` (purple, 메인) → 어두운 보라가 회보라 가능성
+  - `#c084fc` (밝은 퍼플) → 회보라 가능성
   - `#34d399` (에메랄드) → 회녹색 가능성
-  - `#c084fc` (퍼플) → 회보라 가능성
+  - `#5288ff` (블루) → 채도 손실
 
 **이슈 2: 폰트 임베딩**
 - PDF에 폰트가 임베드되지 않으면 인쇄소 환경에서 자동 fallback → 디자인 깨짐
@@ -114,6 +118,7 @@ HTML로 만든 PDF는 다음 3가지 이슈가 있습니다. 옵션 A/B/C 중 �
 3. Pretendard Variable 폰트 임베드된 PDF입니다 (확인 부탁)
 4. 표면: 무광 코팅 또는 매트 라미네이팅
 5. 종이: 250~300g/m² 아트지
+6. 메인 컬러: purple #7c3aed (1순위 사업 시그니처) — 채도 손실 최소화 부탁
 ```
 
 **중요**: 본판 인쇄 전 **샘플 100매 시범 인쇄** → 색·폰트 확인 후 본판 진행 권장.
@@ -192,7 +197,7 @@ HTML로 만든 PDF는 다음 3가지 이슈가 있습니다. 옵션 A/B/C 중 �
 
 ### 솔루션 압축 (3개 또는 2개)
 
-뒷면 4 솔루션이 빡빡하게 느껴지면 `.practices` 안의 4개 중 일부만 남기고 그 색상으로 좌측 라인도 통일. 영업 담당자별 강조 솔루션 다르게 가능.
+뒷면 4 솔루션이 빡빡하게 느껴지면 `.practices` 안의 4개 중 일부만 남기고 그 색상으로 좌측 라인도 통일. 영업 담당자별 강조 솔루션 다르게 가능. **단 1순위 N²SF 전환 사전진단은 가능한 유지** (사업 포지션 핵심).
 
 ### QR 코드 추가
 
@@ -204,19 +209,21 @@ HTML로 만든 PDF는 다음 3가지 이슈가 있습니다. 옵션 A/B/C 중 �
 ## 디자인 원칙
 
 - **이미지 미사용** — 텍스트·CSS만으로 시그니처 구성 (수정·복제 단순화)
-- **4 솔루션 시각화** — 뒷면 4개 카드의 색상 라인이 site-config의 primaryColor와 일치 (blue/indigo/emerald/purple)
+- **4 솔루션 시각화** — 뒷면 4개 카드의 색상이 site-config의 primaryColor와 일치 (purple/blue/indigo/emerald — 새 정렬 순)
 - **표지 면으로 wordmark** — 상의 주머니에서 절반만 보여도 브랜드 식별
 - **연락처 우선 vs 회사 우선** — 좌측 개인 / 우측 회사 명확 분리
-- **한글·영문 동시 노출** — 한국·국제 모두 대응
+- **한글·영문 동시 노출** — 한국·국제 모두 대응. 이름·직책 모두 양쪽 표기.
+- **벤더 정확성** — Omnissa(EUC 분사 후 Horizon·Workspace ONE) vs VMware(ESXi/vSphere 인프라) 분리
 
 ## 갱신·관리
 
 - 솔루션 추가·이름 변경 시 본 파일과 `email-signature.md`·`site-config.ts` 함께 갱신
 - 다음 명함 인쇄는 회사 정보(주소·전화번호) 확정 후 일괄 진행 권장
-- 직원·파트너 명함 마스터 템플릿으로 본 파일 사용 — 5 토큰만 교체하면 일괄 발주 가능
+- 직원·파트너 명함 마스터 템플릿으로 본 파일 사용 — 5~6 토큰만 교체하면 일괄 발주 가능
 
 ## 관련 자산
 
 - 이메일 서명: `docs/email-signature.md`
 - 회사 정보 단일 출처: `src/lib/site-config.ts`
 - 파트너 로고 가이드: `public/partners/README.md`
+- 회사 로고 (favicon·헤더용): `public/logo.png`

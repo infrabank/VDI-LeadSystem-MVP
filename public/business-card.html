@@ -88,6 +88,7 @@
                 justify-content: space-between;
                 position: relative;
             }
+            /* 좌측 라인 — 1순위 색(purple) → 인디고 → 에메랄드 */
             .front::before {
                 content: "";
                 position: absolute;
@@ -97,9 +98,11 @@
                 width: 3px;
                 background: linear-gradient(
                     180deg,
-                    #1d52de 0%,
-                    #1d52de 60%,
-                    #059669 60%,
+                    #7c3aed 0%,
+                    #7c3aed 33%,
+                    #1d52de 33%,
+                    #1d52de 66%,
+                    #059669 66%,
                     #059669 100%
                 );
             }
@@ -122,17 +125,17 @@
                 width: 5px;
                 height: 5px;
                 border-radius: 50%;
-                background: #1d52de;
+                background: #7c3aed;
             }
             .front-tagline {
-                font-size: 6.5pt;
-                color: #1d52de;
+                font-size: 5.5pt;
+                color: #7c3aed;
                 font-weight: 600;
                 letter-spacing: 0.06em;
                 text-transform: uppercase;
                 text-align: right;
-                line-height: 1.3;
-                max-width: 38mm;
+                line-height: 1.35;
+                max-width: 42mm;
             }
 
             .front-name-area {
@@ -157,6 +160,13 @@
                 color: #4b5563;
                 font-weight: 500;
                 margin-top: 2mm;
+            }
+            .front-role-en {
+                font-size: 6.5pt;
+                color: #9ca3af;
+                font-weight: 400;
+                margin-top: 0.5mm;
+                letter-spacing: 0.02em;
             }
 
             .front-bottom {
@@ -193,7 +203,7 @@
                 font-size: 8pt;
             }
             .company-stack .web {
-                color: #1d52de;
+                color: #7c3aed;
                 font-weight: 500;
             }
 
@@ -217,7 +227,7 @@
                 height: 50mm;
                 background: radial-gradient(
                     circle,
-                    rgba(29, 82, 222, 0.4) 0%,
+                    rgba(124, 58, 237, 0.45) 0%,
                     transparent 70%
                 );
                 pointer-events: none;
@@ -231,7 +241,7 @@
                 height: 35mm;
                 background: radial-gradient(
                     circle,
-                    rgba(5, 150, 105, 0.3) 0%,
+                    rgba(29, 82, 222, 0.32) 0%,
                     transparent 70%
                 );
                 pointer-events: none;
@@ -261,7 +271,7 @@
                 width: 5px;
                 height: 5px;
                 border-radius: 50%;
-                background: #5288ff;
+                background: #c084fc;
             }
             .back-divider {
                 height: 1px;
@@ -275,7 +285,7 @@
 
             .back-tagline {
                 font-size: 6.5pt;
-                color: #93c5fd;
+                color: #c4b5fd;
                 font-weight: 600;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
@@ -299,6 +309,9 @@
                 align-self: stretch;
                 border-radius: 1px;
             }
+            .practice-purple .accent {
+                background: #c084fc;
+            }
             .practice-blue .accent {
                 background: #5288ff;
             }
@@ -307,9 +320,6 @@
             }
             .practice-green .accent {
                 background: #34d399;
-            }
-            .practice-purple .accent {
-                background: #c084fc;
             }
             .practice-text {
                 flex: 1;
@@ -341,7 +351,7 @@
                 letter-spacing: 0.04em;
             }
             .back-footer .web {
-                color: #93c5fd;
+                color: #c4b5fd;
                 font-weight: 500;
                 letter-spacing: 0.02em;
             }
@@ -376,19 +386,25 @@
             <div class="info-banner">
                 <h1>Myloket — 명함 디자인 (90×50mm 한국 표준)</h1>
                 <p>
+                    포지션:
+                    <strong>공공·연구기관 N²SF 전환 설계 1인 전문가</strong>.
+                    뒷면 4 솔루션은 site-config 새 정렬 순(<code>N²SF 사전진단 → VDI 재정의 → MFA QuickStart → 복구검증</code>).
+                </p>
+                <p>
                     인쇄: 브라우저 <code>Ctrl+P</code>(Mac: <code>⌘+P</code>) →
                     용지 <code>90×50mm 사용자 정의</code> 또는
                     <code>PDF로 저장</code> → 인쇄소 입고.
                 </p>
                 <p>
-                    편집: 본인 정보 4가지(<code>제현우</code>,
-                    <code>Je Hyunwoo</code>, <code>CEO · Founder</code>,
+                    편집: 본인 정보 5가지(<code>제현우</code>,
+                    <code>Je Hyunwoo</code>,
+                    <code>대표 · 수석 자문 엔지니어</code>,
                     <code>jhw@mlkit.co.kr</code>, 전화번호) 본 HTML 파일에서
                     직접 교체.
                 </p>
                 <p style="color: #9ca3af; margin: 0">
-                    테두리·재단선 3mm 여유는 인쇄소에 별도 요청. 출력 색상
-                    보정은 오프셋 기준 sRGB 그대로 입고.
+                    재단 여유 +3mm는 인쇄소가 자체 처리. 출력 색상 보정은 sRGB →
+                    인쇄소 자동 CMYK 변환 요청.
                 </p>
             </div>
 
@@ -401,15 +417,16 @@
                         <span class="dot"></span>
                     </div>
                     <div class="front-tagline">
-                        VDI · MFA<br />
-                        Data Protection
+                        Public-Sector N²SF<br />
+                        Workspace Transition Advisor
                     </div>
                 </div>
 
                 <div class="front-name-area">
                     <div class="front-name">제현우</div>
                     <div class="front-name-en">Je Hyunwoo</div>
-                    <div class="front-role">CEO · Founder</div>
+                    <div class="front-role">대표 · 수석 자문 엔지니어</div>
+                    <div class="front-role-en">CEO · Principal Engineer</div>
                 </div>
 
                 <div class="front-bottom">
@@ -443,26 +460,45 @@
                         <div class="back-divider"></div>
                     </div>
                     <div class="back-tagline">
-                        VDI · MFA · 데이터 보호 솔루션 딜리버리
+                        공공·연구기관 N²SF 전환 설계 — 1인 전문가
                     </div>
 
                     <div class="practices">
+                        <div class="practice practice-purple">
+                            <div class="accent"></div>
+                            <div class="practice-text">
+                                <div class="practice-name">
+                                    N²SF 전환 사전진단
+                                    <span
+                                        style="
+                                            color: #d8b4fe;
+                                            font-weight: 400;
+                                            font-size: 6pt;
+                                        "
+                                        >Transition Diagnosis</span
+                                    >
+                                </div>
+                                <div class="practice-desc">
+                                    구조도·C/S/O 분류·유지/축소/전환 1차 로드맵
+                                </div>
+                            </div>
+                        </div>
                         <div class="practice practice-blue">
                             <div class="accent"></div>
                             <div class="practice-text">
                                 <div class="practice-name">
-                                    VDI 워크스페이스
+                                    VDI 역할 재정의
                                     <span
                                         style="
                                             color: #93c5fd;
                                             font-weight: 400;
                                             font-size: 6pt;
                                         "
-                                        >Citrix · VMware · Omnissa</span
+                                        >Citrix · Omnissa Horizon · DaaS</span
                                     >
                                 </div>
                                 <div class="practice-desc">
-                                    멀티 벤더 VDI 설계·구축·DaaS 전환 자문
+                                    유지·축소·DaaS·고위험 분리 시나리오 비교
                                 </div>
                             </div>
                         </div>
@@ -470,7 +506,7 @@
                             <div class="accent"></div>
                             <div class="practice-text">
                                 <div class="practice-name">
-                                    MFA · 접근통제
+                                    MFA QuickStart
                                     <span
                                         style="
                                             color: #c7d2fe;
@@ -481,7 +517,7 @@
                                     >
                                 </div>
                                 <div class="practice-desc">
-                                    글로벌·한국 공공(GPKI) 표준 통합 인증
+                                    어디에·어떤 정책으로·어떤 장애대응 구조로
                                 </div>
                             </div>
                         </div>
@@ -489,7 +525,7 @@
                             <div class="accent"></div>
                             <div class="practice-text">
                                 <div class="practice-name">
-                                    백업 · EDR
+                                    백업·DR 복구검증
                                     <span
                                         style="
                                             color: #86efac;
@@ -500,26 +536,7 @@
                                     >
                                 </div>
                                 <div class="practice-desc">
-                                    백업 · DR · 사이버복원력 + EDR 통합 운영
-                                </div>
-                            </div>
-                        </div>
-                        <div class="practice practice-purple">
-                            <div class="accent"></div>
-                            <div class="practice-text">
-                                <div class="practice-name">
-                                    융합 맞춤 제안
-                                    <span
-                                        style="
-                                            color: #d8b4fe;
-                                            font-weight: 400;
-                                            font-size: 6pt;
-                                        "
-                                        >Integrated Solution</span
-                                    >
-                                </div>
-                                <div class="practice-desc">
-                                    VDI + MFA + 백업 단일 책임 운영
+                                    사고 시 실제 복구 가능한지 매월 검증·증빙
                                 </div>
                             </div>
                         </div>
@@ -528,7 +545,7 @@
 
                 <div class="back-footer">
                     <div class="partners">
-                        Citrix · VMware · Omnissa · Microsoft · Acronis
+                        Citrix · Omnissa · Microsoft · 라온시큐어 · Acronis
                     </div>
                     <div class="web">myloket.co.kr</div>
                 </div>
@@ -551,7 +568,7 @@
                     </li>
                     <li>두께: 250~300g/m² (표준 명함 무게)</li>
                     <li>
-                        색상 모드: 본 HTML은 sRGB. 정확한 indigo(#1d52de) 재현
+                        색상 모드: 본 HTML은 sRGB. 정확한 purple(#7c3aed) 재현
                         위해 인쇄소에 RGB→CMYK 자동 변환 요청
                     </li>
                     <li>본 HTML 파일·PDF 저장본 함께 발송</li>
