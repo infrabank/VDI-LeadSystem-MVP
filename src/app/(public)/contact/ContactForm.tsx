@@ -13,12 +13,28 @@ const ORG_TYPES = [
   { value: "other", label: "기타" },
 ];
 
+/**
+ * 관심 영역 — site-config의 4 Practice + Practice 페이지의 시나리오 링크 query param과 일치.
+ * 정렬: 1순위 N²SF 사전진단 → VDI 재정의 시나리오 4종 → MFA → 복구검증 → SI 자문 → 기타.
+ *
+ * 새 옵션 추가 시 다음 위치도 함께 갱신:
+ * - /practices/page.tsx (가격 섹션 stageItems href)
+ * - /practices/{id}/page.tsx (services 배열 href)
+ * - /practices/managed-integration/page.tsx (CTA href)
+ */
 const INTEREST_AREAS = [
-  { value: "vdi-workspace", label: "VDI 구축·운영 (Citrix·VMware·Omnissa)" },
-  { value: "daas-transition", label: "DaaS 전환 (AVD·Windows 365)" },
-  { value: "mfa-access", label: "MFA·접근통제 (Microsoft Entra·라온시큐어)" },
-  { value: "data-protection", label: "백업·EDR (Acronis Cyber Protect)" },
-  { value: "managed-integration", label: "융합 맞춤 제안 (VDI+MFA+백업)" },
+  // 1순위 — 진단·로드맵
+  { value: "managed-integration", label: "N²SF 전환 사전진단" },
+  // VDI 역할 재정의 4 시나리오
+  { value: "vdi-workspace", label: "VDI 역할 재정의 (유지·축소 시나리오)" },
+  { value: "daas-transition", label: "DaaS 전환 (AVD·Windows 365·Citrix DaaS)" },
+  { value: "zero-trust", label: "고위험·외부 협력사 분리 설계 (Zero Trust)" },
+  { value: "risk-review", label: "VDI 운영 리스크 평가" },
+  // MFA·복구검증
+  { value: "mfa-access", label: "MFA QuickStart for VDI/DaaS" },
+  { value: "data-protection", label: "백업·DR 복구검증" },
+  // SI 컨소시엄·운영
+  { value: "si-advisory", label: "SI 제안 기술자문 (옵션)" },
   { value: "managed-service", label: "MSP 운영 서비스" },
   { value: "other", label: "기타" },
 ];
