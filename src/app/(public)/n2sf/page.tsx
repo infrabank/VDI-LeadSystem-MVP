@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import { company } from "@/lib/site-config";
+import { company, practicesList } from "@/lib/site-config";
 
 export const metadata = {
   title: `N²SF 진단센터 | 정렬 진단·전환 준비도·역할 재정의 통합 허브 | ${company.name}`,
@@ -36,10 +36,6 @@ export default async function N2sfHubPage() {
       <div className="bg-slate-900 border-b border-slate-700">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-slate-400">
           <Link href="/" className="hover:text-blue-300">홈</Link>
-          <span className="mx-2 text-slate-600">/</span>
-          <Link href="/practices" className="hover:text-blue-300">Practices</Link>
-          <span className="mx-2 text-slate-600">/</span>
-          <Link href="/practices/vdi-workspace" className="hover:text-blue-300">VDI 워크스페이스</Link>
           <span className="mx-2 text-slate-600">/</span>
           <span className="text-slate-200 font-medium">N²SF 진단센터</span>
         </div>
@@ -80,6 +76,29 @@ export default async function N2sfHubPage() {
             >
               N²SF 전환 준비도 진단 (3분)
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* 1인 전문가 신뢰 스트립 */}
+      <section className="bg-white border-b border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
+            <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-blue-50 to-white border border-blue-100">
+              <p className="text-2xl sm:text-3xl font-bold text-blue-700 mb-1">10<span className="text-base sm:text-lg">+</span></p>
+              <p className="text-xs sm:text-sm font-semibold text-slate-900 mb-0.5 kr-keep-all">공공·연구기관 VDI 운영</p>
+              <p className="text-xs text-slate-500 kr-keep-all">중앙행정·정부 출연 연구기관 다수 직접 운영</p>
+            </div>
+            <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-indigo-50 to-white border border-indigo-100">
+              <p className="text-sm font-bold text-indigo-700 uppercase tracking-widest mb-1.5">대표 1인 책임</p>
+              <p className="text-xs sm:text-sm font-semibold text-slate-900 mb-0.5 kr-keep-all">대표 엔지니어가 직접 진단·자문</p>
+              <p className="text-xs text-slate-500 kr-keep-all">SI 영업·중간 전달 없이 한 전문가가 판단</p>
+            </div>
+            <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100">
+              <p className="text-sm font-bold text-emerald-700 uppercase tracking-widest mb-1.5">검증 파트너 컨소시엄</p>
+              <p className="text-xs sm:text-sm font-semibold text-slate-900 mb-0.5 kr-keep-all">구축은 검증된 파트너와 함께</p>
+              <p className="text-xs text-slate-500 kr-keep-all">공공·금융 규모 사업 수행 가능</p>
+            </div>
           </div>
         </div>
       </section>
@@ -200,6 +219,36 @@ export default async function N2sfHubPage() {
         </div>
       </section>
 
+      {/* 진단 후 4상품 연결 */}
+      <section className="bg-slate-50 border-y border-slate-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-center kr-keep-all">
+            진단 후, 4가지 상품 중 하나로
+          </h2>
+          <p className="text-slate-600 mb-8 md:mb-10 text-center max-w-2xl mx-auto kr-keep-all">
+            자가 진단 결과 + 대표 인터뷰 후 환경에 맞는 상품으로 이어드립니다. 작업량이 아니라 리스크 기준 단가입니다.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+            {practicesList.map((p) => (
+              <Link
+                key={p.id}
+                href={p.href}
+                className="block p-4 sm:p-5 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all"
+              >
+                <p className="text-[10px] font-bold uppercase tracking-widest text-blue-700 mb-1.5">{p.brand}</p>
+                <h3 className="text-base font-bold text-slate-900 mb-1 kr-keep-all">{p.title}</h3>
+                <p className="text-xs text-slate-500 kr-keep-all leading-relaxed">{p.tagline}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-6 md:mt-8">
+            <Link href="/practices#pricing" className="text-sm font-medium text-blue-700 hover:text-blue-800">
+              참고 단가 보기 →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Content Cards */}
       {items.length > 0 && (
         <section className="bg-slate-50">
@@ -244,15 +293,23 @@ export default async function N2sfHubPage() {
             VDI 운영 경험이 있는 전문가가 직접 N²SF 정렬 진단·컨설팅합니다. <br />
             대형 SI의 패키지 사업자가 놓치는 '기존 환경의 안정 운영'을 함께 설계합니다.
           </p>
-          <Link
-            href="/tools/risk-assessment"
-            className="inline-flex items-center gap-2 px-7 py-3 bg-white text-blue-800 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-lg"
-          >
-            N²SF 정렬 진단 시작
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              href="/tools/risk-assessment"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-white text-blue-800 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-lg"
+            >
+              N²SF 정렬 진단 시작
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <a
+              href="mailto:jhw@mlkit.co.kr"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-white/10 border border-white/30 text-white rounded-xl font-semibold hover:bg-white/20 backdrop-blur-sm transition-colors"
+            >
+              대표에게 직접 메일
+            </a>
+          </div>
         </div>
       </section>
     </div>
