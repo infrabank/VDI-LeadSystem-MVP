@@ -85,51 +85,78 @@ export default function ResourcesTemplatesPage() {
         </div>
       </section>
 
-      {/* Templates grid */}
+      {/* Templates grouped by category */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         {publishedTemplates.length === 0 ? (
           <div className="text-center text-gray-500 py-16">
             아직 발행된 템플릿이 없습니다.
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-            {publishedTemplates.map((t) => {
-              const accent = categoryAccent[t.category];
-              return (
-                <article
-                  key={t.slug}
-                  className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300 flex flex-col"
-                  style={{ borderTop: `4px solid ${accent.border}` }}
-                >
-                  <span
-                    className={`inline-flex self-start items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold mb-3 ${accent.bg} ${accent.text}`}
-                  >
-                    {TEMPLATE_CATEGORY_LABEL[t.category]}
-                  </span>
-                  <h2 className="text-base sm:text-lg font-bold text-gray-900 mb-2 kr-keep-all">
-                    {t.title}
-                  </h2>
-                  <p className="text-sm text-gray-600 leading-relaxed kr-keep-all flex-1 mb-4">
-                    {t.summary}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
-                    <span>약 {t.pages}쪽</span>
-                    <span>최근 갱신 {t.updatedAt}</span>
-                  </div>
-                  <a
-                    href={`/api/templates/${t.slug}/download`}
-                    className={`inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-white transition-all hover:-translate-y-0.5`}
-                    style={{ backgroundColor: accent.border }}
-                  >
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
-                    </svg>
-                    PDF 다운로드
-                  </a>
-                </article>
-              );
-            })}
-          </div>
+          (() => {
+            // 카테고리 정렬 순서 — 가치 기준 (자가 점검 → 의사결정 → 산출물 양식)
+            const categoryOrder: TemplateCategory[] = ["checklist", "matrix", "framework"];
+            const grouped: Record<TemplateCategory, typeof publishedTemplates> = {
+              checklist: [],
+              matrix: [],
+              framework: [],
+            };
+            for (const t of publishedTemplates) grouped[t.category].push(t);
+
+            return (
+              <div className="space-y-12 md:space-y-16">
+                {categoryOrder
+                  .filter((c) => grouped[c].length > 0)
+                  .map((category) => {
+                    const items = grouped[category];
+                    const accent = categoryAccent[category];
+                    return (
+                      <div key={category}>
+                        <div className="flex items-center gap-3 mb-5 md:mb-6">
+                          <span
+                            className="inline-block w-1 h-7 rounded"
+                            style={{ background: accent.border }}
+                          ></span>
+                          <h2 className={`text-lg sm:text-xl font-bold ${accent.text} tracking-tight`}>
+                            {TEMPLATE_CATEGORY_LABEL[category]}
+                          </h2>
+                          <span className="text-xs text-gray-400">{items.length}건</span>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+                          {items.map((t) => (
+                            <article
+                              key={t.slug}
+                              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300 flex flex-col"
+                              style={{ borderTop: `4px solid ${accent.border}` }}
+                            >
+                              <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 kr-keep-all">
+                                {t.title}
+                              </h3>
+                              <p className="text-sm text-gray-600 leading-relaxed kr-keep-all flex-1 mb-4">
+                                {t.summary}
+                              </p>
+                              <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
+                                <span>약 {t.pages}쪽</span>
+                                <span>최근 갱신 {t.updatedAt}</span>
+                              </div>
+                              <a
+                                href={`/api/templates/${t.slug}/download`}
+                                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+                                style={{ backgroundColor: accent.border }}
+                              >
+                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
+                                </svg>
+                                PDF 다운로드
+                              </a>
+                            </article>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
+            );
+          })()
         )}
       </section>
 

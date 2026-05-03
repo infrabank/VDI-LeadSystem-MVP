@@ -72,6 +72,72 @@ export const templates: Template[] = [
     updatedAt: "2026-05-03",
     published: true,
   },
+  {
+    slug: "project-kickoff-report",
+    title: "착수보고서",
+    summary:
+      "사업 목표·범위·체계·일정·예산을 1장으로 정리해 임원·심의위원회 안건 자료로 사용.",
+    category: "framework",
+    sourceFile: "04-project-kickoff-report.md",
+    pages: 3,
+    updatedAt: "2026-05-03",
+    published: true,
+  },
+  {
+    slug: "current-state-analysis",
+    title: "현황분석서",
+    summary:
+      "분석 시점의 인프라·VDI·인증·백업·운영 이슈를 일관된 형식으로 정리. 후속 분석의 정량 근거.",
+    category: "framework",
+    sourceFile: "05-current-state-analysis.md",
+    pages: 3,
+    updatedAt: "2026-05-03",
+    published: true,
+  },
+  {
+    slug: "risk-analysis",
+    title: "위험분석서",
+    summary:
+      "자산·위협·취약점·영향도 평가로 Top 10 위험 등록부 작성. 보안성 검토·로드맵의 입력 자료.",
+    category: "framework",
+    sourceFile: "06-risk-analysis.md",
+    pages: 3,
+    updatedAt: "2026-05-03",
+    published: true,
+  },
+  {
+    slug: "transition-roadmap",
+    title: "전환 로드맵",
+    summary:
+      "의사결정 결과를 4 Phase로 펼쳐 활동·산출물·게이트·KPI를 정리. 임원 승인·예산 확정의 정량 근거.",
+    category: "framework",
+    sourceFile: "07-transition-roadmap.md",
+    pages: 3,
+    updatedAt: "2026-05-03",
+    published: true,
+  },
+  {
+    slug: "operations-plan",
+    title: "운영계획서",
+    summary:
+      "일상 운영·정기 점검·사고 대응·변경 관리·보고 체계를 RACI로 정리. 보안성 검토 운영계획 첨부.",
+    category: "framework",
+    sourceFile: "08-operations-plan.md",
+    pages: 3,
+    updatedAt: "2026-05-03",
+    published: true,
+  },
+  {
+    slug: "acceptance-checklist",
+    title: "검수 체크리스트",
+    summary:
+      "단계별(착수·분석·설계·구축·운영) 산출물·보안·기능·성능·교육 검수 기준과 서명 절차.",
+    category: "checklist",
+    sourceFile: "09-acceptance-checklist.md",
+    pages: 4,
+    updatedAt: "2026-05-03",
+    published: true,
+  },
 ];
 
 export function findTemplate(slug: string): Template | undefined {
