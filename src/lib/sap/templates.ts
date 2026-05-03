@@ -28,8 +28,8 @@ export interface TemplateResult {
 
 const VENDOR_PROPOSAL_SNIPPETS: Record<VendorTrack, string[]> = {
   vmware: [
-    "VMware Horizon은 업계 표준의 성숙된 VDI 플랫폼으로, vSphere 기반 인프라와의 완전한 통합을 통해 운영 일관성과 관리 효율성을 극대화합니다.",
-    "VMware Workspace ONE과의 연계를 통해 제로 트러스트 기반의 통합 엔드포인트 관리 환경을 구성할 수 있으며, 이는 보안 컴플라이언스 요구사항을 효과적으로 충족합니다.",
+    "Omnissa Horizon(구 VMware Horizon)은 업계 표준의 성숙된 VDI 플랫폼으로, VMware ESXi/vSphere 기반 인프라와의 완전한 통합을 통해 운영 일관성과 관리 효율성을 극대화합니다.",
+    "Omnissa Workspace ONE(구 VMware Workspace ONE)과의 연계를 통해 제로 트러스트 기반의 통합 엔드포인트 관리 환경을 구성할 수 있으며, 이는 보안 컴플라이언스 요구사항을 효과적으로 충족합니다.",
     "VMware HCI(vSAN)를 활용한 하이퍼컨버지드 구성은 스토리지와 컴퓨트 자원의 통합 관리를 가능하게 하여 TCO 절감 및 확장성 향상에 기여합니다.",
     "VMware Blast Extreme 프로토콜은 고품질 멀티미디어 및 3D 그래픽 워크로드를 지원하며, 높은 네트워크 지연 환경에서도 우수한 사용자 경험을 제공합니다.",
     "NSX 네트워크 가상화 솔루션과의 통합을 통해 마이크로 세그멘테이션 기반의 고도화된 네트워크 보안 아키텍처를 구현할 수 있습니다.",

@@ -324,11 +324,11 @@ export const leadership: LeaderProfile[] = [
     role: "대표 · 수석 자문 엔지니어",
     name: "제현우",
     bio:
-      "공공·정부출연연구기관 10여 곳의 Citrix XenDesktop·VMware Horizon·Omnissa Workspace VDI를 다년간 설계·구축·운영. " +
+      "공공·정부출연연구기관 10여 곳의 Citrix XenDesktop·Omnissa Horizon·Omnissa Workspace ONE 기반 VDI를 다년간 설계·구축·운영. " +
       "망분리·N²SF·MFA·백업 환경에서 실제로 터지는 운영 장애·산출물·보안성 검토를 아는 관점으로 전환 시나리오를 판단합니다.",
     expertise: [
       "Citrix XenDesktop / NetScaler",
-      "VMware Horizon / UAG",
+      "Omnissa Horizon / UAG (VMware ESXi)",
       "Omnissa Workspace ONE",
       "N²SF 전환 설계",
       "공공기관 보안성 검토 대응",
@@ -436,7 +436,7 @@ export const customers: Customer[] = [
     category: "research",
     disclosed: true,
     anonymizedLabel: "정부 출연 국토 연구기관",
-    vendor: "VMware Horizon · UAG",
+    vendor: "Omnissa Horizon · UAG (VMware ESXi)",
     userScale: "약 100~300 연구원",
     role: "Horizon·UAG 운영·외부접속 인증서 갱신",
     solvedRisks: ["인증서 만료 대응", "프로파일 손실 복구"],

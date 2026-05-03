@@ -35,7 +35,7 @@
 
 | 분류 | 내용 |
 |---|---|
-| 솔루션 | (예: Citrix Virtual Apps & Desktops / VMware Horizon / Omnissa Workspace ONE) |
+| 솔루션 | (예: Citrix Virtual Apps & Desktops / Omnissa Horizon / Omnissa Workspace ONE) |
 | 라이선스 종류·수 | |
 | 라이선스 갱신 시점 | yyyy-mm |
 | 사용자 수·동시접속 피크 | |

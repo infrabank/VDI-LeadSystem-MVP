@@ -28,7 +28,7 @@
 
 | 항목 | 표기 | 메모 (선택) |
 |---|---|---|
-| 1.1.1 운영 중인 VDI 솔루션을 정확히 식별할 수 있다 (Citrix XenDesktop / VMware Horizon / Omnissa Workspace ONE / 기타) | | |
+| 1.1.1 운영 중인 VDI 솔루션을 정확히 식별할 수 있다 (Citrix XenDesktop / Omnissa Horizon / Omnissa Workspace ONE / 기타) | | |
 | 1.1.2 VDI 라이선스 갱신 시점이 12개월 이내가 아니다 | | |
 | 1.1.3 가상화 하이퍼바이저(XenServer / vSphere / Hyper-V) 버전과 EOS 일정이 명확하다 | | |
 | 1.1.4 VDI 사용자 수와 동시접속 피크 사용량을 안다 | | |

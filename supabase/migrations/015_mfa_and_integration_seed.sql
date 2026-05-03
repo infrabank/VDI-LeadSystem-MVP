@@ -132,7 +132,7 @@ $md$,
 
 ## 기준 2: VDI·DaaS 통합
 
-| 벤더 | Citrix | VMware Horizon | Omnissa | DaaS (AVD/Win365) |
+| 벤더 | Citrix | Omnissa Horizon | Omnissa | DaaS (AVD/Win365) |
 |---|---|---|---|---|
 | **Microsoft Entra ID** | ★★ (NetScaler SAML) | ★★ | ★★ | ★★★★★ (네이티브) |
 | **라온시큐어** | ★★★ (StoreFront 연계) | ★★★ (UAG 연계) | ★★ | ★★ |
@@ -216,15 +216,15 @@ $md$,
 (
   'comparison',
   'citrix-vs-horizon-vs-omnissa',
-  'Citrix vs VMware Horizon vs Omnissa — VDI 3대 벤더 비교 (요건별 권장)',
-  'Citrix Virtual Apps & Desktops·VMware Horizon·Omnissa Workspace ONE의 강점·약점을 라이선스·관리 도구·DaaS 전환·국내 지원 5개 기준으로 비교한 실무 가이드.',
-  $md$# Citrix vs VMware Horizon vs Omnissa
+  'Citrix vs Omnissa Horizon vs Omnissa — VDI 3대 벤더 비교 (요건별 권장)',
+  'Citrix Virtual Apps & Desktops·Omnissa Horizon·Omnissa Workspace ONE의 강점·약점을 라이선스·관리 도구·DaaS 전환·국내 지원 5개 기준으로 비교한 실무 가이드.',
+  $md$# Citrix vs Omnissa Horizon vs Omnissa
 
 VDI 3대 벤더는 표면적 기능이 유사하지만, **라이선스 정책 변화·DaaS 전환 경로·국내 지원**에서 큰 차이가 있습니다. 다년간 세 벤더를 모두 운영해 본 실무 관점에서 비교합니다.
 
 ## 벤더 개요
 
-| 항목 | Citrix | VMware Horizon | Omnissa Workspace ONE |
+| 항목 | Citrix | Omnissa Horizon | Omnissa Workspace ONE |
 |---|---|---|---|
 | **본사** | 미국 (Cloud Software Group) | 미국 (Broadcom 인수) | 미국 (KKR 분사 2024) |
 | **주력 제품** | Virtual Apps & Desktops, DaaS | Horizon 8, vSphere | Horizon, UEM |
@@ -238,7 +238,7 @@ VDI 3대 벤더는 표면적 기능이 유사하지만, **라이선스 정책 �
 - **단점**: Cloud Software Group 인수 후 라이선스 가격 상승 (50~200%)
 - **단종**: Citrix Workspace 라이선스, Standalone XenApp/XenDesktop
 
-### VMware Horizon (Broadcom 인수 후)
+### Omnissa Horizon (Broadcom 인수 후)
 - **장점**: 가격 조정 (Universal 묶음), Tanzu·NSX 통합 라이선스
 - **단점**: ELA 강제 → 중소 고객 진입 장벽 高
 - **단종**: VMware EUC 사업부 → Omnissa 분사
@@ -250,7 +250,7 @@ VDI 3대 벤더는 표면적 기능이 유사하지만, **라이선스 정책 �
 
 ## 기준 2: 관리 도구·운영 부담
 
-| 항목 | Citrix | VMware Horizon | Omnissa |
+| 항목 | Citrix | Omnissa Horizon | Omnissa |
 |---|---|---|---|
 | **콘솔 통합** | Studio + DaaS Console | Horizon Console + vSphere | Workspace ONE Hub |
 | **자동화** | PowerShell SDK 강력 | PowerCLI | REST API 중심 |
@@ -293,9 +293,9 @@ VDI 3대 벤더는 표면적 기능이 유사하지만, **라이선스 정책 �
 
 | 요건 | 1순위 | 2순위 | 비고 |
 |---|---|---|---|
-| **공공기관 (안정성·국내 지원)** | Citrix | VMware Horizon | Omnissa는 1년 더 관망 |
+| **공공기관 (안정성·국내 지원)** | Citrix | Omnissa Horizon | Omnissa는 1년 더 관망 |
 | **중견 제조 (비용 우선)** | Windows 365 | Citrix DaaS | 자체 인프라 부담 회피 |
-| **금융·증권 (성능·격리)** | Citrix VAD Premium | VMware Horizon | 온프레 유지 |
+| **금융·증권 (성능·격리)** | Citrix VAD Premium | Omnissa Horizon | 온프레 유지 |
 | **외국계 (M365 통합)** | Windows 365 | AVD | Entra ID 통합 |
 | **기존 VMware EUC 고객** | Omnissa | Citrix DaaS | 마이그레이션 일정 검토 |
 
@@ -536,7 +536,7 @@ $md$,
 ```
 ┌─────────────────────────────────────┐
 │  VDI 워크스페이스                       │
-│  Citrix / VMware Horizon / Omnissa  │
+│  Citrix / Omnissa Horizon / Omnissa  │
 └─────────────────────────────────────┘
               ▲
               │ MFA 인증 진입
@@ -576,11 +576,11 @@ $md$,
 
 ### 환경
 - 민간 중견기업, 사용자 150명, 재택·외근 50%
-- M365 전사 도입, VDI 일부 사용 (VMware Horizon)
+- M365 전사 도입, VDI 일부 사용 (Omnissa Horizon)
 - 최근 동종 업계 랜섬웨어 사고 보도 → 경영진 우려 고조
 
 ### 통합 패키지
-- **VDI**: VMware Horizon (재택 사용자 통합)
+- **VDI**: Omnissa Horizon (재택 사용자 통합)
 - **MFA**: Microsoft Entra ID + Conditional Access (M365 활용)
 - **백업·EDR**: Acronis Cyber Protect Premium (백업 + EDR + DLP)
 
@@ -850,7 +850,7 @@ $md$,
 
 ```
 [VDI 환경]
-- 솔루션: ____________ (Citrix / VMware Horizon / Omnissa)
+- 솔루션: ____________ (Citrix / Omnissa Horizon / Omnissa)
 - 사용자 수: _____ 명
 - 망분리: 적용 / 부분 / 미적용
 - 게이트웨이: ____________ (NetScaler / UAG / 기타)
