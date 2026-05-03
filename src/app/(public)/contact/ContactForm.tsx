@@ -4,11 +4,16 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
+/**
+ * 기관 유형 — 영업 채널 분류용. SI·보안 리셀러·연구기관은 실제 발주·제안 채널이 다르므로 별도 분류.
+ */
 const ORG_TYPES = [
   { value: "central", label: "중앙행정기관" },
   { value: "local", label: "지방자치단체" },
-  { value: "public-corp", label: "공공기관/공기업" },
+  { value: "public-corp", label: "공공기관·공기업" },
+  { value: "research", label: "정부 출연 연구기관" },
   { value: "agency", label: "소속·산하기관" },
+  { value: "si-partner", label: "SI·보안 리셀러·컨소시엄" },
   { value: "private", label: "민간기업" },
   { value: "other", label: "기타" },
 ];
