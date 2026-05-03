@@ -37,7 +37,7 @@ export default function CertificationsPage() {
           인증·자격·파트너십
         </h1>
         <p className="text-sm sm:text-base text-gray-500 mb-10 md:mb-14 max-w-2xl kr-keep-all">
-          VDI·MFA·백업 솔루션 딜리버리에 활용되는 정보보호 인증과 기술 벤더 파트너십 현황입니다.
+          공공·연구기관 N²SF 전환 설계와 기존 VDI·망분리·MFA·백업 재정렬에 필요한 정보보호 인증 준비 현황과 기술 파트너십입니다.
         </p>
 
         {/* Certifications */}

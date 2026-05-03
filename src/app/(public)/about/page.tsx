@@ -124,6 +124,88 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Responsibility — RACI 책임 분담 (1인 단일 장애점 우려 해소) */}
+      <section id="responsibility" className="bg-white border-t border-gray-100 scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+            Responsibility
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+            1인 책임 + 검증된 파트너 컨소시엄
+          </h2>
+          <p className="text-sm text-gray-500 text-center mb-10 md:mb-12 max-w-2xl mx-auto kr-keep-all">
+            대표 엔지니어가 직접 책임지는 영역과 검증된 파트너가 수행하는 영역을 단계별로 분리합니다.
+            1인 회사여도 공공·금융 규모 사업을 받을 수 있는 구조이며, 단계별 산출물·서명·검수 책임이 분명합니다.
+          </p>
+
+          {/* Desktop table */}
+          <div className="hidden md:block overflow-hidden rounded-xl border border-gray-200">
+            <table className="w-full text-sm">
+              <thead className="bg-gray-50 border-b border-gray-200">
+                <tr className="text-left">
+                  <th className="px-4 py-3 font-semibold text-gray-700 w-[28%]">구분</th>
+                  <th className="px-4 py-3 font-semibold text-blue-700 w-[36%]">
+                    마이로켓 직접 책임
+                  </th>
+                  <th className="px-4 py-3 font-semibold text-emerald-700 w-[36%]">
+                    파트너 수행
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {[
+                  { area: "사전진단", direct: "직접 수행 (인터뷰·산출물)", partner: "필요 시 자료 지원" },
+                  { area: "전환 로드맵", direct: "직접 작성 (Phase·KPI)", partner: "검토 참여" },
+                  { area: "RFP·보안성 검토 대응", direct: "직접 작성·검토 (산출물 7종)", partner: "제안 반영" },
+                  { area: "구축", direct: "설계 검수·PM 자문", partner: "실제 구축 수행" },
+                  { area: "장애 대응", direct: "근본 원인 분석·방향 판단", partner: "현장 조치" },
+                  { area: "월간 리포트", direct: "품질 검토·결론 작성", partner: "데이터 수집·시연" },
+                  { area: "검수·서명", direct: "산출물 검수·기관 보고 동행", partner: "납품·인수 서명" },
+                ].map((row) => (
+                  <tr key={row.area} className="bg-white">
+                    <td className="px-4 py-3 font-semibold text-gray-900 kr-keep-all">{row.area}</td>
+                    <td className="px-4 py-3 text-gray-700 kr-keep-all">{row.direct}</td>
+                    <td className="px-4 py-3 text-gray-700 kr-keep-all">{row.partner}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile cards */}
+          <div className="md:hidden space-y-3">
+            {[
+              { area: "사전진단", direct: "직접 수행 (인터뷰·산출물)", partner: "필요 시 자료 지원" },
+              { area: "전환 로드맵", direct: "직접 작성 (Phase·KPI)", partner: "검토 참여" },
+              { area: "RFP·보안성 검토 대응", direct: "직접 작성·검토 (산출물 7종)", partner: "제안 반영" },
+              { area: "구축", direct: "설계 검수·PM 자문", partner: "실제 구축 수행" },
+              { area: "장애 대응", direct: "근본 원인 분석·방향 판단", partner: "현장 조치" },
+              { area: "월간 리포트", direct: "품질 검토·결론 작성", partner: "데이터 수집·시연" },
+              { area: "검수·서명", direct: "산출물 검수·기관 보고 동행", partner: "납품·인수 서명" },
+            ].map((row) => (
+              <div key={row.area} className="rounded-xl border border-gray-200 bg-white p-4">
+                <p className="text-sm font-bold text-gray-900 mb-2 kr-keep-all">{row.area}</p>
+                <div className="space-y-1.5 text-xs">
+                  <div className="flex gap-2">
+                    <span className="font-semibold text-blue-700 flex-shrink-0">마이로켓</span>
+                    <span className="text-gray-600 kr-keep-all">{row.direct}</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="font-semibold text-emerald-700 flex-shrink-0">파트너</span>
+                    <span className="text-gray-600 kr-keep-all">{row.partner}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="text-xs text-gray-500 text-center mt-6 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+            ※ 본 분담은 일반 권고이며, 사업 규모·계약 조건·기관 요구에 따라 단계별로 조정됩니다.
+            대표 가용성·동시 사고 등 단일 장애점 리스크는 검증된 파트너 컨소시엄으로 분산합니다.
+          </p>
+        </div>
+      </section>
+
       {/* Customers */}
       <section id="customers" className="bg-white border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">

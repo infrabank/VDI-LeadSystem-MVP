@@ -37,7 +37,7 @@ const usecases = [
 const layers = [
   { num: "1", title: "보호(Protect)", desc: "백업 정책·암호화·접근통제로 데이터 자체를 안전하게" },
   { num: "2", title: "탐지(Detect)", desc: "AI 기반 랜섬웨어 행위 탐지·이상 활동 모니터링" },
-  { num: "3", title: "복구(Recover)", desc: "검증된 복구 시나리오, 분 단위 RTO 달성" },
+  { num: "3", title: "복구(Recover)", desc: "시스템별 목표 RTO/RPO를 정의하고, 정기 복구 테스트로 달성 가능성 검증" },
   { num: "4", title: "검증(Validate)", desc: "정기 복구 테스트·복원력 평가 리포트" },
 ];
 

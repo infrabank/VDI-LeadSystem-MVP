@@ -11,7 +11,7 @@ export const metadata = {
 const vendors = [
   {
     name: "Microsoft Entra ID",
-    desc: "M365 보유 고객은 추가 라이선스 없이 활성화 가능. Conditional Access·SSO 통합. Azure Korea가 CSAP IaaS 인증을 보유해 공공기관 도입 적합.",
+    desc: "Microsoft 365 환경에서는 보안 기본값을 통한 MFA 적용이 가능하지만, Conditional Access·예외정책·위험 기반 제어는 Entra ID P1/P2 또는 M365 Business Premium/E3/E5 라이선스 검토가 필요합니다. Azure Korea는 CSAP IaaS 인증 보유로 공공기관 도입 적합.",
     href: "https://learn.microsoft.com/entra/",
     badge: "권장 #1",
     color: "#0078d4",

@@ -4,7 +4,7 @@ import { company } from "@/lib/site-config";
 
 export const metadata = {
   title: `Case Studies | ${company.name}`,
-  description: `${company.name}의 공공·연구·민간 기관 VDI·MFA·백업 솔루션 딜리버리 사례 모음.`,
+  description: `${company.name}의 공공·연구기관 N²SF 전환·VDI 운영·망분리 재정렬·MFA 적용·백업 복구검증 실제 수행 사례.`,
 };
 
 interface CaseRow {
@@ -40,10 +40,10 @@ export default async function CaseStudiesPage() {
             Case Studies
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            솔루션 딜리버리 사례
+            공공·연구기관 N²SF 전환·VDI 운영 사례
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            공공·연구·민간 기관에서 검증된 VDI·MFA·백업 솔루션 딜리버리 사례입니다.
+            기관명은 익명·제한 공개로 노출하되, 환경 유형·벤더·규모·수행 범위·산출물·결과는 명시합니다.
           </p>
         </div>
       </section>
@@ -133,12 +133,13 @@ function EmptyState() {
           공공·연구기관과 민간 기업의 솔루션 딜리버리 사례를 정리하고 있습니다. 외부 공개 동의를 받은 사례부터 순차적으로 공개됩니다.
         </p>
         <div className="bg-gray-50 rounded-xl p-5 mb-6 text-left max-w-md mx-auto">
-          <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">예정 사례 유형</p>
-          <ul className="text-sm text-gray-700 space-y-1.5">
-            <li>· Citrix·VMware·Omnissa VDI 구축·운영</li>
-            <li>· MFA(Microsoft Entra·라온시큐어) 도입</li>
-            <li>· Acronis Cyber Protect 백업·EDR 통합 운영</li>
-            <li>· VDI+MFA+백업 융합 패키지 도입</li>
+          <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">예정 사례 5종</p>
+          <ul className="text-sm text-gray-700 space-y-1.5 kr-keep-all">
+            <li>· 공공기관 VDI 운영 안정화 (Horizon/UAG/인증서/외부접속)</li>
+            <li>· 정부출연연구기관 VDI 역할 재정의 (유지/축소/전환 판단)</li>
+            <li>· 망분리 환경 전환 사전진단 (업무군·사용자군·접속 경로)</li>
+            <li>· MFA 적용 위치 설계 (VDI·관리자·외부 협력사·예외 계정)</li>
+            <li>· 백업·DR 복구검증 (RTO/RPO·월간 복구 테스트)</li>
           </ul>
         </div>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">

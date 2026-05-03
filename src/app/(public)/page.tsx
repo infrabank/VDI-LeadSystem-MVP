@@ -115,7 +115,7 @@ export default function HomePage() {
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-indigo-50 to-white border border-indigo-100">
               <p className="text-sm font-bold text-indigo-700 uppercase tracking-widest mb-1.5">대표 1인 책임</p>
               <p className="text-xs sm:text-sm font-semibold text-gray-900 mb-0.5 kr-keep-all">대표 엔지니어가 직접 진단·설계</p>
-              <p className="text-xs text-gray-500 kr-keep-all">SI 영업·중간 전달 없이 한 전문가가 판단</p>
+              <p className="text-xs text-gray-500 kr-keep-all">SI·보안 파트너가 제안에 바로 붙일 수 있는 산출물</p>
             </div>
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100">
               <p className="text-sm font-bold text-emerald-700 uppercase tracking-widest mb-1.5">검증 파트너 컨소시엄</p>
@@ -229,6 +229,53 @@ export default function HomePage() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* 5단계 패키지 깊이 */}
+      <section className="bg-white border-y border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
+          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+            Engagement Depth
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+            5단계 패키지 — 어디서부터 시작할지
+          </h2>
+          <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
+            무료 자가 진단부터 월간 매니지드까지. 정확한 비용은 기관 환경·규모·산출물 깊이에 따라 인터뷰 후 산정합니다.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+            {[
+              { stage: "Stage 0", level: "무료", title: "자가진단", duration: "7분 (셀프)", outcome: "1쪽 PDF 리포트 + 이메일 수집", href: "/tools/risk-assessment", color: "#0ea5e9", bg: "bg-sky-50", text: "text-sky-700" },
+              { stage: "Stage 1", level: "입문", title: "사전진단", duration: "1주", outcome: "현재 구조도 + C/S/O 분류 + 1차 로드맵", href: "/practices/managed-integration", color: "#7c3aed", bg: "bg-purple-50", text: "text-purple-700" },
+              { stage: "Stage 2", level: "핵심", title: "역할 재정의 워크숍", duration: "2주", outcome: "유지·축소·DaaS·고위험 분리 시나리오 비교", href: "/practices/vdi-workspace", color: "#2563eb", bg: "bg-blue-50", text: "text-blue-700" },
+              { stage: "Stage 3", level: "고급", title: "RFP·심의 대응 패키지", duration: "4주", outcome: "착수·현황·위험·로드맵·대응표·운영·검수 7종", href: "/practices/managed-integration", color: "#4f46e5", bg: "bg-indigo-50", text: "text-indigo-700" },
+              { stage: "Stage 4", level: "반복 매출", title: "월간 복구검증", duration: "월 단위 매니지드", outcome: "복구 시연 리포트 + RTO/RPO 기준표 + 24h 절차", href: "/practices/data-protection", color: "#059669", bg: "bg-emerald-50", text: "text-emerald-700" },
+              { stage: "옵션", level: "SI 컨소시엄", title: "SI 제안 기술자문", duration: "프로젝트 단위", outcome: "SI 제안에서 N²SF·VDI 파트 보강·산출물 정리", href: "/contact?source=home-stages&interest=si-advisory", color: "#475569", bg: "bg-slate-100", text: "text-slate-700" },
+            ].map((s) => (
+              <Link
+                key={s.title}
+                href={s.href}
+                className="group block p-5 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
+                style={{ borderLeft: `4px solid ${s.color}` }}
+              >
+                <div className="flex items-center gap-2 mb-2 flex-wrap">
+                  <span className={`inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest ${s.bg} ${s.text}`}>
+                    {s.stage}
+                  </span>
+                  <span className={`text-[11px] font-semibold ${s.text}`}>{s.level}</span>
+                </div>
+                <h3 className="text-base font-bold text-gray-900 mb-1 kr-keep-all">{s.title}</h3>
+                <p className="text-xs font-semibold text-gray-700 mb-2">{s.duration}</p>
+                <p className="text-xs text-gray-500 leading-relaxed kr-keep-all">{s.outcome}</p>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-6 md:mt-8">
+            <Link href="/practices#pricing" className="text-sm font-medium text-blue-700 hover:text-blue-800">
+              5단계 패키지 자세히 보기 →
+            </Link>
           </div>
         </div>
       </section>

@@ -439,7 +439,7 @@ export const customers: Customer[] = [
     vendor: "Omnissa Horizon · UAG (VMware ESXi)",
     userScale: "약 100~300 연구원",
     role: "Horizon·UAG 운영·외부접속 인증서 갱신",
-    solvedRisks: ["인증서 만료 대응", "프로파일 손실 복구"],
+    solvedRisks: ["외부접속 인증서 갱신 운영", "사용자 프로파일 안정화"],
     deliverables: ["월간 운영 리포트"],
   },
   {
