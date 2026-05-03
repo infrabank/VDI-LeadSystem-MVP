@@ -14,35 +14,35 @@ export const metadata = {
 const services = [
   {
     rank: "01",
-    title: "Citrix Virtual Apps & Desktops",
-    desc: "Citrix DaaS·NetScaler·StoreFront 기반 VDI 설계·구축·MSP 운영. 온프레 → DaaS 전환 자문.",
-    icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-    color: "#452170",
-    href: "/contact?source=vdi-workspace&interest=vdi-workspace",
+    title: "유지 / 일부 축소 시나리오",
+    desc: "C/S 등급 핵심 업무에 VDI를 한정하고, O등급 업무는 SaaS·RBI로 대체. 라이선스·운영 부담을 줄이며 N²SF 정렬을 확보합니다.",
+    icon: "M5 13l4 4L19 7",
+    color: "#2563eb",
+    href: "/tools/vdi-transition",
   },
   {
     rank: "02",
-    title: "VMware Horizon",
-    desc: "Horizon 8·UAG·App Volumes·DEM 운영. vSphere 기반 통합 가상화 환경 설계·운영.",
-    icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-    color: "#607078",
-    href: "/contact?source=vdi-workspace&interest=vdi-workspace",
+    title: "DaaS 전환 가능성 검토",
+    desc: "Citrix DaaS·Azure Virtual Desktop·Windows 365의 N²SF 적합성과 한계를 비교. 어떤 업무는 옮길 수 있고 어떤 업무는 옮길 수 없는지 가립니다.",
+    icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
+    color: "#4f46e5",
+    href: "/contact?source=vdi-workspace&interest=daas-transition",
   },
   {
     rank: "03",
-    title: "Omnissa Workspace ONE",
-    desc: "Horizon·Workspace ONE UEM 통합. VMware EUC 사업부의 Omnissa 분사 후 마이그레이션 지원.",
-    icon: "M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-    color: "#0091da",
-    href: "/contact?source=vdi-workspace&interest=vdi-workspace",
+    title: "고위험·외부 협력사 분리 설계",
+    desc: "외부 협력사·고위험 업무를 별도 VDI 영역으로 분리하고, MFA·조건부 접근·세션 격리를 결합. VDI를 어디에 남길지 결정합니다.",
+    icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
+    color: "#7c3aed",
+    href: "/contact?source=vdi-workspace&interest=zero-trust",
   },
   {
     rank: "04",
-    title: "DaaS 전환 (AVD · Windows 365)",
-    desc: "온프레 VDI에서 Azure Virtual Desktop·Windows 365·Citrix DaaS로의 마이그레이션 자문·구축.",
-    icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
-    color: "#0078d4",
-    href: "/contact?source=vdi-workspace&interest=daas-transition",
+    title: "운영 리스크 평가",
+    desc: "FSLogix·UAG·NetScaler·인증서·라이선스·XenServer·NetApp 등 실제로 터지는 패턴을 기반으로 전환 리스크를 평가합니다.",
+    icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
+    color: "#0891b2",
+    href: "/contact?source=vdi-workspace&interest=risk-review",
   },
 ];
 
@@ -73,59 +73,59 @@ export default function VdiWorkspacePage() {
             <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
           </p>
           <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
-            Citrix · VMware · Omnissa,<br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>한 전문가에게
+            N²SF 이후, VDI를<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>어디에 남길 것인가
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-blue-100/90 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             {p.tagline}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
-              href="/contact?source=vdi-workspace&interest=vdi-workspace"
+              href="/tools/vdi-transition"
               className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
             >
-              VDI 솔루션 상담
+              VDI 역할 재정의 진단(2분)
             </Link>
             <Link
-              href="/tools/risk-assessment"
+              href="/contact?source=vdi-workspace&interest=vdi-workspace"
               className="px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-500/30 border border-blue-400/40 text-white rounded-lg hover:bg-blue-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
             >
-              VDI 보안 준비도 진단
+              VDI 역할 재정의 상담
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Why Multi-vendor */}
+      {/* Why Repositioning */}
       <section className="border-b border-gray-100 bg-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 items-start md:items-center">
             <div className="md:col-span-1 flex flex-col items-start gap-1">
-              <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">왜 멀티 벤더인가</p>
-              <p className="text-sm font-bold text-gray-900">Citrix · VMware · Omnissa</p>
+              <p className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">왜 재정의인가</p>
+              <p className="text-sm font-bold text-gray-900">유지·축소·전환의 판단</p>
             </div>
             <div className="md:col-span-3">
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
-                고객 환경마다 라이선스 정책·기존 인프라·사용자 패턴이 다릅니다.
-                특정 벤더에 종속된 자문은 적합한 답을 내기 어렵습니다.
-                Myloket은 Citrix·VMware·Omnissa 세 벤더를 모두 다년간 운영해 본 실무 경험을 바탕으로,
-                요건에 가장 잘 맞는 형태를 중립적으로 제안합니다.
+                N²SF 이후 모든 업무를 VDI에 두는 단순 구조는 더 이상 적정하지 않습니다.
+                동시에, VDI가 끝나는 것도 아닙니다 — 역할이 바뀝니다. Citrix·VMware·Omnissa를 공공·연구기관에서
+                다년간 직접 운영해 본 경험으로, 어디는 유지하고 어디는 축소하고 어디는 DaaS로 옮길지를
+                벤더 종속 없이 판단합니다.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 4 Service Pillars */}
+      {/* 4 Scenarios */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-24">
         <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-          Service Pillars
+          Repositioning Scenarios
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3">
-          4대 VDI 딜리버리 서비스
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          VDI 전환 시나리오 4종
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
-          온프레미스 VDI부터 클라우드 DaaS 전환까지, 한 전문가가 통합 책임집니다.
+          유지·DaaS 전환·고위험 분리·운영 리스크 — 환경별로 어떤 시나리오가 맞는지 판단합니다.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {services.map((feature, i) => (
@@ -183,16 +183,16 @@ export default function VdiWorkspacePage() {
             Free Consultation
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
-            VDI 도입·전환·운영, 어디서부터 시작할지 막막하다면?
+            N²SF 이후, VDI를 어디에 남길지 함께 결정하시죠
           </h2>
-          <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
-            현재 환경 진단부터 벤더 선정·아키텍처 설계·견적까지 무료로 상담드립니다.
+          <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed kr-keep-all">
+            기존 VDI 환경 인터뷰 후 유지·축소·DaaS·고위험 분리 시나리오를 비교하고, 운영 리스크와 비용을 함께 판단합니다.
           </p>
           <Link
-            href="/contact?source=vdi-workspace&interest=vdi-workspace&subject=VDI 솔루션 상담 문의"
+            href="/contact?source=vdi-workspace&interest=vdi-workspace&subject=VDI 역할 재정의 상담"
             className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
           >
-            VDI 솔루션 상담 문의
+            VDI 역할 재정의 상담
           </Link>
         </div>
       </section>
