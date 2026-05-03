@@ -1,5 +1,9 @@
 export interface RiskAssessmentInput {
-  platform: "citrix" | "vmware" | "xenserver" | "mixed";
+  /**
+   * "citrix"는 deprecated — XenServer와 중복이라 UI에서 제거됐으나 과거 진단 결과
+   * 데이터 호환을 위해 union에 보존. 새 입력은 vmware/xenserver/nutanix-ahv/mixed만.
+   */
+  platform: "citrix" | "vmware" | "xenserver" | "nutanix-ahv" | "mixed";
   vm_count: number;
   network_separation: boolean;
   storage_migration: boolean;

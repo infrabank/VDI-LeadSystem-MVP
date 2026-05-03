@@ -65,11 +65,17 @@ export const QUESTIONS_V4: V4Question[] = [
     required: true,
     question: "VDI 플랫폼",
     inline_help: "현재 사용 중인 주요 하이퍼바이저를 선택하세요.",
+    /**
+     * 하이퍼바이저 정확성:
+     * - VMware는 ESXi/vSphere(인프라 가상화)만 제공. Horizon은 Omnissa로 분사됨.
+     * - Citrix XenServer = Citrix Hypervisor (XenSource → Citrix XenServer → Citrix Hypervisor)
+     * - "mixed" value는 backward-compat용 보존 (과거 진단 결과 데이터). UI는 "기타"로 노출.
+     */
     options: [
-      { value: "vmware",    label: "VMware" },
-      { value: "citrix",    label: "Citrix" },
-      { value: "xenserver", label: "XenServer" },
-      { value: "mixed",     label: "혼합 (Mixed)" },
+      { value: "vmware",      label: "VMware ESXi" },
+      { value: "xenserver",   label: "Citrix XenServer" },
+      { value: "nutanix-ahv", label: "Nutanix AHV" },
+      { value: "mixed",       label: "기타" },
     ],
   },
   {
