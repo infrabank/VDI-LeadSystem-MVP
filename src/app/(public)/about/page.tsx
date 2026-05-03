@@ -47,22 +47,22 @@ export default function AboutPage() {
               Our Mission
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
-              VDI · MFA · 백업, 한 전문가의 통합 책임
+              SI인 척하지 않습니다
             </h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
-              기관·기업은 VDI 인프라 선택, 인증·접근통제 강화, 백업·복원력 확보를
-              따로 구매하는 데 익숙해져 있습니다. 그 결과 도입 후 책임 단절이
-              발생하고 운영 단계의 통합 시각이 사라집니다.
+              {company.name}는 1인 전문 회사입니다. 대표 엔지니어가 직접 진단·설계하고,
+              구축은 검증된 파트너 컨소시엄과 함께 수행합니다. 이 구조가 공공기관 N²SF
+              전환처럼 판단 비중이 큰 사업에서 가장 빠르고 정직합니다.
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all">
-              {company.name}는 Citrix·VMware·Omnissa VDI 운영 경험에 MFA(Microsoft Entra·라온시큐어)와
-              Acronis 백업·EDR을 더해, 세 영역을 한 전문가가 통합 설계·운영합니다.
-              도입 이후의 운영 책임도 한 창구에서 가져갑니다.
+              VDI·MFA·백업을 따로 구매하면 도입 후 책임 단절이 생깁니다. 그 단절을 막기
+              위해, 진단·설계 단계는 한 전문가가 한 사이클로 책임지고, 구축 단계에서는
+              규모에 맞는 파트너를 정직하게 붙입니다.
             </p>
           </div>
           <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-              Solutions, One Expert
+              4가지 문제, 1인 전문 책임
             </p>
             <div className="space-y-3">
               {practicesList.map((p) => {
@@ -104,30 +104,23 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Leadership */}
+      {/* Founder */}
       <section id="leadership" className="bg-gray-50 border-t border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-            Leadership
+            Founder
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
-            팀 소개
+            대표 소개
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
-            전문 영역별 자문·딜리버리 책임을 가진 전문가가 직접 설계·운영합니다.
+            공공·정부출연연구기관 10여 곳의 VDI를 다년간 운영해 온 대표가 직접 진단·자문합니다.
           </p>
-          <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
+          <div className="max-w-2xl mx-auto">
             {leadership.map((leader) => (
               <LeaderCard key={leader.slot} leader={leader} />
             ))}
           </div>
-          <p className="text-xs text-gray-400 text-center mt-8 kr-keep-all">
-            ※ 일부 정보는 업데이트 중입니다. 채용·협업 문의는{" "}
-            <a href={`mailto:${company.email}`} className="underline font-medium">
-              {company.email}
-            </a>
-            로 부탁드립니다.
-          </p>
         </div>
       </section>
 

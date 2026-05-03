@@ -12,10 +12,12 @@ export const company = {
   nameKo: "마이로켓",
   legalName: "(주)마이로켓",
   legalNameEn: "Myloket Inc.",
-  tagline: "VDI · MFA · Data Protection Solutions",
-  taglineKo: "VDI·MFA·데이터 보호 솔루션 딜리버리",
+  tagline: "Public-Sector N²SF Workspace Transition Advisor",
+  taglineKo: "공공·연구기관 N²SF 전환 설계 — VDI·망분리·MFA·백업 재정렬",
   description:
-    "Citrix·VMware·Omnissa 기반 VDI에 MFA(다요소 인증)와 Acronis Cyber Protect 백업·EDR을 더해, 요건에 가장 잘 맞는 형태로 설계·구축·운영합니다.",
+    "공공·정부출연연구기관 10여 곳의 VDI를 다년간 설계·구축·운영해 온 1인 전문가가, " +
+    "N²SF 전환기에 기존 VDI·망분리·MFA·백업 환경의 유지·축소·전환을 판단하고 로드맵을 설계합니다. " +
+    "구축은 검증된 파트너 컨소시엄과 함께 수행합니다.",
   email: "contact@mlkit.co.kr",
   domain: "myloket.co.kr",
   copyrightYear: new Date().getFullYear(),
@@ -94,137 +96,137 @@ export interface Practice {
 }
 
 export const practices: Record<PracticeId, Practice> = {
+  "managed-integration": {
+    id: "managed-integration",
+    href: "/practices/managed-integration",
+    brand: "Transition Diagnosis",
+    title: "N²SF 전환 사전진단",
+    shortTitle: "N²SF 사전진단",
+    tagline: "공공기관 VDI·망분리 환경의 N²SF 정렬 진단·로드맵",
+    description:
+      "공공기관·연구기관·기존 VDI 운영 기관을 위한 N²SF 전환 1차 진단입니다. 현재 VDI/망분리 구조를 분석하고, 업무를 C/S/O 등급으로 예비 분류하며, 어디는 유지·어디는 축소·어디는 전환할지 1차 로드맵을 도출합니다. 후속 구축 사업의 RFP 문구·보안성 검토 산출물 초안까지 함께 정리합니다.",
+    pillars: [
+      {
+        title: "현재 VDI/망분리 구조도",
+        desc: "물리·논리 구성, 사용자군, 외부 협력사 접근 경로 정리",
+      },
+      {
+        title: "C/S/O 예비 분류",
+        desc: "업무·시스템 단위 N²SF 등급 자가분류와 근거 메모",
+      },
+      {
+        title: "유지·축소·전환 대상 구분",
+        desc: "기존 VDI/망연계/UAG/외부접속을 등급별 시나리오에 매핑",
+      },
+      {
+        title: "1차 전환 로드맵·RFP 문구",
+        desc: "단계별 일정·전제·증빙, 발주 시점에 쓸 RFP 반영 문구 초안",
+      },
+    ],
+    ctaLabel: "N²SF 전환 사전진단 상담",
+    ctaHref: "/about#contact",
+    primaryColor: "purple",
+  },
   "vdi-workspace": {
     id: "vdi-workspace",
     href: "/practices/vdi-workspace",
-    brand: "VDI Delivery",
-    title: "VDI 워크스페이스 딜리버리",
-    shortTitle: "VDI",
-    tagline: "Citrix · VMware · Omnissa 멀티 벤더 VDI 전문",
+    brand: "VDI Repositioning",
+    title: "VDI 역할 재정의 컨설팅",
+    shortTitle: "VDI 재정의",
+    tagline: "N²SF 이후 VDI를 어디에 남길지 판단·시나리오 설계",
     description:
-      "Citrix Virtual Apps & Desktops, VMware Horizon, Omnissa Workspace ONE 기반 VDI를 다년간 설계·구축·운영해 왔습니다. 온프레미스 VDI에서 DaaS(AVD·Windows 365)로의 전환 자문까지 일관된 실무 전문성을 제공합니다.",
+      "Citrix·VMware·Omnissa VDI를 공공·연구기관에서 다년간 설계·구축·운영해 온 관점으로, N²SF 이후 VDI의 역할을 재정의합니다. 완전 유지·일부 축소·DaaS 전환·고위험 업무만 VDI 유지·외부 협력사용 VDI 재정의 등 시나리오를 비교하고, 운영 리스크와 비용을 함께 판단합니다.",
     pillars: [
       {
-        title: "Citrix Virtual Apps & Desktops",
-        desc: "DaaS·NetScaler·StoreFront 설계·구축·MSP 운영",
+        title: "전환 시나리오 비교",
+        desc: "유지·축소·DaaS·RBI/CDS·Zero Trust 조합을 비용·리스크 기준으로 비교",
       },
       {
-        title: "VMware Horizon",
-        desc: "Horizon 8·UAG·App Volumes·Dynamic Environment Manager 운영",
+        title: "고위험·외부 협력사 분리 설계",
+        desc: "VDI를 어디에 남기고 어디에 다른 통제로 대체할지 결정",
       },
       {
-        title: "Omnissa Workspace ONE",
-        desc: "Horizon·UEM 통합 워크스페이스 도입·전환 지원",
+        title: "운영 리스크 판단",
+        desc: "FSLogix·UAG·NetScaler·인증서·라이선스 등 실제 장애 패턴 기반 리스크 평가",
       },
       {
         title: "DaaS 전환 자문",
-        desc: "Citrix DaaS · Azure Virtual Desktop · Windows 365 마이그레이션",
+        desc: "Citrix DaaS·Azure Virtual Desktop·Windows 365 적합성과 한계",
       },
     ],
-    ctaLabel: "VDI 솔루션 상담",
+    ctaLabel: "VDI 역할 재정의 상담",
     ctaHref: "/about#contact",
     primaryColor: "blue",
   },
   "mfa-access": {
     id: "mfa-access",
     href: "/practices/mfa-access",
-    brand: "MFA & Access",
-    title: "MFA·접근통제 솔루션",
-    shortTitle: "MFA",
-    tagline: "Microsoft Entra ID · 라온시큐어 — 글로벌 + 한국 공공 표준",
+    brand: "MFA Design",
+    title: "MFA QuickStart for VDI/DaaS",
+    shortTitle: "MFA QuickStart",
+    tagline: "어디에·어떤 예외정책으로·어떤 장애대응 구조로 붙일지",
     description:
-      "VDI 진입 인증 강화부터 원격근무 접근통제까지, MFA(다요소 인증) 솔루션을 고객 환경에 맞게 설계·구축·운영합니다. M365 보유 기관은 Microsoft Entra ID로, 행정 전자서명(GPKI/NPKI) 기반 공공기관은 라온시큐어로 대응합니다.",
+      "MFA를 솔루션으로 파는 게 아니라, VDI·DaaS·외부 협력사 접속에 어디에 어떻게 붙일지를 설계합니다. M365 기반은 Microsoft Entra ID로, 행정 전자서명(GPKI/NPKI) 기반 공공기관은 라온시큐어로 대응하며, 사용자군별 정책·예외 계정·장애 시 우회 절차까지 함께 정리합니다.",
     pillars: [
       {
-        title: "Microsoft Entra ID",
-        desc: "M365 보유 고객 대상 Entra MFA·Conditional Access 활성화 (Azure Korea CSAP IaaS 인증)",
+        title: "사용자군별 인증 흐름도",
+        desc: "내부직원·외부 협력사·관리자·시스템 계정 분리 설계",
       },
       {
-        title: "라온시큐어 OneAccess·TouchEn",
-        desc: "한국 공공·금융 표준 PKI 기반 통합 인증, GPKI/NPKI 네이티브 지원",
+        title: "예외·장애 우회 정책",
+        desc: "MFA 장애 시 운영 중단을 막는 우회 절차와 감사 기록",
       },
       {
-        title: "Zero Trust 액세스",
-        desc: "사용자·디바이스 신뢰도 기반 조건부 접근 정책",
+        title: "관리자·특권 계정 보호",
+        desc: "Conditional Access·PAM·세션 격리 정책 설계",
       },
       {
-        title: "원격근무·외부 협력사 접근통제",
-        desc: "VPN 대체·보완 — 망분리 완화 환경에서의 안전한 외부 접근",
+        title: "PoC 체크리스트",
+        desc: "도입 전 검증해야 할 항목과 종료 기준",
       },
     ],
-    ctaLabel: "MFA 도입 상담",
+    ctaLabel: "MFA QuickStart 상담",
     ctaHref: "/about#contact",
     primaryColor: "indigo",
   },
   "data-protection": {
     id: "data-protection",
     href: "/practices/data-protection",
-    brand: "Cyber Protect",
-    title: "백업·EDR (Acronis Cyber Protect)",
-    shortTitle: "백업·EDR",
-    tagline: "Acronis 기반 백업 · 사이버복원력 · EDR",
+    brand: "Recovery Verification",
+    title: "백업·DR 복구검증 서비스",
+    shortTitle: "복구검증",
+    tagline: "사고 시 실제 복구 가능한지 매월 검증·증빙",
     description:
-      "Acronis Cyber Protect 인증 파트너로서, 백업·DR·EDR(엔드포인트 위협 탐지)·패치 관리를 단일 콘솔에서 통합 운영합니다. 단순 백업을 넘어 랜섬웨어·운영 중단·사이버 공격에 대한 복원력을 함께 설계합니다.",
+      "Acronis Cyber Protect 인증 파트너로서 백업·DR·EDR을 운영하지만, 진짜 가치는 단순 백업이 아니라 \"사고 시 실제 복구 가능한지를 검증\"하는 데 있습니다. 월간 복구 테스트 리포트, RTO/RPO 기준표, 랜섬웨어 24시간 대응 절차, 중요 시스템별 복구 우선순위, 백업 무결성 검증 결과를 정기적으로 산출합니다.",
     pillars: [
       {
-        title: "통합 백업·복구",
-        desc: "Acronis Cyber Protect 기반 엔드포인트·서버·VM 통합 보호",
+        title: "월간 복구 테스트 리포트",
+        desc: "주요 시스템 복구 시연·결과 기록·개선 권고",
       },
       {
-        title: "EDR · 안티 랜섬웨어",
-        desc: "엔드포인트 위협 탐지·자동 격리·롤백, 사후분석 데이터 수집",
+        title: "RTO/RPO 기준표",
+        desc: "시스템별 목표 시간·복원 우선순위·책임자 명시",
       },
       {
-        title: "재해복구(DR)",
-        desc: "RTO/RPO 목표 기반 DR 설계·운영, 클라우드 페일오버",
+        title: "랜섬웨어 24시간 대응 절차",
+        desc: "사고 발생 시점부터 복원까지 절차·연락 체계·산출물",
       },
       {
-        title: "MSP 운영 (Cyber Protect Cloud)",
-        desc: "다중 고객 통합 콘솔 · 백업 검증 · 정기 리포트",
+        title: "백업 무결성 검증",
+        desc: "정기 자동 검증과 EDR·롤백 연계 운영",
       },
     ],
-    ctaLabel: "백업·EDR 상담",
+    ctaLabel: "복구검증 서비스 상담",
     ctaHref: "/about#contact",
     primaryColor: "emerald",
-  },
-  "managed-integration": {
-    id: "managed-integration",
-    href: "/practices/managed-integration",
-    brand: "Integrated Solution",
-    title: "융합 맞춤 제안 (VDI + MFA + 백업)",
-    shortTitle: "융합 제안",
-    tagline: "한 전문가가 책임지는 통합 설계 · 단일 책임 운영",
-    description:
-      "VDI·MFA·백업을 따로따로 구매·운영하는 데서 오는 책임 단절을 해소합니다. 고객 요건과 예산에 맞춰 세 영역을 한 번에 통합 설계하고, 도입 이후에도 한 창구에서 운영·기술지원을 제공합니다.",
-    pillars: [
-      {
-        title: "요건 기반 통합 설계",
-        desc: "업무 시나리오·사용자 규모·규제 요건을 입력으로 한 맞춤 아키텍처",
-      },
-      {
-        title: "벤더 중립 비교·선정",
-        desc: "Citrix vs Horizon vs Omnissa, Entra vs 라온시큐어, Acronis vs Veeam 비교 자문",
-      },
-      {
-        title: "TCO·운영 비용 최적화",
-        desc: "라이선스·인프라·운영 인력 비용을 합산한 5년 TCO 산출",
-      },
-      {
-        title: "단일 책임 운영(MSP)",
-        desc: "VDI·MFA·백업을 한 창구에서 통합 운영 — 책임 떠넘기기 없음",
-      },
-    ],
-    ctaLabel: "융합 패키지 상담",
-    ctaHref: "/about#contact",
-    primaryColor: "purple",
   },
 };
 
 export const practicesList: Practice[] = [
+  practices["managed-integration"],
   practices["vdi-workspace"],
   practices["mfa-access"],
   practices["data-protection"],
-  practices["managed-integration"],
 ];
 
 /**
@@ -311,29 +313,27 @@ export interface LeaderProfile {
 }
 
 /**
- * Leadership 슬롯 — 영역별 책임자(role)만 명시. 인원 수·실명은 비공개 정책.
- * name·photo가 비어있으면 placeholder 표시. 정보 채워지면 자동 정상 노출.
+ * Leadership — 1인 전문 회사 정직 표기.
+ *
+ * 분석 노트(2026-05-03): "4명 슬롯 + 정보 업데이트 예정" 구조는 1인기업의 빈틈으로 보임.
+ * 대신 대표 단일 카드 + "구축은 검증된 파트너 컨소시엄으로 수행"이라는 구조를 명시.
  */
 export const leadership: LeaderProfile[] = [
   {
-    slot: "vdi-lead",
-    role: "VDI 딜리버리 책임",
-    expertise: ["Citrix", "VMware Horizon", "Omnissa", "DaaS"],
-  },
-  {
-    slot: "mfa-lead",
-    role: "MFA·접근통제 책임",
-    expertise: ["Microsoft Entra", "라온시큐어", "Zero Trust Access"],
-  },
-  {
-    slot: "data-protection-lead",
-    role: "백업·EDR 책임",
-    expertise: ["Acronis Cyber Protect", "EDR", "DR/BCP"],
-  },
-  {
-    slot: "integration-lead",
-    role: "융합 솔루션 설계 책임",
-    expertise: ["통합 아키텍처", "TCO 분석", "MSP 운영"],
+    slot: "founder",
+    role: "대표 · 수석 자문 엔지니어",
+    name: "제현우",
+    bio:
+      "공공·정부출연연구기관 10여 곳의 Citrix XenDesktop·VMware Horizon·Omnissa Workspace VDI를 다년간 설계·구축·운영. " +
+      "망분리·N²SF·MFA·백업 환경에서 실제로 터지는 운영 장애·산출물·보안성 검토를 아는 관점으로 전환 시나리오를 판단합니다.",
+    expertise: [
+      "Citrix XenDesktop / NetScaler",
+      "VMware Horizon / UAG",
+      "Omnissa Workspace ONE",
+      "N²SF 전환 설계",
+      "공공기관 보안성 검토 대응",
+    ],
+    email: "jhw@mlkit.co.kr",
   },
 ];
 
@@ -509,7 +509,7 @@ export const navLinks = [
   {
     href: "/practices",
     label: "Solutions",
-    description: "VDI · MFA · 백업 · 융합 제안",
+    description: "N²SF 사전진단 · VDI 재정의 · MFA · 복구검증",
   },
   { href: "/insights", label: "Insights", description: "기술 콘텐츠·가이드" },
   { href: "/tools", label: "Tools", description: "진단·계산 도구" },

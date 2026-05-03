@@ -3,7 +3,7 @@ import { practicesList, company } from "@/lib/site-config";
 
 export const metadata = {
   title: `Solutions | ${company.name}`,
-  description: `${company.name}의 4대 솔루션 — VDI 딜리버리, MFA·접근통제, 백업·EDR, 융합 맞춤 제안.`,
+  description: `${company.name}의 4가지 문제 기반 상품 — N²SF 전환 사전진단, VDI 역할 재정의, MFA QuickStart, 백업·DR 복구검증.`,
 };
 
 const colorMap: Record<string, { border: string; bg: string; text: string; dot: string }> = {
@@ -23,11 +23,12 @@ export default function PracticesPage() {
             Solutions
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            VDI · MFA · 백업 — 한 전문가의 통합 딜리버리
+            공공기관이 N²SF 전환기에 마주치는<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>4가지 문제, 1인 전문가가 답합니다
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            {company.name}는 VDI 솔루션 딜리버리에 MFA(다요소 인증)와 Acronis 백업·EDR을 더하고,
-            요건에 맞춰 통합 설계·운영합니다. 도입 후에도 한 창구에서 책임집니다.
+            대표 엔지니어가 직접 진단·설계합니다. 구축은 검증된 파트너 컨소시엄으로 수행하므로,
+            1인 회사여도 공공·금융 규모 사업을 받을 수 있습니다.
           </p>
         </div>
       </section>
@@ -80,23 +81,23 @@ export default function PracticesPage() {
       <section className="bg-gray-50 border-t border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-center">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 kr-keep-all">
-            어떤 솔루션이 우리 환경에 맞는지 모르겠다면?
+            어디서부터 손대야 할지 모르겠다면, 사전진단부터
           </h2>
           <p className="text-sm text-gray-600 mb-6 max-w-xl mx-auto kr-keep-all">
-            7분 자가 진단으로 현재 VDI 보안 준비도를 확인하거나, 직접 상담을 요청해주세요.
+            7분 자가 진단으로 현재 VDI·망분리 환경의 N²SF 정렬 위치를 확인하거나, 대표에게 직접 상담을 요청해주세요.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/tools/risk-assessment"
               className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm sm:text-base shadow-sm shadow-blue-200 transition-all hover:-translate-y-0.5"
             >
-              VDI 보안 준비도 진단
+              N²SF 전환 사전진단
             </Link>
             <Link
               href="/contact?source=practices"
               className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-semibold text-sm sm:text-base transition-all"
             >
-              직접 상담 문의
+              대표에게 상담 요청
             </Link>
           </div>
         </div>
