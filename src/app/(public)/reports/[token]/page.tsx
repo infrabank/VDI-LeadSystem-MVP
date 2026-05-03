@@ -49,7 +49,7 @@ interface RoadmapPhase {
 }
 
 interface V2Output {
-  version: "v2" | "v3";
+  version: "v2" | "v3" | "v4";
   score: number;
   risk_level: "low" | "medium" | "high" | "critical";
   maturity_model: {
@@ -84,8 +84,10 @@ interface V1Output {
 }
 
 function isV2OrV3(output: unknown): output is V2Output {
+  // V4 output(extends V3)도 V2Report에서 정상 렌더되므로 함께 인식.
+  // V4가 누락되면 V1 fallback으로 빠지면서 RiskDetail 객체를 React 자식으로 렌더 시도 → client-side exception.
   const v = (output as V2Output)?.version;
-  return v === "v2" || v === "v3";
+  return v === "v2" || v === "v3" || v === "v4";
 }
 
 // ── SVG Radar Chart (4 axes) ──
