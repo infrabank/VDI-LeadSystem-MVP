@@ -50,6 +50,28 @@ export const templates: Template[] = [
     updatedAt: "2026-05-03",
     published: true,
   },
+  {
+    slug: "vdi-decision-matrix",
+    title: "VDI 유지·축소·전환 의사결정 매트릭스",
+    summary:
+      "1차 진단 결과를 영역별 시나리오 4종(유지·DaaS·고위험 분리·안정화)으로 비교하고 1장의 결정문을 도출.",
+    category: "matrix",
+    sourceFile: "02-vdi-decision-matrix.md",
+    pages: 5,
+    updatedAt: "2026-05-03",
+    published: true,
+  },
+  {
+    slug: "security-review-response-checklist",
+    title: "보안성 검토 대응 체크리스트",
+    summary:
+      "발주 전 보안성 검토 위원회 통과 가능성을 자가 평가하고, RFP 반영 문구·FAQ 답안 예시를 함께 정리.",
+    category: "checklist",
+    sourceFile: "03-security-review-response-checklist.md",
+    pages: 6,
+    updatedAt: "2026-05-03",
+    published: true,
+  },
 ];
 
 export function findTemplate(slug: string): Template | undefined {
