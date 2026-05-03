@@ -47,7 +47,7 @@ export default function AboutPage() {
               Our Mission
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
-              SI인 척하지 않습니다
+              1인 전문회사임을 투명하게 밝힙니다
             </h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
               {company.name}는 1인 전문 회사입니다. 대표 엔지니어가 직접 진단·설계하고,

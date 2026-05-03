@@ -16,6 +16,7 @@ import {
   validateV4Input,
   type V4Question,
 } from "@/lib/tools/risk-assessment/questions.v4";
+import { RiskAssessmentIntro } from "./IntroSection";
 
 // ── Inline resolveGrade (pure, no server deps) ──
 function resolveGradePreview(
@@ -773,6 +774,8 @@ function V4Form() {
 
         {/* Step 0: Lead Info */}
         {step === "lead" && (
+          <>
+            <RiskAssessmentIntro />
           <form onSubmit={handleLeadSubmit} className="space-y-5">
             <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600 kr-keep-all">
               <strong>본 진단은 VDI 환경의 보안 준비도를 자가 점검하는 도구입니다.</strong> 공식 보안성 검토를 대체하지 않으며, 결과는 솔루션 권고를 위한 참고 자료로 활용됩니다.
@@ -806,6 +809,7 @@ function V4Form() {
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
           </form>
+          </>
         )}
 
         {/* Step sections */}

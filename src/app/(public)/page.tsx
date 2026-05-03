@@ -304,10 +304,26 @@ export default function HomePage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
             현재 VDI를 어떻게 재조합할지, 7분이면 첫 그림이 나옵니다
           </h2>
-          <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            8개 영역 28문항 자가 진단 → C/S/O 등급 예비 분류·VDI 유지/축소/전환 시나리오·MFA·백업 보완 지점이 정리된 PDF 리포트.
-            추가 상담은 대표가 직접 회신합니다.
+          <p className="text-sm sm:text-base text-blue-100 mb-6 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+            8개 영역 28문항 자가 진단 후, 다음 5가지를 정리한 PDF 리포트를 받습니다. 추가 상담은 대표가 직접 회신.
           </p>
+          <div className="grid grid-cols-1 sm:grid-cols-5 gap-2 sm:gap-3 max-w-3xl mx-auto mb-8 md:mb-10">
+            {[
+              "VDI 유지/축소/전환 1차 판정",
+              "C/S/O 등급 예비 분류표",
+              "MFA 보완 지점",
+              "백업·DR 보완 지점",
+              "담당자 보고용 1쪽 요약",
+            ].map((item, i) => (
+              <div
+                key={i}
+                className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-3 text-left"
+              >
+                <p className="text-[10px] font-bold text-blue-200 mb-1">{String(i + 1).padStart(2, "0")}</p>
+                <p className="text-xs sm:text-[13px] text-white font-medium leading-snug kr-keep-all">{item}</p>
+              </div>
+            ))}
+          </div>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/tools/risk-assessment"

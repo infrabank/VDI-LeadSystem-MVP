@@ -49,19 +49,60 @@ export function CustomerShowcase({ variant = "compact" }: Props) {
                 {customerCategoryLabel[cat]} ({items.length})
               </h3>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-              {items.map((c) => (
-                <div
-                  key={c.code}
-                  className="bg-white rounded-lg border border-gray-200 px-4 py-3 hover:border-gray-300 transition-colors"
-                  title={c.disclosed ? c.name : "외부 표기 동의 미확인 — 익명 표기"}
-                >
-                  <p className="text-sm font-bold text-gray-900 kr-keep-all">{customerDisplayName(c)}</p>
-                  {c.disclosed && (
-                    <p className="text-[10px] text-gray-400 font-mono mt-0.5">{c.code}</p>
-                  )}
-                </div>
-              ))}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+              {items.map((c) => {
+                const hasDetail = !!(c.vendor || c.userScale || c.role || c.solvedRisks?.length);
+                return (
+                  <div
+                    key={c.code}
+                    className={`bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-colors ${
+                      hasDetail ? "p-4 sm:p-5" : "px-4 py-3"
+                    }`}
+                    title={c.disclosed ? c.name : "외부 표기 동의 미확인 — 익명 표기"}
+                  >
+                    <p className="text-sm font-bold text-gray-900 kr-keep-all mb-1">
+                      {customerDisplayName(c)}
+                    </p>
+                    {c.disclosed && (
+                      <p className="text-[10px] text-gray-400 font-mono mb-1">{c.code}</p>
+                    )}
+                    {hasDetail && (
+                      <div className="space-y-1.5 mt-2 pt-2 border-t border-gray-100">
+                        {c.vendor && (
+                          <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
+                            <span className="text-gray-400">벤더 </span>
+                            {c.vendor}
+                          </p>
+                        )}
+                        {c.userScale && (
+                          <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
+                            <span className="text-gray-400">규모 </span>
+                            {c.userScale}
+                          </p>
+                        )}
+                        {c.role && (
+                          <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
+                            <span className="text-gray-400">역할 </span>
+                            {c.role}
+                          </p>
+                        )}
+                        {c.solvedRisks && c.solvedRisks.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mt-1.5">
+                            {c.solvedRisks.map((r) => (
+                              <span
+                                key={r}
+                                className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-full bg-gray-50 border border-gray-200 ${style.text} kr-keep-all`}
+                              >
+                                {r}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
         );

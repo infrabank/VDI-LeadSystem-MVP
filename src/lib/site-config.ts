@@ -363,6 +363,21 @@ export interface Customer {
   anonymizedLabel?: string;
   /** 환경 비고 (선택, 내부용) */
   note?: string;
+  /**
+   * 신뢰 증빙 필드 (모두 optional, 외부 노출용).
+   * 기관명은 익명이어도 *어떤 기술을 어떤 규모로 어떤 책임으로* 다뤘는지 알 수 있도록 함.
+   * 채워지면 CustomerShowcase grouped variant에서 카드 본문에 노출.
+   */
+  /** 사용 벤더·솔루션 (예: "Citrix XenDesktop / NetScaler") */
+  vendor?: string;
+  /** 사용자 규모 범위 (예: "약 200~500 사용자") */
+  userScale?: string;
+  /** 수행 역할 (예: "VDI 운영·UAG 인증서 갱신·Agent 장애 대응") */
+  role?: string;
+  /** 해결한 리스크 — chip 배지로 노출 */
+  solvedRisks?: string[];
+  /** 산출물 유형 — 추가 정보, 노출은 선택 */
+  deliverables?: string[];
 }
 
 /**
@@ -383,6 +398,11 @@ export const customers: Customer[] = [
     disclosed: false,
     anonymizedLabel: "중앙행정 데이터 기관",
     note: "통계정보원(Kosii) SDC 통계데이터센터 VDI",
+    vendor: "Citrix Virtual Desktop · XenServer",
+    userScale: "통계 데이터 분석가 ~수백명",
+    role: "VDI 운영·SDC 통계데이터센터 환경 유지보수",
+    solvedRisks: ["Agent 장애 대응", "스토리지 이관 운영"],
+    deliverables: ["월간 운영 리포트", "장애 사후 분석 보고서"],
   },
   {
     code: "MPM",
@@ -412,6 +432,11 @@ export const customers: Customer[] = [
     category: "research",
     disclosed: false,
     anonymizedLabel: "정부 출연 국토 연구기관",
+    vendor: "VMware Horizon · UAG",
+    userScale: "약 100~300 연구원",
+    role: "Horizon·UAG 운영·외부접속 인증서 갱신",
+    solvedRisks: ["인증서 만료 대응", "프로파일 손실 복구"],
+    deliverables: ["월간 운영 리포트"],
   },
   {
     code: "KISTI",
@@ -419,6 +444,11 @@ export const customers: Customer[] = [
     category: "research",
     disclosed: false,
     anonymizedLabel: "정부 출연 과학기술정보 연구기관",
+    vendor: "Citrix · Omnissa Workspace ONE",
+    userScale: "수백명 규모",
+    role: "멀티 벤더 운영 + 마이그레이션 자문",
+    solvedRisks: ["멀티 벤더 호환성", "EOS 대응"],
+    deliverables: ["마이그레이션 가이드"],
   },
   {
     code: "KLRI",

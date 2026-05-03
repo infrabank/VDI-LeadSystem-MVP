@@ -4,7 +4,8 @@ import { existsSync } from "node:fs";
 import path from "node:path";
 
 /**
- * Server component — public/team/{photoFile} 존재 시 사진, 없으면 이니셜 placeholder.
+ * Server component — public/team/{photoFile} 존재 시 사진, 없으면 회사 로고(/public/logo.png) 폴백.
+ * 두 자산 모두 없으면 작은 회사 이니셜(M) 정돈 표기.
  * name 미입력 시 "정보 업데이트 예정" 표시.
  */
 export function LeaderCard({ leader }: { leader: LeaderProfile }) {
@@ -12,7 +13,7 @@ export function LeaderCard({ leader }: { leader: LeaderProfile }) {
     !!leader.photoFile &&
     existsSync(path.join(process.cwd(), "public", "team", leader.photoFile));
 
-  const initial = (leader.name || leader.slot).slice(0, 1).toUpperCase();
+  const hasLogo = existsSync(path.join(process.cwd(), "public", "logo.png"));
   const isPlaceholder = !leader.name;
 
   return (
@@ -27,9 +28,17 @@ export function LeaderCard({ leader }: { leader: LeaderProfile }) {
               height={80}
               className="w-full h-full object-cover"
             />
+          ) : hasLogo ? (
+            <Image
+              src="/logo.png"
+              alt={leader.name ? `${leader.name} 프로필` : "Myloket 로고"}
+              width={80}
+              height={80}
+              className="w-full h-full object-contain p-2.5 bg-white"
+            />
           ) : (
-            <div className="w-full h-full flex items-center justify-center text-2xl sm:text-3xl font-bold text-blue-700/40 select-none">
-              {initial}
+            <div className="w-full h-full flex items-center justify-center text-base sm:text-lg font-bold text-blue-700/50 select-none tracking-wide">
+              M
             </div>
           )}
         </div>
