@@ -125,7 +125,7 @@ export default function PracticesPage() {
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             대표 엔지니어가 직접 진단·설계합니다. 구축은 검증된 파트너 컨소시엄으로 수행하므로,
-            1인 회사여도 공공·금융 규모 사업을 받을 수 있습니다.
+            공공·금융권 사업에서도 역할과 책임을 분리해 대응할 수 있습니다.
           </p>
         </div>
       </section>

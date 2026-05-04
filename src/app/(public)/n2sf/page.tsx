@@ -183,7 +183,7 @@ export default async function N2sfHubPage() {
               href="/tools/risk-assessment"
               tag="N²SF · 8영역 · 28문항"
               title="N²SF 정렬 진단 (v4)"
-              description="274개 보안통제 매핑 · 8영역 28문항 · C/S/O 등급 자가분류 · 모델 3·8·10 권고. 공공·금융 기관의 N²SF 정렬 현황을 가장 체계적으로 진단합니다."
+              description="274개 보안통제 매핑 · 8영역 28문항 · C/S/O 등급 예비 검토 · 모델 3·8·10 권고. 공공·금융 기관의 N²SF 정렬 현황을 가장 체계적으로 진단합니다."
               meta="8개 단계 · 약 7분"
               ctaText="진단 시작"
               primary

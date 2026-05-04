@@ -135,7 +135,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-12 max-w-2xl mx-auto kr-keep-all">
             대표 엔지니어가 직접 책임지는 영역과 검증된 파트너가 수행하는 영역을 단계별로 분리합니다.
-            1인 회사여도 공공·금융 규모 사업을 받을 수 있는 구조이며, 단계별 산출물·서명·검수 책임이 분명합니다.
+            구축은 검증된 파트너 컨소시엄과 분담 수행하므로, 공공·금융권 사업에서도 역할과 책임을 분리해 대응할 수 있는 구조이며, 단계별 산출물·서명·검수 책임이 분명합니다.
           </p>
 
           {/* Desktop table */}
@@ -304,7 +304,7 @@ export default function AboutPage() {
             상담·기술 협업 문의
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
-            VDI 설계·MFA 도입·백업 구축 및 융합 패키지 상담, 기술 협업 문의를 환영합니다.
+            N²SF 전환기 기존 VDI·망분리·MFA·백업 환경의 유지·축소·전환 검토, RFP·보안성 검토 대응, SI 파트너 기술협업 문의를 환영합니다.
           </p>
           <Link
             href="/contact?source=about-cta"

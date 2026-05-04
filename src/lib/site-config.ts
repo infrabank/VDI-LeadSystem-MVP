@@ -112,7 +112,7 @@ export const practices: Record<PracticeId, Practice> = {
       },
       {
         title: "C/S/O 예비 분류",
-        desc: "업무·시스템 단위 N²SF 등급 자가분류와 근거 메모",
+        desc: "업무·시스템 단위 N²SF 등급 예비 검토와 근거 메모",
       },
       {
         title: "유지·축소·전환 대상 구분",
@@ -372,7 +372,7 @@ export interface Customer {
   vendor?: string;
   /** 사용자 규모 범위 (예: "약 200~500 사용자") */
   userScale?: string;
-  /** 수행 역할 (예: "VDI 운영·UAG 인증서 갱신·Agent 장애 대응") */
+  /** 수행 역할 (예: "VDI 운영·UAG 운영 안정화·Agent 장애 대응") */
   role?: string;
   /** 해결한 리스크 — chip 배지로 노출 */
   solvedRisks?: string[];
@@ -438,8 +438,8 @@ export const customers: Customer[] = [
     anonymizedLabel: "정부 출연 국토 연구기관",
     vendor: "Omnissa Horizon · UAG (VMware ESXi)",
     userScale: "약 100~300 연구원",
-    role: "Horizon·UAG 운영·외부접속 인증서 갱신",
-    solvedRisks: ["외부접속 인증서 갱신 운영", "사용자 프로파일 안정화"],
+    role: "Horizon·UAG 운영·외부접속 운영 안정화",
+    solvedRisks: ["외부접속 운영 안정화", "사용자 환경 운영 표준화"],
     deliverables: ["월간 운영 리포트"],
   },
   {
@@ -451,7 +451,7 @@ export const customers: Customer[] = [
     vendor: "Citrix · Omnissa Workspace ONE",
     userScale: "수백명 규모",
     role: "멀티 벤더 운영 + 마이그레이션 자문",
-    solvedRisks: ["멀티 벤더 호환성", "EOS 대응"],
+    solvedRisks: ["멀티 벤더 호환성", "벤더 정책 변경 및 전환 리스크 검토"],
     deliverables: ["마이그레이션 가이드"],
   },
   {
