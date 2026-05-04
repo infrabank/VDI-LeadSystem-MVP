@@ -83,21 +83,20 @@ export default function HomePage() {
             <span className="sm:hidden"> </span>어떻게 할지 결정해야 할 때입니다
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-blue-100/90 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed kr-keep-all">
-            공공·연구기관의 기존 VDI·망분리·MFA·백업 환경을 N²SF 기준으로 재정렬하고,
-            유지·축소·전환 로드맵을 설계합니다.
+            공공·연구기관 VDI·망분리 환경을 N²SF 기준으로 재정렬·로드맵 설계합니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
-              href="/tools/risk-assessment"
-              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white text-blue-700 rounded-md hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+              href="/partners"
+              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5"
             >
-              N²SF 전환 사전진단 신청
+              SI 제안 기술자문
             </Link>
             <Link
-              href="/tools/vdi-transition"
+              href="/tools/risk-assessment"
               className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/30 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
             >
-              VDI 역할 재정의 진단
+              N²SF 전환 사전진단
             </Link>
           </div>
         </div>

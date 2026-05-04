@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
-    "n2sf:parse": "node scripts/parse-n2sf-controls.mjs"
+    "n2sf:parse": "node scripts/parse-n2sf-controls.mjs",
+    "build:onepager-pdf": "node scripts/generate-onepager-pdf.mjs"
   },
   "dependencies": {
     "@sparticuz/chromium": "^143.0.4",

@@ -545,6 +545,11 @@ export const navLinks = [
     label: "Solutions",
     description: "N²SF 사전진단 · VDI 재정의 · MFA · 복구검증",
   },
+  {
+    href: "/partners",
+    label: "Partners",
+    description: "SI·보안 파트너용 기술자문",
+  },
   { href: "/insights", label: "Insights", description: "기술 콘텐츠·가이드" },
   { href: "/tools", label: "Tools", description: "진단·계산 도구" },
   { href: "/about", label: "About", description: "회사 소개·인증" },

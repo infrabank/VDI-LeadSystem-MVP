@@ -4,9 +4,13 @@
         <meta charset="utf-8" />
         <title>Myloket — Business Card</title>
         <style>
-            /* ===== 인쇄 사양 (한국 표준 명함 90×50mm) ===== */
+            /* ===== 인쇄 사양 =====
+               재단사이즈(완성): 90×50mm (한국 표준)
+               작업사이즈(업로드): 94×54mm — 사방 2mm 재단여분(bleed)
+               안전영역(중요 콘텐츠): 84×44mm — 재단선에서 사방 3mm 안쪽
+               배경/색/이미지: 작업사이즈 끝까지 연장 */
             @page {
-                size: 90mm 50mm;
+                size: 94mm 54mm;
                 margin: 0;
             }
             * {
@@ -67,10 +71,10 @@
                 font-size: 12px;
             }
 
-            /* ===== 명함 카드 ===== */
+            /* ===== 명함 카드 (작업사이즈 94×54mm) ===== */
             .card {
-                width: 90mm;
-                height: 50mm;
+                width: 94mm;
+                height: 54mm;
                 background: #fff;
                 box-shadow:
                     0 4px 16px rgba(0, 0, 0, 0.08),
@@ -80,22 +84,25 @@
                 page-break-after: always;
             }
 
-            /* ===== FRONT (앞면) ===== */
+            /* ===== FRONT (앞면) =====
+               padding = 재단여분 2mm + 안전여백 3mm + 시각적 여백 = 사방 5mm 이상 보장 */
             .front {
-                padding: 6mm 6mm 5mm;
+                padding: 8mm 8mm 7mm;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 position: relative;
             }
-            /* 좌측 라인 — 1순위 색(purple) → 인디고 → 에메랄드 */
+            /* 좌측 컬러 밴드 — 레드프린팅 사양: 작업 좌측 끝(0)부터 재단선 3mm 안쪽(=5mm)까지 두껍게.
+               재단여분(2mm) 잘려나가도 완성 카드 좌측에 3mm 폭 컬러 밴드가 보장됨.
+               1순위 색(purple) → 인디고 → 에메랄드 — site-config 솔루션 정렬 톤. */
             .front::before {
                 content: "";
                 position: absolute;
                 left: 0;
                 top: 0;
                 bottom: 0;
-                width: 3px;
+                width: 5mm;
                 background: linear-gradient(
                     180deg,
                     #7c3aed 0%,
@@ -207,22 +214,25 @@
                 font-weight: 500;
             }
 
-            /* ===== BACK (뒷면) ===== */
+            /* ===== BACK (뒷면) =====
+               배경(#0f172a)·radial gradient 모두 작업사이즈 94×54mm 끝까지 자연 연장됨
+               padding은 재단여분 2mm + 안전여백 3mm 이상 확보 */
             .back {
                 background: #0f172a;
                 color: #f5f9ff;
-                padding: 5mm 6mm;
+                padding: 7mm 8mm;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 position: relative;
                 overflow: hidden;
             }
+            /* 우상단 보라 글로우 — 재단여분(2mm) 만큼 추가 오프셋해서 완성 카드 우상단에 시각 중심 유지 */
             .back::before {
                 content: "";
                 position: absolute;
-                top: -20mm;
-                right: -20mm;
+                top: -22mm;
+                right: -22mm;
                 width: 50mm;
                 height: 50mm;
                 background: radial-gradient(
@@ -232,11 +242,12 @@
                 );
                 pointer-events: none;
             }
+            /* 좌하단 인디고 글로우 — 재단여분 만큼 추가 오프셋 */
             .back::after {
                 content: "";
                 position: absolute;
-                bottom: -15mm;
-                left: -15mm;
+                bottom: -17mm;
+                left: -17mm;
                 width: 35mm;
                 height: 35mm;
                 background: radial-gradient(
@@ -289,20 +300,20 @@
                 font-weight: 600;
                 letter-spacing: 0.08em;
                 text-transform: uppercase;
-                margin-bottom: 3mm;
+                margin-bottom: 1.5mm;
             }
 
             .practices {
                 display: flex;
                 flex-direction: column;
-                gap: 0.8mm;
-                margin-bottom: 2mm;
+                gap: 0.4mm;
+                margin-bottom: 0;
             }
             .practice {
                 display: flex;
                 align-items: flex-start;
                 gap: 2mm;
-                padding: 0.6mm 0;
+                padding: 0.3mm 0;
             }
             .practice .accent {
                 width: 2.5px;
@@ -356,6 +367,61 @@
                 letter-spacing: 0.02em;
             }
 
+            /* ===== 화면 전용: 재단선/안전영역 가이드 =====
+               작업사이즈 안에서 재단되는 위치(90×50)를 점선으로 표시.
+               인쇄/PDF 출력 시에는 자동 숨김 — 실제 입고 파일에는 포함되지 않음. */
+            .cut-guide,
+            .safe-guide {
+                position: absolute;
+                pointer-events: none;
+                z-index: 50;
+            }
+            .cut-guide {
+                top: 2mm;
+                left: 2mm;
+                width: 90mm;
+                height: 50mm;
+                outline: 0.3mm dashed rgba(239, 68, 68, 0.55);
+            }
+            .safe-guide {
+                top: 5mm;
+                left: 5mm;
+                width: 84mm;
+                height: 44mm;
+                outline: 0.3mm dashed rgba(16, 185, 129, 0.4);
+            }
+            .back .cut-guide {
+                outline-color: rgba(252, 165, 165, 0.6);
+            }
+            .back .safe-guide {
+                outline-color: rgba(110, 231, 183, 0.45);
+            }
+            .guide-legend {
+                position: absolute;
+                top: -18px;
+                left: 0;
+                font-size: 10px;
+                color: #6b7280;
+                display: flex;
+                gap: 12px;
+                font-weight: 500;
+            }
+            .guide-legend .swatch {
+                display: inline-block;
+                width: 16px;
+                height: 0;
+                border-top: 1.5px dashed currentColor;
+                margin-right: 4px;
+                vertical-align: middle;
+                transform: translateY(-2px);
+            }
+            .guide-legend .cut-key {
+                color: #ef4444;
+            }
+            .guide-legend .safe-key {
+                color: #10b981;
+            }
+
             /* ===== 인쇄 시 ===== */
             @media print {
                 body {
@@ -372,10 +438,15 @@
                 .info-banner {
                     display: none;
                 }
+                .cut-guide,
+                .safe-guide,
+                .guide-legend {
+                    display: none !important;
+                }
                 .card {
                     box-shadow: none;
-                    width: 90mm;
-                    height: 50mm;
+                    width: 94mm;
+                    height: 54mm;
                     margin: 0;
                 }
             }
@@ -384,16 +455,26 @@
     <body>
         <div class="preview-wrap">
             <div class="info-banner">
-                <h1>Myloket — 명함 디자인 (90×50mm 한국 표준)</h1>
+                <h1>Myloket — 명함 (작업 94×54mm / 재단 90×50mm)</h1>
                 <p>
                     포지션:
                     <strong>공공·연구기관 N²SF 전환 설계 1인 전문가</strong>.
                     뒷면 4 솔루션은 site-config 새 정렬 순(<code>N²SF 사전진단 → VDI 재정의 → MFA QuickStart → 복구검증</code>).
                 </p>
                 <p>
+                    <strong>레드프린팅 사양 반영:</strong>
+                    작업사이즈 <code>94×54mm</code> · 재단사이즈
+                    <code>90×50mm</code> · 사방 <code>2mm</code> 재단여분 ·
+                    중요 텍스트/이미지는 재단선 안쪽 <code>3mm</code> 안전영역
+                    (<code>84×44mm</code>)에 배치. 배경·색·글로우는 작업사이즈
+                    끝까지 연장.
+                </p>
+                <p>
                     인쇄: 브라우저 <code>Ctrl+P</code>(Mac: <code>⌘+P</code>) →
-                    용지 <code>90×50mm 사용자 정의</code> 또는
-                    <code>PDF로 저장</code> → 인쇄소 입고.
+                    용지 <code>94×54mm 사용자 정의</code> · 여백
+                    <code>없음</code> · 배율 <code>100%</code> →
+                    <code>PDF로 저장</code> → 레드프린팅 마이페이지 &gt;
+                    주문배송조회에서 재업로드.
                 </p>
                 <p>
                     편집: 본인 정보 5가지(<code>제현우</code>,
@@ -403,14 +484,19 @@
                     직접 교체.
                 </p>
                 <p style="color: #9ca3af; margin: 0">
-                    재단 여유 +3mm는 인쇄소가 자체 처리. 출력 색상 보정은 sRGB →
-                    인쇄소 자동 CMYK 변환 요청.
+                    출력 색상 보정은 sRGB → 인쇄소 자동 CMYK 변환 요청.
                 </p>
             </div>
 
             <!-- ============ FRONT ============ -->
-            <div class="preview-label">앞면 (Front)</div>
+            <div class="preview-label">
+                앞면 (Front) ·
+                <span style="color: #ef4444">--- 재단선</span> ·
+                <span style="color: #10b981">--- 안전영역</span>
+            </div>
             <div class="card front">
+                <div class="cut-guide" aria-hidden="true"></div>
+                <div class="safe-guide" aria-hidden="true"></div>
                 <div class="front-top">
                     <div class="front-brand">
                         Myloket
@@ -449,8 +535,14 @@
             </div>
 
             <!-- ============ BACK ============ -->
-            <div class="preview-label">뒷면 (Back)</div>
+            <div class="preview-label">
+                뒷면 (Back) ·
+                <span style="color: #ef4444">--- 재단선</span> ·
+                <span style="color: #10b981">--- 안전영역</span>
+            </div>
             <div class="card back">
+                <div class="cut-guide" aria-hidden="true"></div>
+                <div class="safe-guide" aria-hidden="true"></div>
                 <div class="back-content">
                     <div class="back-top">
                         <div class="back-brand">
@@ -552,26 +644,44 @@
             </div>
 
             <div class="info-banner" style="margin-top: 8px">
-                <h1 style="margin-bottom: 6px">인쇄 입고 체크리스트</h1>
+                <h1 style="margin-bottom: 6px">레드프린팅 입고 체크리스트</h1>
                 <ol style="margin: 0; padding-left: 18px; line-height: 1.7">
                     <li>
-                        용지: 한국 표준 명함 90×50mm (또는 91×55mm은 인쇄소 요청
-                        시)
+                        작업사이즈: <code>94 × 54 mm</code> (재단사이즈
+                        <code>90 × 50 mm</code> + 사방 <code>2 mm</code>
+                        재단여분)
                     </li>
                     <li>
-                        재단여유(bleed): 양 가장자리 +3mm 별도 요청 (현 디자인
-                        미포함, 인쇄소가 자체 처리)
+                        안전영역: <code>84 × 44 mm</code> (재단선에서 사방
+                        <code>3 mm</code> 안쪽) — 본 디자인의 모든 텍스트·로고는
+                        이 영역 안에 배치됨
                     </li>
                     <li>
-                        표면: 무광 코팅 또는 매트 라미네이팅 권장 (Hashnode
-                        editorial 톤 유지)
+                        배경 처리: 흰색 바탕(앞면)·다크 네이비(<code
+                            >#0f172a</code
+                        >, 뒷면)·좌측 컬러 라인·코너 글로우 모두 작업사이즈
+                        끝까지 연장 (재단여분 bleed 처리 완료)
+                    </li>
+                    <li>
+                        Chrome 인쇄 설정: 용지 <code>94×54mm 사용자 정의</code>
+                        · 여백 <code>없음</code> · 배율 <code>100%</code> ·
+                        머리글/바닥글 <code>해제</code> · 배경 그래픽
+                        <code>체크</code>
+                    </li>
+                    <li>
+                        표면: 무광 코팅 또는 매트 라미네이팅 권장 (editorial 톤
+                        유지)
                     </li>
                     <li>두께: 250~300g/m² (표준 명함 무게)</li>
                     <li>
-                        색상 모드: 본 HTML은 sRGB. 정확한 purple(#7c3aed) 재현
-                        위해 인쇄소에 RGB→CMYK 자동 변환 요청
+                        색상 모드: 본 HTML은 sRGB. 정확한 purple(<code
+                            >#7c3aed</code
+                        >) 재현 위해 인쇄소에 RGB→CMYK 자동 변환 요청
                     </li>
-                    <li>본 HTML 파일·PDF 저장본 함께 발송</li>
+                    <li>
+                        업로드: 마이페이지 &gt; 주문배송조회 &gt; 주문번호
+                        <code>260153462</code> 재업로드
+                    </li>
                 </ol>
             </div>
         </div>

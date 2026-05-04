@@ -1,0 +1,685 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8" />
+        <title>Myloket — SI·보안 파트너 기술자문 (1장 자료)</title>
+        <style>
+            /* ===== A4 1장 — 작업·재단 동일 (인쇄소 재단 없이 일반 출력용) ===== */
+            @page {
+                size: A4 portrait;
+                margin: 0;
+            }
+            * {
+                box-sizing: border-box;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                background: #f3f4f6;
+                font-family:
+                    "Pretendard Variable",
+                    -apple-system,
+                    "Segoe UI",
+                    Roboto,
+                    sans-serif;
+                color: #101828;
+                font-size: 10pt;
+                line-height: 1.6;
+            }
+
+            /* ===== 미리보기 컨테이너 (스크린만) ===== */
+            .preview-wrap {
+                padding: 24px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            /* ===== A4 페이지 ===== */
+            .page {
+                width: 210mm;
+                height: 297mm;
+                background: #fff;
+                box-shadow:
+                    0 4px 20px rgba(0, 0, 0, 0.08),
+                    0 1px 3px rgba(0, 0, 0, 0.04);
+                position: relative;
+                page-break-after: always;
+                display: flex;
+                flex-direction: column;
+                padding: 14mm 16mm;
+            }
+            .page > * {
+                flex-shrink: 0;
+            }
+
+            /* ===== 좌측 컬러 액센트 ===== */
+            .page::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 4mm;
+                background: linear-gradient(
+                    180deg,
+                    #7c3aed 0%,
+                    #7c3aed 33%,
+                    #1d52de 33%,
+                    #1d52de 66%,
+                    #059669 66%,
+                    #059669 100%
+                );
+            }
+
+            /* ===== 헤더 — 차분한 톤 ===== */
+            .header {
+                margin-bottom: 5mm;
+                padding-bottom: 4mm;
+                border-bottom: 0.4mm solid #e5e7eb;
+            }
+            .brand-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                margin-bottom: 5mm;
+            }
+            .brand {
+                font-size: 13pt;
+                font-weight: 700;
+                color: #101828;
+                display: inline-flex;
+                align-items: center;
+                gap: 4px;
+            }
+            .brand .dot {
+                width: 5px;
+                height: 5px;
+                border-radius: 50%;
+                background: #7c3aed;
+            }
+            .brand-tag {
+                font-size: 7pt;
+                font-weight: 600;
+                color: #6b7280;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+            .lede {
+                font-size: 10pt;
+                color: #475569;
+                margin-bottom: 1.5mm;
+                line-height: 1.4;
+            }
+            .headline {
+                font-size: 17pt;
+                font-weight: 700;
+                line-height: 1.35;
+                color: #0f172a;
+                letter-spacing: -0.01em;
+                word-break: keep-all;
+                margin-bottom: 3mm;
+            }
+            .subhead {
+                font-size: 9pt;
+                color: #475569;
+                line-height: 1.55;
+                word-break: keep-all;
+                max-width: 165mm;
+            }
+            .subhead strong {
+                color: #0f172a;
+                font-weight: 600;
+            }
+
+            /* ===== Founder voice (compact) ===== */
+            .founder {
+                margin-bottom: 5mm;
+                padding: 3mm 4mm;
+                background: #f8fafc;
+                border-left: 1mm solid #cbd5e1;
+                border-radius: 0 1.5mm 1.5mm 0;
+            }
+            .founder-label {
+                font-size: 7pt;
+                font-weight: 700;
+                color: #6b7280;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 1.5mm;
+            }
+            .founder p {
+                font-size: 8.5pt;
+                color: #334155;
+                line-height: 1.6;
+                word-break: keep-all;
+                margin: 0;
+            }
+            .founder strong {
+                color: #0f172a;
+                font-weight: 600;
+            }
+
+            /* ===== Engagements compact ===== */
+            .engagements {
+                margin-bottom: 5mm;
+            }
+            .section-label {
+                font-size: 7pt;
+                font-weight: 700;
+                color: #6b7280;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 2mm;
+            }
+            .engage-list {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .engage-list li {
+                font-size: 8.5pt;
+                color: #334155;
+                line-height: 1.55;
+                padding: 1.5mm 0;
+                border-bottom: 0.2mm dashed #e5e7eb;
+                word-break: keep-all;
+            }
+            .engage-list li:last-child {
+                border-bottom: none;
+            }
+            .engage-list .label {
+                font-weight: 700;
+                color: #0f172a;
+                margin-right: 2mm;
+            }
+            .engage-list .env {
+                color: #7c3aed;
+                font-size: 7.5pt;
+                font-weight: 500;
+                margin-left: 2mm;
+            }
+
+            /* ===== 5가지 협업 형태 — 2×3 그리드 ===== */
+            .services {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2.5mm;
+                margin-bottom: 5mm;
+            }
+            .service {
+                background: #fafbfc;
+                border: 0.3mm solid #e5e7eb;
+                border-radius: 1.5mm;
+                padding: 2.5mm 3mm;
+                position: relative;
+            }
+            .service-no {
+                font-size: 7pt;
+                font-weight: 700;
+                color: #6b7280;
+                letter-spacing: 0.1em;
+            }
+            .service-duration {
+                font-size: 6.5pt;
+                font-weight: 600;
+                color: #b45309;
+                background: #fef3c7;
+                padding: 0.4mm 1.8mm;
+                border-radius: 1mm;
+                position: absolute;
+                top: 2.5mm;
+                right: 3mm;
+            }
+            .service-title {
+                font-size: 9.5pt;
+                font-weight: 700;
+                color: #0f172a;
+                margin-top: 0.5mm;
+                margin-bottom: 1mm;
+                line-height: 1.25;
+                word-break: keep-all;
+            }
+            .service-desc {
+                font-size: 7.5pt;
+                color: #475569;
+                line-height: 1.45;
+                word-break: keep-all;
+            }
+            .service-full {
+                grid-column: 1 / -1;
+            }
+
+            /* ===== 자문료 ===== */
+            .pricing {
+                margin-bottom: 4mm;
+                font-size: 8.5pt;
+                color: #334155;
+                line-height: 1.55;
+                padding: 2.5mm 3mm;
+                background: #fffbeb;
+                border-left: 1mm solid #fbbf24;
+                border-radius: 0 1.5mm 1.5mm 0;
+                word-break: keep-all;
+            }
+            .pricing strong {
+                color: #92400e;
+                font-weight: 700;
+            }
+
+            /* ===== 안 하는 것 + 1인 회사 정직 — 2 컬럼 ===== */
+            .honesty {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4mm;
+                margin-bottom: 5mm;
+            }
+            .honesty-block {
+                font-size: 8pt;
+                color: #475569;
+                line-height: 1.55;
+            }
+            .honesty-title {
+                font-size: 9pt;
+                font-weight: 700;
+                color: #0f172a;
+                margin-bottom: 1.5mm;
+                word-break: keep-all;
+            }
+            .honesty ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            .honesty li {
+                padding: 0.5mm 0;
+                position: relative;
+                padding-left: 3mm;
+                word-break: keep-all;
+            }
+            .honesty li::before {
+                content: "—";
+                position: absolute;
+                left: 0;
+                color: #cbd5e1;
+            }
+            .honesty p {
+                margin: 0;
+                word-break: keep-all;
+            }
+            .honesty p + p {
+                margin-top: 1mm;
+            }
+            .honesty strong {
+                color: #0f172a;
+                font-weight: 600;
+            }
+
+            /* ===== Trust strip (단순) ===== */
+            .trust-row {
+                margin-bottom: 4mm;
+                padding-top: 3mm;
+                border-top: 0.3mm solid #e5e7eb;
+            }
+            .trust-line {
+                font-size: 8pt;
+                color: #475569;
+                margin-bottom: 2mm;
+                word-break: keep-all;
+            }
+            .trust-line strong {
+                color: #0f172a;
+                font-weight: 600;
+            }
+            .partners-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1.5mm;
+            }
+            .partner-chip {
+                font-size: 7pt;
+                font-weight: 600;
+                padding: 0.8mm 2.5mm;
+                border-radius: 1mm;
+                border: 0.3mm solid #e5e7eb;
+                background: #fff;
+            }
+            .chip-citrix {
+                color: #452170;
+                background: #f5f3ff;
+            }
+            .chip-omnissa {
+                color: #0091da;
+                background: #f0f9ff;
+            }
+            .chip-microsoft {
+                color: #0078d4;
+                background: #eff6ff;
+            }
+            .chip-raon {
+                color: #d97706;
+                background: #fef3c7;
+            }
+            .chip-acronis {
+                color: #cc0000;
+                background: #fef2f2;
+            }
+
+            /* ===== Contact — quieter ===== */
+            .contact {
+                background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+                color: #f1f5f9;
+                padding: 3.5mm 4.5mm;
+                border-radius: 1.5mm;
+                margin-bottom: 3mm;
+                position: relative;
+                overflow: hidden;
+            }
+            .contact::before {
+                content: "";
+                position: absolute;
+                top: -8mm;
+                right: -8mm;
+                width: 32mm;
+                height: 32mm;
+                background: radial-gradient(
+                    circle,
+                    rgba(124, 58, 237, 0.4) 0%,
+                    transparent 70%
+                );
+                pointer-events: none;
+            }
+            .contact-cta {
+                font-size: 10pt;
+                font-weight: 700;
+                color: #fbbf24;
+                margin-bottom: 1mm;
+                position: relative;
+                z-index: 1;
+                word-break: keep-all;
+            }
+            .contact-line {
+                font-size: 8pt;
+                color: #cbd5e1;
+                margin-bottom: 2.5mm;
+                line-height: 1.5;
+                word-break: keep-all;
+                position: relative;
+                z-index: 1;
+            }
+            .contact-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 2mm 4mm;
+                font-size: 8.5pt;
+                position: relative;
+                z-index: 1;
+            }
+            .contact-item {
+                display: flex;
+                align-items: baseline;
+                gap: 2mm;
+            }
+            .contact-label {
+                font-size: 7pt;
+                font-weight: 700;
+                color: #fbbf24;
+                width: 6mm;
+                flex-shrink: 0;
+            }
+            .contact-value {
+                color: #f1f5f9;
+                font-weight: 500;
+            }
+
+            /* ===== Footer ===== */
+            .footer {
+                margin-top: auto;
+                padding-top: 2.5mm;
+                border-top: 0.3mm solid #e5e7eb;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                font-size: 6.5pt;
+                color: #94a3b8;
+                line-height: 1.5;
+            }
+            .footer-left {
+                flex: 1;
+            }
+            .footer-right {
+                text-align: right;
+                font-weight: 600;
+                color: #475569;
+            }
+
+            /* ===== 인쇄 시 ===== */
+            @media print {
+                body {
+                    background: #fff;
+                    padding: 0;
+                }
+                .preview-wrap {
+                    padding: 0;
+                }
+                .info-banner {
+                    display: none !important;
+                }
+                .page {
+                    box-shadow: none;
+                }
+            }
+
+            /* ===== 미리보기 정보 (스크린만) ===== */
+            .info-banner {
+                background: #fff;
+                border: 1px solid #e5e7eb;
+                border-radius: 8px;
+                padding: 14px 18px;
+                font-size: 13px;
+                color: #374151;
+                line-height: 1.6;
+                width: 210mm;
+                margin-bottom: 24px;
+            }
+            .info-banner h1 {
+                font-size: 16px;
+                margin: 0 0 6px;
+            }
+            .info-banner code {
+                background: #f3f4f6;
+                padding: 1px 5px;
+                border-radius: 3px;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="preview-wrap">
+            <div class="info-banner">
+                <h1>Myloket — SI·보안 파트너 기술자문 (A4 1장 자료)</h1>
+                <p>
+                    소개 영업·내부 공유용. 카톡·메일 첨부 즉시 가능. 인쇄:
+                    <code>Ctrl+P</code> → 용지 <code>A4</code> · 여백
+                    <code>없음</code> · 배율 <code>100%</code> · 배경 그래픽
+                    <code>체크</code> → PDF 저장.
+                </p>
+            </div>
+
+            <div class="page">
+                <div class="header">
+                    <div class="brand-row">
+                        <span class="brand">
+                            Myloket
+                            <span class="dot"></span>
+                        </span>
+                        <span class="brand-tag">For SI · 보안 파트너</span>
+                    </div>
+                    <p class="lede">공공기관 VDI를 10여 년간 만져왔습니다.</p>
+                    <h1 class="headline">
+                        망분리·N²SF·MFA·백업이 5번 바뀌는 동안<br />
+                        운영 책임자로 함께 있었습니다.
+                    </h1>
+                    <p class="subhead">
+                        이 자리에서 <strong>SI·보안 파트너</strong>에게 N²SF
+                        전환·VDI 재정의 기술 산출물을 공급합니다. 벤더 자료
+                        정리가 아니라 실제로 운영하면서 무엇이 터지고 무엇이
+                        견디는지를 아는 관점입니다.
+                    </p>
+                </div>
+
+                <div class="engagements">
+                    <p class="section-label">실제로 이런 일을 합니다</p>
+                    <ul class="engage-list">
+                        <li>
+                            <span class="label">중앙행정 데이터 기관</span>
+                            통계분석 환경 VDI 다년간 구축·운영·유지보수 + 월간
+                            운영 리포트·장애 분석·PowerCLI 스토리지 대시보드
+                            <span class="env"
+                                >· Omnissa Horizon · VMware ESXi</span
+                            >
+                        </li>
+                        <li>
+                            <span class="label"
+                                >정부 출연 국토 연구기관</span
+                            >
+                            UAG 외부접속 운영 안정화 + 사용자 환경 운영
+                            표준화·layer별 점검 절차 정형화
+                            <span class="env"
+                                >· Omnissa Horizon · UAG · ESXi</span
+                            >
+                        </li>
+                        <li>
+                            <span class="label"
+                                >정부 출연 과학기술정보 연구기관</span
+                            >
+                            멀티 벤더 마이그레이션 자문 + 사용자군 분류·시나리오
+                            비용/리스크·전환 일정 가이드
+                            <span class="env"
+                                >· Citrix · Omnissa Workspace ONE</span
+                            >
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="services">
+                    <div class="service">
+                        <span class="service-no">01</span>
+                        <span class="service-duration">반나절~1일</span>
+                        <h3 class="service-title">고객 앞 기술 미팅 동행</h3>
+                        <p class="service-desc">
+                            발주처 기술 담당자·CISO 미팅에서 VDI/N²SF 기술 답변
+                            직접 응대.
+                        </p>
+                    </div>
+
+                    <div class="service">
+                        <span class="service-no">02</span>
+                        <span class="service-duration">1주</span>
+                        <h3 class="service-title">VDI/N²SF 전환 시나리오 작성</h3>
+                        <p class="service-desc">
+                            구조 분석 → C/S/O 분류 → 유지·축소·전환 1차 로드맵
+                            + RFP 문구 초안.
+                        </p>
+                    </div>
+
+                    <div class="service">
+                        <span class="service-no">03</span>
+                        <span class="service-duration">1~2주</span>
+                        <h3 class="service-title">RFP·제안서 기술 파트 작성</h3>
+                        <p class="service-desc">
+                            기술요건·구현방안·통제 매핑·운영 리스크. 제안서에
+                            그대로 붙는 형태.
+                        </p>
+                    </div>
+
+                    <div class="service">
+                        <span class="service-no">04</span>
+                        <span class="service-duration">1~2주</span>
+                        <h3 class="service-title">보안성 검토 대응표</h3>
+                        <p class="service-desc">
+                            N²SF 274개 통제 매핑 기반 심의 대응 답변 초안 + 근거
+                            자료.
+                        </p>
+                    </div>
+
+                    <div class="service service-full">
+                        <span class="service-no">05</span>
+                        <span class="service-duration">별도 계약</span>
+                        <h3 class="service-title">
+                            구축은 검증된 파트너 컨소시엄으로 연결
+                        </h3>
+                        <p class="service-desc">
+                            Citrix · Omnissa · Microsoft · 라온시큐어 · Acronis
+                            기술 연계. 마이로켓은 자문료만 청구, 구축비는
+                            파트너사 인보이싱으로 분리. PMO·검수만 책임.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="trust-row">
+                    <p class="trust-line">
+                        <strong
+                            >공공·연구기관 VDI 구축·운영·유지보수 10여 곳</strong
+                        >
+                        (실명 비공개 정책) · 대표 1인 책임 · 벤더 중립 자문
+                    </p>
+                    <div class="partners-row">
+                        <span class="partner-chip chip-citrix">Citrix</span>
+                        <span class="partner-chip chip-omnissa">Omnissa</span>
+                        <span class="partner-chip chip-microsoft"
+                            >Microsoft</span
+                        >
+                        <span class="partner-chip chip-raon">라온시큐어</span>
+                        <span class="partner-chip chip-acronis">Acronis</span>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <p class="contact-cta">
+                        제안 건이 있으시면 메일로 알려주세요
+                    </p>
+                    <p class="contact-line">
+                        RFP·고객 요구사항·막힌 기술 파트만 보내주시면, VDI·N²SF
+                        리스크만 빠르게 짚어드립니다. 1차 회신 1영업일 이내.
+                    </p>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <span class="contact-label">M</span>
+                            <span class="contact-value">010-3861-8079</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">T</span>
+                            <span class="contact-value">070-8015-8087</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">E</span>
+                            <span class="contact-value">jhw@mlkit.co.kr</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-label">W</span>
+                            <span class="contact-value"
+                                >myloket.co.kr/partners</span
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="footer-left">
+                        ㈜마이로켓 (Myloket Inc.) · 사업자등록번호
+                        216-88-00409 · 대표 제현우<br />
+                        세종특별자치시 집현중앙7로 6, 지식산업센터 B동 609호
+                        (집현동)
+                    </div>
+                    <div class="footer-right">myloket.co.kr</div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
