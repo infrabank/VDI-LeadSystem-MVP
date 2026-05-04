@@ -400,7 +400,7 @@ export const customers: Customer[] = [
     note: "통계정보원(Kosii) SDC 통계데이터센터 VDI",
     vendor: "Omnissa Horizon / VMware ESXi",
     userScale: "연구원·전문가·대학교수 ~수백명",
-    role: "VDI 운영·통계 분석 환경 유지보수",
+    role: "VDI 구축·운영·유지보수 지원 (통계 분석 환경)",
     solvedRisks: ["전반적인 장애 대응", "VDI단말기 유지보수"],
     deliverables: [
       "월간 운영 리포트",

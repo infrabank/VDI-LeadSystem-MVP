@@ -4,7 +4,7 @@ import { company } from "@/lib/site-config";
 
 export const metadata = {
   title: `Case Studies | ${company.name}`,
-  description: `${company.name}의 공공·연구기관 N²SF 전환·VDI 운영·망분리 재정렬·MFA 적용·백업 복구검증 실제 수행 사례.`,
+  description: `${company.name}의 공공·연구기관 N²SF 전환·VDI 구축·운영·유지보수 지원·망분리 재정렬·MFA 적용·백업 복구검증 실제 수행 사례.`,
 };
 
 interface CaseRow {
@@ -40,7 +40,7 @@ export default async function CaseStudiesPage() {
             Case Studies
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            공공·연구기관 N²SF 전환·VDI 운영 사례
+            공공·연구기관 N²SF 전환·VDI 구축·운영·유지보수 사례
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             기관명은 익명·제한 공개로 노출하되, 환경 유형·벤더·규모·수행 범위·산출물·결과는 명시합니다.
@@ -135,7 +135,7 @@ function EmptyState() {
         <div className="bg-gray-50 rounded-xl p-5 mb-6 text-left max-w-md mx-auto">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">예정 사례 5종</p>
           <ul className="text-sm text-gray-700 space-y-1.5 kr-keep-all">
-            <li>· 공공기관 VDI 운영 안정화 (Horizon/UAG/인증서/외부접속)</li>
+            <li>· 공공기관 VDI 구축·운영·유지보수 안정화 (Horizon/UAG/인증서/외부접속)</li>
             <li>· 정부출연연구기관 VDI 역할 재정의 (유지/축소/전환 판단)</li>
             <li>· 망분리 환경 전환 사전진단 (업무군·사용자군·접속 경로)</li>
             <li>· MFA 적용 위치 설계 (VDI·관리자·외부 협력사·예외 계정)</li>

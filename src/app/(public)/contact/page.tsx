@@ -5,7 +5,7 @@ import ContactForm from "./ContactForm";
 
 export const metadata = {
   title: `Contact | ${company.name}`,
-  description: `${company.name} 상담 문의 — VDI(Citrix·VMware·Omnissa)·MFA·Acronis 백업·EDR 솔루션 딜리버리 및 융합 패키지 상담.`,
+  description: `${company.name} 상담 문의 — 공공기관 N²SF 전환기에 기존 VDI·망분리·MFA·백업 환경을 어떻게 재정렬할지 사전진단·전환 로드맵·RFP·보안성 검토 대응 산출물을 제공합니다. 기관 담당자와 SI·보안 파트너 모두 문의 가능.`,
 };
 
 export default function ContactPage() {
@@ -21,8 +21,8 @@ export default function ContactPage() {
             상담 문의
           </h1>
           <p className="text-sm sm:text-base text-blue-100 leading-relaxed kr-keep-all">
-            VDI(Citrix·VMware·Omnissa)·MFA·Acronis 백업·EDR 솔루션 딜리버리와
-            VDI+MFA+백업 융합 맞춤 제안에 관한 상담·견적 문의를 환영합니다.
+            공공기관 N²SF 전환기에 기존 VDI·망분리·MFA·백업 환경을 어떻게 재정렬할지 상담합니다.
+            사전진단·전환 로드맵·RFP·보안성 검토 대응 산출물을 제공하며, 기관 담당자와 SI·보안 파트너 모두 문의 가능합니다.
           </p>
         </div>
       </section>

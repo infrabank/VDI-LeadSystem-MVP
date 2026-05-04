@@ -86,8 +86,8 @@ export default async function N2sfHubPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-blue-50 to-white border border-blue-100">
               <p className="text-2xl sm:text-3xl font-bold text-blue-700 mb-1">10<span className="text-base sm:text-lg">+</span></p>
-              <p className="text-xs sm:text-sm font-semibold text-slate-900 mb-0.5 kr-keep-all">공공·연구기관 VDI 운영</p>
-              <p className="text-xs text-slate-500 kr-keep-all">중앙행정·정부 출연 연구기관 다수 직접 운영</p>
+              <p className="text-xs sm:text-sm font-semibold text-slate-900 mb-0.5 kr-keep-all">공공·연구기관 VDI 구축·운영·유지보수</p>
+              <p className="text-xs text-slate-500 kr-keep-all">중앙행정·정부 출연 연구기관 다수 구축·운영·유지보수 지원</p>
             </div>
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-indigo-50 to-white border border-indigo-100">
               <p className="text-sm font-bold text-indigo-700 uppercase tracking-widest mb-1.5">대표 1인 책임</p>
@@ -290,7 +290,7 @@ export default async function N2sfHubPage() {
             기존 망분리 구조를 아는 파트너가 전환 리스크를 줄입니다.
           </h2>
           <p className="text-blue-100 mb-8 leading-relaxed kr-keep-all">
-            VDI 운영 경험이 있는 전문가가 직접 N²SF 정렬 진단·컨설팅합니다. <br />
+            VDI 구축·운영·유지보수 경험이 있는 전문가가 직접 N²SF 정렬 진단·컨설팅합니다. <br />
             대형 SI의 패키지 사업자가 놓치는 '기존 환경의 안정 운영'을 함께 설계합니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

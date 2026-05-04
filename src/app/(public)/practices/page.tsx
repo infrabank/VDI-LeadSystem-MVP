@@ -23,6 +23,7 @@ const stageItems: {
   level: string;
   title: string;
   duration: string;
+  priceGuide: string;
   outcome: string;
   href: string;
   borderColor: string;
@@ -34,8 +35,9 @@ const stageItems: {
     level: "무료",
     title: "N²SF 정렬 자가 진단",
     duration: "7분 (셀프)",
+    priceGuide: "무료",
     outcome:
-      "C/S/O 예비 분류 + VDI 유지/축소/전환 1차 판정 + MFA·백업 보완 지점 PDF 리포트",
+      "C/S/O 예비 분류 + VDI 유지/축소/전환 1차 검토 의견 + MFA·백업 보완 지점 PDF 리포트",
     href: "/tools/risk-assessment",
     borderColor: "#0ea5e9",
     textColor: "text-sky-700",
@@ -46,6 +48,7 @@ const stageItems: {
     level: "입문",
     title: "N²SF 전환 1차 진단 리포트",
     duration: "1주 (인터뷰 + 산출물)",
+    priceGuide: "소형 환경 기준 300만 원대~",
     outcome:
       "현재 VDI/망분리 구조도 + C/S/O 예비 분류 + 1차 로드맵·RFP 문구 초안",
     href: "/practices/managed-integration",
@@ -58,6 +61,7 @@ const stageItems: {
     level: "핵심",
     title: "VDI 역할 재정의 워크숍",
     duration: "2주 (인터뷰 + 시나리오 비교)",
+    priceGuide: "범위 협의 (소형/표준/대형)",
     outcome:
       "유지·축소·DaaS·고위험 분리 시나리오 비교 + 운영 리스크 평가",
     href: "/practices/vdi-workspace",
@@ -70,6 +74,7 @@ const stageItems: {
     level: "고급",
     title: "RFP·보안성 검토 대응 패키지",
     duration: "4주 (산출물 7종 작성)",
+    priceGuide: "산출물 범위별 견적",
     outcome:
       "착수보고서·현황·위험·로드맵·대응표·운영계획·검수 체크리스트 7종",
     href: "/practices/managed-integration",
@@ -82,6 +87,7 @@ const stageItems: {
     level: "반복 매출",
     title: "백업·DR 월간 복구검증",
     duration: "월 단위 매니지드",
+    priceGuide: "월 단위 계약",
     outcome:
       "월간 복구 시연 리포트 + RTO/RPO 기준표 + 24h 대응 절차 + 무결성 검증",
     href: "/practices/data-protection",
@@ -94,6 +100,7 @@ const stageItems: {
     level: "SI 컨소시엄",
     title: "SI 제안 기술자문",
     duration: "프로젝트 단위",
+    priceGuide: "제안 범위별 단기 계약",
     outcome:
       "SI 컨소시엄 안에서 N²SF·VDI 파트 설명·산출물 정리·수주 지원",
     href: "/contact?source=practices&interest=si-advisory",
@@ -205,20 +212,26 @@ export default function PracticesPage() {
                     {item.outcome}
                   </p>
                 </div>
-                <div className="flex items-center sm:flex-col sm:items-end sm:text-right">
+                <div className="flex items-center sm:flex-col sm:items-end sm:text-right gap-2 sm:gap-1">
                   <p className="text-sm sm:text-base font-bold text-gray-900 whitespace-nowrap">
                     {item.duration}
+                  </p>
+                  <p className="text-[11px] sm:text-xs font-semibold text-gray-500 whitespace-nowrap kr-keep-all">
+                    참고 가격대 · {item.priceGuide}
                   </p>
                 </div>
               </Link>
             ))}
           </div>
-          <div className="mt-8 md:mt-10 p-5 sm:p-6 rounded-xl bg-gray-50 border border-gray-200">
+          <div className="mt-8 md:mt-10 p-5 sm:p-6 rounded-xl bg-gray-50 border border-gray-200 space-y-3">
             <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
-              <span className="font-semibold text-gray-900">왜 기간으로 표시하나요.</span>{" "}
-              마이로켓이 파는 것은 시간당 작업이 아니라 <strong>단계별 산출물과 결과 책임</strong>입니다.
-              동일한 단계라도 기관 환경·시스템 수·산출물 깊이에 따라 비용이 달라지므로, 가격 자체는 인터뷰 후 산정합니다.
-              본 표는 결정에 필요한 <strong>단계와 기간</strong>을 보여줍니다.
+              <span className="font-semibold text-gray-900">참고 가격대는 어떻게 보나요.</span>{" "}
+              내부 예산 검토용 <strong>예산감</strong>입니다. 동일한 단계라도 기관 환경·시스템 수·산출물 깊이·외부 협력사 수에 따라 비용이 달라지므로,
+              <strong>최종 견적은 1~2회 인터뷰 후 단계·산출물 범위와 함께 확정</strong>합니다.
+            </p>
+            <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
+              <span className="font-semibold text-gray-900">왜 기간으로도 표시하나요.</span>{" "}
+              마이로켓이 파는 것은 시간당 작업이 아니라 <strong>단계별 산출물과 결과 책임</strong>입니다. 본 표는 결정에 필요한 <strong>단계·기간·예산감</strong>을 함께 보여줍니다.
             </p>
           </div>
         </div>

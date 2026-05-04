@@ -13,13 +13,13 @@ export function RiskAssessmentIntro() {
   const deliverables = [
     {
       no: "01",
-      title: "VDI 유지/축소/전환 1차 판정",
+      title: "VDI 유지/축소/전환 1차 검토 의견",
       desc: "환경별로 어떤 시나리오가 적합한지 첫 그림을 제시합니다.",
     },
     {
       no: "02",
       title: "C/S/O 등급 예비 분류표",
-      desc: "업무·시스템 단위 N²SF 등급을 자가분류 결과로 정리합니다.",
+      desc: "업무·시스템 단위 N²SF 등급을 예비 검토표로 정리합니다.",
     },
     {
       no: "03",
@@ -70,7 +70,7 @@ export function RiskAssessmentIntro() {
         <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-slate-500">
           <span className="inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
-            <span>공공·연구기관 10여 곳 운영 경험</span>
+            <span>공공·연구기관 10여 곳 구축·운영·유지보수 지원 경험</span>
           </span>
           <span className="text-slate-300">·</span>
           <span className="inline-flex items-center gap-1.5">

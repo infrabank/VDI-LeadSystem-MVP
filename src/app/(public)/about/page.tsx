@@ -213,10 +213,11 @@ export default function AboutPage() {
             Customers
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
-            운영 고객사
+            구축·운영·유지보수 지원 고객사
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
-            공공·연구기관과 민간 기업의 VDI·DaaS 환경을 운영·기술지원해 왔습니다.
+            공공·연구기관과 민간 기업의 VDI·DaaS 환경 구축·운영·유지보수를 지원해 왔습니다.
+            실제 일상 운영은 고객사 내부 운영자가 수행하며, 마이로켓은 구축·기술 지원·유지보수와 운영 자문을 담당합니다.
           </p>
           <CustomerShowcase variant="grouped" />
           <p className="text-xs text-gray-400 text-center mt-8 kr-keep-all">

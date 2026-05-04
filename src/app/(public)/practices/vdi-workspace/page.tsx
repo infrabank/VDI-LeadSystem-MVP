@@ -108,7 +108,7 @@ export default function VdiWorkspacePage() {
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
                 N²SF 이후 모든 업무를 VDI에 두는 단순 구조는 더 이상 적정하지 않습니다.
                 동시에, VDI가 끝나는 것도 아닙니다 — 역할이 바뀝니다. Citrix·VMware·Omnissa를 공공·연구기관에서
-                다년간 직접 운영해 본 경험으로, 어디는 유지하고 어디는 축소하고 어디는 DaaS로 옮길지를
+                다년간 구축·운영·유지보수를 지원해 본 경험으로, 어디는 유지하고 어디는 축소하고 어디는 DaaS로 옮길지를
                 벤더 종속 없이 판단합니다.
               </p>
             </div>
