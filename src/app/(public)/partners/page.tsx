@@ -12,33 +12,46 @@ const services = [
   {
     no: "01",
     title: "고객 앞 기술 미팅 동행",
+    nickname: "기술질문 방어 동행 · Tech Q&A Shield",
     duration: "반나절~1일",
     desc: "발주처 기술 담당자·CISO 미팅에서 VDI/N²SF 질문 직접 응대.",
   },
   {
     no: "02",
     title: "VDI/N²SF 전환 시나리오",
+    nickname: "VDI 3방향 판단표 · VDI 3-Way Decision Map",
     duration: "사전진단 1주",
     desc: "현재 구조 분석 → C/S/O 분류 → 유지·축소·전환 비교표 + RFP 문구 초안.",
   },
   {
     no: "03",
     title: "RFP·제안서 기술 파트",
+    nickname: "RFP 리스크 차단표 · RFP Risk Cut Sheet",
     duration: "1~2주",
     desc: "기술요건·구현방안·통제 매핑·운영 리스크. 제안서에 그대로 붙는 형태로 납품.",
   },
   {
     no: "04",
     title: "보안성 검토 대응표",
+    nickname: "N²SF 통제 매핑 대응 · N²SF Control Response Pack",
     duration: "1~2주",
     desc: "N²SF 274개 통제 매핑 기반 심의 대응 답변 초안 + 근거 자료.",
   },
   {
     no: "05",
     title: "구축 파트너 연결",
+    nickname: "구축 컨소시엄 브리지 · Build Partner Bridge",
     duration: "별도 계약",
     desc: "구축비는 파트너사 인보이싱, 마이로켓은 기술자문·PMO·검수만 책임.",
   },
+];
+
+const triggers = [
+  '고객이 "N²SF 이후 VDI는 남겨야 합니까?"라고 묻는다',
+  "제안서에 VDI·N²SF 전환 시나리오가 필요하다",
+  "RFP 기술요건을 어떻게 써야 할지 애매하다",
+  "보안성 검토 대응표가 필요하다",
+  "고객 앞 기술 미팅에 동행할 전문가가 필요하다",
 ];
 
 const cases = [
@@ -128,15 +141,44 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* ========== 해주는 일 5개 — 바로 ========== */}
+      {/* ========== 이런 상황에서 부르세요 — 트리거 ========== */}
+      <section className="border-b border-gray-100 bg-amber-50/40">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
+          <p className="text-xs font-bold text-amber-700 uppercase tracking-widest mb-2">
+            When to Call
+          </p>
+          <h2 className="text-xl sm:text-2xl md:text-[26px] font-semibold text-gray-900 mb-6 kr-keep-all">
+            이런 상황에서 부르세요
+          </h2>
+          <ul className="space-y-2.5">
+            {triggers.map((t) => (
+              <li
+                key={t}
+                className="flex gap-3 text-base text-gray-800 leading-relaxed kr-keep-all"
+              >
+                <span className="text-amber-500 font-bold flex-shrink-0 mt-0.5">
+                  ✓
+                </span>
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      {/* ========== 해주는 일 5개 ========== */}
       <section className="border-b border-gray-100 bg-gray-50/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
             What We Do
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-8 kr-keep-all">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2 kr-keep-all">
             바로 하는 일 5가지
           </h2>
+          <p className="text-sm text-gray-500 mb-8 kr-keep-all">
+            각 항목은 SI 영업·제안 현장에서 바로 부를 수 있는 단위로 정리되어
+            있습니다.
+          </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {services.map((s) => (
@@ -152,9 +194,12 @@ export default function PartnersPage() {
                     {s.duration}
                   </span>
                 </div>
-                <h3 className="text-base font-semibold text-gray-900 mb-1.5 kr-keep-all">
+                <h3 className="text-base font-semibold text-gray-900 mb-1 kr-keep-all">
                   {s.title}
                 </h3>
+                <p className="text-[11.5px] font-semibold text-purple-700 mb-2 kr-keep-all">
+                  {s.nickname}
+                </p>
                 <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
                   {s.desc}
                 </p>
