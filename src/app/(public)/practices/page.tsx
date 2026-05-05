@@ -121,7 +121,7 @@ export default function PracticesPage() {
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
             공공기관이 N²SF 전환기에 마주치는<br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>4가지 문제, 1인 전문가가 답합니다
+            <span className="sm:hidden"> </span>4가지 문제, 대표 엔지니어가 직접 답합니다
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             대표 엔지니어가 직접 진단·설계합니다. 구축은 검증된 파트너 컨소시엄으로 수행하므로,

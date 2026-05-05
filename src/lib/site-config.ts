@@ -15,7 +15,7 @@ export const company = {
   tagline: "Public-Sector N²SF Workspace Transition Advisor",
   taglineKo: "공공·연구기관 N²SF 전환 설계 — VDI·망분리·MFA·백업 재정렬",
   description:
-    "공공·정부출연연구기관 10여 곳의 VDI를 다년간 설계·구축·운영해 온 1인 전문가가, " +
+    "공공·정부출연연구기관 10여 곳의 VDI를 다년간 설계·구축·운영해 온 대표 엔지니어가, " +
     "N²SF 전환기에 기존 VDI·망분리·MFA·백업 환경의 유지·축소·전환을 판단하고 로드맵을 설계합니다. " +
     "구축은 검증된 파트너 컨소시엄과 함께 수행합니다.",
   email: "contact@mlkit.co.kr",

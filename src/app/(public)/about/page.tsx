@@ -47,22 +47,22 @@ export default function AboutPage() {
               Our Mission
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
-              1인 전문회사임을 투명하게 밝힙니다
+              대표 직접 책임 구조를 투명하게 밝힙니다
             </h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
-              {company.name}는 1인 전문 회사입니다. 대표 엔지니어가 직접 진단·설계하고,
-              구축은 검증된 파트너 컨소시엄과 함께 수행합니다. 이 구조가 공공기관 N²SF
-              전환처럼 판단 비중이 큰 사업에서 가장 빠르고 정직합니다.
+              {company.name}는 대표 엔지니어가 직접 진단·설계를 책임지고, 구축은 검증된
+              파트너 컨소시엄과 함께 수행합니다. 이 구조가 공공기관 N²SF 전환처럼 판단
+              비중이 큰 사업에서 가장 빠르고 정직합니다.
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all">
               VDI·MFA·백업을 따로 구매하면 도입 후 책임 단절이 생깁니다. 그 단절을 막기
-              위해, 진단·설계 단계는 한 전문가가 한 사이클로 책임지고, 구축 단계에서는
-              규모에 맞는 파트너를 정직하게 붙입니다.
+              위해, 진단·설계 단계는 대표가 한 사이클로 책임지고, 구축 단계에서는 규모에
+              맞는 파트너를 정직하게 붙입니다.
             </p>
           </div>
           <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-              4가지 문제, 1인 전문 책임
+              4가지 문제, 대표 직접 책임
             </p>
             <div className="space-y-3">
               {practicesList.map((p) => {
@@ -131,7 +131,7 @@ export default function AboutPage() {
             Responsibility
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
-            1인 책임 + 검증된 파트너 컨소시엄
+            대표 직접 책임 + 검증된 파트너 컨소시엄
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-12 max-w-2xl mx-auto kr-keep-all">
             대표 엔지니어가 직접 책임지는 영역과 검증된 파트너가 수행하는 영역을 단계별로 분리합니다.

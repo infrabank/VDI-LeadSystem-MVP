@@ -112,14 +112,14 @@ export default function HomePage() {
               <p className="text-xs text-gray-500 kr-keep-all">중앙행정·정부 출연 연구기관 다수 구축·운영·유지보수 지원</p>
             </div>
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-indigo-50 to-white border border-indigo-100">
-              <p className="text-sm font-bold text-indigo-700 uppercase tracking-widest mb-1.5">대표 1인 책임</p>
+              <p className="text-sm font-bold text-indigo-700 uppercase tracking-widest mb-1.5">대표 직접 책임</p>
               <p className="text-xs sm:text-sm font-semibold text-gray-900 mb-0.5 kr-keep-all">대표 엔지니어가 직접 진단·설계</p>
               <p className="text-xs text-gray-500 kr-keep-all">SI·보안 파트너가 제안에 바로 붙일 수 있는 산출물</p>
             </div>
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100">
               <p className="text-sm font-bold text-emerald-700 uppercase tracking-widest mb-1.5">검증 파트너 컨소시엄</p>
               <p className="text-xs sm:text-sm font-semibold text-gray-900 mb-0.5 kr-keep-all">구축은 검증된 파트너와 함께</p>
-              <p className="text-xs text-gray-500 kr-keep-all">공공·금융 규모 사업 수행 가능</p>
+              <p className="text-xs text-gray-500 kr-keep-all">진단·설계는 대표 직접 책임, 구축은 파트너 분담</p>
             </div>
           </div>
         </div>
