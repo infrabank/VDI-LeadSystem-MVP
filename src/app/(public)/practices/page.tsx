@@ -100,10 +100,10 @@ const stageItems: {
     level: "SI 컨소시엄",
     title: "SI 제안 기술자문",
     duration: "프로젝트 단위",
-    priceGuide: "제안 범위별 단기 계약",
+    priceGuide: "수주 후 정산 · 사전 단계 별도 청구 없음",
     outcome:
-      "SI 컨소시엄 안에서 N²SF·VDI 파트 설명·산출물 정리·수주 지원",
-    href: "/contact?source=practices&interest=si-advisory",
+      "SI 컨소시엄 안에서 N²SF·VDI 기술 파트 보강 (수주 후 자문·PMO·검수). 사전 검토·미팅 동행은 공동 영업으로 진행",
+    href: "/partners",
     borderColor: "#475569",
     textColor: "text-slate-700",
     badgeBg: "bg-slate-100",

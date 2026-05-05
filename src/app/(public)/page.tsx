@@ -15,7 +15,7 @@ const customerProblems = [
   "망분리 완화는 필요하지만 보안성 검토가 부담스럽다",
   "MFA·백업·DaaS 벤더가 각자 자기 솔루션만 말한다",
   "내부 담당자에게는 산출물과 책임 구조가 필요하다",
-  "SI·보안 파트너가 제안·구축 단계에서 놓치기 쉬운 기존 VDI 운영 리스크를 기술 산출물로 보강합니다.",
+  "발주 직전 RFP 기술 파트·보안성 검토 대응표 초안이 필요하다",
 ];
 
 const whatWeDo = [
@@ -83,7 +83,8 @@ export default function HomePage() {
             <span className="sm:hidden"> </span>어떻게 할지 결정해야 할 때입니다
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-blue-100/90 mb-8 sm:mb-12 max-w-3xl mx-auto leading-relaxed kr-keep-all">
-            공공·연구기관 VDI·망분리 환경을 N²SF 기준으로 재정렬·로드맵 설계합니다.
+            기존 VDI의 유지·축소·전환 판단부터 RFP·보안성 검토 산출물까지,
+            대표 엔지니어가 한 사이클로 책임집니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
@@ -251,7 +252,7 @@ export default function HomePage() {
               { stage: "Stage 2", level: "핵심", title: "역할 재정의 워크숍", duration: "2주", priceGuide: "범위 협의 (소형/표준/대형)", outcome: "유지·축소·DaaS·고위험 분리 시나리오 비교", href: "/practices/vdi-workspace", color: "#2563eb", bg: "bg-blue-50", text: "text-blue-700" },
               { stage: "Stage 3", level: "고급", title: "RFP·심의 대응 패키지", duration: "4주", priceGuide: "산출물 범위별 견적", outcome: "착수·현황·위험·로드맵·대응표·운영·검수 7종", href: "/practices/managed-integration", color: "#4f46e5", bg: "bg-indigo-50", text: "text-indigo-700" },
               { stage: "Stage 4", level: "반복 매출", title: "월간 복구검증", duration: "월 단위 매니지드", priceGuide: "월 단위 계약", outcome: "복구 시연 리포트 + RTO/RPO 기준표 + 24h 절차", href: "/practices/data-protection", color: "#059669", bg: "bg-emerald-50", text: "text-emerald-700" },
-              { stage: "옵션", level: "SI 컨소시엄", title: "SI 제안 기술자문", duration: "프로젝트 단위", priceGuide: "제안 범위별 단기 계약", outcome: "SI 제안에서 N²SF·VDI 파트 보강·산출물 정리", href: "/contact?source=home-stages&interest=si-advisory", color: "#475569", bg: "bg-slate-100", text: "text-slate-700" },
+              { stage: "옵션", level: "SI 컨소시엄", title: "SI 제안 기술자문", duration: "프로젝트 단위", priceGuide: "수주 후 정산 · 사전 단계 별도 청구 없음", outcome: "SI 컨소시엄 안에서 N²SF·VDI 기술 파트 보강 (수주 후 자문·PMO·검수)", href: "/partners", color: "#475569", bg: "bg-slate-100", text: "text-slate-700" },
             ].map((s) => (
               <Link
                 key={s.title}
