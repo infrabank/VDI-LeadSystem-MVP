@@ -139,10 +139,12 @@ export default async function ContentListPage({
             Insights
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 kr-keep-all">
-            N²SF 전환·VDI 재정의 기술 자료
+            N²SF·VDI 의사결정에 인용할 수 있는 기술 자료
           </h1>
           <p className="text-gray-500 text-base sm:text-lg kr-keep-all">
-            공공기관 N²SF 전환·VDI 역할 재정의·MFA QuickStart·복구검증에 관한 가이드·체크리스트·사례를 정리합니다.
+            274개 통제 매핑·VDI 역할 재정의·MFA 적용 위치·복구검증 — 발주처·SI
+            영업대표가 RFP·검토 단계에서 그대로 쓸 수 있는 가이드·체크리스트·
+            사례·비교를 정리했습니다.
           </p>
         </div>
       </div>

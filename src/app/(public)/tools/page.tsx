@@ -76,14 +76,16 @@ export default function ToolsPage() {
       <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Tools
+            Tools · Free
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            진단·계산 도구
+            7분 만에 N²SF 정렬·VDI 재정의·복구 가능성을<br className="hidden md:block" />
+            <span className="md:hidden"> </span>진단합니다
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            현재 보안 워크스페이스 성숙도와 VDI 운영 효율을 7분 안에 예비 진단하고,
-            맞춤 리포트(웹·PDF)를 받아보세요. 정식 판단은 후속 인터뷰·설계 단계에서 확정합니다.
+            6가지 무료 진단·계산으로 현재 환경의 빈틈을 짚고, 담당자 보고용
+            PDF 리포트를 받습니다. 별도 가입 없이 이메일만으로 — 정식 판단은
+            후속 인터뷰에서 확정합니다.
           </p>
         </div>
       </section>
