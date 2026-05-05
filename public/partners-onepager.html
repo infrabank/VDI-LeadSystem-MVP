@@ -307,21 +307,103 @@
                 grid-column: 1 / -1;
             }
 
-            /* ===== 자문료 ===== */
-            .pricing {
-                margin-bottom: 4mm;
-                font-size: 8.5pt;
-                color: #334155;
-                line-height: 1.55;
-                padding: 2.5mm 3mm;
-                background: #fffbeb;
-                border-left: 1mm solid #fbbf24;
-                border-radius: 0 1.5mm 1.5mm 0;
+            /* ===== 협업·정산 구조 — 3컬럼 ===== */
+            .how-we-work {
+                margin-bottom: 4.5mm;
+            }
+            .how-label {
+                font-size: 7pt;
+                font-weight: 700;
+                color: #6b7280;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                margin-bottom: 1mm;
+            }
+            .how-title {
+                font-size: 9.5pt;
+                font-weight: 700;
+                color: #0f172a;
+                margin-bottom: 0.8mm;
                 word-break: keep-all;
             }
-            .pricing strong {
-                color: #92400e;
+            .how-sub {
+                font-size: 7.5pt;
+                color: #475569;
+                margin-bottom: 2mm;
+                word-break: keep-all;
+                line-height: 1.45;
+            }
+            .how-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                gap: 2.2mm;
+            }
+            .how-card {
+                padding: 2.5mm 3mm;
+                border-radius: 1.5mm;
+                border: 0.3mm solid #e5e7eb;
+                background: #fafbfc;
+            }
+            .how-card-1 {
+                background: #ecfdf5;
+                border-color: #a7f3d0;
+            }
+            .how-card-2 {
+                background: #eff6ff;
+                border-color: #bfdbfe;
+            }
+            .how-card-3 {
+                background: #f8fafc;
+                border-color: #e2e8f0;
+            }
+            .how-stage {
+                font-size: 6.5pt;
                 font-weight: 700;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin-bottom: 1.2mm;
+            }
+            .how-card-1 .how-stage {
+                color: #047857;
+            }
+            .how-card-2 .how-stage {
+                color: #1d4ed8;
+            }
+            .how-card-3 .how-stage {
+                color: #475569;
+            }
+            .how-card h4 {
+                font-size: 8.5pt;
+                font-weight: 700;
+                color: #0f172a;
+                margin: 0 0 1.2mm;
+                line-height: 1.25;
+                word-break: keep-all;
+            }
+            .how-card p {
+                font-size: 7.3pt;
+                color: #334155;
+                margin: 0;
+                line-height: 1.5;
+                word-break: keep-all;
+            }
+            .how-card strong {
+                font-weight: 700;
+            }
+            .how-card-1 strong {
+                color: #065f46;
+            }
+            .how-card-2 strong {
+                color: #1e40af;
+            }
+            .how-card-3 strong {
+                color: #0f172a;
+            }
+            .how-note {
+                font-size: 6.8pt;
+                color: #6b7280;
+                margin-top: 2mm;
+                word-break: keep-all;
             }
 
             /* ===== 안 하는 것 + 1인 회사 정직 — 2 컬럼 ===== */
@@ -669,11 +751,48 @@
                     </div>
                 </div>
 
-                <div class="pricing">
-                    <strong>기간·자문료</strong> — 반나절~1일 미팅 동행 / 1주
-                    사전진단 / 1~2주 제안서·RFP 기술 파트 작성. 일반 자문
-                    <strong>200~500만 원 범위</strong>, 구축 파트너 연결은
-                    별도.
+                <div class="how-we-work">
+                    <p class="how-label">How We Work</p>
+                    <p class="how-title">협업·정산 구조</p>
+                    <p class="how-sub">
+                        사전 단계에서 SI 영업대표가 자문료를 따로 결재하지
+                        않습니다. 정산은 수주 이후 프로젝트 안에서 이뤄집니다.
+                    </p>
+                    <div class="how-grid">
+                        <div class="how-card how-card-1">
+                            <p class="how-stage">Stage 1 · 사전</p>
+                            <h4>기술 검토·미팅 동행</h4>
+                            <p>
+                                <strong
+                                    >공동 영업으로 진행, 별도 청구 없음.</strong
+                                >
+                                RFP 기술 리스크 검토 + 고객 미팅 1~2회 동행.
+                            </p>
+                        </div>
+                        <div class="how-card how-card-2">
+                            <p class="how-stage">Stage 2 · 수주 이후</p>
+                            <h4>자문·PMO·검수</h4>
+                            <p>
+                                <strong
+                                    >프로젝트 견적에 자문료 항목으로 포함.</strong
+                                >
+                                사업 기간 동안 대표 엔지니어가 함께 책임.
+                            </p>
+                        </div>
+                        <div class="how-card how-card-3">
+                            <p class="how-stage">Stage 3 · 구축</p>
+                            <h4>구축비는 파트너사 직접 청구</h4>
+                            <p>
+                                구축은 검증된 파트너 컨소시엄이 수행,
+                                <strong>파트너사 직접 인보이싱.</strong>
+                                마이로켓은 자문·PMO·검수 역할만.
+                            </p>
+                        </div>
+                    </div>
+                    <p class="how-note">
+                        * 단독 자문(사전진단·전환 시나리오만 별도 발주)은
+                        드물게 1주 단위로 협의 견적합니다.
+                    </p>
                 </div>
 
                 <div class="engagements">

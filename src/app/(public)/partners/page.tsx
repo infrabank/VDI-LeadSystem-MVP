@@ -209,22 +209,67 @@ export default function PartnersPage() {
         </div>
       </section>
 
-      {/* ========== 가격/기간 ========== */}
+      {/* ========== 협업·정산 구조 ========== */}
       <section className="border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
-            Pricing
+            How We Work
           </p>
-          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-5 kr-keep-all">
-            기간·자문료
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 kr-keep-all">
+            협업·정산 구조
           </h2>
-          <p className="text-base text-gray-700 leading-[1.85] kr-keep-all max-w-3xl">
-            기술자문은 <strong className="text-gray-900">1주 단위로 견적</strong>합니다.
-            반나절~1일 미팅 동행, 1주 사전진단, 1~2주 제안서/RFP 기술 파트 작성을
-            기준으로 일반 자문은{" "}
-            <strong className="text-gray-900">200~500만 원 범위</strong>입니다.
-            구축 파트너 연결 항목은 자문료와 별도, 구축비는 파트너사 인보이싱으로
-            분리됩니다.
+          <p className="text-sm text-gray-500 mb-6 kr-keep-all max-w-3xl">
+            사전 단계에서 SI 영업대표가 자문료를 따로 결재하지 않습니다.
+            정산은 수주 이후 프로젝트 안에서 이뤄집니다.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div className="p-5 rounded-lg bg-emerald-50/60 border border-emerald-200">
+              <p className="text-[11px] font-bold text-emerald-700 uppercase tracking-widest mb-2">
+                STAGE 1 · 사전
+              </p>
+              <h3 className="text-base font-semibold text-gray-900 mb-2 kr-keep-all">
+                기술 검토·미팅 동행
+              </h3>
+              <p className="text-sm text-gray-700 leading-relaxed kr-keep-all">
+                <strong className="text-emerald-800">공동 영업으로 진행, 별도 청구 없음.</strong>{" "}
+                RFP 기술 리스크 검토, 고객 미팅 1~2회 동행은 수주 가능성을
+                함께 만드는 단계로 봅니다.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-lg bg-blue-50/60 border border-blue-200">
+              <p className="text-[11px] font-bold text-blue-700 uppercase tracking-widest mb-2">
+                STAGE 2 · 수주 이후
+              </p>
+              <h3 className="text-base font-semibold text-gray-900 mb-2 kr-keep-all">
+                자문·PMO·검수
+              </h3>
+              <p className="text-sm text-gray-700 leading-relaxed kr-keep-all">
+                <strong className="text-blue-800">프로젝트 견적에 자문료 항목으로 포함.</strong>{" "}
+                기술 자문·산출물 검수·N²SF 통제 매핑 대응 등 사업 기간 동안
+                대표 엔지니어가 함께 책임집니다.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-lg bg-gray-50 border border-gray-200">
+              <p className="text-[11px] font-bold text-gray-600 uppercase tracking-widest mb-2">
+                STAGE 3 · 구축
+              </p>
+              <h3 className="text-base font-semibold text-gray-900 mb-2 kr-keep-all">
+                구축비는 파트너사 직접 청구
+              </h3>
+              <p className="text-sm text-gray-700 leading-relaxed kr-keep-all">
+                구축은 검증된 파트너 컨소시엄이 수행하고{" "}
+                <strong className="text-gray-900">구축비는 파트너사가 직접 인보이싱</strong>합니다.
+                마이로켓은 자문·PMO·검수 역할만.
+              </p>
+            </div>
+          </div>
+
+          <p className="text-xs text-gray-500 mt-6 kr-keep-all max-w-3xl">
+            * 단독 자문(사전진단·전환 시나리오만 별도 발주)은 드물게 1주
+            단위로 협의 견적합니다.
           </p>
         </div>
       </section>
