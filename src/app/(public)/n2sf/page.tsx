@@ -154,7 +154,7 @@ export default async function N2sfHubPage() {
             ].map((line, i) => (
               <div
                 key={i}
-                className="flex items-start gap-3 p-4 bg-white rounded-lg border border-slate-200 shadow-sm"
+                className="flex items-start gap-3 p-4 bg-white rounded-xl border border-slate-200 shadow-sm"
               >
                 <span className="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center text-xs font-bold">
                   !

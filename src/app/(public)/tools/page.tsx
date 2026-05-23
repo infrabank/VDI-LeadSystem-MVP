@@ -78,7 +78,7 @@ export default function ToolsPage() {
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Tools · Free
           </p>
-          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             7분 만에 N²SF 정렬·VDI 재정의·복구 가능성을<br className="hidden md:block" />
             <span className="md:hidden"> </span>진단합니다
           </h1>

@@ -234,7 +234,7 @@ export default function HomePage() {
             ].map((line) => (
               <div
                 key={line}
-                className="flex items-start gap-2.5 p-4 bg-white rounded-lg border border-gray-200"
+                className="flex items-start gap-2.5 p-4 bg-white rounded-xl border border-gray-200"
               >
                 <span className="text-emerald-600 font-bold flex-shrink-0 mt-0.5">·</span>
                 <p className="text-sm text-gray-700 leading-relaxed kr-keep-all">{line}</p>

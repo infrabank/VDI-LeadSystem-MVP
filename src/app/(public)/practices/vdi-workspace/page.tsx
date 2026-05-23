@@ -72,7 +72,7 @@ export default function VdiWorkspacePage() {
             {p.brand} · {p.title}
             <span className="w-3 sm:w-4 h-px bg-blue-300 inline-block"></span>
           </p>
-          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             N²SF 이후, VDI를<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>어디에 남길 것인가
           </h1>

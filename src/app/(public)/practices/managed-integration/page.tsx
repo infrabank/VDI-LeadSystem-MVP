@@ -55,7 +55,7 @@ export default function ManagedIntegrationPage() {
             {p.brand} · {p.title}
             <span className="w-3 sm:w-4 h-px bg-purple-300 inline-block"></span>
           </p>
-          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             큰 전환을 시작하기 전,<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>1차 진단부터
           </h1>

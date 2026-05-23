@@ -55,7 +55,7 @@ export function CustomerShowcase({ variant = "compact" }: Props) {
                 return (
                   <div
                     key={c.code}
-                    className={`bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-colors ${
+                    className={`bg-white rounded-xl border border-gray-200 hover:border-gray-300 transition-colors ${
                       hasDetail ? "p-4 sm:p-5" : "px-4 py-3"
                     }`}
                     title={c.disclosed ? c.name : "외부 표기 동의 미확인 — 익명 표기"}

@@ -44,7 +44,7 @@ export default function AboutPage() {
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             About {company.name}
           </p>
-          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-3 leading-[1.15] kr-keep-all">
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             VDI와 백업 운영장애를<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>직접 다루는 기술지원 회사
           </h1>

@@ -52,7 +52,7 @@ export default function MfaAccessPage() {
             Auxiliary · VDI Access Security
             <span className="w-3 sm:w-4 h-px bg-indigo-300 inline-block"></span>
           </p>
-          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-5 sm:mb-6 leading-[1.15] kr-keep-all">
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             VDI 접속환경의<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>MFA 연계 기술검토
           </h1>

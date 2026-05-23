@@ -136,7 +136,7 @@ export default function PartnersPage() {
               href="/partners-onepager.pdf"
               target="_blank"
               rel="noopener"
-              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-300 rounded-md hover:bg-gray-50 font-semibold transition-all"
+              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
             >
               A4 1장 자료 (PDF)
             </a>
@@ -192,7 +192,7 @@ export default function PartnersPage() {
             {services.map((s) => (
               <div
                 key={s.no}
-                className="p-5 rounded-lg bg-white border border-gray-200"
+                className="p-5 rounded-xl bg-white border border-gray-200"
               >
                 <div className="flex items-baseline justify-between mb-2">
                   <span className="text-xs font-bold text-gray-500 tracking-widest">
@@ -250,7 +250,7 @@ export default function PartnersPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div className="p-5 rounded-lg bg-emerald-50/60 border border-emerald-200">
+            <div className="p-5 rounded-xl bg-emerald-50/60 border border-emerald-200">
               <p className="text-[11px] font-bold text-emerald-700 uppercase tracking-widest mb-2">
                 STAGE 1 · 사전
               </p>
@@ -263,7 +263,7 @@ export default function PartnersPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-lg bg-blue-50/60 border border-blue-200">
+            <div className="p-5 rounded-xl bg-blue-50/60 border border-blue-200">
               <p className="text-[11px] font-bold text-blue-700 uppercase tracking-widest mb-2">
                 STAGE 2 · 수주 이후
               </p>
@@ -276,7 +276,7 @@ export default function PartnersPage() {
               </p>
             </div>
 
-            <div className="p-5 rounded-lg bg-gray-50 border border-gray-200">
+            <div className="p-5 rounded-xl bg-gray-50 border border-gray-200">
               <p className="text-[11px] font-bold text-gray-600 uppercase tracking-widest mb-2">
                 STAGE 3 · 구축
               </p>
@@ -344,7 +344,7 @@ export default function PartnersPage() {
             {cases.map((c) => (
               <div
                 key={c.label}
-                className="p-5 rounded-lg bg-white border border-gray-200"
+                className="p-5 rounded-xl bg-white border border-gray-200"
               >
                 <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1 mb-2">
                   <span

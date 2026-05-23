@@ -67,7 +67,7 @@ export default function DataProtectionPage() {
             {p.brand} · {p.title}
             <span className="w-3 sm:w-4 h-px bg-emerald-300 inline-block"></span>
           </p>
-          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             사고 시 실제 복구 가능한지,<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>매월 검증합니다
           </h1>
