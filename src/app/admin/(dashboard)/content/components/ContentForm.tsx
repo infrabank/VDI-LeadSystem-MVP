@@ -201,6 +201,7 @@ export default function ContentForm({
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">커버 이미지</label>
           {coverImageUrl && (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               src={coverImageUrl}
               alt="cover"

@@ -12,12 +12,13 @@ export const company = {
   nameKo: "마이로켓",
   legalName: "(주)마이로켓",
   legalNameEn: "Myloket Inc.",
-  tagline: "Public-Sector N²SF Workspace Transition Advisor",
-  taglineKo: "공공·연구기관 N²SF 전환 설계 — VDI·망분리·MFA·백업 재정렬",
+  tagline: "VDI & Backup Technical Support",
+  taglineKo: "VDI·백업 전문 기술지원 및 유지보수",
   description:
-    "공공·정부출연연구기관 10여 곳의 VDI를 다년간 설계·구축·운영해 온 대표 엔지니어가, " +
-    "N²SF 전환기에 기존 VDI·망분리·MFA·백업 환경의 유지·축소·전환을 판단하고 로드맵을 설계합니다. " +
-    "구축은 검증된 파트너 컨소시엄과 함께 수행합니다.",
+    "Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 환경의 " +
+    "기술지원·유지보수·장애대응·복구검증을 제공합니다. " +
+    "공공·연구기관·기업 VDI 운영현장의 접속장애, 인증서, 프로파일, 스토리지, 라이선스, 백업 복구 이슈를 " +
+    "구축 경험 있는 대표 엔지니어가 직접 대응합니다.",
   email: "contact@mlkit.co.kr",
   domain: "myloket.co.kr",
   copyrightYear: new Date().getFullYear(),
@@ -541,23 +542,283 @@ export const partnerships: Partnership[] = [
 
 export const navLinks = [
   {
-    href: "/practices",
-    label: "Solutions",
-    description: "N²SF 사전진단 · VDI 재정의 · MFA · 복구검증",
+    href: "/#support-areas",
+    label: "기술지원 분야",
+    description: "Citrix · Omnissa Horizon · Acronis Cyber Protect",
   },
   {
-    href: "/partners",
-    label: "Partners",
-    description: "SI·보안 파트너용 기술자문",
+    href: "/#maintenance",
+    label: "유지보수",
+    description: "월간 점검·장애 대응·운영 개선·복구검증",
   },
-  { href: "/insights", label: "Insights", description: "기술 콘텐츠·가이드" },
-  { href: "/tools", label: "Tools", description: "진단·계산 도구" },
-  { href: "/about", label: "About", description: "회사 소개·인증" },
-  { href: "/contact", label: "Contact", description: "상담 문의" },
+  {
+    href: "/#engagements",
+    label: "수행 경험",
+    description: "공공·연구기관 VDI/백업 운영 지원 사례",
+  },
+  {
+    href: "/#process",
+    label: "지원 프로세스",
+    description: "문의부터 보고서까지 5단계",
+  },
+  {
+    href: "/contact",
+    label: "문의",
+    description: "기술지원·유지보수 상담",
+  },
 ] as const;
 
 export const ctaLink = {
-  href: "/tools/risk-assessment",
-  label: "VDI 보안 준비도 진단",
-  shortLabel: "진단 시작",
+  href: "/contact?source=header",
+  label: "기술지원 문의",
+  shortLabel: "문의",
 };
+
+/**
+ * 홈페이지 — 3 핵심 기술지원 분야.
+ * Citrix Virtual Apps and Desktops / Omnissa Horizon / Acronis Cyber Protect.
+ */
+export interface SupportArea {
+  id: string;
+  brand: string;
+  title: string;
+  tagline: string;
+  scope: string[];
+  accent: "blue" | "indigo" | "emerald";
+}
+
+export const supportAreas: SupportArea[] = [
+  {
+    id: "citrix",
+    brand: "Citrix Virtual Apps and Desktops",
+    title: "Citrix 기술지원",
+    tagline: "Delivery Controller·StoreFront·NetScaler 운영장애 분석",
+    scope: [
+      "Delivery Controller · StoreFront · Director · License Server 점검",
+      "VDA 접속장애 원인 구분 (제품 · 인증서 · AD · DNS · 프로파일)",
+      "Machine Catalog · Delivery Group 구성 점검",
+      "Citrix Profile Management · FSLogix 연계 이슈",
+      "NetScaler · Citrix Gateway 연동 장애",
+      "인증서 · CRL · SSL Chain 점검",
+      "버전 업그레이드 · 마이그레이션 검토",
+      "운영 점검 보고서 작성",
+    ],
+    accent: "blue",
+  },
+  {
+    id: "horizon",
+    brand: "Omnissa Horizon",
+    title: "Omnissa Horizon 기술지원",
+    tagline: "Connection Server·UAG·FSLogix 운영 안정화",
+    scope: [
+      "Horizon Connection Server 점검",
+      "UAG 연동 장애 분석",
+      "Horizon Agent · Client 접속 문제",
+      "Instant Clone · Full Clone 운영 이슈",
+      "FSLogix · Persona · 사용자 프로파일 문제",
+      "Blast · PCoIP 접속 품질 분석",
+      "인증서 · 라이선스 · AD 연동 점검",
+      "vSphere · ESXi · vCenter 연계 장애 분석",
+      "월간 유지보수 점검 보고서 작성",
+    ],
+    accent: "indigo",
+  },
+  {
+    id: "acronis",
+    brand: "Acronis Cyber Protect",
+    title: "Acronis Cyber Protect 기술지원",
+    tagline: "백업 정책·복구 테스트·증빙 리포트",
+    scope: [
+      "백업 정책 설계 및 점검",
+      "서버 · VM · PC · NAS 백업 구성 검토",
+      "백업 실패 원인 분석",
+      "복구 테스트 및 복구검증 리포트",
+      "랜섬웨어 대응 관점의 백업 보존 정책 점검",
+      "에이전트 설치 · 업데이트 · 정책 배포 지원",
+      "클라우드 · 로컬 저장소 구성 검토",
+      "월간 백업 성공률 및 복구 가능성 보고",
+    ],
+    accent: "emerald",
+  },
+];
+
+/**
+ * 홈페이지 — 유지보수 4 패키지.
+ * 가격이 아닌 운영자 관점의 유지보수 유형.
+ */
+export interface MaintenancePackage {
+  id: string;
+  no: string;
+  title: string;
+  target: string[];
+  provides: string[];
+  accent: "blue" | "indigo" | "amber" | "emerald";
+}
+
+export const maintenancePackages: MaintenancePackage[] = [
+  {
+    id: "monthly-checkup",
+    no: "01",
+    title: "월간 점검형 유지보수",
+    target: [
+      "이미 운영 중인 VDI · 백업 환경이 있는 기관",
+      "정기 점검 보고서가 필요한 기관",
+    ],
+    provides: [
+      "월 1회 원격 점검",
+      "주요 서비스 상태 확인",
+      "인증서 · 라이선스 · 백업 성공률 확인",
+      "장애 이력 검토",
+      "월간 점검 보고서 제공",
+    ],
+    accent: "blue",
+  },
+  {
+    id: "incident-response",
+    no: "02",
+    title: "장애 대응형 기술지원",
+    target: [
+      "내부 운영자는 있지만 고난도 장애 대응이 어려운 조직",
+      "SI 업체가 고객 대응 시 전문 엔지니어 지원이 필요한 경우",
+    ],
+    provides: [
+      "장애 원인 분석",
+      "로그 기반 진단",
+      "벤더 SR 대응 보조",
+      "조치 가이드 제공",
+      "필요 시 현장 · 원격 대응",
+    ],
+    accent: "amber",
+  },
+  {
+    id: "operations-improvement",
+    no: "03",
+    title: "운영 개선형 컨설팅",
+    target: [
+      "VDI 성능 저하, 스토리지 병목, 접속 지연, 프로파일 장애가 반복되는 조직",
+    ],
+    provides: [
+      "구성 진단",
+      "병목 지점 분석",
+      "개선안 제시",
+      "업그레이드 · 마이그레이션 방향성 검토",
+      "운영 절차서 정리",
+    ],
+    accent: "indigo",
+  },
+  {
+    id: "recovery-verification",
+    no: "04",
+    title: "백업 복구검증 서비스",
+    target: [
+      "Acronis Cyber Protect 또는 유사 백업 솔루션을 쓰지만 실제 복구 검증이 부족한 조직",
+    ],
+    provides: [
+      "백업 정책 점검",
+      "샘플 복구 테스트",
+      "RTO · RPO 기준 정리",
+      "복구검증 리포트",
+      "월간 증빙 자료 제공",
+    ],
+    accent: "emerald",
+  },
+];
+
+/**
+ * 홈페이지 — 운영현장에서 실제로 발생하는 5개 문제.
+ * 추상 컨설팅 메시지가 아니라 운영자가 어제·오늘 겪은 문제 기준.
+ */
+export const operationalIssues: { title: string; detail: string }[] = [
+  {
+    title: "VDI 접속 장애가 반복되지만 원인 구분이 어렵다",
+    detail:
+      "Connection Server · Delivery Controller · StoreFront · UAG · NetScaler · AD · DNS · 인증서 · 프로파일 중 어디가 문제인지 빠르게 구분해야 함",
+  },
+  {
+    title: "사용자 프로파일과 FSLogix 장애가 반복된다",
+    detail:
+      "로그인 지연, 프로파일 잠김, VHDX 마운트 실패, SMB 세션 문제 등",
+  },
+  {
+    title: "인증서·라이선스·버전 이슈가 운영 리스크가 된다",
+    detail:
+      "갱신 시점, CRL, SSL Chain, 라이선스 만료, 제품 버전 호환성 문제",
+  },
+  {
+    title: "스토리지·네트워크 병목이 VDI 품질 문제로 이어진다",
+    detail:
+      "iSCSI · NFS · NetApp · 3PAR · VMFS · vMotion · Datastore 사용률 · IOPS 병목 등",
+  },
+  {
+    title: "백업은 있지만 실제 복구 가능성은 검증되지 않았다",
+    detail:
+      "Acronis Cyber Protect 기반 백업 정책, 복구 테스트, 월간 증빙 리포트 필요",
+  },
+];
+
+/**
+ * 홈페이지 — 왜 마이로켓인가 (5 실무 신뢰 카드).
+ */
+export const trustSignals: { title: string; detail: string }[] = [
+  {
+    title: "VDI 운영장애 경험",
+    detail:
+      "공공·연구기관 VDI를 다년간 구축·운영·유지보수하며 마주친 접속장애·프로파일·UAG·인증서 이슈를 패턴으로 분류해 둠",
+  },
+  {
+    title: "인프라 연계 분석",
+    detail:
+      "vSphere · ESXi · vCenter · NetApp · XenServer 등 인프라까지 함께 보고 병목·이상점을 구분",
+  },
+  {
+    title: "공공기관 보고서 대응",
+    detail:
+      "점검 보고서 · 장애 사후 분석 · 월간 운영 리포트 등 공공기관 제출 가능한 형식으로 작성",
+  },
+  {
+    title: "백업 복구검증 역량",
+    detail:
+      "Acronis Cyber Protect 정책 점검과 복구 테스트로 '백업은 되지만 복구는 모르는' 상태를 정리",
+  },
+  {
+    title: "SI 파트너 협업",
+    detail:
+      "SI 영업대표가 제안 · 고객 미팅에서 바로 활용할 수 있는 형태의 기술 산출물",
+  },
+];
+
+/**
+ * 홈페이지 — 지원 프로세스 5단계.
+ */
+export const supportProcess: { no: string; title: string; detail: string }[] = [
+  {
+    no: "01",
+    title: "환경 정보 접수",
+    detail:
+      "제품명 · 버전 · 장애 증상 · 구성도 · 로그 보유 여부를 먼저 확인합니다",
+  },
+  {
+    no: "02",
+    title: "1차 원인 구분",
+    detail:
+      "제품 · 인프라 · 인증서 · 계정 · 스토리지 · 백업 정책 중 어디 영역의 문제인지 분리합니다",
+  },
+  {
+    no: "03",
+    title: "원격 진단 또는 현장 지원",
+    detail:
+      "필요 시 로그 분석, 설정 점검, 운영자 인터뷰를 수행합니다",
+  },
+  {
+    no: "04",
+    title: "조치안 및 리스크 안내",
+    detail:
+      "즉시 조치 가능 항목과 변경작업이 필요한 항목을 구분해 안내합니다",
+  },
+  {
+    no: "05",
+    title: "보고서 · 재발방지안 제공",
+    detail:
+      "공공기관 제출 가능한 형식의 결과 보고서와 재발방지안을 함께 드립니다",
+  },
+];

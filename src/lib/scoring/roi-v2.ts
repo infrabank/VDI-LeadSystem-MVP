@@ -81,7 +81,8 @@ function formatKRW(amount: number): string {
   return new Intl.NumberFormat("ko-KR").format(Math.round(amount)) + "원";
 }
 
-function formatKRWFull(amount: number): string {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function _formatKRWFull(amount: number): string {
   return new Intl.NumberFormat("ko-KR").format(Math.round(amount)) + "원";
 }
 

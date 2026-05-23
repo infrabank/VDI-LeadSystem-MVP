@@ -438,7 +438,8 @@ function buildQAItems(ctx: TemplateContext): QAItem[] {
 
 // ---------- 리스크 플래그 생성 ----------
 
-function buildRiskFlags(ctx: TemplateContext): string[] {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function _buildRiskFlags(ctx: TemplateContext): string[] {
   const flags: string[] = [];
   const scores = ctx.domainScores;
 

@@ -10,6 +10,8 @@ export default function PublicHeader() {
   const pathname = usePathname();
 
   useEffect(() => {
+    // 경로 변경 시 모바일 메뉴 자동 닫기 — SPA 라우팅 후 UI 동기화 목적.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
   }, [pathname]);
 

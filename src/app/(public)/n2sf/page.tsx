@@ -54,8 +54,8 @@ export default async function N2sfHubPage() {
             <span className="text-blue-300">정렬 진단·전환 준비도·역할 재정의 통합 허브</span>
           </h1>
           <p className="mt-6 text-sm sm:text-base md:text-lg text-blue-100 leading-relaxed max-w-3xl kr-keep-all">
-            N²SF(국가 망 보안체계)는 망분리를 폐지하지 않습니다. 그러나 "모든 업무에
-            VDI"라는 단순 구조는 더 이상 통하지 않습니다. <strong className="text-white">VDI는 끝나는 것이 아니라
+            N²SF(국가 망 보안체계)는 망분리를 폐지하지 않습니다. 그러나 &ldquo;모든 업무에
+            VDI&rdquo;라는 단순 구조는 더 이상 통하지 않습니다. <strong className="text-white">VDI는 끝나는 것이 아니라
             역할이 바뀝니다.</strong> 274개 보안통제 매핑부터 단계적 전환 로드맵까지,
             공공·금융 기관에 필요한 모든 진단을 무료로 제공합니다.
           </p>
@@ -111,7 +111,7 @@ export default async function N2sfHubPage() {
           </h2>
           <p className="text-slate-600 mb-8 md:mb-10 max-w-3xl kr-keep-all">
             정부 정책, 라이선스 구조, 클라우드 진입 절차 모두 동시에 변화 중입니다.
-            '갱신만 하면 되겠지'라는 가정이 가장 위험합니다.
+            &lsquo;갱신만 하면 되겠지&rsquo;라는 가정이 가장 위험합니다.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
@@ -291,7 +291,7 @@ export default async function N2sfHubPage() {
           </h2>
           <p className="text-blue-100 mb-8 leading-relaxed kr-keep-all">
             VDI 구축·운영·유지보수 경험이 있는 전문가가 직접 N²SF 정렬 진단·컨설팅합니다. <br />
-            대형 SI의 패키지 사업자가 놓치는 '기존 환경의 안정 운영'을 함께 설계합니다.
+            대형 SI의 패키지 사업자가 놓치는 &lsquo;기존 환경의 안정 운영&rsquo;을 함께 설계합니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link

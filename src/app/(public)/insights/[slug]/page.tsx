@@ -206,6 +206,7 @@ export default async function ContentDetailPage({ params }: Props) {
 
       {/* Cover Image */}
       {content.cover_image_url && (
+        // eslint-disable-next-line @next/next/no-img-element
         <img
           src={content.cover_image_url}
           alt={content.title}
@@ -254,23 +255,24 @@ export default async function ContentDetailPage({ params }: Props) {
             </svg>
           </div>
           <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 kr-keep-all">
-            지금 우리 환경, N²SF 기준에서 어디쯤일까요?
+            운영 중인 VDI · 백업 환경에 비슷한 이슈가 있나요?
           </h3>
           <p className="text-gray-600 mb-5 sm:mb-6 max-w-md mx-auto text-sm leading-relaxed kr-keep-all">
-            7분 자가 진단으로 C/S/O 등급 예비 분류·VDI 유지/축소/전환 시나리오·MFA·백업 보완 지점이 정리된 무료 PDF 리포트를 받아보세요.
+            제품명·버전·증상만 보내주시면 1차 원인 구분을 도와드립니다.
+            Citrix · Omnissa Horizon · Acronis Cyber Protect 환경의 운영장애·유지보수·복구검증을 지원합니다.
           </p>
           <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
             <Link
-              href="/tools/risk-assessment"
+              href="/contact?source=insight-cta"
               className="inline-block px-6 sm:px-7 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5"
             >
-              N²SF 전환 사전진단(7분)
+              기술지원 문의하기
             </Link>
             <Link
-              href="/tools/vdi-transition"
+              href="/#maintenance"
               className="inline-block px-6 sm:px-7 py-3 bg-white border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition-all"
             >
-              VDI 역할 재정의 진단(2분)
+              유지보수 패키지 보기
             </Link>
           </div>
         </div>

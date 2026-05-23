@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { company, practicesList, partnerships, certifications, certificationStatusLabel, leadership } from "@/lib/site-config";
+import {
+  company,
+  supportAreas,
+  partnerships,
+  certifications,
+  certificationStatusLabel,
+  leadership,
+} from "@/lib/site-config";
 import { PartnerBadge } from "../PartnerBadge";
 import { CustomerShowcase } from "../CustomerShowcase";
 import { LeaderCard } from "../LeaderCard";
@@ -47,55 +54,52 @@ export default function AboutPage() {
               Our Mission
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
-              대표 직접 책임 구조를 투명하게 밝힙니다
+              운영장애를 직접 본 사람이 직접 대응합니다
             </h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
-              {company.name}는 대표 엔지니어가 직접 진단·설계를 책임지고, 구축은 검증된
-              파트너 컨소시엄과 함께 수행합니다. 이 구조가 공공기관 N²SF 전환처럼 판단
-              비중이 큰 사업에서 가장 빠르고 정직합니다.
+              {company.name}는 Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect
+              환경의 기술지원·유지보수·복구검증을 전문으로 합니다. 진단·설계는 대표 엔지니어가 직접 책임지고,
+              대규모 구축은 검증된 파트너 컨소시엄과 함께 수행합니다.
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all">
-              VDI·MFA·백업을 따로 구매하면 도입 후 책임 단절이 생깁니다. 그 단절을 막기
-              위해, 진단·설계 단계는 대표가 한 사이클로 책임지고, 구축 단계에서는 규모에
-              맞는 파트너를 정직하게 붙입니다.
+              VDI 접속장애, FSLogix·프로파일 문제, UAG·인증서 이슈, 스토리지·네트워크 병목,
+              백업 실패와 복구검증 — 구축 이후의 운영 문제를 패턴으로 분류해 두고 같은 기준으로 대응합니다.
             </p>
           </div>
-          <div className="bg-gradient-to-br from-blue-50 via-white to-purple-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
+          <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-              4가지 문제, 대표 직접 책임
+              3개 핵심 기술지원 분야
             </p>
             <div className="space-y-3">
-              {practicesList.map((p) => {
+              {supportAreas.map((a) => {
                 const dotColor: Record<string, string> = {
                   blue: "bg-blue-600",
                   indigo: "bg-indigo-600",
                   emerald: "bg-emerald-600",
-                  purple: "bg-purple-600",
                 };
                 const textColor: Record<string, string> = {
-                  blue: "text-blue-600",
-                  indigo: "text-indigo-600",
-                  emerald: "text-emerald-600",
-                  purple: "text-purple-600",
+                  blue: "text-blue-700",
+                  indigo: "text-indigo-700",
+                  emerald: "text-emerald-700",
                 };
                 return (
                   <Link
-                    key={p.id}
-                    href={p.href}
+                    key={a.id}
+                    href="/#support-areas"
                     className="block p-3 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
                   >
                     <div className="flex items-center gap-2 mb-1">
                       <span
-                        className={`w-2 h-2 rounded-full ${dotColor[p.primaryColor] || dotColor.blue}`}
+                        className={`w-2 h-2 rounded-full ${dotColor[a.accent] || dotColor.blue}`}
                       ></span>
                       <span
-                        className={`text-xs font-bold uppercase tracking-widest ${textColor[p.primaryColor] || textColor.blue}`}
+                        className={`text-xs font-bold uppercase tracking-widest ${textColor[a.accent] || textColor.blue}`}
                       >
-                        {p.brand}
+                        {a.brand}
                       </span>
                     </div>
-                    <h3 className="text-sm font-bold text-gray-900 mb-0.5 kr-keep-all">{p.title}</h3>
-                    <p className="text-xs text-gray-500 kr-keep-all">{p.tagline}</p>
+                    <h3 className="text-sm font-bold text-gray-900 mb-0.5 kr-keep-all">{a.title}</h3>
+                    <p className="text-xs text-gray-500 kr-keep-all">{a.tagline}</p>
                   </Link>
                 );
               })}
@@ -134,8 +138,8 @@ export default function AboutPage() {
             대표 직접 책임 + 검증된 파트너 컨소시엄
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-12 max-w-2xl mx-auto kr-keep-all">
-            대표 엔지니어가 직접 책임지는 영역과 검증된 파트너가 수행하는 영역을 단계별로 분리합니다.
-            구축은 검증된 파트너 컨소시엄과 분담 수행하므로, 공공·금융권 사업에서도 역할과 책임을 분리해 대응할 수 있는 구조이며, 단계별 산출물·서명·검수 책임이 분명합니다.
+            기술지원·유지보수에서 대표 엔지니어가 직접 책임지는 영역과 검증된 파트너가 수행하는 영역을 단계별로 분리합니다.
+            대규모 구축이나 현장 상주는 파트너 컨소시엄과 분담하며, 분석·판단·산출물은 대표가 직접 수행합니다.
           </p>
 
           {/* Desktop table */}
@@ -154,13 +158,13 @@ export default function AboutPage() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {[
-                  { area: "사전진단", direct: "직접 수행 (인터뷰·산출물)", partner: "필요 시 자료 지원" },
-                  { area: "전환 로드맵", direct: "직접 작성 (Phase·KPI)", partner: "검토 참여" },
-                  { area: "RFP·보안성 검토 대응", direct: "직접 작성·검토 (산출물 7종)", partner: "제안 반영" },
-                  { area: "구축", direct: "설계 검수·PM 자문", partner: "실제 구축 수행" },
-                  { area: "장애 대응", direct: "근본 원인 분석·방향 판단", partner: "현장 조치" },
-                  { area: "월간 리포트", direct: "품질 검토·결론 작성", partner: "데이터 수집·시연" },
-                  { area: "검수·서명", direct: "산출물 검수·기관 보고 동행", partner: "납품·인수 서명" },
+                  { area: "월간 점검", direct: "원격 점검 · 인증서·라이선스·백업 성공률 확인", partner: "현장 점검 동행 (필요 시)" },
+                  { area: "장애 1차 원인 구분", direct: "로그 분석 · 영역 분리 (제품/인프라/인증서/계정)", partner: "현장 운영자 인터뷰" },
+                  { area: "장애 대응", direct: "근본 원인 분석 · 조치 가이드", partner: "현장 조치 · 변경작업" },
+                  { area: "운영 개선 컨설팅", direct: "구성 진단 · 병목 분석 · 개선안", partner: "변경작업 실행" },
+                  { area: "복구검증", direct: "복구 테스트 설계 · RTO/RPO 정리 · 리포트", partner: "복구 시연 데이터 수집" },
+                  { area: "벤더 SR 대응", direct: "SR 케이스 정리 · 회신 검토 · 방향 판단", partner: "벤더 채널 전달" },
+                  { area: "보고서·서명", direct: "공공기관 제출 형식 보고서 작성", partner: "납품·인수 서명" },
                 ].map((row) => (
                   <tr key={row.area} className="bg-white">
                     <td className="px-4 py-3 font-semibold text-gray-900 kr-keep-all">{row.area}</td>
@@ -175,13 +179,13 @@ export default function AboutPage() {
           {/* Mobile cards */}
           <div className="md:hidden space-y-3">
             {[
-              { area: "사전진단", direct: "직접 수행 (인터뷰·산출물)", partner: "필요 시 자료 지원" },
-              { area: "전환 로드맵", direct: "직접 작성 (Phase·KPI)", partner: "검토 참여" },
-              { area: "RFP·보안성 검토 대응", direct: "직접 작성·검토 (산출물 7종)", partner: "제안 반영" },
-              { area: "구축", direct: "설계 검수·PM 자문", partner: "실제 구축 수행" },
-              { area: "장애 대응", direct: "근본 원인 분석·방향 판단", partner: "현장 조치" },
-              { area: "월간 리포트", direct: "품질 검토·결론 작성", partner: "데이터 수집·시연" },
-              { area: "검수·서명", direct: "산출물 검수·기관 보고 동행", partner: "납품·인수 서명" },
+              { area: "월간 점검", direct: "원격 점검 · 인증서·라이선스·백업 성공률 확인", partner: "현장 점검 동행 (필요 시)" },
+              { area: "장애 1차 원인 구분", direct: "로그 분석 · 영역 분리", partner: "현장 운영자 인터뷰" },
+              { area: "장애 대응", direct: "근본 원인 분석 · 조치 가이드", partner: "현장 조치 · 변경작업" },
+              { area: "운영 개선 컨설팅", direct: "구성 진단 · 병목 분석 · 개선안", partner: "변경작업 실행" },
+              { area: "복구검증", direct: "복구 테스트 설계 · 리포트", partner: "복구 시연 데이터 수집" },
+              { area: "벤더 SR 대응", direct: "SR 케이스 정리 · 회신 검토", partner: "벤더 채널 전달" },
+              { area: "보고서·서명", direct: "공공기관 제출 형식 보고서 작성", partner: "납품·인수 서명" },
             ].map((row) => (
               <div key={row.area} className="rounded-xl border border-gray-200 bg-white p-4">
                 <p className="text-sm font-bold text-gray-900 mb-2 kr-keep-all">{row.area}</p>
@@ -301,10 +305,11 @@ export default function AboutPage() {
             Contact
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
-            상담·기술 협업 문의
+            기술지원·유지보수 문의
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
-            N²SF 전환기 기존 VDI·망분리·MFA·백업 환경의 유지·축소·전환 검토, RFP·보안성 검토 대응, SI 파트너 기술협업 문의를 환영합니다.
+            Citrix · Omnissa Horizon · Acronis Cyber Protect 환경의 운영장애·유지보수·복구검증 상담,
+            SI 파트너 기술 협업 문의를 환영합니다.
           </p>
           <Link
             href="/contact?source=about-cta"

@@ -1,6 +1,12 @@
 import Link from "next/link";
 import PublicHeader from "./PublicHeader";
-import { company, companyLegal, practicesList, hasLegalInfo } from "@/lib/site-config";
+import {
+  company,
+  companyLegal,
+  supportAreas,
+  maintenancePackages,
+  hasLegalInfo,
+} from "@/lib/site-config";
 
 export default function PublicLayout({
   children,
@@ -28,36 +34,49 @@ export default function PublicLayout({
               </p>
             </div>
 
-            {/* Practices */}
+            {/* Technical Support */}
             <div>
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-                Practices
+                Technical Support
               </p>
               <ul className="space-y-2.5 text-sm">
-                {practicesList.map((p) => (
-                  <li key={p.id}>
+                {supportAreas.map((a) => (
+                  <li key={a.id}>
                     <Link
-                      href={p.href}
+                      href={`/#support-areas`}
                       className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all"
                     >
-                      {p.shortTitle}{" "}
-                      <span className="text-xs text-gray-400">({p.brand})</span>
+                      {a.title}
                     </Link>
                   </li>
                 ))}
-                <li>
-                  <Link href="/tools" className="text-gray-600 hover:text-blue-600 transition-colors">
-                    진단·계산 도구
-                  </Link>
+                <li className="pt-2 border-t border-gray-200 mt-2">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">
+                    Maintenance
+                  </p>
                 </li>
-                <li>
-                  <Link href="/insights" className="text-gray-600 hover:text-blue-600 transition-colors">
-                    Insights · 콘텐츠
+                {maintenancePackages.map((p) => (
+                  <li key={p.id}>
+                    <Link
+                      href={`/#maintenance`}
+                      className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all"
+                    >
+                      {p.title}
+                    </Link>
+                  </li>
+                ))}
+                <li className="pt-2 border-t border-gray-200 mt-2">
+                  <Link href="/insights" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">
+                    Insights · 기술 콘텐츠
                   </Link>
-                </li>
-                <li>
-                  <Link href="/case-studies" className="text-gray-600 hover:text-blue-600 transition-colors">
+                  <span className="text-gray-300 mx-2 text-xs">·</span>
+                  <Link href="/case-studies" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">
                     Case Studies
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/partners" className="text-gray-500 hover:text-amber-700 transition-colors text-xs">
+                    SI 파트너 협업 →
                   </Link>
                 </li>
               </ul>

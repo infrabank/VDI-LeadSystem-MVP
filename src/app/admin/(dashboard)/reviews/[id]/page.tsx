@@ -7,7 +7,6 @@ import {
   PRIORITY_LABELS,
   VENDOR_LABELS,
   NETWORK_LABELS,
-  DOMAIN_LABELS,
   type ReviewRequest,
   type ReviewScore,
   type ReviewReport,
@@ -15,7 +14,6 @@ import {
   type RequestStatus,
   type VendorTrack,
   type NetworkType,
-  type ScoreDomain,
 } from "@/lib/types/sap";
 import ReviewActions from "./ReviewActions";
 import ScoringForm from "./ScoringForm";

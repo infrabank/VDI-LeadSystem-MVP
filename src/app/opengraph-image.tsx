@@ -68,7 +68,7 @@ export default async function OpengraphImage() {
           }}
         >
           <div style={{ width: 36, height: 2, background: "#93c5fd" }} />
-          <span>공공기관 N²SF 전환 설계</span>
+          <span>VDI · Backup Technical Support</span>
         </div>
 
         <div
@@ -76,27 +76,27 @@ export default async function OpengraphImage() {
             display: "flex",
             flexDirection: "column",
             fontWeight: 700,
-            fontSize: 78,
-            lineHeight: 1.12,
+            fontSize: 72,
+            lineHeight: 1.15,
             letterSpacing: -1,
             marginBottom: 36,
           }}
         >
-          <span>망분리 이후, VDI를</span>
-          <span>어떻게 할지 결정해야 할 때입니다</span>
+          <span>VDI와 백업 운영장애,</span>
+          <span>구축 경험 있는 엔지니어가 직접 지원합니다</span>
         </div>
 
         <div
           style={{
             display: "flex",
-            fontSize: 28,
+            fontSize: 26,
             fontWeight: 500,
             lineHeight: 1.45,
             color: "rgba(219, 234, 254, 0.92)",
-            maxWidth: 1000,
+            maxWidth: 1020,
           }}
         >
-          공공·연구기관의 기존 VDI·망분리·MFA·백업 환경을 N²SF 기준으로 재정렬합니다.
+          Citrix Virtual Apps and Desktops · Omnissa Horizon · Acronis Cyber Protect 환경의 기술지원·유지보수·복구검증.
         </div>
 
         <div style={{ display: "flex", flex: 1 }} />

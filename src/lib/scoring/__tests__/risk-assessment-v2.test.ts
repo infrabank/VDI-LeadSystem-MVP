@@ -2,7 +2,6 @@ import { describe, it, expect } from "vitest";
 import {
   runRiskAssessmentV2,
   type RiskAssessmentInput,
-  type RiskAssessmentV2Output,
 } from "../risk-assessment-v2";
 
 const baseInput: RiskAssessmentInput = {

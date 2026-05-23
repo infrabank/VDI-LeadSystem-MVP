@@ -1,8 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
-  runRiskAssessmentV3,
-  type RiskAssessmentV3Output,
-} from "../risk-assessment-v3";
+import { runRiskAssessmentV3 } from "../risk-assessment-v3";
 import type { RiskAssessmentV3Input } from "@/lib/tools/risk-assessment/questions.v3";
 
 const baseInput: RiskAssessmentV3Input = {

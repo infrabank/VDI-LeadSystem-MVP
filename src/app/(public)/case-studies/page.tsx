@@ -4,7 +4,7 @@ import { company } from "@/lib/site-config";
 
 export const metadata = {
   title: `Case Studies | ${company.name}`,
-  description: `${company.name}의 공공·연구기관 N²SF 전환·VDI 구축·운영·유지보수 지원·망분리 재정렬·MFA 적용·백업 복구검증 실제 수행 사례.`,
+  description: `${company.name}의 공공·연구기관·민간 기업 VDI 구축·운영·유지보수 지원 사례 — Citrix · Omnissa Horizon · Acronis Cyber Protect 운영장애·복구검증 실수행 경험.`,
 };
 
 interface CaseRow {
@@ -40,10 +40,11 @@ export default async function CaseStudiesPage() {
             Case Studies
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            공공·연구기관 N²SF 전환·VDI 구축·운영·유지보수 사례
+            VDI · 백업 운영 사례
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            기관명은 익명·제한 공개로 노출하되, 환경 유형·벤더·규모·수행 범위·산출물·결과는 명시합니다.
+            공공·연구기관·민간 기업 VDI 구축·운영·유지보수와 복구검증 수행 경험.
+            기관명은 익명·제한 공개로 노출하되, 환경 유형·벤더·규모·수행 범위·결과는 명시합니다.
           </p>
         </div>
       </section>
@@ -59,6 +60,7 @@ export default async function CaseStudiesPage() {
                   className="card-hover group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-blue-200"
                 >
                   {c.cover_image_url ? (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={c.cover_image_url}
                       alt={c.title}

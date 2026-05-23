@@ -18,7 +18,7 @@ interface ContentListItem {
 
 const pageTitle = "Insights";
 const pageDescription =
-  "공공기관 N²SF 전환·VDI 역할 재정의·MFA QuickStart·백업/DR 복구검증에 관한 기술 가이드·체크리스트·사례를 정리합니다.";
+  "Citrix · Omnissa Horizon · Acronis Cyber Protect 운영장애·유지보수·복구검증 기술 가이드와 N²SF 환경 운영 노트를 정리합니다.";
 
 export const metadata: Metadata = {
   title: pageTitle,
@@ -139,12 +139,11 @@ export default async function ContentListPage({
             Insights
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 kr-keep-all">
-            N²SF·VDI 의사결정에 인용할 수 있는 기술 자료
+            VDI·백업 운영 현장에서 정리한 기술 자료
           </h1>
           <p className="text-gray-500 text-base sm:text-lg kr-keep-all">
-            274개 통제 매핑·VDI 역할 재정의·MFA 적용 위치·복구검증 — 발주처·SI
-            영업대표가 RFP·검토 단계에서 그대로 쓸 수 있는 가이드·체크리스트·
-            사례·비교를 정리했습니다.
+            Citrix · Omnissa Horizon · Acronis Cyber Protect 운영장애·유지보수·복구검증과
+            N²SF 환경 운영 노트를 가이드·체크리스트·사례 형태로 정리했습니다.
           </p>
         </div>
       </div>
@@ -160,7 +159,7 @@ export default async function ContentListPage({
               type="text"
               name="q"
               defaultValue={query}
-              placeholder="N²SF·VDI·MFA·복구검증으로 검색"
+              placeholder="Citrix · Horizon · UAG · FSLogix · Acronis · 복구검증으로 검색"
               className="w-full pl-11 pr-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white shadow-sm text-sm"
             />
           </div>
@@ -196,6 +195,7 @@ export default async function ContentListPage({
               >
                 {item.cover_image_url ? (
                   <div className="overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={item.cover_image_url}
                       alt={item.title}

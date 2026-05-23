@@ -4,25 +4,25 @@ import { company } from "@/lib/site-config";
 import ContactForm from "./ContactForm";
 
 export const metadata = {
-  title: `Contact | ${company.name}`,
-  description: `${company.name} 상담 문의 — 공공기관 N²SF 전환기에 기존 VDI·망분리·MFA·백업 환경을 어떻게 재정렬할지 사전진단·전환 로드맵·RFP·보안성 검토 대응 산출물을 제공합니다. 기관 담당자와 SI·보안 파트너 모두 문의 가능.`,
+  title: `기술지원 문의 | ${company.name}`,
+  description: `${company.name} 기술지원 문의 — Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 환경의 운영장애·유지보수·복구검증 상담. 제품명·버전·증상만 보내주세요. 공공기관·연구기관·기업 IT 운영자 및 SI 파트너 모두 가능.`,
 };
 
 export default function ContactPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 border-b border-slate-700">
+      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-center">
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Contact
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            상담 문의
+            기술지원 문의
           </h1>
           <p className="text-sm sm:text-base text-blue-100 leading-relaxed kr-keep-all">
-            공공기관 N²SF 전환기에 기존 VDI·망분리·MFA·백업 환경을 어떻게 재정렬할지 상담합니다.
-            사전진단·전환 로드맵·RFP·보안성 검토 대응 산출물을 제공하며, 기관 담당자와 SI·보안 파트너 모두 문의 가능합니다.
+            운영 중인 VDI 또는 백업 환경에 문제가 있다면 제품명·버전·증상만 먼저 보내주세요.
+            구성도·로그를 첨부해 주시면 1차 원인 구분이 빠릅니다. 공공기관·연구기관·기업 IT 운영자, SI 파트너 모두 환영합니다.
           </p>
         </div>
       </section>
@@ -54,15 +54,15 @@ export default function ContactPage() {
           </div>
           <div className="bg-white border border-gray-200 rounded-xl p-5">
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">
-              먼저 자가 진단부터?
+              유지보수 패키지 확인
             </p>
             <Link
-              href="/tools"
+              href="/#maintenance"
               className="text-blue-600 hover:text-blue-700 font-medium"
             >
-              진단·계산 도구 6종 →
+              월간 점검·장애 대응·복구검증 →
             </Link>
-            <p className="text-xs text-gray-400 mt-1">7분 무료 진단 · PDF 리포트</p>
+            <p className="text-xs text-gray-400 mt-1">홈의 유지보수 4 패키지 보기</p>
           </div>
         </div>
       </section>

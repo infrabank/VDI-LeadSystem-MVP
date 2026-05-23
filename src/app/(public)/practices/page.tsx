@@ -2,8 +2,8 @@ import Link from "next/link";
 import { practicesList, company } from "@/lib/site-config";
 
 export const metadata = {
-  title: `Solutions | ${company.name}`,
-  description: `${company.name}의 4가지 문제 기반 상품 — N²SF 전환 사전진단, VDI 역할 재정의, MFA QuickStart, 백업·DR 복구검증.`,
+  title: `컨설팅 라인 | ${company.name}`,
+  description: `${company.name}의 4가지 컨설팅 라인 — N²SF 전환 사전진단, VDI 역할 재정의, MFA QuickStart, 백업·DR 복구검증. 메인 서비스는 VDI·백업 기술지원·유지보수이며, 본 페이지는 컨설팅·자문 라인 정보입니다.`,
 };
 
 const colorMap: Record<string, { border: string; bg: string; text: string; dot: string }> = {
@@ -117,15 +117,15 @@ export default function PracticesPage() {
       <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Solutions
+            Consulting Lines
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-4 leading-[1.15] kr-keep-all">
-            공공기관이 N²SF 전환기에 마주치는<br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>4가지 문제, 대표 엔지니어가 직접 답합니다
+            컨설팅·자문 라인 4종
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            대표 엔지니어가 직접 진단·설계합니다. 구축은 검증된 파트너 컨소시엄으로 수행하므로,
-            공공·금융권 사업에서도 역할과 책임을 분리해 대응할 수 있습니다.
+            메인 서비스는 <Link href="/" className="text-white underline underline-offset-4 decoration-blue-300">VDI·백업 기술지원·유지보수</Link>입니다.
+            본 페이지는 N²SF 전환 사전진단·VDI 역할 재정의 등 컨설팅·자문 라인 정보입니다.
+            기존 환경의 운영장애·점검·복구검증이 우선이면 홈으로 돌아가세요.
           </p>
         </div>
       </section>
