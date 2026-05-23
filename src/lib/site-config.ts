@@ -581,13 +581,12 @@ export const ctaLink = {
 /**
  * 홈페이지 — 3 핵심 기술지원 분야.
  * Citrix Virtual Apps and Desktops / Omnissa Horizon / Acronis Cyber Protect.
+ * lines: 카드 본문 2줄 (담백한 톤).
  */
 export interface SupportArea {
   id: string;
   brand: string;
-  title: string;
-  tagline: string;
-  scope: string[];
+  lines: string[];
   accent: "blue" | "indigo" | "emerald";
 }
 
@@ -595,52 +594,27 @@ export const supportAreas: SupportArea[] = [
   {
     id: "citrix",
     brand: "Citrix Virtual Apps and Desktops",
-    title: "Citrix 기술지원",
-    tagline: "Delivery Controller·StoreFront·NetScaler 운영장애 분석",
-    scope: [
-      "Delivery Controller · StoreFront · Director · License Server 점검",
-      "VDA 접속장애 원인 구분 (제품 · 인증서 · AD · DNS · 프로파일)",
-      "Machine Catalog · Delivery Group 구성 점검",
-      "Citrix Profile Management · FSLogix 연계 이슈",
-      "NetScaler · Citrix Gateway 연동 장애",
-      "인증서 · CRL · SSL Chain 점검",
-      "버전 업그레이드 · 마이그레이션 검토",
-      "운영 점검 보고서 작성",
+    lines: [
+      "접속 장애, StoreFront, Delivery Controller, VDA, Gateway 문제를 봅니다.",
+      "프로파일, 인증서, 라이선스 이슈도 함께 점검합니다.",
     ],
     accent: "blue",
   },
   {
     id: "horizon",
     brand: "Omnissa Horizon",
-    title: "Omnissa Horizon 기술지원",
-    tagline: "Connection Server·UAG·FSLogix 운영 안정화",
-    scope: [
-      "Horizon Connection Server 점검",
-      "UAG 연동 장애 분석",
-      "Horizon Agent · Client 접속 문제",
-      "Instant Clone · Full Clone 운영 이슈",
-      "FSLogix · Persona · 사용자 프로파일 문제",
-      "Blast · PCoIP 접속 품질 분석",
-      "인증서 · 라이선스 · AD 연동 점검",
-      "vSphere · ESXi · vCenter 연계 장애 분석",
-      "월간 유지보수 점검 보고서 작성",
+    lines: [
+      "Connection Server, UAG, Agent, Client, Instant Clone 문제를 봅니다.",
+      "Blast, PCoIP, FSLogix, vSphere 연계 이슈도 확인합니다.",
     ],
     accent: "indigo",
   },
   {
     id: "acronis",
     brand: "Acronis Cyber Protect",
-    title: "Acronis Cyber Protect 기술지원",
-    tagline: "백업 정책·복구 테스트·증빙 리포트",
-    scope: [
-      "백업 정책 설계 및 점검",
-      "서버 · VM · PC · NAS 백업 구성 검토",
-      "백업 실패 원인 분석",
-      "복구 테스트 및 복구검증 리포트",
-      "랜섬웨어 대응 관점의 백업 보존 정책 점검",
-      "에이전트 설치 · 업데이트 · 정책 배포 지원",
-      "클라우드 · 로컬 저장소 구성 검토",
-      "월간 백업 성공률 및 복구 가능성 보고",
+    lines: [
+      "백업 정책, 실패 이력, 에이전트 상태를 점검합니다.",
+      "필요하면 복구 테스트와 결과 보고서를 정리합니다.",
     ],
     accent: "emerald",
   },
@@ -649,13 +623,13 @@ export const supportAreas: SupportArea[] = [
 /**
  * 홈페이지 — 유지보수 4 패키지.
  * 가격이 아닌 운영자 관점의 유지보수 유형.
+ * lines: 2줄 본문 (대상/제공 라벨 제거).
  */
 export interface MaintenancePackage {
   id: string;
   no: string;
   title: string;
-  target: string[];
-  provides: string[];
+  lines: string[];
   accent: "blue" | "indigo" | "amber" | "emerald";
 }
 
@@ -663,166 +637,75 @@ export const maintenancePackages: MaintenancePackage[] = [
   {
     id: "monthly-checkup",
     no: "01",
-    title: "월간 점검형 유지보수",
-    target: [
-      "이미 운영 중인 VDI · 백업 환경이 있는 기관",
-      "정기 점검 보고서가 필요한 기관",
-    ],
-    provides: [
-      "월 1회 원격 점검",
-      "주요 서비스 상태 확인",
-      "인증서 · 라이선스 · 백업 성공률 확인",
-      "장애 이력 검토",
-      "월간 점검 보고서 제공",
+    title: "월간 점검",
+    lines: [
+      "서비스 상태, 인증서, 라이선스, 백업 성공률을 정기 점검합니다.",
+      "월간 보고서를 제공합니다.",
     ],
     accent: "blue",
   },
   {
     id: "incident-response",
     no: "02",
-    title: "장애 대응형 기술지원",
-    target: [
-      "내부 운영자는 있지만 고난도 장애 대응이 어려운 조직",
-      "SI 업체가 고객 대응 시 전문 엔지니어 지원이 필요한 경우",
-    ],
-    provides: [
-      "장애 원인 분석",
-      "로그 기반 진단",
-      "벤더 SR 대응 보조",
-      "조치 가이드 제공",
-      "필요 시 현장 · 원격 대응",
+    title: "장애 대응",
+    lines: [
+      "접속 장애, 로그인 지연, 백업 실패 원인을 확인합니다.",
+      "로그와 설정을 보고 조치 방향을 정리합니다.",
     ],
     accent: "amber",
   },
   {
     id: "operations-improvement",
     no: "03",
-    title: "운영 개선형 컨설팅",
-    target: [
-      "VDI 성능 저하, 스토리지 병목, 접속 지연, 프로파일 장애가 반복되는 조직",
-    ],
-    provides: [
-      "구성 진단",
-      "병목 지점 분석",
-      "개선안 제시",
-      "업그레이드 · 마이그레이션 방향성 검토",
-      "운영 절차서 정리",
+    title: "운영 개선",
+    lines: [
+      "반복되는 성능 저하와 프로파일 문제를 봅니다.",
+      "구성, 병목, 운영 절차를 함께 정리합니다.",
     ],
     accent: "indigo",
   },
   {
     id: "recovery-verification",
     no: "04",
-    title: "백업 복구검증 서비스",
-    target: [
-      "Acronis Cyber Protect 또는 유사 백업 솔루션을 쓰지만 실제 복구 검증이 부족한 조직",
-    ],
-    provides: [
-      "백업 정책 점검",
-      "샘플 복구 테스트",
-      "RTO · RPO 기준 정리",
-      "복구검증 리포트",
-      "월간 증빙 자료 제공",
+    title: "복구검증",
+    lines: [
+      "백업이 실제로 복구되는지 확인합니다.",
+      "복구 테스트 결과를 보고서로 남깁니다.",
     ],
     accent: "emerald",
   },
 ];
 
 /**
- * 홈페이지 — 운영현장에서 실제로 발생하는 5개 문제.
- * 추상 컨설팅 메시지가 아니라 운영자가 어제·오늘 겪은 문제 기준.
+ * 홈페이지 — 운영현장에서 실제로 마주치는 문제 6건.
  */
 export const operationalIssues: { title: string; detail: string }[] = [
-  {
-    title: "VDI 접속 장애가 반복되지만 원인 구분이 어렵다",
-    detail:
-      "Connection Server · Delivery Controller · StoreFront · UAG · NetScaler · AD · DNS · 인증서 · 프로파일 중 어디가 문제인지 빠르게 구분해야 함",
-  },
-  {
-    title: "사용자 프로파일과 FSLogix 장애가 반복된다",
-    detail:
-      "로그인 지연, 프로파일 잠김, VHDX 마운트 실패, SMB 세션 문제 등",
-  },
-  {
-    title: "인증서·라이선스·버전 이슈가 운영 리스크가 된다",
-    detail:
-      "갱신 시점, CRL, SSL Chain, 라이선스 만료, 제품 버전 호환성 문제",
-  },
-  {
-    title: "스토리지·네트워크 병목이 VDI 품질 문제로 이어진다",
-    detail:
-      "iSCSI · NFS · NetApp · 3PAR · VMFS · vMotion · Datastore 사용률 · IOPS 병목 등",
-  },
-  {
-    title: "백업은 있지만 실제 복구 가능성은 검증되지 않았다",
-    detail:
-      "Acronis Cyber Protect 기반 백업 정책, 복구 테스트, 월간 증빙 리포트 필요",
-  },
+  { title: "접속이 안 됩니다", detail: "UAG, Gateway, 인증서, DNS를 함께 봅니다." },
+  { title: "로그인이 느립니다", detail: "프로파일, FSLogix, 스토리지를 확인합니다." },
+  { title: "인증서가 문제를 만듭니다", detail: "만료, 체인, CRL 설정을 점검합니다." },
+  { title: "VDI가 느립니다", detail: "호스트, 데이터스토어, 네트워크 병목을 봅니다." },
+  { title: "백업은 되는데 불안합니다", detail: "정책과 실패 이력을 확인합니다." },
+  { title: "복구가 검증되지 않았습니다", detail: "실제 복구 가능성을 점검합니다." },
 ];
 
 /**
  * 홈페이지 — 왜 마이로켓인가 (5 실무 신뢰 카드).
  */
 export const trustSignals: { title: string; detail: string }[] = [
-  {
-    title: "VDI 운영장애 경험",
-    detail:
-      "공공·연구기관 VDI를 다년간 구축·운영·유지보수하며 마주친 접속장애·프로파일·UAG·인증서 이슈를 패턴으로 분류해 둠",
-  },
-  {
-    title: "인프라 연계 분석",
-    detail:
-      "vSphere · ESXi · vCenter · NetApp · XenServer 등 인프라까지 함께 보고 병목·이상점을 구분",
-  },
-  {
-    title: "공공기관 보고서 대응",
-    detail:
-      "점검 보고서 · 장애 사후 분석 · 월간 운영 리포트 등 공공기관 제출 가능한 형식으로 작성",
-  },
-  {
-    title: "백업 복구검증 역량",
-    detail:
-      "Acronis Cyber Protect 정책 점검과 복구 테스트로 '백업은 되지만 복구는 모르는' 상태를 정리",
-  },
-  {
-    title: "SI 파트너 협업",
-    detail:
-      "SI 영업대표가 제안 · 고객 미팅에서 바로 활용할 수 있는 형태의 기술 산출물",
-  },
+  { title: "VDI 장애 경험", detail: "접속, 프로파일, 인증서, UAG 문제를 다뤄왔습니다." },
+  { title: "인프라까지 확인", detail: "vSphere, 스토리지, 네트워크 병목을 함께 봅니다." },
+  { title: "보고서 작성", detail: "점검 결과와 조치 내역을 제출 가능한 형태로 정리합니다." },
+  { title: "복구검증", detail: "백업 성공 여부가 아니라 실제 복구 가능성을 봅니다." },
+  { title: "SI 협업", detail: "영업, 제안, 고객 미팅에 필요한 기술 자료를 지원합니다." },
 ];
 
 /**
  * 홈페이지 — 지원 프로세스 5단계.
  */
 export const supportProcess: { no: string; title: string; detail: string }[] = [
-  {
-    no: "01",
-    title: "환경 정보 접수",
-    detail:
-      "제품명 · 버전 · 장애 증상 · 구성도 · 로그 보유 여부를 먼저 확인합니다",
-  },
-  {
-    no: "02",
-    title: "1차 원인 구분",
-    detail:
-      "제품 · 인프라 · 인증서 · 계정 · 스토리지 · 백업 정책 중 어디 영역의 문제인지 분리합니다",
-  },
-  {
-    no: "03",
-    title: "원격 진단 또는 현장 지원",
-    detail:
-      "필요 시 로그 분석, 설정 점검, 운영자 인터뷰를 수행합니다",
-  },
-  {
-    no: "04",
-    title: "조치안 및 리스크 안내",
-    detail:
-      "즉시 조치 가능 항목과 변경작업이 필요한 항목을 구분해 안내합니다",
-  },
-  {
-    no: "05",
-    title: "보고서 · 재발방지안 제공",
-    detail:
-      "공공기관 제출 가능한 형식의 결과 보고서와 재발방지안을 함께 드립니다",
-  },
+  { no: "01", title: "환경 확인", detail: "제품명, 버전, 증상을 확인합니다." },
+  { no: "02", title: "원인 구분", detail: "제품, 인프라, 인증서, 계정, 백업 문제를 나눕니다." },
+  { no: "03", title: "진단", detail: "로그와 설정을 확인합니다." },
+  { no: "04", title: "조치", detail: "가능한 조치와 필요한 변경을 구분합니다." },
+  { no: "05", title: "정리", detail: "결과와 재발 방지안을 문서로 남깁니다." },
 ];

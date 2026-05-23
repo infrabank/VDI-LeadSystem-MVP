@@ -46,7 +46,7 @@ export default function PublicLayout({
                       href={`/#support-areas`}
                       className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all"
                     >
-                      {a.title}
+                      {a.brand}
                     </Link>
                   </li>
                 ))}

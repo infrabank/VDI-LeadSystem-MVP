@@ -94,8 +94,8 @@ const jsonLd = {
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: area.title,
-          description: `${area.brand} — ${area.tagline}`,
+          name: `${area.brand} 기술지원`,
+          description: area.lines.join(" "),
           url: `${siteUrl}/#support-areas`,
         },
       })),
@@ -104,7 +104,7 @@ const jsonLd = {
         itemOffered: {
           "@type": "Service",
           name: pkg.title,
-          description: pkg.provides.join(" · "),
+          description: pkg.lines.join(" "),
           url: `${siteUrl}/#maintenance`,
         },
       })),

@@ -91,18 +91,18 @@ export default function AboutPage() {
                     href="/#support-areas"
                     className="block p-3 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
                   >
-                    <div className="flex items-center gap-2 mb-1">
+                    <div className="flex items-center gap-2 mb-1.5">
                       <span
                         className={`w-2 h-2 rounded-full ${dotColor[a.accent] || dotColor.blue}`}
                       ></span>
                       <span
-                        className={`text-xs font-bold uppercase tracking-widest ${textColor[a.accent] || textColor.blue}`}
+                        className={`text-[10px] font-bold uppercase tracking-widest ${textColor[a.accent] || textColor.blue}`}
                       >
-                        {a.brand}
+                        {a.id}
                       </span>
                     </div>
-                    <h3 className="text-sm font-bold text-gray-900 mb-0.5 kr-keep-all">{a.title}</h3>
-                    <p className="text-xs text-gray-500 kr-keep-all">{a.tagline}</p>
+                    <h3 className="text-sm font-bold text-gray-900 mb-0.5 kr-keep-all">{a.brand}</h3>
+                    <p className="text-xs text-gray-500 kr-keep-all">{a.lines[0]}</p>
                   </Link>
                 );
               })}
