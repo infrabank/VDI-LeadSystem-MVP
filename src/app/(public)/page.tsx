@@ -38,7 +38,7 @@ export default function HomePage() {
           </p>
           <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             VDI와 백업 장애,<br />
-            직접 봅니다.
+            직접 확인합니다.
           </h1>
           <p className="text-base sm:text-lg text-slate-200/90 mb-8 sm:mb-10 max-w-2xl leading-relaxed kr-keep-all">
             Citrix, Omnissa Horizon, Acronis 운영환경을 점검하고 장애를 처리합니다.<br className="hidden sm:block" />
@@ -69,7 +69,7 @@ export default function HomePage() {
             Field Issues
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 md:mb-12 kr-keep-all">
-            운영 문제는 보통 경계에서 터집니다.
+            운영 문제는 대개 경계에서 터집니다.
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {operationalIssues.map((issue, i) => (
@@ -99,7 +99,7 @@ export default function HomePage() {
             다루는 영역
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            운영 중인 환경 기준으로 봅니다.
+            운영 중인 환경을 기준으로 봅니다.
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
@@ -218,7 +218,7 @@ export default function HomePage() {
             수행 경험
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            운영 현장에서 다룬 사례입니다.
+            운영 현장에서 다룬 사례들입니다.
           </p>
 
           <CustomerShowcase variant="compact" />
@@ -260,7 +260,7 @@ export default function HomePage() {
             Process
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 md:mb-12 kr-keep-all">
-            문의 후 진행 방식
+            문의 후 진행 절차
           </h2>
 
           <ol className="space-y-3 sm:space-y-4">
