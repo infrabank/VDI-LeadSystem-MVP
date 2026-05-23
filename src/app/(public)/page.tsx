@@ -42,7 +42,7 @@ export default function HomePage() {
           </h1>
           <p className="text-base sm:text-lg text-slate-200/90 mb-8 sm:mb-10 max-w-2xl leading-relaxed kr-keep-all">
             Citrix, Omnissa Horizon, Acronis 운영환경을 점검하고 장애를 처리합니다.<br className="hidden sm:block" />
-            접속, 인증서, 프로파일, 스토리지, 백업 복구 문제를 함께 봅니다.
+            접속, 인증서, 프로파일, 스토리지, 백업 복구까지 함께 봅니다.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -141,7 +141,7 @@ export default function HomePage() {
             Maintenance
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 md:mb-12 kr-keep-all">
-            필요한 방식으로 지원합니다.
+            필요한 방식에 맞춰 지원합니다.
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
@@ -188,7 +188,7 @@ export default function HomePage() {
             왜 마이로켓인가
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            제품보다 운영 문제를 먼저 봅니다.
+            제품보다 운영 상황을 먼저 봅니다.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
@@ -299,7 +299,7 @@ export default function HomePage() {
             제품명, 버전, 증상만 보내주세요.
           </h2>
           <p className="text-sm sm:text-base text-slate-300 mb-8 max-w-2xl leading-relaxed kr-keep-all">
-            정기 유지보수, 장애 대응, 복구검증, SI 협업 문의를 받습니다.
+            정기 유지보수, 장애 대응, 복구검증, SI 협업 문의를 받고 있습니다.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3">
