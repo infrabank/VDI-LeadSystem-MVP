@@ -1,16 +1,19 @@
 /**
  * Inquiry notification helper.
  *
- * 알림 채널 (env 기반, 우선순위 순):
- *   1) INQUIRY_WEBHOOK_URL  — 임의 webhook (Slack/Discord/Zapier/Make/IFTTT/n8n 등)
- *   2) INQUIRY_EMAIL_TO + RESEND_API_KEY  — Resend.com API (https://resend.com)
- *   3) 미설정 시 — console.log only (DB 저장은 정상 진행)
+ * 알림 채널 (env 기반, 모두 병렬 시도):
+ *   1) INQUIRY_WEBHOOK_URL                    — 임의 webhook (Slack/Discord/Zapier/Make/IFTTT/n8n)
+ *   2) INQUIRY_EMAIL_TO + RESEND_API_KEY      — Resend.com API
+ *   3) TELEGRAM_BOT_TOKEN + TELEGRAM_CHAT_ID  — Telegram Bot API (개인 봇 채널)
+ *   4) 미설정 시 — console.log only (DB 저장은 정상 진행)
  *
  * 모든 알림 실패는 swallow — DB 저장 자체는 막지 않음.
  *
- * ── PII 정책 (Red Team Round 2 — 2026-05-01) ──
+ * ── PII 정책 (Red Team Round 2 — 2026-05-01, Telegram 추가 2026-05-23) ──
  *   • Resend(이메일): 회사 자체 메일 → PII 전체 허용 (담당자 회신 필요).
- *   • Webhook (Slack/Discord/Zapier 등): 외부 SaaS — PII 마스킹.
+ *   • Telegram: 1인 운영자 개인 봇 채널 가정 → PII 전체 허용 (회신 정보 필요).
+ *       그룹·다인 채팅에 사용할 경우 sendTelegram을 마스킹 버전으로 교체할 것.
+ *   • Webhook (Slack/Discord/Zapier 등): 외부 SaaS·다인 채널 가정 — PII 마스킹.
  *     - 이름: 첫 글자 + "**" (예: "홍**")
  *     - 이메일: 도메인만 (예: "***@kistim.re.kr")
  *     - 전화: 끝 4자리만 (예: "***-***-1234")
@@ -127,6 +130,32 @@ async function sendWebhook(url: string, p: InquiryPayload): Promise<void> {
   }
 }
 
+/**
+ * Telegram Bot API — 개인 운영자 봇 채널로 즉시 알림.
+ * env: TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID
+ *
+ * 그룹·다인 채팅에 사용하려면 formatPlainText 대신 formatWebhookText로 교체.
+ */
+async function sendTelegram(p: InquiryPayload): Promise<void> {
+  const token = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+  if (!token || !chatId) return;
+
+  const text = formatPlainText(p);
+  const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text,
+      disable_web_page_preview: true,
+    }),
+  });
+  if (!res.ok) {
+    console.warn(`[notify] telegram responded ${res.status}: ${await res.text().catch(() => "")}`);
+  }
+}
+
 async function sendResendEmail(p: InquiryPayload): Promise<void> {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.INQUIRY_EMAIL_TO;
@@ -169,9 +198,16 @@ export async function notifyInquiry(p: InquiryPayload): Promise<void> {
     tasks.push(sendResendEmail(p).catch((err) => console.warn("[notify] resend error", err)));
   }
 
+  if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID) {
+    tasks.push(sendTelegram(p).catch((err) => console.warn("[notify] telegram error", err)));
+  }
+
   if (tasks.length === 0) {
     // 알림 채널 미설정 — console.log fallback
-    console.log("[inquiry] 알림 채널 미설정. INQUIRY_WEBHOOK_URL 또는 RESEND_API_KEY 설정 권장.");
+    console.log(
+      "[inquiry] 알림 채널 미설정. " +
+        "INQUIRY_WEBHOOK_URL / RESEND_API_KEY+INQUIRY_EMAIL_TO / TELEGRAM_BOT_TOKEN+TELEGRAM_CHAT_ID 중 하나 이상 설정 권장."
+    );
     console.log("[inquiry payload]", formatPlainText(p));
     return;
   }
