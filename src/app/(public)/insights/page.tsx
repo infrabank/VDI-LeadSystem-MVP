@@ -139,11 +139,10 @@ export default async function ContentListPage({
             Insights
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 kr-keep-all">
-            VDI·백업 운영 현장에서 정리한 기술 자료
+            VDI · 백업 운영 노트
           </h1>
           <p className="text-gray-500 text-base sm:text-lg kr-keep-all">
-            Citrix · Omnissa Horizon · Acronis Cyber Protect 운영장애·유지보수·복구검증과
-            N²SF 환경 운영 노트를 가이드·체크리스트·사례 형태로 정리했습니다.
+            현장에서 본 것을 가이드·체크리스트·사례로 정리합니다.
           </p>
         </div>
       </div>

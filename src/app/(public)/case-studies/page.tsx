@@ -43,8 +43,7 @@ export default async function CaseStudiesPage() {
             VDI · 백업 운영 사례
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            공공·연구기관·민간 기업 VDI 구축·운영·유지보수와 복구검증 수행 경험.
-            기관명은 익명·제한 공개로 노출하되, 환경 유형·벤더·규모·수행 범위·결과는 명시합니다.
+            현장에서 다룬 경험입니다. 기관명은 익명, 환경과 결과는 사실대로 적습니다.
           </p>
         </div>
       </section>

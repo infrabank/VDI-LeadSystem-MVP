@@ -11,62 +11,55 @@ export const metadata: Metadata = {
 const services = [
   {
     no: "01",
-    title: "고객 앞 기술 미팅 동행",
-    nickname: "Tech Q&A Shield",
+    title: "기술 미팅 동행",
     duration: "반나절~1일",
-    desc: "발주처 기술 담당자·CISO 미팅에서 Citrix·Horizon·UAG·FSLogix·Acronis 등 운영 질문 직접 응대.",
+    desc: "고객 미팅에 함께 들어가 질문에 직접 대응합니다.",
   },
   {
     no: "02",
-    title: "VDI 운영환경 사전 점검",
-    nickname: "Pre-Engagement Health Check",
+    title: "운영환경 사전 점검",
     duration: "1주",
-    desc: "현재 환경의 Connection Server / Delivery Controller / 스토리지 / 인증서 / 백업 상태 점검 후 리스크 정리.",
+    desc: "고객 환경을 점검하고 리스크를 정리합니다.",
   },
   {
     no: "03",
-    title: "장애 원인 분석 및 조치 가이드",
-    nickname: "Incident Root-Cause Pack",
+    title: "장애 원인 분석",
     duration: "1~3일",
-    desc: "운영 중 장애의 로그 기반 분석, 1차 원인 구분, 즉시 조치/변경작업 항목 분리 가이드.",
+    desc: "로그를 보고 원인을 구분하고 조치 방향을 정리합니다.",
   },
   {
     no: "04",
-    title: "월간 유지보수 점검 보고서",
-    nickname: "Monthly Maintenance Report",
+    title: "월간 점검 보고서",
     duration: "월 단위",
-    desc: "주요 서비스 상태·인증서·라이선스·백업 성공률·장애 이력을 공공기관 제출 가능한 형식의 보고서로 작성.",
+    desc: "점검 결과를 제출 가능한 형태로 정리합니다.",
   },
   {
     no: "05",
-    title: "Acronis 백업 복구검증 리포트",
-    nickname: "Recovery Verification Report",
+    title: "백업 복구검증",
     duration: "1~2주",
-    desc: "백업 정책 점검 · 샘플 복구 테스트 · RTO/RPO 정리 · 복구검증 증빙 문서 납품.",
+    desc: "백업이 실제로 복구되는지 테스트하고 보고서로 남깁니다.",
   },
   {
     no: "06",
     title: "벤더 SR 대응 보조",
-    nickname: "Vendor SR Assist",
     duration: "건당",
-    desc: "Citrix·Omnissa·Acronis 벤더 SR 케이스 정리·회신 검토·방향 판단 보조.",
+    desc: "SR 케이스 정리와 회신 해석을 보조합니다.",
   },
   {
     no: "07",
-    title: "제안서 기술 파트 검토",
-    nickname: "Proposal Tech Review",
+    title: "제안서 기술 검토",
     duration: "1~2주",
-    desc: "RFP 기술요건·구현방안·운영 리스크 검토. 제안서에 그대로 붙는 형태로 납품.",
+    desc: "RFP 기술요건과 운영 리스크를 검토합니다.",
   },
 ];
 
 const triggers = [
-  "고객 환경에서 VDI 접속장애·FSLogix·UAG 이슈가 반복된다",
-  "백업은 되지만 실제 복구 가능성이 검증되지 않았다",
-  "Citrix·Horizon 버전 업그레이드·마이그레이션 리스크가 크다",
-  "월간 유지보수 점검 보고서를 공공기관 형식으로 납품해야 한다",
-  "고객 앞 기술 미팅에 동행할 운영장애 경험자가 필요하다",
-  "벤더 SR 케이스 회신 해석이 어렵다",
+  "고객 환경에서 접속장애·FSLogix·UAG 이슈가 반복된다",
+  "백업은 되는데 복구가 검증되지 않았다",
+  "Citrix·Horizon 업그레이드 리스크가 크다",
+  "월간 점검 보고서를 공공기관 형식으로 납품해야 한다",
+  "고객 미팅에 동행할 운영 경험자가 필요하다",
+  "벤더 SR 회신 해석이 어렵다",
 ];
 
 const cases = [
@@ -75,21 +68,21 @@ const cases = [
     label: "CASE 01",
     org: "중앙행정 데이터 기관",
     env: "Omnissa Horizon · VMware ESXi",
-    line: "수백 명 규모 외부 연구자 접속형 VDI 다년간 구축·운영·유지보수. 월간 운영 리포트, 장애 분석, PowerCLI 스토리지 대시보드 제공.",
+    line: "외부 연구자 접속형 VDI를 다년간 운영. 월간 리포트와 장애 분석을 제공했습니다.",
   },
   {
     color: "blue",
     label: "CASE 02",
     org: "정부 출연 국토 연구기관",
     env: "Omnissa Horizon · UAG · VMware ESXi",
-    line: "100~300명 규모 외부접속 운영 안정화. UAG·인증서·세션 layer별 점검 표준화, 가용률·인증서 잔여 기간 월간 리포트 납품.",
+    line: "UAG·인증서·세션 점검을 표준화하고 월간 가용률 리포트를 납품했습니다.",
   },
   {
     color: "emerald",
     label: "CASE 03",
     org: "정부 출연 과학기술정보 연구기관",
     env: "Citrix · Omnissa Workspace ONE",
-    line: "멀티 벤더 환경 다년간 자문. 사용자군 분류, 시나리오별 비용·리스크, 전환 일정·검증 절차 가이드로 의사결정 기반 제공.",
+    line: "멀티 벤더 환경을 다년간 자문. 마이그레이션 가이드를 제공했습니다.",
   },
 ];
 
@@ -129,9 +122,8 @@ export default function PartnersPage() {
             <span className="md:hidden"> </span>대표 엔지니어가 함께 들어갑니다.
           </h1>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-10 max-w-2xl">
-            Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 기반
-            제안·구축·유지보수 과정에서 필요한 기술 검토, 장애 원인 분석, 월간 점검 리포트,
-            백업 복구검증 산출물을 지원합니다.
+            Citrix, Omnissa Horizon, Acronis 기반 제안과 운영에서 필요한 기술 검토,
+            장애 분석, 점검 리포트, 복구검증을 함께 만듭니다.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <a
@@ -190,11 +182,10 @@ export default function PartnersPage() {
             What We Do
           </p>
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2 kr-keep-all">
-            바로 하는 일 5가지
+            바로 하는 일
           </h2>
           <p className="text-sm text-gray-500 mb-8 kr-keep-all">
-            각 항목은 SI 영업·제안 현장에서 바로 부를 수 있는 단위로 정리되어
-            있습니다.
+            제안·미팅 현장에서 바로 부를 수 있는 단위로 정리했습니다.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -211,12 +202,9 @@ export default function PartnersPage() {
                     {s.duration}
                   </span>
                 </div>
-                <h3 className="text-base font-semibold text-gray-900 mb-1 kr-keep-all">
+                <h3 className="text-base font-semibold text-gray-900 mb-2 kr-keep-all">
                   {s.title}
                 </h3>
-                <p className="text-[11.5px] font-semibold text-purple-700 mb-2 kr-keep-all">
-                  {s.nickname}
-                </p>
                 <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
                   {s.desc}
                 </p>
@@ -258,8 +246,7 @@ export default function PartnersPage() {
             협업·정산 구조
           </h2>
           <p className="text-sm text-gray-500 mb-6 kr-keep-all max-w-3xl">
-            사전 단계에서 SI 영업대표가 자문료를 따로 결재하지 않습니다.
-            정산은 수주 이후 프로젝트 안에서 이뤄집니다.
+            사전 단계는 별도 청구가 없습니다. 수주 후 프로젝트 안에서 정산합니다.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -271,9 +258,8 @@ export default function PartnersPage() {
                 기술 검토·미팅 동행
               </h3>
               <p className="text-sm text-gray-700 leading-relaxed kr-keep-all">
-                <strong className="text-emerald-800">공동 영업으로 진행, 별도 청구 없음.</strong>{" "}
-                RFP 기술 리스크 검토, 고객 미팅 1~2회 동행은 수주 가능성을
-                함께 만드는 단계로 봅니다.
+                <strong className="text-emerald-800">별도 청구 없음.</strong>{" "}
+                기술 리스크 검토와 고객 미팅 동행은 공동 영업으로 진행합니다.
               </p>
             </div>
 
@@ -285,9 +271,8 @@ export default function PartnersPage() {
                 자문·PMO·검수
               </h3>
               <p className="text-sm text-gray-700 leading-relaxed kr-keep-all">
-                <strong className="text-blue-800">프로젝트 견적에 자문료 항목으로 포함.</strong>{" "}
-                기술 자문·산출물 검수·N²SF 통제 매핑 대응 등 사업 기간 동안
-                대표 엔지니어가 함께 책임집니다.
+                <strong className="text-blue-800">프로젝트 견적에 포함.</strong>{" "}
+                사업 기간 동안 대표 엔지니어가 함께 책임집니다.
               </p>
             </div>
 
@@ -296,20 +281,13 @@ export default function PartnersPage() {
                 STAGE 3 · 구축
               </p>
               <h3 className="text-base font-semibold text-gray-900 mb-2 kr-keep-all">
-                구축비는 파트너사 직접 청구
+                파트너사 직접 청구
               </h3>
               <p className="text-sm text-gray-700 leading-relaxed kr-keep-all">
-                구축은 검증된 파트너 컨소시엄이 수행하고{" "}
-                <strong className="text-gray-900">구축비는 파트너사가 직접 인보이싱</strong>합니다.
-                마이로켓은 자문·PMO·검수 역할만.
+                구축은 파트너가 수행·인보이싱하고 마이로켓은 자문·검수만 맡습니다.
               </p>
             </div>
           </div>
-
-          <p className="text-xs text-gray-500 mt-6 kr-keep-all max-w-3xl">
-            * 단독 자문(사전진단·전환 시나리오만 별도 발주)은 드물게 1주
-            단위로 협의 견적합니다.
-          </p>
         </div>
       </section>
 
@@ -325,24 +303,15 @@ export default function PartnersPage() {
           <ul className="space-y-3 text-base text-gray-700 leading-relaxed kr-keep-all mb-6">
             <li className="flex gap-3">
               <span className="text-gray-300 flex-shrink-0">·</span>
-              <span>
-                공공·연구기관 VDI 10여 곳 구축·운영·유지보수 — 접속장애·FSLogix·UAG·인증서·스토리지·백업 복구
-                같은 운영 현장 문제를 패턴으로 다룸
-              </span>
+              <span>공공·연구기관 VDI 10여 곳을 다년간 운영해 왔습니다.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-gray-300 flex-shrink-0">·</span>
-              <span>
-                Citrix Virtual Apps and Desktops · Omnissa Horizon · UAG · Acronis Cyber Protect 운영 경험 기반,
-                벤더 중립 기술지원
-              </span>
+              <span>Citrix · Omnissa Horizon · Acronis 운영 경험 기반, 벤더 중립.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-gray-300 flex-shrink-0">·</span>
-              <span>
-                대표 엔지니어 직접 수행 — 영업 거치지 않고 처음부터 끝까지 한 사람이
-                책임
-              </span>
+              <span>대표 엔지니어가 처음부터 끝까지 직접 맡습니다.</span>
             </li>
           </ul>
           <div className="flex flex-wrap gap-2">
@@ -368,7 +337,7 @@ export default function PartnersPage() {
             실제 경험
           </h2>
           <p className="text-sm text-gray-500 mb-8 kr-keep-all">
-            기관명은 동의 정책에 따라 익명 표기. 환경·규모·역할은 사실 그대로.
+            기관명은 익명, 환경과 역할은 사실대로 적습니다.
           </p>
 
           <div className="space-y-3">
@@ -407,9 +376,8 @@ export default function PartnersPage() {
             1인 기술자문 회사입니다
           </h2>
           <p className="text-base text-gray-700 leading-[1.85] kr-keep-all">
-            마이로켓은 1인 기술자문 회사입니다. 대표가 직접 검토·납품하며,
-            대규모 구축은 파트너사가 수행하고 마이로켓은 기술자문·PMO·검수
-            역할로 참여합니다. 상주·SM·총판 영업은 하지 않습니다.
+            1인 기술자문 회사입니다. 대표가 직접 검토·납품하고, 대규모 구축은 파트너가 맡습니다.
+            상주·SM·총판 영업은 하지 않습니다.
           </p>
         </div>
       </section>
@@ -454,9 +422,8 @@ export default function PartnersPage() {
             글로 정리한 관점
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-5 max-w-2xl">
-            Citrix · Omnissa Horizon · Acronis Cyber Protect 운영장애·유지보수·복구검증 노트와
-            공공기관 운영 환경 이해를 인사이트로 정리해 두고 있습니다.
-            SI 영업대표가 고객 미팅·제안 단계에서 참고할 수 있는 형태입니다.
+            Citrix · Horizon · Acronis 운영 노트를 인사이트로 정리해 둡니다.
+            미팅·제안 단계에서 그대로 참고할 수 있습니다.
           </p>
           <Link
             href="/insights"

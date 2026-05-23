@@ -25,6 +25,16 @@ export const metadata = {
   description: company.description,
 };
 
+const responsibilityRows = [
+  { area: "월간 점검", direct: "원격 점검과 상태 확인", partner: "현장 점검 동행 (필요 시)" },
+  { area: "장애 원인 구분", direct: "로그 분석과 영역 분리", partner: "현장 운영자 인터뷰" },
+  { area: "장애 대응", direct: "원인 분석과 조치 가이드", partner: "현장 조치·변경작업" },
+  { area: "운영 개선", direct: "구성 진단과 개선안", partner: "변경작업 실행" },
+  { area: "복구검증", direct: "테스트 설계와 리포트", partner: "복구 시연 데이터 수집" },
+  { area: "벤더 SR 대응", direct: "케이스 정리와 회신 검토", partner: "벤더 채널 전달" },
+  { area: "보고서·서명", direct: "제출 형식 보고서 작성", partner: "납품·인수 서명" },
+];
+
 export default function AboutPage() {
   return (
     <div>
@@ -141,8 +151,7 @@ export default function AboutPage() {
             대표 직접 책임 + 검증된 파트너 컨소시엄
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-12 max-w-2xl mx-auto kr-keep-all">
-            기술지원·유지보수에서 대표 엔지니어가 직접 책임지는 영역과 검증된 파트너가 수행하는 영역을 단계별로 분리합니다.
-            대규모 구축이나 현장 상주는 파트너 컨소시엄과 분담하며, 분석·판단·산출물은 대표가 직접 수행합니다.
+            분석·판단·산출물은 대표가 직접 맡습니다. 대규모 구축과 현장 상주는 파트너가 분담합니다.
           </p>
 
           {/* Desktop table */}
@@ -160,15 +169,7 @@ export default function AboutPage() {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100">
-                {[
-                  { area: "월간 점검", direct: "원격 점검 · 인증서·라이선스·백업 성공률 확인", partner: "현장 점검 동행 (필요 시)" },
-                  { area: "장애 1차 원인 구분", direct: "로그 분석 · 영역 분리 (제품/인프라/인증서/계정)", partner: "현장 운영자 인터뷰" },
-                  { area: "장애 대응", direct: "근본 원인 분석 · 조치 가이드", partner: "현장 조치 · 변경작업" },
-                  { area: "운영 개선 컨설팅", direct: "구성 진단 · 병목 분석 · 개선안", partner: "변경작업 실행" },
-                  { area: "복구검증", direct: "복구 테스트 설계 · RTO/RPO 정리 · 리포트", partner: "복구 시연 데이터 수집" },
-                  { area: "벤더 SR 대응", direct: "SR 케이스 정리 · 회신 검토 · 방향 판단", partner: "벤더 채널 전달" },
-                  { area: "보고서·서명", direct: "공공기관 제출 형식 보고서 작성", partner: "납품·인수 서명" },
-                ].map((row) => (
+                {responsibilityRows.map((row) => (
                   <tr key={row.area} className="bg-white">
                     <td className="px-4 py-3 font-semibold text-gray-900 kr-keep-all">{row.area}</td>
                     <td className="px-4 py-3 text-gray-700 kr-keep-all">{row.direct}</td>
@@ -181,15 +182,7 @@ export default function AboutPage() {
 
           {/* Mobile cards */}
           <div className="md:hidden space-y-3">
-            {[
-              { area: "월간 점검", direct: "원격 점검 · 인증서·라이선스·백업 성공률 확인", partner: "현장 점검 동행 (필요 시)" },
-              { area: "장애 1차 원인 구분", direct: "로그 분석 · 영역 분리", partner: "현장 운영자 인터뷰" },
-              { area: "장애 대응", direct: "근본 원인 분석 · 조치 가이드", partner: "현장 조치 · 변경작업" },
-              { area: "운영 개선 컨설팅", direct: "구성 진단 · 병목 분석 · 개선안", partner: "변경작업 실행" },
-              { area: "복구검증", direct: "복구 테스트 설계 · 리포트", partner: "복구 시연 데이터 수집" },
-              { area: "벤더 SR 대응", direct: "SR 케이스 정리 · 회신 검토", partner: "벤더 채널 전달" },
-              { area: "보고서·서명", direct: "공공기관 제출 형식 보고서 작성", partner: "납품·인수 서명" },
-            ].map((row) => (
+            {responsibilityRows.map((row) => (
               <div key={row.area} className="rounded-xl border border-gray-200 bg-white p-4">
                 <p className="text-sm font-bold text-gray-900 mb-2 kr-keep-all">{row.area}</p>
                 <div className="space-y-1.5 text-xs">
@@ -207,8 +200,7 @@ export default function AboutPage() {
           </div>
 
           <p className="text-xs text-gray-500 text-center mt-6 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            ※ 본 분담은 일반 권고이며, 사업 규모·계약 조건·기관 요구에 따라 단계별로 조정됩니다.
-            대표 가용성·동시 사고 등 단일 장애점 리스크는 검증된 파트너 컨소시엄으로 분산합니다.
+            ※ 사업 규모와 계약 조건에 따라 단계별로 조정됩니다. 단일 장애점 리스크는 파트너로 분산합니다.
           </p>
         </div>
       </section>
@@ -223,8 +215,7 @@ export default function AboutPage() {
             구축·운영·유지보수 지원 고객사
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
-            공공·연구기관과 민간 기업의 VDI·DaaS 환경 구축·운영·유지보수를 지원해 왔습니다.
-            실제 일상 운영은 고객사 내부 운영자가 수행하며, 마이로켓은 구축·기술 지원·유지보수와 운영 자문을 담당합니다.
+            공공·연구기관과 민간 기업의 VDI·백업 환경을 함께 지원해 왔습니다.
           </p>
           <CustomerShowcase variant="grouped" />
           <p className="text-xs text-gray-400 text-center mt-8 kr-keep-all">
