@@ -57,7 +57,7 @@ export default function MfaAccessPage() {
             <span className="sm:hidden"> </span>MFA 연계 기술검토
           </h1>
           <p className="text-sm sm:text-base md:text-lg text-indigo-100/90 mb-4 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            마이로켓 메인 서비스는 <Link href="/" className="text-white underline underline-offset-4 decoration-indigo-300">VDI·백업 기술지원·유지보수</Link>이며,
+            마이로켓의 주 서비스는 <Link href="/" className="text-white underline underline-offset-4 decoration-indigo-300">VDI·백업 기술지원·유지보수</Link>이며,
             본 페이지는 VDI/DaaS 접속 보안의 보조 검토 영역입니다.
           </p>
           <p className="text-sm sm:text-base text-indigo-100/80 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed kr-keep-all">

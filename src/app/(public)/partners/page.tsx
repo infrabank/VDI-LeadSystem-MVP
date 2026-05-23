@@ -118,12 +118,12 @@ export default function PartnersPage() {
             For SI Partners — VDI · Backup Technical Support
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
-            고객 앞 기술질문과 운영장애 대응,<br className="hidden md:block" />
+            고객 앞 기술 질문과 운영 장애 대응에<br className="hidden md:block" />
             <span className="md:hidden"> </span>대표 엔지니어가 함께 들어갑니다.
           </h1>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-10 max-w-2xl">
-            Citrix, Omnissa Horizon, Acronis 기반 제안과 운영에서 필요한 기술 검토,
-            장애 분석, 점검 리포트, 복구검증을 함께 만듭니다.
+            Citrix, Omnissa Horizon, Acronis 기반 제안과 운영에 필요한 기술 검토,
+            장애 분석, 점검 리포트, 복구 검증을 함께 만듭니다.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <a
@@ -185,7 +185,7 @@ export default function PartnersPage() {
             바로 하는 일
           </h2>
           <p className="text-sm text-gray-500 mb-8 kr-keep-all">
-            제안·미팅 현장에서 바로 부를 수 있는 단위로 정리했습니다.
+            제안·미팅 현장에서 바로 요청할 수 있는 단위로 정리했습니다.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -246,7 +246,7 @@ export default function PartnersPage() {
             협업·정산 구조
           </h2>
           <p className="text-sm text-gray-500 mb-6 kr-keep-all max-w-3xl">
-            사전 단계는 별도 청구가 없습니다. 수주 후 프로젝트 안에서 정산합니다.
+            사전 단계는 별도 청구하지 않습니다. 수주 후 프로젝트 안에서 정산합니다.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -444,10 +444,10 @@ export default function PartnersPage() {
             Contact
           </p>
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-5 kr-keep-all">
-            고객 환경·증상만 보내주세요
+            고객 환경과 증상만 보내주세요
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
-            제품·버전·증상·요청 형태만 보내주시면 1영업일 내 1차 원인 구분과 가능한 협업 형태를 회신드립니다.
+            제품·버전·증상·요청 형태만 보내주시면 1영업일 내 1차 원인 구분과 가능한 협업 방식을 회신드립니다.
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-base">
             <a

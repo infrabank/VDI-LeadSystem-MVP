@@ -22,7 +22,7 @@ export default function ContactPage() {
           </h1>
           <p className="text-sm sm:text-base text-blue-100 leading-relaxed kr-keep-all">
             운영 중인 VDI 또는 백업 환경에 문제가 있다면 제품명·버전·증상만 먼저 보내주세요.
-            구성도·로그를 첨부해 주시면 1차 원인 구분이 빠릅니다. 공공기관·연구기관·기업 IT 운영자, SI 파트너 모두 환영합니다.
+            구성도·로그를 첨부해 주시면 1차 원인 구분이 빨라집니다. 공공기관·연구기관·기업 IT 운영자와 SI 파트너 모두 문의하실 수 있습니다.
           </p>
         </div>
       </section>

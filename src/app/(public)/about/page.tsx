@@ -45,16 +45,16 @@ export default function AboutPage() {
             About {company.name}
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
-            VDI와 백업 운영장애를<br className="hidden sm:block" />
+            VDI와 백업 운영 장애를<br className="hidden sm:block" />
             <span className="sm:hidden"> </span>직접 다루는 기술지원 회사
           </h1>
           <p className="text-xs sm:text-sm text-blue-200 mb-4 font-medium">
             {company.legalName} · {company.legalNameEn}
           </p>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed kr-keep-all">
-            마이로켓은 공공기관·연구기관·기업의 VDI와 백업 운영환경을 지원하는 기술지원 회사입니다.
+            마이로켓은 공공기관·연구기관·기업의 VDI와 백업 운영 환경을 지원하는 기술지원 회사입니다.
             Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 환경에서 발생하는
-            접속장애, 인증서, 프로파일, 스토리지, 라이선스, 백업 복구검증 이슈를 대표 엔지니어가 직접 대응합니다.
+            접속 장애, 인증서, 프로파일, 스토리지, 라이선스, 백업 복구 검증 이슈를 대표 엔지니어가 직접 대응합니다.
           </p>
         </div>
       </section>
@@ -67,16 +67,16 @@ export default function AboutPage() {
               Our Mission
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
-              운영장애를 직접 본 사람이 직접 대응합니다
+              운영 장애를 직접 본 엔지니어가 대응합니다
             </h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
-              {company.name}는 Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect
-              환경의 기술지원·유지보수·복구검증을 전문으로 합니다. 진단·설계는 대표 엔지니어가 직접 책임지고,
+              마이로켓은 Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect
+              환경의 기술지원·유지보수·복구 검증을 전문으로 합니다. 진단·설계는 대표 엔지니어가 직접 책임지고,
               대규모 구축은 검증된 파트너 컨소시엄과 함께 수행합니다.
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all">
-              VDI 접속장애, FSLogix·프로파일 문제, UAG·인증서 이슈, 스토리지·네트워크 병목,
-              백업 실패와 복구검증 — 구축 이후의 운영 문제를 패턴으로 분류해 두고 같은 기준으로 대응합니다.
+              VDI 접속 장애, FSLogix·프로파일 문제, UAG·인증서 이슈, 스토리지·네트워크 병목,
+              백업 실패와 복구 검증까지. 구축 이후의 운영 문제를 패턴으로 분류해 같은 기준으로 대응합니다.
             </p>
           </div>
           <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
@@ -131,7 +131,7 @@ export default function AboutPage() {
             대표 소개
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
-            공공·연구기관 10여 곳의 VDI를 구축·운영·유지보수해 온 대표가 직접 기술지원·장애 분석·복구검증을 수행합니다.
+            공공·연구기관 10여 곳에서 VDI를 구축·운영·유지보수해 온 대표가 직접 기술지원·장애 분석·복구 검증을 수행합니다.
           </p>
           <div className="max-w-2xl mx-auto">
             {leadership.map((leader) => (
@@ -151,7 +151,7 @@ export default function AboutPage() {
             대표 직접 책임 + 검증된 파트너 컨소시엄
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-12 max-w-2xl mx-auto kr-keep-all">
-            분석·판단·산출물은 대표가 직접 맡습니다. 대규모 구축과 현장 상주는 파트너가 분담합니다.
+            분석·판단·산출물은 대표가 직접 맡고, 대규모 구축과 현장 상주는 파트너가 분담합니다.
           </p>
 
           {/* Desktop table */}

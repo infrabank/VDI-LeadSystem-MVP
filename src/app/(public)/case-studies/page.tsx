@@ -43,7 +43,7 @@ export default async function CaseStudiesPage() {
             VDI · 백업 운영 사례
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            현장에서 다룬 경험입니다. 기관명은 익명, 환경과 결과는 사실대로 적습니다.
+            현장에서 다룬 경험입니다. 기관명은 익명으로, 환경과 결과는 사실대로 적습니다.
           </p>
         </div>
       </section>
