@@ -4,8 +4,9 @@ import { practices, company } from "@/lib/site-config";
 const p = practices["mfa-access"];
 
 export const metadata = {
-  title: `${p.title} (${p.brand}) | ${company.name}`,
-  description: p.description,
+  title: `VDI 접속환경의 MFA 연계 기술검토 | ${company.name}`,
+  description:
+    "Citrix Virtual Apps and Desktops, Omnissa Horizon 등 VDI 접속 보안에 MFA를 어디에 어떻게 붙일지 기술검토합니다. 마이로켓 메인 서비스는 VDI·백업 기술지원·유지보수이며, 본 페이지는 보조 검토 영역입니다.",
 };
 
 const vendors = [
@@ -33,9 +34,9 @@ export default function MfaAccessPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-indigo-600">홈</Link>
           <span className="mx-2 text-gray-300">/</span>
-          <Link href="/practices" className="hover:text-indigo-600">Solutions</Link>
+          <Link href="/practices" className="hover:text-indigo-600">Consulting Lines</Link>
           <span className="mx-2 text-gray-300">/</span>
-          <span className="text-gray-700 font-medium">{p.shortTitle}</span>
+          <span className="text-gray-700 font-medium">VDI 접속 MFA 검토</span>
         </div>
       </div>
 
@@ -48,21 +49,25 @@ export default function MfaAccessPage() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 text-center">
           <p className="inline-flex items-center gap-2 text-indigo-200 font-semibold text-xs sm:text-sm mb-4 sm:mb-5 tracking-widest uppercase">
             <span className="w-3 sm:w-4 h-px bg-indigo-300 inline-block"></span>
-            {p.brand} · {p.title}
+            Auxiliary · VDI Access Security
             <span className="w-3 sm:w-4 h-px bg-indigo-300 inline-block"></span>
           </p>
-          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-5 sm:mb-6 leading-[1.1] kr-keep-all">
-            MFA를 솔루션이 아니라,<br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>설계로
+          <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-5 sm:mb-6 leading-[1.15] kr-keep-all">
+            VDI 접속환경의<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>MFA 연계 기술검토
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-indigo-100/90 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            {p.tagline}
+          <p className="text-sm sm:text-base md:text-lg text-indigo-100/90 mb-4 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+            마이로켓 메인 서비스는 <Link href="/" className="text-white underline underline-offset-4 decoration-indigo-300">VDI·백업 기술지원·유지보수</Link>이며,
+            본 페이지는 VDI/DaaS 접속 보안의 보조 검토 영역입니다.
+          </p>
+          <p className="text-sm sm:text-base text-indigo-100/80 mb-8 sm:mb-10 max-w-2xl mx-auto leading-relaxed kr-keep-all">
+            Citrix · Omnissa Horizon 접속에 MFA를 어디에 어떤 정책으로 붙일지, 장애 시 운영을 어떻게 유지할지 기술 관점에서 검토합니다.
           </p>
           <Link
-            href="/contact?source=mfa-access&interest=mfa-access"
+            href="/contact?source=mfa-access&interest=citrix&subject=VDI 접속 보안 문의"
             className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-indigo-700 rounded-lg hover:bg-indigo-50 font-semibold text-sm sm:text-base shadow-lg shadow-indigo-900/20 transition-all hover:-translate-y-0.5"
           >
-            MFA QuickStart 상담
+            VDI 접속 보안 문의
           </Link>
         </div>
       </section>
@@ -86,13 +91,13 @@ export default function MfaAccessPage() {
         </div>
       </section>
 
-      {/* 4 Pillars — QuickStart 산출물 */}
+      {/* 4 Pillars — VDI 접속 MFA 검토 항목 */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
         <p className="text-indigo-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-          QuickStart Deliverables
+          Review Items
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
-          MFA QuickStart 산출물 4종
+          VDI 접속 MFA 기술검토 항목
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
           인증 흐름도 → 예외·장애 우회 정책 → 특권 계정 보호 → PoC 체크리스트.
@@ -161,19 +166,20 @@ export default function MfaAccessPage() {
 
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
           <p className="text-indigo-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
-            Free Consultation
+            VDI Access Security
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
-            MFA를 어디에 어떻게 붙일지, 함께 설계합니다
+            VDI 접속에 MFA를 어떻게 붙일지 검토합니다
           </h2>
           <p className="text-sm sm:text-base text-indigo-100 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed kr-keep-all">
-            현재 인증 흐름 인터뷰 후 사용자군별 정책·예외·장애 우회·관리자 보호·PoC 체크리스트를 산출합니다. 솔루션 단가가 아니라 운영 안정성을 만듭니다.
+            Citrix · Omnissa Horizon 접속 흐름 인터뷰 후 사용자군별 정책·예외·장애 우회·관리자 보호·PoC 체크리스트를 정리합니다.
+            VDI 운영 안정성이 우선이고, MFA는 그 위에 얹는 검토 영역입니다.
           </p>
           <Link
-            href="/contact?source=mfa-access&interest=mfa-access&subject=MFA QuickStart 상담"
+            href="/contact?source=mfa-access&interest=citrix&subject=VDI 접속 보안 문의"
             className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-indigo-700 rounded-lg hover:bg-indigo-50 font-semibold text-sm sm:text-base shadow-lg shadow-indigo-900/20 transition-all hover:-translate-y-0.5"
           >
-            MFA QuickStart 상담
+            VDI 접속 보안 문의
           </Link>
         </div>
       </section>

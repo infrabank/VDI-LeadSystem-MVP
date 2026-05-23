@@ -322,17 +322,21 @@ export interface LeaderProfile {
 export const leadership: LeaderProfile[] = [
   {
     slot: "founder",
-    role: "대표 · 수석 자문 엔지니어",
+    role: "대표 · 수석 기술지원 엔지니어",
     name: "제현우",
     bio:
-      "공공·정부출연연구기관 10여 곳의 Citrix XenDesktop·Omnissa Horizon·Omnissa Workspace ONE 기반 VDI를 다년간 설계·구축·운영. " +
-      "망분리·N²SF·MFA·백업 환경에서 실제로 터지는 운영 장애·산출물·보안성 검토를 아는 관점으로 전환 시나리오를 판단합니다.",
+      "공공·정부출연연구기관 10여 곳의 Citrix Virtual Apps and Desktops · Omnissa Horizon 기반 VDI를 " +
+      "다년간 설계·구축·운영·유지보수해 왔습니다. 접속장애, FSLogix/프로파일, UAG·NetScaler, 인증서, " +
+      "스토리지·네트워크 병목, Acronis 백업 복구검증까지 운영 현장에서 실제로 터지는 문제를 패턴으로 분류해 " +
+      "같은 기준으로 대응합니다. N²SF 등 공공기관 보안환경 이해를 바탕으로 보고서·증빙 산출물도 함께 작성합니다.",
     expertise: [
-      "Citrix XenDesktop / NetScaler",
-      "Omnissa Horizon / UAG (VMware ESXi)",
-      "Omnissa Workspace ONE",
-      "N²SF 전환 설계",
-      "공공기관 보안성 검토 대응",
+      "Citrix Virtual Apps and Desktops",
+      "Citrix NetScaler / Gateway",
+      "Omnissa Horizon · UAG",
+      "VMware vSphere · ESXi · vCenter",
+      "FSLogix · Citrix Profile Management",
+      "Acronis Cyber Protect · 백업 복구검증",
+      "공공기관 운영 보고서 · N²SF 환경 이해",
     ],
     email: "jhw@mlkit.co.kr",
   },

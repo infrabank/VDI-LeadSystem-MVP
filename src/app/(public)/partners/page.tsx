@@ -3,55 +3,70 @@ import Link from "next/link";
 import { partnerships } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "SI·보안 파트너 기술자문 | Myloket",
+  title: "SI 파트너를 위한 VDI·백업 기술지원 협업 | Myloket",
   description:
-    "공공 VDI·N²SF 제안에서 기술 파트가 막히면 붙이세요. RFP 기술요건·제안서 구현방안·보안성 검토 대응표·고객 앞 기술 미팅까지 대표 엔지니어가 직접 지원합니다.",
+    "Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 기반 제안·구축·유지보수에 필요한 기술 검토, 장애 원인 분석, 월간 점검 리포트, 백업 복구검증 산출물을 SI 파트너와 함께 제공합니다.",
 };
 
 const services = [
   {
     no: "01",
     title: "고객 앞 기술 미팅 동행",
-    nickname: "기술질문 방어 동행 · Tech Q&A Shield",
+    nickname: "Tech Q&A Shield",
     duration: "반나절~1일",
-    desc: "발주처 기술 담당자·CISO 미팅에서 VDI/N²SF 질문 직접 응대.",
+    desc: "발주처 기술 담당자·CISO 미팅에서 Citrix·Horizon·UAG·FSLogix·Acronis 등 운영 질문 직접 응대.",
   },
   {
     no: "02",
-    title: "VDI/N²SF 전환 시나리오",
-    nickname: "VDI 3방향 판단표 · VDI 3-Way Decision Map",
-    duration: "사전진단 1주",
-    desc: "현재 구조 분석 → C/S/O 분류 → 유지·축소·전환 비교표 + RFP 문구 초안.",
+    title: "VDI 운영환경 사전 점검",
+    nickname: "Pre-Engagement Health Check",
+    duration: "1주",
+    desc: "현재 환경의 Connection Server / Delivery Controller / 스토리지 / 인증서 / 백업 상태 점검 후 리스크 정리.",
   },
   {
     no: "03",
-    title: "RFP·제안서 기술 파트",
-    nickname: "RFP 리스크 차단표 · RFP Risk Cut Sheet",
-    duration: "1~2주",
-    desc: "기술요건·구현방안·통제 매핑·운영 리스크. 제안서에 그대로 붙는 형태로 납품.",
+    title: "장애 원인 분석 및 조치 가이드",
+    nickname: "Incident Root-Cause Pack",
+    duration: "1~3일",
+    desc: "운영 중 장애의 로그 기반 분석, 1차 원인 구분, 즉시 조치/변경작업 항목 분리 가이드.",
   },
   {
     no: "04",
-    title: "보안성 검토 대응표",
-    nickname: "N²SF 통제 매핑 대응 · N²SF Control Response Pack",
-    duration: "1~2주",
-    desc: "N²SF 274개 통제 매핑 기반 심의 대응 답변 초안 + 근거 자료.",
+    title: "월간 유지보수 점검 보고서",
+    nickname: "Monthly Maintenance Report",
+    duration: "월 단위",
+    desc: "주요 서비스 상태·인증서·라이선스·백업 성공률·장애 이력을 공공기관 제출 가능한 형식의 보고서로 작성.",
   },
   {
     no: "05",
-    title: "구축 파트너 연결",
-    nickname: "구축 컨소시엄 브리지 · Build Partner Bridge",
-    duration: "별도 계약",
-    desc: "구축비는 파트너사 인보이싱, 마이로켓은 기술자문·PMO·검수만 책임.",
+    title: "Acronis 백업 복구검증 리포트",
+    nickname: "Recovery Verification Report",
+    duration: "1~2주",
+    desc: "백업 정책 점검 · 샘플 복구 테스트 · RTO/RPO 정리 · 복구검증 증빙 문서 납품.",
+  },
+  {
+    no: "06",
+    title: "벤더 SR 대응 보조",
+    nickname: "Vendor SR Assist",
+    duration: "건당",
+    desc: "Citrix·Omnissa·Acronis 벤더 SR 케이스 정리·회신 검토·방향 판단 보조.",
+  },
+  {
+    no: "07",
+    title: "제안서 기술 파트 검토",
+    nickname: "Proposal Tech Review",
+    duration: "1~2주",
+    desc: "RFP 기술요건·구현방안·운영 리스크 검토. 제안서에 그대로 붙는 형태로 납품.",
   },
 ];
 
 const triggers = [
-  '고객이 "N²SF 이후 VDI는 남겨야 합니까?"라고 묻는다',
-  "제안서에 VDI·N²SF 전환 시나리오가 필요하다",
-  "RFP 기술요건을 어떻게 써야 할지 애매하다",
-  "보안성 검토 대응표가 필요하다",
-  "고객 앞 기술 미팅에 동행할 전문가가 필요하다",
+  "고객 환경에서 VDI 접속장애·FSLogix·UAG 이슈가 반복된다",
+  "백업은 되지만 실제 복구 가능성이 검증되지 않았다",
+  "Citrix·Horizon 버전 업그레이드·마이그레이션 리스크가 크다",
+  "월간 유지보수 점검 보고서를 공공기관 형식으로 납품해야 한다",
+  "고객 앞 기술 미팅에 동행할 운영장애 경험자가 필요하다",
+  "벤더 SR 케이스 회신 해석이 어렵다",
 ];
 
 const cases = [
@@ -78,18 +93,19 @@ const cases = [
   },
 ];
 
-const inquiryEmailBody = `[제안 건 개요 — 자유 기재]
-- 발주처:
-- 사업명:
-- RFP 마감 일정:
-- 막힌 기술 파트 (VDI / 망분리 / MFA / 백업 / 보안성 검토 등):
+const inquiryEmailBody = `[고객 환경 / 협업 건 개요 — 자유 기재]
+- 고객 (발주처·기관·기업):
+- 사용 제품·버전 (Citrix VAD / Omnissa Horizon / Acronis Cyber Protect / 기타):
+- 막힌 기술 파트 (접속장애 / FSLogix / UAG·NetScaler / 인증서·라이선스 / 스토리지·성능 / 백업·복구검증):
+- 요청 형태 (기술 미팅 동행 / 사전 점검 / 장애 분석 / 월간 보고서 / 복구검증 / SR 대응 / 제안서 검토):
+- 일정·마감:
 
 [연락처]
 - 회사·직책:
 - 성명:
 - 전화/이메일:`;
 
-const mailtoHref = `mailto:jhw@mlkit.co.kr?subject=${encodeURIComponent("[SI 기술자문 문의]")}&body=${encodeURIComponent(inquiryEmailBody)}`;
+const mailtoHref = `mailto:jhw@mlkit.co.kr?subject=${encodeURIComponent("[SI 기술지원 협업 문의]")}&body=${encodeURIComponent(inquiryEmailBody)}`;
 
 const colorMap = {
   purple: "text-purple-700",
@@ -106,22 +122,23 @@ export default function PartnersPage() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
-            For SI · 보안 파트너
+            For SI Partners — VDI · Backup Technical Support
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
-            공공 VDI·N²SF 제안에서 기술 파트가 막히면,<br className="hidden md:block" />
-            <span className="md:hidden"> </span>마이로켓을 붙이세요.
+            고객 앞 기술질문과 운영장애 대응,<br className="hidden md:block" />
+            <span className="md:hidden"> </span>대표 엔지니어가 함께 들어갑니다.
           </h1>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-10 max-w-2xl">
-            RFP 기술요건, 제안서 구현방안, 보안성 검토 대응표,
-            고객 앞 기술 미팅까지 대표 엔지니어가 직접 지원합니다.
+            Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 기반
+            제안·구축·유지보수 과정에서 필요한 기술 검토, 장애 원인 분석, 월간 점검 리포트,
+            백업 복구검증 산출물을 지원합니다.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <a
               href={mailtoHref}
               className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
             >
-              제안 건 기술검토 요청
+              기술지원 협업 요청
             </a>
             <a
               href="/partners-onepager.pdf"
@@ -209,6 +226,28 @@ export default function PartnersPage() {
         </div>
       </section>
 
+      {/* ========== 보조 가능 영역 ========== */}
+      <section className="border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
+          <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
+            Auxiliary Scope
+          </p>
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 kr-keep-all">
+            보조 가능 영역
+          </h2>
+          <p className="text-sm text-gray-500 mb-5 kr-keep-all max-w-3xl">
+            메인은 VDI·백업 기술지원·유지보수입니다. 다음 항목은 SI 제안의 부수 요구로 추가
+            지원 가능하지만, 단독 상품으로 판매하지는 않습니다.
+          </p>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 kr-keep-all">
+            <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">·</span>N²SF 환경에서의 VDI 역할 검토 (운영자 관점)</li>
+            <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">·</span>RFP 기술요건 일부 검토</li>
+            <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">·</span>보안성 검토 응답 자료 보조</li>
+            <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">·</span>MFA가 VDI 접속에 미치는 운영 영향 검토</li>
+          </ul>
+        </div>
+      </section>
+
       {/* ========== 협업·정산 구조 ========== */}
       <section className="border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
@@ -287,15 +326,15 @@ export default function PartnersPage() {
             <li className="flex gap-3">
               <span className="text-gray-300 flex-shrink-0">·</span>
               <span>
-                공공·연구기관 VDI 10여 곳 구축·운영·유지보수 — 망분리·N²SF·MFA·백업
-                정책 변화 5번을 운영 책임자로 함께 통과
+                공공·연구기관 VDI 10여 곳 구축·운영·유지보수 — 접속장애·FSLogix·UAG·인증서·스토리지·백업 복구
+                같은 운영 현장 문제를 패턴으로 다룸
               </span>
             </li>
             <li className="flex gap-3">
               <span className="text-gray-300 flex-shrink-0">·</span>
               <span>
-                Citrix · Omnissa Horizon · UAG · Workspace ONE · Acronis · MFA — 벤더
-                중립 자문
+                Citrix Virtual Apps and Desktops · Omnissa Horizon · UAG · Acronis Cyber Protect 운영 경험 기반,
+                벤더 중립 기술지원
               </span>
             </li>
             <li className="flex gap-3">
@@ -415,9 +454,9 @@ export default function PartnersPage() {
             글로 정리한 관점
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-5 max-w-2xl">
-            N²SF 통제 매핑·VDI 역할 재정의·MFA 적용 위치·복구검증 같은 주제로
-            기술 인사이트를 정리해두고 있습니다. 발주처·SI 영업대표가 의사결정에
-            참고할 수 있는 형태입니다.
+            Citrix · Omnissa Horizon · Acronis Cyber Protect 운영장애·유지보수·복구검증 노트와
+            공공기관 운영 환경 이해를 인사이트로 정리해 두고 있습니다.
+            SI 영업대표가 고객 미팅·제안 단계에서 참고할 수 있는 형태입니다.
           </p>
           <Link
             href="/insights"
@@ -438,10 +477,10 @@ export default function PartnersPage() {
             Contact
           </p>
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-5 kr-keep-all">
-            RFP·고객 요구사항을 보내주세요
+            고객 환경·증상만 보내주세요
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
-            막힌 기술 파트만 보내주시면 1영업일 내 VDI·N²SF 리스크를 짚어드립니다.
+            제품·버전·증상·요청 형태만 보내주시면 1영업일 내 1차 원인 구분과 가능한 협업 형태를 회신드립니다.
           </p>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-4 text-base">
             <a

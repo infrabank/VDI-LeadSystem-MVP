@@ -35,13 +35,16 @@ export default function AboutPage() {
             About {company.name}
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-3 leading-[1.15] kr-keep-all">
-            {company.taglineKo}
+            VDI와 백업 운영장애를<br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>직접 다루는 기술지원 회사
           </h1>
           <p className="text-xs sm:text-sm text-blue-200 mb-4 font-medium">
             {company.legalName} · {company.legalNameEn}
           </p>
-          <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            {company.description}
+          <p className="text-sm sm:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed kr-keep-all">
+            마이로켓은 공공기관·연구기관·기업의 VDI와 백업 운영환경을 지원하는 기술지원 회사입니다.
+            Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 환경에서 발생하는
+            접속장애, 인증서, 프로파일, 스토리지, 라이선스, 백업 복구검증 이슈를 대표 엔지니어가 직접 대응합니다.
           </p>
         </div>
       </section>
@@ -118,7 +121,7 @@ export default function AboutPage() {
             대표 소개
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
-            공공·정부출연연구기관 10여 곳의 VDI를 다년간 운영해 온 대표가 직접 진단·자문합니다.
+            공공·연구기관 10여 곳의 VDI를 구축·운영·유지보수해 온 대표가 직접 기술지원·장애 분석·복구검증을 수행합니다.
           </p>
           <div className="max-w-2xl mx-auto">
             {leadership.map((leader) => (

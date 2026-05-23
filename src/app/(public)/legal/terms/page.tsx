@@ -31,10 +31,10 @@ export default function TermsPage() {
 
         <h2>제2조 (서비스 내용)</h2>
         <ul>
-          <li>보안 워크스페이스 및 데이터 보호 관련 기술 콘텐츠 제공</li>
-          <li>N²SF 정렬·전환 준비도·VDI 역할·ROI·백업 진단 등 자가 진단 도구</li>
-          <li>진단 결과 기반 웹·PDF 리포트 제공</li>
-          <li>상담 문의 접수 및 회신</li>
+          <li>VDI 및 백업 기술지원 관련 콘텐츠 제공 (Citrix Virtual Apps and Desktops · Omnissa Horizon · Acronis Cyber Protect 등)</li>
+          <li>유지보수·장애 대응·복구검증 문의 접수 및 회신</li>
+          <li>기술 상담 및 프로젝트 협업 문의 대응</li>
+          <li>필요한 경우 진단 도구 또는 리포트(웹·PDF) 제공</li>
           <li>기타 회사가 추가로 제공하는 부가 서비스</li>
         </ul>
 
