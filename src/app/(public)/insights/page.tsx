@@ -190,9 +190,9 @@ export default async function ContentListPage({
               <Link
                 key={item.id}
                 href={`/insights/${item.slug}`}
-                className="card-hover group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-blue-200"
+                className="card-hover group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-blue-300 border-l-2 border-l-blue-600"
               >
-                {item.cover_image_url ? (
+                {item.cover_image_url && (
                   <div className="overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -201,14 +201,8 @@ export default async function ContentListPage({
                       className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                ) : (
-                  <div className="w-full h-40 sm:h-48 bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-                    <svg className="w-10 h-10 text-blue-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                    </svg>
-                  </div>
                 )}
-                <div className="p-5">
+                <div className="p-5 sm:p-6">
                   <div className="flex items-center gap-2 mb-3">
                     <span className={`text-xs px-2.5 py-0.5 rounded-full font-medium ${typeBadge[item.type] || "bg-gray-100 text-gray-600"}`}>
                       {typeLabel[item.type] || item.type}
@@ -217,9 +211,9 @@ export default async function ContentListPage({
                       <span className="text-xs text-gray-400">{item.category}</span>
                     )}
                   </div>
-                  <h2 className="font-semibold text-gray-900 mb-1.5 line-clamp-2 group-hover:text-blue-600 transition-colors">{item.title}</h2>
+                  <h2 className="font-semibold text-gray-900 mb-1.5 line-clamp-2 group-hover:text-blue-600 transition-colors kr-keep-all">{item.title}</h2>
                   {item.excerpt && (
-                    <p className="text-sm text-gray-500 line-clamp-2 leading-relaxed">{item.excerpt}</p>
+                    <p className="text-sm text-gray-500 line-clamp-3 leading-relaxed kr-keep-all">{item.excerpt}</p>
                   )}
                   <div className="flex items-center justify-between mt-4">
                     {item.published_at ? (

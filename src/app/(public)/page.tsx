@@ -15,15 +15,13 @@ const supportAccent: Record<"blue" | "indigo" | "emerald", { border: string; tex
   emerald: { border: "#059669", text: "text-emerald-700" },
 };
 
-const maintenanceAccent: Record<
-  "blue" | "indigo" | "amber" | "emerald",
-  { border: string; text: string; bg: string }
-> = {
-  blue: { border: "#2563eb", text: "text-blue-700", bg: "bg-blue-50" },
-  indigo: { border: "#4f46e5", text: "text-indigo-700", bg: "bg-indigo-50" },
-  amber: { border: "#d97706", text: "text-amber-700", bg: "bg-amber-50" },
-  emerald: { border: "#059669", text: "text-emerald-700", bg: "bg-emerald-50" },
-};
+// 유지보수 카드 단색 — accent 색을 4개로 흩지 말고 slate 단일로 통일.
+// 번호 칩만 강하게 둬서 위계를 잡음.
+const MAINT_ACCENT = {
+  border: "#0f172a", // slate-900
+  text: "text-slate-700",
+  link: "text-slate-900",
+} as const;
 
 export default function HomePage() {
   return (
@@ -56,7 +54,7 @@ export default function HomePage() {
             </Link>
             <Link
               href="/contact?source=hero&interest=monthly-checkup"
-              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/30 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all text-center"
+              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all text-center"
             >
               유지보수 상담
             </Link>
@@ -147,38 +145,35 @@ export default function HomePage() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
-            {maintenancePackages.map((pkg) => {
-              const c = maintenanceAccent[pkg.accent];
-              return (
-                <div
-                  key={pkg.id}
-                  className="flex flex-col bg-white rounded-xl border border-gray-200 p-6 sm:p-7"
-                  style={{ borderLeft: `4px solid ${c.border}` }}
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className={`text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded ${c.bg} ${c.text}`}>
-                      {pkg.no}
-                    </span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 kr-keep-all">
-                    {pkg.title}
-                  </h3>
-                  <div className="space-y-1.5 text-sm text-gray-700 mb-5 flex-1">
-                    {pkg.lines.map((line) => (
-                      <p key={line} className="leading-relaxed kr-keep-all">
-                        {line}
-                      </p>
-                    ))}
-                  </div>
-                  <Link
-                    href={`/contact?source=maintenance&interest=${pkg.id}`}
-                    className={`inline-flex items-center gap-1.5 text-sm font-semibold ${c.text} hover:translate-x-0.5 transition-transform mt-auto`}
-                  >
-                    상담하기 →
-                  </Link>
+            {maintenancePackages.map((pkg) => (
+              <div
+                key={pkg.id}
+                className="flex flex-col bg-white rounded-xl border border-gray-200 p-6 sm:p-7"
+                style={{ borderLeft: `4px solid ${MAINT_ACCENT.border}` }}
+              >
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs font-bold text-white bg-slate-900 px-2.5 py-1 rounded">
+                    {pkg.no}
+                  </span>
                 </div>
-              );
-            })}
+                <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 kr-keep-all">
+                  {pkg.title}
+                </h3>
+                <div className="space-y-1.5 text-sm text-gray-700 mb-5 flex-1">
+                  {pkg.lines.map((line) => (
+                    <p key={line} className="leading-relaxed kr-keep-all">
+                      {line}
+                    </p>
+                  ))}
+                </div>
+                <Link
+                  href={`/contact?source=maintenance&interest=${pkg.id}`}
+                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${MAINT_ACCENT.link} hover:translate-x-0.5 transition-transform mt-auto`}
+                >
+                  상담하기 →
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -316,7 +311,7 @@ export default function HomePage() {
             </Link>
             <a
               href={`mailto:${company.email}?subject=${encodeURIComponent("[VDI/백업 기술지원 문의]")}`}
-              className="px-7 py-3.5 bg-white/10 border border-white/30 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all text-center"
+              className="px-7 py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all text-center"
             >
               메일로 보내기
             </a>
