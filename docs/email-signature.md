@@ -1,7 +1,7 @@
 # 이메일 서명 — Myloket 표준 템플릿
 
 > 모든 외부 메일 발신 시 사용. 직원·파트너 공통 양식.
-> 작성: 2026-05-01 · 최종 갱신: 2026-06-04 (VDI·백업 기술지원 포지션 반영)
+> 작성: 2026-05-01 · 최종 갱신: 2026-06-04 (전산유지보수·백업·VDI 3-사업 포지션 반영)
 
 ## 사용 가이드
 
@@ -21,7 +21,7 @@
 ```
 ─────────────
 제현우 | 대표 · 수석 기술지원 엔지니어
-㈜마이로켓 (Myloket Inc.) — VDI·백업 전문 기술지원
+㈜마이로켓 (Myloket Inc.) — 전산유지보수 · 백업·복구보안 · VDI 기술지원
 
 📧 jhw@mlkit.co.kr
 🌐 myloket.co.kr
@@ -34,7 +34,7 @@
   <tr>
     <td style="padding-top:8px;border-top:2px solid #7c3aed">
       <div style="font-weight:600;color:#101828;font-size:14px">제현우 <span style="color:#9ca3af;font-weight:400">|</span> 대표 · 수석 기술지원 엔지니어</div>
-      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — VDI·백업 전문 기술지원</div>
+      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — 전산유지보수 · 백업·복구보안 · VDI 기술지원</div>
       <div style="margin-top:6px;font-size:12px">
         <a href="mailto:jhw@mlkit.co.kr" style="color:#7c3aed;text-decoration:none">jhw@mlkit.co.kr</a>
         <span style="color:#d1d5db;margin:0 6px">·</span>
@@ -54,17 +54,16 @@
 ─────────────────────────────
 제현우 (Je Hyunwoo) | 대표 · 수석 기술지원 엔지니어
 ㈜마이로켓 (Myloket Inc.)
-VDI & Backup Technical Support
+IT Maintenance · Acronis Backup · VDI Support
 
 📧 jhw@mlkit.co.kr   ☎ 010-3861-8079
 🌐 myloket.co.kr
 
-▸ Citrix Virtual Apps and Desktops 기술지원 — 접속장애·VDA·NetScaler/Gateway·인증서
-▸ Omnissa Horizon 기술지원 — Connection Server·UAG·Agent·FSLogix
-▸ Acronis 백업·복구검증 — 백업 정책·실패 이력 + 실제 복구 가능성 검증
-▸ 전산통합유지보수 비상주 파트너 — SI 주사업자와 VDI·가상화·백업 전문영역 지원
+▸ 전산통합유지보수 — PC·서버·네트워크·NAS·백업 운영 점검과 장애 대응
+▸ Acronis 백업·복구보안 — 서버·PC 백업 + 실제 복구 가능성 검증
+▸ VDI 기술지원 및 유지보수 — Citrix·Omnissa Horizon·VMware 운영장애 분석
 
-▸ 전산통합유지보수 협업: myloket.co.kr/partners/integrated-maintenance
+▸ 서비스 전체 보기: myloket.co.kr/#services
 ─────────────────────────────
 ```
 
@@ -79,7 +78,7 @@ VDI & Backup Technical Support
         <span style="color:#4b5563;font-weight:500">대표 · 수석 기술지원 엔지니어</span>
       </div>
       <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 <span style="color:#9ca3af">(Myloket Inc.)</span></div>
-      <div style="color:#7c3aed;font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-top:4px">VDI &amp; Backup Technical Support</div>
+      <div style="color:#7c3aed;font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-top:4px">IT Maintenance · Acronis Backup · VDI Support</div>
     </td>
   </tr>
   <tr>
@@ -100,15 +99,14 @@ VDI & Backup Technical Support
   </tr>
   <tr>
     <td style="padding:8px 0;border-top:1px solid #e5e7eb;font-size:12px">
-      <div style="margin-bottom:3px"><span style="color:#2563eb">▸</span> <strong style="color:#101828;font-weight:600">Citrix Virtual Apps and Desktops 기술지원</strong> <span style="color:#6b7280">— 접속장애·VDA·NetScaler/Gateway·인증서</span></div>
-      <div style="margin-bottom:3px"><span style="color:#4f46e5">▸</span> <strong style="color:#101828;font-weight:600">Omnissa Horizon 기술지원</strong> <span style="color:#6b7280">— Connection Server·UAG·Agent·FSLogix</span></div>
-      <div style="margin-bottom:3px"><span style="color:#059669">▸</span> <strong style="color:#101828;font-weight:600">Acronis 백업·복구검증</strong> <span style="color:#6b7280">— 백업 정책·실패 이력 + 실제 복구 가능성 검증</span></div>
-      <div><span style="color:#7c3aed">▸</span> <strong style="color:#101828;font-weight:600">전산통합유지보수 비상주 파트너</strong> <span style="color:#6b7280">— SI 주사업자와 VDI·가상화·백업 전문영역 지원</span></div>
+      <div style="margin-bottom:3px"><span style="color:#2563eb">▸</span> <strong style="color:#101828;font-weight:600">전산통합유지보수</strong> <span style="color:#6b7280">— PC·서버·네트워크·NAS·백업 운영 점검과 장애 대응</span></div>
+      <div style="margin-bottom:3px"><span style="color:#059669">▸</span> <strong style="color:#101828;font-weight:600">Acronis 백업·복구보안</strong> <span style="color:#6b7280">— 서버·PC 백업 + 실제 복구 가능성 검증</span></div>
+      <div><span style="color:#4f46e5">▸</span> <strong style="color:#101828;font-weight:600">VDI 기술지원 및 유지보수</strong> <span style="color:#6b7280">— Citrix·Omnissa Horizon·VMware 운영장애 분석</span></div>
     </td>
   </tr>
   <tr>
     <td style="padding-top:6px;font-size:11px;color:#9ca3af">
-      ▸ 전산통합유지보수 협업 <a href="https://myloket.co.kr/partners/integrated-maintenance" style="color:#7c3aed;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/partners/integrated-maintenance</a>
+      ▸ 서비스 전체 보기 <a href="https://myloket.co.kr/#services" style="color:#7c3aed;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/#services</a>
     </td>
   </tr>
 </table>
@@ -122,8 +120,8 @@ VDI & Backup Technical Support
 ```
 ═════════════════════════════════════
 ㈜마이로켓 (Myloket Inc.)
-VDI & Backup Technical Support
-공공·정부출연연구기관 10여 곳 VDI 구축·운영·유지보수 지원 · 1인 전문가 직접 대응 · 구축은 검증된 파트너 컨소시엄
+IT Maintenance · Acronis Backup · VDI Support
+전산유지보수 · Acronis 백업·복구보안 · Citrix·Omnissa Horizon VDI 기술지원 — 1인 직접 대응 · 공공·연구기관 10여 곳 운영·유지보수 실적
 ═════════════════════════════════════
 
 제현우 (Je Hyunwoo) | 대표 · 수석 기술지원 엔지니어 / CEO · Principal Engineer
@@ -131,24 +129,20 @@ VDI & Backup Technical Support
 🌐 https://myloket.co.kr
 
 ──────────────────────
-4 Solutions
+3 Services
 ──────────────────────
 
-[Citrix Virtual Apps and Desktops — 기술지원]
-접속장애 · StoreFront · Delivery Controller · VDA · NetScaler/Gateway · 인증서
-→ myloket.co.kr/#support-areas
+[전산통합유지보수 — IT Maintenance]
+PC · 서버 · 네트워크 · NAS · 백업 운영 점검과 장애 대응
+→ myloket.co.kr/services/it-maintenance
 
-[Omnissa Horizon — 기술지원]
-Connection Server · UAG · Agent · Client · Instant Clone · FSLogix · vSphere 연계
-→ myloket.co.kr/#support-areas
+[Acronis 백업·복구보안 — Cyber Protect]
+서버 · PC 백업 + 사고 시 실제 복구 가능성 검증
+→ myloket.co.kr/services/acronis-backup
 
-[Acronis 백업·복구검증 — Cyber Protect]
-백업 정책 · 실패 이력 · 에이전트 점검 + 사고 시 실제 복구 가능성 검증
-→ myloket.co.kr/#maintenance
-
-[전산통합유지보수 비상주 파트너 — Integrated Maintenance]
-SI 주사업자와 함께 VDI · 가상화 · 백업 전문영역을 비상주 기술지원으로 지원
-→ myloket.co.kr/partners/integrated-maintenance
+[VDI 기술지원 및 유지보수 — Citrix · Omnissa Horizon]
+Citrix · Omnissa Horizon · VMware 운영장애 · UAG/Gateway · FSLogix 분석
+→ myloket.co.kr/services/vdi-support
 
 ──────────────────────
 무료 진단·계산 도구
@@ -240,10 +234,10 @@ Infra:    VMware ESXi · vSphere
 각 블록 액센트 컬러:
 | 블록 | 컬러 | 용도 |
 |---|---|---|
-| Citrix VAD 기술지원 | `#2563eb` (blue) | |
-| Omnissa Horizon 기술지원 | `#4f46e5` (indigo) | |
-| Acronis 백업·복구검증 | `#059669` (emerald) | |
-| 전산통합유지보수 비상주 파트너 | `#7c3aed` (purple) | 브랜드 시그니처 |
+| 전산통합유지보수 | `#2563eb` (blue) | |
+| Acronis 백업·복구보안 | `#059669` (emerald) | |
+| VDI 기술지원 및 유지보수 | `#4f46e5` (indigo) | |
+| (브랜드 라인·링크) | `#7c3aed` (purple) | 브랜드 시그니처 |
 
 ---
 

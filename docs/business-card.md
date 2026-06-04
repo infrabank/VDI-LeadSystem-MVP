@@ -1,7 +1,7 @@
 # 명함 디자인 — Myloket 표준
 
 > 한국 표준 90×50mm · 양면 · Hashnode editorial-tech 톤
-> 작성: 2026-05-01 · 최종 갱신: 2026-06-04 (VDI·백업 기술지원 포지션 반영)
+> 작성: 2026-05-01 · 최종 갱신: 2026-06-04 (전산유지보수·백업·VDI 3-사업 포지션 반영)
 
 ## 파일 위치
 
@@ -11,9 +11,9 @@
 ## 디자인 개요
 
 ### 앞면 (Front)
-- **좌측 3색 라인** (purple → indigo → emerald) — 4상품 시그니처
+- **좌측 3색 라인** (blue → emerald → indigo) — 3사업 시그니처
 - 좌상단: `Myloket ●` wordmark (dot은 purple)
-- 우상단: `VDI & Backup / Technical Support` (영문 부제)
+- 우상단: `IT Maintenance · Acronis Backup / Citrix · Horizon VDI Support` (영문 부제)
 - 중앙: **이름 한글 (18pt) → Je Hyunwoo → 대표 · 수석 기술지원 엔지니어 / CEO · Principal Engineer**
 - 좌하단: 연락처 stack (M / T / E)
 - 우하단: ㈜마이로켓 · Myloket Inc. · myloket.co.kr (purple)
@@ -21,12 +21,11 @@
 ### 뒷면 (Back)
 - **다크 배경 (#0f172a)** — Hashnode 다크 모드 톤
 - 코너 그라데이션 글로우 (purple + indigo)
-- 상단: `Myloket ●` (dot은 purple) + 한글 부제 (`공공·연구기관 VDI·백업 전문 기술지원 — 1인 전문가`)
-- 중앙: **4 솔루션 카드** (사이트 포지셔닝 순, 위에서부터)
-  - Citrix Virtual Apps and Desktops 기술지원 — `#5288ff` blue
-  - Omnissa Horizon 기술지원 — `#818cf8` indigo
-  - Acronis 백업·복구검증 (Cyber Protect) — `#34d399` emerald
-  - 전산통합유지보수 비상주 파트너 (Integrated Maintenance) — `#c084fc` purple
+- 상단: `Myloket ●` (dot은 purple) + 한글 부제 (`전산유지보수 · 백업·복구보안 · VDI 전문 기술지원`)
+- 중앙: **3 사업 카드** (사이트 3-사업 순, 위에서부터)
+  - 전산통합유지보수 (IT Maintenance) — `#5288ff` blue
+  - Acronis 백업·복구보안 (Cyber Protect) — `#34d399` emerald
+  - VDI 기술지원 및 유지보수 (Citrix · Omnissa Horizon) — `#818cf8` indigo
 - 하단: `Citrix · Omnissa · VMware · Acronis · myloket.co.kr`
 
 > **벤더 표기 주의**: Omnissa는 VMware EUC 분사로 Horizon·Workspace ONE을 가져갔다. VMware는 ESXi/vSphere 등 인프라만 계속 제공한다. 명함에는 Omnissa로 표기하고, VMware는 인프라 표기 시에만 명시(이메일 서명 Rich 변형 footer 참조).
@@ -118,7 +117,7 @@ HTML로 만든 PDF는 다음 3가지 이슈가 있습니다. 옵션 A/B/C 중 �
 3. Pretendard Variable 폰트 임베드된 PDF입니다 (확인 부탁)
 4. 표면: 무광 코팅 또는 매트 라미네이팅
 5. 종이: 250~300g/m² 아트지
-6. 메인 컬러: purple #7c3aed (1순위 사업 시그니처) — 채도 손실 최소화 부탁
+6. 메인 컬러: purple #7c3aed (브랜드 시그니처 — 좌측 라인·dot·글로우) — 채도 손실 최소화 부탁
 ```
 
 **중요**: 본판 인쇄 전 **샘플 100매 시범 인쇄** → 색·폰트 확인 후 본판 진행 권장.
@@ -197,7 +196,7 @@ HTML로 만든 PDF는 다음 3가지 이슈가 있습니다. 옵션 A/B/C 중 �
 
 ### 솔루션 압축 (3개 또는 2개)
 
-뒷면 4 솔루션이 빡빡하게 느껴지면 `.practices` 안의 4개 중 일부만 남기고 그 색상으로 좌측 라인도 통일. 영업 담당자별 강조 솔루션 다르게 가능. **단 1순위 Citrix·Omnissa Horizon VDI 기술지원 블록은 가능한 유지** (사업 포지션 핵심).
+뒷면 3 사업이 빡빡하게 느껴지면 `.practices` 안의 3개 중 일부만 남기고 그 색상으로 좌측 라인도 통일. 영업 담당자별 강조 사업 다르게 가능. **단 VDI 기술지원 블록은 가능한 유지** (마이로켓 차별화 포인트).
 
 ### QR 코드 추가
 
@@ -209,7 +208,7 @@ HTML로 만든 PDF는 다음 3가지 이슈가 있습니다. 옵션 A/B/C 중 �
 ## 디자인 원칙
 
 - **이미지 미사용** — 텍스트·CSS만으로 시그니처 구성 (수정·복제 단순화)
-- **4 솔루션 시각화** — 뒷면 4개 카드의 색상이 site-config의 톤과 일치 (blue/indigo/emerald/purple — VDI 기술지원 → 백업 → 전산통합유지보수 순)
+- **3 사업 시각화** — 뒷면 3개 카드의 색상이 site-config의 톤과 일치 (blue/emerald/indigo — 전산통합유지보수 → 백업 → VDI 순)
 - **표지 면으로 wordmark** — 상의 주머니에서 절반만 보여도 브랜드 식별
 - **연락처 우선 vs 회사 우선** — 좌측 개인 / 우측 회사 명확 분리
 - **한글·영문 동시 노출** — 한국·국제 모두 대응. 이름·직책 모두 양쪽 표기.
