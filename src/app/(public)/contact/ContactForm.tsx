@@ -40,6 +40,7 @@ const INTEREST_AREAS = [
   { value: "acronis", label: "Acronis Cyber Protect 기술지원" },
   // SI 협업
   { value: "si-advisory", label: "SI 제안 협업 (기술 파트 보강)" },
+  { value: "integrated-maintenance", label: "전산통합유지보수 협업 (비상주 전문영역)" },
   { value: "other", label: "기타" },
 ];
 

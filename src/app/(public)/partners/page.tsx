@@ -175,6 +175,48 @@ export default function PartnersPage() {
         </div>
       </section>
 
+      {/* ========== 통합유지보수 사업 협업 ========== */}
+      <section className="border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
+          <p className="text-xs font-bold text-purple-700 uppercase tracking-widest mb-2">
+            Integrated Maintenance
+          </p>
+          <h2 className="text-xl sm:text-2xl md:text-[26px] font-semibold text-gray-900 mb-4 kr-keep-all">
+            전산통합유지보수 사업 안의 VDI·가상화·백업 영역을 지원합니다
+          </h2>
+          <p className="text-base text-gray-700 leading-relaxed kr-keep-all mb-6 max-w-3xl">
+            공공기관 전산통합유지보수 공고에는 서버, 네트워크, 보안, 업무시스템과 함께
+            VDI·가상화·백업 운영 범위가 포함되는 경우가 많습니다. 주사업자가 전체 사업을 총괄하고,
+            마이로켓은 Citrix, Omnissa Horizon, VMware vSphere, Acronis처럼 별도 경험이 필요한 영역을
+            비상주 전문 기술지원 형태로 맡습니다.
+          </p>
+          <ul className="space-y-2.5 text-base text-gray-700 leading-relaxed kr-keep-all mb-6">
+            {[
+              "RFP의 VDI·가상화·백업 요구사항 검토",
+              "제안 단계 기술 리스크와 견적 범위 정리",
+              "수주 후 월간 점검, 장애 분석, 패치 검토 지원",
+              "고객 제출용 점검보고서, 장애보고서, 작업계획서 작성",
+              "벤더 SR 회신 정리와 조치 방향 검토",
+            ].map((t) => (
+              <li key={t} className="flex gap-3">
+                <span className="text-purple-500 font-bold flex-shrink-0 mt-0.5">✓</span>
+                <span>{t}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-6 max-w-3xl bg-gray-50 border border-gray-200 rounded-xl p-4">
+            상주 SM 인력 파견은 하지 않습니다. 대신 통합유지보수 사업 안에서 전문 영역을 맡는
+            비상주 기술지원, 정기점검, 장애분석, 산출물 작성 방식으로 협업합니다.
+          </p>
+          <Link
+            href="/partners/integrated-maintenance"
+            className="inline-flex items-center gap-1.5 text-sm font-semibold text-purple-700 hover:text-purple-800"
+          >
+            통합유지보수 협업 페이지 보기 →
+          </Link>
+        </div>
+      </section>
+
       {/* ========== 해주는 일 5개 ========== */}
       <section className="border-b border-gray-100 bg-gray-50/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
@@ -377,7 +419,8 @@ export default function PartnersPage() {
           </h2>
           <p className="text-base text-gray-700 leading-[1.85] kr-keep-all">
             1인 기술자문 회사입니다. 대표가 직접 검토·납품하고, 대규모 구축은 파트너가 맡습니다.
-            상주·SM·총판 영업은 하지 않습니다.
+            상주 SM 인력 파견·총판 영업은 하지 않지만, 통합유지보수 사업 안의 VDI·가상화·백업
+            전문영역은 비상주 기술지원으로 맡습니다.
           </p>
         </div>
       </section>

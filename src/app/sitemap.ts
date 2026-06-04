@@ -23,6 +23,8 @@ const staticPaths: { path: string; priority: number; changeFrequency: MetadataRo
   { path: "/tools/backup-roi", priority: 0.7, changeFrequency: "monthly" },
   { path: "/insights", priority: 0.7, changeFrequency: "weekly" },
   { path: "/resources/templates", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/partners", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/partners/integrated-maintenance", priority: 0.9, changeFrequency: "monthly" },
   { path: "/case-studies", priority: 0.6, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.5, changeFrequency: "yearly" },
   { path: "/legal/privacy", priority: 0.3, changeFrequency: "yearly" },
