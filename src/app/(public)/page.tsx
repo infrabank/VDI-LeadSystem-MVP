@@ -222,7 +222,7 @@ export default function HomePage() {
             Field Issues
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 md:mb-12 kr-keep-all">
-            운영 문제는 대개 경계에서 터집니다.
+            운영 문제는 대개 경계에서 발생합니다.
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {operationalIssues.map((issue, i) => (
