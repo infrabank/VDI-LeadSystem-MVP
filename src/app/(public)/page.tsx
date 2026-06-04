@@ -34,49 +34,189 @@ export default function HomePage() {
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-28">
           <p className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xs sm:text-sm mb-5 sm:mb-6 tracking-widest uppercase">
             <span className="w-3 sm:w-4 h-px bg-slate-400 inline-block" />
-            VDI · Backup Support
+            IT Maintenance · Acronis Backup · VDI Support
           </p>
           <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
-            VDI와 백업 장애,<br />
-            직접 확인합니다.
+            전산유지보수부터<br />
+            VDI 기술지원까지
           </h1>
           <p className="text-base sm:text-lg text-slate-200/90 mb-6 sm:mb-7 max-w-2xl leading-relaxed kr-keep-all">
-            Citrix, Omnissa Horizon, Acronis 운영환경을 점검하고 장애를 처리합니다.<br className="hidden sm:block" />
-            접속, 인증서, 프로파일, 스토리지, 백업 복구까지 함께 봅니다.
+            마이로켓은 PC·서버·네트워크·백업 운영을 정리하는 전산유지보수와 Citrix·Omnissa Horizon
+            VDI 전문 기술지원을 제공합니다. 단순 수리보다 운영 상태를 확인하고, 장애 원인과 조치
+            방향을 보고서로 남깁니다.
           </p>
-          <p className="text-sm sm:text-base text-slate-300/80 mb-8 sm:mb-10 max-w-2xl leading-relaxed kr-keep-all">
-            전산통합유지보수 사업 안에서 Citrix, Omnissa Horizon, VMware, Acronis 영역의
-            비상주 기술지원 파트너로 참여합니다.
+          <p className="text-sm sm:text-base text-slate-300/80 mb-8 sm:mb-10 max-w-2xl leading-relaxed kr-keep-all border-l-2 border-blue-400/60 pl-4">
+            특히 Citrix와 Omnissa Horizon 기반 VDI 운영장애, 인증서, 프로파일, UAG/Gateway,
+            vSphere 연계 문제를 다년간 다뤄왔습니다.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
             <Link
-              href="/contact?source=hero&interest=incident-response"
+              href="/contact?source=home-hero&interest=it-maintenance&subject=전산유지보수 문의"
               className="px-6 sm:px-7 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5 text-center"
             >
-              기술지원 문의
+              전산유지보수 문의
             </Link>
             <Link
-              href="/contact?source=hero&interest=monthly-checkup"
+              href="/contact?source=home-hero&interest=acronis&subject=Acronis 백업 상담"
               className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all text-center"
             >
-              유지보수 상담
+              Acronis 백업 상담
+            </Link>
+            <Link
+              href="/contact?source=home-hero&interest=vdi&subject=VDI 기술지원 문의"
+              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all text-center"
+            >
+              VDI 기술지원 문의
             </Link>
           </div>
-
-          <p className="mt-5 sm:mt-6 text-sm">
-            <Link
-              href="/partners/integrated-maintenance"
-              className="text-slate-300 hover:text-white underline underline-offset-4 decoration-slate-500 hover:decoration-white transition-colors"
-            >
-              전산통합유지보수 협업 보기 →
-            </Link>
-          </p>
         </div>
       </section>
 
-      {/* ========== Section 2. 문제 제기 ========== */}
-      <section className="bg-gray-50 border-b border-gray-100">
+      {/* ========== Section 2. 2트랙 서비스 구분 ========== */}
+      <section id="tracks" className="scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
+          <p className="text-slate-600 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
+            Two Tracks
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 md:mb-12 kr-keep-all">
+            일반 전산운영과 VDI 전문 운영을 나눠서 봅니다
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {/* 트랙 1 — 전산운영·백업 */}
+            <div className="flex flex-col bg-white rounded-xl border border-gray-200 p-6 sm:p-8" style={{ borderTop: "4px solid #2563eb" }}>
+              <p className="text-xs font-bold text-blue-700 uppercase tracking-widest mb-2">Track 1</p>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 kr-keep-all">
+                전산운영·백업 지원
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-5">
+                전산 담당자가 없거나 운영 공백이 있는 회사의 PC, 서버, 네트워크, NAS, 백업, 보안
+                상태를 정기적으로 점검합니다.
+              </p>
+              <ul className="space-y-1.5 text-sm text-gray-700 mb-6 flex-1 kr-keep-all">
+                {[
+                  "전산통합유지보수",
+                  "PC·서버·네트워크 장애 대응",
+                  "NAS·백업 상태 점검",
+                  "Acronis 백업·복구보안",
+                  "월간 점검표와 운영 보고서",
+                ].map((t) => (
+                  <li key={t} className="flex gap-2">
+                    <span className="text-blue-500 flex-shrink-0">·</span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/services/it-maintenance"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:translate-x-0.5 transition-transform mt-auto"
+              >
+                전산유지보수 보기 →
+              </Link>
+            </div>
+
+            {/* 트랙 2 — VDI 전문 기술지원 */}
+            <div className="flex flex-col bg-white rounded-xl border border-gray-200 p-6 sm:p-8" style={{ borderTop: "4px solid #4f46e5" }}>
+              <p className="text-xs font-bold text-indigo-700 uppercase tracking-widest mb-2">Track 2</p>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 kr-keep-all">
+                VDI 전문 기술지원
+              </h3>
+              <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-5">
+                Citrix, Omnissa Horizon, VMware 기반 VDI 환경의 접속장애, 인증서, 프로파일,
+                UAG/Gateway, vSphere 연계 문제를 분석합니다.
+              </p>
+              <ul className="space-y-1.5 text-sm text-gray-700 mb-6 flex-1 kr-keep-all">
+                {[
+                  "Citrix Virtual Apps and Desktops",
+                  "Omnissa Horizon",
+                  "VMware vSphere / ESXi / vCenter",
+                  "UAG·Gateway·인증서·DNS",
+                  "FSLogix·프로파일·VDA·Agent",
+                  "장애보고서·작업계획서·운영보고서",
+                ].map((t) => (
+                  <li key={t} className="flex gap-2">
+                    <span className="text-indigo-500 flex-shrink-0">·</span>
+                    <span>{t}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link
+                href="/services/vdi-support"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-700 hover:translate-x-0.5 transition-transform mt-auto"
+              >
+                VDI 기술지원 보기 →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========== Section 3. 주요 서비스 3개 ========== */}
+      <section id="services" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
+          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
+            Services
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 md:mb-12 kr-keep-all">
+            주요 서비스
+          </h2>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 md:gap-6">
+            {[
+              {
+                title: "전산통합유지보수",
+                body: "전산 담당자가 없거나, 담당자가 퇴사했거나, PC·서버·백업·네트워크 문제를 어디에 맡겨야 할지 애매한 회사를 지원합니다. 단순 출장 수리보다 현재 운영 상태를 먼저 정리합니다.",
+                sub: "PC, 서버, NAS, 백업, 네트워크, 계정·권한을 확인하고 월간 점검표로 남깁니다.",
+                href: "/services/it-maintenance",
+                color: "#2563eb",
+                text: "text-blue-700",
+              },
+              {
+                title: "Acronis 백업·복구보안",
+                body: "백업 성공률보다 중요한 것은 실제 복구 가능성입니다. 서버와 PC 데이터를 Acronis Cyber Protect 기반으로 보호하고, 장애나 랜섬웨어 상황에서 복구 가능한지 확인합니다.",
+                sub: "백업 정책, 실패 이력, 복구 테스트 결과를 보고서로 정리합니다.",
+                href: "/services/acronis-backup",
+                color: "#059669",
+                text: "text-emerald-700",
+              },
+              {
+                title: "VDI 기술지원 및 유지보수",
+                body: "Citrix Virtual Apps and Desktops, Omnissa Horizon, VMware 기반 VDI 운영환경의 접속장애, 로그인 지연, 프로파일, 인증서, UAG/Gateway, vSphere 연계 문제를 운영 관점에서 분석합니다.",
+                sub: "장애보고서·작업계획서·완료보고서를 제출 가능한 형태로 작성합니다.",
+                href: "/services/vdi-support",
+                color: "#4f46e5",
+                text: "text-indigo-700",
+              },
+            ].map((s) => (
+              <div
+                key={s.title}
+                className="flex flex-col bg-white rounded-xl border border-gray-200 p-6 sm:p-7"
+                style={{ borderTop: `4px solid ${s.color}` }}
+              >
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 kr-keep-all">
+                  {s.title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-3">
+                  {s.body}
+                </p>
+                <p className="text-sm text-gray-500 leading-relaxed kr-keep-all mb-5 flex-1">
+                  {s.sub}
+                </p>
+                <Link
+                  href={s.href}
+                  className={`inline-flex items-center gap-1.5 text-sm font-semibold ${s.text} hover:translate-x-0.5 transition-transform mt-auto`}
+                >
+                  자세히 보기 →
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== Section 4. 문제 제기 ========== */}
+      <section className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <p className="text-amber-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Field Issues
@@ -102,8 +242,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== Section 3. 다루는 영역 ========== */}
-      <section id="support-areas" className="scroll-mt-20">
+      {/* ========== Section 5. 다루는 영역 ========== */}
+      <section id="support-areas" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Technical Support
@@ -147,8 +287,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== Section 4. 유지보수 ========== */}
-      <section id="maintenance" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
+      {/* ========== Section 6. 유지보수 ========== */}
+      <section id="maintenance" className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <p className="text-indigo-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Maintenance
@@ -191,78 +331,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== Section 4-1. 전산통합유지보수 지원 ========== */}
-      <section id="integrated-maintenance" className="scroll-mt-20">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-purple-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Integrated Maintenance Support
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
-            전산통합유지보수 사업의 전문 영역을 맡습니다
-          </h2>
-          <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all max-w-3xl">
-            서버·네트워크·보안·업무시스템을 모두 맡는 통합유지보수 사업에서도 VDI, 가상화, 백업
-            영역은 별도 운영 경험이 필요합니다. 마이로켓은 주사업자 또는 SI 파트너와 함께 Citrix,
-            Omnissa Horizon, VMware vSphere, Acronis 영역의 정기점검, 장애 분석, 패치 검토,
-            운영 보고서를 지원합니다.
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-            {[
-              {
-                title: "VDI 운영 지원",
-                detail:
-                  "Citrix, Omnissa Horizon 접속장애, 프로파일, 인증서, Gateway/UAG 이슈를 분석합니다.",
-              },
-              {
-                title: "가상화 인프라 점검",
-                detail:
-                  "ESXi, vCenter, 데이터스토어, 리소스 사용률, 스냅샷과 백업 영향도를 함께 확인합니다.",
-              },
-              {
-                title: "백업·복구검증",
-                detail:
-                  "Acronis 백업 정책, 실패 이력, 복구 테스트 결과를 점검하고 보고서로 정리합니다.",
-              },
-              {
-                title: "제안·운영 문서 지원",
-                detail:
-                  "RFP 기술요건 검토, 월간 점검표, 장애보고서, 작업계획서와 완료보고서 작성을 지원합니다.",
-              },
-            ].map((card) => (
-              <div
-                key={card.title}
-                className="flex flex-col bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
-                style={{ borderTop: "4px solid #7c3aed" }}
-              >
-                <h3 className="text-base font-bold text-gray-900 mb-2 kr-keep-all">
-                  {card.title}
-                </h3>
-                <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
-                  {card.detail}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-8 md:mt-10 flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Link
-              href="/contact?source=home-integrated-maintenance&interest=integrated-maintenance&subject=전산통합유지보수 협업 범위 상담"
-              className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-slate-900 text-white rounded-md hover:bg-slate-800 font-semibold text-sm transition-all"
-            >
-              통합유지보수 협업 범위 상담
-            </Link>
-            <Link
-              href="/partners/integrated-maintenance"
-              className="text-sm font-medium text-purple-700 hover:text-purple-800"
-            >
-              협업 상세 보기 →
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ========== Section 5. 왜 마이로켓인가 ========== */}
+      {/* ========== Section 7. 왜 마이로켓인가 ========== */}
       <section className="bg-gray-50 border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">

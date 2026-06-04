@@ -134,6 +134,18 @@ export default function IntegratedMaintenancePage() {
         </div>
       </div>
 
+      {/* 안내 — 이 페이지는 SI 파트너 협업용 보조 페이지 */}
+      <div className="bg-amber-50/60 border-b border-amber-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 text-sm text-gray-700 leading-relaxed kr-keep-all">
+          이 페이지는 SI·주사업자와 함께 전산통합유지보수 또는 VDI 운영 사업을 수행할 때의 협업
+          방식을 설명합니다. 일반 전산유지보수 문의는{" "}
+          <Link href="/services/it-maintenance" className="font-semibold text-blue-700 underline underline-offset-2 hover:text-blue-800">/services/it-maintenance</Link>,
+          {" "}VDI 기술지원 문의는{" "}
+          <Link href="/services/vdi-support" className="font-semibold text-indigo-700 underline underline-offset-2 hover:text-indigo-800">/services/vdi-support</Link>
+          를 참고해주세요.
+        </div>
+      </div>
+
       {/* ========== Hero ========== */}
       <section className="relative border-b border-gray-100">
         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-purple-600 via-blue-600 to-emerald-600 pointer-events-none" />

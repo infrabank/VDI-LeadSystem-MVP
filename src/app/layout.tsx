@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { company, supportAreas, maintenancePackages } from "@/lib/site-config";
+import { company, companyLegal, supportAreas, maintenancePackages } from "@/lib/site-config";
 
 const siteUrl = `https://${company.domain}`;
 const siteTitle = `${company.legalName} | ${company.taglineKo}`;
@@ -43,7 +43,20 @@ const jsonLd = {
   alternateName: company.name,
   url: siteUrl,
   description: siteDescription,
-  areaServed: "KR",
+  telephone: companyLegal.phone,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: companyLegal.address,
+    addressLocality: "세종특별자치시",
+    addressCountry: "KR",
+  },
+  areaServed: [
+    { "@type": "AdministrativeArea", name: "세종특별자치시" },
+    { "@type": "AdministrativeArea", name: "대전광역시" },
+    { "@type": "AdministrativeArea", name: "청주시" },
+    { "@type": "AdministrativeArea", name: "천안시" },
+    { "@type": "Country", name: "대한민국" },
+  ],
   knowsAbout: [
     "Citrix Virtual Apps and Desktops",
     "Citrix VAD 기술지원",
@@ -90,6 +103,36 @@ const jsonLd = {
     "@type": "OfferCatalog",
     name: `${company.name} Technical Support & Maintenance`,
     itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "전산 유지보수 · IT 기술지원",
+          description:
+            "PC, 서버, 네트워크, NAS, 백업, 보안 상태를 정기적으로 점검하고 장애 대응을 지원하는 전산 유지보수 서비스.",
+          url: `${siteUrl}/services/it-maintenance`,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Acronis 백업·복구보안",
+          description:
+            "Acronis Cyber Protect 기반으로 서버와 PC 데이터를 백업하고, 장애나 랜섬웨어 상황에서 실제 복구 가능한지 확인하는 서비스.",
+          url: `${siteUrl}/services/acronis-backup`,
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Citrix·Omnissa Horizon VDI 기술지원",
+          description:
+            "Citrix, Omnissa Horizon, VMware 기반 가상 데스크톱 환경의 접속장애, 인증서, 프로파일, UAG/Gateway, vSphere 연계 문제를 분석하는 서비스.",
+          url: `${siteUrl}/services/vdi-support`,
+        },
+      },
       ...supportAreas.map((area) => ({
         "@type": "Offer",
         itemOffered: {

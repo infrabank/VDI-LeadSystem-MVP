@@ -37,9 +37,29 @@ export default function PublicLayout({
             {/* Technical Support */}
             <div>
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
-                Technical Support
+                Services
               </p>
               <ul className="space-y-2.5 text-sm">
+                <li>
+                  <Link href="/services/it-maintenance" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
+                    전산 유지보수
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/acronis-backup" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
+                    Acronis 백업·복구보안
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/vdi-support" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
+                    VDI 기술지원
+                  </Link>
+                </li>
+                <li className="pt-2 border-t border-gray-200 mt-2">
+                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">
+                    Technical Support
+                  </p>
+                </li>
                 {supportAreas.map((a) => (
                   <li key={a.id}>
                     <Link

@@ -29,6 +29,9 @@ const ORG_TYPES = [
  * - Hero의 "기술지원 문의" (incident-response)·"유지보수 범위 상담" (monthly-checkup)
  */
 const INTEREST_AREAS = [
+  // 주요 서비스 (2026-06-04 SEO 개편 — 홈 hero·서비스 카드 prefill)
+  { value: "it-maintenance", label: "전산통합유지보수 (PC·서버·네트워크·백업)" },
+  { value: "vdi", label: "VDI 기술지원 (Citrix·Omnissa Horizon)" },
   // 유지보수 4 패키지
   { value: "monthly-checkup", label: "월간 점검형 유지보수" },
   { value: "incident-response", label: "장애 대응형 기술지원" },
@@ -37,7 +40,7 @@ const INTEREST_AREAS = [
   // 제품별 기술지원
   { value: "citrix", label: "Citrix Virtual Apps and Desktops 기술지원" },
   { value: "horizon", label: "Omnissa Horizon 기술지원" },
-  { value: "acronis", label: "Acronis Cyber Protect 기술지원" },
+  { value: "acronis", label: "Acronis Cyber Protect 백업·복구보안" },
   // SI 협업
   { value: "si-advisory", label: "SI 제안 협업 (기술 파트 보강)" },
   { value: "integrated-maintenance", label: "전산통합유지보수 협업 (비상주 전문영역)" },
