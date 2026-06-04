@@ -1,7 +1,7 @@
 # 이메일 서명 — Myloket 표준 템플릿
 
 > 모든 외부 메일 발신 시 사용. 직원·파트너 공통 양식.
-> 작성: 2026-05-01 · 최종 갱신: 2026-05-03 (1인 N²SF 전환 전문가 포지션 반영)
+> 작성: 2026-05-01 · 최종 갱신: 2026-06-04 (VDI·백업 기술지원 포지션 반영)
 
 ## 사용 가이드
 
@@ -20,8 +20,8 @@
 ### Plain Text
 ```
 ─────────────
-제현우 | 대표 · 수석 자문 엔지니어
-㈜마이로켓 (Myloket Inc.) — 공공·연구기관 N²SF 전환 설계
+제현우 | 대표 · 수석 기술지원 엔지니어
+㈜마이로켓 (Myloket Inc.) — VDI·백업 전문 기술지원
 
 📧 jhw@mlkit.co.kr
 🌐 myloket.co.kr
@@ -33,8 +33,8 @@
 <table style="border-collapse:collapse;font-family:'Pretendard Variable',-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#374151;line-height:1.55">
   <tr>
     <td style="padding-top:8px;border-top:2px solid #7c3aed">
-      <div style="font-weight:600;color:#101828;font-size:14px">제현우 <span style="color:#9ca3af;font-weight:400">|</span> 대표 · 수석 자문 엔지니어</div>
-      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — 공공·연구기관 N²SF 전환 설계</div>
+      <div style="font-weight:600;color:#101828;font-size:14px">제현우 <span style="color:#9ca3af;font-weight:400">|</span> 대표 · 수석 기술지원 엔지니어</div>
+      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — VDI·백업 전문 기술지원</div>
       <div style="margin-top:6px;font-size:12px">
         <a href="mailto:jhw@mlkit.co.kr" style="color:#7c3aed;text-decoration:none">jhw@mlkit.co.kr</a>
         <span style="color:#d1d5db;margin:0 6px">·</span>
@@ -52,19 +52,19 @@
 ### Plain Text
 ```
 ─────────────────────────────
-제현우 (Je Hyunwoo) | 대표 · 수석 자문 엔지니어
+제현우 (Je Hyunwoo) | 대표 · 수석 기술지원 엔지니어
 ㈜마이로켓 (Myloket Inc.)
-Public-Sector N²SF Workspace Transition Advisor
+VDI & Backup Technical Support
 
 📧 jhw@mlkit.co.kr   ☎ 010-3861-8079
 🌐 myloket.co.kr
 
-▸ N²SF 전환 사전진단 — 구조도·C/S/O 분류·1차 로드맵
-▸ VDI 역할 재정의 — 유지·축소·DaaS·고위험 분리 시나리오
-▸ MFA QuickStart — Microsoft Entra · 라온시큐어 (GPKI)
-▸ 백업·DR 복구검증 — 사고 시 실제 복구 가능한지 매월 검증
+▸ Citrix Virtual Apps and Desktops 기술지원 — 접속장애·VDA·NetScaler/Gateway·인증서
+▸ Omnissa Horizon 기술지원 — Connection Server·UAG·Agent·FSLogix
+▸ Acronis 백업·복구검증 — 백업 정책·실패 이력 + 실제 복구 가능성 검증
+▸ 전산통합유지보수 비상주 파트너 — SI 주사업자와 VDI·가상화·백업 전문영역 지원
 
-▸ N²SF 정렬 자가 진단(7분): myloket.co.kr/tools/risk-assessment
+▸ 전산통합유지보수 협업: myloket.co.kr/partners/integrated-maintenance
 ─────────────────────────────
 ```
 
@@ -76,10 +76,10 @@ Public-Sector N²SF Workspace Transition Advisor
       <div style="font-weight:600;color:#101828;font-size:15px">
         제현우 <span style="color:#9ca3af;font-weight:400;font-size:13px">(Je Hyunwoo)</span>
         <span style="color:#9ca3af;font-weight:400">|</span>
-        <span style="color:#4b5563;font-weight:500">대표 · 수석 자문 엔지니어</span>
+        <span style="color:#4b5563;font-weight:500">대표 · 수석 기술지원 엔지니어</span>
       </div>
       <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 <span style="color:#9ca3af">(Myloket Inc.)</span></div>
-      <div style="color:#7c3aed;font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-top:4px">Public-Sector N²SF Workspace Transition Advisor</div>
+      <div style="color:#7c3aed;font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-top:4px">VDI &amp; Backup Technical Support</div>
     </td>
   </tr>
   <tr>
@@ -100,15 +100,15 @@ Public-Sector N²SF Workspace Transition Advisor
   </tr>
   <tr>
     <td style="padding:8px 0;border-top:1px solid #e5e7eb;font-size:12px">
-      <div style="margin-bottom:3px"><span style="color:#7c3aed">▸</span> <strong style="color:#101828;font-weight:600">N²SF 전환 사전진단</strong> <span style="color:#6b7280">— 구조도·C/S/O 분류·1차 로드맵</span></div>
-      <div style="margin-bottom:3px"><span style="color:#2563eb">▸</span> <strong style="color:#101828;font-weight:600">VDI 역할 재정의</strong> <span style="color:#6b7280">— 유지·축소·DaaS·고위험 분리 시나리오</span></div>
-      <div style="margin-bottom:3px"><span style="color:#4f46e5">▸</span> <strong style="color:#101828;font-weight:600">MFA QuickStart</strong> <span style="color:#6b7280">— Microsoft Entra · 라온시큐어 (GPKI)</span></div>
-      <div><span style="color:#059669">▸</span> <strong style="color:#101828;font-weight:600">백업·DR 복구검증</strong> <span style="color:#6b7280">— 사고 시 실제 복구 가능한지 매월 검증</span></div>
+      <div style="margin-bottom:3px"><span style="color:#2563eb">▸</span> <strong style="color:#101828;font-weight:600">Citrix Virtual Apps and Desktops 기술지원</strong> <span style="color:#6b7280">— 접속장애·VDA·NetScaler/Gateway·인증서</span></div>
+      <div style="margin-bottom:3px"><span style="color:#4f46e5">▸</span> <strong style="color:#101828;font-weight:600">Omnissa Horizon 기술지원</strong> <span style="color:#6b7280">— Connection Server·UAG·Agent·FSLogix</span></div>
+      <div style="margin-bottom:3px"><span style="color:#059669">▸</span> <strong style="color:#101828;font-weight:600">Acronis 백업·복구검증</strong> <span style="color:#6b7280">— 백업 정책·실패 이력 + 실제 복구 가능성 검증</span></div>
+      <div><span style="color:#7c3aed">▸</span> <strong style="color:#101828;font-weight:600">전산통합유지보수 비상주 파트너</strong> <span style="color:#6b7280">— SI 주사업자와 VDI·가상화·백업 전문영역 지원</span></div>
     </td>
   </tr>
   <tr>
     <td style="padding-top:6px;font-size:11px;color:#9ca3af">
-      ▸ N²SF 정렬 자가 진단(7분) <a href="https://myloket.co.kr/tools/risk-assessment" style="color:#7c3aed;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/tools/risk-assessment</a>
+      ▸ 전산통합유지보수 협업 <a href="https://myloket.co.kr/partners/integrated-maintenance" style="color:#7c3aed;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/partners/integrated-maintenance</a>
     </td>
   </tr>
 </table>
@@ -122,11 +122,11 @@ Public-Sector N²SF Workspace Transition Advisor
 ```
 ═════════════════════════════════════
 ㈜마이로켓 (Myloket Inc.)
-Public-Sector N²SF Workspace Transition Advisor
-공공·정부출연연구기관 10여 곳 VDI 운영 · 1인 전문가 직접 진단 · 구축은 검증된 파트너 컨소시엄
+VDI & Backup Technical Support
+공공·정부출연연구기관 10여 곳 VDI 구축·운영·유지보수 지원 · 1인 전문가 직접 대응 · 구축은 검증된 파트너 컨소시엄
 ═════════════════════════════════════
 
-제현우 (Je Hyunwoo) | 대표 · 수석 자문 엔지니어 / CEO · Principal Engineer
+제현우 (Je Hyunwoo) | 대표 · 수석 기술지원 엔지니어 / CEO · Principal Engineer
 📧 jhw@mlkit.co.kr   ☎ 010-3861-8079
 🌐 https://myloket.co.kr
 
@@ -134,31 +134,31 @@ Public-Sector N²SF Workspace Transition Advisor
 4 Solutions
 ──────────────────────
 
-[N²SF 전환 사전진단 — Transition Diagnosis]
-현재 VDI/망분리 구조도 + C/S/O 분류 + 1차 로드맵·RFP 문구
-→ myloket.co.kr/practices/managed-integration
+[Citrix Virtual Apps and Desktops — 기술지원]
+접속장애 · StoreFront · Delivery Controller · VDA · NetScaler/Gateway · 인증서
+→ myloket.co.kr/#support-areas
 
-[VDI 역할 재정의 — VDI Repositioning]
-Citrix · Omnissa Horizon · DaaS — 유지/축소/전환 시나리오 비교
-→ myloket.co.kr/practices/vdi-workspace
+[Omnissa Horizon — 기술지원]
+Connection Server · UAG · Agent · Client · Instant Clone · FSLogix · vSphere 연계
+→ myloket.co.kr/#support-areas
 
-[MFA QuickStart for VDI/DaaS — MFA Design]
-Microsoft Entra · 라온시큐어 — 어디에·어떤 정책으로·어떤 장애대응
-→ myloket.co.kr/practices/mfa-access
+[Acronis 백업·복구검증 — Cyber Protect]
+백업 정책 · 실패 이력 · 에이전트 점검 + 사고 시 실제 복구 가능성 검증
+→ myloket.co.kr/#maintenance
 
-[백업·DR 복구검증 — Recovery Verification]
-Acronis Cyber Protect — 사고 시 실제 복구 가능한지 매월 검증
-→ myloket.co.kr/practices/data-protection
+[전산통합유지보수 비상주 파트너 — Integrated Maintenance]
+SI 주사업자와 함께 VDI · 가상화 · 백업 전문영역을 비상주 기술지원으로 지원
+→ myloket.co.kr/partners/integrated-maintenance
 
 ──────────────────────
 무료 진단·계산 도구
 ──────────────────────
-✓ N²SF 정렬 진단 (8영역 28문항)
-✓ N²SF 전환 준비도 (5섹션 15문항)
-✓ VDI 역할 재정의 (9문항 4시나리오)
 ✓ VDI 운영 ROI 시뮬레이션
 ✓ 백업·사이버복원력 자가 진단
 ✓ 백업 ROI 계산기
+✓ N²SF 정렬 진단 (8영역 28문항)
+✓ N²SF 전환 준비도 (5섹션 15문항)
+✓ VDI 역할 재정의 (9문항 4시나리오)
 
 → myloket.co.kr/tools
 
@@ -173,9 +173,9 @@ N²SF 사전진단 체크리스트 · VDI 의사결정 매트릭스 · 보안성
 ──────────────────────
 파트너십·인프라
 ──────────────────────
-Partners: Citrix · Omnissa · Microsoft · 라온시큐어 · Acronis
+Partners: Citrix · Omnissa · Acronis
 Infra:    VMware ESXi · vSphere
-공공·연구기관 10여 곳 운영 실적
+공공·연구기관 10여 곳 운영·유지보수 실적
 
 ═════════════════════════════════════
 ```
@@ -227,24 +227,23 @@ Infra:    VMware ESXi · vSphere
 
 - **이미지 첨부 금지**: 외부 이미지(로고)는 일부 클라이언트에서 차단됨. 본 템플릿은 텍스트·CSS만 사용.
 - **링크 절대 경로**: 모든 URL은 `https://myloket.co.kr/...` 절대 경로
-- **개인 정보 교체**: `제현우`, `Je Hyunwoo`, `jhw@mlkit.co.kr`, `010-3861-8079`, 직책(`대표 · 수석 자문 엔지니어 / CEO · Principal Engineer`) 4곳을 본인 정보로 교체
+- **개인 정보 교체**: `제현우`, `Je Hyunwoo`, `jhw@mlkit.co.kr`, `010-3861-8079`, 직책(`대표 · 수석 기술지원 엔지니어 / CEO · Principal Engineer`) 4곳을 본인 정보로 교체
 - **기밀 메일 처리**: Rich 변형 하단의 발신 전용 안내문은 회사 정책에 맞게 조정
 - **주기적 갱신**: 솔루션 추가·진단 도구 추가 시 Rich 변형의 도구·템플릿 목록 업데이트
 
 ---
 
-## 메인 색상 — Purple(#7c3aed) 정렬
+## 메인 색상 — Purple(#7c3aed) 브랜드 액센트
 
-이전 indigo(#1d52de) → 1순위 상품(N²SF 전환 사전진단)의 primary color인 **purple #7c3aed**로 정렬.
-이는 site-config의 practices 정렬 변경(N²SF 사전진단을 1순위로)과 일치하며, 명함·홈페이지·OG 이미지 모두 동일한 시각 시그니처.
+**purple #7c3aed**는 마이로켓 브랜드 시그니처 액센트로 사용 — 서명 상단 라인·링크·전산통합유지보수 블록에 적용. 명함·홈페이지·OG 이미지 모두 동일한 시각 시그니처.
 
-각 상품 액센트 컬러:
-| 상품 | 컬러 | 용도 |
+각 블록 액센트 컬러:
+| 블록 | 컬러 | 용도 |
 |---|---|---|
-| N²SF 전환 사전진단 | `#7c3aed` (purple) | 메인 시그니처·1순위 |
-| VDI 역할 재정의 | `#2563eb` (blue) | |
-| MFA QuickStart | `#4f46e5` (indigo) | |
-| 백업·DR 복구검증 | `#059669` (emerald) | |
+| Citrix VAD 기술지원 | `#2563eb` (blue) | |
+| Omnissa Horizon 기술지원 | `#4f46e5` (indigo) | |
+| Acronis 백업·복구검증 | `#059669` (emerald) | |
+| 전산통합유지보수 비상주 파트너 | `#7c3aed` (purple) | 브랜드 시그니처 |
 
 ---
 
