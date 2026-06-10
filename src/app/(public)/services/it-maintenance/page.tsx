@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { companyLegal, smbCustomers } from "@/lib/site-config";
 import { breadcrumbLd, faqPageLd, serviceLd, type FaqItem } from "@/lib/schema";
+
+const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
   title: "중소기업 전산 유지보수와 IT 기술지원 | Myloket",
@@ -58,6 +61,10 @@ const faqs: FaqItem[] = [
     q: "세종, 대전, 청주, 천안도 방문 가능한가요?",
     a: "세종을 기준으로 대전, 청주, 천안 등 충청권 전산 유지보수 문의를 우선 검토합니다. 방문 범위와 주기는 계약 전 협의합니다.",
   },
+  {
+    q: "문의하면 바로 계약해야 하나요?",
+    a: "아닙니다. 현황 확인과 점검 제안까지는 비용이 없으며, 점검 결과만 받고 판단해도 됩니다. 정기 계약 외에 단발 장애 대응도 가능합니다.",
+  },
 ];
 
 const ldObjects = [
@@ -110,24 +117,27 @@ export default function ItMaintenancePage() {
             중소기업 전산 유지보수와<br className="hidden md:block" />
             <span className="md:hidden"> </span>IT 기술지원
           </h1>
-          <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-10 max-w-2xl">
-            전산 담당자가 없거나 퇴사한 회사, 사내 전산 관리가 필요한 회사를 위해 PC, 서버,
-            네트워크, NAS, 백업, 보안 상태를 월 단위로 점검합니다. 단순 방문 수리보다 회사 전산
-            운영 상태를 기록하고, 장애 원인과 재발 방지 방향을 남기는 전산 통합 유지보수를 지향합니다.
+          <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-6 max-w-2xl">
+            전산 담당자가 없거나 퇴사한 회사를 위해 PC, 서버, 네트워크, NAS, 백업, 보안 상태를
+            월 단위로 점검함. 단순 방문 수리가 아니라 무엇을 점검했고 무엇을 조치했는지 점검표와
+            운영 보고서로 남김.
+          </p>
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all mb-10 max-w-2xl border-l-2 border-blue-400/60 pl-4">
+            상담한 사람이 직접 작업함. 장비 교체보다 현재 환경에서 가능한 개선을 먼저 제안함.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
-              href="/contact?source=it-maintenance&interest=it-maintenance&subject=전산 유지보수 견적 문의"
+              href="/contact?source=it-maintenance&interest=it-maintenance&subject=전산환경 점검 문의"
               className="px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold shadow-sm transition-all"
             >
-              전산 유지보수 견적 문의
+              전산환경 점검 문의
             </Link>
-            <Link
-              href="/services/acronis-backup"
+            <a
+              href={PHONE_TEL}
               className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
             >
-              Acronis 백업·복구보안 보기
-            </Link>
+              ☎ {companyLegal.phone} 바로 통화
+            </a>
           </div>
         </div>
       </section>
@@ -173,11 +183,24 @@ export default function ItMaintenancePage() {
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 kr-keep-all">
             견적·문의
           </h2>
-          <p className="text-base text-gray-700 leading-relaxed kr-keep-all max-w-3xl">
+          <p className="text-base text-gray-700 leading-relaxed kr-keep-all max-w-3xl mb-4">
             전산 유지보수 견적, IT 유지보수 견적, 전산 유지보수 계약이 필요하시면 현재 사용 중인
             PC 수, 서버/NAS 수, 백업 여부, 장애 이력을 알려주세요. 세종을 기준으로 대전, 청주,
             천안 등 충청권 전산 유지보수 문의를 우선 검토합니다.
           </p>
+          <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all max-w-3xl mb-6">
+            계약을 전제로 하지 않음. 현황 확인과 점검 제안까지는 비용 없음 — 점검 결과만 받고
+            판단해도 됨.
+          </p>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500">
+            <span className="font-semibold text-gray-700">운영 중 고객사</span>
+            {smbCustomers.map((c, i) => (
+              <span key={c.code} className="flex items-center gap-3">
+                {i > 0 && <span className="text-gray-300">·</span>}
+                <span className="font-medium text-gray-700">{c.name}</span>
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
