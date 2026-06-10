@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { company, navLinks, ctaLink } from "@/lib/site-config";
+import { company, companyLegal, navLinks, ctaLink } from "@/lib/site-config";
+
+const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export default function PublicHeader() {
   const [open, setOpen] = useState(false);
@@ -52,6 +54,15 @@ export default function PublicHeader() {
               {link.label}
             </Link>
           ))}
+          <a
+            href={PHONE_TEL}
+            className="inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-blue-700 transition-colors"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+            </svg>
+            {companyLegal.phone}
+          </a>
           <Link
             href={ctaLink.href}
             className="px-4 xl:px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
@@ -108,9 +119,15 @@ export default function PublicHeader() {
                   <div className="text-xs text-gray-400 mt-0.5">{link.description}</div>
                 </Link>
               ))}
+              <a
+                href={PHONE_TEL}
+                className="mt-3 px-4 py-3 bg-slate-900 text-white rounded-md hover:bg-slate-800 text-center font-semibold"
+              >
+                ☎ {companyLegal.phone} 바로 통화
+              </a>
               <Link
                 href={ctaLink.href}
-                className="mt-3 px-4 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-center font-semibold shadow-sm shadow-blue-200"
+                className="mt-2 px-4 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-center font-semibold shadow-sm shadow-blue-200"
               >
                 {ctaLink.label}
               </Link>

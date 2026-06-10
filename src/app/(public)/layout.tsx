@@ -1,12 +1,7 @@
 import Link from "next/link";
 import PublicHeader from "./PublicHeader";
-import {
-  company,
-  companyLegal,
-  supportAreas,
-  maintenancePackages,
-  hasLegalInfo,
-} from "@/lib/site-config";
+import MobileCallBar from "./MobileCallBar";
+import { company, companyLegal, hasLegalInfo } from "@/lib/site-config";
 
 export default function PublicLayout({
   children,
@@ -42,49 +37,29 @@ export default function PublicLayout({
               <ul className="space-y-2.5 text-sm">
                 <li>
                   <Link href="/services/it-maintenance" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
-                    전산 유지보수
+                    전산 통합 유지보수
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#services" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
+                    서버·네트워크·방화벽 관리
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/#services" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
+                    PC·프린터·업무환경 장애 대응
                   </Link>
                 </li>
                 <li>
                   <Link href="/services/acronis-backup" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
-                    Acronis 백업·복구보안
+                    백업·보안 점검
                   </Link>
                 </li>
                 <li>
                   <Link href="/services/vdi-support" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
-                    VDI 기술지원
+                    가상 데스크톱(VDI) 기술지원
                   </Link>
                 </li>
-                <li className="pt-2 border-t border-gray-200 mt-2">
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">
-                    Technical Support
-                  </p>
-                </li>
-                {supportAreas.map((a) => (
-                  <li key={a.id}>
-                    <Link
-                      href={`/#support-areas`}
-                      className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all"
-                    >
-                      {a.brand}
-                    </Link>
-                  </li>
-                ))}
-                <li className="pt-2 border-t border-gray-200 mt-2">
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">
-                    Maintenance
-                  </p>
-                </li>
-                {maintenancePackages.map((p) => (
-                  <li key={p.id}>
-                    <Link
-                      href={`/#maintenance`}
-                      className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all"
-                    >
-                      {p.title}
-                    </Link>
-                  </li>
-                ))}
                 <li className="pt-2 border-t border-gray-200 mt-2">
                   <Link href="/insights" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">
                     Insights · 기술 콘텐츠
@@ -146,8 +121,17 @@ export default function PublicLayout({
                 Contact
               </p>
               <p className="text-sm text-gray-500 leading-relaxed mb-4 kr-keep-all">
-                기술 상담·프로젝트 협업·파트너십 문의를 환영합니다.
+                전산환경 점검·유지보수 상담, VDI 기술지원·SI 협업 문의를 받습니다.
               </p>
+              <a
+                href={`tel:${companyLegal.phone.replace(/-/g, "")}`}
+                className="flex items-center gap-2 text-sm text-gray-900 font-semibold hover:text-blue-700 transition-colors mb-2"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                {companyLegal.phone}
+              </a>
               <a
                 href={`mailto:${company.email}`}
                 className="inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors"
@@ -198,7 +182,11 @@ export default function PublicLayout({
             </div>
           </div>
         </div>
+        {/* 모바일 하단 고정 전화 바에 가려지지 않도록 여백 확보 */}
+        <div className="h-12 lg:hidden" aria-hidden="true" />
       </footer>
+
+      <MobileCallBar />
     </div>
   );
 }

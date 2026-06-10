@@ -98,7 +98,7 @@ export default function AboutPage() {
                 return (
                   <Link
                     key={a.id}
-                    href="/#support-areas"
+                    href="/#vdi"
                     className="block p-3 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
                   >
                     <div className="flex items-center gap-2 mb-1.5">

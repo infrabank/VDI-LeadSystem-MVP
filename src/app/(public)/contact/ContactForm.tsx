@@ -25,12 +25,14 @@ const ORG_TYPES = [
  * value는 src/lib/site-config.ts의 maintenancePackages.id, supportAreas.id와 일치.
  *
  * 홈에서 ?interest=<id>로 prefill 됨:
- * - /#maintenance 섹션의 각 패키지 카드
- * - Hero의 "기술지원 문의" (incident-response)·"유지보수 범위 상담" (monthly-checkup)
+ * - /#services 섹션의 각 서비스 카드
+ * - Hero의 "전산환경 점검 문의" (it-maintenance)
  */
 const INTEREST_AREAS = [
-  // 주요 서비스 (2026-06-04 SEO 개편 — 홈 hero·서비스 카드 prefill)
+  // 주요 서비스 (2026-06-10 홈 개편 — 홈 hero·서비스 카드 prefill)
   { value: "it-maintenance", label: "전산통합유지보수 (PC·서버·네트워크·백업)" },
+  { value: "server-network", label: "서버·네트워크·방화벽 점검" },
+  { value: "pc-support", label: "PC·프린터·업무환경 장애 대응" },
   { value: "vdi", label: "VDI 기술지원 (Citrix·Omnissa Horizon)" },
   // 유지보수 4 패키지
   { value: "monthly-checkup", label: "월간 점검형 유지보수" },

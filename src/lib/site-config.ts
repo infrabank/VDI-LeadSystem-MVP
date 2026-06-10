@@ -12,13 +12,12 @@ export const company = {
   nameKo: "마이로켓",
   legalName: "(주)마이로켓",
   legalNameEn: "Myloket Inc.",
-  tagline: "VDI & Backup Technical Support",
-  taglineKo: "VDI·백업 전문 기술지원 및 유지보수",
+  tagline: "IT Maintenance & VDI Support",
+  taglineKo: "중소기업 전산 유지보수 · 서버·네트워크·백업 · VDI 기술지원",
   description:
-    "Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 환경의 " +
-    "기술지원·유지보수·장애대응·복구검증을 제공합니다. " +
-    "공공·연구기관·기업 VDI 운영현장의 접속장애, 인증서, 프로파일, 스토리지, 라이선스, 백업 복구 이슈를 " +
-    "구축 경험 있는 대표 엔지니어가 직접 대응합니다.",
+    "서버, PC, 네트워크, 방화벽, 백업까지 중소기업 전산환경을 한 곳에서 관리합니다. " +
+    "장애 원인을 끝까지 확인하고 직접 대응합니다. " +
+    "Citrix·Omnissa Horizon 가상 데스크톱(VDI) 기술지원.",
   email: "contact@mlkit.co.kr",
   domain: "myloket.co.kr",
   copyrightYear: new Date().getFullYear(),
@@ -491,10 +490,35 @@ export const customers: Customer[] = [
     code: "DJGLASS",
     name: "대진글라스",
     category: "private",
-    disclosed: false,
+    // 2026-06-10 홈페이지 개편 — 대표 지시로 정식명 노출 전환
+    disclosed: true,
     anonymizedLabel: "민간 제조 기업",
+    role: "전산 통합 유지보수 (서버·네트워크·PC)",
+  },
+  {
+    code: "LABKOREA",
+    name: "랍코리아",
+    category: "private",
+    // 2026-06-10 홈페이지 개편 — 대표 지시로 정식명 노출
+    disclosed: true,
+    anonymizedLabel: "민간 기업",
+    role: "전산 통합 유지보수",
+  },
+  {
+    code: "HOOPKOREA",
+    name: "후프코리아",
+    category: "private",
+    // 2026-06-10 홈페이지 개편 — 대표 지시로 정식명 노출
+    disclosed: true,
+    anonymizedLabel: "민간 기업",
+    role: "전산 통합 유지보수",
   },
 ];
+
+/** 홈 S5 고객사 텍스트 스트립 — 노출 동의된 민간(중소기업) 고객사만 */
+export const smbCustomers: Customer[] = customers.filter(
+  (c) => c.category === "private" && c.disclosed,
+);
 
 /** 외부 노출용 표기 — disclosed=false면 익명 라벨 반환 */
 export function customerDisplayName(c: Customer): string {
@@ -546,35 +570,35 @@ export const partnerships: Partnership[] = [
 
 export const navLinks = [
   {
-    href: "/#support-areas",
-    label: "기술지원 분야",
-    description: "Citrix · Omnissa Horizon · Acronis Cyber Protect",
+    href: "/services/it-maintenance",
+    label: "전산유지보수",
+    description: "서버·PC·네트워크·프린터 통합 관리",
   },
   {
-    href: "/#maintenance",
-    label: "유지보수",
-    description: "월간 점검·장애 대응·운영 개선·복구검증",
+    href: "/services/acronis-backup",
+    label: "백업·보안",
+    description: "백업 점검·복구 검증·보안 설정 점검",
+  },
+  {
+    href: "/services/vdi-support",
+    label: "VDI 기술지원",
+    description: "Citrix · Omnissa Horizon 구축·장애 대응",
   },
   {
     href: "/#engagements",
-    label: "수행 경험",
-    description: "공공·연구기관 VDI/백업 운영 지원 사례",
-  },
-  {
-    href: "/#process",
-    label: "지원 프로세스",
-    description: "문의부터 보고서까지 5단계",
+    label: "고객사례",
+    description: "실제 기업 전산환경 유지보수 경험",
   },
   {
     href: "/contact",
     label: "문의",
-    description: "기술지원·유지보수 상담",
+    description: "전산환경 점검·유지보수 상담",
   },
 ] as const;
 
 export const ctaLink = {
   href: "/contact?source=header",
-  label: "기술지원 문의",
+  label: "문의하기",
   shortLabel: "문의",
 };
 

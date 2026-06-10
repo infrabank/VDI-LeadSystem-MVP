@@ -54,15 +54,15 @@ export default function ContactPage() {
           </div>
           <div className="bg-white border border-gray-200 rounded-xl p-5">
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-2">
-              유지보수 패키지 확인
+              서비스 범위 확인
             </p>
             <Link
-              href="/#maintenance"
+              href="/#services"
               className="text-blue-600 hover:text-blue-700 font-medium"
             >
-              월간 점검·장애 대응·복구검증 →
+              유지보수·백업·VDI 서비스 →
             </Link>
-            <p className="text-xs text-gray-400 mt-1">홈의 유지보수 4 패키지 보기</p>
+            <p className="text-xs text-gray-400 mt-1">홈의 서비스 5개 보기</p>
           </div>
         </div>
       </section>

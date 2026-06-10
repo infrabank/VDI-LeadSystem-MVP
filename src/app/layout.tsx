@@ -139,7 +139,7 @@ const jsonLd = {
           "@type": "Service",
           name: `${area.brand} 기술지원`,
           description: area.lines.join(" "),
-          url: `${siteUrl}/#support-areas`,
+          url: `${siteUrl}/#vdi`,
         },
       })),
       ...maintenancePackages.map((pkg) => ({
@@ -148,7 +148,7 @@ const jsonLd = {
           "@type": "Service",
           name: pkg.title,
           description: pkg.lines.join(" "),
-          url: `${siteUrl}/#maintenance`,
+          url: `${siteUrl}/#services`,
         },
       })),
     ],
