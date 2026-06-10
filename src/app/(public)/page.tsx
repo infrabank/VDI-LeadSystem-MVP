@@ -330,6 +330,83 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+
+          {/* 신뢰 시각화 — 사람(엔지니어 프로필)과 기록(보고서 양식) */}
+          <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {/* 엔지니어 프로필 카드 */}
+            <div className="flex flex-col p-6 sm:p-7 rounded-xl border border-gray-200 bg-white">
+              <p className="text-xs font-bold text-blue-700 tracking-widest uppercase mb-4">
+                Engineer
+              </p>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-xl font-bold flex-shrink-0">
+                  제
+                </div>
+                <div>
+                  <p className="text-base font-bold text-gray-900">제현우</p>
+                  <p className="text-sm text-gray-600">대표 · 수석 기술지원 엔지니어</p>
+                </div>
+              </div>
+              <p className="text-sm text-gray-700 leading-relaxed kr-keep-all mb-4">
+                공공기관·대기업 VDI 프로젝트와 중소기업 전산환경을 함께 다뤄온 엔지니어.
+                상담 전화를 받는 사람과 현장에서 작업하는 사람이 같음.
+              </p>
+              <div className="flex flex-wrap gap-2 mb-5">
+                {["서버·네트워크·방화벽", "Acronis 백업·복구", "Citrix·Horizon VDI"].map((chip) => (
+                  <span
+                    key={chip}
+                    className="px-2.5 py-1 bg-gray-50 border border-gray-200 rounded text-xs text-gray-700"
+                  >
+                    {chip}
+                  </span>
+                ))}
+              </div>
+              <Link
+                href="/about"
+                className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:translate-x-0.5 transition-transform mt-auto"
+              >
+                엔지니어 소개 보기 →
+              </Link>
+            </div>
+
+            {/* 점검 보고서 양식 미리보기 */}
+            <div className="flex flex-col p-6 sm:p-7 rounded-xl border border-gray-200 bg-white">
+              <p className="text-xs font-bold text-blue-700 tracking-widest uppercase mb-4">
+                Monthly Report
+              </p>
+              <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 sm:p-5 mb-4 flex-1">
+                <div className="flex items-baseline justify-between border-b border-gray-200 pb-2.5 mb-3">
+                  <p className="text-sm font-bold text-gray-900">월간 전산 점검 보고서</p>
+                  <p className="text-[11px] text-gray-400">양식 예시</p>
+                </div>
+                <ul className="space-y-2">
+                  {[
+                    { item: "서버 상태·이벤트 로그 점검", status: "정상", warn: false },
+                    { item: "백업 성공률·복구 테스트", status: "확인", warn: false },
+                    { item: "방화벽 정책·외부 노출 점검", status: "개선 권고", warn: true },
+                    { item: "NAS 용량·디스크 상태", status: "정상", warn: false },
+                    { item: "Windows 보안 업데이트", status: "적용", warn: false },
+                  ].map((row) => (
+                    <li key={row.item} className="flex items-center justify-between gap-3 text-xs sm:text-[13px]">
+                      <span className="text-gray-700 kr-keep-all">{row.item}</span>
+                      <span
+                        className={`px-2 py-0.5 rounded font-semibold flex-shrink-0 ${
+                          row.warn
+                            ? "bg-amber-50 text-amber-700"
+                            : "bg-blue-50 text-blue-700"
+                        }`}
+                      >
+                        {row.status}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className="text-sm text-gray-600 kr-keep-all">
+                무엇을 점검했고 무엇을 조치했는지 매월 이 형식으로 남김.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
