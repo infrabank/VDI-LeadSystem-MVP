@@ -1,7 +1,7 @@
 # 이메일 서명 — Myloket 표준 템플릿
 
 > 모든 외부 메일 발신 시 사용. 직원·파트너 공통 양식.
-> 작성: 2026-05-01 · 최종 갱신: 2026-06-04 (전산유지보수·백업·VDI 3-사업 포지션 반영)
+> 작성: 2026-05-01 · 최종 갱신: 2026-06-10 (중소기업 전산 통합 유지보수 포지션·blue 단일 브랜드 색·'가상 데스크톱(VDI)' 병기 반영)
 
 ## 사용 가이드
 
@@ -21,9 +21,9 @@
 ```
 ─────────────
 제현우 | 대표 · 수석 기술지원 엔지니어
-㈜마이로켓 (Myloket Inc.) — 전산유지보수 · 백업·복구보안 · VDI 기술지원
+㈜마이로켓 (Myloket Inc.) — 전산유지보수 · 백업·보안 · 가상 데스크톱(VDI) 기술지원
 
-📧 jhw@mlkit.co.kr
+☎ 010-3861-8079   📧 jhw@mlkit.co.kr
 🌐 myloket.co.kr
 ─────────────
 ```
@@ -32,13 +32,15 @@
 ```html
 <table style="border-collapse:collapse;font-family:'Pretendard Variable',-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#374151;line-height:1.55">
   <tr>
-    <td style="padding-top:8px;border-top:2px solid #7c3aed">
+    <td style="padding-top:8px;border-top:2px solid #1d4ed8">
       <div style="font-weight:600;color:#101828;font-size:14px">제현우 <span style="color:#9ca3af;font-weight:400">|</span> 대표 · 수석 기술지원 엔지니어</div>
-      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — 전산유지보수 · 백업·복구보안 · VDI 기술지원</div>
+      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — 전산유지보수 · 백업·보안 · 가상 데스크톱(VDI) 기술지원</div>
       <div style="margin-top:6px;font-size:12px">
-        <a href="mailto:jhw@mlkit.co.kr" style="color:#7c3aed;text-decoration:none">jhw@mlkit.co.kr</a>
+        <span style="color:#374151">☎ 010-3861-8079</span>
         <span style="color:#d1d5db;margin:0 6px">·</span>
-        <a href="https://myloket.co.kr" style="color:#7c3aed;text-decoration:none">myloket.co.kr</a>
+        <a href="mailto:jhw@mlkit.co.kr" style="color:#1d4ed8;text-decoration:none">jhw@mlkit.co.kr</a>
+        <span style="color:#d1d5db;margin:0 6px">·</span>
+        <a href="https://myloket.co.kr" style="color:#1d4ed8;text-decoration:none">myloket.co.kr</a>
       </div>
     </td>
   </tr>
@@ -54,14 +56,14 @@
 ─────────────────────────────
 제현우 (Je Hyunwoo) | 대표 · 수석 기술지원 엔지니어
 ㈜마이로켓 (Myloket Inc.)
-IT Maintenance · Acronis Backup · VDI Support
+서버부터 PC까지, 회사 전산 한 곳에서 관리
 
-📧 jhw@mlkit.co.kr   ☎ 010-3861-8079
+☎ 010-3861-8079   📧 jhw@mlkit.co.kr
 🌐 myloket.co.kr
 
-▸ 전산통합유지보수 — PC·서버·네트워크·NAS·백업 운영 점검과 장애 대응
-▸ Acronis 백업·복구보안 — 서버·PC 백업 + 실제 복구 가능성 검증
-▸ VDI 기술지원 및 유지보수 — Citrix·Omnissa Horizon·VMware 운영장애 분석
+▸ 전산통합유지보수 — PC·서버·네트워크·백업 정기 점검과 장애 대응
+▸ 백업·보안 점검 — Acronis 백업 운영 + 사고 전 실제 복구 가능성 확인
+▸ 가상 데스크톱(VDI) 기술지원 — Citrix·Omnissa Horizon 구축·장애 대응
 
 ▸ 서비스 전체 보기: myloket.co.kr/#services
 ─────────────────────────────
@@ -71,42 +73,42 @@ IT Maintenance · Acronis Backup · VDI Support
 ```html
 <table style="border-collapse:collapse;font-family:'Pretendard Variable',-apple-system,'Segoe UI',Roboto,sans-serif;font-size:13px;color:#374151;line-height:1.6;max-width:560px">
   <tr>
-    <td style="padding:12px 0 4px;border-top:2px solid #7c3aed">
+    <td style="padding:12px 0 4px;border-top:2px solid #1d4ed8">
       <div style="font-weight:600;color:#101828;font-size:15px">
         제현우 <span style="color:#9ca3af;font-weight:400;font-size:13px">(Je Hyunwoo)</span>
         <span style="color:#9ca3af;font-weight:400">|</span>
         <span style="color:#4b5563;font-weight:500">대표 · 수석 기술지원 엔지니어</span>
       </div>
       <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 <span style="color:#9ca3af">(Myloket Inc.)</span></div>
-      <div style="color:#7c3aed;font-size:11px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;margin-top:4px">IT Maintenance · Acronis Backup · VDI Support</div>
+      <div style="color:#1d4ed8;font-size:12px;font-weight:600;margin-top:4px">서버부터 PC까지, 회사 전산 한 곳에서 관리</div>
     </td>
   </tr>
   <tr>
     <td style="padding:8px 0">
       <table style="border-collapse:collapse;font-size:12px">
         <tr>
-          <td style="padding-right:12px;color:#6b7280">📧</td>
-          <td style="padding-right:16px"><a href="mailto:jhw@mlkit.co.kr" style="color:#7c3aed;text-decoration:none">jhw@mlkit.co.kr</a></td>
           <td style="padding-right:12px;color:#6b7280">☎</td>
-          <td><span style="color:#374151">010-3861-8079</span></td>
+          <td style="padding-right:16px"><span style="color:#374151">010-3861-8079</span></td>
+          <td style="padding-right:12px;color:#6b7280">📧</td>
+          <td><a href="mailto:jhw@mlkit.co.kr" style="color:#1d4ed8;text-decoration:none">jhw@mlkit.co.kr</a></td>
         </tr>
         <tr>
           <td style="padding-right:12px;color:#6b7280">🌐</td>
-          <td colspan="3"><a href="https://myloket.co.kr" style="color:#7c3aed;text-decoration:none">myloket.co.kr</a></td>
+          <td colspan="3"><a href="https://myloket.co.kr" style="color:#1d4ed8;text-decoration:none">myloket.co.kr</a></td>
         </tr>
       </table>
     </td>
   </tr>
   <tr>
     <td style="padding:8px 0;border-top:1px solid #e5e7eb;font-size:12px">
-      <div style="margin-bottom:3px"><span style="color:#2563eb">▸</span> <strong style="color:#101828;font-weight:600">전산통합유지보수</strong> <span style="color:#6b7280">— PC·서버·네트워크·NAS·백업 운영 점검과 장애 대응</span></div>
-      <div style="margin-bottom:3px"><span style="color:#059669">▸</span> <strong style="color:#101828;font-weight:600">Acronis 백업·복구보안</strong> <span style="color:#6b7280">— 서버·PC 백업 + 실제 복구 가능성 검증</span></div>
-      <div><span style="color:#4f46e5">▸</span> <strong style="color:#101828;font-weight:600">VDI 기술지원 및 유지보수</strong> <span style="color:#6b7280">— Citrix·Omnissa Horizon·VMware 운영장애 분석</span></div>
+      <div style="margin-bottom:3px"><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">전산통합유지보수</strong> <span style="color:#6b7280">— PC·서버·네트워크·백업 정기 점검과 장애 대응</span></div>
+      <div style="margin-bottom:3px"><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">백업·보안 점검</strong> <span style="color:#6b7280">— Acronis 백업 운영 + 사고 전 실제 복구 가능성 확인</span></div>
+      <div><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">가상 데스크톱(VDI) 기술지원</strong> <span style="color:#6b7280">— Citrix·Omnissa Horizon 구축·장애 대응</span></div>
     </td>
   </tr>
   <tr>
     <td style="padding-top:6px;font-size:11px;color:#9ca3af">
-      ▸ 서비스 전체 보기 <a href="https://myloket.co.kr/#services" style="color:#7c3aed;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/#services</a>
+      ▸ 서비스 전체 보기 <a href="https://myloket.co.kr/#services" style="color:#1d4ed8;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/#services</a>
     </td>
   </tr>
 </table>
@@ -120,12 +122,12 @@ IT Maintenance · Acronis Backup · VDI Support
 ```
 ═════════════════════════════════════
 ㈜마이로켓 (Myloket Inc.)
-IT Maintenance · Acronis Backup · VDI Support
-전산유지보수 · Acronis 백업·복구보안 · Citrix·Omnissa Horizon VDI 기술지원 — 1인 직접 대응 · 공공·연구기관 10여 곳 운영·유지보수 실적
+서버부터 PC까지, 회사 전산 한 곳에서 관리
+전산유지보수 · 백업·보안 · 가상 데스크톱(VDI) 기술지원 — 상담부터 작업까지 직접 대응 · 공공·연구기관 10여 곳 + 중소기업 전산환경 유지보수 실적
 ═════════════════════════════════════
 
 제현우 (Je Hyunwoo) | 대표 · 수석 기술지원 엔지니어 / CEO · Principal Engineer
-📧 jhw@mlkit.co.kr   ☎ 010-3861-8079
+☎ 010-3861-8079   📧 jhw@mlkit.co.kr
 🌐 https://myloket.co.kr
 
 ──────────────────────
@@ -133,23 +135,23 @@ IT Maintenance · Acronis Backup · VDI Support
 ──────────────────────
 
 [전산통합유지보수 — IT Maintenance]
-PC · 서버 · 네트워크 · NAS · 백업 운영 점검과 장애 대응
+PC · 서버 · 네트워크 · 프린터 · 백업 정기 점검과 장애 대응 — 점검표·운영 보고서 제공
 → myloket.co.kr/services/it-maintenance
 
-[Acronis 백업·복구보안 — Cyber Protect]
-서버 · PC 백업 + 사고 시 실제 복구 가능성 검증
+[백업·보안 점검 — Acronis Cyber Protect]
+백업 정책·실패 이력 점검 + 사고 전 실제 복구 가능성 확인
 → myloket.co.kr/services/acronis-backup
 
-[VDI 기술지원 및 유지보수 — Citrix · Omnissa Horizon]
-Citrix · Omnissa Horizon · VMware 운영장애 · UAG/Gateway · FSLogix 분석
+[가상 데스크톱(VDI) 기술지원 — Citrix · Omnissa Horizon]
+VDI 구축·전환·장애 대응 — 접속·인증서·UAG/Gateway·FSLogix 분석, SI 프로젝트 협업
 → myloket.co.kr/services/vdi-support
 
 ──────────────────────
 무료 진단·계산 도구
 ──────────────────────
-✓ VDI 운영 ROI 시뮬레이션
 ✓ 백업·사이버복원력 자가 진단
 ✓ 백업 ROI 계산기
+✓ VDI 운영 ROI 시뮬레이션
 ✓ N²SF 정렬 진단 (8영역 28문항)
 ✓ N²SF 전환 준비도 (5섹션 15문항)
 ✓ VDI 역할 재정의 (9문항 4시나리오)
@@ -169,7 +171,7 @@ N²SF 사전진단 체크리스트 · VDI 의사결정 매트릭스 · 보안성
 ──────────────────────
 Partners: Citrix · Omnissa · Acronis
 Infra:    VMware ESXi · vSphere
-공공·연구기관 10여 곳 운영·유지보수 실적
+공공·연구기관 10여 곳 + 중소기업 전산환경 유지보수 실적
 
 ═════════════════════════════════════
 ```
@@ -222,22 +224,19 @@ Infra:    VMware ESXi · vSphere
 - **이미지 첨부 금지**: 외부 이미지(로고)는 일부 클라이언트에서 차단됨. 본 템플릿은 텍스트·CSS만 사용.
 - **링크 절대 경로**: 모든 URL은 `https://myloket.co.kr/...` 절대 경로
 - **개인 정보 교체**: `제현우`, `Je Hyunwoo`, `jhw@mlkit.co.kr`, `010-3861-8079`, 직책(`대표 · 수석 기술지원 엔지니어 / CEO · Principal Engineer`) 4곳을 본인 정보로 교체
-- **기밀 메일 처리**: Rich 변형 하단의 발신 전용 안내문은 회사 정책에 맞게 조정
+- **기밀 메일 처리**: Rich 변형 하단은 기밀 고지만 둠 — "발신 전용" 문구 금지 (영업·상담 메일에서 회신을 차단하는 카피)
 - **주기적 갱신**: 솔루션 추가·진단 도구 추가 시 Rich 변형의 도구·템플릿 목록 업데이트
 
 ---
 
-## 메인 색상 — Purple(#7c3aed) 브랜드 액센트
+## 메인 색상 — Blue(#1d4ed8) 단일 브랜드 액센트
 
-**purple #7c3aed**는 마이로켓 브랜드 시그니처 액센트로 사용 — 서명 상단 라인·링크·전산통합유지보수 블록에 적용. 명함·홈페이지·OG 이미지 모두 동일한 시각 시그니처.
+**blue-700 #1d4ed8** 단일 액센트 — 서명 상단 라인·링크·서비스 블록 모두 동일 (2026-06-10 홈페이지 2색 체계 통일). 명함·홈페이지와 같은 시각 시그니처. 서비스별 색 구분(blue/emerald/indigo)과 purple 브랜드 색은 폐기됨.
 
-각 블록 액센트 컬러:
-| 블록 | 컬러 | 용도 |
+| 요소 | 컬러 | 용도 |
 |---|---|---|
-| 전산통합유지보수 | `#2563eb` (blue) | |
-| Acronis 백업·복구보안 | `#059669` (emerald) | |
-| VDI 기술지원 및 유지보수 | `#4f46e5` (indigo) | |
-| (브랜드 라인·링크) | `#7c3aed` (purple) | 브랜드 시그니처 |
+| 상단 라인·링크·▸·서비스 블록 보더 | `#1d4ed8` (blue-700) | 브랜드 시그니처 |
+| 서비스 블록 배경 | `#f8fafc` (slate-50) | 중립 배경 |
 
 ---
 

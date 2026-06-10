@@ -87,7 +87,7 @@
             /* ===== FRONT (앞면) =====
                padding = 재단여분 2mm + 안전여백 3mm + 시각적 여백 = 사방 5mm 이상 보장 */
             .front {
-                padding: 8mm 8mm 7mm;
+                padding: 7mm 8mm 7mm;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
@@ -95,7 +95,7 @@
             }
             /* 좌측 컬러 밴드 — 레드프린팅 사양: 작업 좌측 끝(0)부터 재단선 3mm 안쪽(=5mm)까지 두껍게.
                재단여분(2mm) 잘려나가도 완성 카드 좌측에 3mm 폭 컬러 밴드가 보장됨.
-               1순위 색(purple) → 인디고 → 에메랄드 — site-config 솔루션 정렬 톤. */
+               홈페이지 2색 체계(blue-700 단일 프라이머리)와 동일 — 2026-06-10 통일. */
             .front::before {
                 content: "";
                 position: absolute;
@@ -103,15 +103,7 @@
                 top: 0;
                 bottom: 0;
                 width: 5mm;
-                background: linear-gradient(
-                    180deg,
-                    #7c3aed 0%,
-                    #7c3aed 33%,
-                    #1d52de 33%,
-                    #1d52de 66%,
-                    #059669 66%,
-                    #059669 100%
-                );
+                background: #1d4ed8;
             }
 
             .front-top {
@@ -132,21 +124,31 @@
                 width: 5px;
                 height: 5px;
                 border-radius: 50%;
-                background: #7c3aed;
+                background: #1d4ed8;
             }
+            /* 앞면 태그라인 — 한글 메인(받는 사람이 5초 안에 업종 인지) + 영문 서브.
+               3줄 합계 높이를 원본(영문 2줄)과 비슷하게 유지해야 세로 균형이 깨지지 않음 */
             .front-tagline {
                 font-size: 5.5pt;
-                color: #7c3aed;
+                color: #1d4ed8;
                 font-weight: 600;
-                letter-spacing: 0.06em;
-                text-transform: uppercase;
+                letter-spacing: 0.01em;
                 text-align: right;
-                line-height: 1.35;
-                max-width: 42mm;
+                line-height: 1.4;
+                max-width: 44mm;
+            }
+            .front-tagline .en {
+                display: block;
+                font-size: 4.5pt;
+                color: #9ca3af;
+                font-weight: 500;
+                letter-spacing: 0.05em;
+                text-transform: uppercase;
+                margin-top: 0.4mm;
             }
 
             .front-name-area {
-                margin-top: 1mm;
+                margin-top: 0;
             }
             .front-name {
                 font-size: 18pt;
@@ -186,7 +188,7 @@
             .contact-stack {
                 font-size: 7pt;
                 color: #374151;
-                line-height: 1.6;
+                line-height: 1.5;
             }
             .contact-stack .label {
                 color: #9ca3af;
@@ -210,7 +212,7 @@
                 font-size: 8pt;
             }
             .company-stack .web {
-                color: #7c3aed;
+                color: #1d4ed8;
                 font-weight: 500;
             }
 
@@ -227,36 +229,8 @@
                 position: relative;
                 overflow: hidden;
             }
-            /* 우상단 보라 글로우 — 재단여분(2mm) 만큼 추가 오프셋해서 완성 카드 우상단에 시각 중심 유지 */
-            .back::before {
-                content: "";
-                position: absolute;
-                top: -22mm;
-                right: -22mm;
-                width: 50mm;
-                height: 50mm;
-                background: radial-gradient(
-                    circle,
-                    rgba(124, 58, 237, 0.45) 0%,
-                    transparent 70%
-                );
-                pointer-events: none;
-            }
-            /* 좌하단 인디고 글로우 — 재단여분 만큼 추가 오프셋 */
-            .back::after {
-                content: "";
-                position: absolute;
-                bottom: -17mm;
-                left: -17mm;
-                width: 35mm;
-                height: 35mm;
-                background: radial-gradient(
-                    circle,
-                    rgba(29, 82, 222, 0.32) 0%,
-                    transparent 70%
-                );
-                pointer-events: none;
-            }
+            /* 글로우 제거 (2026-06-10) — 홈페이지 '장식 제거·플랫 다크' 원칙과 통일.
+               CMYK 변환 시 그라데이션 채도 손실 리스크도 함께 제거됨. */
 
             .back-content {
                 position: relative;
@@ -282,7 +256,7 @@
                 width: 5px;
                 height: 5px;
                 border-radius: 50%;
-                background: #c084fc;
+                background: #60a5fa;
             }
             .back-divider {
                 height: 1px;
@@ -294,13 +268,13 @@
                 );
             }
 
+            /* 뒷면 헤드라인 — 홈 히어로와 동일 메시지. 받는 사람이 바로 이해하는 한 줄 */
             .back-tagline {
-                font-size: 6.5pt;
-                color: #c4b5fd;
+                font-size: 7.5pt;
+                color: #fff;
                 font-weight: 600;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                margin-bottom: 1.5mm;
+                letter-spacing: -0.01em;
+                margin-bottom: 1.8mm;
             }
 
             .practices {
@@ -320,17 +294,9 @@
                 align-self: stretch;
                 border-radius: 1px;
             }
-            .practice-purple .accent {
-                background: #c084fc;
-            }
-            .practice-blue .accent {
-                background: #5288ff;
-            }
-            .practice-indigo .accent {
-                background: #818cf8;
-            }
-            .practice-green .accent {
-                background: #34d399;
+            /* 서비스 블록 액센트 — 단일 blue 통일 (홈페이지 2색 체계) */
+            .practice .accent {
+                background: #60a5fa;
             }
             .practice-text {
                 flex: 1;
@@ -362,7 +328,7 @@
                 letter-spacing: 0.04em;
             }
             .back-footer .web {
-                color: #c4b5fd;
+                color: #93c5fd;
                 font-weight: 500;
                 letter-spacing: 0.02em;
             }
@@ -458,8 +424,11 @@
                 <h1>Myloket — 명함 (작업 94×54mm / 재단 90×50mm)</h1>
                 <p>
                     포지션:
-                    <strong>전산유지보수·Acronis 백업·VDI 기술지원 1인 기술지원 회사</strong>.
-                    뒷면 3 블록은 사이트 3-사업 순(<code>전산통합유지보수 → Acronis 백업·복구보안 → VDI 기술지원</code>).
+                    <strong>VDI 전문성을 가진 중소기업 전산 통합 유지보수 파트너</strong>
+                    (2026-06-10 홈페이지 개편 정합). 앞면 태그라인은 한글 메인,
+                    뒷면 헤드라인은 홈 히어로와 동일(<code>서버부터 PC까지, 회사
+                        전산 한 곳에서 관리</code>). 브랜드 색은 홈페이지와 동일한
+                    <code>blue-700 #1d4ed8</code> 단일 체계.
                 </p>
                 <p>
                     <strong>레드프린팅 사양 반영:</strong>
@@ -503,8 +472,9 @@
                         <span class="dot"></span>
                     </div>
                     <div class="front-tagline">
-                        IT Maintenance · Acronis Backup<br />
-                        Citrix · Horizon VDI Support
+                        전산유지보수 · 백업·보안<br />
+                        가상 데스크톱(VDI) 기술지원
+                        <span class="en">IT Maintenance · Backup · VDI Support</span>
                     </div>
                 </div>
 
@@ -552,11 +522,11 @@
                         <div class="back-divider"></div>
                     </div>
                     <div class="back-tagline">
-                        전산유지보수 · 백업·복구보안 · VDI 전문 기술지원
+                        서버부터 PC까지, 회사 전산 한 곳에서 관리
                     </div>
 
                     <div class="practices">
-                        <div class="practice practice-blue">
+                        <div class="practice">
                             <div class="accent"></div>
                             <div class="practice-text">
                                 <div class="practice-name">
@@ -571,37 +541,37 @@
                                     >
                                 </div>
                                 <div class="practice-desc">
-                                    PC·서버·네트워크·NAS·백업 운영 점검과 장애 대응
+                                    PC·서버·네트워크·백업 정기 점검과 장애 대응
                                 </div>
                             </div>
                         </div>
-                        <div class="practice practice-green">
+                        <div class="practice">
                             <div class="accent"></div>
                             <div class="practice-text">
                                 <div class="practice-name">
-                                    Acronis 백업·복구보안
+                                    백업·보안 점검
                                     <span
                                         style="
-                                            color: #86efac;
+                                            color: #93c5fd;
                                             font-weight: 400;
                                             font-size: 6pt;
                                         "
-                                        >Cyber Protect</span
+                                        >Acronis Cyber Protect</span
                                     >
                                 </div>
                                 <div class="practice-desc">
-                                    서버·PC 백업 + 사고 시 실제 복구 가능성 검증
+                                    사고 전에 실제 복구 가능성을 확인
                                 </div>
                             </div>
                         </div>
-                        <div class="practice practice-indigo">
+                        <div class="practice">
                             <div class="accent"></div>
                             <div class="practice-text">
                                 <div class="practice-name">
-                                    VDI 기술지원 및 유지보수
+                                    가상 데스크톱(VDI) 기술지원
                                     <span
                                         style="
-                                            color: #c7d2fe;
+                                            color: #93c5fd;
                                             font-weight: 400;
                                             font-size: 6pt;
                                         "
@@ -609,7 +579,7 @@
                                     >
                                 </div>
                                 <div class="practice-desc">
-                                    Citrix·Omnissa Horizon·VMware 운영장애 분석
+                                    VDI 구축·전환·장애 대응 지원
                                 </div>
                             </div>
                         </div>
@@ -620,7 +590,7 @@
                     <div class="partners">
                         Citrix · Omnissa · VMware · Acronis
                     </div>
-                    <div class="web">myloket.co.kr</div>
+                    <div class="web">010-3861-8079 · myloket.co.kr</div>
                 </div>
             </div>
 
@@ -655,8 +625,8 @@
                     </li>
                     <li>두께: 250~300g/m² (표준 명함 무게)</li>
                     <li>
-                        색상 모드: 본 HTML은 sRGB. 정확한 purple(<code
-                            >#7c3aed</code
+                        색상 모드: 본 HTML은 sRGB. 메인 컬러 blue(<code
+                            >#1d4ed8</code
                         >) 재현 위해 인쇄소에 RGB→CMYK 자동 변환 요청
                     </li>
                     <li>
