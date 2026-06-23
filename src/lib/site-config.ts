@@ -624,7 +624,21 @@ export const partnerships: Partnership[] = [
   },
 ];
 
-export const navLinks = [
+export interface NavChild {
+  href: string;
+  label: string;
+  description: string;
+}
+
+export interface NavLink {
+  href: string;
+  label: string;
+  description: string;
+  /** 드롭다운 하위 항목 — 있으면 GNB에서 메뉴로 펼쳐짐 */
+  children?: NavChild[];
+}
+
+export const navLinks: NavLink[] = [
   {
     href: "/services/it-maintenance",
     label: "전산유지보수",
@@ -634,11 +648,23 @@ export const navLinks = [
     href: "/services/acronis-backup",
     label: "백업·보안",
     description: "백업 점검·복구 검증·보안 설정 점검",
-  },
-  {
-    href: "/products/vinchin-backup",
-    label: "Vinchin 백업",
-    description: "가상화 VM 백업·즉시 복구 솔루션",
+    children: [
+      {
+        href: "/services/acronis-backup",
+        label: "백업·보안 점검",
+        description: "복구 가능성·보안 설정 점검 서비스",
+      },
+      {
+        href: "/products/acronis-cyber-protect",
+        label: "Acronis Cyber Protect",
+        description: "서버·PC·NAS 백업 + 랜섬웨어 방어",
+      },
+      {
+        href: "/products/vinchin-backup",
+        label: "Vinchin Backup & Recovery",
+        description: "가상화 VM 백업·즉시 복구",
+      },
+    ],
   },
   {
     href: "/services/vdi-support",
@@ -655,7 +681,7 @@ export const navLinks = [
     label: "문의",
     description: "전산환경 점검·유지보수 상담",
   },
-] as const;
+];
 
 export const ctaLink = {
   href: "/contact?source=header",

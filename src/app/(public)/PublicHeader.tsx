@@ -9,23 +9,32 @@ const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export default function PublicHeader() {
   const [open, setOpen] = useState(false);
+  const [desktopMenu, setDesktopMenu] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
-    // 경로 변경 시 모바일 메뉴 자동 닫기 — SPA 라우팅 후 UI 동기화 목적.
+    // 경로 변경 시 모바일 메뉴·데스크톱 드롭다운 자동 닫기 — SPA 라우팅 후 UI 동기화.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDesktopMenu(null);
   }, [pathname]);
 
   useEffect(() => {
-    if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+      if (e.key === "Escape") {
+        setOpen(false);
+        setDesktopMenu(null);
+      }
     };
     document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, []);
+
+  useEffect(() => {
+    if (!open) return;
     document.body.style.overflow = "hidden";
     return () => {
-      document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
   }, [open]);
@@ -33,7 +42,7 @@ export default function PublicHeader() {
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 print:hidden">
       <nav className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-16">
-        <Link href="/" className="flex flex-col leading-tight">
+        <Link href="/" className="flex flex-col leading-tight shrink-0">
           <span className="font-bold text-base sm:text-lg text-gray-900 tracking-tight inline-flex items-center gap-1.5">
             {company.name}
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
@@ -44,19 +53,75 @@ export default function PublicHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-7 xl:gap-9 text-sm font-medium">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-gray-600 hover:text-blue-700 transition-colors"
-            >
-              {link.label}
-            </Link>
-          ))}
+        <div className="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-medium">
+          {navLinks.map((link) =>
+            link.children ? (
+              <div
+                key={link.href}
+                className="relative"
+                onMouseEnter={() => setDesktopMenu(link.label)}
+                onMouseLeave={() => setDesktopMenu(null)}
+              >
+                <Link
+                  href={link.href}
+                  aria-haspopup="true"
+                  aria-expanded={desktopMenu === link.label}
+                  className={`inline-flex items-center gap-1 transition-colors ${
+                    desktopMenu === link.label
+                      ? "text-blue-700"
+                      : "text-gray-600 hover:text-blue-700"
+                  }`}
+                >
+                  {link.label}
+                  <svg
+                    className={`w-3.5 h-3.5 transition-transform ${
+                      desktopMenu === link.label ? "rotate-180" : ""
+                    }`}
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </Link>
+
+                {/* Dropdown panel (hover bridge via pt-3) */}
+                {desktopMenu === link.label && (
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 z-50">
+                    <div className="w-72 bg-white border border-gray-200 rounded-xl shadow-xl shadow-gray-200/70 p-2">
+                      {link.children.map((c) => (
+                        <Link
+                          key={c.href}
+                          href={c.href}
+                          className="block px-3 py-2.5 rounded-lg hover:bg-blue-50/60 transition-colors group"
+                        >
+                          <div className="text-sm font-semibold text-gray-900 group-hover:text-blue-700">
+                            {c.label}
+                          </div>
+                          <div className="text-xs text-gray-500 mt-0.5 kr-keep-all">
+                            {c.description}
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="text-gray-600 hover:text-blue-700 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
+
           <a
             href={PHONE_TEL}
-            className="inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-blue-700 transition-colors"
+            className="hidden xl:inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-blue-700 transition-colors"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
@@ -65,7 +130,7 @@ export default function PublicHeader() {
           </a>
           <Link
             href={ctaLink.href}
-            className="px-4 xl:px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200"
+            className="px-4 xl:px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200 whitespace-nowrap"
           >
             {ctaLink.label}
           </Link>
@@ -107,17 +172,29 @@ export default function PublicHeader() {
             onClick={() => setOpen(false)}
             aria-hidden="true"
           />
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-50 animate-slide-down">
+          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-50 animate-slide-down max-h-[calc(100vh-3.5rem)] overflow-y-auto">
             <nav className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-col">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="py-3 border-b border-gray-100 last:border-0"
-                >
-                  <div className="text-base font-medium text-gray-700">{link.label}</div>
-                  <div className="text-xs text-gray-400 mt-0.5">{link.description}</div>
-                </Link>
+                <div key={link.href} className="border-b border-gray-100 last:border-0">
+                  <Link href={link.href} className="block py-3">
+                    <div className="text-base font-medium text-gray-700">{link.label}</div>
+                    <div className="text-xs text-gray-400 mt-0.5 kr-keep-all">{link.description}</div>
+                  </Link>
+                  {link.children && (
+                    <div className="pb-3 -mt-1 space-y-0.5">
+                      {link.children.map((c) => (
+                        <Link
+                          key={c.href}
+                          href={c.href}
+                          className="block py-2 pl-4 border-l-2 border-blue-100 ml-1"
+                        >
+                          <div className="text-sm font-medium text-gray-700">{c.label}</div>
+                          <div className="text-[11px] text-gray-400 kr-keep-all">{c.description}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               <a
                 href={PHONE_TEL}

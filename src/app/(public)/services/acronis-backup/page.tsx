@@ -33,6 +33,7 @@ const solutions = [
     name: "Acronis Cyber Protect",
     scope: "서버 · PC · NAS",
     desc: "에이전트 기반 이미지 백업과 랜섬웨어 방어·EDR. 물리 서버, 업무용 PC, NAS 데이터를 보호합니다.",
+    productHref: "/products/acronis-cyber-protect",
   },
   {
     name: "Vinchin Backup & Recovery",
