@@ -103,6 +103,19 @@ const services: {
     linkLabel: "자세히 보기",
   },
   {
+    title: "Vinchin 가상화 백업",
+    oneLiner: "가상화 VM을 통째로 백업·즉시 복구함",
+    items: [
+      "VMware·Hyper-V·Proxmox·XCP-ng·Citrix 지원",
+      "에이전트리스 VM 백업",
+      "장애 시 즉시 복구·V2V 마이그레이션",
+      "랜섬웨어 대비 백업 보관",
+      "VBTP 인증 엔지니어 도입·운영 지원",
+    ],
+    href: "/products/vinchin-backup",
+    linkLabel: "제품 소개 보기",
+  },
+  {
     title: "가상 데스크톱(VDI) 기술지원",
     oneLiner: "Citrix·Horizon 가상 데스크톱 구축·장애 대응 지원함",
     items: [

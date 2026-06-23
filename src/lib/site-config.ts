@@ -636,6 +636,11 @@ export const navLinks = [
     description: "백업 점검·복구 검증·보안 설정 점검",
   },
   {
+    href: "/products/vinchin-backup",
+    label: "Vinchin 백업",
+    description: "가상화 VM 백업·즉시 복구 솔루션",
+  },
+  {
     href: "/services/vdi-support",
     label: "VDI 기술지원",
     description: "Citrix · Omnissa Horizon 구축·장애 대응",
