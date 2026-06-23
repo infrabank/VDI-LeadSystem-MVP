@@ -88,8 +88,8 @@ const cases = [
 
 const inquiryEmailBody = `[고객 환경 / 협업 건 개요 — 자유 기재]
 - 고객 (발주처·기관·기업):
-- 사용 제품·버전 (Citrix VAD / Omnissa Horizon / Acronis Cyber Protect / 기타):
-- 막힌 기술 파트 (접속장애 / FSLogix / UAG·NetScaler / 인증서·라이선스 / 스토리지·성능 / 백업·복구검증):
+- 사용 제품·버전 (Citrix VAD / Omnissa Horizon / Acronis Cyber Protect / Vinchin Backup & Recovery / 기타):
+- 막힌 기술 파트 (접속장애 / FSLogix / UAG·NetScaler / 인증서·라이선스 / 스토리지·성능 / 백업·복구검증 / 가상화 VM 백업):
 - 요청 형태 (기술 미팅 동행 / 사전 점검 / 장애 분석 / 월간 보고서 / 복구검증 / SR 대응 / 제안서 검토):
 - 일정·마감:
 
@@ -122,7 +122,7 @@ export default function PartnersPage() {
             <span className="md:hidden"> </span>대표 엔지니어가 함께 들어갑니다.
           </h1>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-10 max-w-2xl">
-            Citrix, Omnissa Horizon, Acronis 기반 제안과 운영에 필요한 기술 검토,
+            Citrix, Omnissa Horizon, Acronis, Vinchin 기반 제안과 운영에 필요한 기술 검토,
             장애 분석, 점검 리포트, 복구 검증을 함께 만듭니다.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
@@ -187,7 +187,7 @@ export default function PartnersPage() {
           <p className="text-base text-gray-700 leading-relaxed kr-keep-all mb-6 max-w-3xl">
             공공기관 전산통합유지보수 공고에는 서버, 네트워크, 보안, 업무시스템과 함께
             VDI·가상화·백업 운영 범위가 포함되는 경우가 많습니다. 주사업자가 전체 사업을 총괄하고,
-            마이로켓은 Citrix, Omnissa Horizon, VMware vSphere, Acronis처럼 별도 경험이 필요한 영역을
+            마이로켓은 Citrix, Omnissa Horizon, VMware vSphere, Acronis, Vinchin처럼 별도 경험이 필요한 영역을
             비상주 전문 기술지원 형태로 맡습니다.
           </p>
           <ul className="space-y-2.5 text-base text-gray-700 leading-relaxed kr-keep-all mb-6">
@@ -349,7 +349,7 @@ export default function PartnersPage() {
             </li>
             <li className="flex gap-3">
               <span className="text-gray-300 flex-shrink-0">·</span>
-              <span>Citrix · Omnissa Horizon · Acronis 운영 경험 기반, 벤더 중립.</span>
+              <span>Citrix · Omnissa Horizon · Acronis · Vinchin 운영 경험 기반, 벤더 중립.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-gray-300 flex-shrink-0">·</span>

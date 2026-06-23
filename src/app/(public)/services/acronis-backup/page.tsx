@@ -6,22 +6,39 @@ import { breadcrumbLd, faqPageLd, serviceLd, type FaqItem } from "@/lib/schema";
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
-  title: "백업·보안 점검 | Acronis 백업·랜섬웨어 대비 | Myloket",
+  title: "백업·보안 점검 | Acronis·Vinchin 백업·랜섬웨어 대비 | Myloket",
   description:
-    "Acronis Cyber Protect 기반으로 서버, PC, NAS 데이터를 백업하고 사고 시 실제 복구 가능한지 확인합니다. 백업 정책·실패 이력, 방화벽 정책·외부 노출, 계정·원격접속 보안까지 함께 점검하고 보고서로 정리합니다.",
+    "Acronis Cyber Protect로 서버·PC·NAS를, Vinchin Backup & Recovery로 VMware·Hyper-V·Proxmox 등 가상화 VM을 백업하고 사고 시 실제 복구 가능한지 확인합니다. 백업 정책·실패 이력, 방화벽 정책·외부 노출, 계정·원격접속 보안까지 함께 점검하고 보고서로 정리합니다.",
 };
 
 const AREA = ["세종특별자치시", "대전광역시", "청주시", "천안시", "대한민국"];
 
 const includes = [
   "백업 정책·실패 이력 점검",
-  "Acronis Cyber Protect 도입·운영 지원",
-  "서버·PC·NAS 백업 구성",
+  "Acronis Cyber Protect 도입·운영 지원 (서버·PC·NAS)",
+  "Vinchin Backup & Recovery 도입·운영 지원 (가상화 VM)",
+  "VMware·Hyper-V·Proxmox·XenServer 등 VM 에이전트리스 백업",
   "복구 테스트와 결과 보고서",
   "랜섬웨어 대비 백업 구조 점검",
   "방화벽 정책·외부 노출 서비스 점검",
   "계정·원격접속 보안 점검",
   "복구 절차 정리 (사고 시 누가 무엇을 할지)",
+];
+
+/**
+ * 환경에 맞는 백업 솔루션 — Acronis(엔드포인트) / Vinchin(가상화 VM) 2축.
+ */
+const solutions = [
+  {
+    name: "Acronis Cyber Protect",
+    scope: "서버 · PC · NAS",
+    desc: "에이전트 기반 이미지 백업과 랜섬웨어 방어·EDR. 물리 서버, 업무용 PC, NAS 데이터를 보호합니다.",
+  },
+  {
+    name: "Vinchin Backup & Recovery",
+    scope: "가상화 VM",
+    desc: "VMware vSphere, Hyper-V, Proxmox VE, Citrix Hypervisor(XenServer) 등 VM을 에이전트리스로 통째 백업하고, 즉시 복구·V2V 마이그레이션을 지원합니다.",
+  },
 ];
 
 const faqs: FaqItem[] = [
@@ -38,6 +55,14 @@ const faqs: FaqItem[] = [
     a: "방화벽 정책, 외부에 노출된 서비스, 계정·권한, 원격접속 설정 등 중소기업 전산환경의 기본 보안 상태를 점검합니다. 전문 모의해킹이나 보안 관제가 필요한 경우 범위를 구분해 안내합니다.",
   },
   {
+    q: "가상화 서버(VM)는 어떻게 백업하나요?",
+    a: "VMware vSphere, Hyper-V, Proxmox VE, Citrix Hypervisor(XenServer) 같은 가상화 환경은 Vinchin Backup & Recovery로 VM을 에이전트리스로 통째 백업합니다. 게스트마다 에이전트를 깔지 않아도 되고, 장애 시 VM을 즉시 복구하거나 다른 가상화 플랫폼으로 옮기는 마이그레이션도 지원합니다. 물리 서버·PC·NAS는 Acronis Cyber Protect로 함께 보호합니다.",
+  },
+  {
+    q: "Acronis와 Vinchin은 무엇이 다른가요?",
+    a: "Acronis Cyber Protect는 서버·PC·NAS 같은 엔드포인트를 에이전트 기반으로 백업하고 랜섬웨어 방어·EDR을 함께 제공합니다. Vinchin Backup & Recovery는 가상화 호스트에 붙어 VM을 에이전트리스로 백업·즉시 복구합니다. 환경에 맞춰 둘을 조합하거나 한쪽만 운영할 수 있습니다.",
+  },
+  {
     q: "이미 다른 백업 솔루션을 쓰고 있어도 점검받을 수 있나요?",
     a: "가능합니다. 현재 백업 방식과 정책, 실패 이력, 복구 테스트 여부를 먼저 확인하고 개선이 필요한 부분만 정리합니다. 솔루션 교체를 전제로 하지 않습니다.",
   },
@@ -45,10 +70,10 @@ const faqs: FaqItem[] = [
 
 const ldObjects = [
   serviceLd({
-    name: "백업·보안 점검 (Acronis 백업·복구)",
+    name: "백업·보안 점검 (Acronis·Vinchin 백업·복구)",
     serviceType: "Backup and Recovery Service",
     description:
-      "Acronis Cyber Protect 기반으로 서버와 PC 데이터를 백업하고, 사고 시 실제 복구 가능한지와 방화벽·계정 등 기본 보안 상태를 점검하는 서비스.",
+      "Acronis Cyber Protect로 서버·PC·NAS를, Vinchin Backup & Recovery로 가상화 VM(VMware·Hyper-V·Proxmox 등)을 백업하고, 사고 시 실제 복구 가능한지와 방화벽·계정 등 기본 보안 상태를 점검하는 서비스.",
     path: "/services/acronis-backup",
     areaServed: AREA,
   }),
@@ -96,9 +121,9 @@ export default function AcronisBackupPage() {
             백업 성공률보다 중요한 것은 실제 복구 가능성입니다.
           </p>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-10 max-w-2xl">
-            Acronis Cyber Protect 기반으로 서버, PC, NAS 데이터를 보호하고, 장애나 랜섬웨어
-            상황에서 실제 복구 가능한지 정기적으로 확인함. 방화벽 정책, 외부 노출 서비스,
-            계정·원격접속 보안까지 함께 점검하고 결과를 보고서로 남김.
+            Acronis Cyber Protect로 서버·PC·NAS를, Vinchin Backup &amp; Recovery로 VMware·Hyper-V·Proxmox
+            등 가상화 VM을 백업하고, 장애나 랜섬웨어 상황에서 실제 복구 가능한지 정기적으로 확인함.
+            방화벽 정책, 외부 노출 서비스, 계정·원격접속 보안까지 함께 점검하고 결과를 보고서로 남김.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
@@ -125,6 +150,40 @@ export default function AcronisBackupPage() {
             데이터를 백업하고, 사고 시 실제 복구 가능한지와 방화벽·계정 등 기본 보안 상태가
             안전한지 확인하는 서비스입니다.
           </p>
+        </div>
+      </section>
+
+      {/* 백업 솔루션 2축 — Acronis / Vinchin */}
+      <section className="border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
+          <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
+            Backup Solutions
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 kr-keep-all">
+            환경에 맞는 백업 솔루션
+          </h2>
+          <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
+            엔드포인트와 가상화는 백업 방식이 다릅니다. 서버·PC·NAS는 Acronis로, 가상화 VM은
+            Vinchin으로 — 환경에 맞춰 조합하거나 한쪽만 운영합니다.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {solutions.map((s) => (
+              <div
+                key={s.name}
+                className="flex flex-col p-6 rounded-xl bg-white border border-gray-200"
+              >
+                <span className="inline-flex self-start items-center px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold mb-3">
+                  {s.scope}
+                </span>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2 kr-keep-all">
+                  {s.name}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
+                  {s.desc}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

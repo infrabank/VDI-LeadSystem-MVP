@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "전산통합유지보수 VDI·가상화 기술지원 | Myloket",
   description:
-    "공공기관 전산통합유지보수 사업에서 Citrix, Omnissa Horizon, VMware vSphere, Acronis 영역의 비상주 기술지원, 정기점검, 장애분석, 운영보고서를 지원합니다.",
+    "공공기관 전산통합유지보수 사업에서 Citrix, Omnissa Horizon, VMware vSphere, Acronis, Vinchin 영역의 비상주 기술지원, 정기점검, 장애분석, 운영보고서를 지원합니다.",
 };
 
 const CONTACT_TOP =
@@ -40,7 +40,7 @@ const scopeAreas = [
   {
     no: "04",
     title: "백업·복구검증",
-    desc: "Acronis Cyber Protect 기반 백업 정책, 실패 이력, 에이전트 상태, 복구 테스트 결과를 점검합니다. 백업 성공 여부가 아니라 실제 복구 가능성을 확인합니다.",
+    desc: "Acronis Cyber Protect(서버·PC·NAS)와 Vinchin Backup & Recovery(가상화 VM) 기반 백업 정책, 실패 이력, 에이전트·VM 상태, 복구 테스트 결과를 점검합니다. 백업 성공 여부가 아니라 실제 복구 가능성을 확인합니다.",
   },
   {
     no: "05",
@@ -73,7 +73,8 @@ const techAreas = [
   "Omnissa Horizon · Connection Server · UAG · Agent · Client",
   "VMware vSphere · ESXi · vCenter",
   "FSLogix · Citrix Profile Management",
-  "Acronis Cyber Protect",
+  "Acronis Cyber Protect (서버·PC·NAS 백업)",
+  "Vinchin Backup & Recovery (가상화 VM 백업·즉시 복구)",
   "인증서 · DNS · CRL · 외부접속 경로",
   "월간 점검표 · 장애보고서 · 작업계획서 · 완료보고서",
 ];
@@ -160,7 +161,7 @@ export default function IntegratedMaintenancePage() {
           </h1>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-10 max-w-2xl">
             주사업자·SI 파트너가 공공기관 통합유지보수 범위 안에서 Citrix, Omnissa Horizon,
-            VMware, Acronis 영역을 안정적으로 제안하고 운영할 수 있도록 비상주 전문 기술지원을 제공합니다.
+            VMware, Acronis, Vinchin 영역을 안정적으로 제안하고 운영할 수 있도록 비상주 전문 기술지원을 제공합니다.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link

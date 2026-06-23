@@ -102,8 +102,9 @@ export default function DataProtectionPage() {
             <div className="md:col-span-3">
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
                 백업이 돌아간다는 것과 사고 시 실제 복구가 가능하다는 것은 다른 문제입니다.
-                Acronis Cyber Protect 운영 위에 매월 복구 시연·RTO/RPO 기준표·랜섬웨어 24시간 대응 절차·
-                무결성 검증 결과를 정기적으로 산출합니다. 단순 리셀러보다 한 단계 위의 가치를 제공합니다.
+                서버·PC·NAS는 Acronis Cyber Protect로, 가상화 VM은 Vinchin Backup &amp; Recovery로 보호하고,
+                그 위에 매월 복구 시연·RTO/RPO 기준표·랜섬웨어 24시간 대응 절차·무결성 검증 결과를
+                정기적으로 산출합니다. 단순 리셀러보다 한 단계 위의 가치를 제공합니다.
               </p>
             </div>
           </div>

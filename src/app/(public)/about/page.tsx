@@ -53,7 +53,7 @@ export default function AboutPage() {
           </p>
           <p className="text-sm sm:text-base text-slate-300 max-w-3xl mx-auto leading-relaxed kr-keep-all">
             마이로켓은 공공기관·연구기관·기업의 VDI와 백업 운영 환경을 지원하는 기술지원 회사입니다.
-            Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 환경에서 발생하는
+            Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect, Vinchin Backup &amp; Recovery 환경에서 발생하는
             접속 장애, 인증서, 프로파일, 스토리지, 라이선스, 백업 복구 검증 이슈를 대표 엔지니어가 직접 대응합니다.
           </p>
         </div>
@@ -70,8 +70,8 @@ export default function AboutPage() {
               운영 장애를 직접 본 엔지니어가 대응합니다
             </h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
-              마이로켓은 Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect
-              환경의 기술지원·유지보수·복구 검증을 전문으로 합니다. 진단·설계는 대표 엔지니어가 직접 책임지고,
+              마이로켓은 Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect,
+              Vinchin Backup &amp; Recovery 환경의 기술지원·유지보수·복구 검증을 전문으로 합니다. 진단·설계는 대표 엔지니어가 직접 책임지고,
               대규모 구축은 검증된 파트너 컨소시엄과 함께 수행합니다.
             </p>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all">
@@ -81,7 +81,7 @@ export default function AboutPage() {
           </div>
           <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
             <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
-              3개 핵심 기술지원 분야
+              핵심 기술지원 분야
             </p>
             <div className="space-y-3">
               {supportAreas.map((a) => {
@@ -302,7 +302,7 @@ export default function AboutPage() {
             기술지원·유지보수 문의
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">
-            Citrix · Omnissa Horizon · Acronis Cyber Protect 환경의 운영장애·유지보수·복구검증 상담,
+            Citrix · Omnissa Horizon · Acronis · Vinchin 환경의 운영장애·유지보수·복구검증 상담,
             SI 파트너 기술 협업 문의를 환영합니다.
           </p>
           <Link

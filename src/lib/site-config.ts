@@ -326,7 +326,7 @@ export const leadership: LeaderProfile[] = [
     bio:
       "공공·정부출연연구기관 10여 곳의 Citrix Virtual Apps and Desktops · Omnissa Horizon 기반 VDI를 " +
       "다년간 설계·구축·운영·유지보수해 왔습니다. 접속장애, FSLogix/프로파일, UAG·NetScaler, 인증서, " +
-      "스토리지·네트워크 병목, Acronis 백업 복구검증까지 운영 현장에서 실제로 터지는 문제를 패턴으로 분류해 " +
+      "스토리지·네트워크 병목, Acronis·Vinchin 백업 복구검증까지 운영 현장에서 실제로 터지는 문제를 패턴으로 분류해 " +
       "같은 기준으로 대응합니다. N²SF 등 공공기관 보안환경 이해를 바탕으로 보고서·증빙 산출물도 함께 작성합니다.",
     expertise: [
       "Citrix Virtual Apps and Desktops",
@@ -335,6 +335,7 @@ export const leadership: LeaderProfile[] = [
       "VMware vSphere · ESXi · vCenter",
       "FSLogix · Citrix Profile Management",
       "Acronis Cyber Protect · 백업 복구검증",
+      "Vinchin Backup & Recovery · 가상화 VM 백업",
       "공공기관 운영 보고서 · N²SF 환경 이해",
     ],
     email: "jhw@mlkit.co.kr",
@@ -566,6 +567,14 @@ export const partnerships: Partnership[] = [
     textColor: "text-[#cc0000]",
     bgColor: "bg-red-50",
   },
+  {
+    name: "Vinchin",
+    role: "Backup & Recovery · 가상화 VM 백업·즉시 복구",
+    domain: "data-protection",
+    logoFile: "vinchin.svg",
+    textColor: "text-[#00855b]",
+    bgColor: "bg-teal-50",
+  },
 ];
 
 export const navLinks = [
@@ -603,8 +612,8 @@ export const ctaLink = {
 };
 
 /**
- * 홈페이지 — 3 핵심 기술지원 분야.
- * Citrix Virtual Apps and Desktops / Omnissa Horizon / Acronis Cyber Protect.
+ * 핵심 기술지원 분야.
+ * Citrix Virtual Apps and Desktops / Omnissa Horizon / Acronis Cyber Protect / Vinchin Backup & Recovery.
  * lines: 카드 본문 2줄 (담백한 톤).
  */
 export interface SupportArea {
@@ -637,8 +646,17 @@ export const supportAreas: SupportArea[] = [
     id: "acronis",
     brand: "Acronis Cyber Protect",
     lines: [
-      "백업 정책, 실패 이력, 에이전트 상태를 점검합니다.",
+      "서버·PC·NAS 백업 정책, 실패 이력, 에이전트 상태를 점검합니다.",
       "필요하면 복구 테스트와 결과 보고서를 정리합니다.",
+    ],
+    accent: "emerald",
+  },
+  {
+    id: "vinchin",
+    brand: "Vinchin Backup & Recovery",
+    lines: [
+      "VMware·Hyper-V·Proxmox·XenServer 등 가상화 VM을 에이전트리스로 백업합니다.",
+      "즉시 복구·V2V 마이그레이션과 백업 복구검증을 함께 지원합니다.",
     ],
     accent: "emerald",
   },

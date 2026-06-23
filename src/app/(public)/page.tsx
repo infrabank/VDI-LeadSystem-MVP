@@ -94,10 +94,10 @@ const services: {
     oneLiner: "사고 전에 복구 가능성을 확인함",
     items: [
       "백업 정책·실패 이력 점검",
-      "Acronis 백업 운영 지원",
+      "Acronis 백업 운영 지원 (서버·PC·NAS)",
+      "Vinchin 가상화 VM 백업 운영 지원",
       "랜섬웨어 대비 백업 구조 점검",
       "방화벽 정책·외부 노출 점검",
-      "계정·원격접속 보안 점검",
     ],
     href: "/services/acronis-backup",
     linkLabel: "자세히 보기",
@@ -352,7 +352,7 @@ export default function HomePage() {
                 상담 전화를 받는 사람과 현장에서 작업하는 사람이 같음.
               </p>
               <div className="flex flex-wrap gap-2 mb-5">
-                {["서버·네트워크·방화벽", "Acronis 백업·복구", "Citrix·Horizon VDI"].map((chip) => (
+                {["서버·네트워크·방화벽", "Acronis·Vinchin 백업·복구", "Citrix·Horizon VDI"].map((chip) => (
                   <span
                     key={chip}
                     className="px-2.5 py-1 bg-gray-50 border border-gray-200 rounded text-xs text-gray-700"
