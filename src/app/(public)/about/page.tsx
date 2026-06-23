@@ -5,6 +5,7 @@ import {
   partnerships,
   certifications,
   certificationStatusLabel,
+  engineerCredentials,
   leadership,
 } from "@/lib/site-config";
 import { PartnerBadge } from "../PartnerBadge";
@@ -285,7 +286,19 @@ export default function AboutPage() {
             );
           })}
         </div>
-        <p className="text-center mt-6">
+        {engineerCredentials.length > 0 && (
+          <p className="text-center text-xs sm:text-sm text-gray-600 mt-8 max-w-2xl mx-auto kr-keep-all">
+            <span className="font-semibold text-gray-700">대표 엔지니어 보유 기술자격</span> ·{" "}
+            {engineerCredentials.map((cr, i) => (
+              <span key={cr.code}>
+                {i > 0 && ", "}
+                <span className="font-semibold text-emerald-700">{cr.code}</span>
+                {" "}({cr.name})
+              </span>
+            ))}
+          </p>
+        )}
+        <p className="text-center mt-4">
           <a href="/about/certifications" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
             전체 인증·파트너십 보기 →
           </a>

@@ -38,6 +38,7 @@ const solutions = [
     name: "Vinchin Backup & Recovery",
     scope: "가상화 VM",
     desc: "VMware vSphere, Hyper-V, Proxmox VE, Citrix Hypervisor(XenServer) 등 VM을 에이전트리스로 통째 백업하고, 즉시 복구·V2V 마이그레이션을 지원합니다.",
+    credential: "VBTP 인증 엔지니어",
   },
 ];
 
@@ -181,6 +182,17 @@ export default function AcronisBackupPage() {
                 <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
                   {s.desc}
                 </p>
+                {s.credential && (
+                  <Link
+                    href="/about/certifications"
+                    className="inline-flex self-start items-center gap-1.5 mt-3 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-semibold hover:bg-emerald-100 transition-colors"
+                  >
+                    <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                    {s.credential}
+                  </Link>
+                )}
               </div>
             ))}
           </div>

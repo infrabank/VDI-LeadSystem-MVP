@@ -1,5 +1,12 @@
 import Link from "next/link";
-import { company, partnerships, certifications, certificationStatusLabel } from "@/lib/site-config";
+import Image from "next/image";
+import {
+  company,
+  partnerships,
+  certifications,
+  certificationStatusLabel,
+  engineerCredentials,
+} from "@/lib/site-config";
 import { PartnerBadge } from "../../PartnerBadge";
 
 const statusColorClass: Record<string, string> = {
@@ -97,6 +104,61 @@ export default function CertificationsPage() {
             })}
           </div>
         </section>
+
+        {/* 엔지니어 기술자격 — 회사 인증과 구분 */}
+        {engineerCredentials.length > 0 && (
+          <section className="mb-12 md:mb-16">
+            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 kr-keep-all">엔지니어 기술자격</h2>
+            <p className="text-xs text-gray-500 mb-5 kr-keep-all">
+              회사 인증과 별개로, 대표 엔지니어가 보유한 벤더 공식 기술자격입니다 — 실제 솔루션을 다룰 역량을 증빙합니다.
+            </p>
+            <div className="grid gap-4 md:gap-6">
+              {engineerCredentials.map((cr) => (
+                <div
+                  key={cr.code}
+                  className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
+                >
+                  <div className="grid md:grid-cols-[1fr_auto] gap-5 md:gap-8 items-start">
+                    <div>
+                      <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+                        <p className="text-base font-bold text-gray-900">{cr.name}</p>
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border bg-emerald-50 text-emerald-700 border-emerald-200">
+                          보유
+                        </span>
+                      </div>
+                      <p className="text-sm text-gray-500 leading-relaxed kr-keep-all mb-3">{cr.desc}</p>
+                      <dl className="space-y-1 text-xs text-gray-600">
+                        <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">보유자</dt><dd className="kr-keep-all">{cr.holder}</dd></div>
+                        <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">발급 기관</dt><dd className="kr-keep-all">{cr.issuer}</dd></div>
+                        <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">인증서 번호</dt><dd>{cr.certificateId}</dd></div>
+                        <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">유효 기간</dt><dd>{cr.validUntil}</dd></div>
+                      </dl>
+                    </div>
+                    {cr.imageFile && (
+                      <a
+                        href={`/credentials/${cr.imageFile}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block shrink-0 group"
+                      >
+                        <Image
+                          src={`/credentials/${cr.imageFile}`}
+                          alt={`${cr.name} 인증서`}
+                          width={3509}
+                          height={2216}
+                          className="w-full md:w-72 h-auto rounded-lg border border-gray-200 group-hover:border-gray-300 transition-colors"
+                        />
+                        <span className="block text-center text-[11px] text-blue-600 mt-1.5 group-hover:text-blue-700">
+                          인증서 원본 보기 →
+                        </span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Partnerships — domain별 그룹 */}
         <section className="mb-12 md:mb-16">

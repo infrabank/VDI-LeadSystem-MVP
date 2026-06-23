@@ -295,6 +295,53 @@ export const certificationStatusLabel: Record<
   not_pursued: { label: "해당 없음", color: "gray" },
 };
 
+/**
+ * 엔지니어 기술자격 (벤더 공식 기술자격) — 회사 정보보호 인증(certifications)과 구분.
+ *
+ * 원칙(2026-06-23): 회사 인증이 아니라 *대표 엔지니어 개인*이 보유한 벤더 공식 자격임을
+ * 명확히 표기. 실제 솔루션을 다룰 역량 증빙 용도. 인증서 번호·발급기관·보유자를 모두 명시해
+ * 발주처·고객이 검증할 수 있는 수준으로 정직하게 노출.
+ */
+export interface EngineerCredential {
+  /** 자격 약칭 (예: "VBTP") */
+  code: string;
+  /** 정식 명칭 */
+  name: string;
+  /** 발급 기관 */
+  issuer: string;
+  /** 보유자 (엔지니어 실명·직책) */
+  holder: string;
+  /** 인증서 번호 */
+  certificateId: string;
+  /** 발급일 — 예: "2026.06.23" */
+  issuedOn: string;
+  /** 유효 기간 — 예: "2026.06 ~ 2029.06" */
+  validUntil: string;
+  /** 한 줄 설명 */
+  desc: string;
+  /** public/credentials/ 하위 인증서 이미지 파일명 (확장자 포함) */
+  imageFile?: string;
+  /** 연관 파트너 솔루션명 (배지 매칭용) — 예: "Vinchin Backup & Recovery" */
+  relatedSolution?: string;
+}
+
+export const engineerCredentials: EngineerCredential[] = [
+  {
+    code: "VBTP",
+    name: "Vinchin Backup Technology Professional",
+    issuer: "Chengdu Vinchin Technology Co., Ltd.",
+    holder: "제현우 (대표 · 수석 기술지원 엔지니어)",
+    certificateId: "VBTP-158879215260623",
+    issuedOn: "2026.06.23",
+    validUntil: "2026.06 ~ 2029.06 (3년)",
+    desc:
+      "Vinchin Channel Partner Technology Training 과정을 이수하고 Vinchin Backup & Recovery의 " +
+      "백업·복구 기술 역량을 검증받은 벤더 공식 기술자격입니다.",
+    imageFile: "vinchin-vbtp.jpg",
+    relatedSolution: "Vinchin Backup & Recovery",
+  },
+];
+
 export interface LeaderProfile {
   /** 슬롯 식별자 (URL·anchor·photo 파일명에 사용) */
   slot: string;
