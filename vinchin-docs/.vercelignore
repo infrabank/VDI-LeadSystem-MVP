@@ -1,0 +1,8 @@
+# The Vercel build regenerates these from source (npm run mirror && node tools/build.mjs),
+# so don't upload them. Keeps deploys small and deterministic.
+node_modules
+site
+dist
+i18n/batches
+*.log
+_ko_check.html

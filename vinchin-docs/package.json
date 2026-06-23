@@ -1,0 +1,23 @@
+{
+  "name": "vinchin-docs-ko",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Korean localization mirror of helpcenter.vinchin.com for vinchin.myloket.co.kr",
+  "scripts": {
+    "mirror": "node tools/mirror.mjs",
+    "extract": "node tools/i18n.mjs extract",
+    "build": "node tools/build.mjs",
+    "apply": "node tools/i18n.mjs apply",
+    "assets": "node tools/i18n.mjs assets",
+    "brand": "node tools/brand.mjs",
+    "batch": "node tools/batch.mjs",
+    "serve": "node tools/serve.mjs"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,20 @@
+# Deploy the prebuilt Korean static site to vinchin.myloket.co.kr (Netlify).
+# The site is fully static (mirrored GitBook + Korean translation), no build step needed
+# unless you want to regenerate from source: set command = "npm ci && node tools/build.mjs".
+# Host rebuilds from the small committed source (tools + i18n/strings.ko.json) by
+# re-mirroring the English site and applying the Korean translation memory.
+[build]
+  publish = "dist"
+  command = "npm ci && npm run mirror && node tools/build.mjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# GitBook uses .html URLs with relative links; serve as-is.
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200
