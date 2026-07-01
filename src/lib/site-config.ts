@@ -616,9 +616,9 @@ export const partnerships: Partnership[] = [
   },
   {
     name: "Vinchin",
-    role: "Backup & Recovery · 가상화 VM 백업·즉시 복구",
+    role: "Backup & Recovery · 가상화 VM 백업·즉시 복구 · Silver Partner",
     domain: "data-protection",
-    logoFile: "vinchin.svg",
+    logoFile: "vinchin.png",
     textColor: "text-[#00855b]",
     bgColor: "bg-teal-50",
   },

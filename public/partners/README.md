@@ -10,6 +10,7 @@
 | `omnissa.svg` | https://www.omnissa.com/company/brand/ | 2024년 분사 후 신규 브랜드 |
 | `citrix.svg` | https://www.citrix.com/about/legal/brand-guidelines.html | "Citrix" wordmark |
 | `acronis.svg` | https://www.acronis.com/en-us/about/brand-guidelines/ | "Acronis" + Cyber Protect 마크 |
+| `vinchin.png` | Vinchin 파트너 리소스 제공분 (2026-07) | 조달 완료 — 벡터본 없어 PNG(투명배경) 사용 |
 
 ## 권장 사양
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { companyLegal } from "@/lib/site-config";
 import { breadcrumbLd, faqPageLd, SITE_URL, ORG_ID, type FaqItem } from "@/lib/schema";
@@ -557,7 +558,7 @@ export default function VinchinBackupPage() {
             ))}
           </div>
 
-          {/* VBTP 인증 배지 */}
+          {/* VBTP 인증 배지 + Silver Partner 배지 */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-5 rounded-xl bg-emerald-50/60 border border-emerald-200">
             <span className="inline-flex flex-shrink-0 items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-semibold">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -573,6 +574,30 @@ export default function VinchinBackupPage() {
                 인증 페이지
               </Link>
               에서 확인할 수 있습니다.
+            </p>
+          </div>
+
+          <div className="mt-4 flex flex-col sm:flex-row sm:items-center gap-4 p-5 rounded-xl bg-white border border-gray-200">
+            <Image
+              src="/credentials/vinchin-silver-partner.png"
+              alt="Vinchin Silver Partner"
+              width={120}
+              height={107}
+              className="w-24 h-auto flex-shrink-0 mx-auto sm:mx-0"
+            />
+            <p className="text-sm text-gray-700 leading-relaxed kr-keep-all">
+              마이로켓은 <strong className="text-gray-900">Vinchin 공식 Silver Partner</strong>로,
+              라이선스 공급부터 구축·운영까지 벤더 파트너 자격을 갖추고 지원합니다. 제품 스펙과
+              구성 옵션이 정리된{" "}
+              <a
+                href="/vinchin-product-brochure.pdf"
+                target="_blank"
+                rel="noopener"
+                className="font-semibold text-emerald-700 underline underline-offset-2 hover:text-emerald-800"
+              >
+                제품 브로슈어(PDF)
+              </a>
+              를 다운로드해 확인할 수 있습니다.
             </p>
           </div>
 
