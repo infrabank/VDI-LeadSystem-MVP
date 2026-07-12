@@ -1,7 +1,7 @@
 # 이메일 서명 — Myloket 표준 템플릿
 
 > 모든 외부 메일 발신 시 사용. 직원·파트너 공통 양식.
-> 작성: 2026-05-01 · 최종 갱신: 2026-06-10 (중소기업 전산 통합 유지보수 포지션·blue 단일 브랜드 색·'가상 데스크톱(VDI)' 병기 반영)
+> 작성: 2026-05-01 · 최종 갱신: 2026-07-12 (VDI 구축·기술지원 전면 포지션 반영 — 서비스 순서 VDI 우선, 태그라인 교체, Vinchin 파트너 추가, 홈 앵커 `/#business`)
 
 ## 사용 가이드
 
@@ -21,7 +21,7 @@
 ```
 ─────────────
 제현우 | 대표 · 수석 기술지원 엔지니어
-㈜마이로켓 (Myloket Inc.) — 전산유지보수 · 백업·보안 · 가상 데스크톱(VDI) 기술지원
+㈜마이로켓 (Myloket Inc.) — 가상 데스크톱(VDI) 구축·기술지원 · 전산 통합 유지보수 · 백업·복구검증
 
 ☎ 010-3861-8079   📧 jhw@mlkit.co.kr
 🌐 myloket.co.kr
@@ -34,7 +34,7 @@
   <tr>
     <td style="padding-top:8px;border-top:2px solid #1d4ed8">
       <div style="font-weight:600;color:#101828;font-size:14px">제현우 <span style="color:#9ca3af;font-weight:400">|</span> 대표 · 수석 기술지원 엔지니어</div>
-      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — 전산유지보수 · 백업·보안 · 가상 데스크톱(VDI) 기술지원</div>
+      <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 (Myloket Inc.) — 가상 데스크톱(VDI) 구축·기술지원 · 전산 통합 유지보수 · 백업·복구검증</div>
       <div style="margin-top:6px;font-size:12px">
         <span style="color:#374151">☎ 010-3861-8079</span>
         <span style="color:#d1d5db;margin:0 6px">·</span>
@@ -56,16 +56,16 @@
 ─────────────────────────────
 제현우 (Je Hyunwoo) | 대표 · 수석 기술지원 엔지니어
 ㈜마이로켓 (Myloket Inc.)
-서버부터 PC까지, 회사 전산 한 곳에서 관리
+가상 데스크톱(VDI) 구축·기술지원부터 전산 통합 유지보수까지
 
 ☎ 010-3861-8079   📧 jhw@mlkit.co.kr
 🌐 myloket.co.kr
 
-▸ 전산통합유지보수 — PC·서버·네트워크·백업 정기 점검과 장애 대응
-▸ 백업·보안 점검 — Acronis 백업 운영 + 사고 전 실제 복구 가능성 확인
-▸ 가상 데스크톱(VDI) 기술지원 — Citrix·Omnissa Horizon 구축·장애 대응
+▸ VDI 구축·기술지원 — Citrix·Omnissa Horizon 구축·장애 대응
+▸ 전산 통합 유지보수 — PC·서버·네트워크·백업 정기 점검과 장애 대응
+▸ 백업·복구검증 — Acronis·Vinchin 백업 운영 + 사고 전 실제 복구 가능성 확인
 
-▸ 서비스 전체 보기: myloket.co.kr/#services
+▸ 서비스 전체 보기: myloket.co.kr/#business
 ─────────────────────────────
 ```
 
@@ -80,7 +80,7 @@
         <span style="color:#4b5563;font-weight:500">대표 · 수석 기술지원 엔지니어</span>
       </div>
       <div style="color:#6b7280;font-size:12px;margin-top:2px">㈜마이로켓 <span style="color:#9ca3af">(Myloket Inc.)</span></div>
-      <div style="color:#1d4ed8;font-size:12px;font-weight:600;margin-top:4px">서버부터 PC까지, 회사 전산 한 곳에서 관리</div>
+      <div style="color:#1d4ed8;font-size:12px;font-weight:600;margin-top:4px">가상 데스크톱(VDI) 구축·기술지원부터 전산 통합 유지보수까지</div>
     </td>
   </tr>
   <tr>
@@ -101,14 +101,14 @@
   </tr>
   <tr>
     <td style="padding:8px 0;border-top:1px solid #e5e7eb;font-size:12px">
-      <div style="margin-bottom:3px"><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">전산통합유지보수</strong> <span style="color:#6b7280">— PC·서버·네트워크·백업 정기 점검과 장애 대응</span></div>
-      <div style="margin-bottom:3px"><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">백업·보안 점검</strong> <span style="color:#6b7280">— Acronis 백업 운영 + 사고 전 실제 복구 가능성 확인</span></div>
-      <div><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">가상 데스크톱(VDI) 기술지원</strong> <span style="color:#6b7280">— Citrix·Omnissa Horizon 구축·장애 대응</span></div>
+      <div style="margin-bottom:3px"><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">VDI 구축·기술지원</strong> <span style="color:#6b7280">— Citrix·Omnissa Horizon 구축·장애 대응</span></div>
+      <div style="margin-bottom:3px"><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">전산 통합 유지보수</strong> <span style="color:#6b7280">— PC·서버·네트워크·백업 정기 점검과 장애 대응</span></div>
+      <div><span style="color:#1d4ed8">▸</span> <strong style="color:#101828;font-weight:600">백업·복구검증</strong> <span style="color:#6b7280">— Acronis·Vinchin 백업 운영 + 사고 전 실제 복구 가능성 확인</span></div>
     </td>
   </tr>
   <tr>
     <td style="padding-top:6px;font-size:11px;color:#9ca3af">
-      ▸ 서비스 전체 보기 <a href="https://myloket.co.kr/#services" style="color:#1d4ed8;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/#services</a>
+      ▸ 서비스 전체 보기 <a href="https://myloket.co.kr/#business" style="color:#1d4ed8;text-decoration:underline;text-underline-offset:2px">myloket.co.kr/#business</a>
     </td>
   </tr>
 </table>
@@ -122,8 +122,8 @@
 ```
 ═════════════════════════════════════
 ㈜마이로켓 (Myloket Inc.)
-서버부터 PC까지, 회사 전산 한 곳에서 관리
-전산유지보수 · 백업·보안 · 가상 데스크톱(VDI) 기술지원 — 상담부터 작업까지 직접 대응 · 공공·연구기관 10여 곳 + 중소기업 전산환경 유지보수 실적
+가상 데스크톱(VDI) 구축·기술지원부터 전산 통합 유지보수까지
+VDI 구축·기술지원 · 전산 통합 유지보수 · 백업·복구검증 — 상담부터 작업까지 직접 대응 · 공공·연구기관 10여 곳 + 중소기업 전산환경 유지보수 실적
 ═════════════════════════════════════
 
 제현우 (Je Hyunwoo) | 대표 · 수석 기술지원 엔지니어 / CEO · Principal Engineer
@@ -134,17 +134,17 @@
 3 Services
 ──────────────────────
 
-[전산통합유지보수 — IT Maintenance]
+[VDI 구축·기술지원 — Citrix · Omnissa Horizon]
+VDI 구축·전환·장애 대응 — 접속·인증서·UAG/Gateway·FSLogix 분석, SI 프로젝트 협업
+→ myloket.co.kr/services/vdi-support
+
+[전산 통합 유지보수 — IT Maintenance]
 PC · 서버 · 네트워크 · 프린터 · 백업 정기 점검과 장애 대응 — 점검표·운영 보고서 제공
 → myloket.co.kr/services/it-maintenance
 
-[백업·보안 점검 — Acronis Cyber Protect]
+[백업·복구검증 — Acronis · Vinchin]
 백업 정책·실패 이력 점검 + 사고 전 실제 복구 가능성 확인
 → myloket.co.kr/services/acronis-backup
-
-[가상 데스크톱(VDI) 기술지원 — Citrix · Omnissa Horizon]
-VDI 구축·전환·장애 대응 — 접속·인증서·UAG/Gateway·FSLogix 분석, SI 프로젝트 협업
-→ myloket.co.kr/services/vdi-support
 
 ──────────────────────
 무료 진단·계산 도구
@@ -169,9 +169,9 @@ N²SF 사전진단 체크리스트 · VDI 의사결정 매트릭스 · 보안성
 ──────────────────────
 파트너십·인프라
 ──────────────────────
-Partners: Citrix · Omnissa · Acronis
+Partners: Citrix · Omnissa · Acronis · Vinchin (Silver Partner)
 Infra:    VMware ESXi · vSphere
-공공·연구기관 10여 곳 + 중소기업 전산환경 유지보수 실적
+벤더 공식 기술자격 VBTP 보유 · 공공·연구기관 10여 곳 + 중소기업 전산환경 유지보수 실적
 
 ═════════════════════════════════════
 ```
