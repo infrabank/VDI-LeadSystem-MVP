@@ -13,11 +13,11 @@ export const company = {
   legalName: "(주)마이로켓",
   legalNameEn: "Myloket Inc.",
   tagline: "IT Maintenance & VDI Support",
-  taglineKo: "중소기업 전산 유지보수 · 서버·네트워크·백업 · VDI 기술지원",
+  taglineKo: "VDI 구축·기술지원 · 전산 통합 유지보수 · 백업 복구검증",
   description:
-    "서버, PC, 네트워크, 방화벽, 백업까지 중소기업 전산환경을 한 곳에서 관리합니다. " +
-    "장애 원인을 끝까지 확인하고 직접 대응합니다. " +
-    "Citrix·Omnissa Horizon 가상 데스크톱(VDI) 기술지원.",
+    "공공기관·연구기관 가상 데스크톱(VDI)을 구축·운영·유지보수해 온 엔지니어가 " +
+    "서버·네트워크·백업까지 기업 전산환경 전체를 관리합니다. " +
+    "Citrix·Omnissa Horizon VDI 기술지원, Acronis·Vinchin 백업 복구검증.",
   email: "contact@mlkit.co.kr",
   domain: "myloket.co.kr",
   copyrightYear: new Date().getFullYear(),
@@ -640,6 +640,11 @@ export interface NavLink {
 
 export const navLinks: NavLink[] = [
   {
+    href: "/services/vdi-support",
+    label: "VDI 기술지원",
+    description: "Citrix · Omnissa Horizon 구축·장애 대응",
+  },
+  {
     href: "/services/it-maintenance",
     label: "전산유지보수",
     description: "서버·PC·네트워크·프린터 통합 관리",
@@ -665,11 +670,6 @@ export const navLinks: NavLink[] = [
         description: "가상화 VM 백업·즉시 복구",
       },
     ],
-  },
-  {
-    href: "/services/vdi-support",
-    label: "VDI 기술지원",
-    description: "Citrix · Omnissa Horizon 구축·장애 대응",
   },
   {
     href: "/#engagements",
