@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Analytics from "./Analytics";
-import { company, companyLegal, supportAreas, maintenancePackages } from "@/lib/site-config";
+import { company, companyLegal, companyProfiles, supportAreas, maintenancePackages } from "@/lib/site-config";
 
 const siteUrl = `https://${company.domain}`;
 const siteTitle = `Citrix·Omnissa Horizon VDI 기술지원·전산 유지보수 | ${company.nameKo}`;
@@ -78,6 +78,7 @@ const jsonLd = {
   email: company.email,
   description: siteDescription,
   telephone: companyLegal.phone,
+  ...(companyProfiles.length > 0 ? { sameAs: companyProfiles } : {}),
   founder: {
     "@type": "Person",
     name: companyLegal.representativeName,

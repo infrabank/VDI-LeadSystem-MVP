@@ -24,6 +24,17 @@ export const company = {
 } as const;
 
 /**
+ * 회사가 직접 관리하는 외부 공식 프로필 — Organization JSON-LD의 sameAs로 출력됨.
+ * 검색엔진·AI가 동일 회사임을 연결하는 근거. 실제 관리 중인 프로필만 추가할 것.
+ * (Google 비즈니스 프로필·네이버 스마트플레이스·LinkedIn 등 — 승인 후 최종 URL 입력)
+ */
+export const companyProfiles: string[] = [
+  // "https://maps.app.goo.gl/…",          // Google 비즈니스 프로필 (등록 완료 — 최종 URL 입력 대기)
+  // "https://map.naver.com/p/entry/place/…", // 네이버 스마트플레이스 (검토 중)
+  // "https://www.linkedin.com/company/…",
+];
+
+/**
  * 법적 사업자 정보 (전자상거래법 §10·정보통신망법·개인정보보호법 §30 표시 의무).
  *
  * 표시 위치: footer / /legal/privacy / /legal/terms / /about
