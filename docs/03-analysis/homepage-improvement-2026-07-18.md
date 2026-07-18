@@ -17,8 +17,9 @@
    장벽이 높았음.
 4. **문의 폼이 단일 구조** — 14개 관심영역 칩 + VDI 중심 안내로, 유지보수·SI 고객에게 맞지
    않는 언어. 서버 API가 `research`·`si-partner` 기관유형을 조용히 버리는 버그도 있었음.
-5. **파트너 표기 오인 소지** — Citrix·VMware·Omnissa 로고가 Acronis·Vinchin(실제 파트너)과
-   같은 "Technology Partners" 라벨 아래 노출.
+5. ~~파트너 표기 오인 소지~~ → **해당 없음 확인** — 2026-07-18 대표 확인 결과
+   Citrix·VMware·Omnissa·Acronis·Vinchin 5개 벤더 모두 공식 파트너. "공식 파트너" 통합
+   표기로 정리 (구분 표기는 도입 후 철회).
 6. **전 페이지 타이틀 중복** — 루트 템플릿이 `| Myloket`을 붙이는데 페이지들이 또 하드코딩해
    `... | Myloket | Myloket`으로 렌더 (검색 결과 노출 품질 저하). 20여 페이지 해당.
 7. **불필요한 영어 섹션명** — Business Areas, Field Issues, Track Record 등.
@@ -88,9 +89,9 @@
   추가. 제출 버튼 라벨 유형별 변경, "영업 전화 돌리지 않습니다" 문구 추가.
 
 ### 신뢰 요소 (§10)
-- **공식 파트너(Acronis·Vinchin) vs 기술지원 제품(Citrix·VMware·Omnissa) 분리 표기** —
-  홈 스트립, 홈 파트너십 섹션, about, certifications 4곳 + 명시 문구 ("공식 파트너 계약이
-  아닌 기술지원 제공 제품"). `Partnership.official` 필드 신설.
+- **파트너 표기 확인·정리** — 대표 확인 결과 5개 벤더 모두 공식 파트너로 확인되어
+  "공식 파트너" 통합 라벨로 표기 (홈 스트립·홈 파트너십 섹션·about·certifications).
+  `Partnership.official` 필드는 유지 — 향후 비공식 벤더 추가 시 구분 표기용.
 - **타이틀 중복 제거** — 20개 페이지의 `| Myloket` 하드코딩 제거 (루트 템플릿이 1회만 부착).
 - 영어 섹션명 한국어화 (홈·about·서비스 3페이지·contact).
 - 모바일 전화 바 라벨 "점검 문의"→"상담 문의" (문의 유형 선택 페이지로 연결).
@@ -111,7 +112,7 @@
 | 대표 경력 연수·주요 프로젝트 연표 | 대표 인터뷰 필요 | about 판단 근거 강화 |
 | 회사 대표번호(010 개인번호 대체) 도입 여부 | 서비스 정책 결정 필요 | 070/0507 등. 현재는 010 유지 |
 | 이메일 도메인 정리 (contact@mlkit.co.kr vs myloket.co.kr) | 서비스 정책 결정 필요 | @myloket.co.kr 메일 개설 권장 |
-| Acronis 파트너 등급 증빙 | 인증서·증빙 필요 | 현재 "Authorized Partner / MSP" 표기의 증빙 이미지 (Vinchin은 확보됨) |
+| 벤더 파트너 증빙 (Citrix·VMware·Omnissa·Acronis) | 인증서·증빙 권장 | 파트너 등급·인증 이미지 확보 시 certifications 페이지 신뢰 보강 (Vinchin은 확보됨) |
 | 문의 폼 파일 업로드 | 보류 | Storage 연동 필요 — 현재는 메일 답장 첨부로 안내 |
 
 ## 15. 우선순위별 실행 계획

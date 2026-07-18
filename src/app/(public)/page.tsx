@@ -273,27 +273,16 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 파트너·기술지원 제품 스트립 ========== */}
+      {/* ========== 공식 파트너 스트립 ========== */}
       <section className="bg-gray-50/60 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-y-5 gap-x-10">
-            <div className="flex items-center gap-x-6">
-              <p className="text-[11px] font-semibold text-gray-400 tracking-widest flex-shrink-0">
-                공식 파트너
-              </p>
-              {partnerships.filter((p) => p.official).map((p) => (
-                <PartnerBadge key={p.name} partner={p} variant="strip" />
-              ))}
-            </div>
-            <div className="hidden sm:block w-px h-8 bg-gray-200" aria-hidden="true" />
-            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-              <p className="text-[11px] font-semibold text-gray-400 tracking-widest flex-shrink-0">
-                기술지원 제품
-              </p>
-              {partnerships.filter((p) => !p.official).map((p) => (
-                <PartnerBadge key={p.name} partner={p} variant="strip" />
-              ))}
-            </div>
+          <p className="text-[11px] font-semibold text-gray-400 tracking-widest text-center mb-4">
+            공식 파트너
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
+            {partnerships.map((p) => (
+              <PartnerBadge key={p.name} partner={p} variant="strip" />
+            ))}
           </div>
         </div>
       </section>
@@ -538,26 +527,14 @@ export default function HomePage() {
             기술 파트너십과 검증 가능한 자격
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            공식 파트너 계약이 있는 솔루션과 기술지원을 제공하는 제품을 구분해 표기하고,
-            벤더 공식 기술자격은 인증번호까지 공개합니다.
+            다루는 솔루션의 공식 파트너십과 벤더 공식 기술자격을 인증번호까지 공개합니다.
           </p>
 
-          <p className="text-xs font-bold text-gray-500 tracking-widest mb-3">공식 파트너</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-6">
-            {partnerships.filter((p) => p.official).map((p) => (
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-8">
+            {partnerships.map((p) => (
               <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
-          <p className="text-xs font-bold text-gray-500 tracking-widest mb-3">기술지원 제품</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-4">
-            {partnerships.filter((p) => !p.official).map((p) => (
-              <PartnerBadge key={p.name} partner={p} />
-            ))}
-          </div>
-          <p className="text-xs text-gray-500 kr-keep-all mb-8">
-            Citrix·VMware·Omnissa는 공식 파트너 계약이 아닌, 구축·운영·장애 대응 기술지원을
-            제공하는 제품입니다.
-          </p>
 
           {vbtp && (
             <div className="p-5 sm:p-6 bg-white rounded-xl border border-gray-200 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">

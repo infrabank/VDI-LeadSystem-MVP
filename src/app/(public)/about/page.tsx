@@ -290,23 +290,13 @@ export default function AboutPage() {
             파트너십
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 md:mb-12 kr-keep-all">
-            공식 파트너와 기술지원 제품
+            공식 파트너
           </h2>
-          <p className="text-xs font-bold text-gray-500 tracking-widest mb-3">공식 파트너</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6">
-            {partnerships.filter((p) => p.official).map((p) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
+            {partnerships.map((p) => (
               <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
-          <p className="text-xs font-bold text-gray-500 tracking-widest mb-3">기술지원 제품</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {partnerships.filter((p) => !p.official).map((p) => (
-              <PartnerBadge key={p.name} partner={p} />
-            ))}
-          </div>
-          <p className="text-center text-xs text-gray-500 mt-6 kr-keep-all">
-            Citrix·VMware·Omnissa는 공식 파트너 계약이 아닌 기술지원 제공 제품입니다.
-          </p>
           <div className="text-center mt-8">
             <Link
               href="/about/certifications"

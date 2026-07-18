@@ -401,8 +401,8 @@ export interface Partnership {
   textColor: string;
   bgColor: string;
   /**
-   * 공식 파트너 계약 여부 — true면 "공식 파트너"로, false면 "기술지원 제품"으로 표기.
-   * 공식 관계가 없는 벤더를 파트너로 오인시키지 않기 위한 구분 (신뢰·표기 규정).
+   * 공식 파트너 계약 여부 — false인 벤더가 생기면 "기술지원 제품"으로 구분 표기할 것.
+   * 2026-07-18 대표 확인: 현재 5개 벤더 모두 공식 파트너.
    */
   official: boolean;
 }
@@ -591,30 +591,30 @@ export const customerCategoryLabel: Record<CustomerCategory, string> = {
 export const partnerships: Partnership[] = [
   {
     name: "Citrix",
-    role: "Virtual Apps & Desktops · DaaS · NetScaler 기술지원",
+    role: "Virtual Apps & Desktops · DaaS · NetScaler",
     domain: "vdi-workspace",
     logoFile: "citrix.svg",
     textColor: "text-[#452170]",
     bgColor: "bg-violet-50",
-    official: false,
+    official: true,
   },
   {
     name: "VMware",
-    role: "Horizon · vSphere 기술지원",
+    role: "Horizon · vSphere",
     domain: "vdi-workspace",
     logoFile: "vmware.svg",
     textColor: "text-[#607078]",
     bgColor: "bg-gray-50",
-    official: false,
+    official: true,
   },
   {
     name: "Omnissa",
-    role: "Horizon · Workspace ONE UEM 기술지원",
+    role: "Horizon · Workspace ONE UEM",
     domain: "vdi-workspace",
     logoFile: "omnissa.svg",
     textColor: "text-[#0091da]",
     bgColor: "bg-sky-50",
-    official: false,
+    official: true,
   },
   {
     name: "Acronis",
