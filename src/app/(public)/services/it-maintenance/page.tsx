@@ -7,6 +7,7 @@ import { RelatedTools } from "../RelatedTools";
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services/it-maintenance" },
   title: "중소기업 전산 통합 유지보수 — 세종·대전·충청 IT 기술지원",
   description:
     "전산 담당자가 부족한 회사를 위한 전산 유지보수, IT 유지보수, 사내 전산 관리 서비스입니다. PC, 서버, 네트워크, NAS, 백업, Linux/리눅스, Windows Server, HPE·Dell·Lenovo·Supermicro 서버 운영 점검과 장애 대응을 지원합니다.",

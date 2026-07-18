@@ -22,6 +22,7 @@ const certBadgeClass: Record<string, string> = {
 };
 
 export const metadata = {
+  alternates: { canonical: "/about" },
   title: "회사·대표 엔지니어 소개",
   description: company.description,
 };
@@ -44,9 +45,40 @@ const responsibilityRows = [
   { area: "보고서·서명", direct: "제출 형식 보고서 작성", partner: "납품·인수 서명" },
 ];
 
+/** 대표 엔지니어 Person JSON-LD — 화면 표시 정보(이름·직책·전문분야·자격)와 일치 */
+const founder = leadership[0];
+const vbtpCred = engineerCredentials.find((c) => c.code === "VBTP");
+const personLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": `https://${company.domain}/about#founder`,
+  name: founder.name,
+  jobTitle: founder.role,
+  url: `https://${company.domain}/about`,
+  image: founder.photoFile
+    ? `https://${company.domain}/team/${founder.photoFile}`
+    : undefined,
+  worksFor: { "@id": `https://${company.domain}/#org` },
+  knowsAbout: founder.expertise,
+  ...(vbtpCred
+    ? {
+        hasCredential: {
+          "@type": "EducationalOccupationalCredential",
+          name: vbtpCred.name,
+          credentialCategory: "vendor certification",
+          recognizedBy: { "@type": "Organization", name: vbtpCred.issuer },
+        },
+      }
+    : {}),
+};
+
 export default function AboutPage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }}
+      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">

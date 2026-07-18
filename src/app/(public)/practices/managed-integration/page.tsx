@@ -4,6 +4,7 @@ import { practices } from "@/lib/site-config";
 const p = practices["managed-integration"];
 
 export const metadata = {
+  alternates: { canonical: "/practices/managed-integration" },
   title: `${p.title} (${p.brand})`,
   description: p.description,
 };

@@ -7,6 +7,7 @@ import { RelatedTools } from "../RelatedTools";
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services/acronis-backup" },
   title: "백업·복구검증 — Acronis·Vinchin 백업·랜섬웨어 대비",
   description:
     "Acronis Cyber Protect로 서버·PC·NAS를, Vinchin Backup & Recovery로 VMware·Hyper-V·Proxmox 등 가상화 VM을 백업하고 사고 시 실제 복구 가능한지 확인합니다. 백업 정책·실패 이력, 방화벽 정책·외부 노출, 계정·원격접속 보안까지 함께 점검하고 보고서로 정리합니다.",

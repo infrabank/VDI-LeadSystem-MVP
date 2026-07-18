@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { company } from "@/lib/site-config";
 
 export const metadata = {
+  alternates: { canonical: "/case-studies" },
   title: "고객사례·수행 경험",
   description: `${company.name}의 공공·연구기관·민간 기업 VDI 구축·운영·유지보수 지원 사례 — Citrix · Omnissa Horizon · Acronis Cyber Protect 운영장애·복구검증 실수행 경험.`,
 };

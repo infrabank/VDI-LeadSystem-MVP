@@ -18,6 +18,7 @@ const statusColorClass: Record<string, string> = {
 };
 
 export const metadata = {
+  alternates: { canonical: "/about/certifications" },
   title: "인증·파트너십",
   description: `${company.name}의 보유 인증 및 기술·운영 파트너십 현황.`,
 };

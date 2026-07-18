@@ -21,8 +21,9 @@ import {
 import { PartnerBadge } from "./PartnerBadge";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/" },
   title: {
-    absolute: "마이로켓 | VDI 구축·기술지원 · 전산 통합 유지보수 · 백업 복구검증",
+    absolute: "Citrix·Omnissa Horizon VDI 기술지원·전산 유지보수 | 마이로켓",
   },
   description:
     "공공기관·연구기관 가상 데스크톱(VDI)을 구축·운영·유지보수해 온 엔지니어가 " +

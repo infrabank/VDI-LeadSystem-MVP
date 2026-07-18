@@ -14,6 +14,7 @@ const engagements = [
 ];
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/services/vdi-support" },
   title: "Citrix·Omnissa Horizon VDI 기술지원 — 접속장애·프로파일·인증서 원인 분석",
   description:
     "Citrix VDA 등록 오류, Horizon UAG 접속 오류, FSLogix 로그인 지연, 인증서 교체 후 장애 등 VDI 운영장애의 원인을 사용자 단말부터 스토리지까지 한 기준으로 분석합니다. 공공기관 VDI 기술지원 경험, 장애보고서·작업계획서 작성 가능. 계약 없이 단발 지원 가능.",

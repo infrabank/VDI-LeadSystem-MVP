@@ -25,6 +25,63 @@ const typeLabel: Record<string, string> = {
   comparison: "Comparison",
 };
 
+/**
+ * 콘텐츠 주제별 CTA 분기 (§18 검색 의도-전환 연결).
+ * 제목·태그·카테고리 키워드로 Horizon / Citrix / 백업 / 유지보수를 구분하고,
+ * 해당하지 않으면 범용 기술지원 CTA를 사용한다.
+ */
+function pickInsightCta(title: string, tags: string[], category: string | null) {
+  const hay = `${title} ${tags.join(" ")} ${category || ""}`.toLowerCase();
+  if (/horizon|uag|omnissa/.test(hay)) {
+    return {
+      heading: "운영 중인 Horizon 환경에 비슷한 증상이 있나요?",
+      sub: "Connection Server·UAG·인증서·vSphere 연계까지 전체 흐름 기준으로 원인을 구분해 드립니다. 제품 버전·증상만 보내주세요.",
+      primaryHref: "/contact?type=vdi&source=insight-horizon&subject=Horizon 환경 검토 요청",
+      primaryLabel: "현재 Horizon 환경 검토 요청",
+      secondaryHref: "/services/vdi-support",
+      secondaryLabel: "VDI 기술지원 보기",
+    };
+  }
+  if (/citrix|vda|netscaler|스토어프론트|storefront/.test(hay)) {
+    return {
+      heading: "Citrix 환경에서 비슷한 장애를 겪고 있나요?",
+      sub: "VDA 등록, Gateway·인증서, 라이선스, 세션 장애의 원인 구간을 구분해 드립니다. 장애보고서 작성도 가능합니다.",
+      primaryHref: "/contact?type=vdi&source=insight-citrix&subject=Citrix 장애 문의",
+      primaryLabel: "Citrix 장애 원인 상담",
+      secondaryHref: "/services/vdi-support",
+      secondaryLabel: "VDI 기술지원 보기",
+    };
+  }
+  if (/백업|복구|랜섬|acronis|vinchin|backup/.test(hay)) {
+    return {
+      heading: "지금 백업, 실제로 복구되는지 확인해 보셨나요?",
+      sub: "백업 정책·실패 이력·복구 가능성을 점검하고 결과를 보고서로 정리해 드립니다.",
+      primaryHref: "/contact?type=maintenance&source=insight-backup&subject=백업 복구 가능성 점검",
+      primaryLabel: "백업 복구 가능성 점검",
+      secondaryHref: "/services/acronis-backup",
+      secondaryLabel: "백업·복구검증 서비스 보기",
+    };
+  }
+  if (/유지보수|전산|서버|네트워크|nas/.test(hay)) {
+    return {
+      heading: "전산 담당 공백, 어디까지 맡길 수 있는지 확인해 보세요",
+      sub: "PC·서버·네트워크·백업 현황만 알려주시면 월간 점검 범위와 방향을 회신합니다.",
+      primaryHref: "/contact?type=maintenance&source=insight-maintenance&subject=월간 유지보수 상담",
+      primaryLabel: "월간 유지보수 상담",
+      secondaryHref: "/services/it-maintenance",
+      secondaryLabel: "유지보수 서비스 보기",
+    };
+  }
+  return {
+    heading: "운영 중인 VDI · 백업 환경에 비슷한 이슈가 있나요?",
+    sub: "제품명·버전·증상만 보내주시면 1차 원인 구분을 도와드립니다. Citrix · Omnissa Horizon · Acronis · Vinchin 환경을 지원합니다.",
+    primaryHref: "/contact?source=insight-cta",
+    primaryLabel: "기술지원 문의하기",
+    secondaryHref: "/services/vdi-support",
+    secondaryLabel: "VDI 기술지원 보기",
+  };
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const supabase = await createClient();
@@ -117,9 +174,11 @@ export default async function ContentDetailPage({ params }: Props) {
       name: company.legalName,
     },
     author: {
-      "@type": "Organization",
-      name: company.legalName,
-      url: siteUrl,
+      "@type": "Person",
+      name: "제현우",
+      jobTitle: "대표 · 수석 기술지원 엔지니어",
+      url: `${siteUrl}/about`,
+      worksFor: { "@id": `${siteUrl}/#org` },
     },
   };
 
@@ -246,37 +305,44 @@ export default async function ContentDetailPage({ params }: Props) {
         </section>
       )}
 
-      {/* CTA */}
-      <div className="mt-10 sm:mt-14 rounded-xl overflow-hidden" style={{ background: "linear-gradient(135deg, #eff6ff 0%, #eef2ff 100%)", border: "1px solid #bfdbfe" }}>
-        <div className="p-6 sm:p-8 text-center">
-          <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-            <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-            </svg>
+      {/* CTA — 콘텐츠 주제(tags·제목)에 맞춰 분기 */}
+      {(() => {
+        const cta = pickInsightCta(content.title, content.tags || [], content.category);
+        return (
+          <div className="mt-10 sm:mt-14 rounded-xl overflow-hidden" style={{ background: "linear-gradient(135deg, #eff6ff 0%, #eef2ff 100%)", border: "1px solid #bfdbfe" }}>
+            <div className="p-6 sm:p-8 text-center">
+              <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 kr-keep-all">
+                {cta.heading}
+              </h3>
+              <p className="text-gray-600 mb-5 sm:mb-6 max-w-md mx-auto text-sm leading-relaxed kr-keep-all">
+                {cta.sub}
+              </p>
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
+                <Link
+                  href={cta.primaryHref}
+                  className="inline-block px-6 sm:px-7 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5"
+                >
+                  {cta.primaryLabel}
+                </Link>
+                <Link
+                  href={cta.secondaryHref}
+                  className="inline-block px-6 sm:px-7 py-3 bg-white border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition-all"
+                >
+                  {cta.secondaryLabel}
+                </Link>
+              </div>
+              <p className="mt-4 text-[11px] text-gray-500 kr-keep-all">
+                문의 후 진행: 환경·증상 확인 → 지원 가능 범위 회신(1영업일) → 원격/방문 진단 → 조치·결과 보고
+              </p>
+            </div>
           </div>
-          <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 kr-keep-all">
-            운영 중인 VDI · 백업 환경에 비슷한 이슈가 있나요?
-          </h3>
-          <p className="text-gray-600 mb-5 sm:mb-6 max-w-md mx-auto text-sm leading-relaxed kr-keep-all">
-            제품명·버전·증상만 보내주시면 1차 원인 구분을 도와드립니다.
-            Citrix · Omnissa Horizon · Acronis Cyber Protect 환경의 운영장애·유지보수·복구검증을 지원합니다.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
-            <Link
-              href="/contact?source=insight-cta"
-              className="inline-block px-6 sm:px-7 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5"
-            >
-              기술지원 문의하기
-            </Link>
-            <Link
-              href="/services/it-maintenance"
-              className="inline-block px-6 sm:px-7 py-3 bg-white border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition-all"
-            >
-              유지보수 서비스 보기
-            </Link>
-          </div>
-        </div>
-      </div>
+        );
+      })()}
 
       {/* Related Content */}
       {related.length > 0 && (

@@ -3,6 +3,7 @@ import { createClient } from "@/lib/supabase/server";
 import { practicesList } from "@/lib/site-config";
 
 export const metadata = {
+  alternates: { canonical: "/n2sf" },
   title: "N²SF 진단센터 | 정렬 진단·전환 준비도·역할 재정의 통합 허브",
   description:
     "N²SF 정렬 진단(274개 보안통제 매핑)·전환 준비도 진단(Level 1~5)·VDI 역할 재정의 진단·ROI 계산기. 공공·금융 보안 워크스페이스 전환의 모든 진단을 한 곳에서.",

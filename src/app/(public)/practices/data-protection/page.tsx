@@ -7,6 +7,7 @@ const dpPartners = partnerships.filter((p) => p.domain === "data-protection");
 const p = practices["data-protection"];
 
 export const metadata = {
+  alternates: { canonical: "/practices/data-protection" },
   title: `${p.title} (${p.brand}) | ${company.name}`,
   description: p.description,
 };

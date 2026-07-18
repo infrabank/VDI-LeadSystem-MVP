@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
+import { notifyIndexNow } from "@/lib/indexnow";
 
 export async function POST(
   _request: NextRequest,
@@ -27,6 +28,11 @@ export async function POST(
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 400 });
+  }
+
+  // 발행 즉시 검색엔진에 색인 통지 (best-effort) — 새 URL + 목록 페이지
+  if (data?.slug) {
+    await notifyIndexNow([`/insights/${data.slug}`, "/insights", "/case-studies"]);
   }
 
   return NextResponse.json(data);

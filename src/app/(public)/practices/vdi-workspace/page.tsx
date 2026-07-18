@@ -7,6 +7,7 @@ const vdiPartners = partnerships.filter((p) => p.domain === "vdi-workspace");
 const p = practices["vdi-workspace"];
 
 export const metadata = {
+  alternates: { canonical: "/practices/vdi-workspace" },
   title: `${p.title} (${p.brand})`,
   description: p.description,
 };

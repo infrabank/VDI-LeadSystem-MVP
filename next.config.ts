@@ -28,11 +28,12 @@ const securityHeaders = [
       "default-src 'self'",
       // 'unsafe-eval' 제거 — Red Team Round 2 HIGH 2.
       // 'unsafe-inline'은 Next.js JSON-LD 메타용 — nonce 전환은 2026 Q3 별도 PR.
-      "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
+      // googletagmanager는 GA4 스크립트 로드용 (2026-07-18 GA4 도입).
+      "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com",
       "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
       "img-src 'self' data: blob: https:",
       "font-src 'self' data: https://cdn.jsdelivr.net",
-      "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.resend.com https://hooks.slack.com https://discord.com",
+      "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.resend.com https://hooks.slack.com https://discord.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
       "frame-ancestors 'none'",
       "base-uri 'self'",
       "form-action 'self'",
@@ -82,6 +83,28 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      // ===== 대표 도메인 통합 (2026-07-18 SEO §2) =====
+      // www.myloket / mlkit / www.mlkit → https://myloket.co.kr 로 경로 보존 영구 리디렉션.
+      // Vercel에 붙은 모든 도메인 별칭이 이 앱을 서빙하므로 host 조건 리디렉션으로 통합.
+      // (permanent: true → 308, 검색엔진은 301과 동일하게 영구 이전으로 처리)
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.myloket.co.kr" }],
+        destination: "https://myloket.co.kr/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "mlkit.co.kr" }],
+        destination: "https://myloket.co.kr/:path*",
+        permanent: true,
+      },
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.mlkit.co.kr" }],
+        destination: "https://myloket.co.kr/:path*",
+        permanent: true,
+      },
       // 콘텐츠 → Insights 리네이밍 (글로벌 IA 표준)
       { source: "/content", destination: "/insights", permanent: true },
       { source: "/content/:slug*", destination: "/insights/:slug*", permanent: true },

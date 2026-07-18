@@ -4,19 +4,19 @@ import Analytics from "./Analytics";
 import { company, companyLegal, supportAreas, maintenancePackages } from "@/lib/site-config";
 
 const siteUrl = `https://${company.domain}`;
-const siteTitle = `${company.legalName} | ${company.taglineKo}`;
+const siteTitle = `Citrix·Omnissa Horizon VDI 기술지원·전산 유지보수 | ${company.nameKo}`;
 const siteDescription = company.description;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
     default: siteTitle,
-    template: `%s | ${company.name}`,
+    // 브랜드 접미사는 한국어 정식 명칭으로 통일 (§3 브랜드 정체성)
+    template: `%s | ${company.nameKo}`,
   },
   description: siteDescription,
-  alternates: {
-    canonical: "/",
-  },
+  // ⚠️ canonical을 루트에 두면 모든 하위 페이지가 홈으로 canonical 상속됨 (2026-07-18 색인 버그 수정).
+  // 각 페이지가 자기 자신을 가리키는 alternates.canonical을 개별 선언한다.
   openGraph: {
     title: siteTitle,
     description: siteDescription,
@@ -54,15 +54,36 @@ const supportAreaUrl: Record<string, string> = {
   vinchin: "/products/vinchin-backup",
 };
 
+/** WebSite — 사이트 단위 식별 (검색·AI 크롤러의 사이트 이해 보조) */
+const webSiteLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
+  name: company.nameKo,
+  alternateName: [company.name, company.legalName],
+  url: siteUrl,
+  inLanguage: "ko",
+  publisher: { "@id": `${siteUrl}/#org` },
+};
+
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "ProfessionalService",
+  "@type": ["Organization", "ProfessionalService"],
   "@id": `${siteUrl}/#org`,
   name: company.legalName,
-  alternateName: company.name,
+  alternateName: [company.name, company.nameKo],
+  legalName: company.legalName,
   url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
+  email: company.email,
   description: siteDescription,
   telephone: companyLegal.phone,
+  founder: {
+    "@type": "Person",
+    name: companyLegal.representativeName,
+    jobTitle: "대표 · 수석 기술지원 엔지니어",
+    url: `${siteUrl}/about`,
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: companyLegal.address,
@@ -192,6 +213,10 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteLd) }}
         />
       </head>
       <body className="antialiased">

@@ -1,0 +1,39 @@
+# 마이로켓 (Myloket Inc.)
+
+> (주)마이로켓 — Citrix·Omnissa Horizon VDI 기술지원과 기업 전산 통합 유지보수,
+> Acronis·Vinchin 백업 운영·복구검증 전문 기업. 공공기관·정부출연연구기관 VDI를
+> 구축·운영·유지보수해 온 대표 엔지니어가 상담부터 진단·조치·보고서 작성까지 직접
+> 수행한다. 세종 소재, VDI 원격 기술지원은 전국, 전산 유지보수 방문은 세종·대전·
+> 청주·천안 등 충청권 우선.
+
+주요 사실:
+- 공공기관·정부출연연구기관 VDI 수행 10여 곳 (구축·운영·유지보수)
+- 지원 제품: Citrix Virtual Apps and Desktops, Citrix NetScaler/Gateway,
+  Omnissa Horizon, UAG, VMware vSphere/ESXi/vCenter, FSLogix,
+  Acronis Cyber Protect, Vinchin Backup & Recovery
+- 공식 파트너: Citrix, VMware, Omnissa, Acronis(Authorized Partner/MSP),
+  Vinchin(Silver Partner)
+- 벤더 공식 기술자격: Vinchin Backup Technology Professional (VBTP, 인증번호 공개)
+- 산출물: 장애보고서, 작업계획서, 롤백계획서, 완료보고서, 월간 점검 보고서
+- 지원 방식: 계약 없이 단발 장애 지원 가능, 원격 우선 + 필요 시 방문, 1영업일 내 회신
+
+## 핵심 페이지
+
+- [VDI 기술지원 — 증상별 장애 진단·지원 유형·견적 기준](https://myloket.co.kr/services/vdi-support)
+- [전산 통합 유지보수 (세종·대전·충청)](https://myloket.co.kr/services/it-maintenance)
+- [백업·복구검증 (Acronis·Vinchin)](https://myloket.co.kr/services/acronis-backup)
+- [SI 파트너 협업 — 전산통합유지보수 VDI·가상화 전문 영역](https://myloket.co.kr/partners/integrated-maintenance)
+- [회사·대표 엔지니어 소개, 책임 구조](https://myloket.co.kr/about)
+- [인증·파트너십 (인증번호 공개)](https://myloket.co.kr/about/certifications)
+- [고객사례·수행 경험](https://myloket.co.kr/case-studies)
+- [기술 콘텐츠 (Insights)](https://myloket.co.kr/insights)
+- [무료 진단 도구 6종](https://myloket.co.kr/tools)
+- [기술지원 문의](https://myloket.co.kr/contact)
+
+## 연락처
+
+- 대표 도메인: https://myloket.co.kr
+- 이메일: contact@mlkit.co.kr
+- 전화: 010-3861-8079
+- 주소: 세종특별자치시 집현중앙7로 6, 지식산업센터 B동 609호
+- 사업자등록번호: 216-88-00409 · 대표: 제현우
