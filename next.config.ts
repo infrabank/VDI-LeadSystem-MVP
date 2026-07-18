@@ -105,6 +105,12 @@ const nextConfig: NextConfig = {
         destination: "https://myloket.co.kr/:path*",
         permanent: true,
       },
+      // ===== 구 mlkit.co.kr 워드프레스 경로 → 신규 페이지 매핑 =====
+      // site:mlkit.co.kr 색인 확인분 (2026-07-18) — 도메인 리디렉션 후 404 방지
+      { source: "/citrix-vdi-engineer", destination: "/services/vdi-support", permanent: true },
+      { source: "/citrix-vdi-engineer/:rest*", destination: "/services/vdi-support", permanent: true },
+      { source: "/ask_qoute", destination: "/contact", permanent: true },
+      { source: "/ask_qoute/:rest*", destination: "/contact", permanent: true },
       // 콘텐츠 → Insights 리네이밍 (글로벌 IA 표준)
       { source: "/content", destination: "/insights", permanent: true },
       { source: "/content/:slug*", destination: "/insights/:slug*", permanent: true },
