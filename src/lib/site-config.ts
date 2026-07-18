@@ -29,8 +29,9 @@ export const company = {
  * (Google 비즈니스 프로필·네이버 스마트플레이스·LinkedIn 등 — 승인 후 최종 URL 입력)
  */
 export const companyProfiles: string[] = [
-  // Google 비즈니스 프로필 — 지식패널 kgmid 고유 ID 기반 정규 URL (2026-07-18 등록)
-  "https://www.google.com/search?kgmid=/g/11nr84lxvz",
+  // Google 비즈니스 프로필 (2026-07-18 등록) — 두 형태 모두 같은 프로필의 정규 식별 URL
+  "https://maps.google.com/?cid=13368138966729633881", // Maps 고유 CID 링크 (가장 안정적)
+  "https://www.google.com/search?kgmid=/g/11nr84lxvz", // 지식패널 kgmid
   // "https://map.naver.com/p/entry/place/…", // 네이버 스마트플레이스 (검토 중 — 승인 후 입력)
   // "https://www.linkedin.com/company/…",
 ];
