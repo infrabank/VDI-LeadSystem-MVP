@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { practices, company } from "@/lib/site-config";
+import { practices } from "@/lib/site-config";
 
 const p = practices["managed-integration"];
 
 export const metadata = {
-  title: `${p.title} (${p.brand}) | ${company.name}`,
+  title: `${p.title} (${p.brand})`,
   description: p.description,
 };
 

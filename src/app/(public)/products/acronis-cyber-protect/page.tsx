@@ -6,7 +6,7 @@ import { breadcrumbLd, faqPageLd, SITE_URL, ORG_ID, type FaqItem } from "@/lib/s
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
-  title: "Acronis Cyber Protect — 백업·랜섬웨어 방어 통합 솔루션 | Myloket",
+  title: "Acronis Cyber Protect — 백업·랜섬웨어 방어 통합 솔루션",
   description:
     "서버·PC·NAS·Microsoft 365를 이미지 백업하고, 안티랜섬웨어·안티멀웨어·EDR·패치 관리를 하나로 통합한 Acronis Cyber Protect. Authorized Partner / MSP로서 도입·구축·운영·복구검증을 지원합니다.",
 };

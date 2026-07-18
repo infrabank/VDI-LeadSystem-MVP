@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { company } from "@/lib/site-config";
 
 export const metadata = {
-  title: `Tools | ${company.name}`,
+  title: "무료 진단 도구",
   description: "N²SF 정렬·전환 준비도·VDI 역할 재정의·VDI ROI 등 진단·계산 도구 모음.",
 };
 

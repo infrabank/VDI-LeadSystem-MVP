@@ -3,7 +3,7 @@ import Link from "next/link";
 import { partnerships } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "SI 파트너를 위한 VDI·백업 기술지원 협업 | Myloket",
+  title: "SI 파트너를 위한 VDI·백업 기술지원 협업",
   description:
     "Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 기반 제안·구축·유지보수에 필요한 기술 검토, 장애 원인 분석, 월간 점검 리포트, 백업 복구검증 산출물을 SI 파트너와 함께 제공합니다.",
 };

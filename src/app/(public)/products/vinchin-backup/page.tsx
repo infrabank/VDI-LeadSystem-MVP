@@ -8,7 +8,7 @@ const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 const DOCS_URL = "https://vinchin.myloket.co.kr";
 
 export const metadata: Metadata = {
-  title: "Vinchin Backup & Recovery — 가상화 VM 백업·즉시 복구 솔루션 | Myloket",
+  title: "Vinchin Backup & Recovery — 가상화 VM 백업·즉시 복구 솔루션",
   description:
     "VMware vSphere, Hyper-V, Proxmox VE, XCP-ng, Citrix Hypervisor 등 15종 이상 가상화 플랫폼을 에이전트리스로 백업하고, 장애 시 VM을 즉시 복구하며 다른 플랫폼으로 V2V 마이그레이션하는 Vinchin Backup & Recovery. VBTP 인증 엔지니어가 도입·구축·운영·유지보수를 지원합니다.",
 };

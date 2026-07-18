@@ -7,7 +7,7 @@ import { RelatedTools } from "../RelatedTools";
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
-  title: "중소기업 전산 유지보수와 IT 기술지원 | Myloket",
+  title: "중소기업 전산 통합 유지보수 — 세종·대전·충청 IT 기술지원",
   description:
     "전산 담당자가 부족한 회사를 위한 전산 유지보수, IT 유지보수, 사내 전산 관리 서비스입니다. PC, 서버, 네트워크, NAS, 백업, Linux/리눅스, Windows Server, HPE·Dell·Lenovo·Supermicro 서버 운영 점검과 장애 대응을 지원합니다.",
 };
@@ -112,7 +112,7 @@ export default function ItMaintenancePage() {
         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-blue-600 pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
-            IT Maintenance
+            전산 통합 유지보수
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
             중소기업 전산 유지보수와<br className="hidden md:block" />
@@ -120,18 +120,18 @@ export default function ItMaintenancePage() {
           </h1>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-6 max-w-2xl">
             전산 담당자가 없거나 퇴사한 회사를 위해 PC, 서버, 네트워크, NAS, 백업, 보안 상태를
-            월 단위로 점검함. 단순 방문 수리가 아니라 무엇을 점검했고 무엇을 조치했는지 점검표와
-            운영 보고서로 남김.
+            월 단위로 점검합니다. 단순 방문 수리가 아니라 무엇을 점검했고 무엇을 조치했는지 점검표와
+            운영 보고서로 남깁니다.
           </p>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all mb-10 max-w-2xl border-l-2 border-blue-400/60 pl-4">
-            상담한 사람이 직접 작업함. 장비 교체보다 현재 환경에서 가능한 개선을 먼저 제안함.
+            상담한 사람이 직접 작업합니다. 장비 교체보다 현재 환경에서 가능한 개선을 먼저 제안합니다.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
-              href="/contact?source=it-maintenance&interest=it-maintenance&subject=전산환경 점검 문의"
+              href="/contact?source=it-maintenance&interest=it-maintenance&subject=월간 유지보수 상담"
               className="px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold shadow-sm transition-all"
             >
-              전산환경 점검 문의
+              월간 유지보수 상담
             </Link>
             <a
               href={PHONE_TEL}
@@ -157,7 +157,7 @@ export default function ItMaintenancePage() {
       <section className="border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
-            Scope
+            지원 범위
           </p>
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-8 kr-keep-all">
             지원 범위
@@ -179,7 +179,7 @@ export default function ItMaintenancePage() {
       <section className="border-b border-gray-100 bg-gray-50/50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-14">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
-            Quote
+            견적·문의
           </p>
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-4 kr-keep-all">
             견적·문의

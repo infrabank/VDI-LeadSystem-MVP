@@ -16,11 +16,14 @@ interface InquiryInput {
   consentMarketing?: boolean;
 }
 
+// ContactForm의 ORG_TYPES와 반드시 일치해야 함 — 빠지면 해당 유형이 조용히 null 처리됨
 const ALLOWED_ORG_TYPES = new Set([
   "central",
   "local",
   "public-corp",
+  "research",
   "agency",
+  "si-partner",
   "private",
   "other",
 ]);

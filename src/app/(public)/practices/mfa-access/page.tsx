@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { practices, company } from "@/lib/site-config";
+import { practices } from "@/lib/site-config";
 
 const p = practices["mfa-access"];
 
 export const metadata = {
-  title: `VDI 접속환경의 MFA 연계 기술검토 | ${company.name}`,
+  title: "VDI 접속환경의 MFA 연계 기술검토",
   description:
     "Citrix Virtual Apps and Desktops, Omnissa Horizon 등 VDI 접속 보안에 MFA를 어디에 어떻게 붙일지 기술검토합니다. 마이로켓 메인 서비스는 VDI·백업 기술지원·유지보수이며, 본 페이지는 보조 검토 영역입니다.",
 };

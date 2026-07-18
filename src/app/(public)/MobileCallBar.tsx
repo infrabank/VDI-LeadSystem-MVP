@@ -19,10 +19,10 @@ export default function MobileCallBar() {
         전화 상담
       </a>
       <Link
-        href="/contact?source=mobile-callbar&subject=전산환경 점검 문의"
+        href="/contact?source=mobile-callbar"
         className="flex items-center justify-center gap-1.5 py-3.5 text-sm font-bold text-slate-900 bg-amber-400"
       >
-        점검 문의
+        상담 문의
       </Link>
     </div>
   );

@@ -400,6 +400,11 @@ export interface Partnership {
   /** 로고 미준비 시 텍스트 칩 색상 (tailwind class) */
   textColor: string;
   bgColor: string;
+  /**
+   * 공식 파트너 계약 여부 — true면 "공식 파트너"로, false면 "기술지원 제품"으로 표기.
+   * 공식 관계가 없는 벤더를 파트너로 오인시키지 않기 위한 구분 (신뢰·표기 규정).
+   */
+  official: boolean;
 }
 
 export type CustomerCategory = "public" | "research" | "private";
@@ -586,27 +591,30 @@ export const customerCategoryLabel: Record<CustomerCategory, string> = {
 export const partnerships: Partnership[] = [
   {
     name: "Citrix",
-    role: "Virtual Apps & Desktops · DaaS · NetScaler",
+    role: "Virtual Apps & Desktops · DaaS · NetScaler 기술지원",
     domain: "vdi-workspace",
     logoFile: "citrix.svg",
     textColor: "text-[#452170]",
     bgColor: "bg-violet-50",
+    official: false,
   },
   {
     name: "VMware",
-    role: "Horizon · vSphere",
+    role: "Horizon · vSphere 기술지원",
     domain: "vdi-workspace",
     logoFile: "vmware.svg",
     textColor: "text-[#607078]",
     bgColor: "bg-gray-50",
+    official: false,
   },
   {
     name: "Omnissa",
-    role: "Horizon · Workspace ONE UEM",
+    role: "Horizon · Workspace ONE UEM 기술지원",
     domain: "vdi-workspace",
     logoFile: "omnissa.svg",
     textColor: "text-[#0091da]",
     bgColor: "bg-sky-50",
+    official: false,
   },
   {
     name: "Acronis",
@@ -615,6 +623,7 @@ export const partnerships: Partnership[] = [
     logoFile: "acronis.svg",
     textColor: "text-[#cc0000]",
     bgColor: "bg-red-50",
+    official: true,
   },
   {
     name: "Vinchin",
@@ -623,6 +632,7 @@ export const partnerships: Partnership[] = [
     logoFile: "vinchin.png",
     textColor: "text-[#00855b]",
     bgColor: "bg-teal-50",
+    official: true,
   },
 ];
 

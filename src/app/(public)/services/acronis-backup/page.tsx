@@ -7,7 +7,7 @@ import { RelatedTools } from "../RelatedTools";
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
-  title: "백업·보안 점검 | Acronis·Vinchin 백업·랜섬웨어 대비 | Myloket",
+  title: "백업·복구검증 — Acronis·Vinchin 백업·랜섬웨어 대비",
   description:
     "Acronis Cyber Protect로 서버·PC·NAS를, Vinchin Backup & Recovery로 VMware·Hyper-V·Proxmox 등 가상화 VM을 백업하고 사고 시 실제 복구 가능한지 확인합니다. 백업 정책·실패 이력, 방화벽 정책·외부 노출, 계정·원격접속 보안까지 함께 점검하고 보고서로 정리합니다.",
 };
@@ -116,7 +116,7 @@ export default function AcronisBackupPage() {
         <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-blue-600 pointer-events-none" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
-            Backup &amp; Security
+            백업·복구검증
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
             백업·보안 점검
@@ -126,15 +126,15 @@ export default function AcronisBackupPage() {
           </p>
           <p className="text-base sm:text-lg text-gray-700 leading-relaxed kr-keep-all mb-10 max-w-2xl">
             Acronis Cyber Protect로 서버·PC·NAS를, Vinchin Backup &amp; Recovery로 VMware·Hyper-V·Proxmox
-            등 가상화 VM을 백업하고, 장애나 랜섬웨어 상황에서 실제 복구 가능한지 정기적으로 확인함.
-            방화벽 정책, 외부 노출 서비스, 계정·원격접속 보안까지 함께 점검하고 결과를 보고서로 남김.
+            등 가상화 VM을 백업하고, 장애나 랜섬웨어 상황에서 실제 복구 가능한지 정기적으로 확인합니다.
+            방화벽 정책, 외부 노출 서비스, 계정·원격접속 보안까지 함께 점검하고 결과를 보고서로 남깁니다.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
-              href="/contact?source=acronis-backup&interest=acronis&subject=백업·보안 점검 문의"
+              href="/contact?source=acronis-backup&interest=acronis&subject=백업 복구 가능성 점검"
               className="px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold shadow-sm transition-all"
             >
-              백업·보안 점검 문의
+              백업 복구 가능성 점검
             </Link>
             <a
               href={PHONE_TEL}
@@ -161,7 +161,7 @@ export default function AcronisBackupPage() {
       <section className="border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
-            Backup Solutions
+            백업 솔루션
           </p>
           <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 kr-keep-all">
             환경에 맞는 백업 솔루션

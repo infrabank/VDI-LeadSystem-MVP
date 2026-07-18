@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { practices, company, partnerships } from "@/lib/site-config";
+import { practices, partnerships } from "@/lib/site-config";
 import { PartnerBadge } from "../../PartnerBadge";
 
 const vdiPartners = partnerships.filter((p) => p.domain === "vdi-workspace");
@@ -7,7 +7,7 @@ const vdiPartners = partnerships.filter((p) => p.domain === "vdi-workspace");
 const p = practices["vdi-workspace"];
 
 export const metadata = {
-  title: `${p.title} (${p.brand}) | ${company.name}`,
+  title: `${p.title} (${p.brand})`,
   description: p.description,
 };
 

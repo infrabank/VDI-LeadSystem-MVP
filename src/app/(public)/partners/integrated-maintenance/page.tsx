@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "전산통합유지보수 VDI·가상화 기술지원 | Myloket",
+  title: "전산통합유지보수 VDI·가상화 기술지원",
   description:
     "공공기관 전산통합유지보수 사업에서 Citrix, Omnissa Horizon, VMware vSphere, Acronis, Vinchin 영역의 비상주 기술지원, 정기점검, 장애분석, 운영보고서를 지원합니다.",
 };

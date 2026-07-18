@@ -107,7 +107,7 @@ const businessAreas: {
       "VPN 구성·인터넷 장애 원인 분석",
     ],
     href: "/contact?source=home-business&interest=server-network&subject=서버·네트워크·방화벽 점검 문의",
-    linkLabel: "점검 문의하기",
+    linkLabel: "서버·네트워크 점검 문의",
   },
 ];
 
@@ -128,6 +128,50 @@ const featuredEngagements = customers.filter(
   (c) => c.vendor && c.category !== "private",
 );
 
+/* ---------- 방문자 3경로 분기 (hero 직후) ---------- */
+const visitorPaths: {
+  title: string;
+  audience: string;
+  bullets: string[];
+  href: string;
+  cta: string;
+  afterClick: string;
+}[] = [
+  {
+    title: "VDI 장애·기술지원",
+    audience: "Citrix·Omnissa Horizon 운영 담당자",
+    bullets: [
+      "접속 실패 · 로그인 지연 · 프로파일 미로드",
+      "UAG·Gateway·인증서 · vSphere 연계 장애",
+    ],
+    href: "/services/vdi-support",
+    cta: "VDI 장애 원인 상담",
+    afterClick: "제품명·버전·증상만 보내면 1영업일 내 1차 원인 구분을 회신합니다.",
+  },
+  {
+    title: "전산 통합 유지보수",
+    audience: "중소·중견기업 전산 담당자",
+    bullets: [
+      "PC·서버·네트워크·백업 통합 관리",
+      "월 정기 점검 + 장애 시 대응 · 보고서 제공",
+    ],
+    href: "/services/it-maintenance",
+    cta: "월간 유지보수 상담",
+    afterClick: "현재 환경과 불편한 문제만 알려주시면 점검 방향을 회신합니다.",
+  },
+  {
+    title: "SI 프로젝트 협업",
+    audience: "SI·통합유지보수 사업 담당자",
+    bullets: [
+      "VDI·가상화·백업 전문 영역 비상주 참여",
+      "제안 단계 기술 검토 · 공공기관 제출 산출물",
+    ],
+    href: "/partners/integrated-maintenance",
+    cta: "SI 프로젝트 협업 문의",
+    afterClick: "사업 개요와 필요한 기술 영역을 알려주시면 참여 범위를 회신합니다.",
+  },
+];
+
 /* ---------- SI 협업 ---------- */
 const siCollaboration: string[] = [
   "전산통합유지보수 사업 내 VDI·가상화·백업 전문 영역 담당",
@@ -142,9 +186,9 @@ export default function HomePage() {
       {/* ========== S1. Hero ========== */}
       <section className="bg-slate-900">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-28">
-          <p className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xs sm:text-sm mb-5 sm:mb-6 tracking-widest uppercase">
+          <p className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xs sm:text-sm mb-5 sm:mb-6 tracking-wider">
             <span className="w-3 sm:w-4 h-px bg-slate-400 inline-block" />
-            VDI · Integrated IT Maintenance · Backup &amp; Recovery
+            VDI 기술지원 · 전산 통합 유지보수 · 백업 복구검증
           </p>
           <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             VDI 구축·기술지원부터<br />
@@ -185,16 +229,71 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ========== 기술 파트너 스트립 ========== */}
+      {/* ========== 방문자 3경로 분기 ========== */}
       <section className="bg-white border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest text-center mb-4">
-            Technology Partners
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 kr-keep-all">
+            어떤 도움이 필요하신가요?
+          </h2>
+          <p className="text-sm text-gray-600 mb-8 kr-keep-all">
+            세 가지 중 해당하는 경로를 선택하면 필요한 정보와 상담 창구로 바로 연결됩니다.
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
-            {partnerships.map((p) => (
-              <PartnerBadge key={p.name} partner={p} variant="strip" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
+            {visitorPaths.map((path) => (
+              <div
+                key={path.title}
+                className="flex flex-col p-5 sm:p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all"
+              >
+                <p className="text-xs font-semibold text-blue-700 mb-1.5 kr-keep-all">
+                  {path.audience}
+                </p>
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 kr-keep-all">
+                  {path.title}
+                </h3>
+                <ul className="space-y-1.5 text-sm text-gray-600 mb-5 flex-1 kr-keep-all">
+                  {path.bullets.map((b) => (
+                    <li key={b} className="flex gap-2">
+                      <span className="text-blue-500 flex-shrink-0">·</span>
+                      <span>{b}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={path.href}
+                  className="inline-flex items-center justify-center px-4 py-2.5 bg-slate-900 text-white rounded-md hover:bg-slate-800 text-sm font-semibold transition-colors mb-2.5"
+                >
+                  {path.cta}
+                </Link>
+                <p className="text-[11px] text-gray-400 leading-relaxed kr-keep-all">
+                  {path.afterClick}
+                </p>
+              </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========== 파트너·기술지원 제품 스트립 ========== */}
+      <section className="bg-gray-50/60 border-b border-gray-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-y-5 gap-x-10">
+            <div className="flex items-center gap-x-6">
+              <p className="text-[11px] font-semibold text-gray-400 tracking-widest flex-shrink-0">
+                공식 파트너
+              </p>
+              {partnerships.filter((p) => p.official).map((p) => (
+                <PartnerBadge key={p.name} partner={p} variant="strip" />
+              ))}
+            </div>
+            <div className="hidden sm:block w-px h-8 bg-gray-200" aria-hidden="true" />
+            <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+              <p className="text-[11px] font-semibold text-gray-400 tracking-widest flex-shrink-0">
+                기술지원 제품
+              </p>
+              {partnerships.filter((p) => !p.official).map((p) => (
+                <PartnerBadge key={p.name} partner={p} variant="strip" />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -202,11 +301,11 @@ export default function HomePage() {
       {/* ========== S2. 사업 영역 ========== */}
       <section id="business" className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Business Areas
+          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            사업 영역
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
-            사업 영역
+            무엇을 맡길 수 있는지 확인하세요
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
             VDI 전문 기술지원과 전산 통합 유지보수, 두 축으로 기업·기관 IT 환경을 지원합니다.
@@ -246,8 +345,8 @@ export default function HomePage() {
       {/* ========== S3. 대응하는 문제 ========== */}
       <section id="issues" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Field Issues
+          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            운영 현장 문제
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
             운영 현장에서 실제로 마주치는 문제를 대응합니다
@@ -280,7 +379,7 @@ export default function HomePage() {
               href="/contact?source=home-issues&subject=전산환경 점검 문의"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:translate-x-0.5 transition-transform"
             >
-              점검 문의하기 →
+              현재 증상 상담하기 →
             </Link>
           </div>
         </div>
@@ -289,8 +388,8 @@ export default function HomePage() {
       {/* ========== S4. 수행 실적 ========== */}
       <section id="engagements" className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Track Record
+          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            수행 실적
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
             공공기관·연구기관 VDI를 수행해 왔습니다
@@ -387,8 +486,8 @@ export default function HomePage() {
       {/* ========== S5. 유지보수 운영 방식 ========== */}
       <section id="maintenance" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Maintenance
+          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            유지보수 운영 방식
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
             유지보수는 이렇게 운영합니다
@@ -410,8 +509,8 @@ export default function HomePage() {
           </div>
 
           {/* 진행 프로세스 */}
-          <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-5">
-            Support Process
+          <p className="text-xs font-bold text-gray-500 tracking-widest mb-5">
+            진행 순서
           </p>
           <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 sm:gap-4">
             {supportProcess.map((step) => (
@@ -432,21 +531,33 @@ export default function HomePage() {
       {/* ========== S6. 파트너십·기술자격 ========== */}
       <section id="partnership" className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Partnership &amp; Credentials
+          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            파트너십 · 기술자격
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
             기술 파트너십과 검증 가능한 자격
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            다루는 솔루션의 파트너십과 벤더 공식 기술자격을 인증번호까지 공개합니다.
+            공식 파트너 계약이 있는 솔루션과 기술지원을 제공하는 제품을 구분해 표기하고,
+            벤더 공식 기술자격은 인증번호까지 공개합니다.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-8">
-            {partnerships.map((p) => (
+          <p className="text-xs font-bold text-gray-500 tracking-widest mb-3">공식 파트너</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-6">
+            {partnerships.filter((p) => p.official).map((p) => (
               <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
+          <p className="text-xs font-bold text-gray-500 tracking-widest mb-3">기술지원 제품</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-4">
+            {partnerships.filter((p) => !p.official).map((p) => (
+              <PartnerBadge key={p.name} partner={p} />
+            ))}
+          </div>
+          <p className="text-xs text-gray-500 kr-keep-all mb-8">
+            Citrix·VMware·Omnissa는 공식 파트너 계약이 아닌, 구축·운영·장애 대응 기술지원을
+            제공하는 제품입니다.
+          </p>
 
           {vbtp && (
             <div className="p-5 sm:p-6 bg-white rounded-xl border border-gray-200 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
@@ -479,8 +590,8 @@ export default function HomePage() {
       {/* ========== S7. 엔지니어 ========== */}
       <section id="engineer" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Engineer
+          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            엔지니어
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 md:mb-12 kr-keep-all">
             상담부터 작업까지, 엔지니어가 직접 합니다
@@ -534,8 +645,8 @@ export default function HomePage() {
       {/* ========== S8. SI·통합유지보수 협업 ========== */}
       <section id="si-partners" className="bg-slate-900 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            For SI Partners
+          <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            SI 파트너 협업
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
             전산통합유지보수 사업의 VDI·가상화·백업 영역을 맡습니다
@@ -575,8 +686,8 @@ export default function HomePage() {
       {/* ========== S9. 문의 ========== */}
       <section id="contact-cta" className="scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Contact
+          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            문의
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
             지금 겪는 문제만 말씀해 주세요

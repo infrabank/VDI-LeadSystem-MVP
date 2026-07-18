@@ -16,7 +16,6 @@ export default function PublicHeader() {
     // 경로 변경 시 모바일 메뉴·데스크톱 드롭다운 자동 닫기 — SPA 라우팅 후 UI 동기화.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(false);
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setDesktopMenu(null);
   }, [pathname]);
 

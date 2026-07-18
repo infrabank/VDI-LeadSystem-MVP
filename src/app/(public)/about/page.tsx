@@ -22,7 +22,7 @@ const certBadgeClass: Record<string, string> = {
 };
 
 export const metadata = {
-  title: `About | ${company.name}`,
+  title: "회사·대표 엔지니어 소개",
   description: company.description,
 };
 
@@ -73,7 +73,7 @@ export default function AboutPage() {
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           <div>
             <p className="text-blue-600 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-              Our Mission
+              미션
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
               운영 장애를 직접 본 엔지니어가 대응합니다
@@ -134,7 +134,7 @@ export default function AboutPage() {
       <section id="leadership" className="bg-gray-50 border-t border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-            Founder
+            대표 엔지니어
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
             대표 소개
@@ -154,7 +154,7 @@ export default function AboutPage() {
       <section id="responsibility" className="bg-white border-t border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-            Responsibility
+            책임 구조
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
             대표 직접 책임 + 검증된 파트너 컨소시엄
@@ -211,6 +211,56 @@ export default function AboutPage() {
           <p className="text-xs text-gray-500 text-center mt-6 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             ※ 사업 규모와 계약 조건에 따라 단계별로 조정됩니다. 단일 장애점 리스크는 파트너로 분산합니다.
           </p>
+
+          {/* 1인 전문기업에 대한 솔직한 답변 */}
+          <div className="mt-10 md:mt-12 max-w-3xl mx-auto">
+            <h3 className="text-lg sm:text-xl font-bold text-gray-900 text-center mb-2 kr-keep-all">
+              1인 전문기업, 자주 받는 질문
+            </h3>
+            <p className="text-sm text-gray-500 text-center mb-6 kr-keep-all">
+              마이로켓은 대표 엔지니어가 직접 운영하는 전문기업입니다. 포장하지 않고 구조로
+              답합니다.
+            </p>
+            <div className="space-y-3">
+              {[
+                {
+                  q: "대표가 다른 작업 중이면 장애 대응은 어떻게 하나요?",
+                  a: "모든 문의는 1영업일 내 회신을 기준으로 운영하며, 동시 상황에서는 서비스 중단 여부를 기준으로 우선순위를 조율합니다. 상시 즉시 출동을 보장하는 구조가 아니라, 회신 기준과 우선순위 원칙을 지키는 구조입니다. 24시간 상주 대응이 필요한 환경이라면 계약 전에 그 한계를 먼저 말씀드립니다.",
+                },
+                {
+                  q: "현장 상주가 필요한 사업은 어떻게 하나요?",
+                  a: "마이로켓은 비상주 전문 기술지원이 기본입니다. 상주 인력이 필요한 공공기관 사업은 SI·통합유지보수 컨소시엄 구조에서 상주는 파트너가, VDI·가상화·백업 전문 영역은 마이로켓이 맡는 방식으로 참여합니다.",
+                },
+                {
+                  q: "대규모 구축을 혼자 수행하나요?",
+                  a: "아니요. 분석·기술 판단·산출물 작성은 대표가 직접 책임지고, 대규모 구축·현장 작업은 검증된 협력사와 역할을 나눕니다. 위 책임 분담표가 실제 운영 기준입니다.",
+                },
+                {
+                  q: "작업 기록과 고객 환경 정보는 어떻게 관리되나요?",
+                  a: "점검·작업 결과는 점검표, 운영 보고서, 장애보고서 형태로 문서화해 고객에게 제공합니다. 담당자가 바뀌어도 이어받을 수 있도록 기록을 남기는 것이 원칙이며, 고객 환경 정보는 상담·지원 목적 범위에서만 사용합니다.",
+                },
+                {
+                  q: "영업 담당과 기술 담당이 다르지 않나요?",
+                  a: "상담한 엔지니어가 직접 진단하고 작업합니다. 장애 설명이 중간 전달 과정에서 누락되지 않고, 불필요한 장비 구매보다 기존 환경 개선을 우선 검토합니다.",
+                },
+              ].map((f) => (
+                <details
+                  key={f.q}
+                  className="group rounded-xl bg-white border border-gray-200 p-5 [&_summary::-webkit-details-marker]:hidden"
+                >
+                  <summary className="flex cursor-pointer items-start justify-between gap-3 text-sm sm:text-base font-semibold text-gray-900 kr-keep-all">
+                    <span>{f.q}</span>
+                    <span className="mt-1 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180">
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <p className="mt-3 text-sm text-gray-600 leading-relaxed kr-keep-all">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -218,7 +268,7 @@ export default function AboutPage() {
       <section id="customers" className="bg-white border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-            Customers
+            고객사
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
             구축·운영·유지보수 지원 고객사
@@ -236,17 +286,27 @@ export default function AboutPage() {
       {/* Partnerships */}
       <section className="bg-gray-50 border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-            Partnerships
+          <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-wider">
+            파트너십
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 md:mb-12 kr-keep-all">
-            기술·운영 파트너
+            공식 파트너와 기술지원 제품
           </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-            {partnerships.map((p) => (
+          <p className="text-xs font-bold text-gray-500 tracking-widest mb-3">공식 파트너</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6">
+            {partnerships.filter((p) => p.official).map((p) => (
               <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
+          <p className="text-xs font-bold text-gray-500 tracking-widest mb-3">기술지원 제품</p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {partnerships.filter((p) => !p.official).map((p) => (
+              <PartnerBadge key={p.name} partner={p} />
+            ))}
+          </div>
+          <p className="text-center text-xs text-gray-500 mt-6 kr-keep-all">
+            Citrix·VMware·Omnissa는 공식 파트너 계약이 아닌 기술지원 제공 제품입니다.
+          </p>
           <div className="text-center mt-8">
             <Link
               href="/about/certifications"
@@ -261,7 +321,7 @@ export default function AboutPage() {
       {/* Certifications snapshot */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
-          Certifications
+          인증·기술자격
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
           인증 단계
@@ -317,7 +377,7 @@ export default function AboutPage() {
       <section id="contact" className="bg-gradient-to-r from-blue-600 to-indigo-700 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
           <p className="text-blue-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
-            Contact
+            문의
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
             기술지원·유지보수 문의

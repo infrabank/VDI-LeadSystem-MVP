@@ -2,7 +2,7 @@ import Link from "next/link";
 import { company, companyLegal, hasPrivacyOfficer } from "@/lib/site-config";
 
 export const metadata = {
-  title: `개인정보 처리방침 | ${company.name}`,
+  title: "개인정보 처리방침",
   description: `${company.legalName} 개인정보 수집·이용·보관·파기 정책.`,
 };
 

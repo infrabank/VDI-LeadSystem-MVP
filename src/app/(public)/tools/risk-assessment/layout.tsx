@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description,
   alternates: { canonical: "/tools/risk-assessment" },
   openGraph: {
-    title: `${title} | ${company.name}`,
+    title: title,
     description,
     type: "website",
     url: `https://${company.domain}/tools/risk-assessment`,

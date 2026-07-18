@@ -2,7 +2,7 @@ import Link from "next/link";
 import { company, companyLegal } from "@/lib/site-config";
 
 export const metadata = {
-  title: `이용약관 | ${company.name}`,
+  title: "이용약관",
   description: `${company.legalName} 웹사이트 이용약관.`,
 };
 

@@ -18,7 +18,7 @@ const statusColorClass: Record<string, string> = {
 };
 
 export const metadata = {
-  title: `Certifications & Partnerships | ${company.name}`,
+  title: "인증·파트너십",
   description: `${company.name}의 보유 인증 및 기술·운영 파트너십 현황.`,
 };
 
@@ -162,25 +162,29 @@ export default function CertificationsPage() {
 
         {/* Partnerships — domain별 그룹 */}
         <section className="mb-12 md:mb-16">
-          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-5 kr-keep-all">기술·운영 파트너</h2>
+          <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-5 kr-keep-all">파트너십·기술지원 제품</h2>
 
-          <h3 className="text-sm font-semibold text-blue-600 mb-3 mt-2 uppercase tracking-widest">
-            보안 워크스페이스 (VDI · DaaS)
+          <h3 className="text-sm font-semibold text-emerald-600 mb-3 mt-2 tracking-widest">
+            공식 파트너 (백업 · 사이버복원력)
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mb-8">
-            {partnerships.filter((p) => p.domain === "vdi-workspace").map((p) => (
+            {partnerships.filter((p) => p.official).map((p) => (
               <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
 
-          <h3 className="text-sm font-semibold text-emerald-600 mb-3 mt-2 uppercase tracking-widest">
-            데이터 보호 (백업 · 사이버복원력)
+          <h3 className="text-sm font-semibold text-blue-600 mb-3 mt-2 tracking-widest">
+            기술지원 제품 (VDI · 가상화)
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-            {partnerships.filter((p) => p.domain === "data-protection").map((p) => (
+            {partnerships.filter((p) => !p.official).map((p) => (
               <PartnerBadge key={p.name} partner={p} />
             ))}
           </div>
+          <p className="text-xs text-gray-500 mt-5 kr-keep-all">
+            기술지원 제품은 공식 파트너 계약이 아닌, 해당 제품 환경의 구축·운영·장애 대응
+            기술지원을 제공한다는 의미입니다.
+          </p>
         </section>
 
         {/* Note */}

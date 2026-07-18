@@ -4,7 +4,7 @@ import { company } from "@/lib/site-config";
 import ContactForm from "./ContactForm";
 
 export const metadata = {
-  title: `기술지원 문의 | ${company.name}`,
+  title: "기술지원 문의",
   description: `${company.name} 기술지원 문의 — Citrix Virtual Apps and Desktops, Omnissa Horizon, Acronis Cyber Protect 환경의 운영장애·유지보수·복구검증 상담. 제품명·버전·증상만 보내주세요. 공공기관·연구기관·기업 IT 운영자 및 SI 파트너 모두 가능.`,
 };
 
@@ -14,15 +14,16 @@ export default function ContactPage() {
       {/* Hero */}
       <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-12 md:py-16 text-center">
-          <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
-            Contact
+          <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
+            문의
           </p>
           <h1 className="text-display text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
             기술지원 문의
           </h1>
           <p className="text-sm sm:text-base text-blue-100 leading-relaxed kr-keep-all">
-            운영 중인 VDI 또는 백업 환경에 문제가 있다면 제품명·버전·증상만 먼저 보내주세요.
-            구성도·로그를 첨부해 주시면 1차 원인 구분이 빨라집니다. 공공기관·연구기관·기업 IT 운영자와 SI 파트너 모두 문의하실 수 있습니다.
+            VDI 장애, 전산 유지보수, SI 프로젝트 협업 — 문의 유형을 선택하고 아는 내용만
+            적어주시면 됩니다. 세부 사항은 회신·통화에서 확인하며, 1영업일 내 담당 엔지니어가
+            직접 회신합니다.
           </p>
         </div>
       </section>
