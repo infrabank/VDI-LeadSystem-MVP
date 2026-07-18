@@ -269,7 +269,7 @@ export default async function ContentDetailPage({ params }: Props) {
               기술지원 문의하기
             </Link>
             <Link
-              href="/#services"
+              href="/services/it-maintenance"
               className="inline-block px-6 sm:px-7 py-3 bg-white border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition-all"
             >
               유지보수 서비스 보기

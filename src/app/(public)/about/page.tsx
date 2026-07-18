@@ -26,6 +26,14 @@ export const metadata = {
   description: company.description,
 };
 
+/** supportAreas.id → 상세 페이지 경로 */
+const supportAreaHref: Record<string, string> = {
+  citrix: "/services/vdi-support",
+  horizon: "/services/vdi-support",
+  acronis: "/products/acronis-cyber-protect",
+  vinchin: "/products/vinchin-backup",
+};
+
 const responsibilityRows = [
   { area: "월간 점검", direct: "원격 점검과 상태 확인", partner: "현장 점검 동행 (필요 시)" },
   { area: "장애 원인 구분", direct: "로그 분석과 영역 분리", partner: "현장 운영자 인터뷰" },
@@ -99,7 +107,7 @@ export default function AboutPage() {
                 return (
                   <Link
                     key={a.id}
-                    href="/#vdi"
+                    href={supportAreaHref[a.id] ?? "/services/vdi-support"}
                     className="block p-3 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
                   >
                     <div className="flex items-center gap-2 mb-1.5">

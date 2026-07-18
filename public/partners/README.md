@@ -6,10 +6,10 @@
 
 | 파일명 | 출처 | 비고 |
 |---|---|---|
-| `vmware.svg` | https://www.vmware.com/company/news/media-resources.html | "VMware" wordmark, 단색 권장 |
-| `omnissa.svg` | https://www.omnissa.com/company/brand/ | 2024년 분사 후 신규 브랜드 |
-| `citrix.svg` | https://www.citrix.com/about/legal/brand-guidelines.html | "Citrix" wordmark |
-| `acronis.svg` | https://www.acronis.com/en-us/about/brand-guidelines/ | "Acronis" + Cyber Protect 마크 |
+| `vmware.svg` | Wikimedia Commons `VMware_logo.svg` (2026-07) | 조달 완료 — 단색 `#607078`로 재지정 |
+| `omnissa.svg` | https://www.omnissa.com/omnissa-logo.svg (2026-07) | 조달 완료 — 공식 wordmark, navy `#001e60` |
+| `citrix.svg` | Wikimedia Commons `Citrix_Systems_logo.svg` (2026-07) | 조달 완료 — 현행 black wordmark (Citrix_Logo_Trademark_RGB) |
+| `acronis.svg` | Wikimedia Commons `Acronis-logo.svg` (2026-07) | 조달 완료 — wordmark `#0D2345`, viewBox 여백 트리밍 |
 | `vinchin.png` | Vinchin 파트너 리소스 제공분 (2026-07) | 조달 완료 — 벡터본 없어 PNG(투명배경) 사용 |
 
 ## 권장 사양

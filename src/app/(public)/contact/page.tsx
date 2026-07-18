@@ -57,12 +57,12 @@ export default function ContactPage() {
               서비스 범위 확인
             </p>
             <Link
-              href="/#services"
+              href="/#business"
               className="text-blue-600 hover:text-blue-700 font-medium"
             >
               유지보수·백업·VDI 서비스 →
             </Link>
-            <p className="text-xs text-gray-400 mt-1">홈의 서비스 5개 보기</p>
+            <p className="text-xs text-gray-400 mt-1">홈의 사업 영역 4개 보기</p>
           </div>
         </div>
       </section>

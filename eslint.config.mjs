@@ -12,6 +12,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // 앱 소스가 아닌 정적 산출물·외부 문서 미러 (GitBook 번들 JS 등)
+    "vinchin-docs/**",
+    ".ui-review/**",
   ]),
 ]);
 

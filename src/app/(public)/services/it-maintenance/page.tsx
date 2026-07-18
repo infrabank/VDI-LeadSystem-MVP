@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { companyLegal, smbCustomers } from "@/lib/site-config";
 import { breadcrumbLd, faqPageLd, serviceLd, type FaqItem } from "@/lib/schema";
+import { RelatedTools } from "../RelatedTools";
 
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
@@ -78,7 +79,7 @@ const ldObjects = [
   }),
   breadcrumbLd([
     { name: "홈", path: "/" },
-    { name: "서비스", path: "/#services" },
+    { name: "서비스", path: "/#business" },
     { name: "전산 유지보수", path: "/services/it-maintenance" },
   ]),
   faqPageLd(faqs),
@@ -100,7 +101,7 @@ export default function ItMaintenancePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-blue-600">홈</Link>
           <span className="mx-2 text-gray-300">/</span>
-          <Link href="/#services" className="hover:text-blue-600">서비스</Link>
+          <Link href="/#business" className="hover:text-blue-600">서비스</Link>
           <span className="mx-2 text-gray-300">/</span>
           <span className="text-gray-700 font-medium">전산 유지보수</span>
         </div>
@@ -233,6 +234,24 @@ export default function ItMaintenancePage() {
           </div>
         </div>
       </section>
+
+      {/* 관련 진단 도구 */}
+      <RelatedTools
+        tools={[
+          {
+            href: "/tools/backup-readiness",
+            title: "백업·사이버복원력 자가 진단",
+            desc: "서버·PC·NAS 백업이 실제 복구 가능한 상태인지 7영역 25문항으로 점검합니다.",
+            duration: "약 7분",
+          },
+          {
+            href: "/tools/backup-roi",
+            title: "백업 ROI 계산기",
+            desc: "장애·랜섬웨어 시나리오별 회피 비용으로 백업 투자 근거를 만듭니다.",
+            duration: "약 4분",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="bg-slate-900 text-white">

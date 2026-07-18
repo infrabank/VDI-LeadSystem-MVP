@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Analytics from "./Analytics";
 import { company, companyLegal, supportAreas, maintenancePackages } from "@/lib/site-config";
 
 const siteUrl = `https://${company.domain}`;
@@ -33,6 +34,24 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
+  // 소유 확인 메타태그 — 검증 코드는 HTML에 공개되는 값이라 비밀 아님.
+  // google은 env 설정 시에만 출력, naver는 발급값을 기본 내장 (env로 교체 가능).
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: {
+      "naver-site-verification":
+        process.env.NEXT_PUBLIC_NAVER_SITE_VERIFICATION ??
+        "f58845fa509954f75dda31993481ecd2d0f1549b",
+    },
+  },
+};
+
+/** supportAreas.id → 실제 상세 페이지 경로 (JSON-LD Offer URL용) */
+const supportAreaUrl: Record<string, string> = {
+  citrix: "/services/vdi-support",
+  horizon: "/services/vdi-support",
+  acronis: "/products/acronis-cyber-protect",
+  vinchin: "/products/vinchin-backup",
 };
 
 const jsonLd = {
@@ -146,7 +165,7 @@ const jsonLd = {
           "@type": "Service",
           name: `${area.brand} 기술지원`,
           description: area.lines.join(" "),
-          url: `${siteUrl}/#vdi`,
+          url: `${siteUrl}${supportAreaUrl[area.id] ?? "/services/vdi-support"}`,
         },
       })),
       ...maintenancePackages.map((pkg) => ({
@@ -155,7 +174,7 @@ const jsonLd = {
           "@type": "Service",
           name: pkg.title,
           description: pkg.lines.join(" "),
-          url: `${siteUrl}/#services`,
+          url: `${siteUrl}/services/it-maintenance`,
         },
       })),
     ],
@@ -175,7 +194,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

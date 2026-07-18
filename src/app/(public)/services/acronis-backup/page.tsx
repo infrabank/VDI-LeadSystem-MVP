@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { companyLegal } from "@/lib/site-config";
 import { breadcrumbLd, faqPageLd, serviceLd, type FaqItem } from "@/lib/schema";
+import { RelatedTools } from "../RelatedTools";
 
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
@@ -82,7 +83,7 @@ const ldObjects = [
   }),
   breadcrumbLd([
     { name: "홈", path: "/" },
-    { name: "서비스", path: "/#services" },
+    { name: "서비스", path: "/#business" },
     { name: "백업·보안 점검", path: "/services/acronis-backup" },
   ]),
   faqPageLd(faqs),
@@ -104,7 +105,7 @@ export default function AcronisBackupPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-blue-600">홈</Link>
           <span className="mx-2 text-gray-300">/</span>
-          <Link href="/#services" className="hover:text-blue-600">서비스</Link>
+          <Link href="/#business" className="hover:text-blue-600">서비스</Link>
           <span className="mx-2 text-gray-300">/</span>
           <span className="text-gray-700 font-medium">백업·보안 점검</span>
         </div>
@@ -261,6 +262,24 @@ export default function AcronisBackupPage() {
           </div>
         </div>
       </section>
+
+      {/* 관련 진단 도구 */}
+      <RelatedTools
+        tools={[
+          {
+            href: "/tools/backup-readiness",
+            title: "백업·사이버복원력 자가 진단",
+            desc: "7영역 25문항으로 백업 성숙도와 보완 우선순위를 확인합니다.",
+            duration: "약 7분",
+          },
+          {
+            href: "/tools/backup-roi",
+            title: "백업 ROI 계산기",
+            desc: "5년 누적 회피 비용·ROI·Payback을 시나리오별로 산출합니다.",
+            duration: "약 4분",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="bg-slate-900 text-white">

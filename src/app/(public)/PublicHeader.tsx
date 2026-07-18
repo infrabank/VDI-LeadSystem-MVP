@@ -41,7 +41,8 @@ export default function PublicHeader() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 print:hidden">
-      <nav className="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-16">
+      {/* GNB 항목이 6개라 본문(max-w-5xl)보다 한 단계 넓게 잡아 줄바꿈 방지 */}
+      <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-16">
         <Link href="/" className="flex flex-col leading-tight shrink-0">
           <span className="font-bold text-base sm:text-lg text-gray-900 tracking-tight inline-flex items-center gap-1.5">
             {company.name}
@@ -53,7 +54,7 @@ export default function PublicHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-5 xl:gap-7 text-sm font-medium">
+        <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-medium">
           {navLinks.map((link) =>
             link.children ? (
               <div
@@ -61,12 +62,19 @@ export default function PublicHeader() {
                 className="relative"
                 onMouseEnter={() => setDesktopMenu(link.label)}
                 onMouseLeave={() => setDesktopMenu(null)}
+                // 키보드 접근성 — Tab 포커스 진입 시 드롭다운 열고, 포커스가 밖으로 나가면 닫기
+                onFocus={() => setDesktopMenu(link.label)}
+                onBlur={(e) => {
+                  if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+                    setDesktopMenu(null);
+                  }
+                }}
               >
                 <Link
                   href={link.href}
                   aria-haspopup="true"
                   aria-expanded={desktopMenu === link.label}
-                  className={`inline-flex items-center gap-1 transition-colors ${
+                  className={`inline-flex items-center gap-1 whitespace-nowrap transition-colors ${
                     desktopMenu === link.label
                       ? "text-blue-700"
                       : "text-gray-600 hover:text-blue-700"
@@ -112,7 +120,7 @@ export default function PublicHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-blue-700 transition-colors"
+                className="text-gray-600 hover:text-blue-700 transition-colors whitespace-nowrap"
               >
                 {link.label}
               </Link>
@@ -121,7 +129,7 @@ export default function PublicHeader() {
 
           <a
             href={PHONE_TEL}
-            className="hidden xl:inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-blue-700 transition-colors"
+            className="hidden xl:inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-blue-700 transition-colors whitespace-nowrap"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />

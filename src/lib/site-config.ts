@@ -370,6 +370,8 @@ export const leadership: LeaderProfile[] = [
     slot: "founder",
     role: "대표 · 수석 기술지원 엔지니어",
     name: "제현우",
+    // public/team/founder.jpg 업로드 시 홈·About에 자동 노출 (없으면 이니셜/로고 폴백)
+    photoFile: "founder.jpg",
     bio:
       "공공·정부출연연구기관 10여 곳의 Citrix Virtual Apps and Desktops · Omnissa Horizon 기반 VDI를 " +
       "다년간 설계·구축·운영·유지보수해 왔습니다. 접속장애, FSLogix/프로파일, UAG·NetScaler, 인증서, " +
@@ -672,7 +674,34 @@ export const navLinks: NavLink[] = [
     ],
   },
   {
-    href: "/#engagements",
+    href: "/tools",
+    label: "진단 도구",
+    description: "무료 자가진단 · 웹 리포트 + PDF 제공",
+    children: [
+      {
+        href: "/tools/backup-readiness",
+        label: "백업·사이버복원력 자가 진단",
+        description: "7영역 25문항 · 성숙도와 보완 우선순위",
+      },
+      {
+        href: "/tools/backup-roi",
+        label: "백업 ROI 계산기",
+        description: "5년 누적 회피 비용·ROI·Payback 산출",
+      },
+      {
+        href: "/tools/vdi-transition",
+        label: "VDI 역할 재정의 진단",
+        description: "유지·보완·축소·재설계 시나리오 후보",
+      },
+      {
+        href: "/tools",
+        label: "전체 진단 도구 보기",
+        description: "N²SF 정렬·전환 준비도·운영 ROI 등 6종",
+      },
+    ],
+  },
+  {
+    href: "/case-studies",
     label: "고객사례",
     description: "실제 기업 전산환경 유지보수 경험",
   },

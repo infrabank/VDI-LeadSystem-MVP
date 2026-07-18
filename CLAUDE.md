@@ -118,6 +118,13 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=<supabase-anon-key>
 SUPABASE_SERVICE_ROLE_KEY=<service-role-key>
 ```
 
+Optional (analytics/SEO override):
+```
+NEXT_PUBLIC_GA_ID=<GA4 측정 ID — 기본값 G-YFXVLVG5F4 코드 내장, env는 교체용>
+NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=<Google Search Console 소유 확인 코드 (미설정 시 태그 미출력)>
+NEXT_PUBLIC_NAVER_SITE_VERIFICATION=<네이버 소유 확인 코드 — 발급값 코드 내장, env는 교체용>
+```
+
 ## PDCA Documents
 
 ```

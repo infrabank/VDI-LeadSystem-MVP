@@ -25,6 +25,8 @@ const staticPaths: { path: string; priority: number; changeFrequency: MetadataRo
   { path: "/services/it-maintenance", priority: 0.9, changeFrequency: "monthly" },
   { path: "/services/acronis-backup", priority: 0.9, changeFrequency: "monthly" },
   { path: "/services/vdi-support", priority: 0.9, changeFrequency: "monthly" },
+  { path: "/products/acronis-cyber-protect", priority: 0.8, changeFrequency: "monthly" },
+  { path: "/products/vinchin-backup", priority: 0.8, changeFrequency: "monthly" },
   { path: "/resources/templates", priority: 0.8, changeFrequency: "monthly" },
   { path: "/partners", priority: 0.8, changeFrequency: "monthly" },
   { path: "/partners/integrated-maintenance", priority: 0.9, changeFrequency: "monthly" },
@@ -37,9 +39,10 @@ const staticPaths: { path: string; priority: number; changeFrequency: MetadataRo
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
 
+  // 정적 페이지는 lastModified 생략 — 빌드 시각을 넣으면 매 배포마다 전체가 갱신된 것으로
+  // 보여 검색엔진이 lastmod를 신뢰하지 않게 됨. 동적 콘텐츠만 실제 수정일을 제공.
   const staticEntries: MetadataRoute.Sitemap = staticPaths.map((s) => ({
     url: `${base}${s.path}`,
-    lastModified: now,
     changeFrequency: s.changeFrequency,
     priority: s.priority,
   }));

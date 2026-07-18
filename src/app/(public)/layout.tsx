@@ -41,12 +41,12 @@ export default function PublicLayout({
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#services" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
+                  <Link href="/#business" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
                     서버·네트워크·방화벽 관리
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#services" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
+                  <Link href="/#issues" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
                     PC·프린터·업무환경 장애 대응
                   </Link>
                 </li>
@@ -67,6 +67,15 @@ export default function PublicLayout({
                   <span className="text-gray-300 mx-2 text-xs">·</span>
                   <Link href="/case-studies" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">
                     Case Studies
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/tools" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">
+                    무료 진단 도구
+                  </Link>
+                  <span className="text-gray-300 mx-2 text-xs">·</span>
+                  <Link href="/resources/templates" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">
+                    실무 템플릿
                   </Link>
                 </li>
                 <li>

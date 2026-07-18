@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import { existsSync } from "node:fs";
+import path from "node:path";
 import {
   company,
   companyLegal,
@@ -32,6 +35,11 @@ const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 const founder = leadership[0];
 const vbtp = engineerCredentials.find((c) => c.code === "VBTP");
+
+// public/team/{photoFile} 존재 시 사진 노출, 없으면 이니셜 아바타 폴백 (LeaderCard와 동일 패턴)
+const founderHasPhoto =
+  !!founder.photoFile &&
+  existsSync(path.join(process.cwd(), "public", "team", founder.photoFile));
 
 /* ---------- 히어로 팩트 라인 (검증 가능한 사실만) ---------- */
 const heroFacts: string[] = [
@@ -480,9 +488,21 @@ export default function HomePage() {
 
           <div className="p-6 sm:p-8 bg-white rounded-xl border border-gray-200">
             <div className="flex items-center gap-4 mb-5">
-              <div className="w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-xl font-bold flex-shrink-0">
-                {founder.name?.charAt(0)}
-              </div>
+              {founderHasPhoto ? (
+                <div className="w-14 h-14 rounded-full overflow-hidden border border-gray-200 flex-shrink-0">
+                  <Image
+                    src={`/team/${founder.photoFile}`}
+                    alt={founder.name || founder.role}
+                    width={56}
+                    height={56}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ) : (
+                <div className="w-14 h-14 rounded-full bg-slate-900 text-white flex items-center justify-center text-xl font-bold flex-shrink-0">
+                  {founder.name?.charAt(0)}
+                </div>
+              )}
               <div>
                 <p className="text-base sm:text-lg font-bold text-gray-900">{founder.name}</p>
                 <p className="text-sm text-gray-600">{founder.role}</p>

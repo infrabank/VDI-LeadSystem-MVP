@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { companyLegal } from "@/lib/site-config";
 import { breadcrumbLd, faqPageLd, serviceLd, type FaqItem } from "@/lib/schema";
+import { RelatedTools } from "../RelatedTools";
 
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
@@ -54,7 +55,7 @@ const ldObjects = [
   }),
   breadcrumbLd([
     { name: "홈", path: "/" },
-    { name: "서비스", path: "/#services" },
+    { name: "서비스", path: "/#business" },
     { name: "VDI 기술지원", path: "/services/vdi-support" },
   ]),
   faqPageLd(faqs),
@@ -76,7 +77,7 @@ export default function VdiSupportPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-blue-600">홈</Link>
           <span className="mx-2 text-gray-300">/</span>
-          <Link href="/#services" className="hover:text-blue-600">서비스</Link>
+          <Link href="/#business" className="hover:text-blue-600">서비스</Link>
           <span className="mx-2 text-gray-300">/</span>
           <span className="text-gray-700 font-medium">VDI 기술지원</span>
         </div>
@@ -217,6 +218,24 @@ export default function VdiSupportPage() {
           </div>
         </div>
       </section>
+
+      {/* 관련 진단 도구 */}
+      <RelatedTools
+        tools={[
+          {
+            href: "/tools/vdi-transition",
+            title: "VDI 역할 재정의 진단",
+            desc: "9문항으로 유지·보완·축소·재설계 4가지 시나리오 후보를 도출합니다.",
+            duration: "약 3분",
+          },
+          {
+            href: "/tools/roi-calculator",
+            title: "VDI 운영 ROI 시뮬레이션",
+            desc: "마이그레이션·운영비용을 시뮬레이션하고 경영진 보고용 PDF를 제공합니다.",
+            duration: "약 4분",
+          },
+        ]}
+      />
 
       {/* CTA */}
       <section className="bg-slate-900 text-white">
