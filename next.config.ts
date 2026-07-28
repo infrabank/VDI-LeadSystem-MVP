@@ -53,16 +53,22 @@ const reportsExtraHeaders = [
   { key: "Cache-Control", value: "private, no-store, no-cache, must-revalidate, max-age=0" },
 ];
 
+const reportAssets = ["./src/templates/reports/**/*"];
+const chromiumBin = ["./node_modules/@sparticuz/chromium/bin/**"];
+
 const nextConfig: NextConfig = {
   serverExternalPackages: [
     "puppeteer-core",
     "@sparticuz/chromium",
   ],
+  // chromium.executablePath()는 node_modules/@sparticuz/chromium/bin의 brotli 파일을
+  // 런타임에 읽는다. 경로가 동적이라 트레이서가 잡지 못해 명시 포함이 필요하다.
   outputFileTracingIncludes: {
-    "/api/reports/\\[toolRunId\\]/generate": ["./src/templates/reports/**/*"],
-    "/api/reports/roi/\\[toolRunId\\]/generate": ["./src/templates/reports/**/*"],
-    "/api/reports/retry-pdf/\\[reportId\\]": ["./src/templates/reports/**/*"],
-    "/api/tools/risk-assessment/run": ["./src/templates/reports/**/*"],
+    "/api/reports/\\[toolRunId\\]/generate": [...reportAssets, ...chromiumBin],
+    "/api/reports/roi/\\[toolRunId\\]/generate": [...reportAssets, ...chromiumBin],
+    "/api/reports/retry-pdf/\\[reportId\\]": [...reportAssets, ...chromiumBin],
+    "/api/tools/risk-assessment/run": [...reportAssets, ...chromiumBin],
+    "/api/templates/\\[slug\\]/download": ["./docs/templates/**/*", ...chromiumBin],
   },
   async headers() {
     return [
@@ -111,6 +117,15 @@ const nextConfig: NextConfig = {
       { source: "/citrix-vdi-engineer/:rest*", destination: "/services/vdi-support", permanent: true },
       { source: "/ask_qoute", destination: "/contact", permanent: true },
       { source: "/ask_qoute/:rest*", destination: "/contact", permanent: true },
+      // 워드프레스가 자동 생성하던 아카이브·피드 경로. 개별 글 매핑이 아니라
+      // 대응하는 목록 페이지로 보낸다. wp-content 등 정적 자산 경로는 404가 맞으므로 제외.
+      { source: "/category/:rest*", destination: "/insights", permanent: true },
+      { source: "/tag/:rest*", destination: "/insights", permanent: true },
+      { source: "/author/:rest*", destination: "/about", permanent: true },
+      { source: "/feed", destination: "/insights", permanent: true },
+      { source: "/feed/:rest*", destination: "/insights", permanent: true },
+      { source: "/:year(\\d{4})/:rest*", destination: "/insights", permanent: true },
+      { source: "/sitemap_index.xml", destination: "/sitemap.xml", permanent: true },
       // 콘텐츠 → Insights 리네이밍 (글로벌 IA 표준)
       { source: "/content", destination: "/insights", permanent: true },
       { source: "/content/:slug*", destination: "/insights/:slug*", permanent: true },
