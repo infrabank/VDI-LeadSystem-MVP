@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { company } from "@/lib/site-config";
@@ -60,9 +61,14 @@ function pageHref(query: string, filterType: string, page: number): string {
 export default async function ContentListPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; type?: string; page?: string }>;
+  searchParams: Promise<{ q?: string; type?: string; tag?: string; page?: string }>;
 }) {
   const params = await searchParams;
+
+  // 태그 필터는 /insights/tag/[slug]로 옮겼다. next.config의 redirects()로 처리하면
+  // 원본 쿼리가 목적지에 그대로 붙어 /insights/tag/n2sf?tag=n2sf가 되므로 여기서 보낸다.
+  if (params.tag) permanentRedirect(`/insights/tag/${encodeURIComponent(params.tag)}`);
+
   const query = params.q || "";
   const filterType = params.type || "";
   const page = parseInt(params.page || "1", 10);
