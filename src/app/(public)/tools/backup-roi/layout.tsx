@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolExplainer } from "../ToolExplainer";
 
 export const metadata: Metadata = {
   title: "백업 ROI 계산기",
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      {children}
+      <ToolExplainer slug="backup-roi" />
+    </>
+  );
 }

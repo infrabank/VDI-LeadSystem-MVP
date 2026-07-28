@@ -24,7 +24,10 @@ const certBadgeClass: Record<string, string> = {
 export const metadata = {
   alternates: { canonical: "/about" },
   title: "회사·대표 엔지니어 소개",
-  description: company.description,
+  description:
+    "(주)마이로켓은 세종에 자리한 VDI·전산 유지보수 전문 기업입니다. " +
+    "대표 엔지니어의 공공·연구기관 Citrix·Omnissa Horizon 구축 이력, 보유 인증과 " +
+    "Acronis·Vinchin 파트너십, 지원 가능 영역을 소개합니다.",
 };
 
 /** supportAreas.id → 상세 페이지 경로 */

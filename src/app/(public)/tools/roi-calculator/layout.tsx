@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolExplainer } from "../ToolExplainer";
 
 export const metadata: Metadata = {
   title: "VDI 운영 ROI 시뮬레이션",
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      {children}
+      <ToolExplainer slug="roi-calculator" />
+    </>
+  );
 }

@@ -11,6 +11,7 @@ const DISALLOW = [
   "/api/",
   "/portal",
   "/portal/",
+  "/reports",
   "/reports/",
   "/thank-you",
 ];

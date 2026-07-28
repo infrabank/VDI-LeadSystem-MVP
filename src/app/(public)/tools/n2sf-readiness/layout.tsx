@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolExplainer } from "../ToolExplainer";
 
 export const metadata: Metadata = {
   title: "N²SF 전환 준비도 진단",
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      {children}
+      <ToolExplainer slug="n2sf-readiness" />
+    </>
+  );
 }

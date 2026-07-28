@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { company } from "@/lib/site-config";
+import { ToolExplainer } from "../ToolExplainer";
 
 const title = "N²SF 정렬 진단 — 7분 자가 진단";
 const description =
@@ -34,5 +35,10 @@ export default function RiskAssessmentLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      {children}
+      <ToolExplainer slug="risk-assessment" />
+    </>
+  );
 }

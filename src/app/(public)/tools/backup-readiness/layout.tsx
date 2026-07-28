@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ToolExplainer } from "../ToolExplainer";
 
 export const metadata: Metadata = {
   title: "백업·사이버복원력 자가 진단",
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  return children;
+  return (
+    <>
+      {children}
+      <ToolExplainer slug="backup-readiness" />
+    </>
+  );
 }
