@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { company } from "@/lib/site-config";
+import { getIndexableTags } from "@/lib/insights-tags";
 
 const base = `https://${company.domain}`;
 
@@ -65,5 +66,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // Supabase 미연결 시(빌드 환경 등) 동적 항목 생략 — 정적만으로도 sitemap 유효
   }
 
-  return [...staticEntries, ...dynamicEntries];
+  // 글이 충분히 쌓인 태그만 — 기준 미만 태그 페이지는 noindex라 sitemap에 넣지 않는다.
+  const tagEntries: MetadataRoute.Sitemap = (await getIndexableTags()).map((tag) => ({
+    url: `${base}/insights/tag/${encodeURIComponent(tag)}`,
+    changeFrequency: "weekly" as const,
+    priority: 0.5,
+  }));
+
+  return [...staticEntries, ...dynamicEntries, ...tagEntries];
 }

@@ -2,19 +2,8 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase/server";
 import { company } from "@/lib/site-config";
-
-interface ContentListItem {
-  id: string;
-  type: string;
-  title: string;
-  slug: string;
-  excerpt: string | null;
-  cover_image_url: string | null;
-  tags: string[];
-  category: string | null;
-  published_at: string | null;
-  rank?: number;
-}
+import { getIndexableTags } from "@/lib/insights-tags";
+import { ContentCard, type ContentListItem } from "./ContentCard";
 
 const pageTitle = "Insights";
 const pageDescription =
@@ -58,29 +47,24 @@ const breadcrumbJsonLd = {
   ],
 };
 
-const typeBadge: Record<string, string> = {
-  article: "bg-blue-100 text-blue-700",
-  case: "bg-emerald-100 text-emerald-700",
-  checklist: "bg-violet-100 text-violet-700",
-  comparison: "bg-orange-100 text-orange-700",
-};
-
-const typeLabel: Record<string, string> = {
-  article: "Article",
-  case: "Case Study",
-  checklist: "Checklist",
-  comparison: "Comparison",
-};
+/** 빈 값을 빼고 쿼리스트링을 만든다. `?q=&type=&page=2` 같은 중복 URL 방지. */
+function pageHref(query: string, filterType: string, page: number): string {
+  const sp = new URLSearchParams();
+  if (query) sp.set("q", query);
+  if (filterType) sp.set("type", filterType);
+  if (page > 1) sp.set("page", String(page));
+  const qs = sp.toString();
+  return qs ? `/insights?${qs}` : "/insights";
+}
 
 export default async function ContentListPage({
   searchParams,
 }: {
-  searchParams: Promise<{ q?: string; type?: string; tag?: string; page?: string }>;
+  searchParams: Promise<{ q?: string; type?: string; page?: string }>;
 }) {
   const params = await searchParams;
   const query = params.q || "";
   const filterType = params.type || "";
-  const filterTag = params.tag || "";
   const page = parseInt(params.page || "1", 10);
   const pageSize = 12;
 
@@ -94,7 +78,7 @@ export default async function ContentListPage({
     const { data } = await supabase.rpc("search_contents", {
       search_query: query,
       filter_type: filterType || null,
-      filter_tag: filterTag || null,
+      filter_tag: null,
       page_num: page,
       page_size: pageSize,
     });
@@ -111,12 +95,13 @@ export default async function ContentListPage({
       .range((page - 1) * pageSize, page * pageSize - 1);
 
     if (filterType) q = q.eq("type", filterType);
-    if (filterTag) q = q.contains("tags", [filterTag]);
 
     const { data, count: totalCount } = await q;
     contents = data;
     totalItems = totalCount ?? 0;
   }
+
+  const indexableTags = await getIndexableTags();
 
   const types = [
     { value: "", label: "전체" },
@@ -183,52 +168,25 @@ export default async function ContentListPage({
           </div>
         </form>
 
+        {indexableTags.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-8 md:mb-10">
+            {indexableTags.map((tag) => (
+              <Link
+                key={tag}
+                href={`/insights/tag/${encodeURIComponent(tag)}`}
+                className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
+              >
+                #{tag}
+              </Link>
+            ))}
+          </div>
+        )}
+
         {/* Content Grid */}
         {contents && contents.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {contents.map((item) => (
-              <Link
-                key={item.id}
-                href={`/insights/${item.slug}`}
-                className="card-hover group block bg-white border border-gray-200 rounded-xl overflow-hidden hover:border-blue-300 border-l-2 border-l-blue-600"
-              >
-                {item.cover_image_url && (
-                  <div className="overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={item.cover_image_url}
-                      alt={item.title}
-                      className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                )}
-                <div className="p-5 sm:p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className={`text-xs px-2.5 py-0.5 rounded-full font-medium ${typeBadge[item.type] || "bg-gray-100 text-gray-600"}`}>
-                      {typeLabel[item.type] || item.type}
-                    </span>
-                    {item.category && (
-                      <span className="text-xs text-gray-400">{item.category}</span>
-                    )}
-                  </div>
-                  <h2 className="font-semibold text-gray-900 mb-1.5 line-clamp-2 group-hover:text-blue-600 transition-colors kr-keep-all">{item.title}</h2>
-                  {item.excerpt && (
-                    <p className="text-sm text-gray-500 line-clamp-3 leading-relaxed kr-keep-all">{item.excerpt}</p>
-                  )}
-                  <div className="flex items-center justify-between mt-4">
-                    {item.published_at ? (
-                      <p className="text-xs text-gray-400">
-                        {new Date(item.published_at).toLocaleDateString("ko-KR")}
-                      </p>
-                    ) : <span />}
-                    <span className="text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                      </svg>
-                    </span>
-                  </div>
-                </div>
-              </Link>
+              <ContentCard key={item.id} item={item} />
             ))}
           </div>
         ) : (
@@ -252,7 +210,7 @@ export default async function ContentListPage({
           <div className="flex items-center justify-center gap-2 sm:gap-4 mt-10 md:mt-12">
             {page > 1 ? (
               <Link
-                href={`/insights?q=${query}&type=${filterType}&page=${page - 1}`}
+                href={pageHref(query, filterType, page - 1)}
                 className="flex items-center gap-1.5 px-3 sm:px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-600 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -269,7 +227,7 @@ export default async function ContentListPage({
             </span>
             {contents && contents.length === pageSize ? (
               <Link
-                href={`/insights?q=${query}&type=${filterType}&page=${page + 1}`}
+                href={pageHref(query, filterType, page + 1)}
                 className="flex items-center gap-1.5 px-3 sm:px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-600 transition-colors"
               >
                 다음

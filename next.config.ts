@@ -126,6 +126,14 @@ const nextConfig: NextConfig = {
       { source: "/feed/:rest*", destination: "/insights", permanent: true },
       { source: "/:year(\\d{4})/:rest*", destination: "/insights", permanent: true },
       { source: "/sitemap_index.xml", destination: "/sitemap.xml", permanent: true },
+      // 태그 필터를 쿼리스트링에서 고유 경로로 이전 (2026-07-28).
+      // ?tag= URL 74종이 전부 /insights로 canonical되며 크롤링 예산만 쓰고 있었다.
+      {
+        source: "/insights",
+        has: [{ type: "query", key: "tag", value: "(?<tag>.+)" }],
+        destination: "/insights/tag/:tag",
+        permanent: true,
+      },
       // 콘텐츠 → Insights 리네이밍 (글로벌 IA 표준)
       { source: "/content", destination: "/insights", permanent: true },
       { source: "/content/:slug*", destination: "/insights/:slug*", permanent: true },

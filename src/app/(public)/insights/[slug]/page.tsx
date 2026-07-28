@@ -3,6 +3,7 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { renderMarkdown } from "@/lib/markdown";
 import { company } from "@/lib/site-config";
+import { getTagCounts, TAG_MIN_ARTICLES } from "@/lib/insights-tags";
 import type { Metadata } from "next";
 
 interface Props {
@@ -137,6 +138,8 @@ export default async function ContentDetailPage({ params }: Props) {
 
   if (!content) notFound();
 
+  const tagCounts = await getTagCounts();
+
   // Render markdown
   const htmlContent = content.body_md
     ? await renderMarkdown(content.body_md)
@@ -250,15 +253,25 @@ export default async function ContentDetailPage({ params }: Props) {
         )}
         {content.tags && content.tags.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-4">
-            {content.tags.map((tag: string) => (
-              <Link
-                key={tag}
-                href={`/insights?tag=${tag}`}
-                className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
-              >
-                #{tag}
-              </Link>
-            ))}
+            {content.tags.map((tag: string) =>
+              // 글이 적은 태그는 목록 페이지를 만들 만한 분량이 안 되므로 링크하지 않는다.
+              (tagCounts.get(tag) ?? 0) >= TAG_MIN_ARTICLES ? (
+                <Link
+                  key={tag}
+                  href={`/insights/tag/${encodeURIComponent(tag)}`}
+                  className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
+                >
+                  #{tag}
+                </Link>
+              ) : (
+                <span
+                  key={tag}
+                  className="text-xs px-3 py-1 bg-gray-50 text-gray-500 rounded-full border border-gray-200 font-medium"
+                >
+                  #{tag}
+                </span>
+              )
+            )}
           </div>
         )}
       </div>

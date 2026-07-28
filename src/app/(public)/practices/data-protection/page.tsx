@@ -259,7 +259,7 @@ export default function DataProtectionPage() {
 
         <div className="text-center mt-8 md:mt-10">
           <Link
-            href="/insights?tag=data-protection"
+            href="/insights/tag/data-protection"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-500 hover:text-emerald-700 transition-colors"
           >
             관련 가이드·체크리스트 보기 →
