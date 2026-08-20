@@ -147,7 +147,7 @@ src/app/admin/(dashboard)/leads/page.tsx                  # 한글 status, 출�
 ### 로컬 (Supabase CLI)
 
 ```bash
-cd "D:\Opencode\VDI-LeadSystem-MVP"
+cd "C:\opencode\VDI-LeadSystem-MVP"
 supabase db push                    # 010_n2sf_transition_advisor.sql 적용
 ```
 
@@ -182,7 +182,7 @@ WHERE rel.relname = 'leads' AND con.conname = 'leads_status_check';
 ### 로컬 개발 서버
 
 ```bash
-cd "D:\Opencode\VDI-LeadSystem-MVP"
+cd "C:\opencode\VDI-LeadSystem-MVP"
 npm run dev   # http://localhost:3000
 ```
 

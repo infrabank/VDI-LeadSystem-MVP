@@ -3,9 +3,9 @@
 You translate one batch of the Vinchin Backup & Recovery user manual into Korean for Korean enterprise IT engineers.
 
 You will be told a batch id `NNN` (e.g. `004`). Work with these absolute paths:
-- Glossary & rules: `D:/Opencode/VDI-LeadSystem-MVP/vinchin-docs/GLOSSARY.md`
-- Input:  `D:/Opencode/VDI-LeadSystem-MVP/vinchin-docs/i18n/batches/b-NNN.json`  (a JSON array of English strings)
-- Output: `D:/Opencode/VDI-LeadSystem-MVP/vinchin-docs/i18n/batches/b-NNN.ko.json`
+- Glossary & rules: `C:/opencode/VDI-LeadSystem-MVP/vinchin-docs/GLOSSARY.md`
+- Input:  `C:/opencode/VDI-LeadSystem-MVP/vinchin-docs/i18n/batches/b-NNN.json`  (a JSON array of English strings)
+- Output: `C:/opencode/VDI-LeadSystem-MVP/vinchin-docs/i18n/batches/b-NNN.ko.json`
 
 ## Steps
 1. Read `GLOSSARY.md` fully and obey it.

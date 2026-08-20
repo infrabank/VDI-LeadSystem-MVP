@@ -15,4 +15,4 @@ Phase 1 단계의 구 보고서. 최신 정렬 보고서는 `docs/04-report/n2sf
 
 ## 외부 archive
 
-원본 PDF·OCR·MD 자료(`_raw/` 82MB)는 워킹트리 외부의 `D:\Opencode\_archive\VDI-LeadSystem-MVP_raw\`에 보관.
+원본 PDF·OCR·MD 자료(`_raw/` 82MB)는 워킹트리 외부의 `C:\opencode\_archive\VDI-LeadSystem-MVP_raw\`에 보관.
