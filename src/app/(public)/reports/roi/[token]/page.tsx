@@ -101,7 +101,7 @@ export default async function ROIReportPage({ params }: Props) {
             </span>
           </div>
           <h1 className="text-3xl font-bold text-gray-900 mb-2">
-            VDI 다운타임 비용/ROI 분석 리포트
+            VDI 운영 ROI 리포트
           </h1>
           <p className="text-sm text-gray-500">
             생성일: {new Date(report.created_at).toLocaleDateString("ko-KR")}

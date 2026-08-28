@@ -109,7 +109,7 @@ export default function V3Form() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, name: name || null, company: company || null, source: "diagnostic", consent_marketing: consent }),
       });
-      if (!leadRes.ok) throw new Error("리드 생성 실패");
+      if (!leadRes.ok) throw new Error("정보 저장에 실패했습니다. 이메일 주소를 확인하고 다시 시도해 주세요.");
       const lead = await leadRes.json();
 
       const input = {
@@ -145,16 +145,16 @@ export default function V3Form() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lead_id: lead.id, input, version: "v3" }),
       });
-      if (!assessRes.ok) throw new Error("진단 실행 실패");
+      if (!assessRes.ok) throw new Error("진단 실행에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       const result = await assessRes.json();
 
       const reportRes = await fetch(`/api/reports/${result.tool_run_id}/generate`, { method: "POST" });
-      if (!reportRes.ok) throw new Error("리포트 생성 실패");
+      if (!reportRes.ok) throw new Error("리포트 생성에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       const report = await reportRes.json();
 
       router.push(`/thank-you?report=${report.access_token}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "오류가 발생했습니다.");
+      setError(err instanceof Error ? err.message : "처리 중 문제가 생겼습니다. 잠시 후 다시 시도해 주세요.");
       setStep(V3_SECTION_ORDER[V3_SECTION_ORDER.length - 1]);
     }
   }
@@ -223,8 +223,8 @@ export default function V3Form() {
               </svg>
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">VDI 리스크 진단 <span className="text-sm font-normal text-gray-600">(Legacy)</span></h1>
-              <p className="text-sm text-gray-500 mt-0.5">6개 영역 · 25개 항목 · 약 3~5분 소요</p>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">N²SF 정렬 진단 <span className="text-sm font-normal text-gray-600">(이전 버전)</span></h1>
+              <p className="text-sm text-gray-500 mt-0.5">6개 영역 · 25개 문항 · 약 3~5분 소요</p>
             </div>
           </div>
           {step !== "submitting" && (
@@ -279,7 +279,7 @@ export default function V3Form() {
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">회사</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">기관·회사명</label>
                   <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="(주)회사명"
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
                 </div>
@@ -331,7 +331,7 @@ export default function V3Form() {
               </svg>
             </div>
             <p className="text-base sm:text-lg font-semibold text-gray-800 animate-pulse">심층 진단 중입니다...</p>
-            <p className="text-sm text-gray-500 mt-2 kr-keep-all">6개 영역, 25개 항목을 분석하고 컨설팅급 리포트를 생성하고 있습니다.</p>
+            <p className="text-sm text-gray-500 mt-2 kr-keep-all">6개 영역, 25개 문항을 분석해 컨설팅급 리포트를 만듭니다.</p>
           </div>
         )}
       </div>

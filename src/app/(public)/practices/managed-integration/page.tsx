@@ -19,7 +19,7 @@ const scenarios = [
   },
   {
     title: "신규 발주 사전 N²SF 정렬",
-    desc: "갱신·재발주 시점이 가까운 기관에 대해, RFP에 N²SF C/S/O 분류·MFA·백업 증빙 요건을 미리 반영. 발주 후 변경 비용을 차단.",
+    desc: "갱신·재발주 시점이 가까운 기관이라면 RFP에 N²SF C/S/O 분류·MFA·백업 증빙 요건을 미리 반영. 발주 후 변경 비용을 차단.",
     badge: "지자체·산하기관",
     color: "var(--color-domain-managed)",
     textColor: "var(--color-domain-managed-text)",

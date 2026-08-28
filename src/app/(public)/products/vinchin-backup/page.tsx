@@ -9,7 +9,7 @@ const DOCS_URL = "https://vinchin.myloket.co.kr";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/products/vinchin-backup" },
-  title: "Vinchin Backup & Recovery — 가상화 VM 백업·즉시 복구 솔루션",
+  title: "Vinchin Backup & Recovery: 가상화 VM 백업·즉시 복구 솔루션",
   description:
     "VMware vSphere, Hyper-V, Proxmox VE, XCP-ng, Citrix Hypervisor 등 15종 이상 가상화 플랫폼을 에이전트리스로 백업하고, 장애 시 VM을 즉시 복구하며 다른 플랫폼으로 V2V 마이그레이션하는 Vinchin Backup & Recovery. VBTP 인증 엔지니어가 도입·구축·운영·유지보수를 지원합니다.",
 };
@@ -170,7 +170,7 @@ const editions: {
   {
     name: "Enterprise",
     badge: "전사·재해복구",
-    summary: "다중 환경·DR·랜섬웨어 대비까지 포함한 전사 운영용. (참조 페이지의 Perpetual Enterprise 라인)",
+    summary: "다중 환경·DR·랜섬웨어 대비까지 포함한 전사 운영용입니다. (Perpetual Enterprise 라인)",
     points: [
       "Standard의 모든 기능",
       "크로스 플랫폼 V2V 복구·마이그레이션",
@@ -293,7 +293,8 @@ export default function VinchinBackupPage() {
                   href={PHONE_TEL}
                   className="px-5 py-2.5 text-gray-700 hover:text-gray-900 font-medium"
                 >
-                  ☎ {companyLegal.phone}
+                  <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  {companyLegal.phone}
                 </a>
               </div>
             </div>

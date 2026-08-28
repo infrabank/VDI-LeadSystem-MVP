@@ -154,7 +154,7 @@ export default function IntegratedMaintenancePage() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
-            Integrated Maintenance — VDI · 가상화 · 백업
+            Integrated Maintenance · VDI · 가상화 · 백업
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
             전산통합유지보수 사업을 위한<br className="hidden md:block" />
@@ -302,7 +302,7 @@ export default function IntegratedMaintenancePage() {
           <ul className="space-y-2.5 text-base text-gray-700 leading-relaxed kr-keep-all">
             {outOfScope.map((t) => (
               <li key={t} className="flex gap-3">
-                <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
+                <span aria-hidden="true" className="text-gray-400 flex-shrink-0">×</span>
                 <span>{t}</span>
               </li>
             ))}

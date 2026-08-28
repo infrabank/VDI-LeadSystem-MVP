@@ -305,7 +305,7 @@ function V2Report({
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-8">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-gray-900">VDI 리스크 진단 리포트</h1>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900">N²SF 정렬 진단 리포트</h1>
               <p className="text-sm text-gray-500 mt-1">
                 생성일: {new Date(report.created_at).toLocaleDateString("ko-KR")}
                 {lead?.company && (
@@ -462,7 +462,7 @@ function V2Report({
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-gray-900">PDF 리포트 저장</p>
+              <p className="font-semibold text-gray-900">PDF로 저장</p>
               <p className="text-sm text-gray-500 mt-0.5">진단 결과를 PDF 파일로 저장하여 팀과 공유하세요.</p>
             </div>
             <PrintPdfButton />
@@ -518,7 +518,7 @@ function V1Report({
     <div className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-b from-gray-50 to-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-8">
-          <h1 className="text-xl md:text-2xl font-bold text-gray-900">VDI 리스크 진단 리포트</h1>
+          <h1 className="text-xl md:text-2xl font-bold text-gray-900">N²SF 정렬 진단 리포트</h1>
           <p className="text-sm text-gray-500 mt-1">
             생성일: {new Date(report.created_at).toLocaleDateString("ko-KR")}
             {lead?.company && <span className="ml-2 px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">{lead.company}</span>}
@@ -577,7 +577,7 @@ function V1Report({
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-gray-900">PDF 리포트 저장</p>
+              <p className="font-semibold text-gray-900">PDF로 저장</p>
               <p className="text-sm text-gray-500 mt-0.5">진단 결과를 PDF 파일로 저장하여 팀과 공유하세요.</p>
             </div>
             <PrintPdfButton />

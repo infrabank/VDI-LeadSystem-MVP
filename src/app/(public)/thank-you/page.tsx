@@ -92,7 +92,7 @@ export default async function ThankYouPage({
               </svg>
             </div>
             <div>
-              <p className="text-sm font-semibold text-gray-800">다시 진단하기</p>
+              <p className="text-sm font-semibold text-gray-800">환경이 바뀌면 다시 진단할 수 있습니다</p>
               <p className="text-xs text-gray-500 mt-0.5">환경이 변경되었거나 다른 시나리오를 점검하고 싶다면 다시 진단하세요.</p>
             </div>
           </Link>

@@ -8,7 +8,7 @@ const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/services/it-maintenance" },
-  title: "중소기업 전산 통합 유지보수 — 세종·대전·충청 IT 기술지원",
+  title: "중소기업 전산 통합 유지보수: 세종·대전·충청 IT 기술지원",
   description:
     "전산 담당자가 부족한 회사를 위한 전산 유지보수, IT 유지보수, 사내 전산 관리 서비스입니다. PC, 서버, 네트워크, NAS, 백업, Linux/리눅스, Windows Server, HPE·Dell·Lenovo·Supermicro 서버 운영 점검과 장애 대응을 지원합니다.",
 };
@@ -138,7 +138,8 @@ export default function ItMaintenancePage() {
               href={PHONE_TEL}
               className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
             >
-              ☎ {companyLegal.phone} 바로 통화
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              {companyLegal.phone} 바로 통화
             </a>
           </div>
         </div>
@@ -191,7 +192,7 @@ export default function ItMaintenancePage() {
             천안 등 충청권 전산 유지보수 문의를 우선 검토합니다.
           </p>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all max-w-3xl mb-6">
-            계약을 전제로 하지 않음. 현황 확인과 점검 제안까지는 비용 없음 — 점검 결과만 받고
+            계약을 전제로 하지 않음. 현황 확인과 점검 제안까지는 비용 없음. 점검 결과만 받고
             판단해도 됨.
           </p>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500">

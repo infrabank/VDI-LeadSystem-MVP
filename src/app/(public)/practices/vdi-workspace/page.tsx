@@ -16,7 +16,7 @@ const services = [
   {
     rank: "01",
     title: "유지 / 일부 축소 시나리오",
-    desc: "C/S 등급 핵심 업무에 VDI를 한정하고, O등급 업무는 SaaS·RBI로 대체. 라이선스·운영 부담을 줄이며 N²SF 정렬을 확보합니다.",
+    desc: "C/S 등급 핵심 업무에 VDI를 한정하고 O등급 업무는 SaaS·RBI로 대체해, 라이선스·운영 부담을 줄이고 N²SF 정렬을 확보합니다.",
     icon: "M5 13l4 4L19 7",
     color: "var(--color-domain-vdi)",
     href: "/tools/vdi-transition",
@@ -24,7 +24,7 @@ const services = [
   {
     rank: "02",
     title: "DaaS 전환 가능성 검토",
-    desc: "Citrix DaaS·Azure Virtual Desktop·Windows 365의 N²SF 적합성과 한계를 비교. 어떤 업무는 옮길 수 있고 어떤 업무는 옮길 수 없는지 가립니다.",
+    desc: "Citrix DaaS·Azure Virtual Desktop·Windows 365의 N²SF 적합성과 한계를 비교해, 어떤 업무는 옮길 수 있고 어떤 업무는 옮길 수 없는지 가립니다.",
     icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
     color: "var(--color-domain-mfa)",
     href: "/contact?source=vdi-workspace&interest=daas-transition",
@@ -32,7 +32,7 @@ const services = [
   {
     rank: "03",
     title: "고위험·외부 협력사 분리 설계",
-    desc: "외부 협력사·고위험 업무를 별도 VDI 영역으로 분리하고, MFA·조건부 접근·세션 격리를 결합. VDI를 어디에 남길지 결정합니다.",
+    desc: "외부 협력사·고위험 업무를 별도 VDI 영역으로 분리하고 MFA·조건부 접근·세션 격리를 결합해, VDI를 어디에 남길지 결정합니다.",
     icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
     color: "var(--color-domain-managed)",
     href: "/contact?source=vdi-workspace&interest=zero-trust",
@@ -108,8 +108,8 @@ export default function VdiWorkspacePage() {
             <div className="md:col-span-3">
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
                 N²SF 이후 모든 업무를 VDI에 두는 단순 구조는 더 이상 적정하지 않습니다.
-                동시에, VDI가 끝나는 것도 아닙니다 — 역할이 바뀝니다. Citrix·VMware·Omnissa를 공공·연구기관에서
-                다년간 구축·운영·유지보수를 지원해 본 경험으로, 어디는 유지하고 어디는 축소하고 어디는 DaaS로 옮길지를
+                그렇다고 VDI가 끝나는 것도 아닙니다. 역할이 바뀝니다. Citrix·VMware·Omnissa를 공공·연구기관에서
+                다년간 구축·운영·유지보수해 본 경험으로, 어디는 유지하고 어디는 축소하고 어디는 DaaS로 옮길지를
                 벤더 종속 없이 판단합니다.
               </p>
             </div>
@@ -126,7 +126,7 @@ export default function VdiWorkspacePage() {
           VDI 전환 시나리오 4종
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
-          유지·DaaS 전환·고위험 분리·운영 리스크 — 환경별로 어떤 시나리오가 맞는지 판단합니다.
+          유지, DaaS 전환, 고위험 분리, 운영 리스크를 놓고 환경별로 어떤 시나리오가 맞는지 판단합니다.
         </p>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {services.map((feature, i) => (

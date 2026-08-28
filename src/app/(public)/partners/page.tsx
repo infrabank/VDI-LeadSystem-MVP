@@ -69,7 +69,7 @@ const cases = [
     label: "CASE 01",
     org: "중앙행정 데이터 기관",
     env: "Omnissa Horizon · VMware ESXi",
-    line: "외부 연구자 접속형 VDI를 다년간 운영. 월간 리포트와 장애 분석을 제공했습니다.",
+    line: "외부 연구자 접속형 VDI를 다년간 운영하며 월간 리포트와 장애 분석을 제공했습니다.",
   },
   {
     color: "blue",
@@ -83,11 +83,11 @@ const cases = [
     label: "CASE 03",
     org: "정부 출연 과학기술정보 연구기관",
     env: "Citrix · Omnissa Workspace ONE",
-    line: "멀티 벤더 환경을 다년간 자문. 마이그레이션 가이드를 제공했습니다.",
+    line: "멀티 벤더 환경을 다년간 자문하고 마이그레이션 가이드를 제공했습니다.",
   },
 ];
 
-const inquiryEmailBody = `[고객 환경 / 협업 건 개요 — 자유 기재]
+const inquiryEmailBody = `[고객 환경 / 협업 건 개요 (자유 기재)]
 - 고객 (발주처·기관·기업):
 - 사용 제품·버전 (Citrix VAD / Omnissa Horizon / Acronis Cyber Protect / Vinchin Backup & Recovery / 기타):
 - 막힌 기술 파트 (접속장애 / FSLogix / UAG·NetScaler / 인증서·라이선스 / 스토리지·성능 / 백업·복구검증 / 가상화 VM 백업):
@@ -116,7 +116,7 @@ export default function PartnersPage() {
 
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-24">
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
-            For SI Partners — VDI · Backup Technical Support
+            For SI Partners · VDI &amp; Backup Technical Support
           </p>
           <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
             고객 앞 기술 질문과 운영 장애 대응에<br className="hidden md:block" />
@@ -271,7 +271,7 @@ export default function PartnersPage() {
             지원 가능하지만, 단독 상품으로 판매하지는 않습니다.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 kr-keep-all">
-            <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>N²SF 환경에서의 VDI 역할 검토 (운영자 관점)</li>
+            <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>N²SF 환경의 VDI 역할 검토 (운영자 관점)</li>
             <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>RFP 기술요건 일부 검토</li>
             <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>보안성 검토 응답 자료 보조</li>
             <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>MFA가 VDI 접속에 미치는 운영 영향 검토</li>
@@ -350,7 +350,7 @@ export default function PartnersPage() {
             </li>
             <li className="flex gap-3">
               <span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>
-              <span>Citrix · Omnissa Horizon · Acronis · Vinchin 운영 경험 기반, 벤더 중립.</span>
+              <span>Citrix · Omnissa Horizon · Acronis · Vinchin 운영 경험을 기반으로 벤더 중립을 지킵니다.</span>
             </li>
             <li className="flex gap-3">
               <span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>
@@ -437,19 +437,19 @@ export default function PartnersPage() {
           </h2>
           <ul className="space-y-2.5 text-base text-gray-700 leading-relaxed kr-keep-all">
             <li className="flex gap-3">
-              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">×</span>
               <span>단순 라이선스 영업·총판 마진</span>
             </li>
             <li className="flex gap-3">
-              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">×</span>
               <span>인증 신청 대행 (CC, GS, ISMS-P 등)</span>
             </li>
             <li className="flex gap-3">
-              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">×</span>
               <span>인력 파견·SM 외주·상주</span>
             </li>
             <li className="flex gap-3">
-              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">×</span>
               <span>민간 일반 사무 IT 컨설팅</span>
             </li>
           </ul>

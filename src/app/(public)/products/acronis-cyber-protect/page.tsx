@@ -7,9 +7,9 @@ const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/products/acronis-cyber-protect" },
-  title: "Acronis Cyber Protect — 백업·랜섬웨어 방어 통합 솔루션",
+  title: "Acronis Cyber Protect: 백업·랜섬웨어 방어 통합 솔루션",
   description:
-    "서버·PC·NAS·Microsoft 365를 이미지 백업하고, 안티랜섬웨어·안티멀웨어·EDR·패치 관리를 하나로 통합한 Acronis Cyber Protect. Authorized Partner / MSP로서 도입·구축·운영·복구검증을 지원합니다.",
+    "서버·PC·NAS·Microsoft 365를 이미지 백업하고, 안티랜섬웨어·안티멀웨어·EDR·패치 관리를 하나로 통합한 Acronis Cyber Protect. 마이로켓은 Authorized Partner / MSP로 도입·구축·운영·복구검증을 지원합니다.",
 };
 
 /* ──────────────────────────────────────────────────────────────────
@@ -186,7 +186,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "마이로켓은 Acronis를 어떻게 지원하나요?",
-    a: "마이로켓은 Acronis Cyber Protect Authorized Partner / MSP로서 도입 검토와 PoC, 구축·정책 설계, 운영·유지보수, 정기 복구 검증까지 지원합니다. 단순 라이선스 판매가 아니라 운영과 복구 가능성을 함께 책임집니다.",
+    a: "마이로켓은 Acronis Cyber Protect Authorized Partner / MSP입니다. 도입 검토와 PoC, 구축·정책 설계, 운영·유지보수, 정기 복구 검증까지 지원합니다. 단순 라이선스 판매가 아니라 운영과 복구 가능성을 함께 책임집니다.",
   },
   {
     q: "도입 비용은 어떻게 되나요?",
@@ -274,7 +274,8 @@ export default function AcronisCyberProtectPage() {
                   href={PHONE_TEL}
                   className="px-5 py-2.5 text-gray-700 hover:text-gray-900 font-medium"
                 >
-                  ☎ {companyLegal.phone}
+                  <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                  {companyLegal.phone}
                 </a>
               </div>
             </div>

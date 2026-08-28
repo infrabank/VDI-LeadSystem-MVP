@@ -175,12 +175,12 @@ export default function ResourcesTemplatesPage() {
             <li>
               <span className="font-semibold text-gray-900">자유 사용 가능.</span>{" "}
               내부 회의·임원 보고·RFP 초안 작성에 자유롭게 활용하세요. 외부 재배포 시
-              출처(${company.legalName}) 표기를 부탁드립니다.
+              출처({company.legalName}) 표기를 부탁드립니다.
             </li>
             <li>
               <span className="font-semibold text-gray-900">현장 갱신.</span>{" "}
-              템플릿은 실제 사전진단 프로젝트 결과로 정기 갱신됩니다 — 더 나은 항목·표현이
-              나올 때마다 버전 업데이트.
+              템플릿은 실제 사전진단 프로젝트 결과로 정기 갱신합니다. 더 나은 항목이나 표현이
+              나올 때마다 버전을 올립니다.
             </li>
           </ul>
         </div>

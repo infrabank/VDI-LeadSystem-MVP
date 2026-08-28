@@ -41,9 +41,9 @@ export function RiskAssessmentIntro() {
         <p className="text-blue-600 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
           N²SF Alignment Diagnosis
         </p>
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 kr-keep-all">
+        <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 kr-keep-all">
           7분 자가 진단으로 N²SF 정렬 첫 그림을 잡습니다
-        </h1>
+        </h2>
         <p className="text-sm sm:text-base text-gray-600 mb-6 md:mb-8 leading-relaxed kr-keep-all max-w-2xl">
           공공·연구기관의 기존 VDI·망분리·MFA·백업 환경을 N²SF 기준으로 정렬 진단합니다.
           진단 완료 시 다음 5가지 산출물을 무료 PDF 리포트로 받습니다.

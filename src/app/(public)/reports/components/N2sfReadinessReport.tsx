@@ -58,7 +58,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
             <span
               className={`inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full border ${LEVEL_BADGE_COLORS[output.level]}`}
             >
-              Level {output.level} — {output.level_name}
+              Level {output.level} · {output.level_name}
             </span>
           </div>
         </div>
@@ -239,7 +239,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-slate-900">결과를 PDF로 저장</p>
+              <p className="font-semibold text-slate-900">PDF로 저장</p>
               <p className="text-sm text-gray-500 mt-0.5">
                 진단 결과를 PDF 파일로 저장하여 내부 회의 자료로 활용하세요.
               </p>

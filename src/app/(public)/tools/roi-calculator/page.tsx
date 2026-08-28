@@ -56,7 +56,7 @@ export default function ROICalculatorPage() {
           consent_marketing: consent,
         }),
       });
-      if (!leadRes.ok) throw new Error("리드 생성 실패");
+      if (!leadRes.ok) throw new Error("정보 저장에 실패했습니다. 이메일 주소를 확인하고 다시 시도해 주세요.");
       const lead = await leadRes.json();
 
       // 2. Run ROI calculation
@@ -89,13 +89,13 @@ export default function ROICalculatorPage() {
         `/api/reports/roi/${result.tool_run_id}/generate`,
         { method: "POST" }
       );
-      if (!reportRes.ok) throw new Error("리포트 생성 실패");
+      if (!reportRes.ok) throw new Error("리포트 생성에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       const report = await reportRes.json();
 
       // 4. Redirect to report
       router.push(`/reports/roi/${report.access_token}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "오류가 발생했습니다.");
+      setError(err instanceof Error ? err.message : "처리 중 문제가 생겼습니다. 잠시 후 다시 시도해 주세요.");
       setStep("input");
     }
   }
@@ -111,7 +111,7 @@ export default function ROICalculatorPage() {
             </svg>
           </div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 kr-keep-all">
-            VDI 다운타임 비용/ROI 계산기
+            VDI 운영 ROI 계산기
           </h1>
           <p className="text-base sm:text-base text-gray-600 kr-keep-all">
             VDI 장애로 인한 연간 손실액과 투자 ROI를 산정하여 경영진 보고용 PDF를 제공합니다.
@@ -155,7 +155,7 @@ export default function ROICalculatorPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">회사</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">기관·회사명</label>
                   <input
                     type="text"
                     value={company}
@@ -334,7 +334,7 @@ export default function ROICalculatorPage() {
                 type="submit"
                 className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl hover:shadow-md hover:scale-[1.01] active:scale-[0.99] font-semibold text-base transition flex items-center justify-center gap-2"
               >
-                ROI 분석 실행
+                계산 실행
                 <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -354,7 +354,7 @@ export default function ROICalculatorPage() {
                 </svg>
               </div>
             </div>
-            <p className="text-gray-700 font-medium">ROI를 분석하고 있습니다...</p>
+            <p className="text-gray-700 font-medium">ROI를 분석 중입니다...</p>
             <p className="text-gray-600 text-sm mt-1">리포트와 PDF를 생성 중입니다</p>
           </div>
         )}

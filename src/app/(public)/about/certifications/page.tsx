@@ -52,7 +52,7 @@ export default function CertificationsPage() {
         <section className="mb-12 md:mb-16">
           <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 kr-keep-all">정보보호 인증 현황</h2>
           <p className="text-xs text-gray-500 mb-5 kr-keep-all">
-            인증 상태는 단계별로 정직하게 표시합니다 — 준비 / 신청 / 심사 / 보유. &quot;예정&quot;처럼 모호한 표기는 사용하지 않습니다.
+            인증 상태는 준비, 신청, 심사, 보유 네 단계로 정직하게 표시합니다. &quot;예정&quot;처럼 모호한 표기는 사용하지 않습니다.
           </p>
           <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
             {certifications.map((c) => {
@@ -111,7 +111,7 @@ export default function CertificationsPage() {
           <section className="mb-12 md:mb-16">
             <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 kr-keep-all">엔지니어 기술자격</h2>
             <p className="text-xs text-gray-500 mb-5 kr-keep-all">
-              회사 인증과 별개로, 대표 엔지니어가 보유한 벤더 공식 기술자격입니다 — 실제 솔루션을 다룰 역량을 증빙합니다.
+              회사 인증과 별개로, 대표 엔지니어가 보유한 벤더 공식 기술자격입니다. 실제 솔루션을 다룰 역량을 증빙합니다.
             </p>
             <div className="grid gap-4 md:gap-6">
               {engineerCredentials.map((cr) => (

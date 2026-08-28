@@ -12,13 +12,13 @@ const TYPE_COLORS: Record<ResultType, { bg: string; text: string; border: string
 
 const TYPE_DESCRIPTIONS: Record<ResultType, string> = {
   maintain:
-    "현재 VDI가 핵심 보안 통제 수단으로 잘 작동하고 있으며, 단기적으로 유지·고도화하는 것이 비용 대비 효과적입니다. 단, N²SF 시행 후 인증/권한 통제 강화 요구가 추가됩니다.",
+    "현재 VDI가 핵심 보안 통제 수단으로 잘 작동합니다. 단기적으로는 유지·고도화가 비용 대비 효과적입니다. 단, N²SF 시행 후 인증/권한 통제 강화 요구가 추가됩니다.",
   complement:
-    "VDI를 ‘격리 수단’이 아닌 ‘인증/권한과 결합된 워크스페이스’로 재정의하는 것이 적합합니다. ZTNA/SDP·MFA·PAM 보완을 병행하면 N²SF S등급 영역에서 경쟁력을 확보할 수 있습니다.",
+    "VDI를 '격리 수단'이 아니라 '인증/권한과 결합된 워크스페이스'로 다시 정의해야 맞습니다. ZTNA/SDP·MFA·PAM 보완을 병행하면 N²SF S등급 영역에서 경쟁력을 확보할 수 있습니다.",
   reduce:
-    "현재 VDI에서 처리하는 업무 중 상당 부분이 SaaS·브라우저·DaaS로 전환 가능합니다. VDI는 고위험 업무로 축소하고, 인터넷·협업 업무는 분리하는 것이 효율적입니다.",
+    "현재 VDI에서 처리하는 업무 중 상당 부분이 SaaS·브라우저·DaaS로 전환 가능합니다. VDI는 고위험 업무로 좁히고 인터넷·협업 업무는 떼어 내는 편이 효율적입니다.",
   redesign:
-    "현재 VDI 구조가 비효율적이거나 사용자 불만/장애가 누적된 상태입니다. 단순 갱신은 비용 낭비가 될 가능성이 높습니다. 업무 재분류 후 단계적으로 환경을 재설계하는 것이 적합합니다.",
+    "현재 VDI 구조가 비효율적이거나 사용자 불만/장애가 누적된 상태입니다. 단순 갱신은 비용 낭비가 될 가능성이 높습니다. 업무를 다시 분류한 뒤 환경을 단계적으로 재설계해야 합니다.",
 };
 
 interface Props {
@@ -167,7 +167,7 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-slate-900">결과를 PDF로 저장</p>
+              <p className="font-semibold text-slate-900">PDF로 저장</p>
               <p className="text-sm text-gray-500 mt-0.5">
                 팀 내부 검토 자료로 사용하세요.
               </p>

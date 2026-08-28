@@ -15,7 +15,7 @@ export const company = {
   tagline: "IT Maintenance & VDI Support",
   taglineKo: "VDI 구축·기술지원 · 전산 통합 유지보수 · 백업 복구검증",
   description:
-    "공공기관·연구기관 가상 데스크톱(VDI)을 구축·운영·유지보수해 온 엔지니어가 " +
+    "공공기관·연구기관의 가상 데스크톱(VDI)을 구축·운영·유지보수해 온 엔지니어가 " +
     "서버·네트워크·백업까지 기업 전산환경 전체를 관리합니다. " +
     "Citrix·Omnissa Horizon VDI 기술지원, Acronis·Vinchin 백업 복구검증.",
   email: "contact@mlkit.co.kr",
@@ -117,7 +117,7 @@ export const practices: Record<PracticeId, Practice> = {
     shortTitle: "N²SF 사전진단",
     tagline: "공공기관 VDI·망분리 환경의 N²SF 정렬 진단·로드맵",
     description:
-      "공공기관·연구기관·기존 VDI 운영 기관을 위한 N²SF 전환 1차 진단입니다. 현재 VDI/망분리 구조를 분석하고, 업무를 C/S/O 등급으로 예비 분류하며, 어디는 유지·어디는 축소·어디는 전환할지 1차 로드맵을 도출합니다. 후속 구축 사업의 RFP 문구·보안성 검토 산출물 초안까지 함께 정리합니다.",
+      "공공기관·연구기관·기존 VDI 운영 기관을 위한 N²SF 전환 1차 진단입니다. 현재 VDI/망분리 구조를 분석한 뒤 업무를 C/S/O 등급으로 예비 분류합니다. 어디는 유지하고 어디는 축소하며 어디는 전환할지 1차 로드맵을 도출합니다. 후속 구축 사업의 RFP 문구와 보안성 검토 산출물 초안까지 정리합니다.",
     pillars: [
       {
         title: "현재 VDI/망분리 구조도",
@@ -148,7 +148,7 @@ export const practices: Record<PracticeId, Practice> = {
     shortTitle: "VDI 재정의",
     tagline: "N²SF 이후 VDI를 어디에 남길지 판단·시나리오 설계",
     description:
-      "Citrix·VMware·Omnissa VDI를 공공·연구기관에서 다년간 설계·구축·운영해 온 관점으로, N²SF 이후 VDI의 역할을 재정의합니다. 완전 유지·일부 축소·DaaS 전환·고위험 업무만 VDI 유지·외부 협력사용 VDI 재정의 등 시나리오를 비교하고, 운영 리스크와 비용을 함께 판단합니다.",
+      "Citrix·VMware·Omnissa VDI를 공공·연구기관에서 다년간 설계·구축·운영해 왔습니다. 그 경험으로 N²SF 이후 VDI의 역할을 재정의합니다. 완전 유지, 일부 축소, DaaS 전환, 고위험 업무만 VDI 유지, 외부 협력사용 VDI 재정의 같은 시나리오를 비교하면서 운영 리스크와 비용을 판단합니다.",
     pillars: [
       {
         title: "전환 시나리오 비교",
@@ -177,9 +177,9 @@ export const practices: Record<PracticeId, Practice> = {
     brand: "MFA Design",
     title: "MFA QuickStart for VDI/DaaS",
     shortTitle: "MFA QuickStart",
-    tagline: "어디에·어떤 예외정책으로·어떤 장애대응 구조로 붙일지",
+    tagline: "어디에 붙이고 예외정책과 장애 대응은 어떻게 설계할지",
     description:
-      "MFA를 솔루션으로 파는 게 아니라, VDI·DaaS·외부 협력사 접속에 어디에 어떻게 붙일지를 설계합니다. M365 기반은 Microsoft Entra ID로, 행정 전자서명(GPKI/NPKI) 기반 공공기관은 라온시큐어로 대응하며, 사용자군별 정책·예외 계정·장애 시 우회 절차까지 함께 정리합니다.",
+      "MFA를 솔루션으로 팔지 않습니다. VDI·DaaS·외부 협력사 접속의 어느 지점에 어떻게 붙일지를 설계합니다. M365 기반은 Microsoft Entra ID로, 행정 전자서명(GPKI/NPKI) 기반 공공기관은 라온시큐어로 대응합니다. 사용자군별 정책, 예외 계정, 장애 시 우회 절차까지 정리합니다.",
     pillars: [
       {
         title: "사용자군별 인증 흐름도",
@@ -210,7 +210,7 @@ export const practices: Record<PracticeId, Practice> = {
     shortTitle: "복구검증",
     tagline: "사고 시 실제 복구 가능한지 매월 검증·증빙",
     description:
-      'Acronis Cyber Protect 인증 파트너로서 백업·DR·EDR을 운영하지만, 진짜 가치는 단순 백업이 아니라 "사고 시 실제 복구 가능한지를 검증"하는 데 있습니다. 월간 복구 테스트 리포트, RTO/RPO 기준표, 랜섬웨어 24시간 대응 절차, 중요 시스템별 복구 우선순위, 백업 무결성 검증 결과를 정기적으로 산출합니다.',
+      'Acronis Cyber Protect 인증 파트너로 백업·DR·EDR을 운영합니다. 다만 저희가 파는 것은 단순 백업이 아니라 "사고 시 실제 복구 가능한지"를 검증하는 일입니다. 월간 복구 테스트 리포트, RTO/RPO 기준표, 랜섬웨어 24시간 대응 절차, 중요 시스템별 복구 우선순위, 백업 무결성 검증 결과를 정기적으로 산출합니다.',
     pillars: [
       {
         title: "월간 복구 테스트 리포트",
@@ -290,7 +290,7 @@ export const certifications: Certification[] = [
   },
   {
     name: "ISO/IEC 27001",
-    desc: "정보보안 경영 시스템 (ISMS-P 인증 후 단계적 추진 검토)",
+    desc: "정보보안 경영 시스템 (ISMS-P 인증을 받은 뒤 단계를 나눠 검토)",
     status: "preparing",
     targetMilestone: "2027 H1 검토",
   },
@@ -389,7 +389,7 @@ export const leadership: LeaderProfile[] = [
       "공공·정부출연연구기관 10여 곳의 Citrix Virtual Apps and Desktops · Omnissa Horizon 기반 VDI를 " +
       "다년간 설계·구축·운영·유지보수해 왔습니다. 접속장애, FSLogix/프로파일, UAG·NetScaler, 인증서, " +
       "스토리지·네트워크 병목, Acronis·Vinchin 백업 복구검증까지 운영 현장에서 실제로 터지는 문제를 패턴으로 분류해 " +
-      "같은 기준으로 대응합니다. N²SF 등 공공기관 보안환경 이해를 바탕으로 보고서·증빙 산출물도 함께 작성합니다.",
+      "같은 기준으로 대응합니다. N²SF 등 공공기관 보안환경 이해를 바탕으로 보고서·증빙 산출물도 작성합니다.",
     expertise: [
       "Citrix Virtual Apps and Desktops",
       "Citrix NetScaler / Gateway",
@@ -471,13 +471,13 @@ export const customers: Customer[] = [
     anonymizedLabel: "중앙행정 데이터 기관",
     note: "통계정보원(Kosii) SDC 통계데이터센터 VDI",
     vendor: "Omnissa Horizon / VMware ESXi",
-    userScale: "연구원·전문가·대학교수 ~수백명",
+    userScale: "연구원·전문가·대학교수 수백 명",
     role: "VDI 구축·운영·유지보수 지원 (통계 분석 환경)",
-    solvedRisks: ["전반적인 장애 대응", "VDI단말기 유지보수"],
+    solvedRisks: ["장애 전반 대응", "VDI 단말기 유지보수"],
     deliverables: [
       "월간 운영 리포트",
       "장애 사후 분석 보고서",
-      "PowerCLI기반 스토리지 사용률 대시보드 제공",
+      "PowerCLI 기반 스토리지 사용률 대시보드 제공",
     ],
   },
   {
@@ -510,8 +510,8 @@ export const customers: Customer[] = [
     anonymizedLabel: "정부 출연 국토 연구기관",
     vendor: "Omnissa Horizon · UAG (VMware ESXi)",
     userScale: "약 100~300 연구원",
-    role: "Horizon·UAG 운영·외부접속 운영 안정화",
-    solvedRisks: ["외부접속 운영 안정화", "사용자 환경 운영 표준화"],
+    role: "Horizon·UAG 운영, 외부접속 안정화",
+    solvedRisks: ["외부접속 안정화", "사용자 환경 표준화"],
     deliverables: ["월간 운영 리포트"],
   },
   {
@@ -521,7 +521,7 @@ export const customers: Customer[] = [
     disclosed: false,
     anonymizedLabel: "정부 출연 과학기술정보 연구기관",
     vendor: "Citrix · Omnissa Workspace ONE",
-    userScale: "수백명 규모",
+    userScale: "수백 명 규모",
     role: "멀티 벤더 운영 + 마이그레이션 자문",
     solvedRisks: ["멀티 벤더 호환성", "벤더 정책 변경 및 전환 리스크 검토"],
     deliverables: ["마이그레이션 가이드"],

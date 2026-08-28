@@ -5,7 +5,7 @@ import { company } from "@/lib/site-config";
 export const metadata = {
   alternates: { canonical: "/case-studies" },
   title: "고객사례·수행 경험",
-  description: `${company.name}의 공공·연구기관·민간 기업 VDI 구축·운영·유지보수 지원 사례 — Citrix · Omnissa Horizon · Acronis Cyber Protect 운영장애·복구검증 실수행 경험.`,
+  description: `${company.name}의 공공·연구기관·민간 기업 VDI 구축·운영·유지보수 지원 사례입니다. Citrix, Omnissa Horizon, Acronis Cyber Protect 운영장애·복구검증 실수행 경험을 정리했습니다.`,
 };
 
 interface CaseRow {
@@ -134,7 +134,7 @@ function EmptyState() {
           사례 콘텐츠 준비 중
         </h2>
         <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 max-w-xl mx-auto kr-keep-all">
-          공공·연구기관과 민간 기업의 솔루션 딜리버리 사례를 정리하고 있습니다. 외부 공개 동의를 받은 사례부터 순차적으로 공개됩니다.
+          공공·연구기관과 민간 기업의 솔루션 딜리버리 사례를 정리 중입니다. 외부 공개 동의를 받은 사례부터 차례로 공개합니다.
         </p>
         <div className="bg-gray-50 rounded-xl p-5 mb-6 text-left max-w-md mx-auto">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">예정 사례 5종</p>

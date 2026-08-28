@@ -12,7 +12,7 @@ type Step = "lead" | "questions" | "submitting";
 const ORG_TYPES = [
   { value: "central", label: "중앙행정기관" },
   { value: "local", label: "지방자치단체" },
-  { value: "public-corp", label: "공공기관/공기업" },
+  { value: "public-corp", label: "공공기관·공기업" },
   { value: "agency", label: "소속·산하기관" },
   { value: "private", label: "민간기업" },
   { value: "other", label: "기타" },
@@ -55,7 +55,7 @@ export default function VdiTransitionDiagnosisPage() {
       return;
     }
     if (!organizationName) {
-      setError("기관/회사명을 입력해주세요.");
+      setError("기관·회사명을 입력해주세요.");
       return;
     }
     if (!consent) {
@@ -90,7 +90,7 @@ export default function VdiTransitionDiagnosisPage() {
           },
         }),
       });
-      if (!leadRes.ok) throw new Error("리드 생성 실패");
+      if (!leadRes.ok) throw new Error("정보 저장에 실패했습니다. 이메일 주소를 확인하고 다시 시도해 주세요.");
       const lead = await leadRes.json();
 
       const runRes = await fetch("/api/tools/vdi-role/run", {
@@ -98,19 +98,19 @@ export default function VdiTransitionDiagnosisPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lead_id: lead.id, input: answers }),
       });
-      if (!runRes.ok) throw new Error("진단 실행 실패");
+      if (!runRes.ok) throw new Error("진단 실행에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       const result = await runRes.json();
 
       const reportRes = await fetch(
         `/api/reports/${result.tool_run_id}/generate`,
         { method: "POST" }
       );
-      if (!reportRes.ok) throw new Error("리포트 생성 실패");
+      if (!reportRes.ok) throw new Error("리포트 생성에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       const report = await reportRes.json();
 
       router.push(`/reports/${report.access_token}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "오류가 발생했습니다.");
+      setError(err instanceof Error ? err.message : "처리 중 문제가 생겼습니다. 잠시 후 다시 시도해 주세요.");
       setStep("questions");
     }
   }
@@ -176,7 +176,7 @@ export default function VdiTransitionDiagnosisPage() {
                 VDI 역할 재정의 진단
               </h1>
               <p className="text-sm text-gray-500 mt-0.5">
-                9개 질문 · 약 2분 · 4가지 전환 시나리오 중 추천
+                9개 문항 · 약 2분 · 4가지 전환 시나리오 중 추천
               </p>
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function VdiTransitionDiagnosisPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    기관/회사명 <span className="text-red-500">*</span>
+                    기관·회사명 <span className="text-red-500">*</span>
                   </label>
                   <input
                     type="text"
@@ -300,7 +300,7 @@ export default function VdiTransitionDiagnosisPage() {
               type="submit"
               className="w-full py-3 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition"
             >
-              진단 시작하기 →
+              진단 시작하기
             </button>
           </form>
         )}
@@ -309,7 +309,7 @@ export default function VdiTransitionDiagnosisPage() {
           <div className="space-y-5">
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-6">
               <p className="text-sm text-gray-500 kr-keep-all">
-                현재 VDI 환경에 대한 9개 질문에 답해주세요. 답변에 따라 4가지 전환
+                현재 VDI 환경을 묻는 9개 문항에 답해주세요. 답변에 따라 4가지 전환
                 시나리오 중 가장 적합한 결과를 도출합니다.
               </p>
               {VDI_ROLE_QUESTIONS.map((q, i) => renderQuestion(q, i))}
@@ -321,7 +321,7 @@ export default function VdiTransitionDiagnosisPage() {
                 onClick={() => setStep("lead")}
                 className="flex-1 py-3 border border-gray-300 bg-white text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
               >
-                ← 이전
+                이전
               </button>
               <button
                 type="button"
@@ -344,7 +344,7 @@ export default function VdiTransitionDiagnosisPage() {
               VDI 역할 재정의 분석 중...
             </p>
             <p className="text-sm text-gray-500 mt-2">
-              4가지 전환 시나리오 중 최적 유형을 산출하고 있습니다.
+              4가지 전환 시나리오 중 최적 유형을 산출합니다.
             </p>
           </div>
         )}

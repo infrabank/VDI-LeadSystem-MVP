@@ -4,9 +4,9 @@ import { practicesList } from "@/lib/site-config";
 
 export const metadata = {
   alternates: { canonical: "/n2sf" },
-  title: "N²SF 진단센터 | 정렬 진단·전환 준비도·역할 재정의 통합 허브",
+  title: "N²SF 진단센터: 정렬 진단·전환 준비도·역할 재정의 통합 허브",
   description:
-    "N²SF 정렬 진단(274개 보안통제 매핑)·전환 준비도 진단(Level 1~5)·VDI 역할 재정의 진단·ROI 계산기. 공공·금융 보안 워크스페이스 전환의 모든 진단을 한 곳에서.",
+    "N²SF 정렬 진단(274개 보안통제 매핑)·전환 준비도 진단(Level 1~5)·VDI 역할 재정의 진단·ROI 계산기. 공공·금융 보안 워크스페이스 전환에 필요한 진단을 한 곳에 모았습니다.",
 };
 
 interface ContentItemRow {
@@ -47,7 +47,7 @@ export default async function N2sfHubPage() {
         <div className="max-w-5xl mx-auto px-4 py-20 md:py-24">
           <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/10 border border-white/20 rounded-full text-xs font-semibold mb-6">
             <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse" />
-            2026년 5월 N²SF 시행 예정 — 지금이 준비 시점
+            2026년 5월 N²SF 시행 예정, 준비 기간이 시작됐습니다
           </div>
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold leading-tight">
             N²SF 진단센터
@@ -58,7 +58,7 @@ export default async function N2sfHubPage() {
             N²SF(국가 망 보안체계)는 망분리를 폐지하지 않습니다. 그러나 &ldquo;모든 업무에
             VDI&rdquo;라는 단순 구조는 더 이상 통하지 않습니다. <strong className="text-white">VDI는 끝나는 것이 아니라
             역할이 바뀝니다.</strong> 274개 보안통제 매핑부터 단계적 전환 로드맵까지,
-            공공·금융 기관에 필요한 모든 진단을 무료로 제공합니다.
+            공공·금융 기관에 필요한 진단 4종을 무료로 제공합니다.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3">
@@ -119,7 +119,7 @@ export default async function N2sfHubPage() {
             <FactCard
               date="2025.09.30"
               title="N²SF 1.0 정식판 공개"
-              body="보안통제 280여 개, 정보서비스 모델 11종 — 신규 발주의 사실상 표준."
+              body="보안통제 280여 개와 정보서비스 모델 11종이 공개되어 신규 발주의 사실상 표준이 됐습니다."
             />
             <FactCard
               date="2026.05"
@@ -142,7 +142,7 @@ export default async function N2sfHubPage() {
             기존 VDI 환경의 전환 리스크 체크포인트
           </h2>
           <p className="text-gray-600 mb-8 md:mb-10 max-w-3xl kr-keep-all">
-            아래 5개 항목 중 3개 이상이 해당된다면, 지금 진단을 받아보시는 것을 권합니다.
+            아래 5개 항목 중 3개 이상 해당된다면 지금 진단해 보십시오.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
@@ -150,7 +150,7 @@ export default async function N2sfHubPage() {
               "MFA가 관리자 일부에만 적용되어 있다.",
               "특권 계정이 공용 계정으로 운영되거나 PAM이 없다.",
               "VMware/Citrix 라이선스 갱신 시점이 12개월 이내다.",
-              "사용자가 VDI에 대해 불편을 자주 호소하거나 운영 장애가 잦다.",
+              "사용자가 VDI 사용에 불편을 자주 호소하거나 운영 장애가 잦다.",
               "보안정책 문서가 없거나 오래되어 미운영 상태다.",
             ].map((line, i) => (
               <div
@@ -184,7 +184,7 @@ export default async function N2sfHubPage() {
               href="/tools/risk-assessment"
               tag="N²SF · 8영역 · 28문항"
               title="N²SF 정렬 진단 (v4)"
-              description="274개 보안통제 매핑 · 8영역 28문항 · C/S/O 등급 예비 검토 · 모델 3·8·10 권고. 공공·금융 기관의 N²SF 정렬 현황을 가장 체계적으로 진단합니다."
+              description="274개 보안통제 매핑 · 8영역 28문항 · C/S/O 등급 예비 검토 · 모델 3·8·10 권고. 공공·금융 기관의 N²SF 정렬 현황을 항목별로 진단합니다."
               meta="8개 단계 · 약 7분"
               ctaText="진단 시작"
               primary
@@ -224,7 +224,7 @@ export default async function N2sfHubPage() {
       <section className="bg-gray-50 border-y border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-center kr-keep-all">
-            진단 후, 4가지 상품 중 하나로
+            진단 후, 네 가지 상품 가운데 맞는 것으로
           </h2>
           <p className="text-gray-600 mb-8 md:mb-10 text-center max-w-2xl mx-auto kr-keep-all">
             자가 진단 결과 + 대표 인터뷰 후 환경에 맞는 상품으로 이어드립니다. 작업량이 아니라 리스크 기준 단가입니다.

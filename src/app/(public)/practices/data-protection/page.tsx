@@ -105,7 +105,7 @@ export default function DataProtectionPage() {
                 백업이 돌아간다는 것과 사고 시 실제 복구가 가능하다는 것은 다른 문제입니다.
                 서버·PC·NAS는 Acronis Cyber Protect로, 가상화 VM은 Vinchin Backup &amp; Recovery로 보호하고,
                 그 위에 매월 복구 시연·RTO/RPO 기준표·랜섬웨어 24시간 대응 절차·무결성 검증 결과를
-                정기적으로 산출합니다. 단순 리셀러보다 한 단계 위의 가치를 제공합니다.
+                정기적으로 산출합니다. 라이선스만 공급하는 리셀러와 달리 복구 가능성을 증빙으로 남깁니다.
               </p>
             </div>
           </div>
@@ -199,7 +199,7 @@ export default function DataProtectionPage() {
           데이터 보호 진단·계산 도구
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
-          7분 자가 진단으로 성숙도 확인, 5필드 입력으로 5년 ROI까지 — 모두 무료.
+          7분 자가 진단으로 성숙도를 확인하고, 5필드 입력으로 5년 ROI까지 산출합니다. 둘 다 무료입니다.
         </p>
         <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
           {/* 자가 진단 */}

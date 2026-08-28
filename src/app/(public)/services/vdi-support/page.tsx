@@ -317,7 +317,8 @@ export default function VdiSupportPage() {
               href={PHONE_TEL}
               className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
             >
-              ☎ {companyLegal.phone}
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              {companyLegal.phone}
             </a>
           </div>
         </div>
@@ -346,7 +347,7 @@ export default function VdiSupportPage() {
             지금 이런 증상이라면, 문의 대상입니다
           </h2>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all mb-8">
-            증상을 클릭하면 확인하는 진단 범위, 자주 있는 원인, 제공 산출물, 문의 시 알려주시면
+            증상을 클릭하면 진단 범위, 자주 있는 원인, 제공 산출물, 문의 시 알려주시면
             좋은 정보를 볼 수 있습니다.
           </p>
           <div className="space-y-3">

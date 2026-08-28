@@ -41,7 +41,7 @@ function resolveGradePreview(
       resolved = "S";
       reason = `${hasPersonal ? "개인정보" : ""}${hasPersonal && hasTrade ? "·" : ""}${hasTrade ? "영업비밀" : ""} 포함으로 S 등급 자동 승계`;
     } else {
-      reason = "일반 정보 — 등급 유지";
+      reason = "일반 정보, 등급 유지";
     }
   } else if (dataGrade === "S") {
     reason = "민감 등급 유지";
@@ -170,7 +170,7 @@ function V4Form() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, name: name || null, company: company || null, source: "diagnostic_v4", consent_marketing: consent }),
       });
-      if (!leadRes.ok) throw new Error("리드 생성 실패");
+      if (!leadRes.ok) throw new Error("정보 저장에 실패했습니다. 이메일 주소를 확인하고 다시 시도해 주세요.");
       const lead = await leadRes.json();
 
       const assessRes = await fetch("/api/tools/risk-assessment/run", {
@@ -178,16 +178,16 @@ function V4Form() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ lead_id: lead.id, input: v4Input, version: "v4" }),
       });
-      if (!assessRes.ok) throw new Error("진단 실행 실패");
+      if (!assessRes.ok) throw new Error("진단 실행에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       const result = await assessRes.json();
 
       const reportRes = await fetch(`/api/reports/${result.tool_run_id}/generate`, { method: "POST" });
-      if (!reportRes.ok) throw new Error("리포트 생성 실패");
+      if (!reportRes.ok) throw new Error("리포트 생성에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       const report = await reportRes.json();
 
       router.push(`/thank-you?report=${report.access_token}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "오류가 발생했습니다.");
+      setError(err instanceof Error ? err.message : "처리 중 문제가 생겼습니다. 잠시 후 다시 시도해 주세요.");
       setStep(TOTAL_STEPS);
     }
   }
@@ -281,7 +281,7 @@ function V4Form() {
           {gradePreview && (
             <div className={`p-3 rounded-lg border text-sm flex items-start gap-2 ${gradePreview.grade === "C" ? "bg-red-50 border-red-200 text-red-800" : gradePreview.grade === "S" ? "bg-orange-50 border-orange-200 text-orange-800" : "bg-emerald-50 border-emerald-200 text-emerald-800"}`}>
               <svg aria-hidden="true" className="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-              <span><strong>선택 결과: {gradePreview.label}</strong> — {gradePreview.reason}</span>
+              <span><strong>선택 결과: {gradePreview.label}</strong> ({gradePreview.reason})</span>
             </div>
           )}
         </div>
@@ -402,8 +402,8 @@ function V4Form() {
               </svg>
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">VDI 보안 준비도 진단</h1>
-              <p className="text-sm text-gray-500 mt-0.5">8개 영역 · 28개 항목 · 약 5~7분 소요</p>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">N²SF 정렬 진단</h1>
+              <p className="text-sm text-gray-500 mt-0.5">8개 영역 · 28개 문항 · 약 5~7분 소요</p>
             </div>
           </div>
 
@@ -414,7 +414,7 @@ function V4Form() {
                 <span className="text-xs font-medium text-gray-500">
                   {step === "lead"
                     ? "기본 정보"
-                    : `Step ${currentStepNum} / ${TOTAL_STEPS} — ${currentStepMeta?.title || ""}`}
+                    : `Step ${currentStepNum} / ${TOTAL_STEPS} · ${currentStepMeta?.title || ""}`}
                 </span>
                 <span className="text-xs font-medium text-blue-600">{progressPercent}%</span>
               </div>
@@ -474,7 +474,7 @@ function V4Form() {
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">회사</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">기관·회사명</label>
                   <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="(주)회사명"
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
                 </div>
@@ -528,8 +528,8 @@ function V4Form() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
-            <p className="text-base sm:text-lg font-semibold text-gray-800 animate-pulse">VDI 보안 준비도 분석 중입니다...</p>
-            <p className="text-sm text-gray-500 mt-2 kr-keep-all">8개 영역 28개 항목을 분석해 맞춤 권고와 솔루션 제안을 생성하고 있습니다.</p>
+            <p className="text-base sm:text-lg font-semibold text-gray-800 animate-pulse">N²SF 정렬 분석 중입니다...</p>
+            <p className="text-sm text-gray-500 mt-2 kr-keep-all">8개 영역 28개 문항을 분석해 맞춤 권고와 솔루션 제안을 만듭니다.</p>
           </div>
         )}
       </div>

@@ -8,7 +8,7 @@ const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/services/acronis-backup" },
-  title: "백업·복구검증 — Acronis·Vinchin 백업·랜섬웨어 대비",
+  title: "백업·복구검증: Acronis·Vinchin 백업·랜섬웨어 대비",
   description:
     "Acronis Cyber Protect로 서버·PC·NAS를, Vinchin Backup & Recovery로 VMware·Hyper-V·Proxmox 등 가상화 VM을 백업하고 사고 시 실제 복구 가능한지 확인합니다. 백업 정책·실패 이력, 방화벽 정책·외부 노출, 계정·원격접속 보안까지 함께 점검하고 보고서로 정리합니다.",
 };
@@ -141,7 +141,8 @@ export default function AcronisBackupPage() {
               href={PHONE_TEL}
               className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
             >
-              ☎ {companyLegal.phone} 바로 통화
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+              {companyLegal.phone} 바로 통화
             </a>
           </div>
         </div>
@@ -169,7 +170,7 @@ export default function AcronisBackupPage() {
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
             엔드포인트와 가상화는 백업 방식이 다릅니다. 서버·PC·NAS는 Acronis로, 가상화 VM은
-            Vinchin으로 — 환경에 맞춰 조합하거나 한쪽만 운영합니다.
+            Vinchin으로 보호하며, 환경에 맞춰 둘을 조합하거나 한쪽만 운영합니다.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {solutions.map((s) => (

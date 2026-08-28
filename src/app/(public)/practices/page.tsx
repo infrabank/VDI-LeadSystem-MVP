@@ -4,7 +4,7 @@ import { practicesList, company } from "@/lib/site-config";
 export const metadata = {
   alternates: { canonical: "/practices" },
   title: "컨설팅 라인",
-  description: `${company.name}의 4가지 컨설팅 라인 — N²SF 전환 사전진단, VDI 역할 재정의, MFA QuickStart, 백업·DR 복구검증. 메인 서비스는 VDI·백업 기술지원·유지보수이며, 본 페이지는 컨설팅·자문 라인 정보입니다.`,
+  description: `${company.name}의 4가지 컨설팅 라인(N²SF 전환 사전진단, VDI 역할 재정의, MFA QuickStart, 백업·DR 복구검증). 메인 서비스는 VDI·백업 기술지원·유지보수이며, 본 페이지는 컨설팅·자문 라인 정보입니다.`,
 };
 
 const colorMap: Record<string, { border: string; bg: string; text: string; dot: string }> = {
@@ -159,7 +159,7 @@ export default function PracticesPage() {
                       ></span>
                       <span>
                         <span className="font-semibold">{pl.title}</span>{" "}
-                        <span className="text-gray-500">— {pl.desc}</span>
+                        <span className="text-gray-500">· {pl.desc}</span>
                       </span>
                     </li>
                   ))}

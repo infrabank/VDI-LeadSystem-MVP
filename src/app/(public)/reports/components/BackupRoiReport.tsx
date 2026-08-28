@@ -272,7 +272,7 @@ export default function BackupRoiReport({ output, lead, date }: Props) {
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
-              <p className="font-semibold text-slate-900">결과를 PDF로 저장</p>
+              <p className="font-semibold text-slate-900">PDF로 저장</p>
               <p className="text-sm text-gray-500 mt-0.5">
                 분석 결과를 PDF 파일로 저장하여 내부 검토 자료로 활용하세요.
               </p>

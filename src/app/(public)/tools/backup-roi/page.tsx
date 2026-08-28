@@ -48,7 +48,7 @@ export default function BackupRoiPage() {
       return;
     }
     if (!company) {
-      setError("기관명을 입력해주세요.");
+      setError("기관·회사명을 입력해주세요.");
       return;
     }
     if (!consent) {
@@ -76,7 +76,7 @@ export default function BackupRoiPage() {
           },
         }),
       });
-      if (!leadRes.ok) throw new Error("리드 생성 실패");
+      if (!leadRes.ok) throw new Error("정보 저장에 실패했습니다. 이메일 주소를 확인하고 다시 시도해 주세요.");
       const lead = await leadRes.json();
 
       // 2. Run backup ROI calculation
@@ -105,13 +105,13 @@ export default function BackupRoiPage() {
         `/api/reports/${result.tool_run_id}/generate`,
         { method: "POST" }
       );
-      if (!reportRes.ok) throw new Error("리포트 생성 실패");
+      if (!reportRes.ok) throw new Error("리포트 생성에 실패했습니다. 잠시 후 다시 시도해 주세요.");
       const report = await reportRes.json();
 
       // 4. Redirect to report
       router.push(`/reports/${report.access_token}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : "오류가 발생했습니다.");
+      setError(err instanceof Error ? err.message : "처리 중 문제가 생겼습니다. 잠시 후 다시 시도해 주세요.");
       setStep("input");
     }
   }
@@ -408,7 +408,7 @@ export default function BackupRoiPage() {
                 type="submit"
                 className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-emerald-700 to-teal-700 text-white rounded-xl hover:shadow-md hover:scale-[1.01] active:scale-[0.99] font-semibold text-base transition flex items-center justify-center gap-2"
               >
-                ROI 분석 실행
+                계산 실행
                 <svg aria-hidden="true"
                   className="w-5 h-5"
                   fill="none"
@@ -449,7 +449,7 @@ export default function BackupRoiPage() {
               </div>
             </div>
             <p className="text-base sm:text-lg font-semibold text-gray-800 kr-keep-all">
-              백업 ROI를 분석하고 있습니다...
+              백업 ROI를 분석 중입니다...
             </p>
             <p className="text-sm text-gray-500 mt-2">
               시나리오별 5년 TCO 비교 + 리포트 생성 중

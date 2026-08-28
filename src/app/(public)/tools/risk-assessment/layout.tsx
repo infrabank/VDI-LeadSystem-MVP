@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { company } from "@/lib/site-config";
 import { ToolExplainer } from "../ToolExplainer";
 
-const title = "N²SF 정렬 진단 — 7분 자가 진단";
+const title = "N²SF 정렬 진단: 7분 자가 진단";
 const description =
   "공공·연구기관의 기존 VDI·망분리·MFA·백업 환경을 N²SF 기준으로 정렬 진단합니다. " +
   "7분 자가 진단 후 5가지 산출물(VDI 유지/축소/전환 1차 검토 의견·C/S/O 등급 예비 분류·MFA 보완 지점·백업/DR 보완 지점·1쪽 요약 PDF)을 무료 제공.";

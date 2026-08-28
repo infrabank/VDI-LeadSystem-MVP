@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     absolute: "Citrix·Omnissa Horizon VDI 기술지원·전산 유지보수 | 마이로켓",
   },
   description:
-    "공공기관·연구기관 가상 데스크톱(VDI)을 구축·운영·유지보수해 온 엔지니어가 " +
+    "공공기관·연구기관의 가상 데스크톱(VDI)을 구축·운영·유지보수해 온 엔지니어가 " +
     "서버·네트워크·백업까지 기업 전산환경 전체를 관리합니다. " +
     "Citrix·Omnissa Horizon VDI 기술지원, Acronis·Vinchin 백업 복구검증.",
 };
@@ -336,7 +336,7 @@ export default function HomePage() {
       <section id="issues" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <h2 className="h-base font-bold text-gray-900 mb-3 kr-keep-all">
-            운영 현장에서 실제로 마주치는 문제를 대응합니다
+            운영 현장에서 실제로 마주치는 문제에 대응합니다
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
             증상만 알려주시면 됩니다. 원인 구분부터 조치·재발 방지까지 정리해 드립니다.
@@ -376,11 +376,11 @@ export default function HomePage() {
       <section id="engagements" className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <h2 className="h-lead text-gray-900 mb-4 kr-keep-all">
-            공공기관·연구기관 VDI를 수행해 왔습니다
+            공공기관·연구기관 VDI를 맡아 왔습니다
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            중앙행정기관·정부출연연구기관의 VDI 구축·운영·유지보수 지원과 함께,
-            민간 중소기업의 전산 통합 유지보수를 수행 중입니다.
+            중앙행정기관·정부출연연구기관의 VDI 구축·운영·유지보수를 지원합니다.
+            민간 중소기업의 전산 통합 유지보수도 맡고 있습니다.
           </p>
 
           {/* 카테고리별 수행 현황 */}
@@ -462,7 +462,7 @@ export default function HomePage() {
           </div>
 
           <p className="mt-6 text-xs sm:text-sm text-gray-500 kr-keep-all">
-            기관명은 외부 표기 동의를 확인한 곳만 정식 명칭으로 표기합니다. 그 외에는 익명으로 표기합니다.
+            기관명은 외부 표기 동의를 확인한 곳만 정식 명칭으로 적습니다. 그 외에는 익명으로 표기합니다.
           </p>
         </div>
       </section>
@@ -474,7 +474,7 @@ export default function HomePage() {
             유지보수는 이렇게 운영합니다
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            월간 점검, 장애 대응, 운영 개선, 복구검증까지 네 가지 축으로 운영하고 결과는 보고서로 남깁니다.
+            월간 점검, 장애 대응, 운영 개선, 복구검증까지 네 가지 축으로 진행하고 결과는 보고서로 남깁니다.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-12 md:mb-14">
@@ -515,7 +515,7 @@ export default function HomePage() {
             기술 파트너십과 검증 가능한 자격
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            다루는 솔루션의 공식 파트너십과 벤더 공식 기술자격을 인증번호까지 공개합니다.
+            다루는 솔루션의 파트너십과 벤더 기술자격을 인증번호까지 공개합니다.
           </p>
 
           {/* 자격을 문장으로만 적지 않고 실물 인증서를 그대로 보여준다.

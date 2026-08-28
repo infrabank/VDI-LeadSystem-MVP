@@ -86,7 +86,7 @@ export function LeaderCard({ leader }: { leader: LeaderProfile }) {
               </a>
             )}
             {isPlaceholder && (
-              <span className="text-gray-600">슬롯 — 향후 채워질 예정</span>
+              <span className="text-gray-600">슬롯 (향후 채울 예정)</span>
             )}
           </div>
         </div>
