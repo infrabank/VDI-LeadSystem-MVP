@@ -171,7 +171,7 @@ export default function BackupReadinessDiagnosisPage() {
     const val = answers[q.id] || "";
     return (
       <div key={q.id} className="space-y-1.5">
-        <label className="block text-sm font-medium text-slate-700">
+        <label className="block text-sm font-medium text-gray-700">
           {q.label}
           {q.required && <span className="text-red-500 ml-0.5">*</span>}
         </label>
@@ -179,7 +179,7 @@ export default function BackupReadinessDiagnosisPage() {
         <select
           value={val}
           onChange={(e) => setAnswer(q.id, e.target.value)}
-          className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+          className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
         >
           <option value="">선택하세요</option>
           {q.options?.map((opt) => (
@@ -195,7 +195,7 @@ export default function BackupReadinessDiagnosisPage() {
   const currentSection = SECTIONS.find((s) => s.id === step);
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-b from-emerald-50 to-white border-b border-emerald-100">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
@@ -214,7 +214,7 @@ export default function BackupReadinessDiagnosisPage() {
               <h1 className="text-xl md:text-2xl font-bold text-slate-900 kr-keep-all">
                 백업·사이버복원력 자가 진단
               </h1>
-              <p className="text-sm text-slate-500 mt-0.5">
+              <p className="text-sm text-gray-500 mt-0.5">
                 Acronis 기반 통합 보호 — 7영역 25문항 · 약 7분
               </p>
             </div>
@@ -223,7 +223,7 @@ export default function BackupReadinessDiagnosisPage() {
           {step !== "submitting" && (
             <div className="mt-4">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-xs font-medium text-slate-500">
+                <span className="text-xs font-medium text-gray-500">
                   {step === "lead"
                     ? "기관 정보"
                     : `${currentSectionIdx + 1}/${SECTION_ORDER.length} ${currentSection?.title || ""}`}
@@ -232,7 +232,7 @@ export default function BackupReadinessDiagnosisPage() {
                   {progressPercent}%
                 </span>
               </div>
-              <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full transition-all duration-500"
                   style={{ width: `${progressPercent}%` }}
@@ -252,12 +252,12 @@ export default function BackupReadinessDiagnosisPage() {
 
         {step === "lead" && (
           <form onSubmit={handleLeadSubmit} className="space-y-5">
-            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-base md:text-lg text-slate-900 kr-keep-all">기관 정보 입력</h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     기관명 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -265,18 +265,18 @@ export default function BackupReadinessDiagnosisPage() {
                     value={organizationName}
                     onChange={(e) => setOrganizationName(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     placeholder="예: 한국OO공단"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     기관 유형
                   </label>
                   <select
                     value={organizationType}
                     onChange={(e) => setOrganizationType(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
                   >
                     <option value="">선택</option>
                     {ORG_TYPES.map((o) => (
@@ -290,26 +290,26 @@ export default function BackupReadinessDiagnosisPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     이름
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     placeholder="홍길동"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     부서
                   </label>
                   <input
                     type="text"
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     placeholder="정보화기획팀"
                   />
                 </div>
@@ -317,7 +317,7 @@ export default function BackupReadinessDiagnosisPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     이메일 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -325,26 +325,26 @@ export default function BackupReadinessDiagnosisPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     연락처
                   </label>
                   <input
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                     placeholder="02-0000-0000"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   관심 분야 (다중 선택 가능)
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -358,7 +358,7 @@ export default function BackupReadinessDiagnosisPage() {
                         className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
                           selected
                             ? "border-emerald-700 bg-emerald-50 text-emerald-800"
-                            : "border-slate-300 bg-white text-slate-600 hover:bg-slate-50"
+                            : "border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
                         }`}
                       >
                         {opt.label}
@@ -369,26 +369,26 @@ export default function BackupReadinessDiagnosisPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   상담 희망 내용 (선택)
                 </label>
                 <textarea
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={2}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none"
                   placeholder="현재 백업 환경의 고민이나 상담받고 싶은 주제를 자유롭게 적어주세요."
                 />
               </div>
 
-              <label className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 cursor-pointer hover:bg-emerald-50 hover:border-emerald-200 transition-colors">
+              <label className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-emerald-50 hover:border-emerald-200 transition-colors">
                 <input
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                   className="mt-0.5 w-4 h-4 accent-emerald-700 cursor-pointer"
                 />
-                <span className="text-sm text-slate-700">
+                <span className="text-sm text-gray-700">
                   진단 결과 제공 및 상담 안내를 위한 개인정보 수집·이용에 동의합니다.{" "}
                   <span className="text-red-500">*</span>
                 </span>
@@ -406,12 +406,12 @@ export default function BackupReadinessDiagnosisPage() {
 
         {step !== "lead" && step !== "submitting" && currentSection && (
           <div className="space-y-5">
-            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <div>
                 <h2 className="font-semibold text-base md:text-lg text-slate-900 kr-keep-all">
                   {currentSection.title}
                 </h2>
-                <p className="text-sm text-slate-500 mt-0.5">
+                <p className="text-sm text-gray-500 mt-0.5">
                   {currentSection.description}
                 </p>
               </div>
@@ -422,7 +422,7 @@ export default function BackupReadinessDiagnosisPage() {
               <button
                 type="button"
                 onClick={handlePrev}
-                className="flex-1 py-3 border border-slate-300 bg-white text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-colors"
+                className="flex-1 py-3 border border-gray-300 bg-white text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
               >
                 ← 이전
               </button>
@@ -443,10 +443,10 @@ export default function BackupReadinessDiagnosisPage() {
               <div className="absolute inset-0 rounded-full border-4 border-emerald-100" />
               <div className="absolute inset-0 rounded-full border-4 border-emerald-700 border-t-transparent animate-spin" />
             </div>
-            <p className="text-base sm:text-lg font-semibold text-slate-800 kr-keep-all">
+            <p className="text-base sm:text-lg font-semibold text-gray-800 kr-keep-all">
               백업·사이버복원력 수준을 분석하고 있습니다...
             </p>
-            <p className="text-sm text-slate-500 mt-2">
+            <p className="text-sm text-gray-500 mt-2">
               7개 영역 점수 산출 + 개선 우선순위 리포트 생성 중
             </p>
           </div>

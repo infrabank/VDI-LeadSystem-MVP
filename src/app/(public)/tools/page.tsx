@@ -73,8 +73,8 @@ export default function ToolsPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
+      <section className="bg-slate-900 border-b border-slate-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Tools · Free
           </p>
@@ -84,7 +84,7 @@ export default function ToolsPage() {
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
             6가지 무료 진단·계산으로 현재 환경의 빈틈을 짚고, 담당자 보고용
-            PDF 리포트를 받습니다. 별도 가입 없이 이메일만으로 — 정식 판단은
+            PDF 리포트를 받습니다. 별도 가입 없이 이메일만으로 이용할 수 있으며, 정식 판단은
             후속 인터뷰에서 확정합니다.
           </p>
         </div>

@@ -31,7 +31,7 @@ export default function PublicLayout({
 
             {/* Technical Support */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+              <p className="text-xs font-semibold text-gray-600 uppercase tracking-widest mb-4">
                 Services
               </p>
               <ul className="space-y-2.5 text-sm">
@@ -79,7 +79,7 @@ export default function PublicLayout({
                   </Link>
                 </li>
                 <li>
-                  <Link href="/partners" className="text-gray-500 hover:text-amber-700 transition-colors text-xs">
+                  <Link href="/partners" className="text-gray-500 hover:text-amber-800 transition-colors text-xs">
                     SI 파트너 협업 →
                   </Link>
                 </li>
@@ -88,7 +88,7 @@ export default function PublicLayout({
 
             {/* Company */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+              <p className="text-xs font-semibold text-gray-600 uppercase tracking-widest mb-4">
                 Company
               </p>
               <ul className="space-y-2.5 text-sm">
@@ -117,7 +117,7 @@ export default function PublicLayout({
                     SAP 포털
                   </Link>
                   <span className="text-gray-300 mx-2 text-xs">·</span>
-                  <Link href="/admin/login" className="text-amber-600 hover:text-amber-700 transition-colors text-xs">
+                  <Link href="/admin/login" className="text-amber-700 hover:text-amber-800 transition-colors text-xs">
                     관리자
                   </Link>
                 </li>
@@ -126,7 +126,7 @@ export default function PublicLayout({
 
             {/* Contact */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">
+              <p className="text-xs font-semibold text-gray-600 uppercase tracking-widest mb-4">
                 Contact
               </p>
               <p className="text-sm text-gray-500 leading-relaxed mb-4 kr-keep-all">
@@ -182,7 +182,7 @@ export default function PublicLayout({
             </div>
           )}
 
-          <div className="mt-6 pt-4 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-gray-400">
+          <div className="mt-6 pt-4 border-t border-gray-200 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-gray-600">
             <span>&copy; {company.copyrightYear} {company.legalName}. All rights reserved.</span>
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
               <Link href="/legal/privacy" className="text-gray-500 hover:text-blue-600 transition-colors">개인정보 처리방침</Link>

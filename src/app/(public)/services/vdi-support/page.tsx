@@ -15,7 +15,7 @@ const engagements = [
 
 export const metadata: Metadata = {
   alternates: { canonical: "/services/vdi-support" },
-  title: "Citrix·Omnissa Horizon VDI 기술지원 — 접속장애·프로파일·인증서 원인 분석",
+  title: "Citrix·Omnissa Horizon VDI 기술지원: 접속장애·프로파일·인증서 원인 분석",
   description:
     "Citrix VDA 등록 오류, Horizon UAG 접속 오류, FSLogix 로그인 지연, 인증서 교체 후 장애 등 VDI 운영장애의 원인을 사용자 단말부터 스토리지까지 한 기준으로 분석합니다. 공공기관 VDI 기술지원 경험, 장애보고서·작업계획서 작성 가능. 계약 없이 단발 지원 가능.",
 };
@@ -117,7 +117,7 @@ const symptomCases: SymptomCase[] = [
   {
     symptom: "구축업체가 철수했고 기술 문서가 남아 있지 않습니다",
     scope: "현행 구성 역분석(서버·네트워크·인증서·백업), 계정·라이선스 현황, 운영 위험 요소",
-    causes: "—  (장애가 아닌 운영 인수 상황)",
+    causes: "해당 없음 (장애가 아닌 운영 인수 상황)",
     deliverables: "현행 구성도·운영 문서 재작성, 인수 점검 보고서",
     minInfo: "환경 개요(제품·규모), 접근 가능한 계정 범위",
   },
@@ -125,7 +125,7 @@ const symptomCases: SymptomCase[] = [
     symptom: "장애 원인을 벤더·네트워크·서버 업체가 서로 떠넘깁니다",
     scope: "사용자 단말부터 스토리지까지 전체 흐름을 한 기준으로 재현·구간 분리",
     causes: "복합 원인(어느 한 업체 관점에서는 정상으로 보이는 경우)",
-    deliverables: "구간별 판정 근거를 담은 장애보고서 — 책임 구간을 데이터로 구분",
+    deliverables: "구간별 판정 근거를 담은 장애보고서로 책임 구간을 데이터로 구분",
     minInfo: "각 업체가 확인한 내용, 재현 조건",
   },
 ];
@@ -297,13 +297,13 @@ export default function VdiSupportPage() {
             구분하고 조치 방향을 정리합니다.
           </p>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all mb-10 max-w-2xl border-l-2 border-blue-400/60 pl-4">
-            SI 프로젝트 협업, VDI 운영 고객사 장애 대응, 프로젝트 단위 기술지원 —
+            SI 프로젝트 협업, VDI 운영 고객사 장애 대응, 프로젝트 단위 기술지원에서
             장애보고서·작업계획서·완료보고서를 제출할 수 있습니다.
           </p>
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
               href="/contact?source=vdi-support&interest=vdi&subject=VDI 장애 원인 상담"
-              className="px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold shadow-sm transition-all"
+              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
             >
               VDI 장애 원인 상담
             </Link>
@@ -596,9 +596,6 @@ export default function VdiSupportPage() {
       {/* CTA */}
       <section className="bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
-          <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            문의
-          </p>
           <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4 kr-keep-all">
             VDI 장애, 제품·버전·증상만 보내주세요
           </h2>

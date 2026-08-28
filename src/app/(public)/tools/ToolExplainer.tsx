@@ -272,21 +272,21 @@ export function ToolExplainer({ slug }: { slug: ToolSlug }) {
   };
 
   return (
-    <section className="bg-white border-t border-slate-200">
+    <section className="bg-white border-t border-gray-200">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
       />
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-12 md:py-16">
         <h2 className="text-xl md:text-2xl font-bold text-slate-900">{c.heading}</h2>
-        <p className="mt-3 text-sm md:text-base text-slate-600 leading-relaxed">{c.lead}</p>
+        <p className="mt-3 text-sm md:text-base text-gray-600 leading-relaxed">{c.lead}</p>
 
         <h3 className="mt-10 text-base font-semibold text-slate-900">진단이 확인하는 항목</h3>
         <dl className="mt-4 space-y-4">
           {c.covers.map((item) => (
-            <div key={item.title} className="border-l-2 border-slate-200 pl-4">
+            <div key={item.title} className="border-l-2 border-gray-200 pl-4">
               <dt className="text-sm font-medium text-slate-900">{item.title}</dt>
-              <dd className="mt-1 text-sm text-slate-600 leading-relaxed">{item.desc}</dd>
+              <dd className="mt-1 text-sm text-gray-600 leading-relaxed">{item.desc}</dd>
             </div>
           ))}
         </dl>
@@ -294,7 +294,7 @@ export function ToolExplainer({ slug }: { slug: ToolSlug }) {
         <h3 className="mt-10 text-base font-semibold text-slate-900">결과로 받는 것</h3>
         <ul className="mt-3 space-y-2">
           {c.outputs.map((o) => (
-            <li key={o} className="text-sm text-slate-600 leading-relaxed">
+            <li key={o} className="text-sm text-gray-600 leading-relaxed">
               {o}
             </li>
           ))}
@@ -303,7 +303,7 @@ export function ToolExplainer({ slug }: { slug: ToolSlug }) {
         <h3 className="mt-10 text-base font-semibold text-slate-900">이런 경우에 씁니다</h3>
         <ul className="mt-3 space-y-2">
           {c.audience.map((a) => (
-            <li key={a} className="text-sm text-slate-600 leading-relaxed">
+            <li key={a} className="text-sm text-gray-600 leading-relaxed">
               {a}
             </li>
           ))}
@@ -314,7 +314,7 @@ export function ToolExplainer({ slug }: { slug: ToolSlug }) {
           {c.faq.map((f) => (
             <div key={f.q}>
               <p className="text-sm font-medium text-slate-900">{f.q}</p>
-              <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">{f.a}</p>
+              <p className="mt-1.5 text-sm text-gray-600 leading-relaxed">{f.a}</p>
             </div>
           ))}
         </div>

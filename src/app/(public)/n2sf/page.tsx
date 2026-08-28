@@ -32,12 +32,12 @@ export default async function N2sfHubPage() {
   const items: ContentItemRow[] = (contents as ContentItemRow[]) || [];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gray-50">
       {/* Breadcrumb */}
       <div className="bg-slate-900 border-b border-slate-700">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-slate-400">
           <Link href="/" className="hover:text-blue-300">홈</Link>
-          <span className="mx-2 text-slate-600">/</span>
+          <span className="mx-2 text-gray-600">/</span>
           <span className="text-slate-200 font-medium">N²SF 진단센터</span>
         </div>
       </div>
@@ -82,35 +82,35 @@ export default async function N2sfHubPage() {
       </section>
 
       {/* 1인 전문가 신뢰 스트립 */}
-      <section className="bg-white border-b border-slate-200">
+      <section className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-5">
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-blue-50 to-white border border-blue-100">
               <p className="text-2xl sm:text-3xl font-bold text-blue-700 mb-1">10<span className="text-base sm:text-lg">+</span></p>
               <p className="text-xs sm:text-sm font-semibold text-slate-900 mb-0.5 kr-keep-all">공공·연구기관 VDI 구축·운영·유지보수</p>
-              <p className="text-xs text-slate-500 kr-keep-all">중앙행정·정부 출연 연구기관 다수 구축·운영·유지보수 지원</p>
+              <p className="text-xs text-gray-500 kr-keep-all">중앙행정·정부 출연 연구기관 다수 구축·운영·유지보수 지원</p>
             </div>
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-indigo-50 to-white border border-indigo-100">
               <p className="text-sm font-bold text-indigo-700 uppercase tracking-widest mb-1.5">대표 직접 책임</p>
               <p className="text-xs sm:text-sm font-semibold text-slate-900 mb-0.5 kr-keep-all">대표 엔지니어가 직접 진단·자문</p>
-              <p className="text-xs text-slate-500 kr-keep-all">SI·보안 파트너가 제안에 바로 붙일 수 있는 산출물</p>
+              <p className="text-xs text-gray-500 kr-keep-all">SI·보안 파트너가 제안에 바로 붙일 수 있는 산출물</p>
             </div>
             <div className="text-center sm:text-left p-4 sm:p-5 rounded-xl bg-gradient-to-br from-emerald-50 to-white border border-emerald-100">
               <p className="text-sm font-bold text-emerald-700 uppercase tracking-widest mb-1.5">검증 파트너 컨소시엄</p>
               <p className="text-xs sm:text-sm font-semibold text-slate-900 mb-0.5 kr-keep-all">구축은 검증된 파트너와 함께</p>
-              <p className="text-xs text-slate-500 kr-keep-all">진단·설계는 대표 직접 책임, 구축은 파트너 분담</p>
+              <p className="text-xs text-gray-500 kr-keep-all">진단·설계는 대표 직접 책임, 구축은 파트너 분담</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Market Change Summary */}
-      <section className="bg-white border-b border-slate-200">
+      <section className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             시장은 이미 움직이고 있습니다
           </h2>
-          <p className="text-slate-600 mb-8 md:mb-10 max-w-3xl kr-keep-all">
+          <p className="text-gray-600 mb-8 md:mb-10 max-w-3xl kr-keep-all">
             정부 정책, 라이선스 구조, 클라우드 진입 절차 모두 동시에 변화 중입니다.
             &lsquo;갱신만 하면 되겠지&rsquo;라는 가정이 가장 위험합니다.
           </p>
@@ -136,12 +136,12 @@ export default async function N2sfHubPage() {
       </section>
 
       {/* Risk Checkpoints */}
-      <section className="bg-slate-50">
+      <section className="bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
             기존 VDI 환경의 전환 리스크 체크포인트
           </h2>
-          <p className="text-slate-600 mb-8 md:mb-10 max-w-3xl kr-keep-all">
+          <p className="text-gray-600 mb-8 md:mb-10 max-w-3xl kr-keep-all">
             아래 5개 항목 중 3개 이상이 해당된다면, 지금 진단을 받아보시는 것을 권합니다.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -155,12 +155,12 @@ export default async function N2sfHubPage() {
             ].map((line, i) => (
               <div
                 key={i}
-                className="flex items-start gap-3 p-4 bg-white rounded-xl border border-slate-200 shadow-sm"
+                className="flex items-start gap-3 p-4 bg-white rounded-xl border border-gray-200 shadow-sm"
               >
                 <span className="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center text-xs font-bold">
                   !
                 </span>
-                <p className="text-sm text-slate-700 leading-relaxed">{line}</p>
+                <p className="text-sm text-gray-700 leading-relaxed">{line}</p>
               </div>
             ))}
           </div>
@@ -168,12 +168,12 @@ export default async function N2sfHubPage() {
       </section>
 
       {/* Four Diagnosis Tools */}
-      <section className="bg-white border-y border-slate-200">
+      <section className="bg-white border-y border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-center">
             진단 도구 4종
           </h2>
-          <p className="text-slate-600 mb-8 md:mb-10 text-center max-w-2xl mx-auto kr-keep-all">
+          <p className="text-gray-600 mb-8 md:mb-10 text-center max-w-2xl mx-auto kr-keep-all">
             N²SF 정렬부터 VDI 운영 ROI까지, 공공·금융 보안 책임자를 위한 룰 기반 진단 도구입니다.
             이메일·기관 정보 외에 별도 가입은 필요하지 않습니다.
           </p>
@@ -221,12 +221,12 @@ export default async function N2sfHubPage() {
       </section>
 
       {/* 진단 후 4상품 연결 */}
-      <section className="bg-slate-50 border-y border-slate-200">
+      <section className="bg-gray-50 border-y border-gray-200">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
           <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-center kr-keep-all">
             진단 후, 4가지 상품 중 하나로
           </h2>
-          <p className="text-slate-600 mb-8 md:mb-10 text-center max-w-2xl mx-auto kr-keep-all">
+          <p className="text-gray-600 mb-8 md:mb-10 text-center max-w-2xl mx-auto kr-keep-all">
             자가 진단 결과 + 대표 인터뷰 후 환경에 맞는 상품으로 이어드립니다. 작업량이 아니라 리스크 기준 단가입니다.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
@@ -234,11 +234,11 @@ export default async function N2sfHubPage() {
               <Link
                 key={p.id}
                 href={p.href}
-                className="block p-4 sm:p-5 bg-white rounded-xl border border-slate-200 hover:border-blue-300 hover:shadow-sm transition-all"
+                className="block p-4 sm:p-5 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all"
               >
                 <p className="text-[10px] font-bold uppercase tracking-widest text-blue-700 mb-1.5">{p.brand}</p>
                 <h3 className="text-base font-bold text-slate-900 mb-1 kr-keep-all">{p.title}</h3>
-                <p className="text-xs text-slate-500 kr-keep-all leading-relaxed">{p.tagline}</p>
+                <p className="text-xs text-gray-500 kr-keep-all leading-relaxed">{p.tagline}</p>
               </Link>
             ))}
           </div>
@@ -252,12 +252,12 @@ export default async function N2sfHubPage() {
 
       {/* Content Cards */}
       {items.length > 0 && (
-        <section className="bg-slate-50">
+        <section className="bg-gray-50">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 mb-3">
               먼저 알고 싶다면
             </h2>
-            <p className="text-slate-600 mb-8 md:mb-10 max-w-3xl kr-keep-all">
+            <p className="text-gray-600 mb-8 md:mb-10 max-w-3xl kr-keep-all">
               N²SF 정책의 핵심, 제로트러스트가 VDI에 미치는 영향, VDI의 재배치 시나리오를
               짧게 정리했습니다.
             </p>
@@ -266,13 +266,13 @@ export default async function N2sfHubPage() {
                 <Link
                   key={c.slug}
                   href={`/insights/${c.slug}`}
-                  className="block p-4 sm:p-6 bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all"
+                  className="block p-4 sm:p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all"
                 >
                   <h3 className="text-base font-bold text-slate-900 mb-2 leading-snug">
                     {c.title}
                   </h3>
                   {c.excerpt && (
-                    <p className="text-sm text-slate-600 leading-relaxed line-clamp-3">
+                    <p className="text-sm text-gray-600 leading-relaxed line-clamp-3">
                       {c.excerpt}
                     </p>
                   )}
@@ -327,10 +327,10 @@ function FactCard({
   body: string;
 }) {
   return (
-    <div className="p-5 bg-white rounded-xl border border-slate-200 shadow-sm">
+    <div className="p-5 bg-white rounded-xl border border-gray-200 shadow-sm">
       <p className="text-xs font-bold text-blue-700 mb-2">{date}</p>
       <h3 className="text-base font-bold text-slate-900 mb-2">{title}</h3>
-      <p className="text-sm text-slate-600 leading-relaxed">{body}</p>
+      <p className="text-sm text-gray-600 leading-relaxed">{body}</p>
     </div>
   );
 }
@@ -365,7 +365,7 @@ function DiagnosisCta({
         {tag}
       </p>
       <h3 className={`text-base sm:text-lg font-bold mb-3 ${primary ? "text-white" : "text-slate-900"}`}>{title}</h3>
-      <p className={`text-sm leading-relaxed mb-3 ${primary ? "text-blue-100" : "text-slate-600"}`}>{description}</p>
+      <p className={`text-sm leading-relaxed mb-3 ${primary ? "text-blue-100" : "text-gray-600"}`}>{description}</p>
       <p className={`text-xs mb-4 ${primary ? "text-blue-200" : "text-slate-400"}`}>{meta}</p>
       <span className={`inline-flex items-center gap-2 text-sm font-semibold ${primary ? "text-white" : "text-blue-700"}`}>
         {ctaText} →

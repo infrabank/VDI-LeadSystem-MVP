@@ -114,7 +114,7 @@ function ThankYouContent() {
         </div>
 
         {/* Disclaimer */}
-        <div className="mt-6 p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600">
+        <div className="mt-6 p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600">
           <strong>본 진단은 N²SF 적절성 평가의 사전 준비도 측정 도구입니다.</strong> 국가정보원 보안성 검토는 별도의 외부 절차이며, 본 진단 결과로 대체될 수 없습니다.
         </div>
       </div>

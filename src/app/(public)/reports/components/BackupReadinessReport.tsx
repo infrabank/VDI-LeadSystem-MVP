@@ -37,7 +37,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
     : new Date().toLocaleDateString("ko-KR");
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gray-50">
       {/* ── 헤더 ── */}
       <div className="bg-gradient-to-b from-emerald-50 to-white border-b border-emerald-200">
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-8">
@@ -46,10 +46,10 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
               <h1 className="text-2xl font-bold text-slate-900 break-keep">
                 백업·사이버복원력 진단 리포트
               </h1>
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-gray-500 mt-1">
                 생성일: {displayDate}
                 {orgDisplay !== "-" && (
-                  <span className="ml-2 px-2 py-0.5 bg-slate-100 text-slate-600 rounded-md text-xs font-medium">
+                  <span className="ml-2 px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">
                     {orgDisplay}
                   </span>
                 )}
@@ -66,11 +66,11 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
 
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
         {/* ── 1. Executive Summary ── */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 md:p-6">
-          <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
             종합 진단 요약
           </h2>
-          <p className="text-sm text-slate-700 leading-relaxed break-keep">
+          <p className="text-sm text-gray-700 leading-relaxed break-keep">
             {output.summary}
           </p>
 
@@ -100,7 +100,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
             {/* Level 설명 */}
             <div className="flex-1 min-w-[200px] bg-emerald-50 border border-emerald-200 rounded-lg p-3">
               <p className="text-xs text-emerald-700 font-medium">현재 단계 해설</p>
-              <p className="text-sm text-slate-800 mt-1 leading-relaxed break-keep">
+              <p className="text-sm text-gray-800 mt-1 leading-relaxed break-keep">
                 {output.level_description}
               </p>
             </div>
@@ -108,7 +108,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
         </div>
 
         {/* ── 2. 영역별 점수 (7개 섹션, 가로 막대) ── */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 md:p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">영역별 점수</h2>
           <div className="space-y-3">
             {output.sections.map((sec) => {
@@ -123,7 +123,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
               return (
                 <div key={sec.id}>
                   <div className="flex justify-between items-baseline mb-1 gap-2">
-                    <span className="text-sm font-medium text-slate-700 break-keep">
+                    <span className="text-sm font-medium text-gray-700 break-keep">
                       {sec.title}
                     </span>
                     <div className="flex items-center gap-2 flex-shrink-0">
@@ -133,7 +133,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
                       <span className="text-sm font-semibold text-slate-900">{sec.score}점</span>
                     </div>
                   </div>
-                  <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div
                       className={`h-full ${barColor} rounded-full transition-all`}
                       style={{ width: `${sec.score}%` }}
@@ -147,13 +147,13 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
 
         {/* ── 3. 최우선 개선 영역 (top_recommendations 최대 3개) ── */}
         {output.top_recommendations.length > 0 && (
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 md:p-6">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
             <h2 className="text-lg font-bold text-slate-900 mb-4">최우선 개선 영역</h2>
             <div className="space-y-3">
               {output.top_recommendations.slice(0, 3).map((rec, i) => (
                 <div
                   key={rec.area}
-                  className="border border-slate-200 border-l-4 border-l-emerald-400 rounded-lg p-4"
+                  className="border border-gray-200 border-l-4 border-l-emerald-400 rounded-lg p-4"
                 >
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
                     <span className="flex-shrink-0 w-6 h-6 bg-emerald-50 text-emerald-700 rounded-full flex items-center justify-center text-xs font-bold border border-emerald-200">
@@ -163,7 +163,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
                       {rec.areaTitle}
                     </span>
                   </div>
-                  <p className="text-sm font-semibold text-slate-800 break-keep mb-1.5">
+                  <p className="text-sm font-semibold text-gray-800 break-keep mb-1.5">
                     {rec.headline}
                   </p>
                   <div className="flex items-start gap-1.5 bg-teal-50 border border-teal-200 rounded-md p-2.5">
@@ -181,7 +181,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
         )}
 
         {/* ── 4. 다음 단계 ── */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 md:p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">다음 단계</h2>
           <ol className="space-y-2">
             {output.next_steps.map((step, i) => (
@@ -189,18 +189,18 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
                 <span className="flex-shrink-0 w-6 h-6 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center text-xs font-bold border border-emerald-200 mt-0.5">
                   {i + 1}
                 </span>
-                <p className="text-sm text-slate-700 leading-relaxed break-keep pt-0.5">{step}</p>
+                <p className="text-sm text-gray-700 leading-relaxed break-keep pt-0.5">{step}</p>
               </li>
             ))}
           </ol>
         </div>
 
         {/* ── PDF 저장 ── */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-4 md:p-6 print:hidden">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-semibold text-slate-900">결과를 PDF로 저장</p>
-              <p className="text-sm text-slate-500 mt-0.5">
+              <p className="text-sm text-gray-500 mt-0.5">
                 진단 결과를 PDF 파일로 저장하여 내부 회의 자료로 활용하세요.
               </p>
             </div>

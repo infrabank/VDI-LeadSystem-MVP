@@ -106,8 +106,8 @@ const stageItems: {
       "SI 컨소시엄 안에서 N²SF·VDI 기술 파트 보강 (수주 후 자문·PMO·검수). 사전 검토·미팅 동행은 공동 영업으로 진행",
     href: "/partners",
     borderColor: "#475569",
-    textColor: "text-slate-700",
-    badgeBg: "bg-slate-100",
+    textColor: "text-gray-700",
+    badgeBg: "bg-gray-100",
   },
 ];
 
@@ -115,8 +115,8 @@ export default function PracticesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
+      <section className="bg-slate-900 border-b border-slate-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Consulting Lines
           </p>
@@ -250,7 +250,7 @@ export default function PracticesPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/tools/risk-assessment"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm sm:text-base shadow-sm shadow-blue-200 transition-all hover:-translate-y-0.5"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-sm shadow-amber-200/70 transition-all hover:-translate-y-0.5"
             >
               N²SF 전환 사전진단
             </Link>

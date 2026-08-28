@@ -777,7 +777,7 @@ function V4Form() {
           <>
             <RiskAssessmentIntro />
           <form onSubmit={handleLeadSubmit} className="space-y-5">
-            <div className="p-3 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-600 kr-keep-all">
+            <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600 kr-keep-all">
               <strong>본 진단은 VDI 환경의 보안 준비도를 자가 점검하는 도구입니다.</strong> 공식 보안성 검토를 대체하지 않으며, 결과는 솔루션 권고를 위한 참고 자료로 활용됩니다.
             </div>
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">

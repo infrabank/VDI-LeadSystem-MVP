@@ -260,7 +260,7 @@ export default function AcronisCyberProtectPage() {
               <div className="flex flex-wrap items-center gap-3 text-sm">
                 <Link
                   href="/contact?source=acronis-product&interest=acronis&subject=Acronis Cyber Protect 도입 문의"
-                  className="px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold shadow-sm transition-all"
+                  className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
                 >
                   도입·견적 문의
                 </Link>

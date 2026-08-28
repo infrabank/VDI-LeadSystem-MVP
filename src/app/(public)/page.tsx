@@ -51,7 +51,6 @@ const heroFacts: string[] = [
 
 /* ---------- 사업 영역 4 ---------- */
 const businessAreas: {
-  no: string;
   title: string;
   oneLiner: string;
   items: string[];
@@ -59,7 +58,6 @@ const businessAreas: {
   linkLabel: string;
 }[] = [
   {
-    no: "01",
     title: "가상 데스크톱(VDI) 구축·기술지원",
     oneLiner: "Citrix·Omnissa Horizon 전문 영역",
     items: [
@@ -72,7 +70,6 @@ const businessAreas: {
     linkLabel: "VDI 기술지원 보기",
   },
   {
-    no: "02",
     title: "전산 통합 유지보수",
     oneLiner: "서버부터 PC까지 정기 점검·장애 대응",
     items: [
@@ -85,7 +82,6 @@ const businessAreas: {
     linkLabel: "유지보수 서비스 보기",
   },
   {
-    no: "03",
     title: "백업·복구검증",
     oneLiner: "백업 성공이 아니라 실제 복구 가능성을 확인",
     items: [
@@ -98,7 +94,6 @@ const businessAreas: {
     linkLabel: "백업·복구검증 보기",
   },
   {
-    no: "04",
     title: "서버·네트워크·방화벽 관리",
     oneLiner: "기업 인프라 핵심을 점검·관리",
     items: [
@@ -181,103 +176,112 @@ const siCollaboration: string[] = [
   "제안·견적 단계 기술 검토 지원, 제안서 기술지원 파트너 참여",
 ];
 
+/* ---------- 아이콘 ---------- */
+function ArrowRight({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
+    </svg>
+  );
+}
+
+function PhoneIcon({ className = "w-4 h-4" }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+    </svg>
+  );
+}
+
 export default function HomePage() {
   return (
     <div>
-      {/* ========== S1. Hero ========== */}
+      {/* ========== S1. Hero + 방문자 경로 분기 ==========
+          경로 카드를 별도 섹션으로 두면 "문의하라" 직후에 "당신은 셋 중 누구냐"로
+          재분류를 요구하게 되므로, 첫 화면 안에서 한 번에 분기시킨다. */}
       <section className="bg-slate-900">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-28">
-          <p className="inline-flex items-center gap-2 text-slate-300 font-semibold text-xs sm:text-sm mb-5 sm:mb-6 tracking-wider">
-            <span className="w-3 sm:w-4 h-px bg-slate-400 inline-block" />
-            VDI 기술지원 · 전산 통합 유지보수 · 백업 복구검증
-          </p>
-          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 sm:mb-8 leading-[1.15] kr-keep-all">
-            VDI 구축·기술지원부터<br />
-            전산 통합 유지보수까지
-          </h1>
-          <p className="text-base sm:text-lg text-slate-200 mb-6 sm:mb-7 max-w-2xl leading-relaxed kr-keep-all">
-            중앙행정기관·정부출연연구기관의 가상 데스크톱(VDI) 환경을 구축·운영·유지보수해 온
-            엔지니어가 서버·네트워크·백업까지 기업 전산환경 전체를 관리합니다.
-          </p>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            <div className="lg:col-span-7">
+              <h1 className="text-display text-4xl sm:text-5xl md:text-6xl font-semibold text-white mb-6 sm:mb-8 leading-[1.12] kr-keep-all">
+                VDI 구축·기술지원부터<br />
+                전산 통합 유지보수까지
+              </h1>
+              <p className="text-base sm:text-lg text-slate-200 mb-6 sm:mb-7 max-w-2xl leading-relaxed kr-keep-all">
+                중앙행정기관·정부출연연구기관의 가상 데스크톱(VDI) 환경을 구축·운영·유지보수해 온
+                엔지니어가 서버·네트워크·백업까지 기업 전산환경 전체를 관리합니다.
+              </p>
 
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 mb-8 sm:mb-10 text-sm text-slate-300">
-            {heroFacts.map((fact) => (
-              <li key={fact} className="flex items-center gap-2 kr-keep-all">
-                <span className="w-1 h-1 rounded-full bg-blue-400 inline-block flex-shrink-0" />
-                {fact}
-              </li>
-            ))}
-          </ul>
+              <ul className="flex flex-wrap gap-x-5 gap-y-2 mb-8 sm:mb-10 text-sm text-slate-300">
+                {heroFacts.map((fact) => (
+                  <li key={fact} className="flex items-center gap-2 kr-keep-all">
+                    <span className="w-1 h-1 rounded-full bg-blue-400 inline-block flex-shrink-0" aria-hidden="true" />
+                    {fact}
+                  </li>
+                ))}
+              </ul>
 
-          <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
-            <Link
-              href="/contact?source=home-hero&subject=유지보수·기술지원 상담 문의"
-              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5 text-center"
-            >
-              유지보수·기술지원 문의
-            </Link>
-            <a
-              href={PHONE_TEL}
-              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base transition-all text-center"
-            >
-              ☎ {PHONE_DISPLAY} 바로 통화
-            </a>
-          </div>
-
-          <p className="text-xs sm:text-sm text-slate-400 mt-5">
-            문의 후 1영업일 내 회신 · 상담만 받아도 됩니다
-          </p>
-        </div>
-      </section>
-
-      {/* ========== 방문자 3경로 분기 ========== */}
-      <section className="bg-white border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 kr-keep-all">
-            어떤 도움이 필요하신가요?
-          </h2>
-          <p className="text-sm text-gray-600 mb-8 kr-keep-all">
-            세 가지 중 해당하는 경로를 선택하면 필요한 정보와 상담 창구로 바로 연결됩니다.
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
-            {visitorPaths.map((path) => (
-              <div
-                key={path.title}
-                className="flex flex-col p-5 sm:p-6 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all"
-              >
-                <p className="text-xs font-semibold text-blue-700 mb-1.5 kr-keep-all">
-                  {path.audience}
-                </p>
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-3 kr-keep-all">
-                  {path.title}
-                </h3>
-                <ul className="space-y-1.5 text-sm text-gray-600 mb-5 flex-1 kr-keep-all">
-                  {path.bullets.map((b) => (
-                    <li key={b} className="flex gap-2">
-                      <span className="text-blue-500 flex-shrink-0">·</span>
-                      <span>{b}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <Link
-                  href={path.href}
-                  className="inline-flex items-center justify-center px-4 py-2.5 bg-slate-900 text-white rounded-md hover:bg-slate-800 text-sm font-semibold transition-colors mb-2.5"
+                  href="/contact?source=home-hero&subject=유지보수·기술지원 상담 문의"
+                  className="px-6 sm:px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-[0_8px_20px_-6px_rgba(120,53,15,0.55)] hover:-translate-y-0.5 text-center"
                 >
-                  {path.cta}
+                  유지보수·기술지원 문의
                 </Link>
-                <p className="text-[11px] text-gray-400 leading-relaxed kr-keep-all">
-                  {path.afterClick}
-                </p>
+                <a
+                  href={PHONE_TEL}
+                  className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base text-center"
+                >
+                  <PhoneIcon className="w-4 h-4" />
+                  {PHONE_DISPLAY} 바로 통화
+                </a>
               </div>
-            ))}
+
+              <p className="text-xs sm:text-sm text-slate-300 mt-5">
+                문의 후 1영업일 내 회신 · 상담만 받아도 됩니다
+              </p>
+            </div>
+
+            <div className="lg:col-span-5">
+              <p className="text-sm font-semibold text-slate-300 mb-4 kr-keep-all">
+                어떤 도움이 필요하신가요?
+              </p>
+              <div className="space-y-2.5">
+                {visitorPaths.map((path) => (
+                  <Link
+                    key={path.title}
+                    href={path.href}
+                    className="group block rounded-lg border border-white/15 bg-white/[0.07] p-4 sm:p-5 hover:bg-white/[0.13] hover:border-white/35"
+                  >
+                    <p className="text-[11px] font-semibold text-blue-300 mb-1 kr-keep-all">
+                      {path.audience}
+                    </p>
+                    <p className="text-base font-bold text-white mb-1.5 kr-keep-all">
+                      {path.title}
+                    </p>
+                    <p className="text-xs text-slate-300 leading-relaxed kr-keep-all">
+                      {path.bullets[0]}
+                    </p>
+                    <span className="mt-3 inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300">
+                      {path.cta}
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+              <p className="mt-4 text-[11px] text-slate-400 leading-relaxed kr-keep-all">
+                {visitorPaths[0].afterClick}
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ========== 공식 파트너 스트립 ========== */}
+      {/* ========== 공식 파트너 스트립 ==========
+          로고 노출은 여기 한 번으로 끝내고, S6은 인증서 실물과 자격 정보만 다룬다. */}
       <section className="bg-gray-50/60 border-b border-gray-100">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-          <p className="text-[11px] font-semibold text-gray-400 tracking-widest text-center mb-4">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-7 sm:py-9">
+          <p className="text-xs font-semibold text-gray-500 tracking-widest text-center mb-5">
             공식 파트너
           </p>
           <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4">
@@ -291,10 +295,7 @@ export default function HomePage() {
       {/* ========== S2. 사업 영역 ========== */}
       <section id="business" className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            사업 영역
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base font-bold text-gray-900 mb-3 kr-keep-all">
             무엇을 맡길 수 있는지 확인하세요
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
@@ -304,10 +305,9 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
             {businessAreas.map((area) => (
               <div
-                key={area.no}
+                key={area.title}
                 className="flex flex-col bg-white rounded-xl border border-gray-200 p-6 sm:p-7"
               >
-                <p className="text-xs font-bold text-blue-700 tracking-widest mb-3">{area.no}</p>
                 <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1.5 kr-keep-all">
                   {area.title}
                 </h3>
@@ -324,7 +324,7 @@ export default function HomePage() {
                   href={area.href}
                   className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:translate-x-0.5 transition-transform mt-auto"
                 >
-                  {area.linkLabel} →
+                  {area.linkLabel} <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             ))}
@@ -335,10 +335,7 @@ export default function HomePage() {
       {/* ========== S3. 대응하는 문제 ========== */}
       <section id="issues" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            운영 현장 문제
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base font-bold text-gray-900 mb-3 kr-keep-all">
             운영 현장에서 실제로 마주치는 문제를 대응합니다
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
@@ -369,7 +366,7 @@ export default function HomePage() {
               href="/contact?source=home-issues&subject=전산환경 점검 문의"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:translate-x-0.5 transition-transform"
             >
-              현재 증상 상담하기 →
+              현재 증상 상담하기 <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -378,10 +375,7 @@ export default function HomePage() {
       {/* ========== S4. 수행 실적 ========== */}
       <section id="engagements" className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            수행 실적
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-lead text-gray-900 mb-4 kr-keep-all">
             공공기관·연구기관 VDI를 수행해 왔습니다
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
@@ -417,19 +411,19 @@ export default function HomePage() {
                 <dl className="space-y-1.5 text-xs sm:text-[13px]">
                   {c.vendor && (
                     <div className="flex gap-2">
-                      <dt className="text-gray-400 flex-shrink-0 w-8">벤더</dt>
+                      <dt className="text-gray-500 flex-shrink-0 w-8">벤더</dt>
                       <dd className="text-gray-700 kr-keep-all">{c.vendor}</dd>
                     </div>
                   )}
                   {c.userScale && (
                     <div className="flex gap-2">
-                      <dt className="text-gray-400 flex-shrink-0 w-8">규모</dt>
+                      <dt className="text-gray-500 flex-shrink-0 w-8">규모</dt>
                       <dd className="text-gray-700 kr-keep-all">{c.userScale}</dd>
                     </div>
                   )}
                   {c.role && (
                     <div className="flex gap-2">
-                      <dt className="text-gray-400 flex-shrink-0 w-8">역할</dt>
+                      <dt className="text-gray-500 flex-shrink-0 w-8">역할</dt>
                       <dd className="text-gray-700 kr-keep-all">{c.role}</dd>
                     </div>
                   )}
@@ -476,20 +470,16 @@ export default function HomePage() {
       {/* ========== S5. 유지보수 운영 방식 ========== */}
       <section id="maintenance" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            유지보수 운영 방식
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base font-bold text-gray-900 mb-3 kr-keep-all">
             유지보수는 이렇게 운영합니다
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
-            월간 점검, 장애 대응, 운영 개선, 복구검증 — 네 가지 축으로 운영하고 결과는 보고서로 남깁니다.
+            월간 점검, 장애 대응, 운영 개선, 복구검증까지 네 가지 축으로 운영하고 결과는 보고서로 남깁니다.
           </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 mb-12 md:mb-14">
             {maintenancePackages.map((pkg) => (
               <div key={pkg.id} className="p-5 sm:p-6 bg-white rounded-xl border border-gray-200">
-                <p className="text-xs font-bold text-blue-700 tracking-widest mb-3">{pkg.no}</p>
                 <h3 className="text-base font-bold text-gray-900 mb-2 kr-keep-all">{pkg.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed kr-keep-all">
                   {pkg.lines.join(" ")}
@@ -521,46 +511,63 @@ export default function HomePage() {
       {/* ========== S6. 파트너십·기술자격 ========== */}
       <section id="partnership" className="scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            파트너십 · 기술자격
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-lead text-gray-900 mb-4 kr-keep-all">
             기술 파트너십과 검증 가능한 자격
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-10 md:mb-12 leading-relaxed kr-keep-all">
             다루는 솔루션의 공식 파트너십과 벤더 공식 기술자격을 인증번호까지 공개합니다.
           </p>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 mb-8">
-            {partnerships.map((p) => (
-              <PartnerBadge key={p.name} partner={p} />
-            ))}
-          </div>
+          {/* 자격을 문장으로만 적지 않고 실물 인증서를 그대로 보여준다.
+              파트너 로고는 히어로 직후 스트립에서 이미 노출하므로 여기서 반복하지 않는다. */}
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-5 md:gap-7 items-start">
+            <figure className="lg:col-span-3 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-[0_1px_2px_rgba(16,24,40,0.05),0_12px_28px_-16px_rgba(16,24,40,0.25)]">
+              <Image
+                src="/credentials/vinchin-vbtp.jpg"
+                alt="Vinchin Backup Technology Professional 인증서 실물"
+                width={1400}
+                height={884}
+                sizes="(min-width: 1024px) 600px, 100vw"
+                className="w-full h-auto"
+              />
+              <figcaption className="px-4 sm:px-5 py-3 text-xs text-gray-600 border-t border-gray-200 kr-keep-all">
+                벤더가 직접 발급한 인증서 원본입니다. 인증번호로 조회할 수 있습니다.
+              </figcaption>
+            </figure>
 
-          {vbtp && (
-            <div className="p-5 sm:p-6 bg-white rounded-xl border border-gray-200 flex flex-col sm:flex-row sm:items-start gap-4 sm:gap-6">
-              <div className="flex-shrink-0">
-                <span className="inline-block px-3 py-1.5 bg-slate-900 text-white rounded-md text-sm font-bold tracking-wide">
-                  {vbtp.code}
-                </span>
-              </div>
-              <div className="min-w-0">
-                <h3 className="text-base font-bold text-gray-900 mb-1 kr-keep-all">{vbtp.name}</h3>
-                <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-3">{vbtp.desc}</p>
-                <p className="text-xs text-gray-500 leading-relaxed">
-                  보유자 {vbtp.holder} · 인증번호 {vbtp.certificateId} · 유효기간 {vbtp.validUntil}
-                </p>
-              </div>
+            <div className="lg:col-span-2">
+              {vbtp && (
+                <div className="p-5 sm:p-6 bg-white rounded-xl border border-gray-200">
+                  <span className="inline-block px-3 py-1.5 bg-slate-900 text-white rounded-md text-sm font-bold tracking-wide mb-4">
+                    {vbtp.code}
+                  </span>
+                  <h3 className="text-base font-bold text-gray-900 mb-1.5 kr-keep-all">{vbtp.name}</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-4">{vbtp.desc}</p>
+                  <dl className="space-y-1 text-xs text-gray-600 nums">
+                    <div className="flex gap-2">
+                      <dt className="w-14 flex-shrink-0 text-gray-500">보유자</dt>
+                      <dd className="text-gray-800">{vbtp.holder}</dd>
+                    </div>
+                    <div className="flex gap-2">
+                      <dt className="w-14 flex-shrink-0 text-gray-500">인증번호</dt>
+                      <dd className="text-gray-800 break-all">{vbtp.certificateId}</dd>
+                    </div>
+                    <div className="flex gap-2">
+                      <dt className="w-14 flex-shrink-0 text-gray-500">유효기간</dt>
+                      <dd className="text-gray-800">{vbtp.validUntil}</dd>
+                    </div>
+                  </dl>
+                </div>
+              )}
+
+              <Link
+                href="/about/certifications"
+                className="group mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:text-blue-800"
+              >
+                인증·파트너십 전체 보기
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
+              </Link>
             </div>
-          )}
-
-          <div className="mt-8">
-            <Link
-              href="/about/certifications"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:translate-x-0.5 transition-transform"
-            >
-              인증·파트너십 전체 보기 →
-            </Link>
           </div>
         </div>
       </section>
@@ -568,10 +575,7 @@ export default function HomePage() {
       {/* ========== S7. 엔지니어 ========== */}
       <section id="engineer" className="bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            엔지니어
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-10 md:mb-12 kr-keep-all">
+          <h2 className="h-sub text-gray-900 mb-8 kr-keep-all">
             상담부터 작업까지, 엔지니어가 직접 합니다
           </h2>
 
@@ -614,7 +618,7 @@ export default function HomePage() {
               href="/about"
               className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-700 hover:translate-x-0.5 transition-transform"
             >
-              회사·엔지니어 소개 보기 →
+              회사·엔지니어 소개 보기 <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -623,10 +627,7 @@ export default function HomePage() {
       {/* ========== S8. SI·통합유지보수 협업 ========== */}
       <section id="si-partners" className="bg-slate-900 scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            SI 파트너 협업
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
+          <h2 className="h-sub text-white mb-4 kr-keep-all">
             전산통합유지보수 사업의 VDI·가상화·백업 영역을 맡습니다
           </h2>
           <p className="text-sm sm:text-base text-slate-200 mb-10 max-w-3xl leading-relaxed kr-keep-all">
@@ -655,7 +656,7 @@ export default function HomePage() {
               href="/partners/integrated-maintenance"
               className="inline-flex items-center justify-center gap-1.5 px-2 py-3 text-sm font-semibold text-blue-300 hover:text-blue-200 transition-colors"
             >
-              협업 구조 자세히 보기 →
+              협업 구조 자세히 보기 <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -664,10 +665,7 @@ export default function HomePage() {
       {/* ========== S9. 문의 ========== */}
       <section id="contact-cta" className="scroll-mt-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-blue-700 font-semibold text-xs sm:text-sm mb-3 tracking-wider">
-            문의
-          </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
+          <h2 className="h-base font-bold text-gray-900 mb-4 kr-keep-all">
             지금 겪는 문제만 말씀해 주세요
           </h2>
           <p className="text-sm sm:text-base text-gray-600 mb-8 max-w-2xl leading-relaxed kr-keep-all">
@@ -677,9 +675,10 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <a
               href={PHONE_TEL}
-              className="px-7 py-3.5 bg-slate-900 text-white rounded-md hover:bg-slate-800 font-semibold text-sm sm:text-base transition-all text-center"
+              className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-slate-900 text-white rounded-md hover:bg-slate-800 font-semibold text-sm sm:text-base text-center"
             >
-              ☎ {PHONE_DISPLAY}
+              <PhoneIcon className="w-4 h-4" />
+              {PHONE_DISPLAY}
             </a>
             <Link
               href="/contact?source=home-bottom"

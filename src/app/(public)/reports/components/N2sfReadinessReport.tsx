@@ -40,16 +40,16 @@ export default function N2sfReadinessReport({ report, lead, output, organization
   const orgDisplay = organizationName || lead?.company || "-";
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-200">
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-gradient-to-b from-slate-50 to-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-8">
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div>
               <h1 className="text-2xl font-bold text-slate-900">N²SF 전환 준비도 진단 리포트</h1>
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-gray-500 mt-1">
                 생성일: {new Date(report.created_at).toLocaleDateString("ko-KR")}
                 {orgDisplay !== "-" && (
-                  <span className="ml-2 px-2 py-0.5 bg-slate-100 text-slate-600 rounded-md text-xs font-medium">
+                  <span className="ml-2 px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">
                     {orgDisplay}
                   </span>
                 )}
@@ -66,11 +66,11 @@ export default function N2sfReadinessReport({ report, lead, output, organization
 
       <div className="max-w-3xl mx-auto px-4 py-8 space-y-6">
         {/* 1. Summary + Score Gauge */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-          <h2 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
             종합 진단 요약
           </h2>
-          <p className="text-sm text-slate-700 leading-relaxed">{output.summary}</p>
+          <p className="text-sm text-gray-700 leading-relaxed">{output.summary}</p>
 
           <div className="mt-5 flex items-center gap-6 flex-wrap">
             <div className="relative flex-shrink-0 w-28 h-28">
@@ -94,9 +94,9 @@ export default function N2sfReadinessReport({ report, lead, output, organization
               </div>
             </div>
 
-            <div className="flex-1 min-w-[200px] bg-slate-50 border border-slate-200 rounded-lg p-3">
-              <p className="text-xs text-slate-500 font-medium">현재 단계 해설</p>
-              <p className="text-sm text-slate-800 mt-1 leading-relaxed">
+            <div className="flex-1 min-w-[200px] bg-gray-50 border border-gray-200 rounded-lg p-3">
+              <p className="text-xs text-gray-500 font-medium">현재 단계 해설</p>
+              <p className="text-sm text-gray-800 mt-1 leading-relaxed">
                 {output.level_description}
               </p>
             </div>
@@ -104,7 +104,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
         </div>
 
         {/* 2. Section Scores */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">영역별 점수</h2>
           <div className="space-y-3">
             {(Object.keys(output.section_scores) as Array<keyof typeof output.section_scores>).map(
@@ -114,12 +114,12 @@ export default function N2sfReadinessReport({ report, lead, output, organization
                 return (
                   <div key={key}>
                     <div className="flex justify-between items-baseline mb-1">
-                      <span className="text-sm font-medium text-slate-700">
+                      <span className="text-sm font-medium text-gray-700">
                         {SECTION_LABELS[key]}
                       </span>
                       <span className="text-sm font-semibold text-slate-900">{v}점</span>
                     </div>
-                    <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                    <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                       <div
                         className={`h-full ${barColor} rounded-full transition-all`}
                         style={{ width: `${v}%` }}
@@ -134,18 +134,18 @@ export default function N2sfReadinessReport({ report, lead, output, organization
 
         {/* 3. Top Risks */}
         {output.top_risks.length > 0 && (
-          <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
             <h2 className="text-lg font-bold text-slate-900 mb-4">핵심 리스크</h2>
             <div className="space-y-3">
               {output.top_risks.map((risk, i) => (
                 <div
                   key={i}
-                  className="flex gap-3 p-3.5 border border-slate-200 border-l-4 border-l-red-400 rounded-lg"
+                  className="flex gap-3 p-3.5 border border-gray-200 border-l-4 border-l-red-400 rounded-lg"
                 >
                   <span className="flex-shrink-0 w-7 h-7 bg-red-50 text-red-600 rounded-full flex items-center justify-center text-sm font-semibold border border-red-100">
                     {i + 1}
                   </span>
-                  <p className="text-sm text-slate-700 leading-relaxed pt-0.5">{risk}</p>
+                  <p className="text-sm text-gray-700 leading-relaxed pt-0.5">{risk}</p>
                 </div>
               ))}
             </div>
@@ -153,18 +153,18 @@ export default function N2sfReadinessReport({ report, lead, output, organization
         )}
 
         {/* 4. Priority Actions */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">우선 개선 과제 (Top 5)</h2>
           <div className="space-y-3">
             {output.priority_actions.map((action, i) => (
               <div
                 key={i}
-                className="flex gap-3 p-3.5 border border-slate-200 border-l-4 border-l-blue-400 rounded-lg"
+                className="flex gap-3 p-3.5 border border-gray-200 border-l-4 border-l-blue-400 rounded-lg"
               >
                 <span className="flex-shrink-0 w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold border border-blue-100">
                   {i + 1}
                 </span>
-                <p className="text-sm text-slate-700 leading-relaxed pt-0.5">{action}</p>
+                <p className="text-sm text-gray-700 leading-relaxed pt-0.5">{action}</p>
               </div>
             ))}
           </div>
@@ -183,7 +183,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
         </div>
 
         {/* 6. Roadmap */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-5">3단계 실행 로드맵</h2>
           <div className="space-y-4">
             {output.roadmap.map((p, idx) => (
@@ -195,13 +195,13 @@ export default function N2sfReadinessReport({ report, lead, output, organization
                     {idx + 1}
                   </div>
                   {idx < output.roadmap.length - 1 && (
-                    <div className="w-0.5 flex-1 bg-slate-200 mt-1" />
+                    <div className="w-0.5 flex-1 bg-gray-200 mt-1" />
                   )}
                 </div>
                 <div className="flex-1 pb-2">
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
                     <h3 className="text-sm font-bold text-slate-900">{p.phase}</h3>
-                    <span className="px-2 py-0.5 bg-slate-100 text-slate-500 rounded-full text-xs">
+                    <span className="px-2 py-0.5 bg-gray-100 text-gray-500 rounded-full text-xs">
                       {p.duration}
                     </span>
                   </div>
@@ -209,7 +209,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
                     {p.goals.map((goal, j) => (
                       <div
                         key={j}
-                        className="flex items-start gap-2 text-sm text-slate-700"
+                        className="flex items-start gap-2 text-sm text-gray-700"
                       >
                         <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 flex-shrink-0" />
                         {goal}
@@ -223,11 +223,11 @@ export default function N2sfReadinessReport({ report, lead, output, organization
         </div>
 
         {/* 7. Next Steps */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">다음 단계</h2>
           <ul className="space-y-2">
             {output.next_steps.map((step, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                 <span className="text-blue-600 font-bold mt-0.5">→</span>
                 {step}
               </li>
@@ -236,11 +236,11 @@ export default function N2sfReadinessReport({ report, lead, output, organization
         </div>
 
         {/* PDF */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 print:hidden">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-semibold text-slate-900">결과를 PDF로 저장</p>
-              <p className="text-sm text-slate-500 mt-0.5">
+              <p className="text-sm text-gray-500 mt-0.5">
                 진단 결과를 PDF 파일로 저장하여 내부 회의 자료로 활용하세요.
               </p>
             </div>

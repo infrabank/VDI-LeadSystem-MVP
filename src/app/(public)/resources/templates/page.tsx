@@ -70,8 +70,8 @@ export default function ResourcesTemplatesPage() {
       />
 
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
+      <section className="bg-slate-900 border-b border-slate-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Resources · Templates
           </p>

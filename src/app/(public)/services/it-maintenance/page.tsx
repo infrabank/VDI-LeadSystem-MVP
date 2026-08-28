@@ -130,7 +130,7 @@ export default function ItMaintenancePage() {
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
               href="/contact?source=it-maintenance&interest=it-maintenance&subject=월간 유지보수 상담"
-              className="px-5 py-2.5 bg-blue-600 text-white rounded-md hover:bg-blue-700 font-semibold shadow-sm transition-all"
+              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
             >
               월간 유지보수 상담
             </Link>

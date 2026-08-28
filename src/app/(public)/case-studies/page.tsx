@@ -35,8 +35,8 @@ export default async function CaseStudiesPage() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-slate-700">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20 text-center">
+      <section className="bg-slate-900 border-b border-slate-800">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Case Studies
           </p>
@@ -153,7 +153,7 @@ function EmptyState() {
           </Link>
           <Link
             href="/insights"
-            className="px-6 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 text-sm font-semibold transition-colors"
+            className="px-6 py-2.5 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 text-sm font-semibold transition-colors"
           >
             관련 인사이트 콘텐츠
           </Link>

@@ -338,7 +338,7 @@ export default async function ContentDetailPage({ params }: Props) {
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
                 <Link
                   href={cta.primaryHref}
-                  className="inline-block px-6 sm:px-7 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5"
+                  className="inline-block px-6 sm:px-7 py-3 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5"
                 >
                   {cta.primaryLabel}
                 </Link>

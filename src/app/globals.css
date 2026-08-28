@@ -1,4 +1,7 @@
 @import "tailwindcss";
+/* Pretendard Variable self-host — @font-face 92개 dynamic subset, public/fonts/pretendard 참조.
+   CDN 선언만 두고 실제로는 시스템 폰트로 폴백되던 문제를 막기 위해 저장소에 동봉한다. */
+@import "./pretendard.css";
 
 @theme inline {
   --color-background: #ffffff;
@@ -8,8 +11,9 @@
   --color-primary-hover: #1841b8;
   --color-border: #e5e7eb;
   --color-border-strong: #d1d5db;
-  --font-sans: "Pretendard Variable", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Consolas, monospace;
+  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
 }
 
 body {
@@ -21,15 +25,51 @@ body {
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  font-feature-settings: "ss01", "ss02", "cv01", "cv11";
 }
 
 /* Display·Hero 헤드라인 — 큰 글자에 더 타이트한 자간, 읽기 균형 */
 .text-display {
-  letter-spacing: -0.025em;
+  letter-spacing: -0.032em;
   text-wrap: balance;
 }
-h1, h2, h3 { letter-spacing: -0.015em; text-wrap: pretty; }
+h1, h2, h3 { letter-spacing: -0.018em; text-wrap: pretty; }
+
+/* 섹션 위계 3단 — 같은 크기 H2가 반복되며 위계가 사라지는 것을 막는다.
+   lead는 페이지의 핵심 주장, base는 일반 섹션, sub는 부가 섹션에 쓴다. */
+.h-lead {
+  font-size: clamp(1.875rem, 1.3rem + 2.4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+}
+.h-base {
+  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 1.875rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+.h-sub {
+  font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* 수치 비교가 목적인 자리(실적 집계, 규모, 금액)에서 자릿수를 고정한다 */
+.nums { font-variant-numeric: tabular-nums; }
+
+/* 브라우저가 기본값으로 칠하는 표면도 팔레트 안으로 들여온다 */
+::selection {
+  background: #dbeafe;
+  color: #101828;
+}
+:root {
+  caret-color: var(--color-primary);
+  scrollbar-color: #cbd5e1 transparent;
+}
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
 
 /* 읽기 전용 컨테이너 폭 (Hashnode style: 680~768px) */
 .reading-prose { max-width: 720px; }
@@ -90,21 +130,44 @@ h1, h2, h3 { letter-spacing: -0.015em; text-wrap: pretty; }
 /* Form focus styles */
 input:focus, select:focus, textarea:focus {
   outline: none;
-  ring: 2px;
   border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
 }
 
-/* Smooth transitions */
-a, button { transition: all 0.15s ease; }
+/* Smooth transitions — 전이 대상을 명시해 불필요한 리페인트를 막는다 */
+a, button {
+  transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease,
+    box-shadow 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* 한국어 단어 단위 줄바꿈 (긴 문장이 어색하게 끊기는 것 방지) */
 .kr-keep-all { word-break: keep-all; overflow-wrap: break-word; }
 
-/* 모바일 터치 타겟: 인터랙티브 요소 최소 44x44 (Apple HIG / WCAG 2.5.5) */
-@media (max-width: 640px) {
-  /* 컨테이너 안의 nav 링크/버튼은 충분한 탭 영역 확보 */
+/* 모바일 터치 타겟: 인터랙티브 요소 최소 44x44 (Apple HIG / WCAG 2.5.5)
+   푸터는 nav가 아니라 ul로 구성돼 있어 nav 선택자만으로는 걸리지 않는다.
+   태블릿 폭(lg 미만)까지 적용하고, 늘어난 높이는 목록 간격을 접어 상쇄한다. */
+@media (max-width: 1023px) {
   nav a, nav button { min-height: 44px; }
+  footer a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  footer li + li { margin-top: 0 !important; }
+  summary { min-height: 44px; }
+  /* 본문 CTA 링크는 inline-flex로 만들어져 있어 높이가 글자 높이에 묶인다.
+     문장 속 인라인 링크는 inline-flex가 아니므로 줄 간격에 영향을 주지 않는다. */
+  main a.inline-flex { min-height: 44px; }
+  main select { min-height: 44px; }
 }
 
 /* 모바일에서 가로 스크롤 가능 영역 표시 */

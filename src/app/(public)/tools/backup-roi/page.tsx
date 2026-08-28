@@ -117,7 +117,7 @@ export default function BackupRoiPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gray-50">
       {/* Hero */}
       <div className="bg-gradient-to-b from-emerald-50 to-white border-b border-emerald-100">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 md:py-10 text-center">
@@ -159,14 +159,14 @@ export default function BackupRoiPage() {
         {step === "input" && (
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Lead Info */}
-            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <h2 className="font-semibold text-lg text-slate-900 kr-keep-all">
                 기관 정보
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     기관명 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -174,19 +174,19 @@ export default function BackupRoiPage() {
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="예: 한국OO공단"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     이름
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="홍길동"
                   />
                 </div>
@@ -194,7 +194,7 @@ export default function BackupRoiPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     이메일 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -202,39 +202,39 @@ export default function BackupRoiPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     부서
                   </label>
                   <input
                     type="text"
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="정보화기획팀"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   연락처
                 </label>
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   placeholder="02-0000-0000"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   관심 분야 (다중 선택 가능)
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -248,7 +248,7 @@ export default function BackupRoiPage() {
                         className={`px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium border transition-colors ${
                           selected
                             ? "border-emerald-700 bg-emerald-50 text-emerald-800"
-                            : "border-slate-300 bg-white text-slate-600 hover:bg-slate-50"
+                            : "border-gray-300 bg-white text-gray-600 hover:bg-gray-50"
                         }`}
                       >
                         {opt.label}
@@ -260,14 +260,14 @@ export default function BackupRoiPage() {
             </div>
 
             {/* ROI Inputs */}
-            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-lg text-slate-900 kr-keep-all">
                 비용 산정 정보
               </h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     임직원 수 <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -277,7 +277,7 @@ export default function BackupRoiPage() {
                       onChange={(e) => setUsers(e.target.value)}
                       required
                       min="1"
-                      className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-10"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-10"
                       placeholder="100"
                     />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
@@ -290,7 +290,7 @@ export default function BackupRoiPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     시간당 업무 중단 비용 <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -301,7 +301,7 @@ export default function BackupRoiPage() {
                       required
                       min="0"
                       step="0.1"
-                      className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-16"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-16"
                       placeholder="100"
                     />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
@@ -316,7 +316,7 @@ export default function BackupRoiPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     데이터 규모 <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -327,7 +327,7 @@ export default function BackupRoiPage() {
                       required
                       min="0.1"
                       step="0.1"
-                      className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-10"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-10"
                       placeholder="10"
                     />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
@@ -340,7 +340,7 @@ export default function BackupRoiPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     연간 백업 비용 <span className="text-red-500">*</span>
                   </label>
                   <div className="relative">
@@ -350,7 +350,7 @@ export default function BackupRoiPage() {
                       onChange={(e) => setAnnualBackupCostKw(e.target.value)}
                       required
                       min="0"
-                      className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-16"
+                      className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-16"
                       placeholder="1500"
                     />
                     <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
@@ -364,7 +364,7 @@ export default function BackupRoiPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
                   연간 다운타임 시간 <span className="text-red-500">*</span>
                 </label>
                 <div className="relative">
@@ -375,7 +375,7 @@ export default function BackupRoiPage() {
                     required
                     min="0"
                     step="0.5"
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-12"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-12"
                     placeholder="24"
                   />
                   <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
@@ -389,15 +389,15 @@ export default function BackupRoiPage() {
             </div>
 
             {/* Consent + Submit */}
-            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-4">
-              <label className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 cursor-pointer hover:bg-emerald-50 hover:border-emerald-200 transition-colors">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
+              <label className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-emerald-50 hover:border-emerald-200 transition-colors">
                 <input
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                   className="mt-0.5 w-4 h-4 accent-emerald-700 cursor-pointer"
                 />
-                <span className="text-sm text-slate-700 kr-keep-all">
+                <span className="text-sm text-gray-700 kr-keep-all">
                   ROI 분석 결과 제공 및 상담 안내를 위한 개인정보 수집·이용에
                   동의합니다.{" "}
                   <span className="text-red-500">*</span>
@@ -448,10 +448,10 @@ export default function BackupRoiPage() {
                 </svg>
               </div>
             </div>
-            <p className="text-base sm:text-lg font-semibold text-slate-800 kr-keep-all">
+            <p className="text-base sm:text-lg font-semibold text-gray-800 kr-keep-all">
               백업 ROI를 분석하고 있습니다...
             </p>
-            <p className="text-sm text-slate-500 mt-2">
+            <p className="text-sm text-gray-500 mt-2">
               시나리오별 5년 TCO 비교 + 리포트 생성 중
             </p>
           </div>

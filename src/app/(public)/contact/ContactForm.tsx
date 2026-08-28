@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
@@ -131,13 +131,20 @@ export default function ContactForm() {
   const [organization, setOrganization] = useState("");
   const [organizationType, setOrganizationType] = useState("");
   const [phone, setPhone] = useState("");
-  const [details, setDetails] = useState<DetailFields>({});
+  // 유형별로 분리 보관한다. 하나의 객체를 공유하면 유형을 바꿀 때 입력을 버려야 한다.
+  const [detailsByType, setDetailsByType] = useState<Record<InquiryType, DetailFields>>({
+    vdi: {},
+    maintenance: {},
+    si: {},
+  });
   const [message, setMessage] = useState("");
   const [consentRequired, setConsentRequired] = useState(false);
   const [consentMarketing, setConsentMarketing] = useState(false);
 
   const [step, setStep] = useState<Step>("form");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
+  const errorBoxRef = useRef<HTMLDivElement>(null);
 
   // 첫 마운트 시 query param으로 유형·메시지 사전 채우기
   useEffect(() => {
@@ -150,25 +157,57 @@ export default function ContactForm() {
 
   const activeType = INQUIRY_TYPES.find((t) => t.value === inquiryType)!;
   const detailDefs = DETAIL_FIELD_DEFS[inquiryType];
+  const details = detailsByType[inquiryType];
 
   function setDetail(key: string, value: string) {
-    setDetails((prev) => ({ ...prev, [key]: value }));
+    setDetailsByType((prev) => ({
+      ...prev,
+      [inquiryType]: { ...prev[inquiryType], [key]: value },
+    }));
   }
 
   function switchType(t: InquiryType) {
     setInquiryType(t);
-    setDetails({}); // 유형 전환 시 상세 필드 초기화 (라벨 의미가 달라짐)
   }
+
+  /** 제출 시점에 전체 필드를 한 번에 검사한다. 조건을 하나씩 끊어 문자열 하나만
+      돌려주면 폼 아래쪽 오류만 보이고 어느 입력이 문제인지 알 수 없다. */
+  function validate(): Record<string, string> {
+    const next: Record<string, string> = {};
+    if (!name.trim()) next.name = "이름을 입력해주세요.";
+    if (!email.trim()) next.email = "이메일을 입력해주세요.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
+      next.email = "이메일 형식을 확인해주세요.";
+    if (!organization.trim()) next.organization = "기관·회사명을 입력해주세요.";
+    if (message.trim().length < 10) next.message = "문의 내용을 10자 이상 입력해주세요.";
+    if (!consentRequired) next.consentRequired = "개인정보 수집·이용 동의가 필요합니다.";
+    return next;
+  }
+
+  const FIELD_ORDER = ["name", "email", "organization", "message", "consentRequired"];
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
-    if (!name.trim()) return setError("이름을 입력해주세요.");
-    if (!email.trim()) return setError("이메일을 입력해주세요.");
-    if (!organization.trim()) return setError("기관·회사명을 입력해주세요.");
-    if (message.trim().length < 10) return setError("문의 내용을 10자 이상 입력해주세요.");
-    if (!consentRequired) return setError("개인정보 수집·이용 동의가 필요합니다 (필수).");
+    const found = validate();
+    setFieldErrors(found);
+    if (Object.keys(found).length > 0) {
+      const firstKey = FIELD_ORDER.find((k) => found[k]);
+      setError(
+        Object.keys(found).length === 1
+          ? found[firstKey!]
+          : `입력을 확인해주세요. ${Object.keys(found).length}개 항목이 남았습니다.`,
+      );
+      const el = firstKey ? document.getElementById(firstKey) : null;
+      if (el) {
+        el.scrollIntoView({ block: "center", behavior: "smooth" });
+        (el as HTMLElement).focus({ preventScroll: true });
+      } else {
+        errorBoxRef.current?.focus();
+      }
+      return;
+    }
 
     // 유형별 상세 필드를 메시지 뒤에 구조화 블록으로 첨부 (API 스키마 변경 없이 전달)
     const detailLines = detailDefs
@@ -241,7 +280,7 @@ export default function ContactForm() {
       {/* 문의 유형 선택 */}
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-2">
-          문의 유형 <span className="text-red-500">*</span>
+          문의 유형 <span className="text-red-600" aria-hidden="true">*</span>
         </label>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
           {INQUIRY_TYPES.map((t) => {
@@ -272,7 +311,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
         <div>
           <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1.5">
-            이름 <span className="text-red-500">*</span>
+            이름 <span className="text-red-600" aria-hidden="true">*</span>
           </label>
           <input
             id="name"
@@ -280,12 +319,19 @@ export default function ContactForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            aria-invalid={!!fieldErrors.name}
+            aria-describedby={fieldErrors.name ? "name-error" : undefined}
+            className={`w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+              fieldErrors.name ? "border-red-400 bg-red-50/50" : "border-gray-300"
+            }`}
           />
+          {fieldErrors.name && (
+            <p id="name-error" className="mt-1.5 text-xs text-red-700">{fieldErrors.name}</p>
+          )}
         </div>
         <div>
           <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1.5">
-            이메일 <span className="text-red-500">*</span>
+            이메일 <span className="text-red-600" aria-hidden="true">*</span>
           </label>
           <input
             id="email"
@@ -293,8 +339,15 @@ export default function ContactForm() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            aria-invalid={!!fieldErrors.email}
+            aria-describedby={fieldErrors.email ? "email-error" : undefined}
+            className={`w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 ${
+              fieldErrors.email ? "border-red-400 bg-red-50/50" : "border-gray-300"
+            }`}
           />
+          {fieldErrors.email && (
+            <p id="email-error" className="mt-1.5 text-xs text-red-700">{fieldErrors.email}</p>
+          )}
         </div>
       </div>
 
@@ -302,7 +355,7 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
         <div>
           <label htmlFor="organization" className="block text-sm font-medium text-gray-700 mb-1.5">
-            기관·회사명 <span className="text-red-500">*</span>
+            기관·회사명 <span className="text-red-600" aria-hidden="true">*</span>
           </label>
           <input
             id="organization"
@@ -310,12 +363,21 @@ export default function ContactForm() {
             value={organization}
             onChange={(e) => setOrganization(e.target.value)}
             required
-            className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-invalid={!!fieldErrors.organization}
+            aria-describedby={fieldErrors.organization ? "organization-error" : undefined}
+            className={`w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+              fieldErrors.organization ? "border-red-400 bg-red-50/50" : "border-gray-300"
+            }`}
           />
+          {fieldErrors.organization && (
+            <p id="organization-error" className="mt-1.5 text-xs text-red-700">
+              {fieldErrors.organization}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor="organizationType" className="block text-sm font-medium text-gray-700 mb-1.5">
-            기관 유형 <span className="text-xs text-gray-400">(선택)</span>
+            기관 유형 <span className="text-xs text-gray-600">(선택)</span>
           </label>
           <select
             id="organizationType"
@@ -333,7 +395,7 @@ export default function ContactForm() {
         </div>
         <div>
           <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1.5">
-            연락처 <span className="text-xs text-gray-400">(선택)</span>
+            연락처 <span className="text-xs text-gray-600">(선택)</span>
           </label>
           <input
             id="phone"
@@ -349,8 +411,8 @@ export default function ContactForm() {
       {/* 문의 내용 */}
       <div>
         <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1.5">
-          문의 내용 <span className="text-red-500">*</span>
-          <span className="ml-2 text-xs text-gray-400">(최소 10자 · 아는 만큼만)</span>
+          문의 내용 <span className="text-red-600" aria-hidden="true">*</span>
+          <span className="ml-2 text-xs text-gray-500">(최소 10자 · 아는 만큼만)</span>
         </label>
         <textarea
           id="message"
@@ -359,16 +421,37 @@ export default function ContactForm() {
           required
           rows={5}
           placeholder={activeType.messagePlaceholder}
-          className="w-full px-3 py-2.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          aria-invalid={!!fieldErrors.message}
+          aria-describedby={fieldErrors.message ? "message-error" : undefined}
+          className={`w-full px-3 py-2.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+            fieldErrors.message ? "border-red-400 bg-red-50/50" : "border-gray-300"
+          }`}
         />
+        {fieldErrors.message && (
+          <p id="message-error" className="mt-1.5 text-xs text-red-700">{fieldErrors.message}</p>
+        )}
       </div>
 
-      {/* 유형별 상세 (전부 선택 항목) */}
-      <div>
-        <p className="text-sm font-medium text-gray-700 mb-1">
-          상세 정보 <span className="text-xs text-gray-400">(선택 — 적어주시면 회신이 빨라집니다)</span>
-        </p>
-        <p className="text-xs text-gray-400 mb-3 kr-keep-all">
+      {/* 유형별 상세 (전부 선택 항목) — 기본 접힘.
+          첫 화면에 필수 5개만 남겨, "아는 것만 적으면 된다"는 안내와 폼을 일치시킨다. */}
+      <details className="rounded-lg border border-gray-200 bg-gray-50/60">
+        <summary className="flex items-center justify-between gap-3 px-4 py-3 cursor-pointer select-none">
+          <span className="text-sm font-medium text-gray-800">
+            상세 정보 <span className="text-xs font-normal text-gray-600">(선택, 적어주시면 회신이 빨라집니다)</span>
+          </span>
+          <svg
+            className="faq-chevron w-4 h-4 text-gray-500 flex-shrink-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+          </svg>
+        </summary>
+        <div className="px-4 pb-4">
+        <p className="text-xs text-gray-600 mb-3 kr-keep-all">
           모르는 항목은 비워두셔도 됩니다. 세부 내용은 회신·통화에서 확인합니다.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
@@ -405,19 +488,28 @@ export default function ContactForm() {
           ))}
         </div>
         {inquiryType === "vdi" && (
-          <p className="text-[11px] text-gray-400 mt-2 kr-keep-all">
+          <p className="text-[11px] text-gray-600 mt-2 kr-keep-all">
             로그·스크린샷·구성도는 접수 후 받으시는 회신 메일에 답장으로 첨부해 주세요.
           </p>
         )}
-      </div>
+        </div>
+      </details>
 
       {/* 동의 — 필수와 선택 분리 (개인정보보호법 준수) */}
       <div className="space-y-2.5">
-        <label className="flex items-start gap-3 p-3 sm:p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
+        <label
+          className={`flex items-start gap-3 p-3 sm:p-4 rounded-lg cursor-pointer transition-colors ${
+            fieldErrors.consentRequired
+              ? "bg-red-50 border border-red-300"
+              : "bg-gray-50 hover:bg-gray-100"
+          }`}
+        >
           <input
+            id="consentRequired"
             type="checkbox"
             checked={consentRequired}
             onChange={(e) => setConsentRequired(e.target.checked)}
+            aria-invalid={!!fieldErrors.consentRequired}
             className="mt-0.5 w-4 h-4 accent-blue-600"
           />
           <span className="text-xs sm:text-sm text-gray-700 leading-relaxed kr-keep-all">
@@ -426,7 +518,7 @@ export default function ContactForm() {
               수집 항목: 이름·이메일·기관명·연락처·문의내용 · 이용 목적: 상담 응대 및 회신
               · 보관 기간: 상담 완료 후 1년
               <span className="block mt-0.5">
-                국외이전: Supabase·Vercel·Resend (미국) — 데이터 저장·호스팅·이메일 발송 위탁.
+                국외이전: Supabase·Vercel·Resend(미국)에 데이터 저장·호스팅·이메일 발송을 위탁합니다.
               </span>
               <span className="block mt-0.5 text-gray-500">
                 정보주체는 동의를 거부할 권리가 있으며, 거부 시 본 폼을 통한 상담 접수가 불가합니다 (이메일{" "}
@@ -458,7 +550,12 @@ export default function ContactForm() {
       </div>
 
       {error && (
-        <div className="px-4 py-3 bg-red-50 border border-red-200 rounded-lg text-sm text-red-700 kr-keep-all">
+        <div
+          ref={errorBoxRef}
+          role="alert"
+          tabIndex={-1}
+          className="px-4 py-3 bg-red-50 border border-red-300 rounded-lg text-sm text-red-800 kr-keep-all"
+        >
           {error}
         </div>
       )}
@@ -466,11 +563,11 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={step === "submitting"}
-        className="w-full px-6 py-3 sm:py-3.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-semibold text-sm sm:text-base shadow-sm shadow-blue-200 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full px-6 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-sm shadow-amber-200/70 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {step === "submitting" ? "전송 중..." : activeType.submitLabel}
       </button>
-      <p className="text-center text-xs text-gray-400 kr-keep-all">
+      <p className="text-center text-xs text-gray-600 kr-keep-all">
         1영업일 내 담당 엔지니어가 직접 회신합니다 · 영업 전화를 돌리지 않습니다
       </p>
     </form>

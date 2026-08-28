@@ -12,6 +12,13 @@ export default function PublicHeader() {
   const [desktopMenu, setDesktopMenu] = useState<string | null>(null);
   const pathname = usePathname();
 
+  /** 현재 보고 있는 메뉴를 표시한다. 자식 경로까지 부모 항목을 활성으로 본다. */
+  const isActive = (href: string) => {
+    const base = href.split("?")[0];
+    if (base === "/") return pathname === "/";
+    return pathname === base || pathname.startsWith(`${base}/`);
+  };
+
   useEffect(() => {
     // 경로 변경 시 모바일 메뉴·데스크톱 드롭다운 자동 닫기 — SPA 라우팅 후 UI 동기화.
     // eslint-disable-next-line react-hooks/set-state-in-effect
@@ -73,10 +80,13 @@ export default function PublicHeader() {
                   href={link.href}
                   aria-haspopup="true"
                   aria-expanded={desktopMenu === link.label}
-                  className={`inline-flex items-center gap-1 whitespace-nowrap transition-colors ${
-                    desktopMenu === link.label
-                      ? "text-blue-700"
-                      : "text-gray-600 hover:text-blue-700"
+                  aria-current={isActive(link.href) ? "page" : undefined}
+                  className={`inline-flex items-center gap-1 whitespace-nowrap border-b-2 pb-0.5 transition-colors ${
+                    isActive(link.href)
+                      ? "text-blue-700 border-blue-600"
+                      : desktopMenu === link.label
+                        ? "text-blue-700 border-transparent"
+                        : "text-gray-600 border-transparent hover:text-blue-700"
                   }`}
                 >
                   {link.label}
@@ -119,25 +129,33 @@ export default function PublicHeader() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-gray-600 hover:text-blue-700 transition-colors whitespace-nowrap"
+                aria-current={isActive(link.href) ? "page" : undefined}
+                className={`border-b-2 pb-0.5 transition-colors whitespace-nowrap ${
+                  isActive(link.href)
+                    ? "text-blue-700 border-blue-600"
+                    : "text-gray-600 border-transparent hover:text-blue-700"
+                }`}
               >
                 {link.label}
               </Link>
             ),
           )}
 
+          {/* 장애 상황에서 가장 먼저 찾는 번호라 노트북 폭(lg)부터 노출한다.
+              lg에서는 아이콘만, xl부터 번호까지 보여 GNB 줄바꿈을 막는다. */}
           <a
             href={PHONE_TEL}
-            className="hidden xl:inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-blue-700 transition-colors whitespace-nowrap"
+            aria-label={`전화 ${companyLegal.phone}`}
+            className="hidden lg:inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-blue-700 transition-colors whitespace-nowrap"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
-            {companyLegal.phone}
+            <span className="hidden xl:inline">{companyLegal.phone}</span>
           </a>
           <Link
             href={ctaLink.href}
-            className="px-4 xl:px-5 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-sm shadow-blue-200 whitespace-nowrap"
+            className="px-4 xl:px-5 py-2 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold transition-colors shadow-sm shadow-amber-200/70 whitespace-nowrap"
           >
             {ctaLink.label}
           </Link>
@@ -147,7 +165,7 @@ export default function PublicHeader() {
         <div className="flex lg:hidden items-center gap-2">
           <Link
             href={ctaLink.href}
-            className="hidden sm:inline-block px-3 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-xs font-semibold shadow-sm shadow-blue-200"
+            className="inline-block px-3 py-2 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 text-xs font-semibold shadow-sm shadow-amber-200/70"
           >
             {ctaLink.shortLabel}
           </Link>
@@ -156,7 +174,7 @@ export default function PublicHeader() {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
             aria-expanded={open}
-            className="p-2 -mr-2 text-gray-700 hover:text-blue-600 transition-colors"
+            className="p-2.5 -mr-2 text-gray-700 hover:text-blue-600 transition-colors"
           >
             {open ? (
               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -211,7 +229,7 @@ export default function PublicHeader() {
               </a>
               <Link
                 href={ctaLink.href}
-                className="mt-2 px-4 py-3 bg-blue-600 text-white rounded-md hover:bg-blue-700 text-center font-semibold shadow-sm shadow-blue-200"
+                className="mt-2 px-4 py-3 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 text-center font-semibold shadow-sm shadow-amber-200/70"
               >
                 {ctaLink.label}
               </Link>
@@ -221,7 +239,7 @@ export default function PublicHeader() {
                   SAP 포털
                 </Link>
                 <span className="text-gray-300">·</span>
-                <Link href="/admin/login" className="text-amber-600 hover:text-amber-700">
+                <Link href="/admin/login" className="text-amber-700 hover:text-amber-800">
                   관리자
                 </Link>
               </div>

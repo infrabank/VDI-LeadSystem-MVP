@@ -119,7 +119,7 @@ export default function VdiTransitionDiagnosisPage() {
     const val = answers[q.id] || "";
     return (
       <div key={q.id} className="space-y-2">
-        <label className="block text-sm font-medium text-slate-700">
+        <label className="block text-sm font-medium text-gray-700">
           <span className="inline-block w-6 h-6 mr-2 text-xs font-bold bg-blue-700 text-white rounded-full text-center leading-6">
             {idx + 1}
           </span>
@@ -138,7 +138,7 @@ export default function VdiTransitionDiagnosisPage() {
                 className={`w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium border transition-colors ${
                   selected
                     ? "border-blue-700 bg-blue-50 text-blue-800"
-                    : "border-slate-300 bg-white text-slate-700 hover:bg-slate-50"
+                    : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
                 }`}
               >
                 {selected && <span className="mr-2 text-blue-700">●</span>}
@@ -152,7 +152,7 @@ export default function VdiTransitionDiagnosisPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-gray-50">
       <div className="bg-gradient-to-b from-blue-50 to-white border-b border-blue-100">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
@@ -175,7 +175,7 @@ export default function VdiTransitionDiagnosisPage() {
               <h1 className="text-xl md:text-2xl font-bold text-slate-900 kr-keep-all">
                 VDI 역할 재정의 진단
               </h1>
-              <p className="text-sm text-slate-500 mt-0.5">
+              <p className="text-sm text-gray-500 mt-0.5">
                 9개 질문 · 약 2분 · 4가지 전환 시나리오 중 추천
               </p>
             </div>
@@ -192,12 +192,12 @@ export default function VdiTransitionDiagnosisPage() {
 
         {step === "lead" && (
           <form onSubmit={handleLeadSubmit} className="space-y-5">
-            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-5">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-base md:text-lg text-slate-900 kr-keep-all">기본 정보</h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     기관/회사명 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -205,18 +205,18 @@ export default function VdiTransitionDiagnosisPage() {
                     value={organizationName}
                     onChange={(e) => setOrganizationName(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="예: 한국OO공단"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     기관 유형
                   </label>
                   <select
                     value={organizationType}
                     onChange={(e) => setOrganizationType(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">선택</option>
                     {ORG_TYPES.map((o) => (
@@ -230,26 +230,26 @@ export default function VdiTransitionDiagnosisPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     이름
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="홍길동"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     부서
                   </label>
                   <input
                     type="text"
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="정보화기획팀"
                   />
                 </div>
@@ -257,7 +257,7 @@ export default function VdiTransitionDiagnosisPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     이메일 <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -265,32 +265,32 @@ export default function VdiTransitionDiagnosisPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="your@email.com"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-700 mb-1.5">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
                     연락처
                   </label>
                   <input
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-slate-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                     placeholder="02-0000-0000"
                   />
                 </div>
               </div>
 
-              <label className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 cursor-pointer hover:bg-blue-50 transition-colors">
+              <label className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-blue-50 transition-colors">
                 <input
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
                   className="mt-0.5 w-4 h-4 accent-blue-700 cursor-pointer"
                 />
-                <span className="text-sm text-slate-700">
+                <span className="text-sm text-gray-700">
                   개인정보 수집·이용에 동의합니다. <span className="text-red-500">*</span>
                 </span>
               </label>
@@ -307,8 +307,8 @@ export default function VdiTransitionDiagnosisPage() {
 
         {step === "questions" && (
           <div className="space-y-5">
-            <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm space-y-6">
-              <p className="text-sm text-slate-500 kr-keep-all">
+            <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-6">
+              <p className="text-sm text-gray-500 kr-keep-all">
                 현재 VDI 환경에 대한 9개 질문에 답해주세요. 답변에 따라 4가지 전환
                 시나리오 중 가장 적합한 결과를 도출합니다.
               </p>
@@ -319,7 +319,7 @@ export default function VdiTransitionDiagnosisPage() {
               <button
                 type="button"
                 onClick={() => setStep("lead")}
-                className="flex-1 py-3 border border-slate-300 bg-white text-slate-700 rounded-xl font-semibold hover:bg-slate-50 transition-colors"
+                className="flex-1 py-3 border border-gray-300 bg-white text-gray-700 rounded-xl font-semibold hover:bg-gray-50 transition-colors"
               >
                 ← 이전
               </button>
@@ -340,10 +340,10 @@ export default function VdiTransitionDiagnosisPage() {
               <div className="absolute inset-0 rounded-full border-4 border-blue-100" />
               <div className="absolute inset-0 rounded-full border-4 border-blue-700 border-t-transparent animate-spin" />
             </div>
-            <p className="text-base sm:text-lg font-semibold text-slate-800 kr-keep-all">
+            <p className="text-base sm:text-lg font-semibold text-gray-800 kr-keep-all">
               VDI 역할 재정의 분석 중...
             </p>
-            <p className="text-sm text-slate-500 mt-2">
+            <p className="text-sm text-gray-500 mt-2">
               4가지 전환 시나리오 중 최적 유형을 산출하고 있습니다.
             </p>
           </div>

@@ -39,7 +39,7 @@ export function RiskAssessmentIntro() {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-200">
+    <section className="bg-gradient-to-b from-slate-50 to-white border-b border-gray-200">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 md:py-14">
         <p className="text-blue-600 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
           N²SF Alignment Diagnosis
@@ -47,7 +47,7 @@ export function RiskAssessmentIntro() {
         <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3 kr-keep-all">
           7분 자가 진단으로 N²SF 정렬 첫 그림을 잡습니다
         </h1>
-        <p className="text-sm sm:text-base text-slate-600 mb-6 md:mb-8 leading-relaxed kr-keep-all max-w-2xl">
+        <p className="text-sm sm:text-base text-gray-600 mb-6 md:mb-8 leading-relaxed kr-keep-all max-w-2xl">
           공공·연구기관의 기존 VDI·망분리·MFA·백업 환경을 N²SF 기준으로 정렬 진단합니다.
           진단 완료 시 다음 5가지 산출물을 무료 PDF 리포트로 받습니다.
         </p>
@@ -56,18 +56,18 @@ export function RiskAssessmentIntro() {
           {deliverables.map((d) => (
             <div
               key={d.no}
-              className="p-3 sm:p-4 bg-white rounded-lg border border-slate-200"
+              className="p-3 sm:p-4 bg-white rounded-lg border border-gray-200"
             >
               <p className="text-[10px] font-bold text-blue-600 mb-1">{d.no}</p>
               <p className="text-xs sm:text-[13px] font-bold text-slate-900 mb-1 kr-keep-all leading-snug">
                 {d.title}
               </p>
-              <p className="text-[11px] text-slate-500 leading-snug kr-keep-all">{d.desc}</p>
+              <p className="text-[11px] text-gray-500 leading-snug kr-keep-all">{d.desc}</p>
             </div>
           ))}
         </div>
 
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-slate-500">
+        <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs text-gray-500">
           <span className="inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
             <span>공공·연구기관 10여 곳 구축·운영·유지보수 지원 경험</span>

@@ -35,16 +35,16 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
   const totalScore = Object.values(output.type_scores).reduce((s, v) => s + v, 0) || 1;
 
   return (
-    <div className="min-h-screen bg-slate-50">
-      <div className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-200">
+    <div className="min-h-screen bg-gray-50">
+      <div className="bg-gradient-to-b from-slate-50 to-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 pt-10 pb-8">
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div>
               <h1 className="text-2xl font-bold text-slate-900">VDI 역할 재정의 진단 리포트</h1>
-              <p className="text-sm text-slate-500 mt-1">
+              <p className="text-sm text-gray-500 mt-1">
                 생성일: {new Date(report.created_at).toLocaleDateString("ko-KR")}
                 {orgDisplay !== "-" && (
-                  <span className="ml-2 px-2 py-0.5 bg-slate-100 text-slate-600 rounded-md text-xs font-medium">
+                  <span className="ml-2 px-2 py-0.5 bg-gray-100 text-gray-600 rounded-md text-xs font-medium">
                     {orgDisplay}
                   </span>
                 )}
@@ -67,7 +67,7 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
               </svg>
             </div>
             <div>
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide">권장 전략</p>
+              <p className="text-xs font-semibold text-gray-500 uppercase tracking-wide">권장 전략</p>
               <h2 className={`text-2xl font-bold ${c.text} mt-1`}>{output.result_name}</h2>
               <p className={`text-sm ${c.text} mt-3 leading-relaxed`}>
                 {TYPE_DESCRIPTIONS[output.result_type]}
@@ -77,7 +77,7 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
         </div>
 
         {/* 2. Type Score Breakdown (정성적 비교) */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">유형별 적합도</h2>
           <div className="space-y-3">
             {(Object.keys(output.type_scores) as ResultType[]).map((t) => {
@@ -88,13 +88,13 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
               return (
                 <div key={t}>
                   <div className="flex justify-between items-baseline mb-1">
-                    <span className={`text-sm font-medium ${isWinner ? "text-slate-900" : "text-slate-500"}`}>
+                    <span className={`text-sm font-medium ${isWinner ? "text-slate-900" : "text-gray-500"}`}>
                       {t === "maintain" ? "유지 강화형" : t === "complement" ? "제로트러스트 보완형" : t === "reduce" ? "점진적 축소형" : "재설계형"}
                       {isWinner && <span className="ml-2 px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded text-[10px] font-semibold">선정</span>}
                     </span>
-                    <span className="text-sm font-semibold text-slate-700">{pct}%</span>
+                    <span className="text-sm font-semibold text-gray-700">{pct}%</span>
                   </div>
-                  <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div className={`h-full ${tc.icon} rounded-full transition-all`} style={{ width: `${pct}%` }} />
                   </div>
                 </div>
@@ -104,11 +104,11 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
         </div>
 
         {/* 3. Rationale */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">도출 근거</h2>
           <ul className="space-y-2">
             {output.rationale.map((r, i) => (
-              <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
+              <li key={i} className="flex items-start gap-2 text-sm text-gray-700">
                 <span className="text-blue-600 font-bold mt-0.5">•</span>
                 {r}
               </li>
@@ -117,25 +117,25 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
         </div>
 
         {/* 4. Recommended Actions */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">권장 조치</h2>
           <div className="space-y-3">
             {output.recommended_actions.map((action, i) => (
               <div
                 key={i}
-                className="flex gap-3 p-3.5 border border-slate-200 border-l-4 border-l-blue-400 rounded-lg"
+                className="flex gap-3 p-3.5 border border-gray-200 border-l-4 border-l-blue-400 rounded-lg"
               >
                 <span className="flex-shrink-0 w-7 h-7 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-sm font-semibold border border-blue-100">
                   {i + 1}
                 </span>
-                <p className="text-sm text-slate-700 leading-relaxed pt-0.5">{action}</p>
+                <p className="text-sm text-gray-700 leading-relaxed pt-0.5">{action}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* 5. VDI Disposition */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
           <h2 className="text-lg font-bold text-slate-900 mb-4">업무 영역별 권장 처리</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Disposition title="유지(Keep)" items={output.vdi_disposition.keep} color="emerald" />
@@ -164,11 +164,11 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
         </div>
 
         {/* PDF */}
-        <div className="bg-white rounded-xl border border-slate-200 shadow-sm p-6 print:hidden">
+        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 print:hidden">
           <div className="flex items-center justify-between gap-4">
             <div>
               <p className="font-semibold text-slate-900">결과를 PDF로 저장</p>
-              <p className="text-sm text-slate-500 mt-0.5">
+              <p className="text-sm text-gray-500 mt-0.5">
                 팀 내부 검토 자료로 사용하세요.
               </p>
             </div>
