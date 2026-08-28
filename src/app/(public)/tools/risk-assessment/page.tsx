@@ -200,9 +200,9 @@ function V3Form() {
         <label className="block text-sm font-medium text-gray-700">
           {q.label}
           {q.required && <span className="text-red-500 ml-0.5">*</span>}
-          {!q.required && <span className="text-gray-400 text-xs ml-1">(선택)</span>}
+          {!q.required && <span className="text-gray-600 text-xs ml-1">(선택)</span>}
         </label>
-        {q.help && <p className="text-xs text-gray-400">{q.help}</p>}
+        {q.help && <p className="text-xs text-gray-600">{q.help}</p>}
         {q.type === "select" && (
           <select value={(val as string) || ""} onChange={(e) => setAnswer(q.id, e.target.value)}
             className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors">
@@ -233,7 +233,7 @@ function V3Form() {
               return (
                 <button key={opt.value} type="button" onClick={() => toggleMultiselect(q.id, opt.value)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${selected ? "border-blue-500 bg-blue-50 text-blue-700" : "border-gray-300 bg-white text-gray-600 hover:bg-gray-50"}`}>
-                  {selected && <svg className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+                  {selected && <svg aria-hidden="true" className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
                   {opt.label}
                 </button>
               );
@@ -252,12 +252,12 @@ function V3Form() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg aria-hidden="true" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">VDI 리스크 진단 <span className="text-sm font-normal text-gray-400">(Legacy)</span></h1>
+              <h1 className="text-xl md:text-2xl font-bold text-gray-900 kr-keep-all">VDI 리스크 진단 <span className="text-sm font-normal text-gray-600">(Legacy)</span></h1>
               <p className="text-sm text-gray-500 mt-0.5">6개 영역 · 25개 항목 · 약 3~5분 소요</p>
             </div>
           </div>
@@ -270,15 +270,15 @@ function V3Form() {
                 <span className="text-xs font-medium text-blue-600">{progressPercent}%</span>
               </div>
               <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-500 ease-out" style={{ width: `${progressPercent}%` }} />
+                <div className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-[width] duration-500 ease-out" style={{ width: `${progressPercent}%` }} />
               </div>
               <div className="flex justify-between mt-3">
                 {["정보", ...SECTIONS.map((s) => s.title.split("/")[0].slice(0, 3))].map((label, i) => (
                   <div key={i} className="flex flex-col items-center gap-1">
-                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-semibold transition-colors ${i + 1 < currentStepNum ? "bg-blue-600 text-white" : i + 1 === currentStepNum ? "bg-blue-600 text-white ring-2 ring-blue-200" : "bg-gray-200 text-gray-400"}`}>
-                      {i + 1 < currentStepNum ? <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> : i + 1}
+                    <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-semibold transition-colors ${i + 1 < currentStepNum ? "bg-blue-600 text-white" : i + 1 === currentStepNum ? "bg-blue-600 text-white ring-2 ring-blue-200" : "bg-gray-200 text-gray-600"}`}>
+                      {i + 1 < currentStepNum ? <svg aria-hidden="true" className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> : i + 1}
                     </div>
-                    <span className={`text-[10px] ${i + 1 <= currentStepNum ? "text-blue-600 font-medium" : "text-gray-400"}`}>{label}</span>
+                    <span className={`text-[10px] ${i + 1 <= currentStepNum ? "text-blue-600 font-medium" : "text-gray-600"}`}>{label}</span>
                   </div>
                 ))}
               </div>
@@ -290,7 +290,7 @@ function V3Form() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {error && (
           <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-center gap-3" role="alert" aria-live="assertive">
-            <svg className="w-4 h-4 flex-shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg aria-hidden="true" className="w-4 h-4 flex-shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
             {error}
@@ -323,9 +323,9 @@ function V3Form() {
                 <span className="text-sm text-gray-600">진단 결과 제공을 위한 개인정보 수집·이용에 동의합니다. <span className="text-red-500">*</span></span>
               </label>
             </div>
-            <button type="submit" className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2">
+            <button type="submit" className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2">
               진단 시작하기
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
           </form>
         )}
@@ -340,15 +340,15 @@ function V3Form() {
               {currentQuestions.map(renderQuestion)}
             </div>
             <div className="flex gap-3">
-              <button type="button" onClick={handlePrev} className="flex-1 py-3 border border-gray-300 bg-white text-gray-700 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-400 active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+              <button type="button" onClick={handlePrev} className="flex-1 py-3 border border-gray-300 bg-white text-gray-700 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-400 active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2">
+                <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
                 이전
               </button>
-              <button type="button" onClick={handleNext} className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2">
+              <button type="button" onClick={handleNext} className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2">
                 {currentSectionIdx === V3_SECTION_ORDER.length - 1 ? (
-                  <><span>진단 실행</span><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></>
+                  <><span>진단 실행</span><svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></>
                 ) : (
-                  <><span>다음</span><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg></>
+                  <><span>다음</span><svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg></>
                 )}
               </button>
             </div>
@@ -360,7 +360,7 @@ function V3Form() {
             <div className="relative inline-flex items-center justify-center w-20 h-20 mb-6">
               <div className="absolute inset-0 rounded-full border-4 border-blue-100" />
               <div className="absolute inset-0 rounded-full border-4 border-blue-600 border-t-transparent animate-spin" />
-              <svg className="w-8 h-8 text-blue-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <svg aria-hidden="true" className="w-8 h-8 text-blue-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
@@ -564,7 +564,7 @@ function V4Form() {
           </div>
           <div className="grid gap-2">
             {q.options?.map((opt) => (
-              <label key={opt.value} className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${val === opt.value ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50/30"}`}>
+              <label key={opt.value} className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition ${val === opt.value ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50/30"}`}>
                 <input type="radio" name={q.id} value={opt.value} checked={val === opt.value} onChange={() => setAnswer(q.id, opt.value)} className="mt-0.5 accent-blue-600 w-4 h-4 flex-shrink-0" />
                 <div>
                   <p className={`text-sm font-semibold ${val === opt.value ? "text-blue-700" : "text-gray-800"}`}>{opt.label}</p>
@@ -583,7 +583,7 @@ function V4Form() {
         <div key={q.id} className="space-y-3">
           <div>
             <p className="text-sm font-medium text-gray-700 mb-1">
-              {q.question} <span className="text-gray-400 text-xs">(선택)</span>
+              {q.question} <span className="text-gray-600 text-xs">(선택)</span>
             </p>
             {q.inline_help && <p className="text-xs text-gray-500 mb-2">{q.inline_help}</p>}
           </div>
@@ -591,7 +591,7 @@ function V4Form() {
             {q.options?.map((opt) => {
               const isChecked = selected.includes(opt.value);
               return (
-                <label key={opt.value} className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition-all ${isChecked ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white hover:border-blue-200"}`}>
+                <label key={opt.value} className={`flex items-center gap-2 p-3 rounded-lg border cursor-pointer transition ${isChecked ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white hover:border-blue-200"}`}>
                   <input type="checkbox" checked={isChecked} onChange={() => toggleCheckbox(q.id, opt.value)} className="accent-blue-600 w-4 h-4 flex-shrink-0" />
                   <span className={`text-sm ${isChecked ? "text-blue-700 font-medium" : "text-gray-700"}`}>{opt.label}</span>
                 </label>
@@ -599,8 +599,8 @@ function V4Form() {
             })}
           </div>
           {gradePreview && (
-            <div className={`p-3 rounded-lg border text-sm flex items-start gap-2 ${gradePreview.grade === "C" ? "bg-red-50 border-red-200 text-red-800" : gradePreview.grade === "S" ? "bg-orange-50 border-orange-200 text-orange-800" : "bg-green-50 border-green-200 text-green-800"}`}>
-              <svg className="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+            <div className={`p-3 rounded-lg border text-sm flex items-start gap-2 ${gradePreview.grade === "C" ? "bg-red-50 border-red-200 text-red-800" : gradePreview.grade === "S" ? "bg-orange-50 border-orange-200 text-orange-800" : "bg-emerald-50 border-emerald-200 text-emerald-800"}`}>
+              <svg aria-hidden="true" className="w-4 h-4 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
               <span><strong>선택 결과: {gradePreview.label}</strong> — {gradePreview.reason}</span>
             </div>
           )}
@@ -624,7 +624,7 @@ function V4Form() {
           </div>
           <div className="grid gap-2">
             {q.options?.map((opt) => (
-              <label key={opt.value} className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${val === opt.value ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50/30"}`}>
+              <label key={opt.value} className={`flex items-start gap-3 p-4 rounded-xl border-2 cursor-pointer transition ${val === opt.value ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white hover:border-blue-200 hover:bg-blue-50/30"}`}>
                 <input type="radio" name={q.id} value={opt.value} checked={val === opt.value} onChange={() => setAnswer(q.id, opt.value)} className="mt-0.5 accent-blue-600 w-4 h-4 flex-shrink-0" />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
@@ -648,9 +648,9 @@ function V4Form() {
         <label className="block text-sm font-medium text-gray-700">
           {q.question}
           {q.required && <span className="text-red-500 ml-0.5">*</span>}
-          {!q.required && <span className="text-gray-400 text-xs ml-1">(선택)</span>}
+          {!q.required && <span className="text-gray-600 text-xs ml-1">(선택)</span>}
         </label>
-        {q.inline_help && <p className="text-xs text-gray-400">{q.inline_help}</p>}
+        {q.inline_help && <p className="text-xs text-gray-600">{q.inline_help}</p>}
 
         {q.type === "select" && (
           <select value={(val as string) || ""} onChange={(e) => setAnswer(q.id, e.target.value)}
@@ -663,7 +663,7 @@ function V4Form() {
         {q.type === "radio" && (
           <div className="grid gap-2">
             {q.options?.map((opt) => (
-              <label key={opt.value} className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition-all ${val === opt.value ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white hover:border-blue-200"}`}>
+              <label key={opt.value} className={`flex items-center gap-3 p-3 rounded-lg border cursor-pointer transition ${val === opt.value ? "border-blue-500 bg-blue-50" : "border-gray-200 bg-white hover:border-blue-200"}`}>
                 <input type="radio" name={q.id} value={opt.value} checked={val === opt.value} onChange={() => setAnswer(q.id, opt.value)} className="accent-blue-600 w-4 h-4 flex-shrink-0" />
                 <div>
                   <p className={`text-sm font-medium ${val === opt.value ? "text-blue-700" : "text-gray-700"}`}>{opt.label}</p>
@@ -699,7 +699,7 @@ function V4Form() {
               return (
                 <button key={opt.value} type="button" onClick={() => toggleCheckbox(q.id, opt.value)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium border transition-colors ${selected ? "border-blue-500 bg-blue-50 text-blue-700" : "border-gray-300 bg-white text-gray-600 hover:bg-gray-50"}`}>
-                  {selected && <svg className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
+                  {selected && <svg aria-hidden="true" className="w-3.5 h-3.5 inline mr-1 -mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>}
                   {opt.label}
                 </button>
               );
@@ -717,7 +717,7 @@ function V4Form() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-              <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg aria-hidden="true" className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
@@ -739,7 +739,7 @@ function V4Form() {
                 <span className="text-xs font-medium text-blue-600">{progressPercent}%</span>
               </div>
               <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-all duration-500 ease-out" style={{ width: `${progressPercent}%` }} />
+                <div className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full transition-[width] duration-500 ease-out" style={{ width: `${progressPercent}%` }} />
               </div>
               {/* Step dots — 9 total: lead + 8 sections */}
               <div className="flex justify-between mt-3 gap-1">
@@ -749,10 +749,10 @@ function V4Form() {
                   const dotDone = step === "lead" ? false : dotStep < currentStepNum;
                   return (
                     <div key={i} className="flex flex-col items-center gap-1 min-w-0">
-                      <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-semibold transition-colors flex-shrink-0 ${dotDone ? "bg-blue-600 text-white" : dotActive ? "bg-blue-600 text-white ring-2 ring-blue-200" : "bg-gray-200 text-gray-400"}`}>
-                        {dotDone ? <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> : i + 1}
+                      <div className={`w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-semibold transition-colors flex-shrink-0 ${dotDone ? "bg-blue-600 text-white" : dotActive ? "bg-blue-600 text-white ring-2 ring-blue-200" : "bg-gray-200 text-gray-600"}`}>
+                        {dotDone ? <svg aria-hidden="true" className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> : i + 1}
                       </div>
-                      <span className={`text-[9px] truncate max-w-[28px] text-center ${dotDone || dotActive ? "text-blue-600 font-medium" : "text-gray-400"}`}>{label}</span>
+                      <span className={`text-[9px] truncate max-w-[28px] text-center ${dotDone || dotActive ? "text-blue-600 font-medium" : "text-gray-600"}`}>{label}</span>
                     </div>
                   );
                 })}
@@ -765,7 +765,7 @@ function V4Form() {
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {error && (
           <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm flex items-center gap-3" role="alert" aria-live="assertive">
-            <svg className="w-4 h-4 flex-shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg aria-hidden="true" className="w-4 h-4 flex-shrink-0 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
             {error}
@@ -804,9 +804,9 @@ function V4Form() {
                 <span className="text-sm text-gray-600">진단 결과 제공을 위한 개인정보 수집·이용에 동의합니다. <span className="text-red-500">*</span></span>
               </label>
             </div>
-            <button type="submit" className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2">
+            <button type="submit" className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2">
               진단 시작하기
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg>
             </button>
           </form>
           </>
@@ -823,15 +823,15 @@ function V4Form() {
               {currentQuestions.map(renderV4Question)}
             </div>
             <div className="flex gap-3">
-              <button type="button" onClick={handlePrev} className="flex-1 py-3 border border-gray-300 bg-white text-gray-700 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-400 active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
+              <button type="button" onClick={handlePrev} className="flex-1 py-3 border border-gray-300 bg-white text-gray-700 rounded-xl font-semibold hover:bg-gray-50 hover:border-gray-400 active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2">
+                <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" /></svg>
                 이전
               </button>
-              <button type="button" onClick={handleNext} className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2">
+              <button type="button" onClick={handleNext} className="flex-1 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2">
                 {step === TOTAL_STEPS ? (
-                  <><span>진단 실행</span><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></>
+                  <><span>진단 실행</span><svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg></>
                 ) : (
-                  <><span>다음</span><svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg></>
+                  <><span>다음</span><svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" /></svg></>
                 )}
               </button>
             </div>
@@ -844,7 +844,7 @@ function V4Form() {
             <div className="relative inline-flex items-center justify-center w-20 h-20 mb-6">
               <div className="absolute inset-0 rounded-full border-4 border-blue-100" />
               <div className="absolute inset-0 rounded-full border-4 border-blue-600 border-t-transparent animate-spin" />
-              <svg className="w-8 h-8 text-blue-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <svg aria-hidden="true" className="w-8 h-8 text-blue-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>

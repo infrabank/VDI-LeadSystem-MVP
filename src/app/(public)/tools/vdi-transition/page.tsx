@@ -157,7 +157,7 @@ export default function VdiTransitionDiagnosisPage() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-700 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-              <svg
+              <svg aria-hidden="true"
                 className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -298,7 +298,7 @@ export default function VdiTransitionDiagnosisPage() {
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition-all"
+              className="w-full py-3 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition"
             >
               진단 시작하기 →
             </button>
@@ -326,7 +326,7 @@ export default function VdiTransitionDiagnosisPage() {
               <button
                 type="button"
                 onClick={handleSubmit}
-                className="flex-1 py-3 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition-all"
+                className="flex-1 py-3 bg-gradient-to-r from-blue-700 to-indigo-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition"
               >
                 진단 실행
               </button>

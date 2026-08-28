@@ -103,10 +103,10 @@ export default function ROICalculatorPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-gradient-to-b from-green-50 to-white border-b border-green-100">
+      <div className="bg-gradient-to-b from-emerald-50 to-white border-b border-emerald-100">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 md:py-10 text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-green-100 rounded-2xl mb-4">
-            <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-emerald-100 rounded-2xl mb-4">
+            <svg aria-hidden="true" className="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
           </div>
@@ -140,7 +140,7 @@ export default function ROICalculatorPage() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   placeholder="your@email.com"
                 />
               </div>
@@ -151,7 +151,7 @@ export default function ROICalculatorPage() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   />
                 </div>
                 <div>
@@ -160,7 +160,7 @@ export default function ROICalculatorPage() {
                     type="text"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   />
                 </div>
               </div>
@@ -181,7 +181,7 @@ export default function ROICalculatorPage() {
                     onChange={(e) => setTotalUsers(e.target.value)}
                     required
                     min="1"
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="예: 200"
                   />
                 </div>
@@ -195,10 +195,10 @@ export default function ROICalculatorPage() {
                     onChange={(e) => setAvgHourlyCost(e.target.value)}
                     required
                     min="1"
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="예: 30000"
                   />
-                  <p className="text-xs text-gray-400 mt-1 kr-keep-all">
+                  <p className="text-xs text-gray-600 mt-1 kr-keep-all">
                     연봉 ÷ 12개월 ÷ 22일 ÷ 8시간. 일반 사무직 2~3만, IT/개발직 3~5만, 금융/전문직 4~8만
                   </p>
                 </div>
@@ -216,7 +216,7 @@ export default function ROICalculatorPage() {
                     required
                     min="0.1"
                     step="0.1"
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="예: 4"
                   />
                 </div>
@@ -230,7 +230,7 @@ export default function ROICalculatorPage() {
                     onChange={(e) => setIncidentsPerYear(e.target.value)}
                     required
                     min="0"
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                     placeholder="예: 6"
                   />
                 </div>
@@ -248,26 +248,26 @@ export default function ROICalculatorPage() {
                     min="10"
                     max="90"
                     step="5"
-                    className="flex-1 accent-green-600"
+                    className="flex-1 accent-emerald-600"
                   />
-                  <span className="text-sm font-semibold text-green-700 w-12 text-right">
+                  <span className="text-sm font-semibold text-emerald-700 w-12 text-right">
                     {recoveryImprovement}%
                   </span>
                 </div>
-                <p className="text-xs text-gray-400 mt-1">백업 보유 시 권장 30%, 미보유 시 권장 60%</p>
+                <p className="text-xs text-gray-600 mt-1">백업 보유 시 권장 30%, 미보유 시 권장 60%</p>
               </div>
 
-              <div className="p-3 rounded-lg border border-gray-200 hover:bg-green-50 hover:border-green-200 transition-colors">
+              <div className="p-3 rounded-lg border border-gray-200 hover:bg-emerald-50 hover:border-emerald-200 transition-colors">
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
                     type="checkbox"
                     checked={currentBackup}
                     onChange={(e) => handleBackupChange(e.target.checked)}
-                    className="w-4 h-4 accent-green-600"
+                    className="w-4 h-4 accent-emerald-600"
                   />
                   <div>
                     <span className="text-sm font-medium text-gray-700">백업/DR 체계 보유</span>
-                    <p className="text-xs text-gray-400">현재 백업 및 재해복구 시스템이 있는지 여부</p>
+                    <p className="text-xs text-gray-600">현재 백업 및 재해복구 시스템이 있는지 여부</p>
                   </div>
                 </label>
               </div>
@@ -289,13 +289,13 @@ export default function ROICalculatorPage() {
                     min="10"
                     max="100"
                     step="5"
-                    className="flex-1 accent-green-600"
+                    className="flex-1 accent-emerald-600"
                   />
-                  <span className="text-sm font-semibold text-green-700 w-12 text-right">
+                  <span className="text-sm font-semibold text-emerald-700 w-12 text-right">
                     {impactRatePercent}%
                   </span>
                 </div>
-                <p className="text-xs text-gray-400 mt-1">장애 시 업무에 미치는 실질적 영향 비율. 보수적 기본값 70%</p>
+                <p className="text-xs text-gray-600 mt-1">장애 시 업무에 미치는 실질적 영향 비율. 보수적 기본값 70%</p>
               </div>
 
               <div>
@@ -308,10 +308,10 @@ export default function ROICalculatorPage() {
                   onChange={(e) => setMajorIncidentHours(e.target.value)}
                   min="0.5"
                   step="0.5"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors"
+                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
                   placeholder="예: 8"
                 />
-                <p className="text-xs text-gray-400 mt-1">대형 장애 발생 시 예상 중단 시간</p>
+                <p className="text-xs text-gray-600 mt-1">대형 장애 발생 시 예상 중단 시간</p>
               </div>
             </div>
 
@@ -322,7 +322,7 @@ export default function ROICalculatorPage() {
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
-                  className="mt-1 w-4 h-4 accent-green-600"
+                  className="mt-1 w-4 h-4 accent-emerald-600"
                 />
                 <span className="text-sm text-gray-600">
                   분석 결과 제공을 위한 개인정보 수집·이용에 동의합니다.{" "}
@@ -332,10 +332,10 @@ export default function ROICalculatorPage() {
 
               <button
                 type="submit"
-                className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl hover:shadow-md hover:scale-[1.01] active:scale-[0.99] font-semibold text-base transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-emerald-600 to-emerald-700 text-white rounded-xl hover:shadow-md hover:scale-[1.01] active:scale-[0.99] font-semibold text-base transition flex items-center justify-center gap-2"
               >
                 ROI 분석 실행
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
               </button>
@@ -346,16 +346,16 @@ export default function ROICalculatorPage() {
         {step === "submitting" && (
           <div className="text-center py-20">
             <div className="relative inline-block mb-6">
-              <div className="w-16 h-16 border-4 border-green-200 rounded-full" />
-              <div className="absolute inset-0 w-16 h-16 border-4 border-green-600 border-t-transparent rounded-full animate-spin" />
+              <div className="w-16 h-16 border-4 border-emerald-200 rounded-full" />
+              <div className="absolute inset-0 w-16 h-16 border-4 border-emerald-600 border-t-transparent rounded-full animate-spin" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-6 h-6 text-green-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-6 h-6 text-emerald-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
             </div>
             <p className="text-gray-700 font-medium">ROI를 분석하고 있습니다...</p>
-            <p className="text-gray-400 text-sm mt-1">리포트와 PDF를 생성 중입니다</p>
+            <p className="text-gray-600 text-sm mt-1">리포트와 PDF를 생성 중입니다</p>
           </div>
         )}
 
@@ -366,9 +366,9 @@ export default function ROICalculatorPage() {
         </div>
 
         {/* Info Box */}
-        <div className="mt-4 p-4 sm:p-5 bg-green-50 rounded-xl border border-green-100">
-          <h3 className="font-semibold text-green-800 mb-2">이 계산기는 무엇인가요?</h3>
-          <p className="text-sm text-green-700 leading-relaxed kr-keep-all">
+        <div className="mt-4 p-4 sm:p-5 bg-emerald-50 rounded-xl border border-emerald-100">
+          <h3 className="font-semibold text-emerald-800 mb-2">이 계산기는 무엇인가요?</h3>
+          <p className="text-sm text-emerald-700 leading-relaxed kr-keep-all">
             VDI 환경의 장애로 인한 생산성 손실 비용을 산정하고,
             인프라 개선 투자 시 예상되는 절감액과 투자 회수기간(Payback Period)을 계산합니다.
             경영진 보고용 1페이지 PDF 리포트도 함께 제공됩니다.

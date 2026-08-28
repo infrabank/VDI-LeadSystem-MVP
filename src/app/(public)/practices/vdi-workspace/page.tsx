@@ -53,10 +53,10 @@ export default function VdiWorkspacePage() {
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-gray-500">
-          <Link href="/" className="hover:text-blue-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
-          <Link href="/practices" className="hover:text-blue-600">Solutions</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <Link href="/" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">홈</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
+          <Link href="/practices" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">Solutions</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">{p.shortTitle}</span>
         </div>
       </div>
@@ -83,13 +83,13 @@ export default function VdiWorkspacePage() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
               href="/tools/vdi-transition"
-              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition hover:-translate-y-0.5"
             >
               VDI 역할 재정의 진단(2분)
             </Link>
             <Link
               href="/contact?source=vdi-workspace&interest=vdi-workspace"
-              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-500/30 border border-blue-400/40 text-white rounded-lg hover:bg-blue-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
+              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-blue-500/30 border border-blue-400/40 text-white rounded-lg hover:bg-blue-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition"
             >
               VDI 역할 재정의 상담
             </Link>
@@ -133,12 +133,12 @@ export default function VdiWorkspacePage() {
             <Link
               key={i}
               href={feature.href}
-              className="card-hover group p-5 sm:p-7 bg-white rounded-xl shadow-sm block transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="card-hover group p-5 sm:p-7 bg-white rounded-xl shadow-sm block transition hover:-translate-y-0.5 hover:shadow-md"
               style={{ border: "1px solid #e5e7eb", borderTop: `4px solid ${feature.color}` }}
             >
               <div className="flex items-center justify-between mb-4 sm:mb-5">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-blue-50">
-                  <svg
+                  <svg aria-hidden="true"
                     className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -148,7 +148,7 @@ export default function VdiWorkspacePage() {
                     <path strokeLinecap="round" strokeLinejoin="round" d={feature.icon} />
                   </svg>
                 </div>
-                <span className="text-xs font-bold text-gray-300">{feature.rank}</span>
+                <span className="text-xs font-bold text-gray-500">{feature.rank}</span>
               </div>
               <h3 className="font-bold text-base sm:text-lg text-gray-900 mb-2 sm:mb-2.5 kr-keep-all">
                 {feature.title}
@@ -163,7 +163,7 @@ export default function VdiWorkspacePage() {
       {/* Technology Partners */}
       <section className="bg-gray-50 border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
-          <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 md:mb-8">
+          <p className="text-center text-xs font-bold text-gray-600 uppercase tracking-widest mb-6 md:mb-8">
             VDI · DaaS Technology Partners
           </p>
           <div className="grid grid-cols-3 gap-4 md:gap-6 max-w-2xl mx-auto">
@@ -191,7 +191,7 @@ export default function VdiWorkspacePage() {
           </p>
           <Link
             href="/contact?source=vdi-workspace&interest=vdi-workspace&subject=VDI 역할 재정의 상담"
-            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition hover:-translate-y-0.5"
           >
             VDI 역할 재정의 상담
           </Link>

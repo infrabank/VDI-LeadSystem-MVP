@@ -67,7 +67,7 @@ export default async function N2sfHubPage() {
               className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-white text-blue-800 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-lg"
             >
               N²SF 정렬 진단 시작 (7분)
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -234,7 +234,7 @@ export default async function N2sfHubPage() {
               <Link
                 key={p.id}
                 href={p.href}
-                className="block p-4 sm:p-5 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all"
+                className="block p-4 sm:p-5 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-sm transition"
               >
                 <p className="text-[10px] font-bold uppercase tracking-widest text-blue-700 mb-1.5">{p.brand}</p>
                 <h3 className="text-base font-bold text-slate-900 mb-1 kr-keep-all">{p.title}</h3>
@@ -266,7 +266,7 @@ export default async function N2sfHubPage() {
                 <Link
                   key={c.slug}
                   href={`/insights/${c.slug}`}
-                  className="block p-4 sm:p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-300 transition-all"
+                  className="block p-4 sm:p-6 bg-white rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:border-blue-300 transition"
                 >
                   <h3 className="text-base font-bold text-slate-900 mb-2 leading-snug">
                     {c.title}
@@ -300,7 +300,7 @@ export default async function N2sfHubPage() {
               className="inline-flex items-center justify-center gap-2 px-7 py-3 bg-white text-blue-800 rounded-xl font-bold hover:bg-blue-50 transition-colors shadow-lg"
             >
               N²SF 정렬 진단 시작
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
               </svg>
             </Link>
@@ -355,7 +355,7 @@ function DiagnosisCta({
   return (
     <Link
       href={href}
-      className={`block p-5 sm:p-7 rounded-xl shadow-sm hover:shadow-md transition-all ${
+      className={`block p-5 sm:p-7 rounded-xl shadow-sm hover:shadow-md transition ${
         primary
           ? "bg-gradient-to-br from-blue-600 to-blue-700 border-2 border-blue-500 hover:border-blue-400 text-white"
           : "bg-gradient-to-br from-blue-50 to-white border border-blue-200 hover:border-blue-400"

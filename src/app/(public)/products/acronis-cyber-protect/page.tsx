@@ -29,7 +29,7 @@ function ImgSlot({
     <div
       className={`${ratio} w-full rounded-xl border-2 border-dashed border-blue-300 bg-blue-50/40 flex flex-col items-center justify-center text-center px-4 py-6`}
     >
-      <svg
+      <svg aria-hidden="true"
         className="w-8 h-8 text-blue-400 mb-2"
         fill="none"
         viewBox="0 0 24 24"
@@ -46,7 +46,7 @@ function ImgSlot({
       <p className="mt-1 text-[11px] text-blue-600/80 font-mono">
         /products/acronis/{file}
       </p>
-      <p className="mt-1 text-[11px] text-gray-400 kr-keep-all">
+      <p className="mt-1 text-[11px] text-gray-600 kr-keep-all">
         파트너 페이지에서 조달 후 교체
       </p>
     </div>
@@ -232,10 +232,10 @@ export default function AcronisCyberProtectPage() {
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-500">
-          <Link href="/" className="hover:text-blue-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
-          <span className="text-gray-400">제품</span>
-          <span className="mx-2 text-gray-300">/</span>
+          <Link href="/" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">홈</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
+          <span className="text-gray-600">제품</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">Acronis Cyber Protect</span>
         </div>
       </div>
@@ -260,13 +260,13 @@ export default function AcronisCyberProtectPage() {
               <div className="flex flex-wrap items-center gap-3 text-sm">
                 <Link
                   href="/contact?source=acronis-product&interest=acronis&subject=Acronis Cyber Protect 도입 문의"
-                  className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
+                  className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition"
                 >
                   도입·견적 문의
                 </Link>
                 <Link
                   href="/services/acronis-backup"
-                  className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
+                  className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
                 >
                   백업·보안 점검 서비스
                 </Link>
@@ -332,7 +332,7 @@ export default function AcronisCyberProtectPage() {
                 className="flex gap-4 p-6 rounded-xl bg-white border border-gray-200"
               >
                 <span className="flex-shrink-0 w-11 h-11 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={h.icon} />
                   </svg>
                 </span>
@@ -471,7 +471,7 @@ export default function AcronisCyberProtectPage() {
                   href={`/contact?source=acronis-product&interest=acronis&subject=${encodeURIComponent(
                     `Acronis ${e.name} 도입 문의`,
                   )}`}
-                  className={`inline-flex items-center justify-center px-4 py-2.5 rounded-md font-semibold text-sm transition-all mt-auto ${
+                  className={`inline-flex items-center justify-center px-4 py-2.5 rounded-md font-semibold text-sm transition mt-auto ${
                     e.highlight
                       ? "bg-blue-600 text-white hover:bg-blue-700"
                       : "bg-white text-gray-900 border border-gray-400 hover:bg-gray-50"
@@ -549,8 +549,8 @@ export default function AcronisCyberProtectPage() {
               >
                 <summary className="flex cursor-pointer items-start justify-between gap-3 text-base font-semibold text-gray-900 kr-keep-all">
                   <span>{f.q}</span>
-                  <span className="mt-1 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <span className="mt-1 flex-shrink-0 text-gray-600 transition-transform group-open:rotate-180">
+                    <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
@@ -578,13 +578,13 @@ export default function AcronisCyberProtectPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/contact?source=acronis-product-bottom&interest=acronis&subject=Acronis Cyber Protect 도입 문의"
-              className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5"
+              className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition hover:-translate-y-0.5"
             >
               도입·견적 문의
             </Link>
             <Link
               href="/services/acronis-backup"
-              className="inline-block px-7 py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base transition-all"
+              className="inline-block px-7 py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base transition"
             >
               백업·보안 점검 서비스
             </Link>

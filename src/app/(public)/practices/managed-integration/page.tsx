@@ -37,9 +37,9 @@ export default function ManagedIntegrationPage() {
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-purple-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <Link href="/practices" className="hover:text-purple-600">Solutions</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">{p.shortTitle}</span>
         </div>
       </div>
@@ -66,13 +66,13 @@ export default function ManagedIntegrationPage() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
               href="/tools/risk-assessment"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-purple-700 rounded-lg hover:bg-purple-50 font-semibold text-sm sm:text-base shadow-lg shadow-purple-900/20 transition-all hover:-translate-y-0.5"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-purple-700 rounded-lg hover:bg-purple-50 font-semibold text-sm sm:text-base shadow-lg shadow-purple-900/20 transition hover:-translate-y-0.5"
             >
               N²SF 정렬 자가 진단(7분)
             </Link>
             <Link
               href="/contact?source=managed-integration&interest=managed-integration"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-purple-500/30 border border-purple-400/40 text-white rounded-lg hover:bg-purple-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-purple-500/30 border border-purple-400/40 text-white rounded-lg hover:bg-purple-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition"
             >
               사전진단 상담
             </Link>
@@ -114,7 +114,7 @@ export default function ManagedIntegrationPage() {
           {p.pillars.map((pl) => (
             <div
               key={pl.title}
-              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:-translate-y-0.5 hover:shadow-md"
               style={{ borderTop: "4px solid #7c3aed" }}
             >
               <h3 className="font-bold text-base text-gray-900 mb-2 kr-keep-all">{pl.title}</h3>
@@ -174,7 +174,7 @@ export default function ManagedIntegrationPage() {
           </p>
           <Link
             href="/contact?source=managed-integration&interest=managed-integration&subject=N²SF 전환 사전진단 상담"
-            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-purple-700 rounded-lg hover:bg-purple-50 font-semibold text-sm sm:text-base shadow-lg shadow-purple-900/20 transition-all hover:-translate-y-0.5"
+            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-purple-700 rounded-lg hover:bg-purple-50 font-semibold text-sm sm:text-base shadow-lg shadow-purple-900/20 transition hover:-translate-y-0.5"
           >
             N²SF 전환 사전진단 상담
           </Link>

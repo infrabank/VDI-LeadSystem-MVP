@@ -200,7 +200,7 @@ export default function BackupReadinessDiagnosisPage() {
         <div className="max-w-2xl mx-auto px-4 sm:px-6 pt-8 md:pt-10 pb-6">
           <div className="flex items-center gap-4 mb-4">
             <div className="w-10 h-10 sm:w-12 sm:h-12 bg-emerald-700 rounded-xl flex items-center justify-center shadow-md flex-shrink-0">
-              <svg
+              <svg aria-hidden="true"
                 className="w-5 h-5 sm:w-6 sm:h-6 text-white"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -234,7 +234,7 @@ export default function BackupReadinessDiagnosisPage() {
               </div>
               <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full transition-all duration-500"
+                  className="h-full bg-gradient-to-r from-emerald-600 to-emerald-700 rounded-full transition duration-500"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>
@@ -397,7 +397,7 @@ export default function BackupReadinessDiagnosisPage() {
 
             <button
               type="submit"
-              className="w-full py-3 bg-gradient-to-r from-emerald-700 to-teal-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition-all"
+              className="w-full py-3 bg-gradient-to-r from-emerald-700 to-teal-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition"
             >
               진단 시작하기 →
             </button>
@@ -429,7 +429,7 @@ export default function BackupReadinessDiagnosisPage() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="flex-1 py-3 bg-gradient-to-r from-emerald-700 to-teal-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition-all"
+                className="flex-1 py-3 bg-gradient-to-r from-emerald-700 to-teal-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md transition"
               >
                 {currentSectionIdx === SECTION_ORDER.length - 1 ? "진단 실행" : "다음 →"}
               </button>

@@ -80,7 +80,7 @@ export default async function ROIReportPage({ params }: Props) {
     critical: "text-red-700 bg-red-50 border-red-200",
     high: "text-orange-600 bg-orange-50 border-orange-200",
     medium: "text-amber-600 bg-amber-50 border-amber-200",
-    low: "text-green-600 bg-green-50 border-green-200",
+    low: "text-emerald-600 bg-emerald-50 border-emerald-200",
   };
 
   return (
@@ -89,7 +89,7 @@ export default async function ROIReportPage({ params }: Props) {
       <div className="bg-gradient-to-b from-gray-50 to-white border-b border-gray-200">
         <div className="max-w-3xl mx-auto px-4 py-8">
           <div className="flex items-center gap-2 mb-2">
-            <span className="px-3 py-1 bg-green-100 text-green-700 text-xs font-medium rounded-full">
+            <span className="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-medium rounded-full">
               분석 완료
             </span>
             <span
@@ -121,7 +121,7 @@ export default async function ROIReportPage({ params }: Props) {
           </div>
           <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
             <p className="text-sm text-gray-500 mb-2">연간 절감 가능액</p>
-            <p className="text-2xl font-bold text-green-600">
+            <p className="text-2xl font-bold text-emerald-600">
               {output.formatted.annual_saving}
             </p>
           </div>
@@ -130,7 +130,7 @@ export default async function ROIReportPage({ params }: Props) {
             <p className="text-2xl font-bold text-blue-600">
               {output.formatted.payback_range}
             </p>
-            <p className="text-xs text-gray-400 mt-1">
+            <p className="text-xs text-gray-600 mt-1">
               투자비 {output.formatted.investment_range}
             </p>
           </div>
@@ -146,7 +146,7 @@ export default async function ROIReportPage({ params }: Props) {
           </div>
           <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm text-center">
             <p className="text-xs text-gray-500 mb-1">3년 누적 절감</p>
-            <p className="text-lg font-bold text-green-500">
+            <p className="text-lg font-bold text-emerald-500">
               {output.formatted.saving_3y}
             </p>
           </div>
@@ -159,11 +159,11 @@ export default async function ROIReportPage({ params }: Props) {
         </div>
 
         {/* Benchmark Box */}
-        <div className="bg-green-50 border border-green-200 rounded-xl p-5 mb-6">
-          <p className="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 mb-6">
+          <p className="text-xs font-semibold text-emerald-700 uppercase tracking-wide mb-1">
             {output.benchmark_text}
           </p>
-          <p className="text-sm text-green-800 leading-relaxed">
+          <p className="text-sm text-emerald-800 leading-relaxed">
             {output.benchmark_comparison}
           </p>
         </div>
@@ -172,7 +172,7 @@ export default async function ROIReportPage({ params }: Props) {
         {output.warnings.length > 0 && (
           <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mb-6">
             <h2 className="text-base font-bold text-amber-800 mb-3 flex items-center gap-2">
-              <svg
+              <svg aria-hidden="true"
                 className="w-5 h-5 text-amber-500 flex-shrink-0"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -190,7 +190,7 @@ export default async function ROIReportPage({ params }: Props) {
             <ul className="space-y-2">
               {output.warnings.map((w, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-amber-900">
-                  <svg
+                  <svg aria-hidden="true"
                     className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5"
                     fill="none"
                     viewBox="0 0 24 24"
@@ -237,7 +237,7 @@ export default async function ROIReportPage({ params }: Props) {
                 key={i}
                 className="flex gap-3 p-3 border-l-4 border-l-green-400 border border-gray-200 rounded-lg shadow-sm"
               >
-                <span className="flex-shrink-0 w-7 h-7 bg-green-50 text-green-600 border border-green-100 rounded-full flex items-center justify-center text-sm font-medium">
+                <span className="flex-shrink-0 w-7 h-7 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-full flex items-center justify-center text-sm font-medium">
                   {i + 1}
                 </span>
                 <p className="text-sm text-gray-700 leading-relaxed">{line}</p>
@@ -281,13 +281,13 @@ export default async function ROIReportPage({ params }: Props) {
             <h3 className="text-xl font-bold mb-2">
               전문가의 상세 분석이 필요하신가요?
             </h3>
-            <p className="text-green-100 mb-6 max-w-md mx-auto">
+            <p className="text-emerald-100 mb-6 max-w-md mx-auto">
               VDI 전문 컨설턴트가 실제 환경 분석과 맞춤 개선 전략을 제안해드립니다.
             </p>
             <div className="flex gap-3 justify-center flex-wrap">
               <Link
                 href="/tools/risk-assessment"
-                className="px-6 py-2.5 bg-white text-green-700 rounded-lg hover:bg-green-50 font-medium transition-colors"
+                className="px-6 py-2.5 bg-white text-emerald-700 rounded-lg hover:bg-emerald-50 font-medium transition-colors"
               >
                 리스크 진단도 해보기
               </Link>
@@ -302,7 +302,7 @@ export default async function ROIReportPage({ params }: Props) {
         </div>
 
         {/* Disclaimer */}
-        <p className="text-xs text-gray-400 text-center leading-relaxed print:text-left">
+        <p className="text-xs text-gray-600 text-center leading-relaxed print:text-left">
           본 계산은 의사결정용 추정치이며, 실제 값은 환경/업무 특성에 따라 달라질 수 있습니다.
         </p>
       </div>

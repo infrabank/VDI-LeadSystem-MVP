@@ -3,17 +3,39 @@
    CDN 선언만 두고 실제로는 시스템 폰트로 폴백되던 문제를 막기 위해 저장소에 동봉한다. */
 @import "./pretendard.css";
 
+/* 토큰 값은 화면에서 실제로 쓰이는 색과 일치시킨다. primary가 #1d52de로 선언돼 있는 동안
+   컴포넌트는 blue-600(#2563eb)을 쓰고 있어, 같은 브랜드 색이 두 값으로 갈려 있었다. */
 @theme inline {
   --color-background: #ffffff;
   --color-foreground: #101828;
   --color-foreground-muted: #4b5563;
-  --color-primary: #1d52de;
-  --color-primary-hover: #1841b8;
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-accent: #ffb900;
+  --color-accent-hover: #ffd230;
   --color-border: #e5e7eb;
   --color-border-strong: #d1d5db;
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
     "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
+}
+
+/* 키보드 사용자가 매 페이지 GNB 16탭을 지나지 않고 본문으로 건너뛴다 (WCAG 2.4.1) */
+.skip-link {
+  position: absolute;
+  left: 0.75rem;
+  top: -3rem;
+  z-index: 100;
+  padding: 0.625rem 1rem;
+  border-radius: 0.375rem;
+  background: var(--color-foreground);
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0.75rem;
 }
 
 body {
@@ -97,12 +119,12 @@ h1, h2, h3 { letter-spacing: -0.018em; text-wrap: pretty; }
 .prose li { margin-bottom: 0.25rem; }
 .prose ul { list-style-type: disc; }
 .prose ol { list-style-type: decimal; }
-.prose a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; word-break: break-all; }
-.prose a:hover { color: #1d4ed8; }
+.prose a { color: var(--color-primary); text-decoration: underline; text-underline-offset: 2px; word-break: break-all; }
+.prose a:hover { color: var(--color-primary-hover); }
 .prose code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; color: #dc2626; word-break: break-all; }
 .prose pre { background: #1f2937; color: #e5e7eb; padding: 0.875rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 1rem; font-size: 0.8125rem; -webkit-overflow-scrolling: touch; }
 .prose pre code { background: none; color: inherit; padding: 0; word-break: normal; }
-.prose blockquote { border-left: 4px solid #2563eb; padding-left: 0.875rem; color: #6b7280; font-style: italic; margin-bottom: 1rem; }
+.prose blockquote { border-left: 4px solid var(--color-primary); padding-left: 0.875rem; color: #6b7280; font-style: italic; margin-bottom: 1rem; }
 .prose img { max-width: 100%; height: auto; border-radius: 0.5rem; margin: 1rem 0; }
 .prose hr { border: none; border-top: 1px solid #e5e7eb; margin: 1.5rem 0; }
 /* 표는 모바일에서 가로 스크롤로 처리 */
@@ -130,7 +152,7 @@ h1, h2, h3 { letter-spacing: -0.018em; text-wrap: pretty; }
 /* Form focus styles */
 input:focus, select:focus, textarea:focus {
   outline: none;
-  border-color: #2563eb;
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
 }
 
@@ -140,12 +162,15 @@ a, button {
     box-shadow 0.15s ease, opacity 0.15s ease, transform 0.15s ease;
 }
 
+/* 모션을 일괄로 0으로 죽이면 상태가 바뀌었다는 신호까지 사라진다.
+   이동·확대 전이만 끄고 색과 그림자 전이는 짧게 남겨 피드백을 유지한다. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-property: color, background-color, border-color, box-shadow, opacity !important;
+    transition-duration: 0.1s !important;
   }
 }
 
@@ -168,6 +193,17 @@ a, button {
      문장 속 인라인 링크는 inline-flex가 아니므로 줄 간격에 영향을 주지 않는다. */
   main a.inline-flex { min-height: 44px; }
   main select { min-height: 44px; }
+  /* 연락처 링크와 동의 체크박스는 WCAG 2.5.8의 24x24를 밑돌던 자리다.
+     체크박스는 감싸는 label이 크더라도 컨트롤 자체가 판정 대상이 된다. */
+  main a[href^="mailto:"], main a[href^="tel:"] {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+  }
+  main input[type="checkbox"] {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 /* 모바일에서 가로 스크롤 가능 영역 표시 */

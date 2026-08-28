@@ -74,7 +74,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
 
           <div className="mt-5 flex items-center gap-6 flex-wrap">
             <div className="relative flex-shrink-0 w-28 h-28">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
+              <svg aria-hidden="true" className="w-full h-full -rotate-90" viewBox="0 0 120 120">
                 <circle cx="60" cy="60" r="52" fill="none" stroke="#f1f5f9" strokeWidth="10" />
                 <circle
                   cx="60"
@@ -121,7 +121,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
                     </div>
                     <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                       <div
-                        className={`h-full ${barColor} rounded-full transition-all`}
+                        className={`h-full ${barColor} rounded-full transition`}
                         style={{ width: `${v}%` }}
                       />
                     </div>
@@ -261,7 +261,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
             className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-blue-700 rounded-xl font-semibold hover:bg-blue-50 transition-colors shadow-sm text-sm"
           >
             상담 문의
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </Link>

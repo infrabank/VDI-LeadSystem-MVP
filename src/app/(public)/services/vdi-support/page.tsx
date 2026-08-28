@@ -271,10 +271,10 @@ export default function VdiSupportPage() {
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-500">
-          <Link href="/" className="hover:text-blue-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
-          <Link href="/#business" className="hover:text-blue-600">서비스</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <Link href="/" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">홈</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
+          <Link href="/#business" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">서비스</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">VDI 기술지원</span>
         </div>
       </div>
@@ -303,19 +303,19 @@ export default function VdiSupportPage() {
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
               href="/contact?source=vdi-support&interest=vdi&subject=VDI 장애 원인 상담"
-              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
+              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition"
             >
               VDI 장애 원인 상담
             </Link>
             <Link
               href="/partners/integrated-maintenance"
-              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
+              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
             >
               SI 파트너 협업 보기
             </Link>
             <a
               href={PHONE_TEL}
-              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
+              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
             >
               ☎ {companyLegal.phone}
             </a>
@@ -357,8 +357,8 @@ export default function VdiSupportPage() {
               >
                 <summary className="flex cursor-pointer items-start justify-between gap-3 text-base font-semibold text-gray-900 kr-keep-all">
                   <span>{c.symptom}</span>
-                  <span className="mt-1 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <span className="mt-1 flex-shrink-0 text-gray-600 transition-transform group-open:rotate-180">
+                    <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
@@ -419,7 +419,7 @@ export default function VdiSupportPage() {
                   {step}
                 </span>
                 {i < analysisFlow.length - 1 && (
-                  <span className="mx-1.5 text-gray-400 text-sm" aria-hidden="true">→</span>
+                  <span className="mx-1.5 text-gray-600 text-sm" aria-hidden="true">→</span>
                 )}
               </span>
             ))}
@@ -450,23 +450,23 @@ export default function VdiSupportPage() {
                 <ul className="space-y-1.5 text-sm text-gray-700 mb-4 flex-1 kr-keep-all">
                   {t.scope.map((s) => (
                     <li key={s} className="flex gap-2">
-                      <span className="text-blue-500 flex-shrink-0">·</span>
+                      <span aria-hidden="true" className="text-blue-600 flex-shrink-0">·</span>
                       <span>{s}</span>
                     </li>
                   ))}
                 </ul>
                 <dl className="text-xs sm:text-[13px] space-y-1 border-t border-gray-100 pt-3 kr-keep-all">
                   <div className="flex gap-2">
-                    <dt className="text-gray-400 flex-shrink-0 w-10">방식</dt>
+                    <dt className="text-gray-600 flex-shrink-0 w-10">방식</dt>
                     <dd className="text-gray-700">{t.method}</dd>
                   </div>
                   <div className="flex gap-2">
-                    <dt className="text-gray-400 flex-shrink-0 w-10">결과물</dt>
+                    <dt className="text-gray-600 flex-shrink-0 w-10">결과물</dt>
                     <dd className="text-gray-700">{t.output}</dd>
                   </div>
                   {t.noContract && (
                     <div className="flex gap-2">
-                      <dt className="text-gray-400 flex-shrink-0 w-10">계약</dt>
+                      <dt className="text-gray-600 flex-shrink-0 w-10">계약</dt>
                       <dd className="text-emerald-700 font-medium">{t.noContract}</dd>
                     </div>
                   )}
@@ -487,7 +487,7 @@ export default function VdiSupportPage() {
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5 text-sm text-gray-700 kr-keep-all">
               {quoteFactors.map((f) => (
                 <li key={f} className="flex gap-2">
-                  <span className="text-gray-400 flex-shrink-0">·</span>
+                  <span className="text-gray-600 flex-shrink-0">·</span>
                   <span>{f}</span>
                 </li>
               ))}
@@ -562,8 +562,8 @@ export default function VdiSupportPage() {
               >
                 <summary className="flex cursor-pointer items-start justify-between gap-3 text-base font-semibold text-gray-900 kr-keep-all">
                   <span>{f.q}</span>
-                  <span className="mt-1 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <span className="mt-1 flex-shrink-0 text-gray-600 transition-transform group-open:rotate-180">
+                    <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
@@ -605,7 +605,7 @@ export default function VdiSupportPage() {
           </p>
           <Link
             href="/contact?source=vdi-support-bottom&interest=vdi&subject=VDI 장애 원인 상담"
-            className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5"
+            className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition hover:-translate-y-0.5"
           >
             VDI 장애 원인 상담
           </Link>

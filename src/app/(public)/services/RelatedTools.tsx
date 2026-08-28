@@ -29,13 +29,13 @@ export function RelatedTools({ tools }: { tools: RelatedTool[] }) {
             <Link
               key={t.href}
               href={t.href}
-              className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-sm transition-all"
+              className="group p-5 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-sm transition"
             >
               <div className="flex items-start justify-between gap-3 mb-1.5">
                 <h3 className="text-sm sm:text-base font-bold text-gray-900 group-hover:text-blue-700 kr-keep-all">
                   {t.title}
                 </h3>
-                <span className="flex-shrink-0 text-[11px] font-medium text-gray-400 mt-0.5">
+                <span className="flex-shrink-0 text-[11px] font-medium text-gray-600 mt-0.5">
                   {t.duration}
                 </span>
               </div>

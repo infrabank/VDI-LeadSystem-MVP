@@ -29,10 +29,10 @@ export default function CertificationsPage() {
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-gray-500">
-          <Link href="/" className="hover:text-blue-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
-          <Link href="/about" className="hover:text-blue-600">About</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <Link href="/" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">홈</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
+          <Link href="/about" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">About</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">Certifications</span>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function CertificationsPage() {
                 >
                   <div className="flex items-start gap-3">
                     <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-                      <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg aria-hidden="true" className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path
                           strokeLinecap="round"
                           strokeLinejoin="round"
@@ -83,19 +83,19 @@ export default function CertificationsPage() {
                       <p className="text-sm text-gray-500 leading-relaxed kr-keep-all mb-2">{c.desc}</p>
                       <dl className="space-y-1 text-xs text-gray-600">
                         {c.status === "certified" && c.certificateId && (
-                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">인증서 번호</dt><dd>{c.certificateId}</dd></div>
+                          <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">인증서 번호</dt><dd>{c.certificateId}</dd></div>
                         )}
                         {c.status === "certified" && c.validUntil && (
-                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">유효 기간</dt><dd>{c.validUntil}</dd></div>
+                          <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">유효 기간</dt><dd>{c.validUntil}</dd></div>
                         )}
                         {c.targetMilestone && c.status !== "certified" && (
-                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">목표</dt><dd>{c.targetMilestone}</dd></div>
+                          <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">목표</dt><dd>{c.targetMilestone}</dd></div>
                         )}
                         {c.certifyingBody && (
-                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">심사기관</dt><dd>{c.certifyingBody}</dd></div>
+                          <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">심사기관</dt><dd>{c.certifyingBody}</dd></div>
                         )}
                         {c.scope && (
-                          <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">인증 범위</dt><dd>{c.scope}</dd></div>
+                          <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">인증 범위</dt><dd>{c.scope}</dd></div>
                         )}
                       </dl>
                     </div>
@@ -129,10 +129,10 @@ export default function CertificationsPage() {
                       </div>
                       <p className="text-sm text-gray-500 leading-relaxed kr-keep-all mb-3">{cr.desc}</p>
                       <dl className="space-y-1 text-xs text-gray-600">
-                        <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">보유자</dt><dd className="kr-keep-all">{cr.holder}</dd></div>
-                        <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">발급 기관</dt><dd className="kr-keep-all">{cr.issuer}</dd></div>
-                        <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">인증서 번호</dt><dd>{cr.certificateId}</dd></div>
-                        <div className="flex gap-2"><dt className="text-gray-400 w-20 shrink-0">유효 기간</dt><dd>{cr.validUntil}</dd></div>
+                        <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">보유자</dt><dd className="kr-keep-all">{cr.holder}</dd></div>
+                        <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">발급 기관</dt><dd className="kr-keep-all">{cr.issuer}</dd></div>
+                        <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">인증서 번호</dt><dd>{cr.certificateId}</dd></div>
+                        <div className="flex gap-2"><dt className="text-gray-600 w-20 shrink-0">유효 기간</dt><dd>{cr.validUntil}</dd></div>
                       </dl>
                     </div>
                     {cr.imageFile && (
@@ -142,11 +142,14 @@ export default function CertificationsPage() {
                         rel="noopener noreferrer"
                         className="block shrink-0 group"
                       >
+                        {/* 실제 렌더 폭은 데스크톱 288px이다. sizes를 주지 않으면
+                            원본 폭(3509) 기준으로 srcset이 잡혀 과대한 이미지를 내려받는다. */}
                         <Image
                           src={`/credentials/${cr.imageFile}`}
                           alt={`${cr.name} 인증서`}
-                          width={3509}
-                          height={2216}
+                          width={1400}
+                          height={884}
+                          sizes="(min-width: 768px) 288px, 100vw"
                           className="w-full md:w-72 h-auto rounded-lg border border-gray-200 group-hover:border-gray-300 transition-colors"
                         />
                         <span className="block text-center text-[11px] text-blue-600 mt-1.5 group-hover:text-blue-700">

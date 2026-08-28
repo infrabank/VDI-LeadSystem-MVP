@@ -41,8 +41,8 @@ const stageItems: {
       "C/S/O 예비 분류 + VDI 유지/축소/전환 1차 검토 의견 + MFA·백업 보완 지점 PDF 리포트",
     href: "/tools/risk-assessment",
     borderColor: "#0ea5e9",
-    textColor: "text-sky-700",
-    badgeBg: "bg-sky-50",
+    textColor: "text-blue-700",
+    badgeBg: "bg-blue-50",
   },
   {
     stage: "Stage 1",
@@ -140,7 +140,7 @@ export default function PracticesPage() {
               <Link
                 key={p.id}
                 href={p.href}
-                className="card-hover group bg-white rounded-xl border border-gray-200 p-6 sm:p-8 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300"
+                className="card-hover group bg-white rounded-xl border border-gray-200 p-6 sm:p-8 transition hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300"
                 style={{ borderTop: `4px solid ${c.border}` }}
               >
                 <div className="flex items-center gap-3 mb-4">
@@ -192,8 +192,7 @@ export default function PracticesPage() {
               <Link
                 key={item.title}
                 href={item.href}
-                className="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 p-5 sm:p-6 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
-                style={{ borderLeft: `4px solid ${item.borderColor}` }}
+                className="group flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 p-5 sm:p-6 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition"
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1.5 flex-wrap">
@@ -250,13 +249,13 @@ export default function PracticesPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/tools/risk-assessment"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-sm shadow-amber-200/70 transition-all hover:-translate-y-0.5"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-sm shadow-amber-200/70 transition hover:-translate-y-0.5"
             >
               N²SF 전환 사전진단
             </Link>
             <Link
               href="/contact?source=practices"
-              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-semibold text-sm sm:text-base transition-all"
+              className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 font-semibold text-sm sm:text-base transition"
             >
               대표에게 상담 요청
             </Link>

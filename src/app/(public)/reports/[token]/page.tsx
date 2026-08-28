@@ -118,7 +118,7 @@ function RadarChart({ maturity }: { maturity: V2Output["maturity_model"] }) {
   const polygon = dataPoints.map(p => `${p.x},${p.y}`).join(" ");
 
   return (
-    <svg viewBox="0 0 200 200" className="w-full max-w-[240px] mx-auto">
+    <svg aria-hidden="true" viewBox="0 0 200 200" className="w-full max-w-[240px] mx-auto">
       {/* Grid */}
       {gridLevels.map((lvl) => (
         <polygon
@@ -269,14 +269,14 @@ function V2Report({
     low: "낮음", medium: "보통", high: "높음", critical: "매우 높음",
   };
   const riskLevelColor: Record<string, string> = {
-    low: "text-green-700 bg-green-100 border-green-200",
-    medium: "text-yellow-700 bg-yellow-100 border-yellow-200",
+    low: "text-emerald-700 bg-emerald-100 border-emerald-200",
+    medium: "text-amber-700 bg-amber-100 border-amber-200",
     high: "text-orange-700 bg-orange-100 border-orange-200",
     critical: "text-red-700 bg-red-100 border-red-200",
   };
   const likelihoodColor: Record<string, string> = {
-    low: "bg-green-100 text-green-700",
-    medium: "bg-yellow-100 text-yellow-700",
+    low: "bg-emerald-100 text-emerald-700",
+    medium: "bg-amber-100 text-amber-700",
     high: "bg-red-100 text-red-700",
   };
   const likelihoodLabel: Record<string, string> = {
@@ -331,20 +331,20 @@ function V2Report({
           <div className="mt-5 flex items-center gap-6">
             {/* Score Gauge */}
             <div className="relative flex-shrink-0 w-24 sm:w-28 h-24 sm:h-28">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
+              <svg aria-hidden="true" className="w-full h-full -rotate-90" viewBox="0 0 120 120">
                 <circle cx="60" cy="60" r="52" fill="none" stroke="#f3f4f6" strokeWidth="10" />
                 <circle cx="60" cy="60" r="52" fill="none" stroke={scoreColor} strokeWidth="10" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-3xl font-bold text-gray-900 leading-none">{output.score}</span>
-                <span className="text-xs text-gray-400">/ 100</span>
+                <span className="text-xs text-gray-600">/ 100</span>
               </div>
             </div>
 
             {/* Benchmark */}
-            <div className="flex-1 bg-green-50 border border-green-200 rounded-lg p-3">
-              <p className="text-xs text-green-700 font-medium">{output.benchmark_text}</p>
-              <p className="text-sm text-green-800 font-semibold mt-1">{output.benchmark_comparison}</p>
+            <div className="flex-1 bg-emerald-50 border border-emerald-200 rounded-lg p-3">
+              <p className="text-xs text-emerald-700 font-medium">{output.benchmark_text}</p>
+              <p className="text-sm text-emerald-800 font-semibold mt-1">{output.benchmark_comparison}</p>
             </div>
           </div>
         </div>
@@ -358,13 +358,13 @@ function V2Report({
               {([
                 { label: "Migration Readiness", m: output.maturity_model.migration, color: "bg-red-50 border-red-200" },
                 { label: "DR/Backup", m: output.maturity_model.dr, color: "bg-orange-50 border-orange-200" },
-                { label: "Operations", m: output.maturity_model.operations, color: "bg-yellow-50 border-yellow-200" },
-                { label: "Automation & Scale", m: output.maturity_model.automation, color: "bg-green-50 border-green-200" },
+                { label: "Operations", m: output.maturity_model.operations, color: "bg-amber-50 border-amber-200" },
+                { label: "Automation & Scale", m: output.maturity_model.automation, color: "bg-emerald-50 border-emerald-200" },
               ] as const).map(({ label, m, color }) => (
                 <div key={label} className={`p-3 rounded-lg border ${color}`}>
                   <p className="text-xs text-gray-500">{label}</p>
-                  <p className="text-lg sm:text-xl font-bold text-gray-900">{m.level}<span className="text-sm font-normal text-gray-400">/5</span></p>
-                  <p className="text-xs text-gray-400">{m.score}/25점</p>
+                  <p className="text-lg sm:text-xl font-bold text-gray-900">{m.level}<span className="text-sm font-normal text-gray-600">/5</span></p>
+                  <p className="text-xs text-gray-600">{m.score}/25점</p>
                 </div>
               ))}
             </div>
@@ -375,7 +375,7 @@ function V2Report({
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-4 md:p-6">
           <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
             <span className="w-5 h-5 bg-red-100 rounded-md flex items-center justify-center">
-              <svg className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg aria-hidden="true" className="w-3 h-3 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
               </svg>
             </span>
@@ -410,7 +410,7 @@ function V2Report({
         {/* 4. Current State Projection */}
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 md:p-6">
           <h2 className="text-lg font-bold text-amber-900 mb-4 flex items-center gap-2">
-            <svg className="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg aria-hidden="true" className="w-5 h-5 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
             </svg>
             현 상태 유지 시 시나리오
@@ -475,7 +475,7 @@ function V2Report({
           <p className="text-blue-100 text-sm mb-5 leading-relaxed">진단 결과를 바탕으로 Citrix·VMware·Omnissa·MFA·Acronis 백업 통합 제안을 드립니다.</p>
           <Link href="/contact?source=report-cta" className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-blue-700 rounded-xl font-semibold hover:bg-blue-50 transition-colors shadow-sm text-sm">
             솔루션 상담 문의
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </Link>
@@ -504,8 +504,8 @@ function V1Report({
     low: "낮음", medium: "보통", high: "높음", critical: "매우 높음",
   };
   const riskLevelColor: Record<string, string> = {
-    low: "text-green-700 bg-green-100 border-green-200",
-    medium: "text-yellow-700 bg-yellow-100 border-yellow-200",
+    low: "text-emerald-700 bg-emerald-100 border-emerald-200",
+    medium: "text-amber-700 bg-amber-100 border-amber-200",
     high: "text-orange-700 bg-orange-100 border-orange-200",
     critical: "text-red-700 bg-red-100 border-red-200",
   };
@@ -531,13 +531,13 @@ function V1Report({
           <p className="text-sm font-medium text-gray-500 mb-5">종합 리스크 점수</p>
           <div className="flex items-center gap-6 md:gap-8">
             <div className="relative flex-shrink-0 w-28 sm:w-36 h-28 sm:h-36">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
+              <svg aria-hidden="true" className="w-full h-full -rotate-90" viewBox="0 0 120 120">
                 <circle cx="60" cy="60" r="52" fill="none" stroke="#f3f4f6" strokeWidth="10" />
                 <circle cx="60" cy="60" r="52" fill="none" stroke={scoreColor} strokeWidth="10" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
                 <span className="text-4xl font-bold text-gray-900 leading-none">{score}</span>
-                <span className="text-xs text-gray-400 mt-1">/ 100</span>
+                <span className="text-xs text-gray-600 mt-1">/ 100</span>
               </div>
             </div>
             <span className={`inline-block px-4 py-1.5 rounded-full text-sm font-semibold border ${riskLevelColor[output?.risk_level || "low"]}`}>
@@ -598,7 +598,7 @@ function ExpiredReportNotice({ reportId, expiredAt }: { reportId: string; expire
     <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white rounded-xl border border-gray-200 shadow-sm p-6 sm:p-8 text-center">
         <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-amber-50 mb-4">
-          <svg className="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg aria-hidden="true" className="w-6 h-6 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
@@ -624,7 +624,7 @@ function ExpiredReportNotice({ reportId, expiredAt }: { reportId: string; expire
             새 진단 시작
           </Link>
         </div>
-        <p className="mt-5 text-[11px] text-gray-400">참조 ID: {reportId.slice(0, 8)}</p>
+        <p className="mt-5 text-[11px] text-gray-600">참조 ID: {reportId.slice(0, 8)}</p>
       </div>
     </div>
   );

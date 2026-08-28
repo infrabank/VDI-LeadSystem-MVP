@@ -124,7 +124,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="bg-gradient-to-br from-blue-50 via-white to-indigo-50 border border-gray-200 rounded-2xl p-6 sm:p-8">
-            <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+            <p className="text-xs font-bold text-gray-600 uppercase tracking-widest mb-4">
               핵심 기술지원 분야
             </p>
             <div className="space-y-3">
@@ -143,7 +143,7 @@ export default function AboutPage() {
                   <Link
                     key={a.id}
                     href={supportAreaHref[a.id] ?? "/services/vdi-support"}
-                    className="block p-3 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition-all"
+                    className="block p-3 bg-white rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-sm transition"
                   >
                     <div className="flex items-center gap-2 mb-1.5">
                       <span
@@ -285,8 +285,8 @@ export default function AboutPage() {
                 >
                   <summary className="flex cursor-pointer items-start justify-between gap-3 text-sm sm:text-base font-semibold text-gray-900 kr-keep-all">
                     <span>{f.q}</span>
-                    <span className="mt-1 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180">
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <span className="mt-1 flex-shrink-0 text-gray-600 transition-transform group-open:rotate-180">
+                      <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                       </svg>
                     </span>
@@ -312,7 +312,7 @@ export default function AboutPage() {
             공공·연구기관과 민간 기업의 VDI·백업 환경을 함께 지원해 왔습니다.
           </p>
           <CustomerShowcase variant="grouped" />
-          <p className="text-xs text-gray-400 text-center mt-8 kr-keep-all">
+          <p className="text-xs text-gray-600 text-center mt-8 kr-keep-all">
             ※ 일부 기관명은 기관 정책에 따라 외부 표기 수준이 조정될 수 있습니다.
           </p>
         </div>
@@ -392,7 +392,7 @@ export default function AboutPage() {
           </p>
         )}
         <p className="text-center mt-4">
-          <a href="/about/certifications" className="text-xs text-blue-600 hover:text-blue-700 font-medium">
+          <a href="/about/certifications" className="inline-flex items-center min-h-6 text-xs text-blue-700 hover:text-blue-800 font-medium">
             전체 인증·파트너십 보기 →
           </a>
         </p>
@@ -413,9 +413,9 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact?source=about-cta"
-            className="inline-flex items-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm sm:text-base shadow-lg shadow-blue-900/20 transition hover:-translate-y-0.5"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -424,7 +424,7 @@ export default function AboutPage() {
             </svg>
             상담 문의 폼 열기
           </Link>
-          <p className="text-xs text-blue-200/80 mt-3 kr-keep-all">
+          <p className="text-xs text-blue-50 mt-3 kr-keep-all">
             또는 직접 이메일:{" "}
             <a href={`mailto:${company.email}`} className="underline">
               {company.email}

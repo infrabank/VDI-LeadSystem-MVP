@@ -34,9 +34,9 @@ export default function MfaAccessPage() {
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-indigo-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <Link href="/practices" className="hover:text-indigo-600">Consulting Lines</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">VDI 접속 MFA 검토</span>
         </div>
       </div>
@@ -66,7 +66,7 @@ export default function MfaAccessPage() {
           </p>
           <Link
             href="/contact?source=mfa-access&interest=citrix&subject=VDI 접속 보안 문의"
-            className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-indigo-700 rounded-lg hover:bg-indigo-50 font-semibold text-sm sm:text-base shadow-lg shadow-indigo-900/20 transition-all hover:-translate-y-0.5"
+            className="inline-block px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-indigo-700 rounded-lg hover:bg-indigo-50 font-semibold text-sm sm:text-base shadow-lg shadow-indigo-900/20 transition hover:-translate-y-0.5"
           >
             VDI 접속 보안 문의
           </Link>
@@ -107,7 +107,7 @@ export default function MfaAccessPage() {
           {p.pillars.map((pl) => (
             <div
               key={pl.title}
-              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:-translate-y-0.5 hover:shadow-md"
               style={{ borderTop: "4px solid #4f46e5" }}
             >
               <h3 className="font-bold text-base text-gray-900 mb-2 kr-keep-all">{pl.title}</h3>
@@ -154,7 +154,7 @@ export default function MfaAccessPage() {
               </div>
             ))}
           </div>
-          <p className="text-xs text-gray-400 text-center mt-6 kr-keep-all">
+          <p className="text-xs text-gray-600 text-center mt-6 kr-keep-all">
             ※ 드림시큐리티·잉카인터넷 등 국내 PKI 솔루션, Okta 등 글로벌 IDaaS도 고객 요건에 따라 검토 가능합니다. 라온시큐어 파트너십은 추진 중입니다.
           </p>
         </div>
@@ -178,7 +178,7 @@ export default function MfaAccessPage() {
           </p>
           <Link
             href="/contact?source=mfa-access&interest=citrix&subject=VDI 접속 보안 문의"
-            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-indigo-700 rounded-lg hover:bg-indigo-50 font-semibold text-sm sm:text-base shadow-lg shadow-indigo-900/20 transition-all hover:-translate-y-0.5"
+            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-indigo-700 rounded-lg hover:bg-indigo-50 font-semibold text-sm sm:text-base shadow-lg shadow-indigo-900/20 transition hover:-translate-y-0.5"
           >
             VDI 접속 보안 문의
           </Link>

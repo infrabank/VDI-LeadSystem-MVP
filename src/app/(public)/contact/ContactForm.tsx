@@ -251,7 +251,7 @@ export default function ContactForm() {
     return (
       <div className="bg-white rounded-xl border border-emerald-200 p-6 sm:p-10 text-center">
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-50 mb-4">
-          <svg className="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg aria-hidden="true" className="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -273,7 +273,11 @@ export default function ContactForm() {
   }
 
   return (
+    // noValidate: 브라우저 기본 검증이 먼저 제출을 막으면 아래 handleSubmit이 실행되지 않아
+    // role=alert 요약, aria-invalid, 첫 오류 필드 포커스 이동이 전부 동작하지 않는다.
+    // 네이티브 말풍선은 DOM에 텍스트를 남기지 않아 지원 기술이 읽을 것도 없다.
     <form
+      noValidate
       onSubmit={handleSubmit}
       className="bg-white rounded-xl border border-gray-200 p-5 sm:p-8 space-y-6"
     >
@@ -300,7 +304,7 @@ export default function ContactForm() {
                 <span className={`block text-sm font-bold mb-0.5 ${active ? "text-blue-700" : "text-gray-900"}`}>
                   {t.label}
                 </span>
-                <span className="block text-[11px] text-gray-500 leading-snug">{t.desc}</span>
+                <span className="block text-[11px] text-gray-600 leading-snug">{t.desc}</span>
               </button>
             );
           })}
@@ -439,14 +443,7 @@ export default function ContactForm() {
           <span className="text-sm font-medium text-gray-800">
             상세 정보 <span className="text-xs font-normal text-gray-600">(선택, 적어주시면 회신이 빨라집니다)</span>
           </span>
-          <svg
-            className="faq-chevron w-4 h-4 text-gray-500 flex-shrink-0"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            aria-hidden="true"
-          >
+          <svg aria-hidden="true" className="faq-chevron w-4 h-4 text-gray-500 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
           </svg>
         </summary>
@@ -510,7 +507,8 @@ export default function ContactForm() {
             checked={consentRequired}
             onChange={(e) => setConsentRequired(e.target.checked)}
             aria-invalid={!!fieldErrors.consentRequired}
-            className="mt-0.5 w-4 h-4 accent-blue-600"
+            aria-describedby={fieldErrors.consentRequired ? "consent-error" : undefined}
+            className="mt-0.5 w-6 h-6 flex-shrink-0 accent-blue-600"
           />
           <span className="text-xs sm:text-sm text-gray-700 leading-relaxed kr-keep-all">
             <strong className="text-gray-900">[필수]</strong> 개인정보 수집·이용 및 국외이전(위탁)에 동의합니다.
@@ -527,18 +525,23 @@ export default function ContactForm() {
                 </a>
                 {" "}직접 문의는 가능).
               </span>
-              <Link href="/legal/privacy" target="_blank" className="text-blue-600 underline mt-0.5 inline-block">
+              <Link href="/legal/privacy" target="_blank" className="text-blue-600 underline mt-1 inline-flex items-center min-h-[24px]">
                 전체 처리방침 보기 →
               </Link>
             </span>
           </span>
         </label>
+        {fieldErrors.consentRequired && (
+          <p id="consent-error" className="px-1 text-xs text-red-700">
+            {fieldErrors.consentRequired}
+          </p>
+        )}
         <label className="flex items-start gap-3 p-3 sm:p-4 bg-gray-50 rounded-lg cursor-pointer hover:bg-gray-100 transition-colors">
           <input
             type="checkbox"
             checked={consentMarketing}
             onChange={(e) => setConsentMarketing(e.target.checked)}
-            className="mt-0.5 w-4 h-4 accent-blue-600"
+            className="mt-0.5 w-6 h-6 flex-shrink-0 accent-blue-600"
           />
           <span className="text-xs sm:text-sm text-gray-700 leading-relaxed kr-keep-all">
             <strong className="text-gray-500">[선택]</strong> 마케팅·뉴스레터 수신에 동의합니다.
@@ -563,7 +566,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={step === "submitting"}
-        className="w-full px-6 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-sm shadow-amber-200/70 transition-all disabled:opacity-60 disabled:cursor-not-allowed"
+        className="w-full px-6 py-3 sm:py-3.5 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-sm shadow-amber-200/70 transition disabled:opacity-60 disabled:cursor-not-allowed"
       >
         {step === "submitting" ? "전송 중..." : activeType.submitLabel}
       </button>

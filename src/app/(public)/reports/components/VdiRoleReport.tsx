@@ -7,7 +7,7 @@ const TYPE_COLORS: Record<ResultType, { bg: string; text: string; border: string
   maintain: { bg: "bg-emerald-50", text: "text-emerald-800", border: "border-emerald-200", icon: "bg-emerald-500" },
   complement: { bg: "bg-blue-50", text: "text-blue-800", border: "border-blue-200", icon: "bg-blue-500" },
   reduce: { bg: "bg-amber-50", text: "text-amber-800", border: "border-amber-200", icon: "bg-amber-500" },
-  redesign: { bg: "bg-rose-50", text: "text-rose-800", border: "border-rose-200", icon: "bg-rose-500" },
+  redesign: { bg: "bg-red-50", text: "text-red-800", border: "border-red-200", icon: "bg-red-500" },
 };
 
 const TYPE_DESCRIPTIONS: Record<ResultType, string> = {
@@ -62,7 +62,7 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
         <div className={`${c.bg} ${c.border} border rounded-xl p-6`}>
           <div className="flex items-start gap-4">
             <div className={`flex-shrink-0 w-12 h-12 ${c.icon} rounded-xl flex items-center justify-center text-white shadow-md`}>
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
             </div>
@@ -95,7 +95,7 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
                     <span className="text-sm font-semibold text-gray-700">{pct}%</span>
                   </div>
                   <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
-                    <div className={`h-full ${tc.icon} rounded-full transition-all`} style={{ width: `${pct}%` }} />
+                    <div className={`h-full ${tc.icon} rounded-full transition-[width]`} style={{ width: `${pct}%` }} />
                   </div>
                 </div>
               );
@@ -206,7 +206,7 @@ function Disposition({
   const palette = {
     emerald: "bg-emerald-50 border-emerald-200 text-emerald-900",
     amber: "bg-amber-50 border-amber-200 text-amber-900",
-    rose: "bg-rose-50 border-rose-200 text-rose-900",
+    rose: "bg-red-50 border-red-200 text-red-900",
   }[color];
 
   if (items.length === 0) return null;

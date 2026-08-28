@@ -140,12 +140,16 @@ export default async function ContentListPage({
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
         {/* Search + Filter */}
-        <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-8 md:mb-10" action="/insights">
+        <form className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-8 md:mb-10" action="/insights" role="search">
           <div className="flex-1 relative">
-            <svg className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <label htmlFor="insights-q" className="sr-only">
+              기술 콘텐츠 검색어
+            </label>
+            <svg aria-hidden="true" className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
             <input
+              id="insights-q"
               type="text"
               name="q"
               defaultValue={query}
@@ -154,7 +158,11 @@ export default async function ContentListPage({
             />
           </div>
           <div className="flex gap-2 sm:gap-3">
+            <label htmlFor="insights-type" className="sr-only">
+              콘텐츠 유형 필터
+            </label>
             <select
+              id="insights-type"
               name="type"
               defaultValue={filterType}
               className="flex-1 sm:flex-initial px-3 sm:px-4 py-3 border border-gray-200 rounded-xl bg-white shadow-sm text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -180,7 +188,7 @@ export default async function ContentListPage({
               <Link
                 key={tag}
                 href={`/insights/tag/${encodeURIComponent(tag)}`}
-                className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
+                className="inline-flex items-center text-xs px-3.5 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
               >
                 #{tag}
               </Link>
@@ -197,10 +205,10 @@ export default async function ContentListPage({
           </div>
         ) : (
           <div className="text-center py-20 flex flex-col items-center gap-4">
-            <svg className="w-16 h-16 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
+            <svg aria-hidden="true" className="w-16 h-16 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <p className="text-gray-400 font-medium">
+            <p className="text-gray-600 font-medium">
               {query ? "검색 결과가 없습니다." : "아직 발행된 콘텐츠가 없습니다."}
             </p>
             {query && (
@@ -219,7 +227,7 @@ export default async function ContentListPage({
                 href={pageHref(query, filterType, page - 1)}
                 className="flex items-center gap-1.5 px-3 sm:px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-600 transition-colors"
               >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
                 </svg>
                 이전
@@ -229,7 +237,7 @@ export default async function ContentListPage({
             )}
             <span className="text-xs sm:text-sm text-gray-500 text-center">
               {page} / {Math.max(1, Math.ceil(totalItems / pageSize))} 페이지
-              <span className="text-gray-400 ml-1 hidden sm:inline">(총 {totalItems}건)</span>
+              <span className="text-gray-600 ml-1 hidden sm:inline">(총 {totalItems}건)</span>
             </span>
             {contents && contents.length === pageSize ? (
               <Link
@@ -237,7 +245,7 @@ export default async function ContentListPage({
                 className="flex items-center gap-1.5 px-3 sm:px-5 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 text-xs sm:text-sm font-medium text-gray-600 transition-colors"
               >
                 다음
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </Link>

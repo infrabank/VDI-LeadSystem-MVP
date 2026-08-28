@@ -179,7 +179,7 @@ const siCollaboration: string[] = [
 /* ---------- 아이콘 ---------- */
 function ArrowRight({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2} aria-hidden="true">
+    <svg aria-hidden="true" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
     </svg>
   );
@@ -187,7 +187,7 @@ function ArrowRight({ className = "w-4 h-4" }: { className?: string }) {
 
 function PhoneIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+    <svg aria-hidden="true" className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
       <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
     </svg>
   );
@@ -315,7 +315,7 @@ export default function HomePage() {
                 <ul className="space-y-1.5 text-sm text-gray-700 mb-5 flex-1 kr-keep-all">
                   {area.items.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span className="text-blue-500 flex-shrink-0">·</span>
+                      <span aria-hidden="true" className="text-blue-600 flex-shrink-0">·</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -452,7 +452,7 @@ export default function HomePage() {
             <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
               {smbCustomers.map((c, i) => (
                 <span key={c.code} className="flex items-center gap-3">
-                  {i > 0 && <span className="text-gray-300">·</span>}
+                  {i > 0 && <span aria-hidden="true" className="text-gray-400">·</span>}
                   <span className="text-base sm:text-lg font-bold text-gray-800 tracking-tight">
                     {c.name}
                   </span>
@@ -648,7 +648,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
             <Link
               href="/contact?source=home-si&interest=integrated-maintenance&subject=전산통합유지보수 협업 문의"
-              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base transition-all text-center"
+              className="px-6 sm:px-7 py-3 sm:py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base transition text-center"
             >
               통합유지보수 협업 문의
             </Link>
@@ -682,13 +682,13 @@ export default function HomePage() {
             </a>
             <Link
               href="/contact?source=home-bottom"
-              className="px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-200 transition-all hover:-translate-y-0.5 text-center"
+              className="px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-200 transition hover:-translate-y-0.5 text-center"
             >
               문의 보내기
             </Link>
             <a
               href={`mailto:${company.email}?subject=${encodeURIComponent("[유지보수·기술지원 문의]")}`}
-              className="px-7 py-3.5 bg-white border border-gray-300 text-gray-800 rounded-md hover:bg-gray-50 font-semibold text-sm sm:text-base transition-all text-center"
+              className="px-7 py-3.5 bg-white border border-gray-300 text-gray-800 rounded-md hover:bg-gray-50 font-semibold text-sm sm:text-base transition text-center"
             >
               메일로 보내기
             </a>

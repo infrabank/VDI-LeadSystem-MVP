@@ -17,7 +17,7 @@ export function LeaderCard({ leader }: { leader: LeaderProfile }) {
   const isPlaceholder = !leader.name;
 
   return (
-    <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:border-gray-300 hover:shadow-sm">
+    <div className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:border-gray-300 hover:shadow-sm">
       <div className="flex items-start gap-4">
         <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100 border border-gray-200">
           {hasPhoto ? (
@@ -48,7 +48,7 @@ export function LeaderCard({ leader }: { leader: LeaderProfile }) {
           </p>
           <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-1 kr-keep-all">
             {leader.name || (
-              <span className="text-gray-400 font-medium">정보 업데이트 예정</span>
+              <span className="text-gray-600 font-medium">정보 업데이트 예정</span>
             )}
           </h3>
           {leader.bio && (
@@ -86,7 +86,7 @@ export function LeaderCard({ leader }: { leader: LeaderProfile }) {
               </a>
             )}
             {isPlaceholder && (
-              <span className="text-gray-400">슬롯 — 향후 채워질 예정</span>
+              <span className="text-gray-600">슬롯 — 향후 채워질 예정</span>
             )}
           </div>
         </div>

@@ -100,10 +100,10 @@ export default function ItMaintenancePage() {
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-500">
-          <Link href="/" className="hover:text-blue-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
-          <Link href="/#business" className="hover:text-blue-600">서비스</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <Link href="/" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">홈</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
+          <Link href="/#business" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">서비스</Link>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">전산 유지보수</span>
         </div>
       </div>
@@ -130,13 +130,13 @@ export default function ItMaintenancePage() {
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
               href="/contact?source=it-maintenance&interest=it-maintenance&subject=월간 유지보수 상담"
-              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
+              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition"
             >
               월간 유지보수 상담
             </Link>
             <a
               href={PHONE_TEL}
-              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
+              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
             >
               ☎ {companyLegal.phone} 바로 통화
             </a>
@@ -198,7 +198,7 @@ export default function ItMaintenancePage() {
             <span className="font-semibold text-gray-700">운영 중 고객사</span>
             {smbCustomers.map((c, i) => (
               <span key={c.code} className="flex items-center gap-3">
-                {i > 0 && <span className="text-gray-300">·</span>}
+                {i > 0 && <span aria-hidden="true" className="text-gray-400">·</span>}
                 <span className="font-medium text-gray-700">{c.name}</span>
               </span>
             ))}
@@ -223,8 +223,8 @@ export default function ItMaintenancePage() {
               >
                 <summary className="flex cursor-pointer items-start justify-between gap-3 text-base font-semibold text-gray-900 kr-keep-all">
                   <span>{f.q}</span>
-                  <span className="mt-1 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <span className="mt-1 flex-shrink-0 text-gray-600 transition-transform group-open:rotate-180">
+                    <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
@@ -268,7 +268,7 @@ export default function ItMaintenancePage() {
           </p>
           <Link
             href="/contact?source=it-maintenance-bottom&interest=it-maintenance&subject=전산 유지보수 견적 문의"
-            className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5"
+            className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition hover:-translate-y-0.5"
           >
             전산 유지보수 견적 문의
           </Link>

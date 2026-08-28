@@ -13,8 +13,8 @@ export default function TermsPage() {
   return (
     <article className="reading-prose mx-auto px-4 sm:px-6 py-10 md:py-16">
       <p className="text-xs text-gray-500 mb-2">
-        <Link href="/" className="hover:text-blue-600">홈</Link>
-        <span className="mx-2 text-gray-300">/</span>
+        <Link href="/" className="inline-flex items-center min-h-6 px-2 -mx-2 hover:text-blue-700">홈</Link>
+        <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
         Legal · 이용약관
       </p>
       <h1 className="text-display text-3xl sm:text-4xl font-semibold text-gray-900 mb-3 leading-[1.15]">

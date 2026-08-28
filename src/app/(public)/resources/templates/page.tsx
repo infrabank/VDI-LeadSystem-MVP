@@ -119,13 +119,13 @@ export default function ResourcesTemplatesPage() {
                           <h2 className={`text-lg sm:text-xl font-bold ${accent.text} tracking-tight`}>
                             {TEMPLATE_CATEGORY_LABEL[category]}
                           </h2>
-                          <span className="text-xs text-gray-400">{items.length}건</span>
+                          <span className="text-xs text-gray-600">{items.length}건</span>
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
                           {items.map((t) => (
                             <article
                               key={t.slug}
-                              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300 flex flex-col"
+                              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:-translate-y-0.5 hover:shadow-md hover:border-gray-300 flex flex-col"
                               style={{ borderTop: `4px solid ${accent.border}` }}
                             >
                               <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 kr-keep-all">
@@ -134,16 +134,16 @@ export default function ResourcesTemplatesPage() {
                               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all flex-1 mb-4">
                                 {t.summary}
                               </p>
-                              <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
+                              <div className="flex items-center justify-between text-xs text-gray-600 mb-4">
                                 <span>약 {t.pages}쪽</span>
                                 <span>최근 갱신 {t.updatedAt}</span>
                               </div>
                               <a
                                 href={`/api/templates/${t.slug}/download`}
-                                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+                                className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg text-sm font-semibold text-white transition hover:-translate-y-0.5"
                                 style={{ backgroundColor: accent.border }}
                               >
-                                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                   <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5 5-5M12 15V3" />
                                 </svg>
                                 PDF 다운로드
@@ -199,13 +199,13 @@ export default function ResourcesTemplatesPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="/practices#pricing"
-              className="inline-block px-6 sm:px-8 py-3 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition-all hover:-translate-y-0.5"
+              className="inline-block px-6 sm:px-8 py-3 bg-white text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition hover:-translate-y-0.5"
             >
               참고 단가 보기
             </Link>
             <a
               href="mailto:jhw@mlkit.co.kr"
-              className="inline-block px-6 sm:px-8 py-3 bg-white/10 border border-white/30 text-white rounded-lg hover:bg-white/20 font-semibold text-sm backdrop-blur-sm transition-all"
+              className="inline-block px-6 sm:px-8 py-3 bg-white/10 border border-white/30 text-white rounded-lg hover:bg-white/20 font-semibold text-sm backdrop-blur-sm transition"
             >
               대표에게 직접 메일
             </a>

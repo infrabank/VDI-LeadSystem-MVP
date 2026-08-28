@@ -64,25 +64,25 @@ export function CustomerShowcase({ variant = "compact" }: Props) {
                       {customerDisplayName(c)}
                     </p>
                     {c.disclosed && (
-                      <p className="text-[10px] text-gray-400 font-mono mb-1">{c.code}</p>
+                      <p className="text-[10px] text-gray-600 font-mono mb-1">{c.code}</p>
                     )}
                     {hasDetail && (
                       <div className="space-y-1.5 mt-2 pt-2 border-t border-gray-100">
                         {c.vendor && (
                           <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
-                            <span className="text-gray-400">벤더 </span>
+                            <span className="text-gray-600">벤더 </span>
                             {c.vendor}
                           </p>
                         )}
                         {c.userScale && (
                           <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
-                            <span className="text-gray-400">규모 </span>
+                            <span className="text-gray-600">규모 </span>
                             {c.userScale}
                           </p>
                         )}
                         {c.role && (
                           <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
-                            <span className="text-gray-400">역할 </span>
+                            <span className="text-gray-600">역할 </span>
                             {c.role}
                           </p>
                         )}

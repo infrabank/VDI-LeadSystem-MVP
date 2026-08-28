@@ -49,9 +49,9 @@ export default function DataProtectionPage() {
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-emerald-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <Link href="/practices" className="hover:text-emerald-600">Practices</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">{p.shortTitle}</span>
         </div>
       </div>
@@ -78,13 +78,13 @@ export default function DataProtectionPage() {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center sm:flex-wrap">
             <Link
               href="/tools/backup-readiness"
-              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-emerald-700 rounded-lg hover:bg-emerald-50 font-semibold text-sm sm:text-base shadow-lg shadow-emerald-900/20 transition-all hover:-translate-y-0.5"
+              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-white text-emerald-700 rounded-lg hover:bg-emerald-50 font-semibold text-sm sm:text-base shadow-lg shadow-emerald-900/20 transition hover:-translate-y-0.5"
             >
               백업·복원력 자가 진단(7분)
             </Link>
             <Link
               href="/contact?source=data-protection&interest=data-protection"
-              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-emerald-500/30 border border-emerald-400/40 text-white rounded-lg hover:bg-emerald-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition-all"
+              className="px-6 sm:px-8 py-3 sm:py-3.5 bg-emerald-500/30 border border-emerald-400/40 text-white rounded-lg hover:bg-emerald-500/40 font-semibold text-sm sm:text-base backdrop-blur-sm transition"
             >
               복구검증 서비스 상담
             </Link>
@@ -127,7 +127,7 @@ export default function DataProtectionPage() {
           {layers.map((l) => (
             <div
               key={l.num}
-              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+              className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:-translate-y-0.5 hover:shadow-md"
               style={{ borderTop: "4px solid #059669" }}
             >
               <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-3">
@@ -153,11 +153,11 @@ export default function DataProtectionPage() {
             {usecases.map((u, i) => (
               <div
                 key={i}
-                className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition-all hover:-translate-y-0.5 hover:shadow-md"
+                className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:-translate-y-0.5 hover:shadow-md"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
-                    <svg
+                    <svg aria-hidden="true"
                       className="w-5 h-5 text-emerald-600"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -179,7 +179,7 @@ export default function DataProtectionPage() {
       {/* Technology Partner */}
       <section className="bg-gray-50 border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10 md:py-14">
-          <p className="text-center text-xs font-bold text-gray-400 uppercase tracking-widest mb-6 md:mb-8">
+          <p className="text-center text-xs font-bold text-gray-600 uppercase tracking-widest mb-6 md:mb-8">
             Cyber Protection Technology Partner
           </p>
           <div className="max-w-sm mx-auto">
@@ -205,12 +205,12 @@ export default function DataProtectionPage() {
           {/* 자가 진단 */}
           <Link
             href="/tools/backup-readiness"
-            className="card-hover group block p-6 sm:p-7 bg-white rounded-xl shadow-sm border border-gray-200 transition-all hover:-translate-y-0.5 hover:shadow-md ring-2 ring-emerald-600 ring-offset-2"
+            className="card-hover group block p-6 sm:p-7 bg-white rounded-xl shadow-sm border border-gray-200 transition hover:-translate-y-0.5 hover:shadow-md ring-2 ring-emerald-600 ring-offset-2"
             style={{ borderTop: "4px solid #059669" }}
           >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-600 flex items-center justify-center">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-5 h-5 sm:w-6 sm:h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
@@ -232,12 +232,12 @@ export default function DataProtectionPage() {
           {/* ROI 계산기 */}
           <Link
             href="/tools/backup-roi"
-            className="card-hover group block p-6 sm:p-7 bg-white rounded-xl shadow-sm border border-gray-200 transition-all hover:-translate-y-0.5 hover:shadow-md"
+            className="card-hover group block p-6 sm:p-7 bg-white rounded-xl shadow-sm border border-gray-200 transition hover:-translate-y-0.5 hover:shadow-md"
             style={{ borderTop: "4px solid #0d9488" }}
           >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-teal-50 flex items-center justify-center">
-                <svg className="w-5 h-5 sm:w-6 sm:h-6 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-5 h-5 sm:w-6 sm:h-6 text-teal-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
@@ -284,7 +284,7 @@ export default function DataProtectionPage() {
           </p>
           <Link
             href="/contact?source=data-protection&interest=data-protection&subject=백업·DR 복구검증 서비스 상담"
-            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-emerald-700 rounded-lg hover:bg-emerald-50 font-semibold text-sm sm:text-base shadow-lg shadow-emerald-900/20 transition-all hover:-translate-y-0.5"
+            className="inline-block px-8 sm:px-10 py-3.5 sm:py-4 bg-white text-emerald-700 rounded-lg hover:bg-emerald-50 font-semibold text-sm sm:text-base shadow-lg shadow-emerald-900/20 transition hover:-translate-y-0.5"
           >
             복구검증 서비스 상담
           </Link>

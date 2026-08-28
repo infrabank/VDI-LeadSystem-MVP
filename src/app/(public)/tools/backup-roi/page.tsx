@@ -122,7 +122,7 @@ export default function BackupRoiPage() {
       <div className="bg-gradient-to-b from-emerald-50 to-white border-b border-emerald-100">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 md:py-10 text-center">
           <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-emerald-700 rounded-2xl mb-4 shadow-md">
-            <svg
+            <svg aria-hidden="true"
               className="w-6 h-6 sm:w-7 sm:h-7 text-white"
               fill="none"
               viewBox="0 0 24 24"
@@ -406,10 +406,10 @@ export default function BackupRoiPage() {
 
               <button
                 type="submit"
-                className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-emerald-700 to-teal-700 text-white rounded-xl hover:shadow-md hover:scale-[1.01] active:scale-[0.99] font-semibold text-base transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 sm:py-3.5 bg-gradient-to-r from-emerald-700 to-teal-700 text-white rounded-xl hover:shadow-md hover:scale-[1.01] active:scale-[0.99] font-semibold text-base transition flex items-center justify-center gap-2"
               >
                 ROI 분석 실행
-                <svg
+                <svg aria-hidden="true"
                   className="w-5 h-5"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -433,7 +433,7 @@ export default function BackupRoiPage() {
               <div className="absolute inset-0 rounded-full border-4 border-emerald-100" />
               <div className="absolute inset-0 rounded-full border-4 border-emerald-700 border-t-transparent animate-spin" />
               <div className="absolute inset-0 flex items-center justify-center">
-                <svg
+                <svg aria-hidden="true"
                   className="w-7 h-7 text-emerald-700 animate-pulse"
                   fill="none"
                   viewBox="0 0 24 24"

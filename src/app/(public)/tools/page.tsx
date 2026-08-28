@@ -97,7 +97,7 @@ export default function ToolsPage() {
             <Link
               key={t.rank}
               href={t.href}
-              className={`card-hover group p-5 sm:p-7 bg-white rounded-xl shadow-sm block transition-all hover:-translate-y-0.5 hover:shadow-md ${
+              className={`card-hover group p-5 sm:p-7 bg-white rounded-xl shadow-sm block transition hover:-translate-y-0.5 hover:shadow-md ${
                 t.primary ? "ring-2 ring-blue-600 ring-offset-2" : ""
               }`}
               style={{ border: "1px solid #e5e7eb", borderTop: `4px solid ${t.color}` }}
@@ -108,7 +108,7 @@ export default function ToolsPage() {
                     t.primary ? "bg-blue-600" : "bg-blue-50"
                   }`}
                 >
-                  <svg
+                  <svg aria-hidden="true"
                     className={`w-5 h-5 sm:w-6 sm:h-6 ${t.primary ? "text-white" : "text-blue-600"}`}
                     fill="none"
                     viewBox="0 0 24 24"
@@ -119,8 +119,8 @@ export default function ToolsPage() {
                   </svg>
                 </div>
                 <div className="flex flex-col items-end gap-1">
-                  <span className="text-xs font-bold text-gray-300">{t.rank}</span>
-                  <span className="text-[10px] sm:text-xs text-gray-400">{t.duration}</span>
+                  <span className="text-xs font-bold text-gray-500">{t.rank}</span>
+                  <span className="text-[10px] sm:text-xs text-gray-600">{t.duration}</span>
                 </div>
               </div>
               <h2 className="font-bold text-base sm:text-lg text-gray-900 mb-2 sm:mb-2.5 kr-keep-all">

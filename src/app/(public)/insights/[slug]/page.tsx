@@ -15,7 +15,7 @@ const siteUrl = `https://${company.domain}`;
 const typeBadge: Record<string, string> = {
   article: "bg-blue-100 text-blue-700",
   case: "bg-emerald-100 text-emerald-700",
-  checklist: "bg-violet-100 text-violet-700",
+  checklist: "bg-purple-100 text-purple-700",
   comparison: "bg-orange-100 text-orange-700",
 };
 
@@ -239,10 +239,10 @@ export default async function ContentDetailPage({ params }: Props) {
             {typeLabel[content.type] || content.type}
           </span>
           {content.category && (
-            <span className="text-gray-400 text-xs">{content.category}</span>
+            <span className="text-gray-600 text-xs">{content.category}</span>
           )}
           {content.updated_at && (
-            <span className="text-gray-400 text-xs">
+            <span className="text-gray-600 text-xs">
               최종 업데이트: {new Date(content.updated_at).toLocaleDateString("ko-KR")}
             </span>
           )}
@@ -259,7 +259,7 @@ export default async function ContentDetailPage({ params }: Props) {
                 <Link
                   key={tag}
                   href={`/insights/tag/${encodeURIComponent(tag)}`}
-                  className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
+                  className="inline-flex items-center text-xs px-3.5 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
                 >
                   #{tag}
                 </Link>
@@ -278,11 +278,14 @@ export default async function ContentDetailPage({ params }: Props) {
 
       {/* Cover Image */}
       {content.cover_image_url && (
+        // 원격 이미지라 크기를 모르므로 종횡비를 고정해 로드 전후 레이아웃 이동을 막는다
         // eslint-disable-next-line @next/next/no-img-element
         <img
           src={content.cover_image_url}
           alt={content.title}
-          className="w-full rounded-xl shadow-lg mb-10 object-cover"
+          loading="lazy"
+          decoding="async"
+          className="w-full aspect-[16/9] rounded-xl shadow-lg mb-10 object-cover"
         />
       )}
 
@@ -298,11 +301,11 @@ export default async function ContentDetailPage({ params }: Props) {
           <h2 className="text-xl sm:text-2xl font-bold text-gray-900 mb-4 sm:mb-6">자주 묻는 질문</h2>
           <div className="space-y-3">
             {content.faq_json.map((faq: { q: string; a: string }, i: number) => (
-              <details key={i} className="group border-l-4 border-l-blue-500 border border-gray-200 rounded-r-lg bg-white hover:bg-gray-50 transition-colors overflow-hidden">
+              <details key={i} className="group border border-gray-200 rounded-lg bg-white hover:bg-gray-50 transition-colors overflow-hidden">
                 <summary className="flex items-center justify-between gap-2 sm:gap-4 px-4 sm:px-5 py-3 sm:py-4 font-semibold text-sm sm:text-base text-gray-900 cursor-pointer select-none kr-keep-all">
                   <span>{faq.q}</span>
-                  <svg
-                    className="faq-chevron w-4 h-4 text-gray-400 flex-shrink-0"
+                  <svg aria-hidden="true"
+                    className="faq-chevron w-4 h-4 text-gray-600 flex-shrink-0"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -325,7 +328,7 @@ export default async function ContentDetailPage({ params }: Props) {
           <div className="mt-10 sm:mt-14 rounded-xl overflow-hidden" style={{ background: "linear-gradient(135deg, #eff6ff 0%, #eef2ff 100%)", border: "1px solid #bfdbfe" }}>
             <div className="p-6 sm:p-8 text-center">
               <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center mx-auto mb-4">
-                <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </div>
@@ -338,13 +341,13 @@ export default async function ContentDetailPage({ params }: Props) {
               <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 justify-center">
                 <Link
                   href={cta.primaryHref}
-                  className="inline-block px-6 sm:px-7 py-3 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm shadow-sm transition-all hover:-translate-y-0.5"
+                  className="inline-block px-6 sm:px-7 py-3 bg-amber-400 text-slate-900 rounded-lg hover:bg-amber-300 font-semibold text-sm shadow-sm transition hover:-translate-y-0.5"
                 >
                   {cta.primaryLabel}
                 </Link>
                 <Link
                   href={cta.secondaryHref}
-                  className="inline-block px-6 sm:px-7 py-3 bg-white border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition-all"
+                  className="inline-block px-6 sm:px-7 py-3 bg-white border border-blue-200 text-blue-700 rounded-lg hover:bg-blue-50 font-semibold text-sm transition"
                 >
                   {cta.secondaryLabel}
                 </Link>
@@ -366,7 +369,7 @@ export default async function ContentDetailPage({ params }: Props) {
               <Link
                 key={item.id}
                 href={`/insights/${item.slug}`}
-                className="group flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-blue-200 hover:bg-blue-50/30 transition-all"
+                className="group flex items-center gap-4 p-4 border border-gray-200 rounded-xl hover:border-blue-200 hover:bg-blue-50/30 transition"
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
@@ -381,7 +384,7 @@ export default async function ContentDetailPage({ params }: Props) {
                     </p>
                   )}
                 </div>
-                <svg className="w-4 h-4 text-gray-300 group-hover:text-blue-400 flex-shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-4 h-4 text-gray-300 group-hover:text-blue-400 flex-shrink-0 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
                 </svg>
               </Link>

@@ -129,7 +129,7 @@ export default function PartnersPage() {
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <a
               href={mailtoHref}
-              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
+              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition"
             >
               기술지원 협업 요청
             </a>
@@ -137,7 +137,7 @@ export default function PartnersPage() {
               href="/partners-onepager.pdf"
               target="_blank"
               rel="noopener"
-              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
+              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
             >
               A4 1장 자료 (PDF)
             </a>
@@ -271,10 +271,10 @@ export default function PartnersPage() {
             지원 가능하지만, 단독 상품으로 판매하지는 않습니다.
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 kr-keep-all">
-            <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">·</span>N²SF 환경에서의 VDI 역할 검토 (운영자 관점)</li>
-            <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">·</span>RFP 기술요건 일부 검토</li>
-            <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">·</span>보안성 검토 응답 자료 보조</li>
-            <li className="flex gap-2"><span className="text-gray-300 flex-shrink-0">·</span>MFA가 VDI 접속에 미치는 운영 영향 검토</li>
+            <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>N²SF 환경에서의 VDI 역할 검토 (운영자 관점)</li>
+            <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>RFP 기술요건 일부 검토</li>
+            <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>보안성 검토 응답 자료 보조</li>
+            <li className="flex gap-2"><span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>MFA가 VDI 접속에 미치는 운영 영향 검토</li>
           </ul>
         </div>
       </section>
@@ -345,15 +345,15 @@ export default function PartnersPage() {
           </h2>
           <ul className="space-y-3 text-base text-gray-700 leading-relaxed kr-keep-all mb-6">
             <li className="flex gap-3">
-              <span className="text-gray-300 flex-shrink-0">·</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>
               <span>공공·연구기관 VDI 10여 곳을 다년간 운영해 왔습니다.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-gray-300 flex-shrink-0">·</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>
               <span>Citrix · Omnissa Horizon · Acronis · Vinchin 운영 경험 기반, 벤더 중립.</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-gray-300 flex-shrink-0">·</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>
               <span>대표 엔지니어가 처음부터 끝까지 직접 맡습니다.</span>
             </li>
           </ul>
@@ -437,19 +437,19 @@ export default function PartnersPage() {
           </h2>
           <ul className="space-y-2.5 text-base text-gray-700 leading-relaxed kr-keep-all">
             <li className="flex gap-3">
-              <span className="text-gray-300 flex-shrink-0">—</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
               <span>단순 라이선스 영업·총판 마진</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-gray-300 flex-shrink-0">—</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
               <span>인증 신청 대행 (CC, GS, ISMS-P 등)</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-gray-300 flex-shrink-0">—</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
               <span>인력 파견·SM 외주·상주</span>
             </li>
             <li className="flex gap-3">
-              <span className="text-gray-300 flex-shrink-0">—</span>
+              <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
               <span>민간 일반 사무 IT 컨설팅</span>
             </li>
           </ul>
@@ -474,7 +474,7 @@ export default function PartnersPage() {
             className="inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 hover:text-gray-900 underline underline-offset-4 decoration-gray-300 hover:decoration-gray-500"
           >
             Insights 전체 보기
-            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg aria-hidden="true" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </Link>

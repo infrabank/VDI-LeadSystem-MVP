@@ -118,7 +118,7 @@ export default async function InsightsTagPage({ params }: Props) {
                 <Link
                   key={t}
                   href={`/insights/tag/${encodeURIComponent(t)}`}
-                  className="text-xs px-3 py-1 bg-blue-50 text-blue-600 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
+                  className="inline-flex items-center text-xs px-3.5 py-1.5 bg-blue-50 text-blue-700 rounded-full border border-blue-100 hover:bg-blue-100 hover:border-blue-200 transition-colors font-medium"
                 >
                   #{t} <span className="text-blue-400">{n}</span>
                 </Link>

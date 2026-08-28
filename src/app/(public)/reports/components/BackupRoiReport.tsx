@@ -24,8 +24,8 @@ const CURRENT_COLORS = [
 const ACRONIS_COLORS = [
   "bg-emerald-500",
   "bg-teal-400",
-  "bg-cyan-400",
-  "bg-sky-400",
+  "bg-blue-400",
+  "bg-blue-400",
   "bg-slate-300",
   "bg-gray-200",
 ];
@@ -108,11 +108,11 @@ export default function BackupRoiReport({ output, lead, date }: Props) {
           </div>
 
           {/* 5년 누적 회피액 */}
-          <div className="bg-white rounded-xl border border-cyan-200 shadow-sm p-4 md:p-6 text-center">
-            <p className="text-xs font-semibold text-cyan-700 uppercase tracking-wide mb-2 [word-break:keep-all]">
+          <div className="bg-white rounded-xl border border-blue-200 shadow-sm p-4 md:p-6 text-center">
+            <p className="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-2 [word-break:keep-all]">
               5년 누적 회피액
             </p>
-            <p className="text-2xl sm:text-3xl font-bold text-cyan-700 leading-none">
+            <p className="text-2xl sm:text-3xl font-bold text-blue-700 leading-none">
               {fmt(exp.avoided_5yr)}
               <span className="text-base font-normal ml-1">만원</span>
             </p>
@@ -294,7 +294,7 @@ export default function BackupRoiReport({ output, lead, date }: Props) {
             className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-emerald-700 rounded-xl font-semibold hover:bg-emerald-50 transition-colors shadow-sm text-sm"
           >
             견적 상담 문의
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
             </svg>
           </a>

@@ -77,7 +77,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
           <div className="mt-5 flex items-center gap-6 flex-wrap">
             {/* 점수 게이지 */}
             <div className="relative flex-shrink-0 w-24 sm:w-28 h-24 sm:h-28">
-              <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
+              <svg aria-hidden="true" className="w-full h-full -rotate-90" viewBox="0 0 120 120">
                 <circle cx="60" cy="60" r="52" fill="none" stroke="#f1f5f9" strokeWidth="10" />
                 <circle
                   cx="60"
@@ -135,7 +135,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
                   </div>
                   <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                     <div
-                      className={`h-full ${barColor} rounded-full transition-all`}
+                      className={`h-full ${barColor} rounded-full transition`}
                       style={{ width: `${sec.score}%` }}
                     />
                   </div>
@@ -221,7 +221,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
             className="inline-flex items-center gap-2 px-6 py-2.5 bg-white text-emerald-700 rounded-xl font-semibold hover:bg-emerald-50 transition-colors shadow-sm text-sm"
           >
             무료 상담 신청
-            <svg
+            <svg aria-hidden="true"
               className="w-4 h-4"
               fill="none"
               viewBox="0 0 24 24"

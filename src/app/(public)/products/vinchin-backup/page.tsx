@@ -32,7 +32,7 @@ function ImgSlot({
     <div
       className={`${ratio} w-full rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/40 flex flex-col items-center justify-center text-center px-4 py-6`}
     >
-      <svg
+      <svg aria-hidden="true"
         className="w-8 h-8 text-emerald-400 mb-2"
         fill="none"
         viewBox="0 0 24 24"
@@ -49,7 +49,7 @@ function ImgSlot({
       <p className="mt-1 text-[11px] text-emerald-600/80 font-mono">
         /products/vinchin/{file}
       </p>
-      <p className="mt-1 text-[11px] text-gray-400 kr-keep-all">
+      <p className="mt-1 text-[11px] text-gray-600 kr-keep-all">
         파트너 페이지에서 조달 후 교체
       </p>
     </div>
@@ -249,9 +249,9 @@ export default function VinchinBackupPage() {
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-emerald-700">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
-          <span className="text-gray-400">제품</span>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
+          <span className="text-gray-600">제품</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">Vinchin Backup &amp; Recovery</span>
         </div>
       </div>
@@ -277,7 +277,7 @@ export default function VinchinBackupPage() {
               <div className="flex flex-wrap items-center gap-3 text-sm">
                 <Link
                   href="/contact?source=vinchin-product&interest=vinchin&subject=Vinchin 백업 도입 문의"
-                  className="px-5 py-2.5 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 font-semibold shadow-sm transition-all"
+                  className="px-5 py-2.5 bg-emerald-600 text-white rounded-md hover:bg-emerald-700 font-semibold shadow-sm transition"
                 >
                   도입·견적 문의
                 </Link>
@@ -285,7 +285,7 @@ export default function VinchinBackupPage() {
                   href={DOCS_URL}
                   target="_blank"
                   rel="noopener"
-                  className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
+                  className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
                 >
                   한글 헬프센터
                 </a>
@@ -352,7 +352,7 @@ export default function VinchinBackupPage() {
                 className="flex gap-4 p-6 rounded-xl bg-white border border-gray-200"
               >
                 <span className="flex-shrink-0 w-11 h-11 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
+                  <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={h.icon} />
                   </svg>
                 </span>
@@ -512,7 +512,7 @@ export default function VinchinBackupPage() {
                   href={`/contact?source=vinchin-product&interest=vinchin&subject=${encodeURIComponent(
                     `Vinchin ${e.name} 도입 문의`,
                   )}`}
-                  className={`inline-flex items-center justify-center px-4 py-2.5 rounded-md font-semibold text-sm transition-all mt-auto ${
+                  className={`inline-flex items-center justify-center px-4 py-2.5 rounded-md font-semibold text-sm transition mt-auto ${
                     e.highlight
                       ? "bg-emerald-600 text-white hover:bg-emerald-700"
                       : "bg-white text-gray-900 border border-gray-400 hover:bg-gray-50"
@@ -562,7 +562,7 @@ export default function VinchinBackupPage() {
           {/* VBTP 인증 배지 + Silver Partner 배지 */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 p-5 rounded-xl bg-emerald-50/60 border border-emerald-200">
             <span className="inline-flex flex-shrink-0 items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-semibold">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
               </svg>
               VBTP 인증
@@ -629,8 +629,8 @@ export default function VinchinBackupPage() {
               >
                 <summary className="flex cursor-pointer items-start justify-between gap-3 text-base font-semibold text-gray-900 kr-keep-all">
                   <span>{f.q}</span>
-                  <span className="mt-1 flex-shrink-0 text-gray-400 transition-transform group-open:rotate-180">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <span className="mt-1 flex-shrink-0 text-gray-600 transition-transform group-open:rotate-180">
+                    <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
                     </svg>
                   </span>
@@ -658,7 +658,7 @@ export default function VinchinBackupPage() {
           <div className="flex flex-wrap items-center gap-3">
             <Link
               href="/contact?source=vinchin-product-bottom&interest=vinchin&subject=Vinchin 백업 도입 문의"
-              className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5"
+              className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition hover:-translate-y-0.5"
             >
               도입·견적 문의
             </Link>
@@ -666,7 +666,7 @@ export default function VinchinBackupPage() {
               href={DOCS_URL}
               target="_blank"
               rel="noopener"
-              className="inline-block px-7 py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base transition-all"
+              className="inline-block px-7 py-3.5 bg-white/10 border border-white/60 text-white rounded-md hover:bg-white/20 font-semibold text-sm sm:text-base transition"
             >
               한글 헬프센터 보기
             </a>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { company, companyLegal, navLinks, ctaLink } from "@/lib/site-config";
 
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
@@ -11,6 +11,15 @@ export default function PublicHeader() {
   const [open, setOpen] = useState(false);
   const [desktopMenu, setDesktopMenu] = useState<string | null>(null);
   const pathname = usePathname();
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
+
+  /** 드로어를 닫으면서 포커스를 연 버튼으로 되돌린다. 되돌리지 않으면 포커스가
+      body로 사라져 다음 Tab이 문서 처음부터 다시 시작한다. */
+  const closeDrawer = () => {
+    setOpen(false);
+    toggleRef.current?.focus();
+  };
 
   /** 현재 보고 있는 메뉴를 표시한다. 자식 경로까지 부모 항목을 활성으로 본다. */
   const isActive = (href: string) => {
@@ -28,14 +37,16 @@ export default function PublicHeader() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
+      if (e.key !== "Escape") return;
+      if (open) {
         setOpen(false);
-        setDesktopMenu(null);
+        toggleRef.current?.focus();
       }
+      setDesktopMenu(null);
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     if (!open) return;
@@ -45,10 +56,49 @@ export default function PublicHeader() {
     };
   }, [open]);
 
+  /** 드로어가 열려 있는 동안 포커스를 드로어 안에 가둔다. 가두지 않으면 반투명
+      오버레이로 가려진 본문 링크에 Tab으로 계속 도달한다. */
+  useEffect(() => {
+    if (!open) return;
+    const node = drawerRef.current;
+    if (!node) return;
+
+    const focusables = () =>
+      Array.from(
+        node.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"),
+      ).filter((el) => el.offsetParent !== null);
+
+    focusables()[0]?.focus();
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const items = focusables();
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      const outside = !node.contains(active);
+      if (e.shiftKey && (active === first || outside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || outside)) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200 print:hidden">
-      {/* GNB 항목이 6개라 본문(max-w-5xl)보다 한 단계 넓게 잡아 줄바꿈 방지 */}
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14 sm:h-16">
+      {/* GNB 항목이 6개라 본문(max-w-5xl)보다 한 단계 넓게 잡는다.
+          높이를 고정하지 않고 최소값으로 두어, 글자를 200%로 키워도 가로로 넘치는 대신
+          줄을 바꿔 받아낸다 (WCAG 1.4.4). */}
+      <nav
+        aria-label="주요 메뉴"
+        className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-y-2 min-h-14 sm:min-h-16 py-1"
+      >
         <Link href="/" className="flex flex-col leading-tight shrink-0">
           <span className="font-bold text-base sm:text-lg text-gray-900 tracking-tight inline-flex items-center gap-1.5">
             {company.name}
@@ -60,7 +110,7 @@ export default function PublicHeader() {
         </Link>
 
         {/* Desktop nav */}
-        <div className="hidden lg:flex items-center gap-4 xl:gap-6 text-sm font-medium">
+        <div className="hidden lg:flex flex-wrap items-center justify-end gap-x-4 gap-y-2 xl:gap-x-6 text-sm font-medium">
           {navLinks.map((link) =>
             link.children ? (
               <div
@@ -90,7 +140,7 @@ export default function PublicHeader() {
                   }`}
                 >
                   {link.label}
-                  <svg
+                  <svg aria-hidden="true"
                     className={`w-3.5 h-3.5 transition-transform ${
                       desktopMenu === link.label ? "rotate-180" : ""
                     }`}
@@ -148,7 +198,7 @@ export default function PublicHeader() {
             aria-label={`전화 ${companyLegal.phone}`}
             className="hidden lg:inline-flex items-center gap-1.5 font-semibold text-gray-900 hover:text-blue-700 transition-colors whitespace-nowrap"
           >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
             </svg>
             <span className="hidden xl:inline">{companyLegal.phone}</span>
@@ -170,18 +220,20 @@ export default function PublicHeader() {
             {ctaLink.shortLabel}
           </Link>
           <button
+            ref={toggleRef}
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={() => (open ? closeDrawer() : setOpen(true))}
             aria-label={open ? "메뉴 닫기" : "메뉴 열기"}
             aria-expanded={open}
+            aria-controls="mobile-drawer"
             className="p-2.5 -mr-2 text-gray-700 hover:text-blue-600 transition-colors"
           >
             {open ? (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
@@ -192,18 +244,20 @@ export default function PublicHeader() {
       {/* Mobile drawer */}
       {open && (
         <>
+          {/* 딤 오버레이는 두지 않는다. 드로어가 헤더 아래 화면을 가득 덮어 오버레이가
+              드러나는 지점이 없고, 그 상태에서 바깥 클릭 핸들러는 도달할 수 없는 코드가 된다.
+              닫기는 햄버거 버튼과 Escape 두 경로로 제공한다. */}
           <div
-            className="fixed inset-0 top-14 sm:top-16 bg-black/30 z-40 lg:hidden"
-            onClick={() => setOpen(false)}
-            aria-hidden="true"
-          />
-          <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-50 animate-slide-down max-h-[calc(100vh-3.5rem)] overflow-y-auto">
-            <nav className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-col">
+            ref={drawerRef}
+            id="mobile-drawer"
+            className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-50 animate-slide-down max-h-[calc(100vh-3.5rem)] overflow-y-auto"
+          >
+            <nav aria-label="모바일 메뉴" className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-col">
               {navLinks.map((link) => (
                 <div key={link.href} className="border-b border-gray-100 last:border-0">
                   <Link href={link.href} className="block py-3">
                     <div className="text-base font-medium text-gray-700">{link.label}</div>
-                    <div className="text-xs text-gray-400 mt-0.5 kr-keep-all">{link.description}</div>
+                    <div className="text-xs text-gray-500 mt-0.5 kr-keep-all">{link.description}</div>
                   </Link>
                   {link.children && (
                     <div className="pb-3 -mt-1 space-y-0.5">
@@ -214,7 +268,7 @@ export default function PublicHeader() {
                           className="block py-2 pl-4 border-l-2 border-blue-100 ml-1"
                         >
                           <div className="text-sm font-medium text-gray-700">{c.label}</div>
-                          <div className="text-[11px] text-gray-400 kr-keep-all">{c.description}</div>
+                          <div className="text-[11px] text-gray-500 kr-keep-all">{c.description}</div>
                         </Link>
                       ))}
                     </div>
@@ -238,7 +292,7 @@ export default function PublicHeader() {
                 <Link href="/portal/login" className="text-indigo-600 hover:text-indigo-700">
                   SAP 포털
                 </Link>
-                <span className="text-gray-300">·</span>
+                <span aria-hidden="true" className="text-gray-400">·</span>
                 <Link href="/admin/login" className="text-amber-700 hover:text-amber-800">
                   관리자
                 </Link>

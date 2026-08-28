@@ -129,9 +129,9 @@ export default function IntegratedMaintenancePage() {
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-xs text-gray-500">
           <Link href="/" className="hover:text-purple-600">홈</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <Link href="/partners" className="hover:text-purple-600">SI 파트너</Link>
-          <span className="mx-2 text-gray-300">/</span>
+          <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">전산통합유지보수</span>
         </div>
       </div>
@@ -167,13 +167,13 @@ export default function IntegratedMaintenancePage() {
           <div className="flex flex-wrap items-center gap-3 text-sm">
             <Link
               href={CONTACT_TOP}
-              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition-all"
+              className="px-5 py-2.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold shadow-sm transition"
             >
               전산통합유지보수 협업 문의
             </Link>
             <Link
               href="/partners"
-              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition-all"
+              className="px-5 py-2.5 bg-white text-gray-900 border border-gray-400 rounded-md hover:bg-gray-50 hover:border-gray-500 font-semibold transition"
             >
               SI 파트너 협업 보기
             </Link>
@@ -278,7 +278,7 @@ export default function IntegratedMaintenancePage() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-sm text-gray-700 kr-keep-all">
             {techAreas.map((t) => (
               <li key={t} className="flex gap-2">
-                <span className="text-gray-300 flex-shrink-0">·</span>
+                <span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>
                 <span>{t}</span>
               </li>
             ))}
@@ -302,7 +302,7 @@ export default function IntegratedMaintenancePage() {
           <ul className="space-y-2.5 text-base text-gray-700 leading-relaxed kr-keep-all">
             {outOfScope.map((t) => (
               <li key={t} className="flex gap-3">
-                <span className="text-gray-300 flex-shrink-0">—</span>
+                <span aria-hidden="true" className="text-gray-400 flex-shrink-0">—</span>
                 <span>{t}</span>
               </li>
             ))}
@@ -337,7 +337,7 @@ export default function IntegratedMaintenancePage() {
                 <ul className="space-y-1.5 text-sm text-gray-700 kr-keep-all">
                   {pkg.lines.map((line) => (
                     <li key={line} className="flex gap-2 leading-relaxed">
-                      <span className="text-gray-300 flex-shrink-0">·</span>
+                      <span aria-hidden="true" className="text-gray-400 flex-shrink-0">·</span>
                       <span>{line}</span>
                     </li>
                   ))}
@@ -383,7 +383,7 @@ export default function IntegratedMaintenancePage() {
           </p>
           <Link
             href={CONTACT_BOTTOM}
-            className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition-all hover:-translate-y-0.5"
+            className="inline-block px-7 py-3.5 bg-amber-400 text-slate-900 rounded-md hover:bg-amber-300 font-semibold text-sm sm:text-base shadow-lg shadow-amber-900/30 transition hover:-translate-y-0.5"
           >
             전산통합유지보수 협업 문의
           </Link>

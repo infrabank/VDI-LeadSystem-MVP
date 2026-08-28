@@ -64,11 +64,13 @@ export default async function CaseStudiesPage() {
                     <img
                       src={c.cover_image_url}
                       alt={c.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-40 sm:h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
                     <div className="w-full h-40 sm:h-48 bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center">
-                      <svg
+                      <svg aria-hidden="true"
                         className="w-10 h-10 text-blue-200"
                         fill="none"
                         viewBox="0 0 24 24"
@@ -113,7 +115,7 @@ function EmptyState() {
     <div className="max-w-3xl mx-auto">
       <div className="bg-white border border-dashed border-gray-300 rounded-2xl p-8 sm:p-12 text-center">
         <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-blue-50 mb-5">
-          <svg
+          <svg aria-hidden="true"
             className="w-8 h-8 text-blue-600"
             fill="none"
             viewBox="0 0 24 24"
