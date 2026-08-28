@@ -108,7 +108,7 @@ export default function MfaAccessPage() {
             <div
               key={pl.title}
               className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:-translate-y-0.5 hover:shadow-md"
-              style={{ borderTop: "4px solid #4f46e5" }}
+              style={{ borderTop: "4px solid var(--color-domain-mfa)" }}
             >
               <h3 className="font-bold text-base text-gray-900 mb-2 kr-keep-all">{pl.title}</h3>
               <p className="text-sm text-gray-500 leading-relaxed kr-keep-all">{pl.desc}</p>

@@ -14,19 +14,22 @@ const scenarios = [
     title: "인터넷 VDI 축소 + 업무 VDI 유지",
     desc: "외부 인터넷 업무는 O등급 SaaS 또는 RBI로 대체하고, 업무 VDI는 C/S 등급 업무에만 한정. 라이선스·운영 부담을 줄이며 N²SF 정렬을 확보.",
     badge: "공공·연구",
-    color: "#2563eb",
+    color: "var(--color-domain-vdi)",
+    textColor: "var(--color-domain-vdi-text)",
   },
   {
     title: "신규 발주 사전 N²SF 정렬",
     desc: "갱신·재발주 시점이 가까운 기관에 대해, RFP에 N²SF C/S/O 분류·MFA·백업 증빙 요건을 미리 반영. 발주 후 변경 비용을 차단.",
     badge: "지자체·산하기관",
-    color: "#7c3aed",
+    color: "var(--color-domain-managed)",
+    textColor: "var(--color-domain-managed-text)",
   },
   {
     title: "DaaS 전환 가능성 검토",
     desc: "온프레 VDI 운영 부담이 큰 기관에서 Citrix DaaS·AVD·Windows 365의 N²SF 적합성과 한계를 비교. 전환 가능 업무와 유지 업무를 구분.",
     badge: "정부 출연 연구기관",
-    color: "#059669",
+    color: "var(--color-domain-backup)",
+    textColor: "var(--color-domain-backup-text)",
   },
 ];
 
@@ -115,7 +118,7 @@ export default function ManagedIntegrationPage() {
             <div
               key={pl.title}
               className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:-translate-y-0.5 hover:shadow-md"
-              style={{ borderTop: "4px solid #7c3aed" }}
+              style={{ borderTop: "4px solid var(--color-domain-managed)" }}
             >
               <h3 className="font-bold text-base text-gray-900 mb-2 kr-keep-all">{pl.title}</h3>
               <p className="text-sm text-gray-500 leading-relaxed kr-keep-all">{pl.desc}</p>
@@ -143,9 +146,15 @@ export default function ManagedIntegrationPage() {
                 className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6"
                 style={{ borderTop: `4px solid ${s.color}` }}
               >
+                {/* 토큰은 var() 함수라 뒤에 알파 hex를 이어 붙일 수 없다. 배경은 color-mix로
+                    옅게 만들고, 글자는 600단계 그대로 쓰면 흰 바탕에서 3.65:1까지 떨어지므로
+                    한 단계 어두운 텍스트 토큰을 쓴다. */}
                 <span
                   className="inline-block px-3 py-1 rounded-full text-xs font-bold mb-3"
-                  style={{ backgroundColor: `${s.color}15`, color: s.color }}
+                  style={{
+                    backgroundColor: `color-mix(in srgb, ${s.color} 10%, transparent)`,
+                    color: s.textColor,
+                  }}
                 >
                   {s.badge}
                 </span>

@@ -253,7 +253,7 @@ export default function HomePage() {
                     href={path.href}
                     className="group block rounded-lg border border-white/15 bg-white/[0.07] p-4 sm:p-5 hover:bg-white/[0.13] hover:border-white/35"
                   >
-                    <p className="text-[11px] font-semibold text-blue-300 mb-1 kr-keep-all">
+                    <p className="text-2xs font-semibold text-blue-300 mb-1 kr-keep-all">
                       {path.audience}
                     </p>
                     <p className="text-base font-bold text-white mb-1.5 kr-keep-all">
@@ -269,7 +269,7 @@ export default function HomePage() {
                   </Link>
                 ))}
               </div>
-              <p className="mt-4 text-[11px] text-slate-400 leading-relaxed kr-keep-all">
+              <p className="mt-4 text-2xs text-slate-400 leading-relaxed kr-keep-all">
                 {visitorPaths[0].afterClick}
               </p>
             </div>
@@ -433,7 +433,7 @@ export default function HomePage() {
                     {c.solvedRisks.map((r) => (
                       <span
                         key={r}
-                        className="inline-block text-[10px] font-medium px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 kr-keep-all"
+                        className="inline-block text-2xs font-medium px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 kr-keep-all"
                       >
                         {r}
                       </span>

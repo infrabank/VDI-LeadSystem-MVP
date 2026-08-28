@@ -236,7 +236,7 @@ export default async function N2sfHubPage() {
                 href={p.href}
                 className="block p-4 sm:p-5 bg-white rounded-xl border border-gray-200 hover:border-blue-300 hover:shadow-sm transition"
               >
-                <p className="text-[10px] font-bold uppercase tracking-widest text-blue-700 mb-1.5">{p.brand}</p>
+                <p className="text-2xs font-bold uppercase tracking-widest text-blue-700 mb-1.5">{p.brand}</p>
                 <h3 className="text-base font-bold text-slate-900 mb-1 kr-keep-all">{p.title}</h3>
                 <p className="text-xs text-gray-500 kr-keep-all leading-relaxed">{p.tagline}</p>
               </Link>

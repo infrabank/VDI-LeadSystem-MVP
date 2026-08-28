@@ -59,7 +59,7 @@ export function LeaderCard({ leader }: { leader: LeaderProfile }) {
               {leader.expertise.map((tag) => (
                 <span
                   key={tag}
-                  className="text-[10px] sm:text-xs font-medium text-gray-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded-full kr-keep-all"
+                  className="text-2xs sm:text-xs font-medium text-gray-500 bg-gray-50 border border-gray-200 px-2 py-0.5 rounded-full kr-keep-all"
                 >
                   {tag}
                 </span>

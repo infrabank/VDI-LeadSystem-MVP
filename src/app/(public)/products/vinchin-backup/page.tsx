@@ -46,10 +46,10 @@ function ImgSlot({
         />
       </svg>
       <p className="text-sm font-semibold text-emerald-700 kr-keep-all">{label}</p>
-      <p className="mt-1 text-[11px] text-emerald-600/80 font-mono">
+      <p className="mt-1 text-2xs text-emerald-700/90 font-mono">
         /products/vinchin/{file}
       </p>
-      <p className="mt-1 text-[11px] text-gray-600 kr-keep-all">
+      <p className="mt-1 text-2xs text-gray-600 kr-keep-all">
         파트너 페이지에서 조달 후 교체
       </p>
     </div>
@@ -351,7 +351,7 @@ export default function VinchinBackupPage() {
                 key={h.title}
                 className="flex gap-4 p-6 rounded-xl bg-white border border-gray-200"
               >
-                <span className="flex-shrink-0 w-11 h-11 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <span className="flex-shrink-0 w-11 h-11 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center">
                   <svg aria-hidden="true" className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                     <path strokeLinecap="round" strokeLinejoin="round" d={h.icon} />
                   </svg>
@@ -390,7 +390,7 @@ export default function VinchinBackupPage() {
                 key={p}
                 className="flex items-center gap-3 p-4 rounded-xl bg-white border border-gray-200 text-sm text-gray-800 kr-keep-all"
               >
-                <span className="text-emerald-600 font-bold flex-shrink-0">·</span>
+                <span className="text-emerald-700 font-bold flex-shrink-0">·</span>
                 <span>{p}</span>
               </div>
             ))}
@@ -417,7 +417,7 @@ export default function VinchinBackupPage() {
                   key={t}
                   className="flex items-start gap-2.5 p-4 rounded-xl bg-white border border-gray-200 text-sm text-gray-700 leading-relaxed kr-keep-all"
                 >
-                  <span className="text-emerald-600 font-bold flex-shrink-0 mt-0.5">·</span>
+                  <span className="text-emerald-700 font-bold flex-shrink-0 mt-0.5">·</span>
                   <span>{t}</span>
                 </li>
               ))}
@@ -503,7 +503,7 @@ export default function VinchinBackupPage() {
                 <ul className="space-y-2 mb-6 flex-1">
                   {e.points.map((p) => (
                     <li key={p} className="flex items-start gap-2.5 text-sm text-gray-700 kr-keep-all">
-                      <span className="text-emerald-600 font-bold flex-shrink-0 mt-0.5">✓</span>
+                      <span className="text-emerald-700 font-bold flex-shrink-0 mt-0.5">✓</span>
                       <span>{p}</span>
                     </li>
                   ))}

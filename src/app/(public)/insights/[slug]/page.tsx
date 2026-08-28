@@ -352,7 +352,7 @@ export default async function ContentDetailPage({ params }: Props) {
                   {cta.secondaryLabel}
                 </Link>
               </div>
-              <p className="mt-4 text-[11px] text-gray-500 kr-keep-all">
+              <p className="mt-4 text-2xs text-gray-500 kr-keep-all">
                 문의 후 진행: 환경·증상 확인 → 지원 가능 범위 회신(1영업일) → 원격/방문 진단 → 조치·결과 보고
               </p>
             </div>

@@ -150,7 +150,7 @@ export default function AboutPage() {
                         className={`w-2 h-2 rounded-full ${dotColor[a.accent] || dotColor.blue}`}
                       ></span>
                       <span
-                        className={`text-[10px] font-bold uppercase tracking-widest ${textColor[a.accent] || textColor.blue}`}
+                        className={`text-2xs font-bold uppercase tracking-widest ${textColor[a.accent] || textColor.blue}`}
                       >
                         {a.id}
                       </span>
@@ -364,7 +364,7 @@ export default function AboutPage() {
               >
                 <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                   <p className="text-base font-bold text-gray-900">{c.name}</p>
-                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border ${certBadgeClass[statusMeta.color] || certBadgeClass.gray}`}>
+                  <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-semibold border ${certBadgeClass[statusMeta.color] || certBadgeClass.gray}`}>
                     {statusMeta.label}
                   </span>
                 </div>

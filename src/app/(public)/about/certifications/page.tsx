@@ -76,7 +76,7 @@ export default function CertificationsPage() {
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1 flex-wrap">
                         <p className="text-base font-bold text-gray-900">{c.name}</p>
-                        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border ${badgeClass}`}>
+                        <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-semibold border ${badgeClass}`}>
                           {statusMeta.label}
                         </span>
                       </div>
@@ -123,7 +123,7 @@ export default function CertificationsPage() {
                     <div>
                       <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                         <p className="text-base font-bold text-gray-900">{cr.name}</p>
-                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold border bg-emerald-50 text-emerald-700 border-emerald-200">
+                        <span className="inline-flex items-center px-2 py-0.5 rounded-full text-2xs font-semibold border bg-emerald-50 text-emerald-700 border-emerald-200">
                           보유
                         </span>
                       </div>
@@ -152,7 +152,7 @@ export default function CertificationsPage() {
                           sizes="(min-width: 768px) 288px, 100vw"
                           className="w-full md:w-72 h-auto rounded-lg border border-gray-200 group-hover:border-gray-300 transition-colors"
                         />
-                        <span className="block text-center text-[11px] text-blue-600 mt-1.5 group-hover:text-blue-700">
+                        <span className="block text-center text-2xs text-blue-600 mt-1.5 group-hover:text-blue-700">
                           인증서 원본 보기 →
                         </span>
                       </a>
@@ -177,7 +177,7 @@ export default function CertificationsPage() {
             ))}
           </div>
 
-          <h3 className="text-sm font-semibold text-emerald-600 mb-3 mt-2 tracking-widest">
+          <h3 className="text-sm font-semibold text-emerald-700 mb-3 mt-2 tracking-widest">
             데이터 보호 (백업 · 사이버복원력)
           </h3>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

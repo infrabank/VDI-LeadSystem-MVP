@@ -18,7 +18,7 @@ const services = [
     title: "유지 / 일부 축소 시나리오",
     desc: "C/S 등급 핵심 업무에 VDI를 한정하고, O등급 업무는 SaaS·RBI로 대체. 라이선스·운영 부담을 줄이며 N²SF 정렬을 확보합니다.",
     icon: "M5 13l4 4L19 7",
-    color: "#2563eb",
+    color: "var(--color-domain-vdi)",
     href: "/tools/vdi-transition",
   },
   {
@@ -26,7 +26,7 @@ const services = [
     title: "DaaS 전환 가능성 검토",
     desc: "Citrix DaaS·Azure Virtual Desktop·Windows 365의 N²SF 적합성과 한계를 비교. 어떤 업무는 옮길 수 있고 어떤 업무는 옮길 수 없는지 가립니다.",
     icon: "M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z",
-    color: "#4f46e5",
+    color: "var(--color-domain-mfa)",
     href: "/contact?source=vdi-workspace&interest=daas-transition",
   },
   {
@@ -34,7 +34,7 @@ const services = [
     title: "고위험·외부 협력사 분리 설계",
     desc: "외부 협력사·고위험 업무를 별도 VDI 영역으로 분리하고, MFA·조건부 접근·세션 격리를 결합. VDI를 어디에 남길지 결정합니다.",
     icon: "M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z",
-    color: "#7c3aed",
+    color: "var(--color-domain-managed)",
     href: "/contact?source=vdi-workspace&interest=zero-trust",
   },
   {
@@ -42,7 +42,7 @@ const services = [
     title: "운영 리스크 평가",
     desc: "FSLogix·UAG·NetScaler·인증서·라이선스·XenServer·NetApp 등 실제로 터지는 패턴을 기반으로 전환 리스크를 평가합니다.",
     icon: "M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z",
-    color: "#0891b2",
+    color: "var(--color-domain-vdi)",
     href: "/contact?source=vdi-workspace&interest=risk-review",
   },
 ];
@@ -134,7 +134,7 @@ export default function VdiWorkspacePage() {
               key={i}
               href={feature.href}
               className="card-hover group p-5 sm:p-7 bg-white rounded-xl shadow-sm block transition hover:-translate-y-0.5 hover:shadow-md"
-              style={{ border: "1px solid #e5e7eb", borderTop: `4px solid ${feature.color}` }}
+              style={{ border: "1px solid var(--color-border)", borderTop: `4px solid ${feature.color}` }}
             >
               <div className="flex items-center justify-between mb-4 sm:mb-5">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center bg-blue-50">

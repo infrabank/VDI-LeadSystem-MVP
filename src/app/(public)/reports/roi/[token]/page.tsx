@@ -80,7 +80,7 @@ export default async function ROIReportPage({ params }: Props) {
     critical: "text-red-700 bg-red-50 border-red-200",
     high: "text-orange-600 bg-orange-50 border-orange-200",
     medium: "text-amber-600 bg-amber-50 border-amber-200",
-    low: "text-emerald-600 bg-emerald-50 border-emerald-200",
+    low: "text-emerald-700 bg-emerald-50 border-emerald-200",
   };
 
   return (
@@ -121,7 +121,7 @@ export default async function ROIReportPage({ params }: Props) {
           </div>
           <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm text-center">
             <p className="text-sm text-gray-500 mb-2">연간 절감 가능액</p>
-            <p className="text-2xl font-bold text-emerald-600">
+            <p className="text-2xl font-bold text-emerald-700">
               {output.formatted.annual_saving}
             </p>
           </div>
@@ -237,7 +237,7 @@ export default async function ROIReportPage({ params }: Props) {
                 key={i}
                 className="flex gap-3 p-3 border-l-4 border-l-green-400 border border-gray-200 rounded-lg shadow-sm"
               >
-                <span className="flex-shrink-0 w-7 h-7 bg-emerald-50 text-emerald-600 border border-emerald-100 rounded-full flex items-center justify-center text-sm font-medium">
+                <span className="flex-shrink-0 w-7 h-7 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-full flex items-center justify-center text-sm font-medium">
                   {i + 1}
                 </span>
                 <p className="text-sm text-gray-700 leading-relaxed">{line}</p>

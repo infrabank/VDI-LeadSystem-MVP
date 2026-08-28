@@ -251,7 +251,7 @@ export default function ContactForm() {
     return (
       <div className="bg-white rounded-xl border border-emerald-200 p-6 sm:p-10 text-center">
         <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-emerald-50 mb-4">
-          <svg aria-hidden="true" className="w-7 h-7 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <svg aria-hidden="true" className="w-7 h-7 text-emerald-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
           </svg>
         </div>
@@ -304,7 +304,7 @@ export default function ContactForm() {
                 <span className={`block text-sm font-bold mb-0.5 ${active ? "text-blue-700" : "text-gray-900"}`}>
                   {t.label}
                 </span>
-                <span className="block text-[11px] text-gray-600 leading-snug">{t.desc}</span>
+                <span className="block text-2xs text-gray-600 leading-snug">{t.desc}</span>
               </button>
             );
           })}
@@ -485,7 +485,7 @@ export default function ContactForm() {
           ))}
         </div>
         {inquiryType === "vdi" && (
-          <p className="text-[11px] text-gray-600 mt-2 kr-keep-all">
+          <p className="text-2xs text-gray-600 mt-2 kr-keep-all">
             로그·스크린샷·구성도는 접수 후 받으시는 회신 메일에 답장으로 첨부해 주세요.
           </p>
         )}
@@ -512,7 +512,7 @@ export default function ContactForm() {
           />
           <span className="text-xs sm:text-sm text-gray-700 leading-relaxed kr-keep-all">
             <strong className="text-gray-900">[필수]</strong> 개인정보 수집·이용 및 국외이전(위탁)에 동의합니다.
-            <span className="block text-[11px] text-gray-500 mt-1">
+            <span className="block text-2xs text-gray-500 mt-1">
               수집 항목: 이름·이메일·기관명·연락처·문의내용 · 이용 목적: 상담 응대 및 회신
               · 보관 기간: 상담 완료 후 1년
               <span className="block mt-0.5">
@@ -545,7 +545,7 @@ export default function ContactForm() {
           />
           <span className="text-xs sm:text-sm text-gray-700 leading-relaxed kr-keep-all">
             <strong className="text-gray-500">[선택]</strong> 마케팅·뉴스레터 수신에 동의합니다.
-            <span className="block text-[11px] text-gray-500 mt-1">
+            <span className="block text-2xs text-gray-500 mt-1">
               미동의 시에도 상담 응대는 정상 진행됩니다. 동의는 언제든 이메일 1회 회신으로 철회 가능합니다.
             </span>
           </span>

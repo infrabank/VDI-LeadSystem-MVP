@@ -212,7 +212,7 @@ export default function BackupRoiReport({ output, lead, date }: Props) {
                     {label}
                   </span>
                   {highlight && (
-                    <span className="text-[10px] font-semibold px-1.5 py-0.5 bg-emerald-600 text-white rounded-full">
+                    <span className="text-2xs font-semibold px-1.5 py-0.5 bg-emerald-600 text-white rounded-full">
                       기준
                     </span>
                   )}
@@ -221,20 +221,20 @@ export default function BackupRoiReport({ output, lead, date }: Props) {
 
                 <div className="space-y-2">
                   <div>
-                    <p className="text-[10px] text-slate-400 uppercase tracking-wide">5년 회피액</p>
+                    <p className="text-2xs text-slate-400 uppercase tracking-wide">5년 회피액</p>
                     <p className={`text-xl font-bold leading-tight ${highlight ? "text-emerald-700" : "text-gray-700"} [word-break:keep-all]`}>
                       {fmt(data.avoided_5yr)}
                       <span className="text-sm font-normal ml-0.5">만원</span>
                     </p>
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-400 uppercase tracking-wide">ROI</p>
+                    <p className="text-2xs text-slate-400 uppercase tracking-wide">ROI</p>
                     <p className={`text-lg font-bold leading-tight ${highlight ? "text-emerald-700" : "text-gray-700"}`}>
                       {data.roi_pct >= 0 ? "+" : ""}{data.roi_pct.toLocaleString("ko-KR")}%
                     </p>
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-400 uppercase tracking-wide">회수 기간</p>
+                    <p className="text-2xs text-slate-400 uppercase tracking-wide">회수 기간</p>
                     <p className={`text-lg font-bold leading-tight ${highlight ? "text-emerald-700" : "text-gray-700"}`}>
                       {data.payback_months.toLocaleString("ko-KR")}
                       <span className="text-sm font-normal ml-0.5">개월</span>

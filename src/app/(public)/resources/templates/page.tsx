@@ -31,9 +31,9 @@ export const metadata: Metadata = {
 };
 
 const categoryAccent: Record<TemplateCategory, { border: string; bg: string; text: string }> = {
-  checklist: { border: "#7c3aed", bg: "bg-purple-50", text: "text-purple-700" },
-  matrix: { border: "#2563eb", bg: "bg-blue-50", text: "text-blue-700" },
-  framework: { border: "#059669", bg: "bg-emerald-50", text: "text-emerald-700" },
+  checklist: { border: "var(--color-domain-managed)", bg: "bg-purple-50", text: "text-purple-700" },
+  matrix: { border: "var(--color-domain-vdi)", bg: "bg-blue-50", text: "text-blue-700" },
+  framework: { border: "var(--color-domain-backup)", bg: "bg-emerald-50", text: "text-emerald-700" },
 };
 
 const breadcrumbJsonLd = {

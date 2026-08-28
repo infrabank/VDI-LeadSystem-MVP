@@ -13,7 +13,7 @@ const tools = [
     desc: "N²SF 보안통제 매핑 기반 · 8영역 28문항 · 업무 등급별 적용 가능 모델 후보",
     duration: "약 7분",
     icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-    color: "#2563eb",
+    color: "var(--color-domain-vdi)",
     href: "/tools/risk-assessment",
     primary: true,
   },
@@ -23,7 +23,7 @@ const tools = [
     desc: "5섹션 15문항 · 5단계 성숙도 + 3단계 로드맵",
     duration: "약 5분",
     icon: "M13 10V3L4 14h7v7l9-11h-7z",
-    color: "#2563eb",
+    color: "var(--color-domain-vdi)",
     href: "/tools/n2sf-readiness",
     primary: false,
   },
@@ -33,7 +33,7 @@ const tools = [
     desc: "9문항 · 4가지 시나리오 후보 도출 (유지/보완/축소/재설계)",
     duration: "약 3분",
     icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10",
-    color: "#4f46e5",
+    color: "var(--color-domain-mfa)",
     href: "/tools/vdi-transition",
     primary: false,
   },
@@ -43,7 +43,7 @@ const tools = [
     desc: "마이그레이션·운영비용 시뮬레이션 · 경영진 보고용 PDF 제공",
     duration: "약 4분",
     icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-    color: "#059669",
+    color: "var(--color-domain-backup)",
     href: "/tools/roi-calculator",
     primary: false,
   },
@@ -53,7 +53,7 @@ const tools = [
     desc: "7영역 25문항 · 5단계 성숙도 + 보완 우선순위",
     duration: "약 7분",
     icon: "M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z",
-    color: "#059669",
+    color: "var(--color-domain-backup)",
     href: "/tools/backup-readiness",
     primary: false,
   },
@@ -63,7 +63,7 @@ const tools = [
     desc: "5필드 입력 → 5년 누적 회피 비용·ROI%·Payback. Best/Expected/Worst 시나리오",
     duration: "약 4분",
     icon: "M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z",
-    color: "#0d9488",
+    color: "var(--color-domain-backup)",
     href: "/tools/backup-roi",
     primary: false,
   },
@@ -100,7 +100,7 @@ export default function ToolsPage() {
               className={`card-hover group p-5 sm:p-7 bg-white rounded-xl shadow-sm block transition hover:-translate-y-0.5 hover:shadow-md ${
                 t.primary ? "ring-2 ring-blue-600 ring-offset-2" : ""
               }`}
-              style={{ border: "1px solid #e5e7eb", borderTop: `4px solid ${t.color}` }}
+              style={{ border: "1px solid var(--color-border)", borderTop: `4px solid ${t.color}` }}
             >
               <div className="flex items-center justify-between mb-4 sm:mb-5">
                 <div
@@ -120,7 +120,7 @@ export default function ToolsPage() {
                 </div>
                 <div className="flex flex-col items-end gap-1">
                   <span className="text-xs font-bold text-gray-500">{t.rank}</span>
-                  <span className="text-[10px] sm:text-xs text-gray-600">{t.duration}</span>
+                  <span className="text-2xs sm:text-xs text-gray-600">{t.duration}</span>
                 </div>
               </div>
               <h2 className="font-bold text-base sm:text-lg text-gray-900 mb-2 sm:mb-2.5 kr-keep-all">

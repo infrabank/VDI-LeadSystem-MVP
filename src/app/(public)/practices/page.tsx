@@ -8,10 +8,10 @@ export const metadata = {
 };
 
 const colorMap: Record<string, { border: string; bg: string; text: string; dot: string }> = {
-  blue: { border: "#2563eb", bg: "bg-blue-50", text: "text-blue-600", dot: "bg-blue-500" },
-  indigo: { border: "#4f46e5", bg: "bg-indigo-50", text: "text-indigo-600", dot: "bg-indigo-500" },
-  emerald: { border: "#059669", bg: "bg-emerald-50", text: "text-emerald-600", dot: "bg-emerald-500" },
-  purple: { border: "#7c3aed", bg: "bg-purple-50", text: "text-purple-600", dot: "bg-purple-500" },
+  blue: { border: "var(--color-domain-vdi)", bg: "bg-blue-50", text: "text-blue-600", dot: "bg-blue-500" },
+  indigo: { border: "var(--color-domain-mfa)", bg: "bg-indigo-50", text: "text-indigo-600", dot: "bg-indigo-500" },
+  emerald: { border: "var(--color-domain-backup)", bg: "bg-emerald-50", text: "text-emerald-700", dot: "bg-emerald-500" },
+  purple: { border: "var(--color-domain-managed)", bg: "bg-purple-50", text: "text-purple-600", dot: "bg-purple-500" },
 };
 
 /**
@@ -40,7 +40,7 @@ const stageItems: {
     outcome:
       "C/S/O 예비 분류 + VDI 유지/축소/전환 1차 검토 의견 + MFA·백업 보완 지점 PDF 리포트",
     href: "/tools/risk-assessment",
-    borderColor: "#0ea5e9",
+    borderColor: "var(--color-domain-vdi)",
     textColor: "text-blue-700",
     badgeBg: "bg-blue-50",
   },
@@ -53,7 +53,7 @@ const stageItems: {
     outcome:
       "현재 VDI/망분리 구조도 + C/S/O 예비 분류 + 1차 로드맵·RFP 문구 초안",
     href: "/practices/managed-integration",
-    borderColor: "#7c3aed",
+    borderColor: "var(--color-domain-managed)",
     textColor: "text-purple-700",
     badgeBg: "bg-purple-50",
   },
@@ -66,7 +66,7 @@ const stageItems: {
     outcome:
       "유지·축소·DaaS·고위험 분리 시나리오 비교 + 운영 리스크 평가",
     href: "/practices/vdi-workspace",
-    borderColor: "#2563eb",
+    borderColor: "var(--color-domain-vdi)",
     textColor: "text-blue-700",
     badgeBg: "bg-blue-50",
   },
@@ -79,7 +79,7 @@ const stageItems: {
     outcome:
       "착수보고서·현황·위험·로드맵·대응표·운영계획·검수 체크리스트 7종",
     href: "/practices/managed-integration",
-    borderColor: "#4f46e5",
+    borderColor: "var(--color-domain-mfa)",
     textColor: "text-indigo-700",
     badgeBg: "bg-indigo-50",
   },
@@ -92,7 +92,7 @@ const stageItems: {
     outcome:
       "월간 복구 시연 리포트 + RTO/RPO 기준표 + 24h 대응 절차 + 무결성 검증",
     href: "/practices/data-protection",
-    borderColor: "#059669",
+    borderColor: "var(--color-domain-backup)",
     textColor: "text-emerald-700",
     badgeBg: "bg-emerald-50",
   },
@@ -105,7 +105,7 @@ const stageItems: {
     outcome:
       "SI 컨소시엄 안에서 N²SF·VDI 기술 파트 보강 (수주 후 자문·PMO·검수). 사전 검토·미팅 동행은 공동 영업으로 진행",
     href: "/partners",
-    borderColor: "#475569",
+    borderColor: "var(--color-domain-neutral)",
     textColor: "text-gray-700",
     badgeBg: "bg-gray-100",
   },
@@ -197,11 +197,11 @@ export default function PracticesPage() {
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1.5 flex-wrap">
                     <span
-                      className={`inline-flex items-center px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-widest ${item.badgeBg} ${item.textColor}`}
+                      className={`inline-flex items-center px-2.5 py-0.5 rounded text-2xs font-bold uppercase tracking-widest ${item.badgeBg} ${item.textColor}`}
                     >
                       {item.stage}
                     </span>
-                    <span className={`text-[11px] font-semibold ${item.textColor}`}>
+                    <span className={`text-2xs font-semibold ${item.textColor}`}>
                       {item.level}
                     </span>
                   </div>
@@ -216,7 +216,7 @@ export default function PracticesPage() {
                   <p className="text-sm sm:text-base font-bold text-gray-900 whitespace-nowrap">
                     {item.duration}
                   </p>
-                  <p className="text-[11px] sm:text-xs font-semibold text-gray-500 whitespace-nowrap kr-keep-all">
+                  <p className="text-2xs sm:text-xs font-semibold text-gray-500 whitespace-nowrap kr-keep-all">
                     참고 가격대 · {item.priceGuide}
                   </p>
                 </div>

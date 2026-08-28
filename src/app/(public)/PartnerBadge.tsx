@@ -27,6 +27,7 @@ export function PartnerBadge({
             alt={partner.name}
             width={140}
             height={32}
+            sizes="(min-width: 640px) 140px, 120px"
             className="h-6 sm:h-7 w-auto opacity-70 hover:opacity-100 transition-opacity"
           />
         ) : (
@@ -47,6 +48,7 @@ export function PartnerBadge({
             alt={partner.name}
             width={160}
             height={40}
+            sizes="160px"
             className="h-8 sm:h-10 w-auto"
           />
         ) : (

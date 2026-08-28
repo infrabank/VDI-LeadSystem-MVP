@@ -48,9 +48,9 @@ export default function DataProtectionPage() {
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-3 text-xs text-gray-500">
-          <Link href="/" className="hover:text-emerald-600">홈</Link>
+          <Link href="/" className="hover:text-emerald-700">홈</Link>
           <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
-          <Link href="/practices" className="hover:text-emerald-600">Practices</Link>
+          <Link href="/practices" className="hover:text-emerald-700">Practices</Link>
           <span aria-hidden="true" className="mx-2 text-gray-400">/</span>
           <span className="text-gray-700 font-medium">{p.shortTitle}</span>
         </div>
@@ -97,7 +97,7 @@ export default function DataProtectionPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-10">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-8 items-start md:items-center">
             <div className="md:col-span-1 flex flex-col items-start gap-1">
-              <p className="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">왜 복구검증인가</p>
+              <p className="text-xs font-bold text-emerald-700 uppercase tracking-widest mb-1">왜 복구검증인가</p>
               <p className="text-sm font-bold text-gray-900">백업이 아니라 증빙</p>
             </div>
             <div className="md:col-span-3">
@@ -114,7 +114,7 @@ export default function DataProtectionPage() {
 
       {/* 4-layer model */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-        <p className="text-emerald-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+        <p className="text-emerald-700 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           Cyber Resilience Framework
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
@@ -128,7 +128,7 @@ export default function DataProtectionPage() {
             <div
               key={l.num}
               className="bg-white rounded-xl border border-gray-200 p-5 sm:p-6 transition hover:-translate-y-0.5 hover:shadow-md"
-              style={{ borderTop: "4px solid #059669" }}
+              style={{ borderTop: "4px solid var(--color-domain-backup)" }}
             >
               <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold mb-3">
                 {l.num}
@@ -143,7 +143,7 @@ export default function DataProtectionPage() {
       {/* Use cases */}
       <section className="bg-gray-50 border-y border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-emerald-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+          <p className="text-emerald-700 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
             Use Cases
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-10 md:mb-14 kr-keep-all">
@@ -158,7 +158,7 @@ export default function DataProtectionPage() {
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
                     <svg aria-hidden="true"
-                      className="w-5 h-5 text-emerald-600"
+                      className="w-5 h-5 text-emerald-700"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -192,7 +192,7 @@ export default function DataProtectionPage() {
 
       {/* 진단·계산 도구 2종 */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-14 md:py-20">
-        <p className="text-emerald-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
+        <p className="text-emerald-700 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           Free Assessment
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
@@ -206,7 +206,7 @@ export default function DataProtectionPage() {
           <Link
             href="/tools/backup-readiness"
             className="card-hover group block p-6 sm:p-7 bg-white rounded-xl shadow-sm border border-gray-200 transition hover:-translate-y-0.5 hover:shadow-md ring-2 ring-emerald-600 ring-offset-2"
-            style={{ borderTop: "4px solid #059669" }}
+            style={{ borderTop: "4px solid var(--color-domain-backup)" }}
           >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-600 flex items-center justify-center">
@@ -224,7 +224,7 @@ export default function DataProtectionPage() {
             <p className="text-sm text-gray-600 leading-relaxed mb-4 kr-keep-all">
               7영역 25문항 · Level 1~5 등급 · Acronis 도입 우선순위 권고 무료 리포트.
             </p>
-            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 group-hover:translate-x-0.5 transition-transform">
+            <span className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-700 group-hover:translate-x-0.5 transition-transform">
               진단 시작 →
             </span>
           </Link>
@@ -233,7 +233,7 @@ export default function DataProtectionPage() {
           <Link
             href="/tools/backup-roi"
             className="card-hover group block p-6 sm:p-7 bg-white rounded-xl shadow-sm border border-gray-200 transition hover:-translate-y-0.5 hover:shadow-md"
-            style={{ borderTop: "4px solid #0d9488" }}
+            style={{ borderTop: "4px solid var(--color-domain-backup)" }}
           >
             <div className="flex items-center justify-between mb-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-teal-50 flex items-center justify-center">

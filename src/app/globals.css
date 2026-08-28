@@ -3,18 +3,35 @@
    CDN 선언만 두고 실제로는 시스템 폰트로 폴백되던 문제를 막기 위해 저장소에 동봉한다. */
 @import "./pretendard.css";
 
-/* 토큰 값은 화면에서 실제로 쓰이는 색과 일치시킨다. primary가 #1d52de로 선언돼 있는 동안
-   컴포넌트는 blue-600(#2563eb)을 쓰고 있어, 같은 브랜드 색이 두 값으로 갈려 있었다. */
+/* 토큰은 hex를 다시 적지 않고 팔레트 변수를 가리킨다. Tailwind v4가 팔레트를 OKLCH로
+   재정의해 blue-600은 #155dfc이며, v3 시절 값 #2563eb를 적어 두면 같은 브랜드 색이
+   토큰과 유틸리티에서 서로 다른 색으로 칠해진다.
+   domain-* 은 실무 영역별 구분색이다. 인라인 style과 유틸리티가 같은 값을 쓰게 한다. */
 @theme inline {
-  --color-background: #ffffff;
-  --color-foreground: #101828;
-  --color-foreground-muted: #4b5563;
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
-  --color-accent: #ffb900;
-  --color-accent-hover: #ffd230;
-  --color-border: #e5e7eb;
-  --color-border-strong: #d1d5db;
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-gray-900);
+  --color-foreground-muted: var(--color-gray-600);
+  --color-primary: var(--color-blue-600);
+  --color-primary-hover: var(--color-blue-700);
+  --color-accent: var(--color-amber-400);
+  --color-accent-hover: var(--color-amber-300);
+  --color-border: var(--color-gray-200);
+  --color-border-strong: var(--color-gray-300);
+  --color-domain-vdi: var(--color-blue-600);
+  --color-domain-backup: var(--color-emerald-600);
+  --color-domain-mfa: var(--color-indigo-600);
+  --color-domain-managed: var(--color-purple-600);
+  --color-domain-neutral: var(--color-slate-600);
+  /* 600단계는 흰 바탕에서 3.6~4.0:1이라 본문 글자로 쓰면 AA에 못 미친다.
+     테두리·배경에는 위 토큰을, 글자에는 아래 한 단계 어두운 토큰을 쓴다. */
+  --color-domain-vdi-text: var(--color-blue-700);
+  --color-domain-backup-text: var(--color-emerald-700);
+  --color-domain-mfa-text: var(--color-indigo-700);
+  --color-domain-managed-text: var(--color-purple-700);
+  /* 스케일 하단이 12px에서 끊겨 9~11px를 임의값으로 메우고 있었다.
+     한 단계를 정식으로 두어 배지·캡션·법정고지가 같은 크기를 쓰게 한다. */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1.45;
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
     "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, "Cascadia Mono", Consolas, monospace;
@@ -80,12 +97,15 @@ h1, h2, h3 { letter-spacing: -0.018em; text-wrap: pretty; }
 
 /* 브라우저가 기본값으로 칠하는 표면도 팔레트 안으로 들여온다 */
 ::selection {
-  background: #dbeafe;
-  color: #101828;
+  background: var(--color-blue-100);
+  color: var(--color-foreground);
 }
 :root {
+  /* 라이트 전용 사이트임을 UA에 알린다. 선언이 없으면 다크 OS에서 폼 컨트롤과
+     스크롤바만 UA 다크 스타일로 그려져 본문과 어긋난다. */
+  color-scheme: light;
   caret-color: var(--color-primary);
-  scrollbar-color: #cbd5e1 transparent;
+  scrollbar-color: var(--color-gray-300) transparent;
 }
 :focus-visible {
   outline: 2px solid var(--color-primary);
@@ -153,7 +173,7 @@ h1, h2, h3 { letter-spacing: -0.018em; text-wrap: pretty; }
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
 }
 
 /* Smooth transitions — 전이 대상을 명시해 불필요한 리페인트를 막는다 */
@@ -206,11 +226,6 @@ a, button {
   }
 }
 
-/* 모바일에서 가로 스크롤 가능 영역 표시 */
-.scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-.scroll-x::-webkit-scrollbar { height: 6px; }
-.scroll-x::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
-
 /* 모바일 드로어 슬라이드인 애니메이션 */
 @keyframes slide-down {
   from { opacity: 0; transform: translateY(-8px); }
@@ -232,15 +247,6 @@ a, button {
   transform: translateY(-1px);
   box-shadow: 0 1px 3px 0 rgba(16, 24, 40, 0.06), 0 4px 12px -4px rgba(16, 24, 40, 0.08);
 }
-
-/* Hashnode 스타일 — 정제된 카드 베이스 (선택 적용) */
-.card-refined {
-  background: #ffffff;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
-  box-shadow: 0 1px 2px 0 rgba(16, 24, 40, 0.04);
-}
-.card-refined:hover { border-color: var(--color-border-strong); }
 
 /* FAQ accordion styling */
 details summary::-webkit-details-marker { display: none; }

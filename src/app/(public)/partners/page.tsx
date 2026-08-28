@@ -241,7 +241,7 @@ export default function PartnersPage() {
                   <span className="text-xs font-bold text-gray-500 tracking-widest">
                     {s.no}
                   </span>
-                  <span className="text-[11px] font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">
+                  <span className="text-2xs font-semibold text-amber-700 bg-amber-50 px-2 py-0.5 rounded">
                     {s.duration}
                   </span>
                 </div>
@@ -294,7 +294,7 @@ export default function PartnersPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
             <div className="p-5 rounded-xl bg-emerald-50/60 border border-emerald-200">
-              <p className="text-[11px] font-bold text-emerald-700 uppercase tracking-widest mb-2">
+              <p className="text-2xs font-bold text-emerald-700 uppercase tracking-widest mb-2">
                 STAGE 1 · 사전
               </p>
               <h3 className="text-base font-semibold text-gray-900 mb-2 kr-keep-all">
@@ -307,7 +307,7 @@ export default function PartnersPage() {
             </div>
 
             <div className="p-5 rounded-xl bg-blue-50/60 border border-blue-200">
-              <p className="text-[11px] font-bold text-blue-700 uppercase tracking-widest mb-2">
+              <p className="text-2xs font-bold text-blue-700 uppercase tracking-widest mb-2">
                 STAGE 2 · 수주 이후
               </p>
               <h3 className="text-base font-semibold text-gray-900 mb-2 kr-keep-all">
@@ -320,7 +320,7 @@ export default function PartnersPage() {
             </div>
 
             <div className="p-5 rounded-xl bg-gray-50 border border-gray-200">
-              <p className="text-[11px] font-bold text-gray-600 uppercase tracking-widest mb-2">
+              <p className="text-2xs font-bold text-gray-600 uppercase tracking-widest mb-2">
                 STAGE 3 · 구축
               </p>
               <h3 className="text-base font-semibold text-gray-900 mb-2 kr-keep-all">

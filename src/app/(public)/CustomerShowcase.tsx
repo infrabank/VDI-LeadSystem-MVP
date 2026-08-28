@@ -64,24 +64,24 @@ export function CustomerShowcase({ variant = "compact" }: Props) {
                       {customerDisplayName(c)}
                     </p>
                     {c.disclosed && (
-                      <p className="text-[10px] text-gray-600 font-mono mb-1">{c.code}</p>
+                      <p className="text-2xs text-gray-600 font-mono mb-1">{c.code}</p>
                     )}
                     {hasDetail && (
                       <div className="space-y-1.5 mt-2 pt-2 border-t border-gray-100">
                         {c.vendor && (
-                          <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
+                          <p className="text-2xs text-gray-600 leading-snug kr-keep-all">
                             <span className="text-gray-600">벤더 </span>
                             {c.vendor}
                           </p>
                         )}
                         {c.userScale && (
-                          <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
+                          <p className="text-2xs text-gray-600 leading-snug kr-keep-all">
                             <span className="text-gray-600">규모 </span>
                             {c.userScale}
                           </p>
                         )}
                         {c.role && (
-                          <p className="text-[11px] text-gray-600 leading-snug kr-keep-all">
+                          <p className="text-2xs text-gray-600 leading-snug kr-keep-all">
                             <span className="text-gray-600">역할 </span>
                             {c.role}
                           </p>
@@ -91,7 +91,7 @@ export function CustomerShowcase({ variant = "compact" }: Props) {
                             {c.solvedRisks.map((r) => (
                               <span
                                 key={r}
-                                className={`inline-block text-[10px] font-medium px-2 py-0.5 rounded-full bg-gray-50 border border-gray-200 ${style.text} kr-keep-all`}
+                                className={`inline-block text-2xs font-medium px-2 py-0.5 rounded-full bg-gray-50 border border-gray-200 ${style.text} kr-keep-all`}
                               >
                                 {r}
                               </span>

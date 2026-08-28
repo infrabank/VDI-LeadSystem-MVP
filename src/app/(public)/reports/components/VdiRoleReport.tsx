@@ -90,7 +90,7 @@ export default function VdiRoleReport({ report, lead, output, organizationName }
                   <div className="flex justify-between items-baseline mb-1">
                     <span className={`text-sm font-medium ${isWinner ? "text-slate-900" : "text-gray-500"}`}>
                       {t === "maintain" ? "유지 강화형" : t === "complement" ? "제로트러스트 보완형" : t === "reduce" ? "점진적 축소형" : "재설계형"}
-                      {isWinner && <span className="ml-2 px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded text-[10px] font-semibold">선정</span>}
+                      {isWinner && <span className="ml-2 px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded text-2xs font-semibold">선정</span>}
                     </span>
                     <span className="text-sm font-semibold text-gray-700">{pct}%</span>
                   </div>

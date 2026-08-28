@@ -235,7 +235,7 @@ export default function N2sfReadinessDiagnosisPage() {
               </div>
               <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
-                  className="h-full bg-gradient-to-r from-blue-600 to-blue-700 rounded-full transition duration-500"
+                  className="h-full bg-gradient-to-r from-blue-600 to-blue-700 rounded-full transition-[width] duration-500"
                   style={{ width: `${progressPercent}%` }}
                 />
               </div>

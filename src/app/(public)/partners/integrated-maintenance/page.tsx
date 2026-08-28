@@ -53,17 +53,17 @@ const scopeAreas = [
 const collaboration = [
   {
     label: "제안 단계",
-    color: "#7c3aed",
+    color: "var(--color-domain-managed)",
     desc: "RFP를 함께 검토하고, VDI·가상화·백업 범위의 리스크와 견적 기준을 정리합니다. 필요하면 고객 기술 미팅에 동행합니다.",
   },
   {
     label: "수주 후 운영 단계",
-    color: "#2563eb",
+    color: "var(--color-domain-vdi)",
     desc: "월간 정기점검, 원격 장애 분석, 패치·인증서·라이선스 갱신 영향 검토, 운영 보고서 작성을 지원합니다.",
   },
   {
     label: "장애 발생 시",
-    color: "#059669",
+    color: "var(--color-domain-backup)",
     desc: "로그와 설정을 기준으로 원인을 구분하고, 조치 방향과 고객 설명 자료를 정리합니다. 벤더 SR이 필요한 경우 케이스 요약과 회신 해석을 보조합니다.",
   },
 ];

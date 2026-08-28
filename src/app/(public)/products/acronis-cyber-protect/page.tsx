@@ -43,10 +43,10 @@ function ImgSlot({
         />
       </svg>
       <p className="text-sm font-semibold text-blue-700 kr-keep-all">{label}</p>
-      <p className="mt-1 text-[11px] text-blue-600/80 font-mono">
+      <p className="mt-1 text-2xs text-blue-600/80 font-mono">
         /products/acronis/{file}
       </p>
-      <p className="mt-1 text-[11px] text-gray-600 kr-keep-all">
+      <p className="mt-1 text-2xs text-gray-600 kr-keep-all">
         파트너 페이지에서 조달 후 교체
       </p>
     </div>

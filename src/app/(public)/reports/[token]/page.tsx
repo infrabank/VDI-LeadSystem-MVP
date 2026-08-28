@@ -624,7 +624,7 @@ function ExpiredReportNotice({ reportId, expiredAt }: { reportId: string; expire
             새 진단 시작
           </Link>
         </div>
-        <p className="mt-5 text-[11px] text-gray-600">참조 ID: {reportId.slice(0, 8)}</p>
+        <p className="mt-5 text-2xs text-gray-600">참조 ID: {reportId.slice(0, 8)}</p>
       </div>
     </div>
   );

@@ -1,13 +1,10 @@
-"use client";
-
 /**
  * 진단 페이지 진입 화면(lead step) 위에 노출되는 안내 박스.
  * - 진단 완료 시 받는 5가지 산출물 명시
  * - 1인 전문가 신뢰 라인
  *
- * page.tsx가 "use client"라 server-rendered intro section은 import 불가.
- * 동일 client 환경에서 단순 노출용 — 첫 HTML에는 빈 상태로 들어가지만 metadata는
- * layout.tsx로 SNS 공유 친화 문구가 노출된다.
+ * 상태와 이벤트가 없어 이 컴포넌트 자체는 클라이언트를 요구하지 않는다.
+ * 다만 현재는 부모인 page.tsx가 클라이언트라 함께 클라이언트로 렌더된다.
  */
 export function RiskAssessmentIntro() {
   const deliverables = [
@@ -58,11 +55,11 @@ export function RiskAssessmentIntro() {
               key={d.no}
               className="p-3 sm:p-4 bg-white rounded-lg border border-gray-200"
             >
-              <p className="text-[10px] font-bold text-blue-600 mb-1">{d.no}</p>
+              <p className="text-2xs font-bold text-blue-600 mb-1">{d.no}</p>
               <p className="text-xs sm:text-[13px] font-bold text-slate-900 mb-1 kr-keep-all leading-snug">
                 {d.title}
               </p>
-              <p className="text-[11px] text-gray-500 leading-snug kr-keep-all">{d.desc}</p>
+              <p className="text-2xs text-gray-500 leading-snug kr-keep-all">{d.desc}</p>
             </div>
           ))}
         </div>

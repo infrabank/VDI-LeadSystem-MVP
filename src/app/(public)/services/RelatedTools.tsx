@@ -35,7 +35,7 @@ export function RelatedTools({ tools }: { tools: RelatedTool[] }) {
                 <h3 className="text-sm sm:text-base font-bold text-gray-900 group-hover:text-blue-700 kr-keep-all">
                   {t.title}
                 </h3>
-                <span className="flex-shrink-0 text-[11px] font-medium text-gray-600 mt-0.5">
+                <span className="flex-shrink-0 text-2xs font-medium text-gray-600 mt-0.5">
                   {t.duration}
                 </span>
               </div>

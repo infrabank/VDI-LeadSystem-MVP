@@ -63,28 +63,33 @@ export default function PublicHeader() {
     const node = drawerRef.current;
     if (!node) return;
 
-    const focusables = () =>
+    const drawerItems = () =>
       Array.from(
         node.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"),
       ).filter((el) => el.offsetParent !== null);
 
-    focusables()[0]?.focus();
+    /* 닫기(X) 버튼은 헤더에 있어 드로어 밖이다. 순환에 포함하지 않으면 키보드로는
+       Escape 말고 닫을 방법이 없어진다. 메뉴를 다 지난 뒤 마지막 순서로 넣는다. */
+    const focusables = () => {
+      const toggle = toggleRef.current;
+      const items = drawerItems();
+      return toggle ? [...items, toggle] : items;
+    };
 
+    drawerItems()[0]?.focus();
+
+    /* 닫기 버튼이 DOM 순서상 드로어보다 앞에 있어, 경계에서만 개입하면 브라우저가
+       드로어 마지막 항목 다음으로 본문 링크에 포커스를 준다. Tab을 항상 가로채고
+       배열 순서대로 순환시켜 DOM 순서와 무관하게 드로어 안에 머물게 한다. */
     const onKey = (e: KeyboardEvent) => {
       if (e.key !== "Tab") return;
       const items = focusables();
       if (items.length === 0) return;
-      const first = items[0];
-      const last = items[items.length - 1];
-      const active = document.activeElement;
-      const outside = !node.contains(active);
-      if (e.shiftKey && (active === first || outside)) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && (active === last || outside)) {
-        e.preventDefault();
-        first.focus();
-      }
+      e.preventDefault();
+      const idx = items.indexOf(document.activeElement as HTMLElement);
+      const step = e.shiftKey ? -1 : 1;
+      const next = idx === -1 ? 0 : (idx + step + items.length) % items.length;
+      items[next].focus();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -97,14 +102,14 @@ export default function PublicHeader() {
           줄을 바꿔 받아낸다 (WCAG 1.4.4). */}
       <nav
         aria-label="주요 메뉴"
-        className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-y-2 min-h-14 sm:min-h-16 py-1"
+        className="max-w-6xl mx-auto px-4 sm:px-6 flex flex-wrap items-center justify-between gap-y-2 min-h-[56px] sm:min-h-[64px] py-1"
       >
         <Link href="/" className="flex flex-col leading-tight shrink-0">
           <span className="font-bold text-base sm:text-lg text-gray-900 tracking-tight inline-flex items-center gap-1.5">
             {company.name}
             <span className="w-1.5 h-1.5 rounded-full bg-blue-600 inline-block"></span>
           </span>
-          <span className="text-[9px] sm:text-[11px] font-semibold text-blue-600 tracking-[0.15em] uppercase mt-0.5">
+          <span className="text-2xs font-semibold text-blue-600 tracking-[0.15em] uppercase mt-0.5">
             {company.tagline}
           </span>
         </Link>
@@ -250,6 +255,9 @@ export default function PublicHeader() {
           <div
             ref={drawerRef}
             id="mobile-drawer"
+            role="dialog"
+            aria-modal="true"
+            aria-label="모바일 메뉴"
             className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-50 animate-slide-down max-h-[calc(100vh-3.5rem)] overflow-y-auto"
           >
             <nav aria-label="모바일 메뉴" className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex flex-col">
@@ -268,7 +276,7 @@ export default function PublicHeader() {
                           className="block py-2 pl-4 border-l-2 border-blue-100 ml-1"
                         >
                           <div className="text-sm font-medium text-gray-700">{c.label}</div>
-                          <div className="text-[11px] text-gray-500 kr-keep-all">{c.description}</div>
+                          <div className="text-2xs text-gray-500 kr-keep-all">{c.description}</div>
                         </Link>
                       ))}
                     </div>

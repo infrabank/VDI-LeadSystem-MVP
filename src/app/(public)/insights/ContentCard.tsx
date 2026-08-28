@@ -54,9 +54,12 @@ export function ContentCard({ item }: { item: ContentListItem }) {
             <span className="text-xs text-gray-600">{item.category}</span>
           )}
         </div>
-        <h2 className="font-semibold text-gray-900 mb-1.5 line-clamp-2 group-hover:text-blue-600 transition-colors kr-keep-all">{item.title}</h2>
+        {/* line-clamp는 줄 수를 고정하므로 글자를 키우면 한 줄에 들어가는 글자가 줄어
+            내용이 잘린다. 200% 확대에서 제목과 요약이 최대 67%까지 사라져 제거한다.
+            카드 높이는 그리드가 행 단위로 맞춘다. */}
+        <h2 className="font-semibold text-gray-900 mb-1.5 group-hover:text-blue-600 transition-colors kr-keep-all">{item.title}</h2>
         {item.excerpt && (
-          <p className="text-sm text-gray-500 line-clamp-3 leading-relaxed kr-keep-all">{item.excerpt}</p>
+          <p className="text-sm text-gray-500 leading-relaxed kr-keep-all">{item.excerpt}</p>
         )}
         <div className="flex items-center justify-between mt-4">
           {item.published_at ? (
