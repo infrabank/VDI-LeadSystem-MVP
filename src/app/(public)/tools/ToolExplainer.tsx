@@ -325,7 +325,7 @@ export function ToolExplainer({ slug }: { slug: ToolSlug }) {
             <li key={r.href}>
               <Link
                 href={r.href}
-                className="text-sm text-blue-700 hover:text-blue-800 underline underline-offset-2"
+                className="inline-flex items-center min-h-6 text-sm text-blue-700 hover:text-blue-800 underline underline-offset-2"
               >
                 {r.label}
               </Link>

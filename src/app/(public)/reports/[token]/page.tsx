@@ -128,20 +128,20 @@ function RadarChart({ maturity }: { maturity: V2Output["maturity_model"] }) {
             return `${p.x},${p.y}`;
           }).join(" ")}
           fill="none"
-          stroke="#e5e7eb"
+          stroke="var(--color-chart-grid)"
           strokeWidth={lvl === 5 ? 1.5 : 0.5}
         />
       ))}
       {/* Axes */}
       {angles.map((a, i) => {
         const end = point(a, 5);
-        return <line key={i} x1={cx} y1={cy} x2={end.x} y2={end.y} stroke="#d1d5db" strokeWidth={0.5} />;
+        return <line key={i} x1={cx} y1={cy} x2={end.x} y2={end.y} stroke="var(--color-chart-grid-strong)" strokeWidth={0.5} />;
       })}
       {/* Data polygon */}
-      <polygon points={polygon} fill="rgba(37,99,235,0.15)" stroke="#2563eb" strokeWidth={2} />
+      <polygon points={polygon} fill="color-mix(in srgb, var(--color-chart-line) 15%, transparent)" stroke="var(--color-chart-line)" strokeWidth={2} />
       {/* Data dots */}
       {dataPoints.map((p, i) => (
-        <circle key={i} cx={p.x} cy={p.y} r={3.5} fill="#2563eb" />
+        <circle key={i} cx={p.x} cy={p.y} r={3.5} fill="var(--color-chart-line)" />
       ))}
       {/* Labels */}
       {axes.map((a, i) => {
@@ -154,7 +154,7 @@ function RadarChart({ maturity }: { maturity: V2Output["maturity_model"] }) {
             y={labelPoint.y + (i === 0 ? -2 : i === 2 ? 8 : 3)}
             textAnchor={anchor}
             fontSize={9}
-            fill="#6b7280"
+            fill="var(--color-chart-label)"
             fontWeight={500}
           >
             {a.key} ({a.level}/5)
@@ -284,10 +284,10 @@ function V2Report({
   };
 
   const scoreColor =
-    output.score >= 70 ? "#ef4444"
-    : output.score >= 50 ? "#f97316"
-    : output.score >= 30 ? "#eab308"
-    : "#22c55e";
+    output.score >= 70 ? "var(--color-chart-danger)"
+    : output.score >= 50 ? "var(--color-chart-warn)"
+    : output.score >= 30 ? "var(--color-chart-caution)"
+    : "var(--color-chart-ok)";
 
   const circumference = 2 * Math.PI * 52;
   const strokeDashoffset = circumference - (output.score / 100) * circumference;
@@ -332,7 +332,7 @@ function V2Report({
             {/* Score Gauge */}
             <div className="relative flex-shrink-0 w-24 sm:w-28 h-24 sm:h-28">
               <svg aria-hidden="true" className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="52" fill="none" stroke="#f3f4f6" strokeWidth="10" />
+                <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-chart-track)" strokeWidth="10" />
                 <circle cx="60" cy="60" r="52" fill="none" stroke={scoreColor} strokeWidth="10" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -510,7 +510,7 @@ function V1Report({
     critical: "text-red-700 bg-red-100 border-red-200",
   };
 
-  const scoreColor = score >= 70 ? "#ef4444" : score >= 50 ? "#f97316" : score >= 30 ? "#eab308" : "#22c55e";
+  const scoreColor = score >= 70 ? "var(--color-chart-danger)" : score >= 50 ? "var(--color-chart-warn)" : score >= 30 ? "var(--color-chart-caution)" : "var(--color-chart-ok)";
   const circumference = 2 * Math.PI * 52;
   const strokeDashoffset = circumference - (score / 100) * circumference;
 
@@ -532,7 +532,7 @@ function V1Report({
           <div className="flex items-center gap-6 md:gap-8">
             <div className="relative flex-shrink-0 w-28 sm:w-36 h-28 sm:h-36">
               <svg aria-hidden="true" className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="52" fill="none" stroke="#f3f4f6" strokeWidth="10" />
+                <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-chart-track)" strokeWidth="10" />
                 <circle cx="60" cy="60" r="52" fill="none" stroke={scoreColor} strokeWidth="10" strokeLinecap="round" strokeDasharray={circumference} strokeDashoffset={strokeDashoffset} />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center">

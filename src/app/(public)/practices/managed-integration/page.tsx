@@ -107,7 +107,7 @@ export default function ManagedIntegrationPage() {
         <p className="text-purple-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           Diagnosis Deliverables
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+        <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
           사전진단 산출물 4종
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
@@ -133,7 +133,7 @@ export default function ManagedIntegrationPage() {
           <p className="text-purple-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
             Diagnosis Outcomes
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
             진단 결과 시나리오 3종
           </h2>
           <p className="text-gray-500 text-center text-sm mb-10 max-w-xl mx-auto kr-keep-all">
@@ -175,7 +175,7 @@ export default function ManagedIntegrationPage() {
           <p className="text-purple-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
             Free Consultation
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
+          <h2 className="h-base text-white mb-4 kr-keep-all">
             기관별 N²SF 정렬, 1차 진단부터 시작하세요
           </h2>
           <p className="text-sm sm:text-base text-purple-100 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed kr-keep-all">

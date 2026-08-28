@@ -161,7 +161,7 @@ export default function ItMaintenancePage() {
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
             지원 범위
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-8 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-8 kr-keep-all">
             지원 범위
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -213,7 +213,7 @@ export default function ItMaintenancePage() {
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
             FAQ
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-8 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-8 kr-keep-all">
             자주 묻는 질문
           </h2>
           <div className="space-y-3">
@@ -261,7 +261,7 @@ export default function ItMaintenancePage() {
           <p className="text-blue-300 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
             Contact
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4 kr-keep-all">
+          <h2 className="h-base text-white mb-4 kr-keep-all">
             전산 운영 상태부터 점검해 드립니다
           </h2>
           <p className="text-sm sm:text-base text-slate-300 mb-8 max-w-2xl leading-relaxed kr-keep-all">

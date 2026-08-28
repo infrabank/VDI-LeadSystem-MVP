@@ -69,12 +69,12 @@ export function RiskAssessmentIntro() {
             <span className="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
             <span>공공·연구기관 10여 곳 구축·운영·유지보수 지원 경험</span>
           </span>
-          <span className="text-slate-300">·</span>
+          <span aria-hidden="true" className="text-gray-400">·</span>
           <span className="inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
             <span>대표 1인이 직접 진단·자문</span>
           </span>
-          <span className="text-slate-300">·</span>
+          <span aria-hidden="true" className="text-gray-400">·</span>
           <span className="inline-flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
             <span>구축은 검증된 파트너 컨소시엄</span>

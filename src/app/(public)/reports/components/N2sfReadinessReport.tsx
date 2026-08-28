@@ -32,7 +32,7 @@ interface Props {
 export default function N2sfReadinessReport({ report, lead, output, organizationName }: Props) {
   const score = output.score;
   const scoreColor =
-    score >= 80 ? "#10b981" : score >= 65 ? "#3b82f6" : score >= 50 ? "#f59e0b" : score >= 30 ? "#f97316" : "#ef4444";
+    score >= 80 ? "var(--color-chart-ok)" : score >= 65 ? "var(--color-chart-line)" : score >= 50 ? "var(--color-chart-caution)" : score >= 30 ? "var(--color-chart-warn)" : "var(--color-chart-danger)";
 
   const circumference = 2 * Math.PI * 52;
   const strokeDashoffset = circumference - (score / 100) * circumference;
@@ -75,7 +75,7 @@ export default function N2sfReadinessReport({ report, lead, output, organization
           <div className="mt-5 flex items-center gap-6 flex-wrap">
             <div className="relative flex-shrink-0 w-28 h-28">
               <svg aria-hidden="true" className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="52" fill="none" stroke="#f1f5f9" strokeWidth="10" />
+                <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-chart-track)" strokeWidth="10" />
                 <circle
                   cx="60"
                   cy="60"

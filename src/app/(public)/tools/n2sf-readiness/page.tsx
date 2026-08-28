@@ -49,6 +49,7 @@ export default function N2sfReadinessDiagnosisPage() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [step, setStep] = useState<Step>("lead");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const currentSectionIdx = SECTION_ORDER.indexOf(step as SectionId);
   const totalSteps = SECTION_ORDER.length + 1;
@@ -84,16 +85,18 @@ export default function N2sfReadinessDiagnosisPage() {
 
   function handleLeadSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email) {
-      setError("이메일을 입력해주세요.");
-      return;
-    }
-    if (!organizationName) {
-      setError("기관·회사명을 입력해주세요.");
-      return;
-    }
-    if (!consent) {
-      setError("개인정보 처리 동의가 필요합니다.");
+    const found: Record<string, string> = {};
+    if (!email.trim()) found["n2-email"] = "이메일을 입력해주세요.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) found["n2-email"] = "이메일 형식을 확인해주세요.";
+    if (!organizationName.trim()) found["n2-organizationName"] = "기관·회사명을 입력해주세요.";
+    if (!consent) found["n2-consent"] = "개인정보 처리 동의가 필요합니다.";
+    setFieldErrors(found);
+    const keys = Object.keys(found);
+    if (keys.length > 0) {
+      setError(keys.length === 1 ? found[keys[0]] : `입력을 확인해주세요. ${keys.length}개 항목이 남았습니다.`);
+      const el = document.getElementById(keys[0]);
+      el?.scrollIntoView({ block: "center", behavior: "smooth" });
+      (el as HTMLElement | null)?.focus({ preventScroll: true });
       return;
     }
     setError("");
@@ -174,7 +177,7 @@ export default function N2sfReadinessDiagnosisPage() {
       <div key={q.id} className="space-y-1.5">
         <label className="block text-sm font-medium text-gray-700">
           {q.label}
-          {q.required && <span className="text-red-500 ml-0.5">*</span>}
+          {q.required && <span className="text-red-600 ml-0.5" aria-hidden="true">*</span>}
         </label>
         {q.help && <p className="text-xs text-slate-400">{q.help}</p>}
         <select
@@ -246,29 +249,35 @@ export default function N2sfReadinessDiagnosisPage() {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6">
         {error && (
-          <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm">
+          <div className="mb-5 p-4 bg-red-50 border border-red-200 text-red-700 rounded-xl text-sm" role="alert" tabIndex={-1}>
             {error}
           </div>
         )}
 
         {step === "lead" && (
-          <form onSubmit={handleLeadSubmit} className="space-y-5">
+          <form noValidate onSubmit={handleLeadSubmit} className="space-y-5">
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-base md:text-lg text-slate-900 kr-keep-all">기관 정보 입력</h2>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    기관명 <span className="text-red-500">*</span>
+                  <label htmlFor="n2-organizationName" className="block text-sm font-medium text-gray-700 mb-1.5">
+                    기관명 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
+                    id="n2-organizationName"
                     type="text"
                     value={organizationName}
                     onChange={(e) => setOrganizationName(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    aria-invalid={!!fieldErrors["n2-organizationName"]}
+                    aria-describedby={fieldErrors["n2-organizationName"] ? "n2-organizationName-error" : undefined}
+                    className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${fieldErrors["n2-organizationName"] ? "border-red-400 bg-red-50/50" : ""}`}
                     placeholder="예: 한국OO공단"
                   />
+                {fieldErrors["n2-organizationName"] && (
+                  <p id="n2-organizationName-error" className="mt-1.5 text-xs text-red-700">{fieldErrors["n2-organizationName"]}</p>
+                )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -318,17 +327,23 @@ export default function N2sfReadinessDiagnosisPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    이메일 <span className="text-red-500">*</span>
+                  <label htmlFor="n2-email" className="block text-sm font-medium text-gray-700 mb-1.5">
+                    이메일 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
+                    id="n2-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    aria-invalid={!!fieldErrors["n2-email"]}
+                    aria-describedby={fieldErrors["n2-email"] ? "n2-email-error" : undefined}
+                    className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 ${fieldErrors["n2-email"] ? "border-red-400 bg-red-50/50" : ""}`}
                     placeholder="your@email.com"
                   />
+                {fieldErrors["n2-email"] && (
+                  <p id="n2-email-error" className="mt-1.5 text-xs text-red-700">{fieldErrors["n2-email"]}</p>
+                )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -384,16 +399,22 @@ export default function N2sfReadinessDiagnosisPage() {
 
               <label className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-colors">
                 <input
+                  id="n2-consent"
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
-                  className="mt-0.5 w-4 h-4 accent-blue-700 cursor-pointer"
+                  aria-invalid={!!fieldErrors["n2-consent"]}
+                  aria-describedby={fieldErrors["n2-consent"] ? "n2-consent-error" : undefined}
+                  className="mt-0.5 w-6 h-6 flex-shrink-0 accent-blue-700 cursor-pointer"
                 />
                 <span className="text-sm text-gray-700">
                   진단 결과 제공 및 상담 안내를 위한 개인정보 수집·이용에 동의합니다.{" "}
-                  <span className="text-red-500">*</span>
+                  <span className="text-red-600" aria-hidden="true">*</span>
                 </span>
               </label>
+              {fieldErrors["n2-consent"] && (
+                <p id="n2-consent-error" className="text-xs text-red-700">{fieldErrors["n2-consent"]}</p>
+              )}
             </div>
 
             <button

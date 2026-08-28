@@ -110,7 +110,7 @@ export default function AboutPage() {
             <p className="text-blue-600 font-semibold text-xs sm:text-sm mb-3 tracking-widest uppercase">
               미션
             </p>
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4 kr-keep-all">
+            <h2 className="h-base text-gray-900 mb-4 kr-keep-all">
               운영 장애를 직접 본 엔지니어가 대응합니다
             </h2>
             <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 kr-keep-all">
@@ -171,7 +171,7 @@ export default function AboutPage() {
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
             대표 엔지니어
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
             대표 소개
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
@@ -191,7 +191,7 @@ export default function AboutPage() {
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
             책임 구조
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
             대표 직접 책임 + 검증된 파트너 컨소시엄
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-12 max-w-2xl mx-auto kr-keep-all">
@@ -305,7 +305,7 @@ export default function AboutPage() {
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
             고객사
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
             구축·운영·유지보수 지원 고객사
           </h2>
           <p className="text-sm text-gray-500 text-center mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
@@ -324,7 +324,7 @@ export default function AboutPage() {
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-wider">
             파트너십
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-8 md:mb-12 kr-keep-all">
+          <h2 className="h-base text-center text-gray-900 mb-8 md:mb-12 kr-keep-all">
             공식 파트너
           </h2>
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
@@ -348,7 +348,7 @@ export default function AboutPage() {
         <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           인증·기술자격
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+        <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
           인증 단계
         </h2>
         <p className="text-xs text-gray-500 text-center mb-8 md:mb-12 kr-keep-all">
@@ -404,7 +404,7 @@ export default function AboutPage() {
           <p className="text-blue-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
             문의
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
+          <h2 className="h-base text-white mb-4 kr-keep-all">
             기술지원·유지보수 문의
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-lg mx-auto leading-relaxed kr-keep-all">

@@ -224,7 +224,7 @@ export default function PartnersPage() {
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
             What We Do
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-2 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-2 kr-keep-all">
             바로 하는 일
           </h2>
           <p className="text-sm text-gray-500 mb-8 kr-keep-all">
@@ -376,7 +376,7 @@ export default function PartnersPage() {
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
             Engagements
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-3 kr-keep-all">
             실제 경험
           </h2>
           <p className="text-sm text-gray-500 mb-8 kr-keep-all">
@@ -487,7 +487,7 @@ export default function PartnersPage() {
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">
             Contact
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-5 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-5 kr-keep-all">
             고객 환경과 증상만 보내주세요
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">

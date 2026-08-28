@@ -343,7 +343,7 @@ export default function VdiSupportPage() {
           <p className="text-xs font-bold text-gray-500 tracking-widest mb-2">
             운영 장애 시나리오
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-3 kr-keep-all">
             지금 이런 증상이라면, 문의 대상입니다
           </h2>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all mb-8">
@@ -405,7 +405,7 @@ export default function VdiSupportPage() {
           <p className="text-xs font-bold text-gray-500 tracking-widest mb-2">
             분석 범위
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-3 kr-keep-all">
             VDI 장애는 한 제품만의 문제가 아닙니다
           </h2>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
@@ -434,7 +434,7 @@ export default function VdiSupportPage() {
           <p className="text-xs font-bold text-gray-500 tracking-widest mb-2">
             지원 유형
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-3 kr-keep-all">
             이렇게 의뢰할 수 있습니다
           </h2>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all mb-8">
@@ -503,7 +503,7 @@ export default function VdiSupportPage() {
           <p className="text-xs font-bold text-gray-500 tracking-widest mb-2">
             지원 범위
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-8 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-8 kr-keep-all">
             지원 범위 요약
           </h2>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -526,7 +526,7 @@ export default function VdiSupportPage() {
           <p className="text-xs font-bold text-gray-500 tracking-widest mb-2">
             수행 실적
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-3 kr-keep-all">
             수행 경험
           </h2>
           <p className="text-sm sm:text-base text-gray-600 leading-relaxed kr-keep-all mb-8">
@@ -552,7 +552,7 @@ export default function VdiSupportPage() {
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
             FAQ
           </p>
-          <h2 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-8 kr-keep-all">
+          <h2 className="h-base text-gray-900 mb-8 kr-keep-all">
             자주 묻는 질문
           </h2>
           <div className="space-y-3">
@@ -597,7 +597,7 @@ export default function VdiSupportPage() {
       {/* CTA */}
       <section className="bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-white mb-4 kr-keep-all">
+          <h2 className="h-base text-white mb-4 kr-keep-all">
             VDI 장애, 제품·버전·증상만 보내주세요
           </h2>
           <p className="text-sm sm:text-base text-slate-300 mb-8 max-w-2xl leading-relaxed kr-keep-all">

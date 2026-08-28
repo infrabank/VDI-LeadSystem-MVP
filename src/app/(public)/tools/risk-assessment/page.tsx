@@ -76,6 +76,7 @@ function V4Form() {
 
   const [step, setStep] = useState<V4Step>("lead");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const TOTAL_STEPS = STEPS_V4.length; // 8
   const currentStepNum = step === "lead" ? 0 : step === "submitting" ? TOTAL_STEPS + 1 : (step as number);
@@ -133,7 +134,19 @@ function V4Form() {
 
   function handleLeadSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!consent) { setError("개인정보 처리 동의가 필요합니다."); return; }
+    const found: Record<string, string> = {};
+    if (!email.trim()) found["ra-email"] = "이메일을 입력해주세요.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) found["ra-email"] = "이메일 형식을 확인해주세요.";
+    if (!consent) found["ra-consent"] = "개인정보 처리 동의가 필요합니다.";
+    setFieldErrors(found);
+    const keys = Object.keys(found);
+    if (keys.length > 0) {
+      setError(keys.length === 1 ? found[keys[0]] : `입력을 확인해주세요. ${keys.length}개 항목이 남았습니다.`);
+      const el = document.getElementById(keys[0]);
+      el?.scrollIntoView({ block: "center", behavior: "smooth" });
+      (el as HTMLElement | null)?.focus({ preventScroll: true });
+      return;
+    }
     setError("");
     setStep(1);
   }
@@ -234,7 +247,7 @@ function V4Form() {
         <div key={q.id} className="space-y-3">
           <div>
             <p className="text-sm font-medium text-gray-700 mb-1">
-              {q.question} <span className="text-red-500">*</span>
+              {q.question} <span className="text-red-600" aria-hidden="true">*</span>
             </p>
             {q.inline_help && (
               <div className="p-3 bg-amber-50 border border-amber-200 rounded-lg text-xs text-amber-800 mb-3">
@@ -294,7 +307,7 @@ function V4Form() {
         <div key={q.id} className="space-y-3">
           <div>
             <p className="text-sm font-medium text-gray-700 mb-1">
-              {q.question} <span className="text-red-500">*</span>
+              {q.question} <span className="text-red-600" aria-hidden="true">*</span>
             </p>
             {q.inline_help && (
               <div className="p-3 bg-blue-50 border border-blue-200 rounded-lg text-xs text-blue-800 mb-3">
@@ -327,7 +340,7 @@ function V4Form() {
       <div key={q.id} className="space-y-1.5">
         <label className="block text-sm font-medium text-gray-700">
           {q.question}
-          {q.required && <span className="text-red-500 ml-0.5">*</span>}
+          {q.required && <span className="text-red-600 ml-0.5" aria-hidden="true">*</span>}
           {!q.required && <span className="text-gray-600 text-xs ml-1">(선택)</span>}
         </label>
         {q.inline_help && <p className="text-xs text-gray-600">{q.inline_help}</p>}
@@ -432,7 +445,7 @@ function V4Form() {
                       <div className={`w-5 h-5 rounded-full flex items-center justify-center text-2xs font-semibold transition-colors flex-shrink-0 ${dotDone ? "bg-blue-600 text-white" : dotActive ? "bg-blue-600 text-white ring-2 ring-blue-200" : "bg-gray-200 text-gray-600"}`}>
                         {dotDone ? <svg aria-hidden="true" className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg> : i + 1}
                       </div>
-                      <span className={`text-2xs truncate max-w-[36px] text-center ${dotDone || dotActive ? "text-blue-600 font-medium" : "text-gray-600"}`}>{label}</span>
+                      <span className={`text-2xs truncate max-w-[3.3em] text-center ${dotDone || dotActive ? "text-blue-600 font-medium" : "text-gray-600"}`}>{label}</span>
                     </div>
                   );
                 })}
@@ -456,16 +469,18 @@ function V4Form() {
         {step === "lead" && (
           <>
             <RiskAssessmentIntro />
-          <form onSubmit={handleLeadSubmit} className="space-y-5">
+          <form noValidate onSubmit={handleLeadSubmit} className="space-y-5">
             <div className="p-3 bg-gray-50 border border-gray-200 rounded-lg text-sm text-gray-600 kr-keep-all">
               <strong>본 진단은 VDI 환경의 보안 준비도를 자가 점검하는 도구입니다.</strong> 공식 보안성 검토를 대체하지 않으며, 결과는 솔루션 권고를 위한 참고 자료로 활용됩니다.
             </div>
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-lg text-gray-900">기본 정보 입력</h2>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">이메일 <span className="text-red-500">*</span></label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="your@email.com"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+                <label htmlFor="ra-email" className="block text-sm font-medium text-gray-700 mb-1.5">이메일 <span className="text-red-600" aria-hidden="true">*</span></label>
+                <input id="ra-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="your@email.com"
+                  aria-invalid={!!fieldErrors["ra-email"]} aria-describedby={fieldErrors["ra-email"] ? "ra-email-error" : undefined}
+                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${fieldErrors["ra-email"] ? "border-red-400 bg-red-50/50" : ""}`} />
+                {fieldErrors["ra-email"] && <p id="ra-email-error" className="mt-1.5 text-xs text-red-700">{fieldErrors["ra-email"]}</p>}
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
@@ -474,15 +489,16 @@ function V4Form() {
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">기관·회사명</label>
-                  <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="(주)회사명"
+                  <label htmlFor="ra-company" className="block text-sm font-medium text-gray-700 mb-1.5">기관·회사명</label>
+                  <input id="ra-company" type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="(주)회사명"
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
                 </div>
               </div>
               <label className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-colors">
-                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 w-4 h-4 accent-blue-600 cursor-pointer" />
-                <span className="text-sm text-gray-600">진단 결과 제공을 위한 개인정보 수집·이용에 동의합니다. <span className="text-red-500">*</span></span>
+                <input id="ra-consent" type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} aria-invalid={!!fieldErrors["ra-consent"]} aria-describedby={fieldErrors["ra-consent"] ? "ra-consent-error" : undefined} className="mt-0.5 w-6 h-6 flex-shrink-0 accent-blue-600 cursor-pointer" />
+                <span className="text-sm text-gray-600">진단 결과 제공을 위한 개인정보 수집·이용에 동의합니다. <span className="text-red-600" aria-hidden="true">*</span></span>
               </label>
+              {fieldErrors["ra-consent"] && <p id="ra-consent-error" className="text-xs text-red-700">{fieldErrors["ra-consent"]}</p>}
             </div>
             <button type="submit" className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2">
               진단 시작하기

@@ -34,6 +34,7 @@ export default function BackupRoiPage() {
   const [annualDowntimeHours, setAnnualDowntimeHours] = useState("24");
 
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   function toggleInterest(value: string) {
     setInterestAreas((prev) =>
@@ -43,16 +44,18 @@ export default function BackupRoiPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!email) {
-      setError("이메일을 입력해주세요.");
-      return;
-    }
-    if (!company) {
-      setError("기관·회사명을 입력해주세요.");
-      return;
-    }
-    if (!consent) {
-      setError("개인정보 처리 동의가 필요합니다.");
+    const found: Record<string, string> = {};
+    if (!email.trim()) found["bri-email"] = "이메일을 입력해주세요.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) found["bri-email"] = "이메일 형식을 확인해주세요.";
+    if (!company.trim()) found["bri-company"] = "기관·회사명을 입력해주세요.";
+    if (!consent) found["bri-consent"] = "개인정보 처리 동의가 필요합니다.";
+    setFieldErrors(found);
+    const keys = Object.keys(found);
+    if (keys.length > 0) {
+      setError(keys.length === 1 ? found[keys[0]] : `입력을 확인해주세요. ${keys.length}개 항목이 남았습니다.`);
+      const el = document.getElementById(keys[0]);
+      el?.scrollIntoView({ block: "center", behavior: "smooth" });
+      (el as HTMLElement | null)?.focus({ preventScroll: true });
       return;
     }
     setStep("submitting");
@@ -96,7 +99,7 @@ export default function BackupRoiPage() {
       });
       if (!runRes.ok) {
         const err = await runRes.json();
-        throw new Error(err.error || "계산 실행 실패");
+        throw new Error(err.error || "계산에 실패했습니다. 입력값을 확인하고 다시 시도해 주세요.");
       }
       const result = await runRes.json();
 
@@ -151,13 +154,13 @@ export default function BackupRoiPage() {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 md:py-8">
         {error && (
-          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm border border-red-100">
+          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm border border-red-100" role="alert" tabIndex={-1}>
             {error}
           </div>
         )}
 
         {step === "input" && (
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form noValidate onSubmit={handleSubmit} className="space-y-6">
             {/* Lead Info */}
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <h2 className="font-semibold text-lg text-slate-900 kr-keep-all">
@@ -166,17 +169,23 @@ export default function BackupRoiPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    기관명 <span className="text-red-500">*</span>
+                  <label htmlFor="bri-company" className="block text-sm font-medium text-gray-700 mb-1.5">
+                    기관·회사명 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
+                    id="bri-company"
                     type="text"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    aria-invalid={!!fieldErrors["bri-company"]}
+                    aria-describedby={fieldErrors["bri-company"] ? "bri-company-error" : undefined}
+                    className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${fieldErrors["bri-company"] ? "border-red-400 bg-red-50/50" : ""}`}
                     placeholder="예: 한국OO공단"
                   />
+                  {fieldErrors["bri-company"] && (
+                    <p id="bri-company-error" className="mt-1.5 text-xs text-red-700">{fieldErrors["bri-company"]}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -194,17 +203,23 @@ export default function BackupRoiPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    이메일 <span className="text-red-500">*</span>
+                  <label htmlFor="bri-email" className="block text-sm font-medium text-gray-700 mb-1.5">
+                    이메일 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
+                    id="bri-email"
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
-                    className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                    aria-invalid={!!fieldErrors["bri-email"]}
+                    aria-describedby={fieldErrors["bri-email"] ? "bri-email-error" : undefined}
+                    className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${fieldErrors["bri-email"] ? "border-red-400 bg-red-50/50" : ""}`}
                     placeholder="your@email.com"
                   />
+                  {fieldErrors["bri-email"] && (
+                    <p id="bri-email-error" className="mt-1.5 text-xs text-red-700">{fieldErrors["bri-email"]}</p>
+                  )}
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -268,7 +283,7 @@ export default function BackupRoiPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    임직원 수 <span className="text-red-500">*</span>
+                    임직원 수 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <div className="relative">
                     <input
@@ -291,7 +306,7 @@ export default function BackupRoiPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    시간당 업무 중단 비용 <span className="text-red-500">*</span>
+                    시간당 업무 중단 비용 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <div className="relative">
                     <input
@@ -317,7 +332,7 @@ export default function BackupRoiPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    데이터 규모 <span className="text-red-500">*</span>
+                    데이터 규모 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <div className="relative">
                     <input
@@ -341,7 +356,7 @@ export default function BackupRoiPage() {
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                    연간 백업 비용 <span className="text-red-500">*</span>
+                    연간 백업 비용 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <div className="relative">
                     <input
@@ -365,7 +380,7 @@ export default function BackupRoiPage() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  연간 다운타임 시간 <span className="text-red-500">*</span>
+                  연간 다운타임 시간 <span className="text-red-600" aria-hidden="true">*</span>
                 </label>
                 <div className="relative">
                   <input
@@ -392,17 +407,23 @@ export default function BackupRoiPage() {
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <label className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-emerald-50 hover:border-emerald-200 transition-colors">
                 <input
+                  id="bri-consent"
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
-                  className="mt-0.5 w-4 h-4 accent-emerald-700 cursor-pointer"
+                  aria-invalid={!!fieldErrors["bri-consent"]}
+                  aria-describedby={fieldErrors["bri-consent"] ? "bri-consent-error" : undefined}
+                  className="mt-0.5 w-6 h-6 flex-shrink-0 accent-emerald-700 cursor-pointer"
                 />
                 <span className="text-sm text-gray-700 kr-keep-all">
                   ROI 분석 결과 제공 및 상담 안내를 위한 개인정보 수집·이용에
                   동의합니다.{" "}
-                  <span className="text-red-500">*</span>
+                  <span className="text-red-600" aria-hidden="true">*</span>
                 </span>
               </label>
+              {fieldErrors["bri-consent"] && (
+                <p id="bri-consent-error" className="text-xs text-red-700">{fieldErrors["bri-consent"]}</p>
+              )}
 
               <button
                 type="submit"

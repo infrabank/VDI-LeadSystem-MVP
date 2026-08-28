@@ -124,7 +124,7 @@ export default function PracticesPage() {
             컨설팅·자문 라인 4종
           </h1>
           <p className="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            메인 서비스는 <Link href="/" className="text-white underline underline-offset-4 decoration-blue-300">VDI·백업 기술지원·유지보수</Link>입니다.
+            메인 서비스는 <Link href="/" className="inline-flex items-center min-h-6 text-white underline underline-offset-4 decoration-blue-300">VDI·백업 기술지원·유지보수</Link>입니다.
             본 페이지는 N²SF 전환 사전진단·VDI 역할 재정의 등 컨설팅·자문 라인 정보입니다.
             기존 환경의 운영장애·점검·복구검증이 우선이면 홈으로 돌아가세요.
           </p>
@@ -181,7 +181,7 @@ export default function PracticesPage() {
           <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
             Engagement Stages
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
             단계·기간으로 보는 5단계 패키지
           </h2>
           <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-2xl mx-auto kr-keep-all">
@@ -216,7 +216,7 @@ export default function PracticesPage() {
                   <p className="text-sm sm:text-base font-bold text-gray-900 whitespace-nowrap">
                     {item.duration}
                   </p>
-                  <p className="text-2xs sm:text-xs font-semibold text-gray-500 whitespace-nowrap kr-keep-all">
+                  <p className="text-2xs sm:text-xs font-semibold text-gray-500 sm:whitespace-nowrap kr-keep-all">
                     참고 가격대 · {item.priceGuide}
                   </p>
                 </div>

@@ -34,6 +34,7 @@ export default function V3Form() {
   });
   const [step, setStep] = useState<V3Step>("lead");
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const currentSectionIdx = V3_SECTION_ORDER.indexOf(step as SectionId);
   const totalSteps = V3_SECTION_ORDER.length + 1;
@@ -82,7 +83,19 @@ export default function V3Form() {
 
   function handleLeadSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!consent) { setError("개인정보 처리 동의가 필요합니다."); return; }
+    const found: Record<string, string> = {};
+    if (!email.trim()) found["r3-email"] = "이메일을 입력해주세요.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) found["r3-email"] = "이메일 형식을 확인해주세요.";
+    if (!consent) found["r3-consent"] = "개인정보 처리 동의가 필요합니다.";
+    setFieldErrors(found);
+    const keys = Object.keys(found);
+    if (keys.length > 0) {
+      setError(keys.length === 1 ? found[keys[0]] : `입력을 확인해주세요. ${keys.length}개 항목이 남았습니다.`);
+      const el = document.getElementById(keys[0]);
+      el?.scrollIntoView({ block: "center", behavior: "smooth" });
+      (el as HTMLElement | null)?.focus({ preventScroll: true });
+      return;
+    }
     setError("");
     setStep(V3_SECTION_ORDER[0]);
   }
@@ -165,7 +178,7 @@ export default function V3Form() {
       <div key={q.id} className="space-y-1.5">
         <label className="block text-sm font-medium text-gray-700">
           {q.label}
-          {q.required && <span className="text-red-500 ml-0.5">*</span>}
+          {q.required && <span className="text-red-600 ml-0.5" aria-hidden="true">*</span>}
           {!q.required && <span className="text-gray-600 text-xs ml-1">(선택)</span>}
         </label>
         {q.help && <p className="text-xs text-gray-600">{q.help}</p>}
@@ -264,13 +277,15 @@ export default function V3Form() {
         )}
 
         {step === "lead" && (
-          <form onSubmit={handleLeadSubmit} className="space-y-5">
+          <form noValidate onSubmit={handleLeadSubmit} className="space-y-5">
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-5">
               <h2 className="font-semibold text-lg text-gray-900">기본 정보 입력</h2>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">이메일 <span className="text-red-500">*</span></label>
-                <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="your@email.com"
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
+                <label htmlFor="r3-email" className="block text-sm font-medium text-gray-700 mb-1.5">이메일 <span className="text-red-600" aria-hidden="true">*</span></label>
+                <input id="r3-email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="your@email.com"
+                  aria-invalid={!!fieldErrors["r3-email"]} aria-describedby={fieldErrors["r3-email"] ? "r3-email-error" : undefined}
+                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors ${fieldErrors["r3-email"] ? "border-red-400 bg-red-50/50" : ""}`} />
+                {fieldErrors["r3-email"] && <p id="r3-email-error" className="mt-1.5 text-xs text-red-700">{fieldErrors["r3-email"]}</p>}
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
@@ -279,15 +294,16 @@ export default function V3Form() {
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">기관·회사명</label>
-                  <input type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="(주)회사명"
+                  <label htmlFor="r3-company" className="block text-sm font-medium text-gray-700 mb-1.5">기관·회사명</label>
+                  <input id="r3-company" type="text" value={company} onChange={(e) => setCompany(e.target.value)} placeholder="(주)회사명"
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors" />
                 </div>
               </div>
               <label className="flex items-start gap-3 p-3 rounded-lg bg-gray-50 border border-gray-200 cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-colors">
-                <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-0.5 w-4 h-4 accent-blue-600 cursor-pointer" />
-                <span className="text-sm text-gray-600">진단 결과 제공을 위한 개인정보 수집·이용에 동의합니다. <span className="text-red-500">*</span></span>
+                <input id="r3-consent" type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} aria-invalid={!!fieldErrors["r3-consent"]} aria-describedby={fieldErrors["r3-consent"] ? "r3-consent-error" : undefined} className="mt-0.5 w-6 h-6 flex-shrink-0 accent-blue-600 cursor-pointer" />
+                <span className="text-sm text-gray-600">진단 결과 제공을 위한 개인정보 수집·이용에 동의합니다. <span className="text-red-600" aria-hidden="true">*</span></span>
               </label>
+              {fieldErrors["r3-consent"] && <p id="r3-consent-error" className="text-xs text-red-700">{fieldErrors["r3-consent"]}</p>}
             </div>
             <button type="submit" className="w-full py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl font-semibold shadow-sm hover:shadow-md hover:scale-[1.01] active:scale-[0.99] transition duration-150 flex items-center justify-center gap-2">
               진단 시작하기

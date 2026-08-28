@@ -97,7 +97,7 @@ export default function MfaAccessPage() {
         <p className="text-indigo-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           Review Items
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+        <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
           VDI 접속 MFA 기술검토 항목
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
@@ -123,7 +123,7 @@ export default function MfaAccessPage() {
           <p className="text-indigo-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
             Recommended Vendors
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+          <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
             추천 MFA 솔루션
           </h2>
           <p className="text-gray-500 text-center text-sm mb-10 max-w-xl mx-auto kr-keep-all">
@@ -169,7 +169,7 @@ export default function MfaAccessPage() {
           <p className="text-indigo-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
             VDI Access Security
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
+          <h2 className="h-base text-white mb-4 kr-keep-all">
             VDI 접속에 MFA를 어떻게 붙일지 검토합니다
           </h2>
           <p className="text-sm sm:text-base text-indigo-100 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed kr-keep-all">

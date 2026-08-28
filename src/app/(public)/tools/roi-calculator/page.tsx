@@ -28,6 +28,7 @@ export default function ROICalculatorPage() {
   const [majorIncidentHours, setMajorIncidentHours] = useState("8");
 
   const [error, setError] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   function handleBackupChange(checked: boolean) {
     setCurrentBackup(checked);
@@ -36,8 +37,17 @@ export default function ROICalculatorPage() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!consent) {
-      setError("개인정보 처리 동의가 필요합니다.");
+    const found: Record<string, string> = {};
+    if (!email.trim()) found["rc-email"] = "이메일을 입력해주세요.";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) found["rc-email"] = "이메일 형식을 확인해주세요.";
+    if (!consent) found["rc-consent"] = "개인정보 처리 동의가 필요합니다.";
+    setFieldErrors(found);
+    const keys = Object.keys(found);
+    if (keys.length > 0) {
+      setError(keys.length === 1 ? found[keys[0]] : `입력을 확인해주세요. ${keys.length}개 항목이 남았습니다.`);
+      const el = document.getElementById(keys[0]);
+      el?.scrollIntoView({ block: "center", behavior: "smooth" });
+      (el as HTMLElement | null)?.focus({ preventScroll: true });
       return;
     }
     setStep("submitting");
@@ -80,7 +90,7 @@ export default function ROICalculatorPage() {
       });
       if (!roiRes.ok) {
         const err = await roiRes.json();
-        throw new Error(err.error || "계산 실행 실패");
+        throw new Error(err.error || "계산에 실패했습니다. 입력값을 확인하고 다시 시도해 주세요.");
       }
       const result = await roiRes.json();
 
@@ -121,28 +131,34 @@ export default function ROICalculatorPage() {
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 py-6 md:py-8">
         {error && (
-          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm border border-red-100">
+          <div className="mb-4 p-3 bg-red-50 text-red-700 rounded-lg text-sm border border-red-100" role="alert" tabIndex={-1}>
             {error}
           </div>
         )}
 
         {step === "input" && (
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form noValidate onSubmit={handleSubmit} className="space-y-6">
             {/* Lead Info */}
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <h2 className="font-semibold text-lg text-gray-900">기본 정보</h2>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  이메일 <span className="text-red-500">*</span>
+                <label htmlFor="rc-email" className="block text-sm font-medium text-gray-700 mb-1">
+                  이메일 <span className="text-red-600" aria-hidden="true">*</span>
                 </label>
                 <input
+                  id="rc-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
-                  className="w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                  aria-invalid={!!fieldErrors["rc-email"]}
+                  aria-describedby={fieldErrors["rc-email"] ? "rc-email-error" : undefined}
+                  className={`w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${fieldErrors["rc-email"] ? "border-red-400 bg-red-50/50" : ""}`}
                   placeholder="your@email.com"
                 />
+                {fieldErrors["rc-email"] && (
+                  <p id="rc-email-error" className="mt-1.5 text-xs text-red-700">{fieldErrors["rc-email"]}</p>
+                )}
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
@@ -155,8 +171,9 @@ export default function ROICalculatorPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">기관·회사명</label>
+                  <label htmlFor="rc-company" className="block text-sm font-medium text-gray-700 mb-1">기관·회사명</label>
                   <input
+                    id="rc-company"
                     type="text"
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
@@ -173,7 +190,7 @@ export default function ROICalculatorPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    VDI 사용자 수 <span className="text-red-500">*</span>
+                    VDI 사용자 수 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
                     type="number"
@@ -187,7 +204,7 @@ export default function ROICalculatorPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    1인 시간당 인건비 (원) <span className="text-red-500">*</span>
+                    1인 시간당 인건비 (원) <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
                     type="number"
@@ -207,7 +224,7 @@ export default function ROICalculatorPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    1회 평균 중단시간 (시간) <span className="text-red-500">*</span>
+                    1회 평균 중단시간 (시간) <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
                     type="number"
@@ -222,7 +239,7 @@ export default function ROICalculatorPage() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    연간 장애 횟수 <span className="text-red-500">*</span>
+                    연간 장애 횟수 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <input
                     type="number"
@@ -319,16 +336,22 @@ export default function ROICalculatorPage() {
             <div className="bg-white p-4 md:p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
               <label className="flex items-start gap-2">
                 <input
+                  id="rc-consent"
                   type="checkbox"
                   checked={consent}
                   onChange={(e) => setConsent(e.target.checked)}
-                  className="mt-1 w-4 h-4 accent-emerald-600"
+                  aria-invalid={!!fieldErrors["rc-consent"]}
+                  aria-describedby={fieldErrors["rc-consent"] ? "rc-consent-error" : undefined}
+                  className="mt-1 w-6 h-6 flex-shrink-0 accent-emerald-600"
                 />
                 <span className="text-sm text-gray-600">
                   분석 결과 제공을 위한 개인정보 수집·이용에 동의합니다.{" "}
-                  <span className="text-red-500">*</span>
+                  <span className="text-red-600" aria-hidden="true">*</span>
                 </span>
               </label>
+              {fieldErrors["rc-consent"] && (
+                <p id="rc-consent-error" className="text-xs text-red-700">{fieldErrors["rc-consent"]}</p>
+              )}
 
               <button
                 type="submit"

@@ -19,14 +19,14 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
   const score = output.score;
   const scoreColor =
     score >= 80
-      ? "#10b981"
+      ? "var(--color-chart-ok)"
       : score >= 60
-        ? "#3b82f6"
+        ? "var(--color-chart-line)"
         : score >= 40
-          ? "#f59e0b"
+          ? "var(--color-chart-caution)"
           : score >= 20
-            ? "#f97316"
-            : "#ef4444";
+            ? "var(--color-chart-warn)"
+            : "var(--color-chart-danger)";
 
   const circumference = 2 * Math.PI * 52;
   const strokeDashoffset = circumference - (score / 100) * circumference;
@@ -78,7 +78,7 @@ export default function BackupReadinessReport({ output, lead, date }: Props) {
             {/* 점수 게이지 */}
             <div className="relative flex-shrink-0 w-24 sm:w-28 h-24 sm:h-28">
               <svg aria-hidden="true" className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-                <circle cx="60" cy="60" r="52" fill="none" stroke="#f1f5f9" strokeWidth="10" />
+                <circle cx="60" cy="60" r="52" fill="none" stroke="var(--color-chart-track)" strokeWidth="10" />
                 <circle
                   cx="60"
                   cy="60"

@@ -117,7 +117,7 @@ export default function DataProtectionPage() {
         <p className="text-emerald-700 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           Cyber Resilience Framework
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+        <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
           4단계 사이버복원력 체계
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
@@ -146,7 +146,7 @@ export default function DataProtectionPage() {
           <p className="text-emerald-700 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
             Use Cases
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-10 md:mb-14 kr-keep-all">
+          <h2 className="h-base text-center text-gray-900 mb-10 md:mb-14 kr-keep-all">
             주요 활용 시나리오
           </h2>
           <div className="grid sm:grid-cols-2 gap-4 md:gap-6">
@@ -195,7 +195,7 @@ export default function DataProtectionPage() {
         <p className="text-emerald-700 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           Free Assessment
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+        <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
           데이터 보호 진단·계산 도구
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
@@ -276,7 +276,7 @@ export default function DataProtectionPage() {
           <p className="text-emerald-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
             Free Consultation
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
+          <h2 className="h-base text-white mb-4 kr-keep-all">
             백업이 돌아가는 것 vs 실제 복구 가능한 것, 증빙해드립니다
           </h2>
           <p className="text-sm sm:text-base text-emerald-100 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed kr-keep-all">

@@ -122,7 +122,7 @@ export default function VdiWorkspacePage() {
         <p className="text-blue-600 font-semibold text-xs sm:text-sm text-center mb-3 tracking-widest uppercase">
           Repositioning Scenarios
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold text-center text-gray-900 mb-3 kr-keep-all">
+        <h2 className="h-base text-center text-gray-900 mb-3 kr-keep-all">
           VDI 전환 시나리오 4종
         </h2>
         <p className="text-gray-500 text-center text-sm mb-10 md:mb-14 max-w-xl mx-auto kr-keep-all">
@@ -183,7 +183,7 @@ export default function VdiWorkspacePage() {
           <p className="text-blue-200 text-xs sm:text-sm font-semibold tracking-widest uppercase mb-3 sm:mb-4">
             Free Consultation
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 kr-keep-all">
+          <h2 className="h-base text-white mb-4 kr-keep-all">
             N²SF 이후, VDI를 어디에 남길지 함께 결정하시죠
           </h2>
           <p className="text-sm sm:text-base text-blue-100 mb-8 md:mb-10 max-w-xl mx-auto leading-relaxed kr-keep-all">

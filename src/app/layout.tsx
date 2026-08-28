@@ -211,6 +211,15 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <head>
+        {/* 라틴 문자와 최빈 한글이 든 서브셋이다. CSS 파싱 후에야 폰트 요청이 시작되면
+            첫 텍스트가 폴백으로 그려진 뒤 교체되므로 이 조각만 먼저 받아 둔다. */}
+        <link
+          rel="preload"
+          href="/fonts/pretendard/PretendardVariable.subset.91.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

@@ -10,13 +10,9 @@
 @theme inline {
   --color-background: var(--color-white);
   --color-foreground: var(--color-gray-900);
-  --color-foreground-muted: var(--color-gray-600);
   --color-primary: var(--color-blue-600);
   --color-primary-hover: var(--color-blue-700);
-  --color-accent: var(--color-amber-400);
-  --color-accent-hover: var(--color-amber-300);
   --color-border: var(--color-gray-200);
-  --color-border-strong: var(--color-gray-300);
   --color-domain-vdi: var(--color-blue-600);
   --color-domain-backup: var(--color-emerald-600);
   --color-domain-mfa: var(--color-indigo-600);
@@ -26,8 +22,18 @@
      테두리·배경에는 위 토큰을, 글자에는 아래 한 단계 어두운 토큰을 쓴다. */
   --color-domain-vdi-text: var(--color-blue-700);
   --color-domain-backup-text: var(--color-emerald-700);
-  --color-domain-mfa-text: var(--color-indigo-700);
   --color-domain-managed-text: var(--color-purple-700);
+  /* 리포트 차트(SVG stroke/fill)용. 유틸리티가 아닌 속성값이라 var()로 소비한다.
+     위험 등급 4단계와 축·격자·본문 회색을 팔레트에 묶어 v3 시절 hex가 남지 않게 한다. */
+  --color-chart-danger: var(--color-red-500);
+  --color-chart-warn: var(--color-orange-500);
+  --color-chart-caution: var(--color-amber-500);
+  --color-chart-ok: var(--color-emerald-500);
+  --color-chart-line: var(--color-blue-600);
+  --color-chart-grid: var(--color-gray-200);
+  --color-chart-grid-strong: var(--color-gray-300);
+  --color-chart-track: var(--color-gray-100);
+  --color-chart-label: var(--color-gray-500);
   /* 스케일 하단이 12px에서 끊겨 9~11px를 임의값으로 메우고 있었다.
      한 단계를 정식으로 두어 배지·캡션·법정고지가 같은 크기를 쓰게 한다. */
   --text-2xs: 0.6875rem;
@@ -164,10 +170,6 @@ h1, h2, h3 { letter-spacing: -0.018em; text-wrap: pretty; }
   .prose table { display: table; font-size: 1rem; }
   .prose th, .prose td { padding: 0.5rem 0.75rem; white-space: normal; }
 }
-
-/* Line clamp utility */
-.line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-.line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 
 /* Form focus styles */
 input:focus, select:focus, textarea:focus {
