@@ -219,10 +219,10 @@ export default function VdiTransitionDiagnosisPage() {
                 )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="vt-organization-type" className="block text-sm font-medium text-gray-700 mb-1.5">
                     기관 유형
                   </label>
-                  <select
+                  <select id="vt-organization-type"
                     value={organizationType}
                     onChange={(e) => setOrganizationType(e.target.value)}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -239,10 +239,10 @@ export default function VdiTransitionDiagnosisPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="vt-name" className="block text-sm font-medium text-gray-700 mb-1.5">
                     이름
                   </label>
-                  <input
+                  <input id="vt-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -251,10 +251,10 @@ export default function VdiTransitionDiagnosisPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="vt-department" className="block text-sm font-medium text-gray-700 mb-1.5">
                     부서
                   </label>
-                  <input
+                  <input id="vt-department"
                     type="text"
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
@@ -285,10 +285,10 @@ export default function VdiTransitionDiagnosisPage() {
                 )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="vt-phone" className="block text-sm font-medium text-gray-700 mb-1.5">
                     연락처
                   </label>
-                  <input
+                  <input id="vt-phone"
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}

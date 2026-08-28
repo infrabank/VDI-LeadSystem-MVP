@@ -118,7 +118,7 @@ export default function PartnersPage() {
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
             For SI Partners · VDI &amp; Backup Technical Support
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
+          <h1 className="h-lead text-gray-900 leading-[1.3] kr-keep-all mb-6">
             고객 앞 기술 질문과 운영 장애 대응에<br className="hidden md:block" />
             <span className="md:hidden"> </span>대표 엔지니어가 함께 들어갑니다.
           </h1>
@@ -157,7 +157,7 @@ export default function PartnersPage() {
           <p className="text-xs font-bold text-amber-700 uppercase tracking-widest mb-2">
             When to Call
           </p>
-          <h2 className="text-xl sm:text-2xl md:text-[26px] font-semibold text-gray-900 mb-6 kr-keep-all">
+          <h2 className="h-sub text-gray-900 mb-6 kr-keep-all">
             이런 상황에서 부르세요
           </h2>
           <ul className="space-y-2.5">
@@ -166,8 +166,8 @@ export default function PartnersPage() {
                 key={t}
                 className="flex gap-3 text-base text-gray-800 leading-relaxed kr-keep-all"
               >
-                <span className="text-amber-500 font-bold flex-shrink-0 mt-0.5">
-                  ✓
+                <span className="text-amber-700 font-bold flex-shrink-0 mt-0.5">
+                  <span aria-hidden="true">✓</span>
                 </span>
                 <span>{t}</span>
               </li>
@@ -182,7 +182,7 @@ export default function PartnersPage() {
           <p className="text-xs font-bold text-purple-700 uppercase tracking-widest mb-2">
             Integrated Maintenance
           </p>
-          <h2 className="text-xl sm:text-2xl md:text-[26px] font-semibold text-gray-900 mb-4 kr-keep-all">
+          <h2 className="h-sub text-gray-900 mb-4 kr-keep-all">
             전산통합유지보수 사업 안의 VDI·가상화·백업 영역을 지원합니다
           </h2>
           <p className="text-base text-gray-700 leading-relaxed kr-keep-all mb-6 max-w-3xl">
@@ -200,7 +200,7 @@ export default function PartnersPage() {
               "벤더 SR 회신 정리와 조치 방향 검토",
             ].map((t) => (
               <li key={t} className="flex gap-3">
-                <span className="text-purple-500 font-bold flex-shrink-0 mt-0.5">✓</span>
+                <span aria-hidden="true" className="text-purple-700 font-bold flex-shrink-0 mt-0.5">✓</span>
                 <span>{t}</span>
               </li>
             ))}
@@ -508,7 +508,7 @@ export default function PartnersPage() {
             </a>
             <Link
               href="/about"
-              className="text-sm text-gray-500 hover:text-gray-700 underline underline-offset-4 decoration-gray-300"
+              className="inline-flex items-center min-h-6 text-sm text-gray-600 hover:text-gray-800 underline underline-offset-4 decoration-gray-300"
             >
               회사·법적 정보
             </Link>

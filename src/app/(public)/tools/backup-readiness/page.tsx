@@ -279,10 +279,10 @@ export default function BackupReadinessDiagnosisPage() {
                 )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="br-organization-type" className="block text-sm font-medium text-gray-700 mb-1.5">
                     기관 유형
                   </label>
-                  <select
+                  <select id="br-organization-type"
                     value={organizationType}
                     onChange={(e) => setOrganizationType(e.target.value)}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500"
@@ -299,10 +299,10 @@ export default function BackupReadinessDiagnosisPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="br-name" className="block text-sm font-medium text-gray-700 mb-1.5">
                     이름
                   </label>
-                  <input
+                  <input id="br-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -311,10 +311,10 @@ export default function BackupReadinessDiagnosisPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="br-department" className="block text-sm font-medium text-gray-700 mb-1.5">
                     부서
                   </label>
-                  <input
+                  <input id="br-department"
                     type="text"
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
@@ -345,10 +345,10 @@ export default function BackupReadinessDiagnosisPage() {
                 )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="br-phone" className="block text-sm font-medium text-gray-700 mb-1.5">
                     연락처
                   </label>
-                  <input
+                  <input id="br-phone"
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
@@ -384,10 +384,10 @@ export default function BackupReadinessDiagnosisPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <label htmlFor="br-message" className="block text-sm font-medium text-gray-700 mb-1.5">
                   상담 희망 내용 (선택)
                 </label>
-                <textarea
+                <textarea id="br-message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={2}

@@ -249,7 +249,7 @@ export default function AcronisCyberProtectPage() {
               <p className="text-xs sm:text-sm font-semibold text-blue-700 tracking-widest uppercase mb-5">
                 Acronis Cyber Protect
               </p>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold text-gray-900 leading-[1.25] kr-keep-all mb-5">
+              <h1 className="h-lead text-gray-900 leading-[1.25] kr-keep-all mb-5">
                 백업과 보안을 하나로,<br className="hidden md:block" />
                 <span className="md:hidden"> </span>사고가 나도 복구됩니다.
               </h1>

@@ -119,7 +119,7 @@ export default function AcronisBackupPage() {
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
             백업·복구검증
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
+          <h1 className="h-lead text-gray-900 leading-[1.3] kr-keep-all mb-6">
             백업·보안 점검
           </h1>
           <p className="text-lg sm:text-xl font-semibold text-blue-700 leading-snug kr-keep-all mb-5 max-w-2xl">

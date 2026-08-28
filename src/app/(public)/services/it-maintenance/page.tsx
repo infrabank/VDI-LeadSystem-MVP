@@ -115,7 +115,7 @@ export default function ItMaintenancePage() {
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
             전산 통합 유지보수
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
+          <h1 className="h-lead text-gray-900 leading-[1.3] kr-keep-all mb-6">
             중소기업 전산 유지보수와<br className="hidden md:block" />
             <span className="md:hidden"> </span>IT 기술지원
           </h1>

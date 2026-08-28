@@ -8,7 +8,8 @@ import type { NextConfig } from "next";
  *   • 'unsafe-inline'은 Next.js inline JSON-LD 메타데이터용으로 잠정 유지
  *     (운영 안정 후 nonce 기반 CSP로 전환 — TODO: 2026 Q3)
  *
- * CSP는 인라인 스크립트(JSON-LD)·인라인 스타일(Tailwind/Next.js)·외부 폰트(Pretendard CDN)·이미지(Supabase Storage)를 허용.
+ * CSP는 인라인 스크립트(JSON-LD)·인라인 스타일(Tailwind/Next.js)·이미지(Supabase Storage)를 허용.
+ * 웹폰트는 public/fonts에 self-host하므로 font-src는 self만 연다.
  */
 const securityHeaders = [
   {

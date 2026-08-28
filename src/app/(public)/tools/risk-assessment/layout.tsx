@@ -26,10 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * `/tools/risk-assessment` page는 client component(`"use client"`)이므로 metadata export 불가.
- * 같은 폴더의 layout.tsx(server component)에 metadata를 두면 페이지에 자동 적용된다.
- */
+/** 도구 설명(ToolExplainer)은 서버에서 렌더해 진단 폼 아래에 붙인다. */
 export default function RiskAssessmentLayout({
   children,
 }: {

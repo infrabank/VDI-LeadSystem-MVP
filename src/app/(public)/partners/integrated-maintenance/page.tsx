@@ -156,7 +156,7 @@ export default function IntegratedMaintenancePage() {
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest uppercase mb-6">
             Integrated Maintenance · VDI · 가상화 · 백업
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
+          <h1 className="h-lead text-gray-900 leading-[1.3] kr-keep-all mb-6">
             전산통합유지보수 사업을 위한<br className="hidden md:block" />
             <span className="md:hidden"> </span>VDI·가상화·백업 전문 기술지원
           </h1>
@@ -187,7 +187,7 @@ export default function IntegratedMaintenancePage() {
           <p className="text-xs font-bold text-amber-700 uppercase tracking-widest mb-2">
             When to Work Together
           </p>
-          <h2 className="text-xl sm:text-2xl md:text-[26px] font-semibold text-gray-900 mb-6 kr-keep-all">
+          <h2 className="h-sub text-gray-900 mb-6 kr-keep-all">
             이런 상황에서 함께합니다
           </h2>
           <ul className="space-y-2.5">

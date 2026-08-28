@@ -276,7 +276,7 @@ export default async function ROIReportPage({ params }: Props) {
         </div>
 
         {/* CTA */}
-        <div className="rounded-xl overflow-hidden mb-6 print:hidden" style={{ background: "linear-gradient(135deg, #059669, #2563eb)" }}>
+        <div className="rounded-xl overflow-hidden mb-6 print:hidden" style={{ background: "linear-gradient(135deg, var(--color-domain-backup), var(--color-chart-line))" }}>
           <div className="px-8 py-10 text-center text-white">
             <h3 className="text-xl font-bold mb-2">
               전문가의 상세 분석이 필요하신가요?

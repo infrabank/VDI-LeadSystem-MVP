@@ -188,10 +188,10 @@ export default function BackupRoiPage() {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="bri-name" className="block text-sm font-medium text-gray-700 mb-1.5">
                     이름
                   </label>
-                  <input
+                  <input id="bri-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -222,10 +222,10 @@ export default function BackupRoiPage() {
                   )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="bri-department" className="block text-sm font-medium text-gray-700 mb-1.5">
                     부서
                   </label>
-                  <input
+                  <input id="bri-department"
                     type="text"
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
@@ -236,10 +236,10 @@ export default function BackupRoiPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <label htmlFor="bri-phone" className="block text-sm font-medium text-gray-700 mb-1.5">
                   연락처
                 </label>
-                <input
+                <input id="bri-phone"
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
@@ -282,11 +282,11 @@ export default function BackupRoiPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="bri-users" className="block text-sm font-medium text-gray-700 mb-1.5">
                     임직원 수 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <div className="relative">
-                    <input
+                    <input id="bri-users"
                       type="number"
                       value={users}
                       onChange={(e) => setUsers(e.target.value)}
@@ -295,21 +295,21 @@ export default function BackupRoiPage() {
                       className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-10"
                       placeholder="100"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-600">
                       명
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 mt-1 kr-keep-all">
+                  <p className="text-xs text-gray-600 mt-1 kr-keep-all">
                     정직원·계약직 포함
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="bri-hourly-loss-kw" className="block text-sm font-medium text-gray-700 mb-1.5">
                     시간당 업무 중단 비용 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <div className="relative">
-                    <input
+                    <input id="bri-hourly-loss-kw"
                       type="number"
                       value={hourlyLossKw}
                       onChange={(e) => setHourlyLossKw(e.target.value)}
@@ -319,11 +319,11 @@ export default function BackupRoiPage() {
                       className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-16"
                       placeholder="100"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-600">
                       만원/h
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 mt-1 kr-keep-all">
+                  <p className="text-xs text-gray-600 mt-1 kr-keep-all">
                     공공: 약 50~150만원, 금융: 200~500만원 추정
                   </p>
                 </div>
@@ -331,11 +331,11 @@ export default function BackupRoiPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="bri-data-tb" className="block text-sm font-medium text-gray-700 mb-1.5">
                     데이터 규모 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <div className="relative">
-                    <input
+                    <input id="bri-data-tb"
                       type="number"
                       value={dataTb}
                       onChange={(e) => setDataTb(e.target.value)}
@@ -345,21 +345,21 @@ export default function BackupRoiPage() {
                       className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-10"
                       placeholder="10"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-600">
                       TB
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 mt-1 kr-keep-all">
+                  <p className="text-xs text-gray-600 mt-1 kr-keep-all">
                     백업 대상 운영 데이터(개발/테스트 제외)
                   </p>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="bri-annual-backup-cost-kw" className="block text-sm font-medium text-gray-700 mb-1.5">
                     연간 백업 비용 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
                   <div className="relative">
-                    <input
+                    <input id="bri-annual-backup-cost-kw"
                       type="number"
                       value={annualBackupCostKw}
                       onChange={(e) => setAnnualBackupCostKw(e.target.value)}
@@ -368,22 +368,22 @@ export default function BackupRoiPage() {
                       className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-16"
                       placeholder="1500"
                     />
-                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
+                    <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-600">
                       만원/년
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 mt-1 kr-keep-all">
+                  <p className="text-xs text-gray-600 mt-1 kr-keep-all">
                     라이선스+스토리지+운영 인건비 합산
                   </p>
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <label htmlFor="bri-annual-downtime-hours" className="block text-sm font-medium text-gray-700 mb-1.5">
                   연간 다운타임 시간 <span className="text-red-600" aria-hidden="true">*</span>
                 </label>
                 <div className="relative">
-                  <input
+                  <input id="bri-annual-downtime-hours"
                     type="number"
                     value={annualDowntimeHours}
                     onChange={(e) => setAnnualDowntimeHours(e.target.value)}
@@ -393,11 +393,11 @@ export default function BackupRoiPage() {
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors pr-12"
                     placeholder="24"
                   />
-                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400">
+                  <span className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-gray-600">
                     시간
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 mt-1 kr-keep-all">
+                <p className="text-xs text-gray-600 mt-1 kr-keep-all">
                   최근 3년 평균. 정기 PM 시간 제외
                 </p>
               </div>

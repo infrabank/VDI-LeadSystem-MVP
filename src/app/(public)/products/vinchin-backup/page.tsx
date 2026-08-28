@@ -265,7 +265,7 @@ export default function VinchinBackupPage() {
               <p className="text-xs sm:text-sm font-semibold text-emerald-700 tracking-widest uppercase mb-5">
                 Vinchin Backup &amp; Recovery
               </p>
-              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold text-gray-900 leading-[1.25] kr-keep-all mb-5">
+              <h1 className="h-lead text-gray-900 leading-[1.25] kr-keep-all mb-5">
                 가상화 VM을 통째로 백업하고,<br className="hidden md:block" />
                 <span className="md:hidden"> </span>장애 시 즉시 복구합니다.
               </h1>

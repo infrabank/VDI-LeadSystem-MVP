@@ -162,8 +162,8 @@ export default function ROICalculatorPage() {
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">이름</label>
-                  <input
+                  <label htmlFor="rc-name" className="block text-sm font-medium text-gray-700 mb-1">이름</label>
+                  <input id="rc-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -189,10 +189,10 @@ export default function ROICalculatorPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="rc-total-users" className="block text-sm font-medium text-gray-700 mb-1">
                     VDI 사용자 수 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
-                  <input
+                  <input id="rc-total-users"
                     type="number"
                     value={totalUsers}
                     onChange={(e) => setTotalUsers(e.target.value)}
@@ -203,10 +203,10 @@ export default function ROICalculatorPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="rc-avg-hourly-cost" className="block text-sm font-medium text-gray-700 mb-1">
                     1인 시간당 인건비 (원) <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
-                  <input
+                  <input id="rc-avg-hourly-cost"
                     type="number"
                     value={avgHourlyCost}
                     onChange={(e) => setAvgHourlyCost(e.target.value)}
@@ -223,10 +223,10 @@ export default function ROICalculatorPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="rc-avg-downtime-hours" className="block text-sm font-medium text-gray-700 mb-1">
                     1회 평균 중단시간 (시간) <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
-                  <input
+                  <input id="rc-avg-downtime-hours"
                     type="number"
                     value={avgDowntimeHours}
                     onChange={(e) => setAvgDowntimeHours(e.target.value)}
@@ -238,10 +238,10 @@ export default function ROICalculatorPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="rc-incidents-per-year" className="block text-sm font-medium text-gray-700 mb-1">
                     연간 장애 횟수 <span className="text-red-600" aria-hidden="true">*</span>
                   </label>
-                  <input
+                  <input id="rc-incidents-per-year"
                     type="number"
                     value={incidentsPerYear}
                     onChange={(e) => setIncidentsPerYear(e.target.value)}
@@ -254,11 +254,11 @@ export default function ROICalculatorPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="rc-recovery-improvement" className="block text-sm font-medium text-gray-700 mb-1">
                   복구시간 단축 예상률 (%)
                 </label>
                 <div className="flex items-center gap-3">
-                  <input
+                  <input id="rc-recovery-improvement"
                     type="range"
                     value={recoveryImprovement}
                     onChange={(e) => setRecoveryImprovement(e.target.value)}
@@ -295,11 +295,11 @@ export default function ROICalculatorPage() {
               <h2 className="font-semibold text-lg text-gray-900">분석 가정값</h2>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="rc-impact-rate-percent" className="block text-sm font-medium text-gray-700 mb-1">
                   생산성 영향률 (%)
                 </label>
                 <div className="flex items-center gap-3">
-                  <input
+                  <input id="rc-impact-rate-percent"
                     type="range"
                     value={impactRatePercent}
                     onChange={(e) => setImpactRatePercent(e.target.value)}
@@ -316,10 +316,10 @@ export default function ROICalculatorPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="rc-major-incident-hours" className="block text-sm font-medium text-gray-700 mb-1">
                   대형 장애 가정시간
                 </label>
-                <input
+                <input id="rc-major-incident-hours"
                   type="number"
                   value={majorIncidentHours}
                   onChange={(e) => setMajorIncidentHours(e.target.value)}

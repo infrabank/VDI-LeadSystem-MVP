@@ -286,7 +286,7 @@ export default function VdiSupportPage() {
           <p className="text-xs sm:text-sm font-semibold text-gray-500 tracking-widest mb-6">
             VDI 기술지원
           </p>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-[44px] font-semibold text-gray-900 leading-[1.3] kr-keep-all mb-6">
+          <h1 className="h-lead text-gray-900 leading-[1.3] kr-keep-all mb-6">
             Citrix·Omnissa Horizon<br className="hidden md:block" />
             <span className="md:hidden"> </span>VDI 기술지원
           </h1>

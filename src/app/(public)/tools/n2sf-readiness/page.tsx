@@ -280,10 +280,10 @@ export default function N2sfReadinessDiagnosisPage() {
                 )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="n2-organization-type" className="block text-sm font-medium text-gray-700 mb-1.5">
                     기관 유형
                   </label>
-                  <select
+                  <select id="n2-organization-type"
                     value={organizationType}
                     onChange={(e) => setOrganizationType(e.target.value)}
                     className="w-full px-4 py-2.5 border border-gray-300 rounded-lg text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -300,10 +300,10 @@ export default function N2sfReadinessDiagnosisPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="n2-name" className="block text-sm font-medium text-gray-700 mb-1.5">
                     이름
                   </label>
-                  <input
+                  <input id="n2-name"
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -312,10 +312,10 @@ export default function N2sfReadinessDiagnosisPage() {
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="n2-department" className="block text-sm font-medium text-gray-700 mb-1.5">
                     부서
                   </label>
-                  <input
+                  <input id="n2-department"
                     type="text"
                     value={department}
                     onChange={(e) => setDepartment(e.target.value)}
@@ -346,10 +346,10 @@ export default function N2sfReadinessDiagnosisPage() {
                 )}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  <label htmlFor="n2-phone" className="block text-sm font-medium text-gray-700 mb-1.5">
                     연락처
                   </label>
-                  <input
+                  <input id="n2-phone"
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
@@ -385,10 +385,10 @@ export default function N2sfReadinessDiagnosisPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                <label htmlFor="n2-message" className="block text-sm font-medium text-gray-700 mb-1.5">
                   상담 희망 내용 (선택)
                 </label>
-                <textarea
+                <textarea id="n2-message"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   rows={2}
