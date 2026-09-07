@@ -6,6 +6,9 @@ import { breadcrumbLd, faqPageLd, SITE_URL, ORG_ID, type FaqItem } from "@/lib/s
 
 const PHONE_TEL = `tel:${companyLegal.phone.replace(/-/g, "")}`;
 const DOCS_URL = "https://vinchin.myloket.co.kr";
+// 13MB 브로슈어는 배포 산출물(Vercel Deployment Storage)에 매번 실리지 않도록
+// Supabase Storage의 공개 버킷 assets에서 제공한다(supabase/migrations/022_assets_bucket.sql).
+const BROCHURE_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/assets/brochures/vinchin-product-brochure.pdf`;
 
 export const metadata: Metadata = {
   alternates: { canonical: "/products/vinchin-backup" },
@@ -592,7 +595,7 @@ export default function VinchinBackupPage() {
               라이선스 공급부터 구축·운영까지 벤더 파트너 자격을 갖추고 지원합니다. 제품 스펙과
               구성 옵션이 정리된{" "}
               <a
-                href="/vinchin-product-brochure.pdf"
+                href={BROCHURE_URL}
                 target="_blank"
                 rel="noopener"
                 className="font-semibold text-emerald-700 underline underline-offset-2 hover:text-emerald-800"

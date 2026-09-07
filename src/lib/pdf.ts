@@ -889,29 +889,56 @@ export function renderRiskV4ReportHtml(data: RiskV4ReportData): string {
   return html;
 }
 
-export async function generatePdf(html: string): Promise<Buffer> {
+/**
+ * @sparticuz/chromium 압축 팩(.tar) 위치.
+ *
+ * 이전에는 node_modules/@sparticuz/chromium/bin(약 64MB)을 outputFileTracingIncludes로
+ * PDF 라우트마다 함수 번들에 포함했다. 그 결과 배포 한 건당 Functions Storage가
+ * 라우트 수 x 64MB로 불어나 Vercel Hobby의 Deployment Storage 한도(10GB)를 초과했다.
+ *
+ * 지금은 콜드 스타트 때 팩을 내려받아 /tmp/chromium-pack에 풀고, 압축 해제된
+ * /tmp/chromium은 같은 인스턴스가 살아 있는 동안 재사용한다(라이브러리가 캐시).
+ * 버전은 package.json의 @sparticuz/chromium 버전과 반드시 같아야 한다.
+ * 자체 호스팅(예: Supabase Storage)으로 바꾸려면 CHROMIUM_PACK_URL 환경 변수를 설정한다.
+ */
+const CHROMIUM_PACK_VERSION = "143.0.4";
+const DEFAULT_CHROMIUM_PACK_URL = `https://github.com/Sparticuz/chromium/releases/download/v${CHROMIUM_PACK_VERSION}/chromium-v${CHROMIUM_PACK_VERSION}-pack.x64.tar`;
+
+type LaunchedBrowser = Awaited<
+  ReturnType<(typeof import("puppeteer-core"))["default"]["launch"]>
+>;
+
+/**
+ * 실행 환경에 맞는 헤드리스 브라우저를 연다.
+ * - development: 로컬에 설치된 전체 puppeteer(번들 Chromium) 사용
+ * - 그 외(Vercel 등 서버리스): puppeteer-core + @sparticuz/chromium 팩 런타임 다운로드
+ *
+ * 호출한 쪽에서 반드시 browser.close()를 호출해야 한다.
+ */
+export async function launchBrowser(): Promise<LaunchedBrowser> {
   const isDev = process.env.NODE_ENV === "development";
 
-  let browser;
-
   if (isDev) {
-    // Development: use full puppeteer with bundled Chromium
     const puppeteer = await import("puppeteer");
-    browser = await puppeteer.default.launch({
+    return puppeteer.default.launch({
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
-  } else {
-    // Production/serverless: use puppeteer-core + @sparticuz/chromium
-    const puppeteerCore = await import("puppeteer-core");
-    const chromium = await import("@sparticuz/chromium");
-    browser = await puppeteerCore.default.launch({
-      args: chromium.default.args,
-      defaultViewport: null,
-      executablePath: await chromium.default.executablePath(),
-      headless: true,
-    });
+    }) as unknown as Promise<LaunchedBrowser>;
   }
+
+  const puppeteerCore = await import("puppeteer-core");
+  const chromium = await import("@sparticuz/chromium");
+  const packUrl = process.env.CHROMIUM_PACK_URL || DEFAULT_CHROMIUM_PACK_URL;
+  return puppeteerCore.default.launch({
+    args: chromium.default.args,
+    defaultViewport: null,
+    executablePath: await chromium.default.executablePath(packUrl),
+    headless: true,
+  });
+}
+
+export async function generatePdf(html: string): Promise<Buffer> {
+  const browser = await launchBrowser();
 
   try {
     const page = await browser.newPage();

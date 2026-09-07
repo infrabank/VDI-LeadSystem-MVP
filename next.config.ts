@@ -55,21 +55,25 @@ const reportsExtraHeaders = [
 ];
 
 const reportAssets = ["./src/templates/reports/**/*"];
-const chromiumBin = ["./node_modules/@sparticuz/chromium/bin/**"];
 
 const nextConfig: NextConfig = {
   serverExternalPackages: [
     "puppeteer-core",
     "@sparticuz/chromium",
   ],
-  // chromium.executablePath()는 node_modules/@sparticuz/chromium/bin의 brotli 파일을
-  // 런타임에 읽는다. 경로가 동적이라 트레이서가 잡지 못해 명시 포함이 필요하다.
+  // 리포트 HTML 템플릿은 런타임에 readFileSync로 읽으므로 트레이서가 잡지 못해 명시 포함한다.
+  // Chromium 바이너리(node_modules/@sparticuz/chromium/bin, 약 64MB)는 더 이상 번들에 넣지 않는다.
+  // 라우트마다 64MB가 중복 저장되어 Vercel Deployment Storage 한도를 초과했기 때문이며,
+  // 지금은 src/lib/pdf.ts의 launchBrowser()가 콜드 스타트 때 팩을 내려받는다.
   outputFileTracingIncludes: {
-    "/api/reports/\\[toolRunId\\]/generate": [...reportAssets, ...chromiumBin],
-    "/api/reports/roi/\\[toolRunId\\]/generate": [...reportAssets, ...chromiumBin],
-    "/api/reports/retry-pdf/\\[reportId\\]": [...reportAssets, ...chromiumBin],
-    "/api/tools/risk-assessment/run": [...reportAssets, ...chromiumBin],
-    "/api/templates/\\[slug\\]/download": ["./docs/templates/**/*", ...chromiumBin],
+    "/api/reports/\\[toolRunId\\]/generate": reportAssets,
+    "/api/reports/roi/\\[toolRunId\\]/generate": reportAssets,
+    "/api/reports/retry-pdf/\\[reportId\\]": reportAssets,
+    "/api/templates/\\[slug\\]/download": ["./docs/templates/**/*"],
+  },
+  // 어떤 라우트에서도 Chromium 바이너리가 트레이싱으로 딸려 들어가지 않도록 차단한다.
+  outputFileTracingExcludes: {
+    "*": ["./node_modules/@sparticuz/chromium/bin/**"],
   },
   async headers() {
     return [

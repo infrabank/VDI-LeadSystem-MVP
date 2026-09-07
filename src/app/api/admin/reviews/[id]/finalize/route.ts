@@ -3,6 +3,7 @@ import { getAPIUser, getAuthorizedRequest } from "@/lib/auth-sap";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { logAudit } from "@/lib/audit";
 import { renderSAPReportHtml } from "@/lib/sap/report-pdf";
+import { launchBrowser } from "@/lib/pdf";
 import type { ReportContent, ReviewRequest } from "@/lib/types/sap";
 
 /** POST /api/admin/reviews/[id]/finalize — finalize the latest draft → generate PDF */
@@ -48,21 +49,8 @@ export async function POST(
       report.content_json as ReportContent
     );
 
-    // Dynamic import for puppeteer (same pattern as existing pdf.ts)
-    let browser;
-    try {
-      const puppeteer = await import("puppeteer");
-      browser = await puppeteer.default.launch({ headless: true });
-    } catch {
-      const puppeteerCore = await import("puppeteer-core");
-      const chromium = await import("@sparticuz/chromium");
-      browser = await puppeteerCore.default.launch({
-        args: chromium.default.args,
-        defaultViewport: null,
-        executablePath: await chromium.default.executablePath(),
-        headless: true,
-      });
-    }
+    // pdf.ts와 같은 경로로 브라우저를 연다(서버리스에서는 Chromium 팩 런타임 다운로드).
+    const browser = await launchBrowser();
 
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: "networkidle0" });

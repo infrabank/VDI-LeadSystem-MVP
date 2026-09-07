@@ -123,6 +123,7 @@ Optional (analytics/SEO override):
 NEXT_PUBLIC_GA_ID=<GA4 측정 ID — 기본값 G-YFXVLVG5F4 코드 내장, env는 교체용>
 NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION=<Google Search Console 소유 확인 코드 (미설정 시 태그 미출력)>
 NEXT_PUBLIC_NAVER_SITE_VERIFICATION=<네이버 소유 확인 코드 — 발급값 코드 내장, env는 교체용>
+CHROMIUM_PACK_URL=<@sparticuz/chromium 팩(.tar) URL. 미설정 시 GitHub 릴리스의 설치 버전 팩을 콜드 스타트 때 내려받음. 함수 번들에 바이너리를 넣지 않는 이유는 src/lib/pdf.ts 주석 참고>
 ```
 
 ## PDCA Documents
