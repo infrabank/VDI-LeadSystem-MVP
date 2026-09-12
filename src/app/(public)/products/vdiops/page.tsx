@@ -154,15 +154,19 @@ function PierceDiagram() {
   );
 }
 
-/* 화면 캡처 자리: Lab 데이터로 촬영한 파일을 /public/products/vdiops/ 에 두고 Image로 교체한다. */
-function CaptureSlot({ label, file }: { label: string; file: string }) {
+/* 화면 캡처: 마이로켓 Lab 데이터만 담긴 1280×720. 화면 안 제품명은 이름 변경 전이라 코드명 HorizonOps로 보인다. */
+function Capture({ file, alt, caption }: { file: string; alt: string; caption: string }) {
   return (
     <figure>
-      <div className="aspect-video w-full rounded-xl border-2 border-dashed border-gray-300 bg-gray-50 flex flex-col items-center justify-center text-center px-4">
-        <p className="text-sm font-semibold text-gray-700 kr-keep-all">{label}</p>
-        <p className="mt-1 text-2xs text-gray-500 font-mono">/products/vdiops/{file}</p>
-        <p className="mt-1 text-2xs text-gray-500">1280×720 PNG, Lab 데이터만</p>
-      </div>
+      <Image
+        src={`/products/vdiops/${file}`}
+        alt={alt}
+        width={1280}
+        height={720}
+        sizes="(max-width: 1024px) 100vw, 480px"
+        className="w-full h-auto rounded-xl border border-gray-200"
+      />
+      <figcaption className="mt-2 text-xs text-gray-500 kr-keep-all">{caption}</figcaption>
     </figure>
   );
 }
@@ -279,7 +283,11 @@ export default function VdiOpsPage() {
                 ))}
               </ol>
               <div className="mt-6">
-                <CaptureSlot label="장면 1. 로그인 화면" file="capture-01-login.png" />
+                <Capture
+                  file="capture-01-login.png"
+                  alt="VDIOps 로그인 화면(코드명 HorizonOps). 계정명과 비밀번호 입력란, Windows 계정 자동 로그인 버튼, 도면번호 /login과 모드 Lab 표시"
+                  caption="장면 1. 로그인 화면. VDIOps 화면(코드명 HorizonOps), 마이로켓 Lab."
+                />
               </div>
             </article>
 
@@ -302,7 +310,11 @@ export default function VdiOpsPage() {
                 이름도 IP도 사람이 정하지 않습니다. 정하는 순간 대장과 실제가 갈라지기 때문입니다.
               </p>
               <div className="mt-6">
-                <CaptureSlot label="장면 2. Full Clone 생성 지시서" file="capture-02-fc-request.png" />
+                <Capture
+                  file="capture-02-fc-request.png"
+                  alt="VDIOps 데스크톱 풀 화면(코드명 HorizonOps)에서 열린 Full Clone VM 생성 지시서. 사유, 마스터 템플릿, 호스트, 스토리지, 네트워크, 디스크 형식, 사용자 할당 입력란과 Full Clone 생성 요청 버튼"
+                  caption="장면 2. Full Clone 생성 지시서. 이름과 IP는 입력 항목이 아니며 정책과 서브넷에서 자동 배정됩니다. 마이로켓 Lab."
+                />
               </div>
             </article>
           </div>
