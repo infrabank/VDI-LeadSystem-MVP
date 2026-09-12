@@ -28,48 +28,6 @@ export const metadata: Metadata = {
     "VMware vSphere, Hyper-V, Proxmox VE, XCP-ng, XenServer 등 15종 이상 가상화 플랫폼을 에이전트리스로 백업하고, 장애 시 VM을 즉시 복구하며 백업본을 다른 플랫폼으로 변환 복원(V2V)하는 Vinchin Backup & Recovery. 마이로켓 랩 실측 데모 영상 5편과 RTO/RPO 기준, 전환 절차를 공개합니다. VBTP 인증 엔지니어가 도입·구축·운영·유지보수를 지원합니다.",
 };
 
-/* ──────────────────────────────────────────────────────────────────
- * 이미지 슬롯 — 파트너 페이지(Vinchin)에서 조달한 자산을 채워 넣는 자리.
- * 사용자가 이미지를 /public/products/vinchin/<file> 에 올린 뒤
- * <ImgSlot> 자리를 <img>/<Image>로 교체하면 됩니다.
- * ────────────────────────────────────────────────────────────────── */
-function ImgSlot({
-  label,
-  file,
-  ratio = "aspect-[16/9]",
-}: {
-  label: string;
-  file: string;
-  ratio?: string;
-}) {
-  return (
-    <div
-      className={`${ratio} w-full rounded-xl border-2 border-dashed border-emerald-300 bg-emerald-50/40 flex flex-col items-center justify-center text-center px-4 py-6`}
-    >
-      <svg aria-hidden="true"
-        className="w-8 h-8 text-emerald-400 mb-2"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        strokeWidth={1.5}
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 4.5h16.5a1.5 1.5 0 011.5 1.5v12a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V6a1.5 1.5 0 011.5-1.5z"
-        />
-      </svg>
-      <p className="text-sm font-semibold text-emerald-700 kr-keep-all">{label}</p>
-      <p className="mt-1 text-2xs text-emerald-700/90 font-mono">
-        /products/vinchin/{file}
-      </p>
-      <p className="mt-1 text-2xs text-gray-600 kr-keep-all">
-        파트너 페이지에서 조달 후 교체
-      </p>
-    </div>
-  );
-}
-
 /* 신뢰 지표 — Vinchin 공식 수치 (제품 소개용). */
 const metrics = [
   { value: "100+", label: "서비스 국가" },
@@ -825,12 +783,21 @@ export default function VinchinBackupPage() {
             ))}
           </div>
 
-          {/* 플랫폼 로고 스트립 슬롯 */}
-          <ImgSlot
-            label="지원 플랫폼 로고 스트립 (VMware · Hyper-V · Proxmox · XCP-ng · Citrix …)"
-            file="platforms.png"
-            ratio="aspect-[16/4]"
-          />
+          {/* 지원 대상 로고 모음: Vinchin 공식 자료. 가상화 외 6개 그룹까지 한 장에 담겨 있다. */}
+          <figure className="rounded-xl bg-white border border-gray-200 p-3 sm:p-4 overflow-x-auto">
+            <Image
+              src="/products/vinchin/platforms.png"
+              alt="Vinchin 지원 대상 로고 모음. 가상화(VMware, Hyper-V, Citrix, OpenStack, oVirt, Oracle Linux Virtualization, Red Hat, Proxmox, Huawei, H3C, Sangfor, XCP-ng, ZStack), PC와 워크스테이션(Windows, CentOS, Red Hat, Debian, Ubuntu, Rocky, SUSE, CentOS Stream, Oracle Linux), 데이터베이스(Oracle, SQL Server, PostgreSQL, Postgres Professional, MySQL, MariaDB), 파일과 NAS, S3 오브젝트 스토리지(AWS, Azure, Ceph, Tencent Cloud, Huawei, MinIO, Wasabi, Alibaba Cloud), 퍼블릭 클라우드(Huawei Cloud, AWS), 애플리케이션 SaaS(Exchange Server, Exchange Online)"
+              width={1880}
+              height={327}
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="w-full h-auto min-w-[640px]"
+            />
+            <figcaption className="mt-2 text-xs text-gray-500 kr-keep-all">
+              Vinchin 공식 자료의 지원 대상 요약입니다. 가상화 외에 PC/워크스테이션, 데이터베이스,
+              파일/NAS, S3 오브젝트 스토리지, 퍼블릭 클라우드, 애플리케이션 SaaS까지 한 콘솔에서 다룹니다.
+            </figcaption>
+          </figure>
 
           {/* 추가 백업 대상 */}
           <div className="mt-10">
