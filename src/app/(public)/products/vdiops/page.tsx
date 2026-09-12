@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   alternates: { canonical: PAGE_PATH },
   title: "VDIOps: Omnissa Horizon Manual VDI 운영 자동화",
   description:
-    "Omnissa Horizon에서 VM을 한 대씩 직접 만들어 쓰는 Manual 풀 운영을 자동화하는 제품입니다. vCenter, AD, Horizon 콘솔, IP 대장을 오가던 VM 생성·교체·회수 작업을 요청서 하나와 승인으로 처리하고 모든 변경 기록을 남깁니다. (주)마이로켓이 만들어 고객 서버에 설치합니다.",
+    "Omnissa Horizon에서 VM을 한 대씩 직접 만들어 쓰는 Manual 풀 운영을 자동화하는 제품입니다. vCenter, AD, Horizon 콘솔, IP 대장을 하나씩 열어 입력하던 VM 생성, 교체, 회수 작업을 요청서 하나와 승인으로 처리하고 모든 변경 내용을 기록합니다. (주)마이로켓이 만들어 고객 서버에 설치합니다.",
 };
 
 /* 한 줄 구호는 HVMPortal/docs/positioning.md 정본 그대로. 나머지 문구는 방문자(기관 전산 담당자)의 말로 풀어 쓴다. */
@@ -20,7 +20,7 @@ const ONE_LINER = "Manual VDI를 포기하지 않고 자동화한다.";
 
 /* 지금의 운영: VM 한 대를 만들 때 사람이 오가는 자리. */
 const currentConsoles = [
-  { name: "vCenter", job: "템플릿에서 복제하고 CPU, 메모리, 네트워크를 잡습니다" },
+  { name: "vCenter", job: "템플릿을 복제하고 CPU, 메모리, 네트워크를 설정합니다" },
   { name: "Active Directory", job: "컴퓨터 계정을 만들고 사용자와 OU를 확인합니다" },
   { name: "Horizon Console", job: "풀에 등록하고 사용자를 배정하고 권한을 줍니다" },
   { name: "IP 대장", job: "엑셀에서 빈 주소를 찾아 적고 DNS에 등록합니다" },
@@ -37,30 +37,30 @@ const currentSteps = [
 
 /* VDIOps를 쓰면: 요청서 하나에 적는 것. 화면 문구는 demo-script.md 장면 2·3 기준. */
 const oneJobFields = [
-  "왜 만드는지 (사유는 기록에 그대로 남습니다)",
-  "어떤 템플릿으로, 어느 호스트와 스토리지에 만들지",
-  "누구에게 줄지 (AD에 있는 계정만 고를 수 있습니다)",
-  "어느 대역에서 IP를 받을지 (빈 주소를 자동으로 고릅니다)",
-  "언제까지 쓸지, 언제 실행할지",
+  "만드는 이유 (기록에 그대로 남습니다)",
+  "사용할 템플릿, 호스트, 스토리지",
+  "사용할 사람 (AD에 있는 계정만 선택할 수 있습니다)",
+  "IP 대역 (빈 주소는 자동으로 찾아 줍니다)",
+  "사용 기간과 실행 시각",
 ];
 
 /* 승인·기록·권한: 보안 담당자가 먼저 읽는 자리. */
 const controls = [
   {
     term: "승인",
-    desc: "요청한 사람과 다른 사람이 승인해야 실행됩니다. VM을 완전히 지우는 것처럼 되돌릴 수 없는 작업은 승인자 두 명과 확인 절차가 더 필요합니다.",
+    desc: "요청한 사람이 아닌 다른 사람이 승인해야 실행됩니다. VM 삭제처럼 되돌릴 수 없는 작업은 승인자 두 명이 필요하고 확인 절차를 한 번 더 거칩니다.",
   },
   {
     term: "기록",
-    desc: "누가 무엇을 언제 요청하고 승인하고 실행했는지 남습니다. 기록은 덧붙일 수만 있고 고치거나 지울 수 없습니다. 관리자가 승인 없이 바로 실행했을 때도 그대로 남습니다.",
+    desc: "누가 무엇을 언제 요청하고 승인하고 실행했는지 모두 기록됩니다. 기록은 고치거나 지울 수 없습니다. 관리자가 승인 없이 바로 실행한 작업도 그대로 기록됩니다.",
   },
   {
     term: "권한 범위",
-    desc: "AD에서는 지정한 OU 안에서만, vCenter에서는 정해진 역할로만, Horizon에서는 전용 계정으로만 움직입니다. 어디까지 할 수 있는지 각 시스템에서 직접 확인할 수 있습니다.",
+    desc: "AD에서는 지정한 OU 안에서만, vCenter에서는 정해진 역할로만, Horizon에서는 전용 계정으로만 작업합니다. 권한 범위는 각 시스템에서 직접 확인할 수 있습니다.",
   },
   {
     term: "작업 잠금",
-    desc: "작업 종류별로 실행을 잠글 수 있습니다. 화면에서는 잠그는 쪽만 됩니다. 푸는 쪽은 서버 설정 파일을 고치고 재시작해야 합니다. 급할 때 실수로 풀리지 않게 한 장치입니다.",
+    desc: "작업 종류별로 실행을 막아 둘 수 있습니다. 화면에서는 막는 것만 됩니다. 다시 열려면 서버 설정 파일을 고치고 재시작해야 합니다. 실수로 풀리지 않게 하기 위해서입니다.",
   },
 ];
 
@@ -69,22 +69,22 @@ const evidence = [
   {
     value: "Horizon 8.18 + vCenter 8.0.3",
     label: "검증한 환경",
-    note: "마이로켓 실험실에서 VM 생성, 교체, 삭제, AD 계정 작업, IP 조사를 끝까지 돌려 본 환경입니다",
+    note: "마이로켓 실험실에서 VM 생성, 교체, 삭제, AD 계정 작업, IP 조사를 실제로 실행해 본 환경입니다",
   },
   { value: "3,490건", label: "자동 테스트", note: "제품 코드에 들어 있는 자동 테스트 수입니다" },
-  { value: "약 25분", label: "설치에 걸린 시간", note: "준비물이 갖춰진 고객 서버에 설치를 마치기까지 실제로 잰 시간입니다" },
+  { value: "약 25분", label: "설치에 걸린 시간", note: "준비가 끝난 고객 서버에 설치를 마치기까지 실제로 걸린 시간입니다" },
 ];
 
 const supported = [
   "Omnissa Horizon과 vSphere를 함께 쓰는 환경",
-  "Manual 풀에서 VM을 한 대씩 만들어 사용자에게 고정으로 배정하는 방식(Full Clone)",
-  "VM을 AD 도메인에 가입시키고 고정 IP를 쓰는 곳",
-  "VM 생성, 교체, 배정, 회수, 삭제와 그에 따르는 IP·AD 계정 정리",
-  "인터넷이 막힌 폐쇄망. 고객 서버에 설치하고 사내 계정으로 로그인합니다",
+  "Manual 풀에서 Full Clone VM을 한 대씩 만들어 사용자에게 지정해 주는 환경",
+  "VM을 AD 도메인에 가입하고 고정 IP를 쓰는 환경",
+  "VM 생성, 교체, 배정, 회수, 삭제와 IP·AD 계정 정리 작업",
+  "인터넷이 안 되는 폐쇄망. 고객 서버에 설치하고 사내 계정으로 로그인합니다",
 ];
 
 const notSupported = [
-  "Instant Clone 풀은 조회, 유지보수 모드, 교체, 수량 조정만 됩니다. Instant Clone 자동화를 대신하는 제품이 아닙니다.",
+  "Instant Clone 풀은 조회, 유지보수 모드, 교체, 수량 조정만 할 수 있습니다. Instant Clone 자동화를 대신하는 제품이 아닙니다.",
   "Connection Server를 여러 Pod로 나눈 구성은 지원하지 않습니다.",
   "Linux 데스크톱과 OVA 형태의 배포는 없습니다.",
   "클라우드 서비스(SaaS)로는 제공하지 않습니다.",
@@ -215,15 +215,10 @@ export default function VdiOpsPage() {
               </div>
               <h1 className="h-lead text-gray-900 kr-keep-all mb-5">{ONE_LINER}</h1>
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed kr-keep-all mb-4 max-w-2xl">
-                VM 한 대를 만들려고 vCenter, AD, Horizon 콘솔, IP 엑셀을 차례로 여는 일을 없앱니다.
-                담당자는 요청서 하나만 쓰면 됩니다. 승인이 나면 나머지는 VDIOps가 순서대로 처리합니다.
-                누가 언제 무엇을 했는지는 기록으로 남습니다.
+                VM 한 대를 만들 때마다 vCenter, AD, Horizon 콘솔, IP 엑셀을 하나씩 열지 않아도 됩니다. 담당자는 요청서 하나만 쓰면 됩니다. 승인이 나면 VDIOps가 나머지 작업을 알아서 처리합니다. 누가 언제 무엇을 했는지도 모두 기록됩니다.
               </p>
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
-                Horizon이 자동으로 관리해 주지 않는 Manual 풀, 곧 VM을 한 대씩 직접 만들어
-                사용자에게 고정으로 배정하는 방식은 그대로 둡니다. 고정 IP와 호스트명, 사람마다
-                다른 설정, VM 한 대 단위의 장애 대응이 필요한 기관에 맞춘 제품입니다.
-                (주)마이로켓이 만들어 고객 서버에 설치합니다. 코드명은 HorizonOps입니다.
+                VM을 한 대씩 직접 만들어 사용자에게 지정해 주는 Manual 풀 방식은 그대로 씁니다. 고정 IP와 호스트명이 필요하거나, 사용자마다 설정이 다르거나, VM 한 대 단위로 장애를 처리해야 하는 기관을 위한 제품입니다. (주)마이로켓이 직접 만들었고 고객 서버에 설치합니다. 코드명은 HorizonOps입니다.
               </p>
               <div className="flex flex-wrap items-center gap-3 text-sm">
                 <a
@@ -260,16 +255,14 @@ export default function VdiOpsPage() {
             지금은 이렇게 하고 계실 겁니다
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
-            바뀌는 것은 담당자가 손으로 하던 절차뿐입니다. VM 자체의 구성이나 사용자가 쓰는
-            방식은 달라지지 않습니다.
+            담당자가 손으로 하던 일만 바뀝니다. VM 구성이나 사용자가 쓰는 방식은 그대로입니다.
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <article className="p-6 rounded-xl bg-white border border-gray-200">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">지금: VM 한 대에 콘솔 네 개</h3>
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-4">
-                콘솔을 차례로 열고 값을 손으로 옮겨 적습니다. 중간에 전화라도 받으면 어디까지
-                했는지는 기억에만 남습니다.
+                각각의 콘솔을 열어서 일일이 입력하다가 오류가 날 수도 있습니다. 작업 중에 다른 일이 생기면 어디까지 했는지 놓치기도 합니다.
               </p>
               <ul className="space-y-2 mb-5">
                 {currentConsoles.map((c) => (
@@ -299,9 +292,7 @@ export default function VdiOpsPage() {
             <article className="p-6 rounded-xl bg-white border-2 border-[#1a1f26]">
               <h3 className="text-lg font-semibold text-gray-900 mb-3">VDIOps를 쓰면: 요청서 하나</h3>
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-4">
-                풀 화면에서 요청서 하나를 채우고 제출합니다. 승인이 나면 이름 예약, IP 배정, 복제,
-                도메인 가입, 풀 등록, 사용자 배정, 확인까지 VDIOps가 순서대로 진행합니다. 중간에
-                실패하면 실패한 단계부터 다시 합니다. 이미 끝난 단계는 건너뜁니다.
+                풀 화면에서 요청서 하나만 작성해서 제출합니다. 승인이 나면 이름 정하기, IP 배정, 복제, 도메인 가입, 풀 등록, 사용자 배정, 접속 확인까지 VDIOps가 순서대로 자동으로 처리합니다. 중간에 오류가 나면 그 단계부터 다시 실행합니다. 이미 끝난 단계는 다시 하지 않습니다.
               </p>
               <ul className="space-y-2 mb-5">
                 {oneJobFields.map((f) => (
@@ -312,8 +303,7 @@ export default function VdiOpsPage() {
                 ))}
               </ul>
               <p className="text-sm text-gray-800 kr-keep-all">
-                VM 이름과 IP는 사람이 정하지 않습니다. 사람이 정하는 순간 대장과 실제가 어긋나기
-                시작하기 때문입니다.
+                VM 이름과 IP는 사람이 직접 정하지 않습니다. 사람이 정하면 대장과 실제 값이 달라지는 일이 생기기 때문입니다.
               </p>
               <div className="mt-6">
                 <Capture
@@ -337,10 +327,7 @@ export default function VdiOpsPage() {
             보안 담당자가 먼저 보실 부분입니다
           </h2>
           <p className="text-base text-gray-700 leading-relaxed kr-keep-all mb-8 max-w-3xl">
-            모든 변경은 요청과 승인을 거쳐야 실행됩니다. 실행 직전에 대상과 정책을 한 번 더
-            확인합니다. 확인이 안 되면 만들지 않고 멈춥니다. VDIOps가 AD, vCenter, Horizon에서
-            갖는 권한은 각각 따로 부여하므로 어디까지 할 수 있는지 보안 담당자가 직접 확인할 수
-            있습니다. 자격 증명을 어떻게 보관하는지까지 적은 보안 답변서는 요청하시면 보내 드립니다.
+            모든 작업은 요청하고 승인을 받아야 실행됩니다. 실행 직전에 대상과 정책을 한 번 더 확인하고 문제가 있으면 멈춥니다. VDIOps에 주는 권한은 AD, vCenter, Horizon마다 따로 설정하므로 어디까지 할 수 있는지 보안 담당자가 직접 확인할 수 있습니다. 자격 증명을 어떻게 보관하는지 포함한 보안 답변서는 요청하시면 보내 드립니다.
           </p>
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {controls.map((c) => (
@@ -360,7 +347,7 @@ export default function VdiOpsPage() {
             Evidence
           </p>
           <h2 className="h-base text-white mb-8 kr-keep-all">
-            숫자는 실제로 잰 것만 적습니다
+            실제로 측정한 숫자만 적습니다
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {evidence.map((e) => (
@@ -372,13 +359,12 @@ export default function VdiOpsPage() {
             ))}
           </div>
           <p className="mt-8 text-xs text-gray-400 kr-keep-all max-w-2xl">
-            고객 사례와 절감 수치는 아직 없습니다. 첫 고객 환경에서 측정이 끝나고 그 기관의
-            검토를 거친 뒤에 공개합니다. 검증 기록과 시험 결과 문서는 요청하시면 보내 드립니다.
+            고객 사례와 절감 수치는 아직 없습니다. 첫 고객 환경에서 측정이 끝나고 해당 기관의 검토를 받은 뒤에 공개하겠습니다. 검증 기록과 테스트 결과 문서는 요청하시면 보내 드립니다.
           </p>
         </div>
       </section>
 
-      {/* 5. 맞는 환경과 맞지 않는 환경 */}
+      {/* 5. 도입할 수 있는 환경과 없는 환경 */}
       <section className="border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 md:py-16">
           <p className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
@@ -388,7 +374,7 @@ export default function VdiOpsPage() {
             맞는 환경과 맞지 않는 환경
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
-            안 되는 것을 먼저 말씀드립니다. 데모 전에 아는 편이 서로 시간을 아낍니다.
+            안 되는 것부터 말씀드립니다. 데모 전에 미리 알면 서로 시간을 아낄 수 있습니다.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="p-6 rounded-xl bg-white border border-gray-200">
@@ -415,8 +401,7 @@ export default function VdiOpsPage() {
             </div>
           </div>
           <p className="mt-6 text-sm text-gray-600 kr-keep-all max-w-2xl">
-            데모는 30분이고 마이로켓 실험실 화면을 공유합니다. 다음 단계는 고객 환경에서 하는
-            유료 시범 도입(PoC)입니다. 비용과 조건은 제안서에 따로 붙입니다.
+            데모는 30분 정도이며 마이로켓 실험실 화면을 공유하는 방식입니다. 데모 후에는 고객 환경에서 유료 시범 도입(PoC)을 진행합니다. 비용과 조건은 제안서에 따로 안내합니다.
           </p>
         </div>
       </section>
@@ -431,11 +416,10 @@ export default function VdiOpsPage() {
               </p>
               <h2 className="h-base text-gray-900 mb-3 kr-keep-all">데모 신청</h2>
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-5">
-                Horizon 버전과 풀 유형, VM 대수를 적어 주시면 맞는 환경인지 먼저 확인하고 일정을
-                잡습니다. Instant Clone 풀만 쓰는 곳이면 첫 회신에서 그렇게 말씀드립니다.
+                Horizon 버전, 풀 유형, VM 대수를 적어 주시면 도입 가능한 환경인지 먼저 확인하고 일정을 잡습니다. Instant Clone 풀만 쓰는 경우에는 첫 회신에서 바로 말씀드립니다.
               </p>
               <ul className="text-sm text-gray-700 space-y-1.5 kr-keep-all">
-                <li>· 원격으로 30분, 마이로켓 실험실 화면을 공유합니다</li>
+                <li>· 원격 데모 30분, 마이로켓 실험실 화면 공유</li>
                 <li>· 데모가 끝나면 시범 도입 항목표와 설치 준비물 목록을 보내 드립니다</li>
                 <li>· 미리 채워 두면 좋은 것: <Link href="/tools/vdi-ops-checklist" className="underline underline-offset-2 text-gray-900">VDI 운영 진단 체크리스트</Link></li>
               </ul>

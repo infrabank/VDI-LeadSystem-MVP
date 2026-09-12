@@ -198,10 +198,7 @@ export default function VdiOpsChecklistPage() {
             VDI 운영 진단 체크리스트
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl leading-relaxed kr-keep-all">
-            Horizon Manual 풀에서 VM 한 대를 만들고 교체하는 데 지금 몇 분이 걸리고, 콘솔을 몇 개
-            열며, 단계가 몇 개인지 적는 양식입니다. 설치 뒤에는 잴 수 없는 값이라 지금 재 두는
-            것이 의미가 있습니다. 실제 작업 1건을 옆에서 지켜보며 시각을 적는 방식이 가장 정확하고,
-            기억에 의존한 값은 추정으로 표시합니다.
+            Horizon Manual 풀에서 VM 한 대를 만들거나 교체할 때 지금 몇 분이 걸리는지, 콘솔을 몇 개 여는지, 단계가 몇 개인지 적는 양식입니다. VDIOps를 설치한 뒤에는 잴 수 없는 값이라 지금 재 두어야 합니다. 실제 작업 1건을 옆에서 보면서 시간을 적으면 가장 정확합니다. 기억에 의존한 값은 추정으로 표시해 주세요.
           </p>
         </div>
       </section>
@@ -314,8 +311,7 @@ export default function VdiOpsChecklistPage() {
             })}
           </ol>
           <p className="mt-3 text-xs text-gray-500 kr-keep-all">
-            신규 생성 소요, 교체 소요, 회수·삭제 소요 세 값은 VDIOps 도입 뒤 월간 보고서의 수작업
-            기준값이 됩니다. 기준값이 없으면 절감 시간은 계산하지 않습니다.
+            신규 생성, 교체, 회수·삭제에 걸린 시간 세 가지는 VDIOps 도입 후 월간 보고서에서 수작업 기준값으로 씁니다. 기준값이 없으면 절감 시간을 계산하지 않습니다.
           </p>
         </section>
 
@@ -350,15 +346,14 @@ export default function VdiOpsChecklistPage() {
               <div className="bg-white rounded-xl border border-gray-300 p-6 sm:p-8 text-center">
                 <h2 className="text-xl font-bold text-gray-900 mb-2 kr-keep-all">체크리스트를 보냈습니다</h2>
                 <p className="text-sm text-gray-600 kr-keep-all">
-                  1영업일 안에 담당 엔지니어가 결과를 정리한 A4 한 장과 함께 회신합니다.
+                  1영업일 안에 담당 엔지니어가 결과를 A4 한 장으로 정리해 회신합니다.
                 </p>
               </div>
             ) : (
               <form noValidate onSubmit={handleSend} className="bg-gray-50 rounded-xl border border-gray-200 p-5 sm:p-8 space-y-4">
                 <h2 className="text-lg font-bold text-gray-900">보내는 사람</h2>
                 <p className="text-sm text-gray-600 kr-keep-all">
-                  위에 적은 값이 그대로 전달됩니다. 회신은 현재 절차의 단계 수, 콘솔 수, 소요 시간,
-                  최근 오류를 정리한 A4 한 장입니다.
+                  위에 적은 값이 그대로 전달됩니다. 현재 절차의 단계 수, 콘솔 수, 걸리는 시간, 최근 오류를 A4 한 장으로 정리해 회신합니다.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
                   {(
