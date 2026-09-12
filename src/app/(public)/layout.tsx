@@ -73,6 +73,15 @@ export default function PublicLayout({
                   <Link href="/case-studies" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">
                     Case Studies
                   </Link>
+                  <span aria-hidden="true" className="text-gray-400 mx-2 text-xs">·</span>
+                  <Link href="/tech-notes" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">
+                    기술 노트
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/products/vdiops" className="text-gray-600 hover:text-blue-600 transition-colors font-medium kr-keep-all">
+                    VDIOps · Manual VDI 운영 자동화
+                  </Link>
                 </li>
                 <li>
                   <Link href="/tools" className="text-gray-500 hover:text-blue-600 transition-colors text-xs">

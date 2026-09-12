@@ -3,7 +3,7 @@ import Link from "next/link";
 export const metadata = {
   alternates: { canonical: "/tools" },
   title: "무료 진단 도구",
-  description: "N²SF 정렬·전환 준비도·VDI 역할 재정의·VDI ROI 등 진단·계산 도구 모음.",
+  description: "N²SF 정렬·전환 준비도·VDI 역할 재정의·VDI ROI·VDI 운영 진단 체크리스트 등 진단·계산 도구 모음.",
 };
 
 const tools = [
@@ -67,6 +67,16 @@ const tools = [
     href: "/tools/backup-roi",
     primary: false,
   },
+  {
+    rank: "07",
+    title: "VDI 운영 진단 체크리스트",
+    desc: "Horizon Manual 풀 VM 생성·교체·회수 소요, 여는 콘솔 수, 단계 수, 최근 오류를 스스로 재는 양식 · 인쇄 또는 전송",
+    duration: "약 15분",
+    icon: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4",
+    color: "var(--color-domain-vdi)",
+    href: "/tools/vdi-ops-checklist",
+    primary: false,
+  },
 ];
 
 export default function ToolsPage() {
@@ -83,7 +93,7 @@ export default function ToolsPage() {
             <span className="md:hidden"> </span>진단합니다
           </h1>
           <p className="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed kr-keep-all">
-            6가지 무료 진단·계산으로 현재 환경의 빈틈을 짚고, 담당자 보고용
+            7가지 무료 진단·계산·체크리스트로 현재 환경의 빈틈을 짚고, 담당자 보고용
             PDF 리포트를 받습니다. 별도 가입 없이 이메일만으로 이용할 수 있으며, 정식 판단은
             후속 인터뷰에서 확정합니다.
           </p>

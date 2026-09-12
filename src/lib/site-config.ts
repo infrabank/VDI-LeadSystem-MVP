@@ -670,6 +670,11 @@ export const navLinks: NavLink[] = [
     description: "Citrix · Omnissa Horizon 구축·장애 대응",
   },
   {
+    href: "/products/vdiops",
+    label: "VDIOps",
+    description: "Horizon Manual VDI 생성·교체·회수를 한 작업으로",
+  },
+  {
     href: "/services/it-maintenance",
     label: "전산유지보수",
     description: "서버·PC·네트워크·프린터 통합 관리",
@@ -717,9 +722,14 @@ export const navLinks: NavLink[] = [
         description: "유지·보완·축소·재설계 시나리오 후보",
       },
       {
+        href: "/tools/vdi-ops-checklist",
+        label: "VDI 운영 진단 체크리스트",
+        description: "Manual VDI 생성·교체 소요, 콘솔 수, 단계 수 스스로 재기",
+      },
+      {
         href: "/tools",
         label: "전체 진단 도구 보기",
-        description: "N²SF 정렬·전환 준비도·운영 ROI 등 6종",
+        description: "N²SF 정렬·전환 준비도·운영 ROI 등 7종",
       },
     ],
   },
@@ -727,6 +737,18 @@ export const navLinks: NavLink[] = [
     href: "/case-studies",
     label: "고객사례",
     description: "실제 기업 전산환경 유지보수 경험",
+    children: [
+      {
+        href: "/case-studies",
+        label: "고객사례",
+        description: "공공·연구기관·민간 VDI·백업 운영 사례",
+      },
+      {
+        href: "/tech-notes",
+        label: "기술 노트",
+        description: "Manual VDI 운영 현장에서 겪고 고친 기록",
+      },
+    ],
   },
   {
     href: "/contact",

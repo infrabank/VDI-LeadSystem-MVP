@@ -65,7 +65,7 @@ const INQUIRY_TYPES: {
 function inferType(typeParam: string | null, interestParam: string | null): InquiryType {
   if (typeParam === "vdi" || typeParam === "maintenance" || typeParam === "si") return typeParam;
   if (interestParam) {
-    if (["vdi", "citrix", "horizon"].includes(interestParam)) return "vdi";
+    if (["vdi", "citrix", "horizon", "vdiops"].includes(interestParam)) return "vdi";
     if (["si-advisory", "integrated-maintenance"].includes(interestParam)) return "si";
     if (
       ["it-maintenance", "server-network", "pc-support", "monthly-checkup",
