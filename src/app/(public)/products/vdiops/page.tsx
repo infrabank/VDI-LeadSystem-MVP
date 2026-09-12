@@ -206,7 +206,7 @@ export default function VdiOpsPage() {
                   priority
                 />
                 <p className="mt-2 text-xs text-gray-500 tracking-widest uppercase">
-                  Manual VDI Lifecycle Automation for Omnissa Horizon
+                  Manual Persistent VDI Lifecycle Automation for Omnissa Horizon
                 </p>
               </div>
               <h1 className="h-lead text-gray-900 kr-keep-all mb-5">{ONE_LINER}</h1>
