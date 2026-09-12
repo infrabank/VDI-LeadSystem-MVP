@@ -117,7 +117,7 @@ export default function DemoRequestForm() {
           데모 신청이 접수되었습니다
         </h3>
         <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 kr-keep-all">
-          1영업일 안에 담당 엔지니어가 회신해 대상 여부를 확인하고 일정을 잡습니다.
+          1영업일 안에 담당 엔지니어가 회신해 맞는 환경인지 확인하고 일정을 잡습니다.
         </p>
         <Link
           href="/tools/vdi-ops-checklist"
