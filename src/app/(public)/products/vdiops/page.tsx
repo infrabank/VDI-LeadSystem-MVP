@@ -318,8 +318,8 @@ export default function VdiOpsPage() {
               <div className="mt-6">
                 <Capture
                   file="capture-02-fc-request.png"
-                  alt="VDIOps 데스크톱 풀 화면(코드명 HorizonOps)에서 열린 VM 생성 요청서. 사유, 템플릿, 호스트, 스토리지, 네트워크, 디스크 형식, 사용자 배정 입력란과 생성 요청 버튼이 있다"
-                  caption="장면 2. VM 생성 요청서입니다. 이름과 IP는 적는 칸이 없고 정책과 IP 대역에서 자동으로 정해집니다."
+                  alt="VDIOps 데스크톱 풀 화면(코드명 HorizonOps)에서 열린 Full Clone VM 생성 작업 지시서. 사유, 마스터(템플릿), 호스트, 스토리지, 네트워크, 디스크 형식, 사용자 할당 입력란과 Full Clone 생성 요청 버튼이 있다"
+                  caption="장면 2. Full Clone VM 생성 작업 지시서입니다. 본문에서 요청서라고 부른 창입니다. 이름과 IP는 적는 칸이 없고 정책과 IP 대역에서 자동으로 정해집니다."
                 />
               </div>
             </article>
