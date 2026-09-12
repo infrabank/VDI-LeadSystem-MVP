@@ -68,6 +68,35 @@ export function serviceLd(opts: {
   };
 }
 
+/** VideoObject — 제품 데모 영상(구글 동영상 리치 결과용). duration은 초 단위로 받아 ISO 8601로 변환 */
+export function videoObjectLd(opts: {
+  name: string;
+  description: string;
+  contentUrl: string;
+  thumbnailUrl: string;
+  /** YYYY-MM-DD */
+  uploadDate: string;
+  durationSeconds: number;
+  /** 영상이 실린 페이지 경로 */
+  path: string;
+}) {
+  const m = Math.floor(opts.durationSeconds / 60);
+  const s = Math.round(opts.durationSeconds % 60);
+  return {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: opts.name,
+    description: opts.description,
+    contentUrl: opts.contentUrl,
+    thumbnailUrl: opts.thumbnailUrl,
+    uploadDate: opts.uploadDate,
+    duration: `PT${m}M${s}S`,
+    url: `${SITE_URL}${opts.path}`,
+    inLanguage: "ko",
+    publisher: { "@type": "ProfessionalService", "@id": ORG_ID, name: company.legalName },
+  };
+}
+
 /** 여러 JSON-LD 객체를 하나의 문자열 배열로 — 페이지에서 map 렌더 */
 export function jsonLdScripts(...objects: object[]): string[] {
   return objects.map((o) => JSON.stringify(o));

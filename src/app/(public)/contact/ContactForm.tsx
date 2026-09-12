@@ -70,7 +70,7 @@ function inferType(typeParam: string | null, interestParam: string | null): Inqu
     if (
       ["it-maintenance", "server-network", "pc-support", "monthly-checkup",
         "incident-response", "operations-improvement", "recovery-verification",
-        "acronis"].includes(interestParam)
+        "acronis", "vinchin"].includes(interestParam)
     ) {
       return "maintenance";
     }

@@ -692,7 +692,7 @@ export const navLinks: NavLink[] = [
       {
         href: "/products/vinchin-backup",
         label: "Vinchin Backup & Recovery",
-        description: "가상화 VM 백업·즉시 복구",
+        description: "가상화 VM 백업·즉시 복구·V2V 전환",
       },
     ],
   },

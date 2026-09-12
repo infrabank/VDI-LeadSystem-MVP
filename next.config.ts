@@ -33,6 +33,8 @@ const securityHeaders = [
       "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://www.googletagmanager.com",
       "style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net",
       "img-src 'self' data: blob: https:",
+      // media-src: Vinchin 데모 영상(mp4)은 Supabase Storage 공개 버킷 assets에서 제공 (2026-09-12).
+      "media-src 'self' https://*.supabase.co",
       "font-src 'self' data:",
       "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://api.resend.com https://hooks.slack.com https://discord.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
       "frame-ancestors 'none'",
