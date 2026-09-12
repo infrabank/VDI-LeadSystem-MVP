@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="VDIOps 심볼">
-  <rect x="6" y="3" width="3" height="18" fill="#1a1f26"/>
-  <rect x="15" y="3" width="3" height="18" fill="#1a1f26"/>
-  <rect x="9" y="10.3" width="6" height="2.4" fill="#c33d1f"/>
-  <line x1="2" y1="11.5" x2="6" y2="11.5" stroke="#c2c9d2" stroke-width="0.75"/>
-  <line x1="18" y1="11.5" x2="22" y2="11.5" stroke="#c2c9d2" stroke-width="0.75"/>
-</svg>

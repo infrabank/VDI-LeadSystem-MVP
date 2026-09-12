@@ -195,20 +195,20 @@ export default function VdiOpsPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18 md:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-12 items-center">
             <div className="lg:col-span-3">
-              <p className="flex items-center gap-2.5 mb-5">
+              {/* 가로 조합(심볼 + 워드마크). 최소 높이 20px 규칙에 맞춰 36px로 둔다. 비율은 SVG viewBox 기준. */}
+              <div className="mb-5">
                 <Image
-                  src="/products/vdiops/mark.svg"
-                  alt=""
-                  width={28}
-                  height={28}
-                  className="w-7 h-7"
+                  src="/products/vdiops/lockup-h.svg"
+                  alt="VDIOps"
+                  width={183}
+                  height={36}
+                  className="h-9 w-auto"
                   priority
                 />
-                <span className="text-lg font-bold tracking-wide text-gray-900">VDIOps</span>
-                <span className="text-xs text-gray-500 tracking-widest uppercase">
+                <p className="mt-2 text-xs text-gray-500 tracking-widest uppercase">
                   Manual VDI Lifecycle Automation for Omnissa Horizon
-                </span>
-              </p>
+                </p>
+              </div>
               <h1 className="h-lead text-gray-900 kr-keep-all mb-5">{ONE_LINER}</h1>
               <p className="text-base sm:text-lg text-gray-800 leading-relaxed kr-keep-all mb-4 max-w-2xl">
                 {TWO_LINER}
