@@ -12,11 +12,18 @@ export const metadata: Metadata = {
   alternates: { canonical: PAGE_PATH },
   title: "VDIOps: Omnissa Horizon Manual VDI 운영 자동화",
   description:
-    "Omnissa Horizon에서 VM을 한 대씩 직접 만들어 쓰는 Manual 풀 운영을 자동화하는 제품입니다. vCenter, AD, Horizon 콘솔, IP 대장을 하나씩 열어 입력하던 VM 생성, 교체, 회수 작업을 요청서 하나와 승인으로 처리하고 모든 변경 내용을 기록합니다. (주)마이로켓이 만들어 고객 서버에 설치합니다.",
+    "VDIOps는 Omnissa Horizon Manual VDI의 VM 생성, 교체, 회수를 자동으로 처리해 주는 프로그램입니다. vCenter, AD, Horizon 콘솔, IP 대장을 하나씩 열어 입력하던 VM 생성, 교체, 회수 작업을 요청서 하나와 승인으로 처리하고 모든 변경 내용을 기록합니다. (주)마이로켓이 만들어 고객 서버에 설치합니다.",
 };
 
 /* 한 줄 구호는 HVMPortal/docs/positioning.md 정본 그대로. 나머지 문구는 방문자(기관 전산 담당자)의 말로 풀어 쓴다. */
 const ONE_LINER = "Manual VDI를 포기하지 않고 자동화한다.";
+
+/* 첫 화면의 유인: 담당자가 실제로 겪는 일. 마케팅 전략 §3(운영자 관심)과 도입 계획 §1.3(운영 실수 사례) 기준. */
+const painPoints = [
+  "새 VM에 IP를 넣었는데 다른 서버와 겹쳐서 장애가 난 적이 있다",
+  "VM은 지웠는데 AD 컴퓨터 계정과 IP 대장에는 그대로 남아 있다",
+  "VM 생성 요청이 몰리면 퇴근 후에 남아서 하나씩 만든다",
+];
 
 /* 지금의 운영: VM 한 대를 만들 때 사람이 오가는 자리. */
 const currentConsoles = [
@@ -213,12 +220,29 @@ export default function VdiOpsPage() {
                   Manual Persistent VDI Lifecycle Automation for Omnissa Horizon
                 </p>
               </div>
-              <h1 className="h-lead text-gray-900 kr-keep-all mb-5">{ONE_LINER}</h1>
-              <p className="text-base sm:text-lg text-gray-800 leading-relaxed kr-keep-all mb-4 max-w-2xl">
-                VM 한 대를 만들 때마다 vCenter, AD, Horizon 콘솔, IP 엑셀을 하나씩 열지 않아도 됩니다. 담당자는 요청서 하나만 쓰면 됩니다. 승인이 나면 VDIOps가 나머지 작업을 알아서 처리합니다. 누가 언제 무엇을 했는지도 모두 기록됩니다.
+              <h1 className="h-lead text-gray-900 kr-keep-all mb-5">
+                VM 한 대 만드는 데<br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>콘솔 네 개를 열고 계신가요?
+              </h1>
+              <p className="text-base sm:text-lg text-gray-800 leading-relaxed kr-keep-all mb-5 max-w-2xl">
+                VDIOps는 Horizon Manual VDI의 VM 생성, 교체, 회수를 자동으로 처리해 주는
+                프로그램입니다. 담당자는 요청서 하나만 쓰면 됩니다. 승인이 나면 VDIOps가 나머지
+                작업을 알아서 처리하고, 누가 언제 무엇을 했는지 모두 기록합니다.
               </p>
+              <div className="mb-6 max-w-2xl rounded-xl border border-gray-200 bg-gray-50/70 p-4 sm:p-5">
+                <p className="text-sm font-semibold text-gray-900 mb-2">이런 일이 있었다면 맞는 제품입니다</p>
+                <ul className="space-y-1.5">
+                  {painPoints.map((t) => (
+                    <li key={t} className="flex gap-2.5 text-sm text-gray-700 kr-keep-all">
+                      <span aria-hidden="true" className="flex-shrink-0 mt-2 w-1.5 h-1.5 bg-[#c33d1f]" />
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <p className="text-sm font-semibold text-gray-800 kr-keep-all mb-1">{ONE_LINER}</p>
               <p className="text-sm text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
-                VM을 한 대씩 직접 만들어 사용자에게 지정해 주는 Manual 풀 방식은 그대로 씁니다. 고정 IP와 호스트명이 필요하거나, 사용자마다 설정이 다르거나, VM 한 대 단위로 장애를 처리해야 하는 기관을 위한 제품입니다. (주)마이로켓이 직접 만들었고 고객 서버에 설치합니다. 코드명은 HorizonOps입니다.
+                (주)마이로켓이 직접 만들었고 고객 서버에 설치합니다. 코드명은 HorizonOps입니다.
               </p>
               <div className="flex flex-wrap items-center gap-3 text-sm">
                 <a
@@ -255,7 +279,7 @@ export default function VdiOpsPage() {
             지금은 이렇게 하고 계실 겁니다
           </h2>
           <p className="text-base text-gray-600 leading-relaxed kr-keep-all mb-8 max-w-2xl">
-            담당자가 손으로 하던 일만 바뀝니다. VM 구성이나 사용자가 쓰는 방식은 그대로입니다.
+            VM을 한 대씩 직접 만들어 사용자에게 지정해 주는 Manual 풀 방식은 그대로 씁니다. 고정 IP와 호스트명이 필요하거나, 사용자마다 설정이 다르거나, VM 한 대 단위로 장애를 처리해야 하는 기관을 위한 제품입니다. 담당자가 손으로 하던 일만 바뀌고 VM 구성이나 사용자가 쓰는 방식은 그대로입니다.
           </p>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
