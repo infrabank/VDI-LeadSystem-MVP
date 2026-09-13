@@ -19,6 +19,7 @@ import {
   type CustomerCategory,
 } from "@/lib/site-config";
 import { PartnerBadge } from "./PartnerBadge";
+import HomePromoModal from "./HomePromoModal";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -196,6 +197,7 @@ function PhoneIcon({ className = "w-4 h-4" }: { className?: string }) {
 export default function HomePage() {
   return (
     <div>
+      <HomePromoModal />
       {/* ========== S1. Hero + 방문자 경로 분기 ==========
           경로 카드를 별도 섹션으로 두면 "문의하라" 직후에 "당신은 셋 중 누구냐"로
           재분류를 요구하게 되므로, 첫 화면 안에서 한 번에 분기시킨다. */}

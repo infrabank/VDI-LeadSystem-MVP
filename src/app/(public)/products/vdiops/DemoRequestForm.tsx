@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { DEMO_WANTS, pocWaiverOpen, type DemoWant } from "@/lib/vdiops-promo";
 
 const POOL_TYPES = [
   { value: "manual-fc", label: "Manual / Full Clone" },
@@ -26,6 +27,18 @@ export default function DemoRequestForm() {
   const [vmCount, setVmCount] = useState("");
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
+  const [want, setWant] = useState<DemoWant>("remote");
+
+  // 홈 안내창에서 ?want=account 로 들어오면 그 항목을 미리 고른다.
+  useEffect(() => {
+    const w = new URLSearchParams(window.location.search).get("want");
+    if (DEMO_WANTS.some((d) => d.value === w)) {
+      setWant(w as DemoWant);
+    }
+  }, []);
+
+  const wants = DEMO_WANTS.filter((d) => d.value !== "poc-waiver" || pocWaiverOpen());
+  const wantLabel = DEMO_WANTS.find((d) => d.value === want)?.label ?? "";
 
   const [step, setStep] = useState<Step>("form");
   const [error, setError] = useState("");
@@ -75,7 +88,10 @@ export default function DemoRequestForm() {
       vmCount.trim() && `- VM 대수: ${vmCount.trim()}`,
     ].filter(Boolean);
     const body = [
-      "VDIOps 데모 신청",
+      `VDIOps 데모 신청: ${wantLabel}`,
+      "",
+      "[원하는 것]",
+      `- ${wantLabel}`,
       "",
       message.trim() || "(메시지 없음)",
       "",
@@ -117,7 +133,11 @@ export default function DemoRequestForm() {
           데모 신청이 접수되었습니다
         </h3>
         <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 kr-keep-all">
-          1영업일 안에 담당 엔지니어가 회신해 도입 가능한 환경인지 확인하고 일정을 잡습니다.
+          {want === "account"
+            ? "1영업일 안에 담당 엔지니어가 도입 가능한 환경인지 확인하고 데모 계정을 메일로 보내 드립니다."
+            : want === "poc-waiver"
+              ? "1영업일 안에 담당 엔지니어가 도입 가능한 환경인지 확인하고 시범 도입 조건을 안내해 드립니다."
+              : "1영업일 안에 담당 엔지니어가 회신해 도입 가능한 환경인지 확인하고 일정을 잡습니다."}
         </p>
         <Link
           href="/tools/vdi-ops-checklist"
@@ -252,6 +272,36 @@ export default function DemoRequestForm() {
           />
         </div>
       </div>
+
+      <fieldset>
+        <legend className="block text-sm font-medium text-gray-700 mb-2">
+          원하는 것 <span className="text-red-600" aria-hidden="true">*</span>
+        </legend>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+          {wants.map((d) => {
+            const active = want === d.value;
+            return (
+              <label
+                key={d.value}
+                className={`text-left p-3.5 rounded-lg border cursor-pointer transition-colors kr-keep-all ${
+                  active ? "bg-gray-900 border-gray-900 text-white" : "bg-white border-gray-300 hover:border-gray-500"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="demo-want"
+                  value={d.value}
+                  checked={active}
+                  onChange={() => setWant(d.value)}
+                  className="sr-only"
+                />
+                <span className="block text-sm font-bold mb-0.5">{d.label}</span>
+                <span className={`block text-2xs leading-snug ${active ? "text-gray-300" : "text-gray-600"}`}>{d.desc}</span>
+              </label>
+            );
+          })}
+        </div>
+      </fieldset>
 
       <div>
         <label htmlFor="demo-message" className="block text-sm font-medium text-gray-700 mb-1.5">

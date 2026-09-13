@@ -235,6 +235,25 @@ a, button {
 }
 .animate-slide-down { animation: slide-down 0.18s ease-out; }
 
+/* 홈 안내창: 데스크톱은 가운데서 살짝 떠오르고, 모바일 시트는 아래에서 올라온다. */
+@keyframes promo-rise {
+  from { opacity: 0; transform: translateY(14px) scale(0.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes promo-sheet {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+@keyframes promo-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-promo-fade { animation: promo-fade 0.22s ease-out; }
+.animate-promo-panel { animation: promo-sheet 0.32s cubic-bezier(0.16, 1, 0.3, 1); }
+@media (min-width: 640px) {
+  .animate-promo-panel { animation: promo-rise 0.32s cubic-bezier(0.16, 1, 0.3, 1); }
+}
+
 /* Dot pattern background */
 .bg-dot-pattern {
   background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
