@@ -123,8 +123,7 @@ export default function HomePromoModal() {
             Horizon Manual VDI, 아직 손으로 만들고 계신가요?
           </h2>
           <p id="promo-desc" className="text-sm sm:text-base text-gray-700 leading-relaxed kr-keep-all mb-2">
-            VDIOps는 VM 생성, 교체, 회수를 요청서 하나와 승인으로 처리해 주는 프로그램입니다.
-            마이로켓이 만들었습니다.
+            VDIOps는 VM 만들기, 교체, 회수를 요청서 한 장으로 끝내는 프로그램입니다. 마이로켓이 직접 만들었습니다.
           </p>
           <p className="hidden sm:block text-xs text-gray-500 kr-keep-all mb-5">
             중앙행정기관 1곳에 설치해 운영 중입니다. 기관명은 약정 서명 뒤에 공개합니다.
@@ -134,8 +133,7 @@ export default function HomePromoModal() {
             <div className="flex gap-3">
               <dt className="flex-shrink-0 w-24 sm:w-28 text-sm font-semibold text-gray-900">데모 계정</dt>
               <dd className="text-sm text-gray-700 leading-relaxed kr-keep-all">
-                신청하시면 마이로켓 실험실의 VDIOps 조회 계정을 발급해 드립니다. 화면을 직접 눌러
-                보실 수 있습니다.
+                신청하시면 마이로켓 실험실 계정을 보내 드립니다. 화면을 직접 눌러 보세요.
               </dd>
             </div>
             {waiver && (
@@ -144,9 +142,8 @@ export default function HomePromoModal() {
                   PoC 비용 면제
                 </dt>
                 <dd className="text-sm text-gray-700 leading-relaxed kr-keep-all">
-                  고객 환경 시범 도입(PoC) 비용을 {deadline}까지 선착순{" "}
-                  {vdiopsPromo.pocWaiver.slots}개 기관에 면제합니다. 대상은 Horizon Manual 풀을
-                  운영하는 기관입니다.
+                  {deadline}까지 선착순 {vdiopsPromo.pocWaiver.slots}개 기관은 시범 도입(PoC) 비용을
+                  받지 않습니다. Horizon Manual 풀을 쓰는 기관이 대상입니다.
                 </dd>
               </div>
             )}
