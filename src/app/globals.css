@@ -118,6 +118,9 @@ h1, h2, h3 { letter-spacing: -0.018em; text-wrap: pretty; }
   outline-offset: 2px;
   border-radius: 3px;
 }
+/* 대화상자 제목처럼 스크립트로 포커스를 옮기는 자리는 테두리를 그리지 않는다.
+   이 규칙은 레이어 밖에 있어 Tailwind 유틸리티로는 덮이지 않는다. */
+[data-quiet-focus]:focus-visible { outline: none; }
 
 /* 읽기 전용 컨테이너 폭 (Hashnode style: 680~768px) */
 .reading-prose { max-width: 720px; }

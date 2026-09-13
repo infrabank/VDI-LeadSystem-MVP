@@ -118,7 +118,8 @@ export default function HomePromoModal() {
             id="promo-title"
             ref={titleRef}
             tabIndex={-1}
-            className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug kr-keep-all outline-none focus-visible:outline-none mb-3"
+            data-quiet-focus=""
+            className="text-xl sm:text-2xl font-bold text-gray-900 leading-snug kr-keep-all mb-3"
           >
             Horizon Manual VDI, 아직 손으로 만들고 계신가요?
           </h2>
