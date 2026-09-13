@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { DEMO_WANTS, pocWaiverOpen, type DemoWant } from "@/lib/vdiops-promo";
+import { captureUtm, utmLine, type Utm } from "@/lib/utm";
 
 const POOL_TYPES = [
   { value: "manual-fc", label: "Manual / Full Clone" },
@@ -28,9 +29,11 @@ export default function DemoRequestForm() {
   const [message, setMessage] = useState("");
   const [consent, setConsent] = useState(false);
   const [want, setWant] = useState<DemoWant>("remote");
+  const [utm, setUtm] = useState<Utm>({});
 
-  // 홈 안내창에서 ?want=account 로 들어오면 그 항목을 미리 고른다.
+  // 홈 안내창에서 ?want=account 로 들어오면 그 항목을 미리 고른다. 소셜 링크의 utm 값도 이때 보관한다.
   useEffect(() => {
+    setUtm(captureUtm());
     const w = new URLSearchParams(window.location.search).get("want");
     if (DEMO_WANTS.some((d) => d.value === w)) {
       setWant(w as DemoWant);
@@ -97,6 +100,7 @@ export default function DemoRequestForm() {
       "",
       "[환경]",
       ...(details.length > 0 ? details : ["- 미입력"]),
+      ...(utmLine(utm) ? ["", utmLine(utm)!] : []),
     ].join("\n");
 
     setStep("submitting");

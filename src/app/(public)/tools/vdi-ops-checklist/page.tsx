@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import { captureUtm, utmLine, type Utm } from "@/lib/utm";
 
 /**
  * 설치 전 Before 측정 양식(HVMPortal/docs/plans/mods-implementation.md §1.3)을 고객이 스스로
@@ -111,6 +112,11 @@ export default function VdiOpsChecklistPage() {
   const [error, setError] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const sendRef = useRef<HTMLDivElement>(null);
+  const [utm, setUtm] = useState<Utm>({});
+
+  useEffect(() => {
+    setUtm(captureUtm());
+  }, []);
 
   function setRow(id: string, patch: Partial<Row>) {
     setRows((prev) => ({ ...prev, [id]: { ...prev[id], ...patch } }));
@@ -135,6 +141,8 @@ export default function VdiOpsChecklistPage() {
       lines.push(`- ${item.label}: ${v} (${basisLabel(r.basis)})`);
       if (item.detail && r.detail.trim()) lines.push(`  ${item.detail.label}: ${r.detail.trim()}`);
     }
+    const src = utmLine(utm);
+    if (src) lines.push("", src);
     return lines.join("\n");
   }
 
