@@ -55,7 +55,10 @@ export default function DemoRequestForm() {
     if (!email.trim()) next.email = "이메일을 입력해 주세요.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
       next.email = "이메일 형식을 확인해 주세요.";
-    if (phone && !/^[0-9+\-\s()]{0,30}$/.test(phone)) next.phone = "연락처 형식을 확인해 주세요.";
+    // 데모 계정은 비밀번호를 이메일로 보내지 않고 전화로 따로 전달하므로 번호가 꼭 필요하다.
+    if (want === "account" && !phone.trim())
+      next.phone = "데모 계정 발급에는 전화번호가 필요합니다. 비밀번호를 전화로 전달합니다.";
+    else if (phone && !/^[0-9+\-\s()]{0,30}$/.test(phone)) next.phone = "연락처 형식을 확인해 주세요.";
     if (!consent) next.consent = "개인정보 수집·이용 동의가 필요합니다.";
     return next;
   }
@@ -86,6 +89,7 @@ export default function DemoRequestForm() {
 
     const poolLabel = POOL_TYPES.find((p) => p.value === poolType)?.label;
     const details = [
+      phone.trim() && `- 전화: ${phone.trim()}`,
       horizonVersion.trim() && `- Horizon 버전: ${horizonVersion.trim()}`,
       poolLabel && `- 풀 유형: ${poolLabel}`,
       vmCount.trim() && `- VM 대수: ${vmCount.trim()}`,
@@ -138,7 +142,7 @@ export default function DemoRequestForm() {
         </h3>
         <p className="text-sm sm:text-base text-gray-600 leading-relaxed mb-6 kr-keep-all">
           {want === "account"
-            ? "1영업일 안에 담당 엔지니어가 도입 가능한 환경인지 확인하고 데모 계정을 메일로 보내 드립니다."
+            ? "데모 계정은 1영업일 안에 신청하신 이메일로 보내 드립니다. 비밀번호는 전화로 따로 전달하며 계정은 발급일부터 14일 동안 쓸 수 있습니다."
             : want === "poc-waiver"
               ? "1영업일 안에 담당 엔지니어가 도입 가능한 환경인지 확인하고 시범 도입 조건을 안내해 드립니다."
               : "1영업일 안에 담당 엔지니어가 회신해 도입 가능한 환경인지 확인하고 일정을 잡습니다."}
@@ -216,7 +220,12 @@ export default function DemoRequestForm() {
         </div>
         <div>
           <label htmlFor="demo-phone" className="block text-sm font-medium text-gray-700 mb-1.5">
-            전화 <span className="text-xs text-gray-600">(선택)</span>
+            전화{" "}
+            {want === "account" ? (
+              <span className="text-red-600" aria-hidden="true">*</span>
+            ) : (
+              <span className="text-xs text-gray-600">(선택)</span>
+            )}
           </label>
           <input
             id="demo-phone"
@@ -224,6 +233,7 @@ export default function DemoRequestForm() {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             placeholder="044-000-0000"
+            required={want === "account"}
             aria-invalid={!!fieldErrors.phone}
             aria-describedby={fieldErrors.phone ? "demo-phone-error" : undefined}
             className={inputClass(!!fieldErrors.phone)}
